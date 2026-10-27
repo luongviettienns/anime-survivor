@@ -8,3 +8,4 @@ test-results/
 .env.*
 !.env.example
 __pycache__/
+tools/_external/

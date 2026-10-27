@@ -69,3 +69,18 @@
 - **Tạo Public Repository trên GitHub**:
   - Tạo repo công khai và push toàn bộ code: https://github.com/luongviettienns/anime-survivor
   - Thiết lập upstream tracking `main -> origin/main`.
+- **Cài đặt bộ 11 GameDev & Blender Skills chuyên sâu**:
+  - Tích hợp 11 skills chuyên nghiệp từ blueprint vào `.agents/skills/`:
+    1. `blender-tooling`: Xây script Python điều khiển Blender, exporter, validator.
+    2. `blender-modeling`: Tạo nhân vật, quái, vũ khí, môi trường 3D tối ưu cho sprite render.
+    3. `blender-animation`: Rig, skinning, keyframing animation và xuất motion.
+    4. `tech-art`: Shaders, VFX, tối ưu ràng buộc kỹ thuật pipeline.
+    5. `game-design`: Thiết kế hệ thống cấp độ, kỹ năng, vũ khí, loop tiến trình.
+    6. `game-ai`: AI đuổi người chơi, FSM, boss behavior.
+    7. `game-performance`: Giám sát FPS, draw calls, pooling và tối ưu số lượng quái lớn.
+    8. `game-ui`: Thiết kế HUD, HP bar, EXP bar, bảng chọn kỹ năng.
+    9. `playtesting`: Đánh giá game feel, độ khó, phân tích telemetry.
+    10. `game-audio`: Thiết kế SFX chiến đấu, audio budgets và adaptive BGM.
+    11. `production-planning`: Lập kế hoạch milestone, roadmap demo slice và release.
+  - Cập nhật `.gitignore` loại trừ `tools/_external/` để giữ repository gọn gàng.
+  - Chạy `npm run verify` và `npm run test:e2e` xác nhận toàn bộ hệ thống hoạt động hoàn hảo.

@@ -60,3 +60,12 @@
   - Thêm `vitest.config.ts` để phân tách unit tests (`tests/domain.test.ts`) khỏi e2e tests (`tests/e2e/game.spec.ts`).
   - Toàn bộ lệnh `npm run verify` và `npm run test:e2e` chạy thành công 100%.
   - Tạo `test-results/anime-survivor.png` từ Playwright headless browser.
+- **Hoàn thành Phase 1**:
+  - Triển khai theo tài liệu `AnimeSurvivor-GameplayLogic-Spec.md` và kế hoạch `docs/superpowers/plans/2026-10-27-phase1-gameplay-logic.md`.
+  - Tách pure domain: `vector.ts`, `combat.ts`, `targeting.ts`, `pickups.ts`, `progression.ts`.
+  - Refactor các hệ thống: `MovementSystem`, `EnemySystem`, `WeaponSystem`, `DamageSystem`, `PickupSystem`, `DebugBridge`, và `GameScene`.
+  - Khắc phục triệt để lỗi va chạm coincident, phát bắn đầu tiên tại t=0, i-frames 800ms, quái chết idempotent, và gộp chung 1 overlap collider duy nhất cho collectibles.
+  - 18/18 Vitest unit tests passed, 2/2 Playwright E2E browser scenarios passed.
+- **Tạo Public Repository trên GitHub**:
+  - Tạo repo công khai và push toàn bộ code: https://github.com/luongviettienns/anime-survivor
+  - Thiết lập upstream tracking `main -> origin/main`.

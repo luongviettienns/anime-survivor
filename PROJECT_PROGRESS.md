@@ -22,12 +22,14 @@
   - [x] Chụp screenshot màn hình thực tế: `test-results/anime-survivor.png` (38.7 KB).
   - [x] Ghi lại kết quả nghiệm thu Starter vào `PROJECT_PROGRESS.md` và `docs/PROGRESS.md`.
 
-- [ ] **Phase 1: 60-second Playable Slice** ⏳ *(Kế hoạch tiếp theo)*
-  - [ ] Chốt chuyển động nhân vật, chuẩn hóa di chuyển chéo.
-  - [ ] Cơ chế quái đuổi, vũ khí tự động nhắm mục tiêu gần nhất.
-  - [ ] Máu (HP), frame bất tử (i-frames), quái rơi ngọc kinh nghiệm.
-  - [ ] Nhặt ngọc, thăng cấp và hồi phục máu.
-  - [ ] Đo đạc FPS và kiểm tra không có lỗi console / rò rỉ bộ nhớ.
+- [x] **Phase 1: 60-second Playable Slice & Gameplay Logic Contract** ✅ *(Hoàn thành)*
+  - [x] Thiết kế Implementation Plan từ `AnimeSurvivor-GameplayLogic-Spec.md` tại `docs/superpowers/plans/2026-10-27-phase1-gameplay-logic.md`.
+  - [x] **Task 1**: Centralize Configuration (`constants.ts`) & Pure Vector / Movement / Chase Domain (`src/domain/vector.ts` + `tests/vector.test.ts`).
+  - [x] **Task 2**: Pure Combat, Contact Damage I-Frames (`invulnerableUntilMs = -Infinity`) & Idempotent Enemy Hit/Death Rules (`src/domain/combat.ts` + `tests/domain.test.ts`).
+  - [x] **Task 3**: Pure Auto-Targeting (nearest alive active within 520px, ID tie-break) & Weapon Cooldown Domain (`src/domain/targeting.ts` + `tests/targeting.test.ts`).
+  - [x] **Task 4**: Pure Pickups (`'xp' | 'heal'`, single collection state machine, remove level-up auto-heal) & Upgrade Queue (`src/domain/progression.ts`, `src/domain/pickups.ts` + `tests/pickups.test.ts`).
+  - [x] **Task 5**: Refactor Game Systems (`MovementSystem`, `EnemySystem`, `WeaponSystem`, `DamageSystem`, `PickupSystem`) & `GameScene` (single group overlap collider for pickups, shutdown cleanup, debug bridge).
+  - [x] **Task 6**: Comprehensive Playwright E2E Gameplay Verification (`tests/e2e/game.spec.ts` checks A, B, C, D, E, G) & `npm run verify`.
 
 - [ ] **Phase 2: Full Roguelite Core**
   - [ ] Hệ thống WaveDirector (lịch trình spawn quái tăng dần theo thời gian).

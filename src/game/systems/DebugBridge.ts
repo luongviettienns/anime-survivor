@@ -41,12 +41,16 @@ export function registerGameDebugApi(
     }),
     getPlayerState: () => ({ ...damage.state }),
     getProgression,
-    getCounts: () => ({
-      enemies: enemies.group.countActive(true),
-      projectiles: weapon.projectiles.countActive(true),
-      pickups: pickups.group.countActive(true),
-      colliders: scene.physics.world.colliders.length,
-    }),
+    getCounts: () => {
+      const collidersQueue = scene.physics.world.colliders;
+      const pendingCount = (collidersQueue as unknown as { _pending?: unknown[] })._pending?.length ?? 0;
+      return {
+        enemies: enemies.group.countActive(true),
+        projectiles: weapon.projectiles.countActive(true),
+        pickups: pickups.group.countActive(true),
+        colliders: collidersQueue.getActive().length + pendingCount,
+      };
+    },
     spawnEnemyAt: (x: number, y: number) => {
       enemies.spawnAt(x, y);
     },

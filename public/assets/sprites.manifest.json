@@ -18,12 +18,12 @@
             32,
             32
           ],
-          "sha256": "09cfbd78cac8fdd4ce38c57fd292961b97bb4dfd1cd1629238f399f25e3962cd",
+          "sha256": "60863b4976147a541c137ef5f0d5f390919e893aa49dbdc5d295b3e0e933054b",
           "alpha_bbox": [
-            8,
-            6,
-            28,
-            30
+            11,
+            2,
+            21,
+            25
           ]
         },
         {
@@ -36,12 +36,12 @@
             32,
             32
           ],
-          "sha256": "421c8875dcb65ec2540ac1be7a24aadc69cfd3d006a88bab8c8ea6414067a8fe",
+          "sha256": "40e9ad8d16b19ea8b03bdb2c5e078d1b0a594469c13b13036e1b751cfb45fff1",
           "alpha_bbox": [
-            8,
-            6,
-            29,
-            30
+            11,
+            2,
+            21,
+            25
           ]
         },
         {
@@ -54,12 +54,12 @@
             32,
             32
           ],
-          "sha256": "49a54a7f116cdbdabe635fefcffa459e65acd862c8a4e8c9ada17e8dd1bac79f",
+          "sha256": "5dba5468a30f8af78ea089a46d9a5094bb5f9ed51621003ef999afbb0e389375",
           "alpha_bbox": [
-            8,
-            5,
-            28,
-            29
+            11,
+            1,
+            21,
+            25
           ]
         },
         {
@@ -72,12 +72,12 @@
             32,
             32
           ],
-          "sha256": "f1189b0780f746f3054df8cfde0c350c170c0451c17a95a753218fd1bd3037bf",
+          "sha256": "88cfee954e7d99d7930f91f86257b4a93cb515c4ad0c413daed446b84671db05",
           "alpha_bbox": [
-            8,
-            6,
-            27,
-            30
+            11,
+            2,
+            21,
+            25
           ]
         },
         {
@@ -90,12 +90,12 @@
             32,
             32
           ],
-          "sha256": "f48da907f9e93aca0e30cc3a47ccfbba12083136a5f9d92b7043a4aee92705ab",
+          "sha256": "3da50863b3e5ed453ec71318b91d51dd94d5bd687a0c0884e0bb2265b9113622",
           "alpha_bbox": [
-            8,
-            6,
-            28,
-            30
+            11,
+            2,
+            21,
+            25
           ]
         },
         {
@@ -108,12 +108,12 @@
             32,
             32
           ],
-          "sha256": "f05be1e1a2d87290cb7da62bca09bae2794f2e861fca11b4f25d75bead33e670",
+          "sha256": "0ccabd06ccaee42acf0b553db96a5c1e8686508e53f7d164ca631d21ede6f129",
           "alpha_bbox": [
-            8,
-            5,
-            29,
-            29
+            11,
+            2,
+            21,
+            25
           ]
         },
         {
@@ -126,12 +126,12 @@
             32,
             32
           ],
-          "sha256": "b327435ed5aed22dd4cac1f23e7de57ddfb660821adb51b61ecd48e4eb8010a3",
+          "sha256": "7b61d6b49c909a3430da060b7b17c1ba00ad58705c3b3c5bd07091c3376318b3",
           "alpha_bbox": [
-            8,
-            6,
-            28,
-            30
+            11,
+            2,
+            21,
+            25
           ]
         },
         {
@@ -144,12 +144,12 @@
             32,
             32
           ],
-          "sha256": "f1189b0780f746f3054df8cfde0c350c170c0451c17a95a753218fd1bd3037bf",
+          "sha256": "0ccabd06ccaee42acf0b553db96a5c1e8686508e53f7d164ca631d21ede6f129",
           "alpha_bbox": [
-            8,
-            6,
-            27,
-            30
+            11,
+            2,
+            21,
+            25
           ]
         }
       ]
@@ -171,11 +171,11 @@
             24,
             24
           ],
-          "sha256": "49dca3bd7b0cf68a53f5587fbfaeb769fdd034dde47f17418a44caa809cf470c",
+          "sha256": "0561def7a5675356545f01a6f47ae5c176744d6432745b33e840ff3025a8db68",
           "alpha_bbox": [
-            4,
-            5,
-            20,
+            3,
+            3,
+            21,
             22
           ]
         },
@@ -189,11 +189,11 @@
             24,
             24
           ],
-          "sha256": "8180bbd871248edd309caa61c8ba1b228ac69f90adbe9e0a45918e7cdfd45888",
+          "sha256": "b4c378d3e83b042f80e693cf4ddf2d7425f80c2443eb16bffcd3e5d994aa49ff",
           "alpha_bbox": [
-            4,
-            4,
-            20,
+            3,
+            2,
+            21,
             21
           ]
         },
@@ -207,11 +207,11 @@
             24,
             24
           ],
-          "sha256": "49dca3bd7b0cf68a53f5587fbfaeb769fdd034dde47f17418a44caa809cf470c",
+          "sha256": "58e91d1af913d70b2f8a59b7926f1b49c69c5300fa406d73b9d6fb7b1cd0f2f4",
           "alpha_bbox": [
-            4,
-            5,
-            20,
+            3,
+            3,
+            21,
             22
           ]
         },
@@ -225,11 +225,11 @@
             24,
             24
           ],
-          "sha256": "8949a280429009c22f771491f1c385dedb235ee08137d9fa383df8310c89f501",
+          "sha256": "aba2914fe13486cce408edc0ddf778938acae5f39a1aa3cfbe4750f575a2b367",
           "alpha_bbox": [
+            3,
             4,
-            6,
-            20,
+            21,
             23
           ]
         }

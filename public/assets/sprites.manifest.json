@@ -1,0 +1,239 @@
+{
+  "contract_version": 1,
+  "sprites": {
+    "hero": {
+      "file": "hero.png",
+      "frame_width": 32,
+      "frame_height": 32,
+      "columns": 8,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "idle",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            32,
+            32
+          ],
+          "sha256": "09cfbd78cac8fdd4ce38c57fd292961b97bb4dfd1cd1629238f399f25e3962cd",
+          "alpha_bbox": [
+            8,
+            6,
+            28,
+            30
+          ]
+        },
+        {
+          "animation": "idle",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            32,
+            0,
+            32,
+            32
+          ],
+          "sha256": "421c8875dcb65ec2540ac1be7a24aadc69cfd3d006a88bab8c8ea6414067a8fe",
+          "alpha_bbox": [
+            8,
+            6,
+            29,
+            30
+          ]
+        },
+        {
+          "animation": "idle",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            64,
+            0,
+            32,
+            32
+          ],
+          "sha256": "49a54a7f116cdbdabe635fefcffa459e65acd862c8a4e8c9ada17e8dd1bac79f",
+          "alpha_bbox": [
+            8,
+            5,
+            28,
+            29
+          ]
+        },
+        {
+          "animation": "idle",
+          "index": 3,
+          "sheet_index": 3,
+          "rect": [
+            96,
+            0,
+            32,
+            32
+          ],
+          "sha256": "f1189b0780f746f3054df8cfde0c350c170c0451c17a95a753218fd1bd3037bf",
+          "alpha_bbox": [
+            8,
+            6,
+            27,
+            30
+          ]
+        },
+        {
+          "animation": "walk",
+          "index": 0,
+          "sheet_index": 4,
+          "rect": [
+            128,
+            0,
+            32,
+            32
+          ],
+          "sha256": "f48da907f9e93aca0e30cc3a47ccfbba12083136a5f9d92b7043a4aee92705ab",
+          "alpha_bbox": [
+            8,
+            6,
+            28,
+            30
+          ]
+        },
+        {
+          "animation": "walk",
+          "index": 1,
+          "sheet_index": 5,
+          "rect": [
+            160,
+            0,
+            32,
+            32
+          ],
+          "sha256": "f05be1e1a2d87290cb7da62bca09bae2794f2e861fca11b4f25d75bead33e670",
+          "alpha_bbox": [
+            8,
+            5,
+            29,
+            29
+          ]
+        },
+        {
+          "animation": "walk",
+          "index": 2,
+          "sheet_index": 6,
+          "rect": [
+            192,
+            0,
+            32,
+            32
+          ],
+          "sha256": "b327435ed5aed22dd4cac1f23e7de57ddfb660821adb51b61ecd48e4eb8010a3",
+          "alpha_bbox": [
+            8,
+            6,
+            28,
+            30
+          ]
+        },
+        {
+          "animation": "walk",
+          "index": 3,
+          "sheet_index": 7,
+          "rect": [
+            224,
+            0,
+            32,
+            32
+          ],
+          "sha256": "f1189b0780f746f3054df8cfde0c350c170c0451c17a95a753218fd1bd3037bf",
+          "alpha_bbox": [
+            8,
+            6,
+            27,
+            30
+          ]
+        }
+      ]
+    },
+    "enemy": {
+      "file": "enemy.png",
+      "frame_width": 24,
+      "frame_height": 24,
+      "columns": 4,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "walk",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            24,
+            24
+          ],
+          "sha256": "49dca3bd7b0cf68a53f5587fbfaeb769fdd034dde47f17418a44caa809cf470c",
+          "alpha_bbox": [
+            4,
+            5,
+            20,
+            22
+          ]
+        },
+        {
+          "animation": "walk",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            24,
+            0,
+            24,
+            24
+          ],
+          "sha256": "8180bbd871248edd309caa61c8ba1b228ac69f90adbe9e0a45918e7cdfd45888",
+          "alpha_bbox": [
+            4,
+            4,
+            20,
+            21
+          ]
+        },
+        {
+          "animation": "walk",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            48,
+            0,
+            24,
+            24
+          ],
+          "sha256": "49dca3bd7b0cf68a53f5587fbfaeb769fdd034dde47f17418a44caa809cf470c",
+          "alpha_bbox": [
+            4,
+            5,
+            20,
+            22
+          ]
+        },
+        {
+          "animation": "walk",
+          "index": 3,
+          "sheet_index": 3,
+          "rect": [
+            72,
+            0,
+            24,
+            24
+          ],
+          "sha256": "8949a280429009c22f771491f1c385dedb235ee08137d9fa383df8310c89f501",
+          "alpha_bbox": [
+            4,
+            6,
+            20,
+            23
+          ]
+        }
+      ]
+    }
+  }
+}

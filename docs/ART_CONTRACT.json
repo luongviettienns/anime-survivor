@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "pixel_art": {
+    "native_pixel_scale": 1,
+    "upscale_filter": "nearest-neighbor",
+    "background": "transparent",
+    "sprite_origin": "bottom-center",
+    "palette": ["#19213b", "#2c3159", "#4b467e", "#7867a6", "#ffd2b1", "#9d4bd9", "#6de0db", "#f6d27a", "#ffffff", "#ff729e"]
+  },
+  "sprites": {
+    "hero": {"frame_width":32,"frame_height":32,"animations":{"idle":4,"walk":4},"order":["idle","walk"],"columns":8,"rows":1},
+    "enemy": {"frame_width":24,"frame_height":24,"animations":{"walk":4},"order":["walk"],"columns":4,"rows":1}
+  },
+  "single_images": {"orb":[8,8],"gem":[12,12],"grass":[32,32],"tree":[32,40]}
+}

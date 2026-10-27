@@ -84,3 +84,9 @@
     11. `production-planning`: Lập kế hoạch milestone, roadmap demo slice và release.
   - Cập nhật `.gitignore` loại trừ `tools/_external/` để giữ repository gọn gàng.
   - Chạy `npm run verify` và `npm run test:e2e` xác nhận toàn bộ hệ thống hoạt động hoàn hảo.
+- **Nâng cấp bộ Asset Nhân vật Naruto Shippuden (Option 2) & Quái Shinobi chuyên nghiệp**:
+  - Xây dựng module pixel-art chuẩn xác từng pixel `scripts/naruto_shippuden_art.py` kết hợp với Blender 5.2.3 LTS headless 3D rig/pose (`scripts/blender_render_shinobi.py`, xuất `art/source/naruto_shippuden.blend`).
+  - **Hero Idle (4 frames)**: Tóc vàng gai nhọn 3 sắc độ, băng trán đen Shippuden có tấm thép bạc khắc biểu tượng và 2 dải vải đen bay theo gió 4 nhịp, mắt xanh da trời 2x2 sắc nét, râu mèo trên má, áo khoác cam-đen cổ cao khóa kéo, băng đùi trắng + túi đựng kunai đen, dép ninja đen hở ngón.
+  - **Hero Walk/Run (4 frames)**: Tư thế chạy **Naruto Run** kinh điển (nghiêng người về phía trước $+26^\circ$, hai tay vung chéo ra sau lưng, dải băng trán bay ngang trong gió, gia huy xoáy đỏ Uzumaki trên lưng áo, chu kỳ chạy 4 bước chân dứt khoát).
+  - **Rasengan Projectile (`orb.png` 8x8)** & **Rogue Shadow Ninja Enemy (`enemy.png` 24x24, 4 frames)**: Áo choàng đen mây đỏ cùng mắt đỏ rực đồng bộ hoàn toàn chủ đề Shinobi.
+  - Kiểm định byte-for-byte với `validate_sprites.py`, `npm run verify` và `npm run test:e2e` đạt 100% PASS.

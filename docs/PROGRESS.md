@@ -22,6 +22,7 @@
 - [x] `npm run test:e2e` passed all browser scenarios (cardinal vs diagonal displacement, 3-enemy simultaneous overlap single hit, auto-target kill, single pickup collider count, heal clamp at 100, zero console errors).
 - [x] Screenshot verified at `test-results/anime-survivor.png`.
 - [x] Integrated 11 specialized GameDev and Blender skills in `.agents/skills/` (`blender-tooling`, `blender-modeling`, `blender-animation`, `tech-art`, `game-design`, `game-ai`, `game-performance`, `game-ui`, `playtesting`, `game-audio`, `production-planning`).
+- [x] Upgraded Hero to Naruto Shippuden (Option 2: black/orange high-collar tracksuit, flowing black headband tails, 4-frame breathing idle + 4-frame forward-leaning Naruto Run with swept-back arms), Rasengan `orb.png`, and Rogue Shadow Ninja `enemy.png` (`scripts/naruto_shippuden_art.py`, `scripts/blender_render_shinobi.py`, `art/source/naruto_shippuden.blend`).
 - [x] `npm run verify` and `npm run test:e2e` re-verified (18/18 vitest, 2/2 e2e passed).
 
 ## Next Roadmap

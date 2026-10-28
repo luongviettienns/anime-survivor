@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { applyContactDamage, createPlayerState } from '../src/domain/combat';
-import { collectPickup, createPickupState } from '../src/domain/pickups';
+import { collectPickup, createPickupState, magnetVelocity } from '../src/domain/pickups';
 import { createProgression } from '../src/domain/progression';
 
 describe('pickup collection and progression rules', () => {
@@ -68,5 +68,18 @@ describe('pickup collection and progression rules', () => {
     const gem = createPickupState(4, 'xp', 5, 50, 50);
     expect(collectPickup(gem, player, progression).collected).toBe(false);
     expect(gem.state).toBe('ground');
+  });
+
+  it('computes magnetic pull velocity when pickup is inside magnet radius', () => {
+    const vel = magnetVelocity({ x: 100, y: 100 }, { x: 160, y: 180 }, 120, 300);
+    expect(vel.x).toBeCloseTo(180, 5);
+    expect(vel.y).toBeCloseTo(240, 5);
+  });
+
+  it('returns zero magnet velocity when outside radius, at zero distance, or given invalid params', () => {
+    expect(magnetVelocity({ x: 0, y: 0 }, { x: 200, y: 0 }, 100, 300)).toEqual({ x: 0, y: 0 });
+    expect(magnetVelocity({ x: 50, y: 50 }, { x: 50, y: 50 }, 100, 300)).toEqual({ x: 0, y: 0 });
+    expect(magnetVelocity({ x: 0, y: 0 }, { x: 10, y: 0 }, 0, 300)).toEqual({ x: 0, y: 0 });
+    expect(magnetVelocity({ x: 0, y: 0 }, { x: 10, y: 0 }, 100, -50)).toEqual({ x: 0, y: 0 });
   });
 });

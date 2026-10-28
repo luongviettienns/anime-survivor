@@ -8,6 +8,14 @@ from naruto_shippuden_art import (
     draw_rasengan_orb,
     draw_rogue_ninja_enemy,
 )
+from shinobi_enemies_weapons_art import (
+    draw_boss,
+    draw_enemy_bolt,
+    draw_enemy_mage,
+    draw_enemy_shade,
+    draw_shuriken,
+    draw_slash,
+)
 
 FRAME_ROOT = ROOT / 'art/frames'
 OUT = ROOT / 'public/assets'
@@ -22,13 +30,26 @@ def draw_hero(frame: int, walking: bool) -> Image.Image:
     return draw_naruto_walk(frame) if walking else draw_naruto_idle(frame)
 
 
-def draw_enemy(frame: int) -> Image.Image:
-    return draw_rogue_ninja_enemy(frame)
+def draw_sprite_frame(sprite: str, animation: str, frame: int) -> Image.Image:
+    if sprite == 'hero':
+        return draw_hero(frame, animation == 'walk')
+    if sprite == 'enemy':
+        return draw_rogue_ninja_enemy(frame)
+    if sprite == 'enemy_shade':
+        return draw_enemy_shade(frame)
+    if sprite == 'enemy_mage':
+        return draw_enemy_mage(frame)
+    if sprite == 'boss':
+        return draw_boss(frame)
+    raise ValueError(f'Unknown sprite: {sprite}')
 
 
 def single_images() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     draw_rasengan_orb().save(OUT / 'orb.png')
+    draw_shuriken().save(OUT / 'shuriken.png')
+    draw_slash().save(OUT / 'slash.png')
+    draw_enemy_bolt().save(OUT / 'enemy_bolt.png')
 
     gem, d = pixel_canvas((12, 12))
     d.polygon([(5, 1), (9, 4), (8, 8), (5, 10), (2, 7), (2, 4)], fill='#0f172a')
@@ -59,7 +80,7 @@ def main() -> None:
             directory = FRAME_ROOT / sprite / animation
             directory.mkdir(parents=True, exist_ok=True)
             for i in range(spec['animations'][animation]):
-                image = draw_hero(i, animation == 'walk') if sprite == 'hero' else draw_enemy(i)
+                image = draw_sprite_frame(sprite, animation, i)
                 image.save(directory / f'{i:03}.png')
     pack_all(FRAME_ROOT, OUT)
     single_images()

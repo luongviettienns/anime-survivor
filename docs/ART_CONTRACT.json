@@ -9,7 +9,10 @@
   },
   "sprites": {
     "hero": {"frame_width":32,"frame_height":32,"animations":{"idle":4,"walk":4},"order":["idle","walk"],"columns":8,"rows":1},
-    "enemy": {"frame_width":24,"frame_height":24,"animations":{"walk":4},"order":["walk"],"columns":4,"rows":1}
+    "enemy": {"frame_width":24,"frame_height":24,"animations":{"walk":4},"order":["walk"],"columns":4,"rows":1},
+    "enemy_shade": {"frame_width":24,"frame_height":24,"animations":{"walk":4},"order":["walk"],"columns":4,"rows":1},
+    "enemy_mage": {"frame_width":24,"frame_height":24,"animations":{"walk":4},"order":["walk"],"columns":4,"rows":1},
+    "boss": {"frame_width":48,"frame_height":48,"animations":{"walk":4},"order":["walk"],"columns":4,"rows":1}
   },
-  "single_images": {"orb":[8,8],"gem":[12,12],"grass":[32,32],"tree":[32,40]}
+  "single_images": {"orb":[8,8],"gem":[12,12],"grass":[32,32],"tree":[32,40],"shuriken":[12,12],"slash":[32,32],"enemy_bolt":[8,8]}
 }

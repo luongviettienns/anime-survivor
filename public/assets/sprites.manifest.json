@@ -234,6 +234,249 @@
           ]
         }
       ]
+    },
+    "enemy_shade": {
+      "file": "enemy_shade.png",
+      "frame_width": 24,
+      "frame_height": 24,
+      "columns": 4,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "walk",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            24,
+            24
+          ],
+          "sha256": "c3f520dda237a2af901649035563e4b1278dfc434e373dc478cd0fb77f01d5d2",
+          "alpha_bbox": [
+            1,
+            3,
+            23,
+            21
+          ]
+        },
+        {
+          "animation": "walk",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            24,
+            0,
+            24,
+            24
+          ],
+          "sha256": "726469cd307c0472489662af8a236b92993ada4626ffa6ab91f204080e5e0f6d",
+          "alpha_bbox": [
+            1,
+            2,
+            23,
+            20
+          ]
+        },
+        {
+          "animation": "walk",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            48,
+            0,
+            24,
+            24
+          ],
+          "sha256": "c3f520dda237a2af901649035563e4b1278dfc434e373dc478cd0fb77f01d5d2",
+          "alpha_bbox": [
+            1,
+            3,
+            23,
+            21
+          ]
+        },
+        {
+          "animation": "walk",
+          "index": 3,
+          "sheet_index": 3,
+          "rect": [
+            72,
+            0,
+            24,
+            24
+          ],
+          "sha256": "b4b8daa405aa4d7dfd44d74e011d5ce72a28fb3a77cb1ca3c745c4ce7bd1c7cd",
+          "alpha_bbox": [
+            1,
+            4,
+            23,
+            22
+          ]
+        }
+      ]
+    },
+    "enemy_mage": {
+      "file": "enemy_mage.png",
+      "frame_width": 24,
+      "frame_height": 24,
+      "columns": 4,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "walk",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            24,
+            24
+          ],
+          "sha256": "a112f0c60aff74371132d8da0b37671870ae2a16d3ce148163ba8c91a8165806",
+          "alpha_bbox": [
+            2,
+            3,
+            23,
+            21
+          ]
+        },
+        {
+          "animation": "walk",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            24,
+            0,
+            24,
+            24
+          ],
+          "sha256": "d2b9cd024fc0923b15afc8a66f417cc976804f963615ef1872063450bb2351c3",
+          "alpha_bbox": [
+            2,
+            2,
+            23,
+            20
+          ]
+        },
+        {
+          "animation": "walk",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            48,
+            0,
+            24,
+            24
+          ],
+          "sha256": "a112f0c60aff74371132d8da0b37671870ae2a16d3ce148163ba8c91a8165806",
+          "alpha_bbox": [
+            2,
+            3,
+            23,
+            21
+          ]
+        },
+        {
+          "animation": "walk",
+          "index": 3,
+          "sheet_index": 3,
+          "rect": [
+            72,
+            0,
+            24,
+            24
+          ],
+          "sha256": "d595a998733512cebb97dda4f49ebedeb9a652f2a827677cdf7a2996fab013a6",
+          "alpha_bbox": [
+            2,
+            4,
+            23,
+            22
+          ]
+        }
+      ]
+    },
+    "boss": {
+      "file": "boss.png",
+      "frame_width": 48,
+      "frame_height": 48,
+      "columns": 4,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "walk",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            48,
+            48
+          ],
+          "sha256": "53d1162481f5c71419e42f05539b98abcea3d3cf52ce28329000e2e90ab57e8a",
+          "alpha_bbox": [
+            4,
+            3,
+            44,
+            45
+          ]
+        },
+        {
+          "animation": "walk",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            48,
+            0,
+            48,
+            48
+          ],
+          "sha256": "997df689eaac78970c8b69e2500cc204ccc15477678740c79d6d035fc875b205",
+          "alpha_bbox": [
+            4,
+            2,
+            44,
+            44
+          ]
+        },
+        {
+          "animation": "walk",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            96,
+            0,
+            48,
+            48
+          ],
+          "sha256": "53d1162481f5c71419e42f05539b98abcea3d3cf52ce28329000e2e90ab57e8a",
+          "alpha_bbox": [
+            4,
+            3,
+            44,
+            45
+          ]
+        },
+        {
+          "animation": "walk",
+          "index": 3,
+          "sheet_index": 3,
+          "rect": [
+            144,
+            0,
+            48,
+            48
+          ],
+          "sha256": "8feeabf623ec2875d2e9269bcedaa6d585d7636097a8c5cbb4e75a8922af4f65",
+          "alpha_bbox": [
+            4,
+            4,
+            44,
+            46
+          ]
+        }
+      ]
     }
   }
 }

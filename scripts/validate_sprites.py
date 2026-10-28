@@ -28,6 +28,9 @@ def verify() -> None:
             expected = Image.open(FRAMES / sprite / entry['animation'] / f"{entry['index']:03}.png").convert('RGBA')
             if cut.tobytes() != expected.tobytes():
                 raise AssertionError(f'{sprite} frame {entry["sheet_index"]}: pixel mismatch')
+            box = cut.getchannel('A').getbbox()
+            if not box or box[0] == 0 or box[1] == 0 or box[2] == w or box[3] == h:
+                raise AssertionError(f'{sprite} frame {entry["sheet_index"]}: empty or touches canvas border {box}')
             digest = hashlib.sha256(cut.tobytes()).hexdigest()
             if digest != entry['sha256']:
                 raise AssertionError(f'{sprite} frame {entry["sheet_index"]}: hash mismatch')

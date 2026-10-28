@@ -5,7 +5,8 @@ from pack_frames import ROOT, CONTRACT
 
 OUT = ROOT / 'art/contact_sheet.png'
 COLS, SCALE, GAP = 8, 5, 12
-CANVAS_W, CANVAS_H = 1430, 500
+CANVAS_W = 1430
+CANVAS_H = max(500, 68 + sum(spec['frame_height'] * SCALE + 65 for spec in CONTRACT['sprites'].values()) + 20)
 canvas = Image.new('RGBA', (CANVAS_W, CANVAS_H), '#12182f')
 d = ImageDraw.Draw(canvas)
 d.text((25, 18), 'ANIME SURVIVOR - frame registration and QA contact sheet', fill='#f9eafa')

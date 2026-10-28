@@ -130,6 +130,7 @@ export class WeaponSystem {
     while (this.orbitals.length < stats.count) {
       this.orbitals.push(this.scene.add.image(this.player.x, this.player.y, 'shuriken').setScale(2).setDepth(4998));
     }
+    for (let i = stats.count; i < this.orbitals.length; i++) this.orbitals[i]!.setVisible(false);
     const baseAngle = (nowMs / 1000) * stats.speedPxSec;
     for (let i = 0; i < stats.count; i++) {
       const angle = baseAngle + (i * Math.PI * 2) / stats.count;

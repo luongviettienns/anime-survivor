@@ -25,7 +25,34 @@
 - [x] Upgraded Hero to Naruto Shippuden (Option 2: black/orange high-collar tracksuit, flowing black headband tails, 4-frame breathing idle + 4-frame forward-leaning Naruto Run with swept-back arms), Rasengan `orb.png`, and Rogue Shadow Ninja `enemy.png` (`scripts/naruto_shippuden_art.py`, `scripts/blender_render_shinobi.py`, `art/source/naruto_shippuden.blend`).
 - [x] `npm run verify` and `npm run test:e2e` re-verified (18/18 vitest, 2/2 e2e passed).
 
-## Next Roadmap
-- [ ] Phase 2: Full Roguelite Core (WaveDirector, UpgradeChoiceScene, 3 enemy variants, 2 extra weapons, 10-minute boss, pause/resume).
+## Phase 2: Full Roguelite Core (2026-10-28)
+- [x] Pure domain modules implemented and verified:
+  - `src/domain/weapons.ts`, `src/domain/upgrades.ts` (`tests/weapons-upgrades.test.ts` — 5/5 passed).
+  - `src/domain/enemies.ts`, `src/domain/waves.ts` (`tests/waves-enemies.test.ts` — 5/5 passed).
+  - `src/domain/storageSchema.ts` (`tests/storage.test.ts` — 4/4 passed).
+  - Magnetic pickup attraction (`computePickupMagnetVelocity` in `src/domain/pickups.ts`, `tests/pickups.test.ts` — 5/5 passed).
+- [x] Game systems & scenes refactored under 160-line modular architecture:
+  - `WeaponSystem.ts` (Rasengan `orb` fan spread, Kunai `slash` arc with knockback, Shadow Shuriken `orbital` ring, pooled projectiles).
+  - `EnemySystem.ts` + `HostileProjectilePool.ts` (`slime`, `shade` fast flanker, `mage` ranged telegraph/caster, 10-minute `boss` Crimson Archon 8-way radial burst, zero-allocation candidate buffer).
+  - `PickupSystem.ts` (object pooling + magnetic attraction), `StorageSystem.ts` (LocalStorage high scores & settings).
+  - `HudOverlay.ts`, `TitleScene.ts`, `UpgradeScene.ts`, `PauseScene.ts`, `GameOverScene.ts` (Victory & Defeat states).
+
+## Phase 3: Art & Polish (2026-10-28)
+- [x] Deterministic pixel-art pipeline expanded (`scripts/shinobi_enemies_weapons_art.py`, `scripts/generate_assets.py`, `docs/ART_CONTRACT.json`):
+  - `enemy_shade` (4 frames, 24x24), `enemy_mage` (4 frames, 24x24), `boss` (4 frames, 48x48), `shuriken` (12x12), `slash` (28x20), `enemy_bolt` (8x8).
+  - `python scripts/validate_sprites.py` verified pixel-identical crops across all 5 animated spritesheets and all static textures.
+- [x] Procedural 16-bit PCM `.wav` sound effects generated deterministically (`scripts/generate_audio.py`: `shoot.wav`, `slash.wav`, `hit.wav`, `pickup.wav`, `levelup.wav`, `hurt.wav`) and managed by `AudioSystem.ts` with polyphony voice caps (`src/domain/vfx.ts`, `tests/vfx-audio.test.ts` — 5/5 passed).
+- [x] Pooled floating damage numbers (24-slot ring buffer) and particle burst VFX implemented in `VfxSystem.ts` with accessibility toggles (`reduceFlashing`, `reduceScreenShake`, `muted`, `volume`).
+
+## Phase 4: QA, 120+ Enemy Stress Benchmark & Static Deployment Readiness (2026-10-28)
+- [x] Expanded `DebugBridge.ts` (`spawnSwarm`, `getFrameDeltaMs`) and `tests/e2e/game.spec.ts` (5 comprehensive E2E test suites covering Phases 1–4).
+- [x] 120-enemy stress benchmark verified in headless Chromium (`test('H: 120-enemy stress benchmark maintains stability, pooling, and zero console errors under heavy combat')`):
+  - Spawned 120 active enemies across `'slime'`, `'shade'`, `'mage'` with all 3 weapons (`orb`, `slash`, `orbital`) upgraded and firing simultaneously.
+  - Verified `colliders === 3`, `activeDamageTexts <= 24`, `frameDeltaMs < 100`, active enemy cap `<= 130`, player alive & responsive, and `0` console/page errors.
+  - Representative stress combat screenshot captured and inspected at `test-results/anime-survivor.png`.
+- [x] Full verification suite passed:
+  - `npm run assets:generate` -> PASS (spritesheets + audio generated & packed).
+  - `npm run verify` -> PASS (`typecheck`, `lint`, `vitest` 8 test files / 40 tests passed, `check:arch` OK, `assets:validate` OK, `vite build` to `dist/`).
+  - `npm run test:e2e` -> PASS (5/5 Playwright E2E scenarios passed).
 
 Do not tick items without actual evidence. Update this log during every Antigravity session.

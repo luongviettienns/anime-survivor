@@ -28,6 +28,7 @@ export type GameDebugApi = {
   getSaveData: () => SaveData;
   getAudioCounts: () => Record<SoundCue, number>;
   getActiveDamageTexts: () => number;
+  getFrameDeltaMs: () => number;
   getCounts: () => {
     enemies: number;
     projectiles: number;
@@ -38,6 +39,7 @@ export type GameDebugApi = {
   getBossState: () => { hp: number; maxHp: number; name: string } | null;
   spawnEnemyAt: (x: number, y: number) => void;
   spawnEnemyTypeAt: (type: EnemyArchetypeId, x: number, y: number) => void;
+  spawnSwarm: (count: number) => number;
   spawnBossAt: (x: number, y: number) => void;
   spawnHealAt: (x: number, y: number, amount?: number) => void;
   clearEnemies: () => void;
@@ -79,6 +81,7 @@ export function registerGameDebugApi(
     getSaveData: () => loadSaveData(),
     getAudioCounts: () => audio.getPlayedCounts(),
     getActiveDamageTexts: () => vfx.getActiveDamageTexts(),
+    getFrameDeltaMs: () => scene.game.loop.delta,
     getCounts: () => {
       const collidersQueue = scene.physics.world.colliders;
       const pendingCount =
@@ -95,6 +98,17 @@ export function registerGameDebugApi(
     spawnEnemyAt: (x: number, y: number) => enemies.spawnAt(x, y, 'slime'),
     spawnEnemyTypeAt: (type: EnemyArchetypeId, x: number, y: number) =>
       enemies.spawnAt(x, y, type),
+    spawnSwarm: (count: number) => {
+      const types: EnemyArchetypeId[] = ['slime', 'shade', 'mage'];
+      for (let i = 0; i < count && enemies.group.countActive(true) < 130; i++) {
+        const angle = (i / Math.max(1, count)) * Math.PI * 2;
+        const radius = 140 + (i % 4) * 45;
+        const x = Math.max(40, Math.min(1760, player.x + Math.cos(angle) * radius));
+        const y = Math.max(40, Math.min(1160, player.y + Math.sin(angle) * radius));
+        enemies.spawnAt(x, y, types[i % types.length]!);
+      }
+      return enemies.group.countActive(true);
+    },
     spawnBossAt: (x: number, y: number) => enemies.spawnAt(x, y, 'boss'),
     spawnHealAt: (x: number, y: number, amount?: number) =>
       pickups.spawnHealPickup(x, y, amount),

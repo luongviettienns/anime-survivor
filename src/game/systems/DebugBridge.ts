@@ -4,10 +4,12 @@ import type { SaveData } from '../../domain/storageSchema';
 import type { UpgradeChoice } from '../../domain/upgrades';
 import type { WeaponInventory } from '../../domain/weapons';
 import type { GameScene } from '../scenes/GameScene';
+import type { AudioSystem, SoundCue } from './AudioSystem';
 import type { DamageSystem } from './DamageSystem';
 import type { EnemySystem } from './EnemySystem';
 import type { PickupSystem } from './PickupSystem';
 import { loadSaveData } from './StorageSystem';
+import type { VfxSystem } from './VfxSystem';
 import type { WeaponSystem } from './WeaponSystem';
 
 export type GameDebugApi = {
@@ -24,6 +26,8 @@ export type GameDebugApi = {
   togglePause: () => boolean;
   isPaused: () => boolean;
   getSaveData: () => SaveData;
+  getAudioCounts: () => Record<SoundCue, number>;
+  getActiveDamageTexts: () => number;
   getCounts: () => {
     enemies: number;
     projectiles: number;
@@ -52,6 +56,8 @@ export function registerGameDebugApi(
   enemies: EnemySystem,
   weapon: WeaponSystem,
   pickups: PickupSystem,
+  vfx: VfxSystem,
+  audio: AudioSystem,
   getProgression: () => RunProgression & { defeated: number }
 ): void {
   window.__ANIME_SURVIVOR__ = {
@@ -71,6 +77,8 @@ export function registerGameDebugApi(
     togglePause: () => scene.togglePause(),
     isPaused: () => scene.isPaused(),
     getSaveData: () => loadSaveData(),
+    getAudioCounts: () => audio.getPlayedCounts(),
+    getActiveDamageTexts: () => vfx.getActiveDamageTexts(),
     getCounts: () => {
       const collidersQueue = scene.physics.world.colliders;
       const pendingCount =

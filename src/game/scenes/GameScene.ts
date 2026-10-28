@@ -5,12 +5,13 @@ import { createPassiveStats, type PassiveStats, type UpgradeChoice } from '../..
 import { isRunVictory } from '../../domain/waves';
 import { HudOverlay } from '../../ui/HudOverlay';
 import { PICKUP, PLAYER, WORLD } from '../config/constants';
+import { AudioSystem, type SoundCue } from '../systems/AudioSystem';
 import { DamageSystem } from '../systems/DamageSystem';
 import { registerGameDebugApi } from '../systems/DebugBridge';
 import { EnemySystem } from '../systems/EnemySystem';
 import { MovementSystem } from '../systems/MovementSystem';
 import { PickupSystem } from '../systems/PickupSystem';
-import { loadSaveData } from '../systems/StorageSystem';
+import { VfxSystem } from '../systems/VfxSystem';
 import { WeaponSystem } from '../systems/WeaponSystem';
 import type { UpgradeScene } from './UpgradeScene';
 
@@ -23,6 +24,8 @@ export class GameScene extends Phaser.Scene {
   private movement!: MovementSystem;
   private damage!: DamageSystem;
   private pickups!: PickupSystem;
+  private vfx!: VfxSystem;
+  private audio!: AudioSystem;
   private hud!: HudOverlay;
   private spawnTimer?: Phaser.Time.TimerEvent;
   private progression: RunProgression = createProgression();
@@ -37,7 +40,6 @@ export class GameScene extends Phaser.Scene {
   create(): void {
     this.progression = createProgression(); this.passives = createPassiveStats();
     this.defeated = 0; this.elapsed = 0; this.running = true;
-
     this.physics.world.setBounds(0, 0, WORLD.width, WORLD.height);
     this.add.tileSprite(0, 0, WORLD.width, WORLD.height, 'grass').setOrigin(0);
     this.createScenery();
@@ -48,7 +50,9 @@ export class GameScene extends Phaser.Scene {
 
     this.movement = new MovementSystem(this, this.player);
     this.enemies = new EnemySystem(this, this.player);
-    this.weapon = new WeaponSystem(this, this.player, this.enemies, (x, y, arch, xp) => this.onEnemyKilled(x, y, arch, xp));
+    this.vfx = new VfxSystem(this, this.player);
+    this.audio = new AudioSystem(this);
+    this.weapon = new WeaponSystem(this, this.player, this.enemies, (x, y, arch, xp) => this.onEnemyKilled(x, y, arch, xp), (c, x, y, d, k) => this.onCombat(c, x, y, d, k));
     this.damage = new DamageSystem(this.player);
     this.pickups = new PickupSystem(this);
     this.hud = new HudOverlay(this);
@@ -59,14 +63,9 @@ export class GameScene extends Phaser.Scene {
     this.spawnTimer = this.time.addEvent({ delay: 1050, loop: true, callback: () => { if (this.running) this.enemies.spawnWaveTick(this.elapsed); } });
 
     const onPauseKey = (ev?: KeyboardEvent) => this.handlePauseKey(ev?.timeStamp);
-    this.input.keyboard?.on('keydown-ESC', onPauseKey);
-    this.input.keyboard?.on('keydown-P', onPauseKey);
-    this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
-      this.input.keyboard?.off('keydown-ESC', onPauseKey);
-      this.input.keyboard?.off('keydown-P', onPauseKey);
-      this.cleanup();
-    });
-    registerGameDebugApi(this, this.player, this.damage, this.enemies, this.weapon, this.pickups, () => ({ ...this.progression, defeated: this.defeated }));
+    this.input.keyboard?.on('keydown-ESC', onPauseKey); this.input.keyboard?.on('keydown-P', onPauseKey);
+    this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => { this.input.keyboard?.off('keydown-ESC', onPauseKey); this.input.keyboard?.off('keydown-P', onPauseKey); this.cleanup(); });
+    registerGameDebugApi(this, this.player, this.damage, this.enemies, this.weapon, this.pickups, this.vfx, this.audio, () => ({ ...this.progression, defeated: this.defeated }));
     this.updateHud();
   }
 
@@ -78,10 +77,8 @@ export class GameScene extends Phaser.Scene {
     this.enemies.update(false, (dmg) => this.applyPlayerHit(dmg));
     this.weapon.update(this.time.now, true);
     this.pickups.update(this.player, PLAYER.pickupMagnetRadius + this.passives.pickupRadiusBonusPx, PLAYER.pickupMagnetSpeed);
-    this.damage.updateVisuals(this.time.now);
-    this.player.setDepth(this.player.y);
-    this.openUpgradeModalIfNeeded();
-    this.updateHud();
+    this.damage.updateVisuals(this.time.now); this.vfx.update(this.time.now, delta);
+    this.player.setDepth(this.player.y); this.openUpgradeModalIfNeeded(); this.updateHud();
   }
 
   getHudText(): string { return this.hud.getStatusText(); }
@@ -94,21 +91,23 @@ export class GameScene extends Phaser.Scene {
     if (timeStamp !== undefined) this.lastPauseEventTs = timeStamp;
     return this.togglePause();
   }
-
   togglePause(): boolean {
     if (!this.running || this.scene.isActive('UpgradeScene')) return false;
     if (this.isPaused()) { this.scene.stop('PauseScene'); this.scene.resume('GameScene'); return false; }
-    this.movement.update(false);
-    this.scene.pause('GameScene');
+    this.movement.update(false); this.scene.pause('GameScene');
     this.scene.launch('PauseScene', { level: this.progression.level, defeated: this.defeated, elapsedSec: this.elapsed });
     return true;
   }
-
   grantXp(amount: number): void {
-    if (applyXpGain(this.progression, amount).levelsGained > 0) this.openUpgradeModalIfNeeded();
+    if (applyXpGain(this.progression, amount).levelsGained > 0) this.triggerLevelUp();
     this.updateHud();
   }
 
+  private onCombat(cue: SoundCue, x?: number, y?: number, dmg?: number, killed?: boolean): void {
+    this.audio.play(cue);
+    if (cue === 'hit' && x !== undefined && y !== undefined && dmg !== undefined) this.vfx.emitHit(x, y, dmg, killed);
+  }
+  private triggerLevelUp(): void { this.vfx.onLevelUp(); this.audio.play('levelup'); this.openUpgradeModalIfNeeded(); }
   private createScenery(): void {
     const random = new Phaser.Math.RandomDataGenerator(['anime-survivor-world-v1']);
     for (let i = 0; i < 100; i++) {
@@ -116,43 +115,39 @@ export class GameScene extends Phaser.Scene {
       if (Math.hypot(x - WORLD.width / 2, y - WORLD.height / 2) >= 190) this.add.image(x, y, 'tree').setScale(random.realInRange(1.5, 2.2)).setDepth(y);
     }
   }
-
   private onEnemyKilled(x: number, y: number, archetype: EnemyArchetypeId = 'slime', xpValue: number = PICKUP.xpPerKill): void {
-    this.defeated++;
-    this.pickups.spawnXpGem(x, y, xpValue);
+    this.defeated++; this.pickups.spawnXpGem(x, y, xpValue);
     if (isRunVictory(archetype, true)) this.endRun(true);
   }
-
   private onPlayerEnemyContact(enemyObj: OverlapObj): void { this.applyPlayerHit(this.enemies.getTouchDamage(enemyObj as Phaser.GameObjects.GameObject)); }
-  private applyPlayerHit(damage: number): void { if (this.running && this.damage.state.alive && this.damage.tryContactDamage(this.time.now, damage).died) this.endRun(false); }
-
+  private applyPlayerHit(damage: number): void {
+    if (!this.running || !this.damage.state.alive) return;
+    const res = this.damage.tryContactDamage(this.time.now, damage);
+    if (res.damaged) { this.vfx.onPlayerHurt(); this.audio.play('hurt'); }
+    if (res.died) this.endRun(false);
+  }
   private onPlayerPickup(pickupObj: OverlapObj): void {
     if (!this.running || !this.damage.state.alive) return;
     const res = this.pickups.collect(pickupObj as Phaser.GameObjects.GameObject, this.damage.state, this.progression);
-    if (res.collected && res.levelsGained > 0) {
-      if (!loadSaveData().settings.reduceFlashing) this.cameras.main.flash(160, 130, 90, 200);
-      this.openUpgradeModalIfNeeded();
-    }
+    if (!res.collected) return;
+    this.audio.play('pickup');
+    if (res.levelsGained > 0) this.triggerLevelUp();
   }
-
   private openUpgradeModalIfNeeded(): void {
     if (!this.running || this.progression.pendingUpgrades <= 0 || this.scene.isActive('UpgradeScene')) return;
     this.movement.update(false); this.updateHud(); this.scene.pause();
     this.scene.launch('UpgradeScene', { inventory: this.weapon.inventory, playerState: this.damage.state, passives: this.passives, progression: this.progression, onApplied: () => this.updateHud() });
   }
-
   private endRun(victory: boolean): void {
     if (!this.running) return;
     this.running = false; this.movement.update(false); this.enemies.update(true);
     this.scene.start('GameOverScene', { victory, score: this.defeated, survivalSec: Math.floor(this.elapsed) });
   }
-
   private cleanup(): void {
     this.running = false; this.spawnTimer?.remove(false);
     if (this.scene.isActive('UpgradeScene')) this.scene.stop('UpgradeScene');
     if (this.scene.isActive('PauseScene')) this.scene.stop('PauseScene');
-    this.weapon.clear(); this.enemies.clear(); this.pickups.clear(); this.hud.destroy();
+    this.weapon.clear(); this.enemies.clear(); this.pickups.clear(); this.vfx.clear(); this.hud.destroy();
   }
-
   private updateHud(): void { this.hud.update({ player: this.damage.state, progression: this.progression, elapsedSec: this.elapsed, defeated: this.defeated, weapons: this.weapon.inventory, bossHp: this.enemies.getActiveBossState() }); }
 }

@@ -71,6 +71,15 @@ test.describe('Anime Survivor Phase 1 & 2 Gameplay Logic E2E', () => {
       undefined,
       { timeout: 3000 }
     );
+    const audioAfterKill = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getAudioCounts());
+    expect(audioAfterKill.shoot).toBeGreaterThanOrEqual(1);
+    expect(audioAfterKill.hit).toBeGreaterThanOrEqual(1);
+    expect(audioAfterKill.pickup).toBeGreaterThanOrEqual(1);
+    expect(audioAfterKill.hurt).toBeGreaterThanOrEqual(1);
+
+    const activeDmgTexts = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getActiveDamageTexts());
+    expect(activeDmgTexts).toBeGreaterThanOrEqual(1);
+
     const countsAfterKill = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getCounts());
     expect(countsAfterKill.colliders).toBe(3);
     expect(countsAfterKill.pickups).toBe(0);
@@ -149,16 +158,19 @@ test.describe('Anime Survivor Phase 1 & 2 Gameplay Logic E2E', () => {
     );
     await page.keyboard.press('m');
     await page.keyboard.press('f');
+    await page.keyboard.press('h');
     await page.waitForFunction(
       () => {
         const s = window.__ANIME_SURVIVOR__!.getSaveData().settings;
-        return s.muted && s.reduceFlashing;
+        return s.muted && s.reduceFlashing && s.reduceScreenShake;
       },
       undefined,
       { timeout: 1500 }
     );
     await page.keyboard.press('Escape');
     await page.waitForFunction(() => !window.__ANIME_SURVIVOR__!.isPaused(), undefined, { timeout: 1500 });
+
+    const countsWhileMutedBefore = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getAudioCounts());
 
     // 1. Spawn shade enemy, kill it with orb, and verify it drops 2 XP
     await page.evaluate(() => {
@@ -170,6 +182,8 @@ test.describe('Anime Survivor Phase 1 & 2 Gameplay Logic E2E', () => {
       api.spawnEnemyTypeAt('shade', pos.x + 75, pos.y);
     });
     await page.waitForFunction(() => window.__ANIME_SURVIVOR__!.getProgression().xp === 2, undefined, { timeout: 3000 });
+    const countsWhileMutedAfter = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getAudioCounts());
+    expect(countsWhileMutedAfter.hit).toBe(countsWhileMutedBefore.hit);
 
     // 2. Disable player weapons, spawn mage at ranged distance, verify telegraph fires bolt and hits player (-12 HP)
     await page.evaluate(() => {

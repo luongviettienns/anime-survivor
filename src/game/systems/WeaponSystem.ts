@@ -1,18 +1,11 @@
 import Phaser from 'phaser';
 import type { EnemyArchetypeId } from '../../domain/enemies';
 import {
-  canWeaponFire,
-  commitWeaponFire,
-  createWeaponCooldown,
-  selectNearestTarget,
-  type TargetCandidate,
+  canWeaponFire, commitWeaponFire, createWeaponCooldown,
+  selectNearestTarget, type TargetCandidate,
 } from '../../domain/targeting';
 import { aimDirection, type Vec2 } from '../../domain/vector';
-import {
-  computeWeaponStats,
-  createWeaponInventory,
-  type WeaponInventory,
-} from '../../domain/weapons';
+import { computeWeaponStats, createWeaponInventory, type WeaponInventory } from '../../domain/weapons';
 import { PLAYER, PROJECTILE } from '../config/constants';
 import type { EnemySystem } from './EnemySystem';
 
@@ -32,7 +25,8 @@ export class WeaponSystem {
     private readonly scene: Phaser.Scene,
     private readonly player: Phaser.Physics.Arcade.Sprite,
     private readonly enemies: EnemySystem,
-    private readonly onEnemyKilled?: (x: number, y: number, archetype: EnemyArchetypeId, xpValue: number) => void
+    private readonly onEnemyKilled?: (x: number, y: number, archetype: EnemyArchetypeId, xpValue: number) => void,
+    private readonly onCombatFeedback?: (cue: 'shoot' | 'slash' | 'hit', x?: number, y?: number, dmg?: number, killed?: boolean) => void
   ) {
     this.projectiles = scene.physics.add.group();
   }
@@ -54,10 +48,7 @@ export class WeaponSystem {
     if (this.inventory.orbital >= 1) this.updateOrbital(nowMs, candidates);
   }
 
-  handleProjectileHit(
-    projObj: Phaser.GameObjects.GameObject,
-    enemyObj: Phaser.GameObjects.GameObject
-  ): void {
+  handleProjectileHit(projObj: Phaser.GameObjects.GameObject, enemyObj: Phaser.GameObjects.GameObject): void {
     const enemy = enemyObj as Phaser.Physics.Arcade.Sprite;
     if (!enemy.active || !this.consumeProjectile(projObj)) return;
     const stats = computeWeaponStats('orb', Math.max(1, this.inventory.orb));
@@ -92,6 +83,7 @@ export class WeaponSystem {
       const angle = baseAngle + (i - (stats.count - 1) / 2) * 0.18;
       this.spawnOrb(nowMs, { x: Math.cos(angle), y: Math.sin(angle) }, stats.speedPxSec);
     }
+    this.onCombatFeedback?.('shoot');
     commitWeaponFire(this.orbCooldown, nowMs);
   }
 
@@ -121,6 +113,7 @@ export class WeaponSystem {
         .setRotation(Math.atan2(d.y, d.x));
       this.scene.time.delayedCall(140, () => fx.destroy());
     }
+    this.onCombatFeedback?.('slash');
     for (const cand of candidates) {
       const dx = cand.x - this.player.x;
       const dy = cand.y - this.player.y;
@@ -154,6 +147,7 @@ export class WeaponSystem {
 
   private damageAndReward(enemy: Phaser.Physics.Arcade.Sprite, damage: number, knockbackPxSec: number): void {
     const outcome = this.enemies.damageEnemy(enemy, damage, knockbackPxSec, this.player);
+    if (outcome.damaged) this.onCombatFeedback?.('hit', outcome.x, outcome.y, damage, outcome.killed);
     if (outcome.killed) this.onEnemyKilled?.(outcome.x, outcome.y, outcome.archetype, outcome.xpValue);
   }
 }

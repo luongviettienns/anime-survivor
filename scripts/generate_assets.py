@@ -2,6 +2,7 @@
 from __future__ import annotations
 from PIL import Image, ImageDraw
 from pack_frames import ROOT, CONTRACT, pack_all
+from generate_audio import generate_audio
 from naruto_shippuden_art import (
     draw_naruto_idle,
     draw_naruto_walk,
@@ -84,6 +85,7 @@ def main() -> None:
                 image.save(directory / f'{i:03}.png')
     pack_all(FRAME_ROOT, OUT)
     single_images()
+    generate_audio(OUT / 'audio')
     print('Generated exact-size Naruto Shippuden animation sheets, individual PNG frames, and game assets.')
 
 

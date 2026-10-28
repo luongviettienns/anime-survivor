@@ -18,6 +18,9 @@ export class BootScene extends Phaser.Scene {
     this.load.image('gem', 'assets/gem.png');
     this.load.image('grass', 'assets/grass.png');
     this.load.image('tree', 'assets/tree.png');
+    for (const cue of ['shoot', 'slash', 'hit', 'pickup', 'levelup', 'hurt']) {
+      this.load.audio(`sfx-${cue}`, `assets/audio/${cue}.wav`);
+    }
   }
 
   create(): void {

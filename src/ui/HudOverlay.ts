@@ -102,6 +102,10 @@ export class HudOverlay {
     }
   }
 
+  getStatusText(): string {
+    return this.statusText.text;
+  }
+
   destroy(): void {
     this.graphics.destroy();
     this.statusText.destroy();

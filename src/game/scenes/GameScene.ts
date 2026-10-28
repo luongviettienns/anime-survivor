@@ -9,6 +9,8 @@ import { MovementSystem } from '../systems/MovementSystem';
 import { PickupSystem } from '../systems/PickupSystem';
 import { WeaponSystem } from '../systems/WeaponSystem';
 
+type OverlapObj = Parameters<Phaser.Types.Physics.Arcade.ArcadePhysicsCallback>[0];
+
 export class GameScene extends Phaser.Scene {
   private player!: Phaser.Physics.Arcade.Sprite;
   private enemies!: EnemySystem;
@@ -38,8 +40,7 @@ export class GameScene extends Phaser.Scene {
     this.createScenery();
 
     this.player = this.physics.add.sprite(WORLD.width / 2, WORLD.height / 2, 'hero', 0);
-    this.player.setScale(2).setCollideWorldBounds(true).setDepth(5000);
-    this.player.setCircle(10, 6, 13).play('hero-idle');
+    this.player.setScale(2).setCollideWorldBounds(true).setDepth(5000).setCircle(10, 6, 13).play('hero-idle');
 
     this.cameras.main.setBounds(0, 0, WORLD.width, WORLD.height);
     this.cameras.main.startFollow(this.player, true, 0.12, 0.12);
@@ -51,13 +52,9 @@ export class GameScene extends Phaser.Scene {
     this.pickups = new PickupSystem(this);
     this.hud = new HudOverlay(this);
 
-    this.physics.add.overlap(this.weapon.projectiles, this.enemies.group, (a, b) =>
-      this.onProjectileEnemy(a, b)
-    );
+    this.physics.add.overlap(this.weapon.projectiles, this.enemies.group, (a, b) => this.onProjectileEnemy(a, b));
     this.physics.add.overlap(this.player, this.enemies.group, () => this.onPlayerEnemyContact());
-    this.physics.add.overlap(this.player, this.pickups.group, (_p, item) =>
-      this.onPlayerPickup(item)
-    );
+    this.physics.add.overlap(this.player, this.pickups.group, (_p, item) => this.onPlayerPickup(item));
 
     this.spawnTimer = this.time.addEvent({
       delay: 1050,
@@ -65,22 +62,15 @@ export class GameScene extends Phaser.Scene {
       callback: () => {
         if (!this.running) return;
         const amount = this.elapsed > 60 ? 2 : 1;
-        for (let i = 0; i < amount && this.enemies.group.countActive(true) < ENEMY.maxAlive; i++) {
-          this.enemies.spawn();
-        }
+        for (let i = 0; i < amount && this.enemies.group.countActive(true) < ENEMY.maxAlive; i++) this.enemies.spawn();
       },
     });
 
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => this.cleanup());
-    registerGameDebugApi(
-      this,
-      this.player,
-      this.damage,
-      this.enemies,
-      this.weapon,
-      this.pickups,
-      () => ({ ...this.progression, defeated: this.defeated })
-    );
+    registerGameDebugApi(this, this.player, this.damage, this.enemies, this.weapon, this.pickups, () => ({
+      ...this.progression,
+      defeated: this.defeated,
+    }));
     this.updateHud();
   }
 
@@ -93,12 +83,15 @@ export class GameScene extends Phaser.Scene {
     this.pickups.update(this.player, PLAYER.pickupMagnetRadius, PLAYER.pickupMagnetSpeed);
     this.damage.updateVisuals(this.time.now);
     this.player.setDepth(this.player.y);
-
     if (this.elapsed >= WORLD.runDurationSec) {
       this.endRun(true);
       return;
     }
     this.updateHud();
+  }
+
+  getHudText(): string {
+    return this.hud.getStatusText();
   }
 
   private createScenery(): void {
@@ -111,22 +104,15 @@ export class GameScene extends Phaser.Scene {
     }
   }
 
-  private onProjectileEnemy(
-    projectileObject: Parameters<Phaser.Types.Physics.Arcade.ArcadePhysicsCallback>[0],
-    enemyObject: Parameters<Phaser.Types.Physics.Arcade.ArcadePhysicsCallback>[1]
-  ): void {
+  private onProjectileEnemy(projObj: OverlapObj, enemyObj: OverlapObj): void {
     if (!this.running) return;
-    const enemy = enemyObject as Phaser.Physics.Arcade.Sprite;
-    if (!enemy.active) return;
-    if (!this.weapon.consumeProjectile(projectileObject as Phaser.GameObjects.GameObject)) return;
-
+    const enemy = enemyObj as Phaser.Physics.Arcade.Sprite;
+    if (!enemy.active || !this.weapon.consumeProjectile(projObj as Phaser.GameObjects.GameObject)) return;
     const outcome = this.enemies.damageEnemy(enemy, PROJECTILE.damage);
     if (!outcome.damaged) return;
     if (!outcome.killed) {
       enemy.setTint(0xffffff);
-      this.time.delayedCall(85, () => {
-        if (enemy.active) enemy.clearTint();
-      });
+      this.time.delayedCall(85, () => { if (enemy.active) enemy.clearTint(); });
       return;
     }
     this.defeated++;
@@ -134,24 +120,13 @@ export class GameScene extends Phaser.Scene {
   }
 
   private onPlayerEnemyContact(): void {
-    if (!this.running || !this.damage.state.alive) return;
-    if (this.damage.tryContactDamage(this.time.now).died) {
-      this.endRun(false);
-    }
+    if (this.running && this.damage.state.alive && this.damage.tryContactDamage(this.time.now).died) this.endRun(false);
   }
 
-  private onPlayerPickup(
-    pickupObject: Parameters<Phaser.Types.Physics.Arcade.ArcadePhysicsCallback>[1]
-  ): void {
+  private onPlayerPickup(pickupObj: OverlapObj): void {
     if (!this.running || !this.damage.state.alive) return;
-    const result = this.pickups.collect(
-      pickupObject as Phaser.GameObjects.GameObject,
-      this.damage.state,
-      this.progression
-    );
-    if (result.collected && result.levelsGained > 0) {
-      this.cameras.main.flash(160, 130, 90, 200);
-    }
+    const res = this.pickups.collect(pickupObj as Phaser.GameObjects.GameObject, this.damage.state, this.progression);
+    if (res.collected && res.levelsGained > 0) this.cameras.main.flash(160, 130, 90, 200);
   }
 
   private endRun(victory: boolean): void {
@@ -167,14 +142,10 @@ export class GameScene extends Phaser.Scene {
     this.spawnTimer?.remove(false);
     this.enemies.clear();
     this.pickups.clear();
+    this.hud.destroy();
   }
 
   private updateHud(): void {
-    this.hud.update({
-      player: this.damage.state,
-      progression: this.progression,
-      elapsedSec: this.elapsed,
-      defeated: this.defeated,
-    });
+    this.hud.update({ player: this.damage.state, progression: this.progression, elapsedSec: this.elapsed, defeated: this.defeated });
   }
 }

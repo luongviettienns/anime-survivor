@@ -42,7 +42,7 @@ test.describe('Anime Survivor Phase 1 Gameplay Logic E2E', () => {
     expect(errors).toEqual([]);
   });
 
-  test('B, C, D, E, G: enforces 3-enemy overlap single hit i-frames, auto-target kill, single pickup collider, magnetic attraction + pooling, heal clamp, and clean restart', async ({
+  test('B, C, D, E, G: enforces 3-enemy overlap single hit i-frames, auto-target kill, single pickup collider, magnetic attraction + pooling, heal clamp, and HUD updates', async ({
     page,
   }) => {
     await page.goto('/');
@@ -103,5 +103,11 @@ test.describe('Anime Survivor Phase 1 Gameplay Logic E2E', () => {
     expect(stateAfterHeal.hp).toBe(100);
     const countsAfterHeal = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getCounts());
     expect(countsAfterHeal.pickups).toBe(0);
+
+    // Verify HUD overlay text reflects updated HP, XP, kills, and weapon badge
+    const hudText = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getScene().getHudText());
+    expect(hudText).toContain('HP 100/100');
+    expect(hudText).toContain('KILLS 1');
+    expect(hudText).toContain('ORB Lv1');
   });
 });

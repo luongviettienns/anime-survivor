@@ -20,16 +20,14 @@ test.describe('Anime Survivor Phase 1 & 2 Gameplay Logic E2E', () => {
     await page.waitForTimeout(300);
     await page.keyboard.up('d');
     const endCardinal = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getPlayerPosition());
-    const cardinalDist = Math.hypot(
-      endCardinal.x - startCardinal.x,
-      endCardinal.y - startCardinal.y
-    );
+    const cardinalDist = Math.hypot(endCardinal.x - startCardinal.x, endCardinal.y - startCardinal.y);
 
     const startDiag = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getPlayerPosition());
     await page.keyboard.down('d');
     await page.keyboard.down('w');
+    await page.waitForTimeout(50);
     const diagVel = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getPlayerVelocity());
-    await page.waitForTimeout(300);
+    await page.waitForTimeout(250);
     await page.keyboard.up('d');
     await page.keyboard.up('w');
     const endDiag = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getPlayerPosition());
@@ -64,9 +62,7 @@ test.describe('Anime Survivor Phase 1 & 2 Gameplay Logic E2E', () => {
     });
 
     await page.waitForTimeout(100);
-    const stateAfterOverlap = await page.evaluate(() =>
-      window.__ANIME_SURVIVOR__!.getPlayerState()
-    );
+    const stateAfterOverlap = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getPlayerState());
     expect(stateAfterOverlap.hp).toBe(89);
 
     // Check C & D: auto-targeting shoots and kills nearby enemy, dropping XP gem within magnet radius and magnetically collecting it
@@ -118,7 +114,6 @@ test.describe('Anime Survivor Phase 1 & 2 Gameplay Logic E2E', () => {
     await page.waitForFunction(() => Boolean(window.__ANIME_SURVIVOR__));
     await page.evaluate(() => window.__ANIME_SURVIVOR__!.clearEnemies());
 
-    // Grant 5 XP to reach Lv2 and trigger UpgradeScene
     await page.evaluate(() => window.__ANIME_SURVIVOR__!.grantXp(5));
     await page.waitForFunction(
       () => window.__ANIME_SURVIVOR__!.getUpgradeChoices().length === 3,
@@ -130,14 +125,12 @@ test.describe('Anime Survivor Phase 1 & 2 Gameplay Logic E2E', () => {
     expect(progDuringModal.level).toBe(2);
     expect(progDuringModal.pendingUpgrades).toBe(1);
 
-    // Select first upgrade choice
     const applied = await page.evaluate(() => window.__ANIME_SURVIVOR__!.chooseUpgrade(0));
     expect(applied).toBe(true);
 
     const progAfterModal = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getProgression());
     expect(progAfterModal.pendingUpgrades).toBe(0);
 
-    // Unlock slash and orbital directly on inventory and verify close-range combat + HUD badges
     await page.evaluate(() => {
       const api = window.__ANIME_SURVIVOR__!;
       const scene = api.getScene() as unknown as {
@@ -166,5 +159,80 @@ test.describe('Anime Survivor Phase 1 & 2 Gameplay Logic E2E', () => {
     const hudText = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getScene().getHudText());
     expect(hudText).toContain('SLASH Lv1');
     expect(hudText).toContain('ORBIT Lv1');
+  });
+
+  test('H: verifies shade fast enemy, mage ranged telegraph + projectile hit, and Boss HUD + Victory flow', async ({
+    page,
+  }) => {
+    await page.goto('/');
+    await page.waitForFunction(() => Boolean(window.__ANIME_SURVIVOR__));
+
+    // 1. Spawn shade enemy, kill it with orb, and verify it drops 2 XP
+    await page.evaluate(() => {
+      const api = window.__ANIME_SURVIVOR__!;
+      const scene = api.getScene() as unknown as { spawnTimer?: { paused: boolean } };
+      if (scene.spawnTimer) scene.spawnTimer.paused = true;
+      api.clearEnemies();
+      const pos = api.getPlayerPosition();
+      api.spawnEnemyTypeAt('shade', pos.x + 75, pos.y);
+    });
+    await page.waitForFunction(
+      () => window.__ANIME_SURVIVOR__!.getProgression().xp === 2,
+      undefined,
+      { timeout: 3000 }
+    );
+
+    // 2. Disable player weapons, spawn mage at ranged distance, verify telegraph fires bolt and hits player (-12 HP)
+    await page.evaluate(() => {
+      const api = window.__ANIME_SURVIVOR__!;
+      const scene = api.getScene() as unknown as { weapon: { inventory: { orb: number } } };
+      scene.weapon.inventory.orb = 0;
+      api.clearEnemies();
+      const pos = api.getPlayerPosition();
+      api.spawnEnemyTypeAt('mage', pos.x + 180, pos.y);
+    });
+    await page.waitForFunction(
+      () => window.__ANIME_SURVIVOR__!.getCounts().enemyProjectiles >= 1,
+      undefined,
+      { timeout: 2500 }
+    );
+    await page.waitForFunction(
+      () => window.__ANIME_SURVIVOR__!.getPlayerState().hp === 88,
+      undefined,
+      { timeout: 2500 }
+    );
+
+    // 3. Spawn Boss, verify Boss HP bar in HUD, then kill Boss and verify Victory GameOverScene
+    await page.evaluate(() => {
+      const api = window.__ANIME_SURVIVOR__!;
+      api.clearEnemies();
+      const pos = api.getPlayerPosition();
+      api.spawnBossAt(pos.x + 110, pos.y);
+      const scene = api.getScene() as unknown as { updateHud: () => void };
+      scene.updateHud();
+    });
+
+    const bossState = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getBossState());
+    expect(bossState).toEqual({ hp: 900, maxHp: 900, name: 'CRIMSON ARCHON' });
+    const hudWithBoss = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getScene().getHudText());
+    expect(hudWithBoss).toContain('CRIMSON ARCHON  900/900');
+
+    // Weaken boss to 15 HP and enable Lv5 orb so player's next volley defeats the Boss and triggers Victory
+    await page.evaluate(() => {
+      const api = window.__ANIME_SURVIVOR__!;
+      const scene = api.getScene() as unknown as {
+        weapon: { inventory: { orb: number } };
+        enemies: { group: { getChildren: () => unknown[] }; getState: (e: unknown) => { hp: number } };
+      };
+      const bossSprite = scene.enemies.group.getChildren().find((c) => (c as { active: boolean }).active);
+      if (bossSprite) scene.enemies.getState(bossSprite).hp = 15;
+      scene.weapon.inventory.orb = 5;
+    });
+
+    await page.waitForFunction(
+      () => window.__ANIME_SURVIVOR__!.getScene().scene.isActive('GameOverScene'),
+      undefined,
+      { timeout: 3000 }
+    );
   });
 });

@@ -103,7 +103,9 @@ export class HudOverlay {
   }
 
   getStatusText(): string {
-    return this.statusText.text;
+    return this.bossText.visible
+      ? `${this.statusText.text}\n${this.bossText.text}`
+      : this.statusText.text;
   }
 
   destroy(): void {

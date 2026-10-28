@@ -1,3 +1,4 @@
+import type { EnemyArchetypeId } from '../../domain/enemies';
 import type { RunProgression } from '../../domain/progression';
 import type { UpgradeChoice } from '../../domain/upgrades';
 import type { WeaponInventory } from '../../domain/weapons';
@@ -18,8 +19,17 @@ export type GameDebugApi = {
   getUpgradeChoices: () => UpgradeChoice[];
   chooseUpgrade: (index: number) => boolean;
   grantXp: (amount: number) => void;
-  getCounts: () => { enemies: number; projectiles: number; pickups: number; colliders: number };
+  getCounts: () => {
+    enemies: number;
+    projectiles: number;
+    enemyProjectiles: number;
+    pickups: number;
+    colliders: number;
+  };
+  getBossState: () => { hp: number; maxHp: number; name: string } | null;
   spawnEnemyAt: (x: number, y: number) => void;
+  spawnEnemyTypeAt: (type: EnemyArchetypeId, x: number, y: number) => void;
+  spawnBossAt: (x: number, y: number) => void;
   spawnHealAt: (x: number, y: number, amount?: number) => void;
   clearEnemies: () => void;
 };
@@ -60,18 +70,27 @@ export function registerGameDebugApi(
       return {
         enemies: enemies.group.countActive(true),
         projectiles: weapon.projectiles.countActive(true),
+        enemyProjectiles: enemies.enemyProjectiles.countActive(true),
         pickups: pickups.group.countActive(true),
         colliders: collidersQueue.getActive().length + pendingCount,
       };
     },
+    getBossState: () => enemies.getActiveBossState(),
     spawnEnemyAt: (x: number, y: number) => {
-      enemies.spawnAt(x, y);
+      enemies.spawnAt(x, y, 'slime');
+    },
+    spawnEnemyTypeAt: (type: EnemyArchetypeId, x: number, y: number) => {
+      enemies.spawnAt(x, y, type);
+    },
+    spawnBossAt: (x: number, y: number) => {
+      enemies.spawnAt(x, y, 'boss');
     },
     spawnHealAt: (x: number, y: number, amount?: number) => {
       pickups.spawnHealPickup(x, y, amount);
     },
     clearEnemies: () => {
       enemies.group.clear(true, true);
+      enemies.enemyProjectiles.clear(true, true);
       enemies.clear();
     },
   };

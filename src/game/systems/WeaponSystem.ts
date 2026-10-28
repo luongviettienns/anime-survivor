@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import type { EnemyArchetypeId } from '../../domain/enemies';
 import {
   canWeaponFire,
   commitWeaponFire,
@@ -31,7 +32,7 @@ export class WeaponSystem {
     private readonly scene: Phaser.Scene,
     private readonly player: Phaser.Physics.Arcade.Sprite,
     private readonly enemies: EnemySystem,
-    private readonly onEnemyKilled?: (x: number, y: number) => void
+    private readonly onEnemyKilled?: (x: number, y: number, archetype: EnemyArchetypeId, xpValue: number) => void
   ) {
     this.projectiles = scene.physics.add.group();
   }
@@ -153,6 +154,6 @@ export class WeaponSystem {
 
   private damageAndReward(enemy: Phaser.Physics.Arcade.Sprite, damage: number, knockbackPxSec: number): void {
     const outcome = this.enemies.damageEnemy(enemy, damage, knockbackPxSec, this.player);
-    if (outcome.killed) this.onEnemyKilled?.(outcome.x, outcome.y);
+    if (outcome.killed) this.onEnemyKilled?.(outcome.x, outcome.y, outcome.archetype, outcome.xpValue);
   }
 }

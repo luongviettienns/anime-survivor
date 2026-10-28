@@ -14,10 +14,13 @@ export class DamageSystem {
     this.state = createPlayerState(PLAYER.maxHealth);
   }
 
-  tryContactDamage(nowMs: number): { damaged: boolean; died: boolean } {
+  tryContactDamage(
+    nowMs: number,
+    amount: number = ENEMY.touchDamage
+  ): { damaged: boolean; died: boolean } {
     const damaged = applyContactDamage(
       this.state,
-      ENEMY.touchDamage,
+      amount,
       nowMs,
       PLAYER.invulnerabilityMs
     );

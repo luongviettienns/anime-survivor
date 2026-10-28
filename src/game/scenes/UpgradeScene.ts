@@ -44,9 +44,17 @@ export class UpgradeScene extends Phaser.Scene {
       })
       .setOrigin(0.5);
 
-    this.input.keyboard?.on('keydown-ONE', () => this.selectChoice(0));
-    this.input.keyboard?.on('keydown-TWO', () => this.selectChoice(1));
-    this.input.keyboard?.on('keydown-THREE', () => this.selectChoice(2));
+    const onOne = () => this.selectChoice(0);
+    const onTwo = () => this.selectChoice(1);
+    const onThree = () => this.selectChoice(2);
+    this.input.keyboard?.on('keydown-ONE', onOne);
+    this.input.keyboard?.on('keydown-TWO', onTwo);
+    this.input.keyboard?.on('keydown-THREE', onThree);
+    this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
+      this.input.keyboard?.off('keydown-ONE', onOne);
+      this.input.keyboard?.off('keydown-TWO', onTwo);
+      this.input.keyboard?.off('keydown-THREE', onThree);
+    });
 
     this.rollAndRender();
   }

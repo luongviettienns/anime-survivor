@@ -31,7 +31,7 @@
   - [x] **Task 5**: Refactor Game Systems (`MovementSystem`, `EnemySystem`, `WeaponSystem`, `DamageSystem`, `PickupSystem`) & `GameScene` (single group overlap collider for pickups, shutdown cleanup, debug bridge).
   - [x] **Task 6**: Comprehensive Playwright E2E Gameplay Verification (`tests/e2e/game.spec.ts` checks A, B, C, D, E, G) & `npm run verify`.
 
-- [ ] **Phase 2: Full Roguelite Core**
+- [ ] **Phase 2: Full Roguelite Core** *(Đã lập Master Plan tại `docs/superpowers/plans/2026-10-28-master-completion-plan.md`)*
   - [ ] Hệ thống WaveDirector (lịch trình spawn quái tăng dần theo thời gian).
   - [ ] Màn hình chọn nâng cấp (UpgradeChoiceScene) khi lên cấp, hỗ trợ pause game.
   - [ ] Bổ sung 2 loại vũ khí mới (slash tầm gần, orbiting charm) và định nghĩa vũ khí dạng dữ liệu.
@@ -51,6 +51,12 @@
 ---
 
 ## Nhật ký chi tiết (Log)
+
+### 2026-10-28
+- **Kiểm toán Kỹ thuật Toàn diện & Lập Master Plan Hoàn thiện Dự án v1.0**:
+  - Đối chiếu mã nguồn hiện tại với 28 Phaser 4 Skills và 11 GameDev Skills (`architecture-guard`, `game-performance`, `phaser-gameplay`, `groups-and-containers`, `scenes`, `game-ai`, `game-ui`, `particles`, `audio-and-sound`, `production-planning`).
+  - Xác định 6 nhóm cần nâng cấp/tối ưu: (1) Tách nhỏ `GameScene.ts` đang chạm ngưỡng 204/210 dòng bằng `HudOverlay` và Modal Scenes; (2) Áp dụng Object Pooling & Zero-Allocation trong hot loop; (3) Kích hoạt Pickup Magnet; (4) Mở rộng 3 vũ khí + Knockback + Upgrade Choice UI; (5) Xây dựng `WaveDirector` + 3 biến thể quái + Boss FSM ở phút thứ 10; (6) Bổ sung VFX Particles, Procedural Audio, Title/Pause Scene và LocalStorage High Score.
+  - Lưu kế hoạch chi tiết tại `docs/superpowers/plans/2026-10-28-master-completion-plan.md`.
 
 ### 2026-10-27
 - **Hoàn thành Phase 0**:
@@ -90,3 +96,8 @@
   - **Hero Walk/Run (4 frames)**: Tư thế chạy **Naruto Run** kinh điển (nghiêng người về phía trước $+26^\circ$, hai tay vung chéo ra sau lưng, dải băng trán bay ngang trong gió, gia huy xoáy đỏ Uzumaki trên lưng áo, chu kỳ chạy 4 bước chân dứt khoát).
   - **Rasengan Projectile (`orb.png` 8x8)** & **Rogue Shadow Ninja Enemy (`enemy.png` 24x24, 4 frames)**: Áo choàng đen mây đỏ cùng mắt đỏ rực đồng bộ hoàn toàn chủ đề Shinobi.
   - Kiểm định byte-for-byte với `validate_sprites.py`, `npm run verify` và `npm run test:e2e` đạt 100% PASS.
+- **Cài đặt Phaser AE CLI & Tích hợp bộ 28 Skills chính thức từ `phaserjs/phaser`**:
+  - Cài đặt global `@phaser-ae/cli` (v0.7.5) phục vụ giao tiếp agent và tài nguyên phaser.io.
+  - Tải và đồng bộ đầy đủ 28 official agent skills từ `https://github.com/phaserjs/phaser` vào `.agents/skills/`:
+    `actions-and-utilities`, `animations`, `audio-and-sound`, `cameras`, `curves-and-paths`, `data-manager`, `events-system`, `filters-and-postfx`, `game-object-components`, `game-setup-and-config`, `geometry-and-math`, `graphics-and-shapes`, `groups-and-containers`, `input-keyboard-mouse-touch`, `loading-assets`, `particles`, `physics-arcade`, `physics-matter`, `render-textures`, `scale-and-responsive`, `scenes`, `sprites-and-images`, `text-and-bitmaptext`, `tilemaps`, `time-and-timers`, `tweens`, `v3-to-v4-migration`, `v4-new-features`.
+  - Chạy `npm run verify` toàn diện: TypeCheck, ESLint, 18 Domain Tests (Vitest), Architecture Guard, Sprite Validator và Production Build đều đạt 100% PASS.

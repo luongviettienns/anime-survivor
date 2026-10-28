@@ -9,3 +9,4 @@ test-results/
 !.env.example
 __pycache__/
 tools/_external/
+.superpowers/

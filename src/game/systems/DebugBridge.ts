@@ -1,11 +1,13 @@
 import type { EnemyArchetypeId } from '../../domain/enemies';
 import type { RunProgression } from '../../domain/progression';
+import type { SaveData } from '../../domain/storageSchema';
 import type { UpgradeChoice } from '../../domain/upgrades';
 import type { WeaponInventory } from '../../domain/weapons';
 import type { GameScene } from '../scenes/GameScene';
 import type { DamageSystem } from './DamageSystem';
 import type { EnemySystem } from './EnemySystem';
 import type { PickupSystem } from './PickupSystem';
+import { loadSaveData } from './StorageSystem';
 import type { WeaponSystem } from './WeaponSystem';
 
 export type GameDebugApi = {
@@ -19,6 +21,9 @@ export type GameDebugApi = {
   getUpgradeChoices: () => UpgradeChoice[];
   chooseUpgrade: (index: number) => boolean;
   grantXp: (amount: number) => void;
+  togglePause: () => boolean;
+  isPaused: () => boolean;
+  getSaveData: () => SaveData;
   getCounts: () => {
     enemies: number;
     projectiles: number;
@@ -63,6 +68,9 @@ export function registerGameDebugApi(
     getUpgradeChoices: () => scene.getUpgradeChoices(),
     chooseUpgrade: (index: number) => scene.chooseUpgrade(index),
     grantXp: (amount: number) => scene.grantXp(amount),
+    togglePause: () => scene.togglePause(),
+    isPaused: () => scene.isPaused(),
+    getSaveData: () => loadSaveData(),
     getCounts: () => {
       const collidersQueue = scene.physics.world.colliders;
       const pendingCount =
@@ -76,18 +84,12 @@ export function registerGameDebugApi(
       };
     },
     getBossState: () => enemies.getActiveBossState(),
-    spawnEnemyAt: (x: number, y: number) => {
-      enemies.spawnAt(x, y, 'slime');
-    },
-    spawnEnemyTypeAt: (type: EnemyArchetypeId, x: number, y: number) => {
-      enemies.spawnAt(x, y, type);
-    },
-    spawnBossAt: (x: number, y: number) => {
-      enemies.spawnAt(x, y, 'boss');
-    },
-    spawnHealAt: (x: number, y: number, amount?: number) => {
-      pickups.spawnHealPickup(x, y, amount);
-    },
+    spawnEnemyAt: (x: number, y: number) => enemies.spawnAt(x, y, 'slime'),
+    spawnEnemyTypeAt: (type: EnemyArchetypeId, x: number, y: number) =>
+      enemies.spawnAt(x, y, type),
+    spawnBossAt: (x: number, y: number) => enemies.spawnAt(x, y, 'boss'),
+    spawnHealAt: (x: number, y: number, amount?: number) =>
+      pickups.spawnHealPickup(x, y, amount),
     clearEnemies: () => {
       enemies.group.clear(true, true);
       enemies.enemyProjectiles.clear(true, true);

@@ -1,9 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 test.describe('Anime Survivor Phase 1 & 2 Gameplay Logic E2E', () => {
-  test('A: boots game, normalizes diagonal vs cardinal displacement, and has no console errors', async ({
-    page,
-  }) => {
+  test('A: boots game, normalizes diagonal vs cardinal displacement, and has no console errors', async ({ page }) => {
     const errors: string[] = [];
     page.on('pageerror', (error) => errors.push(error.message));
     await page.goto('/');
@@ -40,18 +38,14 @@ test.describe('Anime Survivor Phase 1 & 2 Gameplay Logic E2E', () => {
     expect(errors).toEqual([]);
   });
 
-  test('B, C, D, E, G: enforces 3-enemy overlap single hit i-frames, auto-target kill, single pickup collider, magnetic attraction + pooling, heal clamp, and HUD updates', async ({
-    page,
-  }) => {
+  test('B, C, D, E, G: enforces 3-enemy overlap single hit i-frames, auto-target kill, single pickup collider, magnetic attraction + pooling, heal clamp, and HUD updates', async ({ page }) => {
     await page.goto('/');
     await page.waitForFunction(() => Boolean(window.__ANIME_SURVIVOR__));
     await page.waitForTimeout(150);
 
-    // Check G baseline: exactly 3 overlap colliders registered
     const initialCounts = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getCounts());
     expect(initialCounts.colliders).toBe(3);
 
-    // Check B: 3 enemies overlapping player simultaneously inflict 11 damage once
     await page.evaluate(() => {
       const api = window.__ANIME_SURVIVOR__!;
       api.clearEnemies();
@@ -65,7 +59,6 @@ test.describe('Anime Survivor Phase 1 & 2 Gameplay Logic E2E', () => {
     const stateAfterOverlap = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getPlayerState());
     expect(stateAfterOverlap.hp).toBe(89);
 
-    // Check C & D: auto-targeting shoots and kills nearby enemy, dropping XP gem within magnet radius and magnetically collecting it
     await page.evaluate(() => {
       const api = window.__ANIME_SURVIVOR__!;
       api.clearEnemies();
@@ -74,9 +67,7 @@ test.describe('Anime Survivor Phase 1 & 2 Gameplay Logic E2E', () => {
     });
 
     await page.waitForFunction(
-      () =>
-        window.__ANIME_SURVIVOR__!.getProgression().defeated >= 1 &&
-        window.__ANIME_SURVIVOR__!.getProgression().xp >= 1,
+      () => window.__ANIME_SURVIVOR__!.getProgression().defeated >= 1 && window.__ANIME_SURVIVOR__!.getProgression().xp >= 1,
       undefined,
       { timeout: 3000 }
     );
@@ -84,42 +75,30 @@ test.describe('Anime Survivor Phase 1 & 2 Gameplay Logic E2E', () => {
     expect(countsAfterKill.colliders).toBe(3);
     expect(countsAfterKill.pickups).toBe(0);
 
-    // Check E: heal pickup within magnet radius (60px away) is magnetically pulled in, restores HP, and clamps at 100
     await page.evaluate(() => {
       const api = window.__ANIME_SURVIVOR__!;
       const pos = api.getPlayerPosition();
       api.spawnHealAt(pos.x + 60, pos.y, 25);
     });
-    await page.waitForFunction(
-      () => window.__ANIME_SURVIVOR__!.getPlayerState().hp === 100,
-      undefined,
-      { timeout: 2000 }
-    );
+    await page.waitForFunction(() => window.__ANIME_SURVIVOR__!.getPlayerState().hp === 100, undefined, { timeout: 2000 });
     const stateAfterHeal = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getPlayerState());
     expect(stateAfterHeal.hp).toBe(100);
     const countsAfterHeal = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getCounts());
     expect(countsAfterHeal.pickups).toBe(0);
 
-    // Verify HUD overlay text reflects updated HP, XP, kills, and weapon badge
     const hudText = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getScene().getHudText());
     expect(hudText).toContain('HP 100/100');
     expect(hudText).toContain('KILLS 1');
     expect(hudText).toContain('ORB Lv1');
   });
 
-  test('F: opens UpgradeScene on level-up, applies weapon upgrades, and executes slash + orbital attacks', async ({
-    page,
-  }) => {
+  test('F: opens UpgradeScene on level-up, applies weapon upgrades, and executes slash + orbital attacks', async ({ page }) => {
     await page.goto('/');
     await page.waitForFunction(() => Boolean(window.__ANIME_SURVIVOR__));
     await page.evaluate(() => window.__ANIME_SURVIVOR__!.clearEnemies());
 
     await page.evaluate(() => window.__ANIME_SURVIVOR__!.grantXp(5));
-    await page.waitForFunction(
-      () => window.__ANIME_SURVIVOR__!.getUpgradeChoices().length === 3,
-      undefined,
-      { timeout: 2000 }
-    );
+    await page.waitForFunction(() => window.__ANIME_SURVIVOR__!.getUpgradeChoices().length === 3, undefined, { timeout: 2000 });
 
     const progDuringModal = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getProgression());
     expect(progDuringModal.level).toBe(2);
@@ -146,11 +125,7 @@ test.describe('Anime Survivor Phase 1 & 2 Gameplay Logic E2E', () => {
       api.spawnEnemyAt(pos.x + 56, pos.y);
     });
 
-    await page.waitForFunction(
-      () => window.__ANIME_SURVIVOR__!.getProgression().defeated >= 1,
-      undefined,
-      { timeout: 3000 }
-    );
+    await page.waitForFunction(() => window.__ANIME_SURVIVOR__!.getProgression().defeated >= 1, undefined, { timeout: 3000 });
 
     const weapons = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getWeaponInventory());
     expect(weapons.slash).toBe(1);
@@ -161,11 +136,29 @@ test.describe('Anime Survivor Phase 1 & 2 Gameplay Logic E2E', () => {
     expect(hudText).toContain('ORBIT Lv1');
   });
 
-  test('H: verifies shade fast enemy, mage ranged telegraph + projectile hit, and Boss HUD + Victory flow', async ({
-    page,
-  }) => {
+  test('H & I: verifies shade, mage ranged hit, PauseScene settings toggle, Boss Victory, and LocalStorage persistence', async ({ page }) => {
     await page.goto('/');
     await page.waitForFunction(() => Boolean(window.__ANIME_SURVIVOR__));
+
+    // Verify PauseScene toggle, settings persistence (M/F/H), and Resume
+    await page.keyboard.press('p');
+    await page.waitForFunction(
+      () => window.__ANIME_SURVIVOR__!.getScene().scene.isActive('PauseScene'),
+      undefined,
+      { timeout: 1500 }
+    );
+    await page.keyboard.press('m');
+    await page.keyboard.press('f');
+    await page.waitForFunction(
+      () => {
+        const s = window.__ANIME_SURVIVOR__!.getSaveData().settings;
+        return s.muted && s.reduceFlashing;
+      },
+      undefined,
+      { timeout: 1500 }
+    );
+    await page.keyboard.press('Escape');
+    await page.waitForFunction(() => !window.__ANIME_SURVIVOR__!.isPaused(), undefined, { timeout: 1500 });
 
     // 1. Spawn shade enemy, kill it with orb, and verify it drops 2 XP
     await page.evaluate(() => {
@@ -176,11 +169,7 @@ test.describe('Anime Survivor Phase 1 & 2 Gameplay Logic E2E', () => {
       const pos = api.getPlayerPosition();
       api.spawnEnemyTypeAt('shade', pos.x + 75, pos.y);
     });
-    await page.waitForFunction(
-      () => window.__ANIME_SURVIVOR__!.getProgression().xp === 2,
-      undefined,
-      { timeout: 3000 }
-    );
+    await page.waitForFunction(() => window.__ANIME_SURVIVOR__!.getProgression().xp === 2, undefined, { timeout: 3000 });
 
     // 2. Disable player weapons, spawn mage at ranged distance, verify telegraph fires bolt and hits player (-12 HP)
     await page.evaluate(() => {
@@ -191,25 +180,16 @@ test.describe('Anime Survivor Phase 1 & 2 Gameplay Logic E2E', () => {
       const pos = api.getPlayerPosition();
       api.spawnEnemyTypeAt('mage', pos.x + 180, pos.y);
     });
-    await page.waitForFunction(
-      () => window.__ANIME_SURVIVOR__!.getCounts().enemyProjectiles >= 1,
-      undefined,
-      { timeout: 2500 }
-    );
-    await page.waitForFunction(
-      () => window.__ANIME_SURVIVOR__!.getPlayerState().hp === 88,
-      undefined,
-      { timeout: 2500 }
-    );
+    await page.waitForFunction(() => window.__ANIME_SURVIVOR__!.getCounts().enemyProjectiles >= 1, undefined, { timeout: 2500 });
+    await page.waitForFunction(() => window.__ANIME_SURVIVOR__!.getPlayerState().hp === 88, undefined, { timeout: 2500 });
 
-    // 3. Spawn Boss, verify Boss HP bar in HUD, then kill Boss and verify Victory GameOverScene
+    // 3. Spawn Boss, verify Boss HP bar in HUD, then kill Boss and verify Victory GameOverScene + SaveData persistence
     await page.evaluate(() => {
       const api = window.__ANIME_SURVIVOR__!;
       api.clearEnemies();
       const pos = api.getPlayerPosition();
       api.spawnBossAt(pos.x + 110, pos.y);
-      const scene = api.getScene() as unknown as { updateHud: () => void };
-      scene.updateHud();
+      (api.getScene() as unknown as { updateHud: () => void }).updateHud();
     });
 
     const bossState = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getBossState());
@@ -217,7 +197,6 @@ test.describe('Anime Survivor Phase 1 & 2 Gameplay Logic E2E', () => {
     const hudWithBoss = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getScene().getHudText());
     expect(hudWithBoss).toContain('CRIMSON ARCHON  900/900');
 
-    // Weaken boss to 15 HP and enable Lv5 orb so player's next volley defeats the Boss and triggers Victory
     await page.evaluate(() => {
       const api = window.__ANIME_SURVIVOR__!;
       const scene = api.getScene() as unknown as {
@@ -229,10 +208,10 @@ test.describe('Anime Survivor Phase 1 & 2 Gameplay Logic E2E', () => {
       scene.weapon.inventory.orb = 5;
     });
 
-    await page.waitForFunction(
-      () => window.__ANIME_SURVIVOR__!.getScene().scene.isActive('GameOverScene'),
-      undefined,
-      { timeout: 3000 }
-    );
+    await page.waitForFunction(() => window.__ANIME_SURVIVOR__!.getScene().scene.isActive('GameOverScene'), undefined, { timeout: 3000 });
+    const postRunSave = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getSaveData());
+    expect(postRunSave.stats.victories).toBeGreaterThanOrEqual(1);
+    expect(postRunSave.stats.bestKills).toBeGreaterThanOrEqual(2);
+    expect(postRunSave.stats.runsPlayed).toBeGreaterThanOrEqual(1);
   });
 });

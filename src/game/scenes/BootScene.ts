@@ -27,6 +27,9 @@ export class BootScene extends Phaser.Scene {
     this.anims.create({ key: 'enemy-shade-walk', frames: this.anims.generateFrameNumbers('enemy_shade', { start: 0, end: 3 }), frameRate: 9, repeat: -1 });
     this.anims.create({ key: 'enemy-mage-walk', frames: this.anims.generateFrameNumbers('enemy_mage', { start: 0, end: 3 }), frameRate: 5, repeat: -1 });
     this.anims.create({ key: 'boss-walk', frames: this.anims.generateFrameNumbers('boss', { start: 0, end: 3 }), frameRate: 5, repeat: -1 });
-    this.scene.start('GameScene');
+    const startTitle =
+      typeof window !== 'undefined' &&
+      (window.location.search.includes('title=1') || window.location.search.includes('menu=1'));
+    this.scene.start(startTitle ? 'TitleScene' : 'GameScene');
   }
 }

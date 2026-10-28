@@ -1,4 +1,6 @@
 import type { RunProgression } from '../../domain/progression';
+import type { UpgradeChoice } from '../../domain/upgrades';
+import type { WeaponInventory } from '../../domain/weapons';
 import type { GameScene } from '../scenes/GameScene';
 import type { DamageSystem } from './DamageSystem';
 import type { EnemySystem } from './EnemySystem';
@@ -11,6 +13,11 @@ export type GameDebugApi = {
   getPlayerVelocity: () => { x: number; y: number };
   getPlayerState: () => { hp: number; maxHp: number; alive: boolean; invulnerableUntilMs: number };
   getProgression: () => RunProgression & { defeated: number };
+  getWeapons: () => WeaponInventory;
+  getWeaponInventory: () => WeaponInventory;
+  getUpgradeChoices: () => UpgradeChoice[];
+  chooseUpgrade: (index: number) => boolean;
+  grantXp: (amount: number) => void;
   getCounts: () => { enemies: number; projectiles: number; pickups: number; colliders: number };
   spawnEnemyAt: (x: number, y: number) => void;
   spawnHealAt: (x: number, y: number, amount?: number) => void;
@@ -41,9 +48,15 @@ export function registerGameDebugApi(
     }),
     getPlayerState: () => ({ ...damage.state }),
     getProgression,
+    getWeapons: () => ({ ...weapon.inventory }),
+    getWeaponInventory: () => ({ ...weapon.inventory }),
+    getUpgradeChoices: () => scene.getUpgradeChoices(),
+    chooseUpgrade: (index: number) => scene.chooseUpgrade(index),
+    grantXp: (amount: number) => scene.grantXp(amount),
     getCounts: () => {
       const collidersQueue = scene.physics.world.colliders;
-      const pendingCount = (collidersQueue as unknown as { _pending?: unknown[] })._pending?.length ?? 0;
+      const pendingCount =
+        (collidersQueue as unknown as { _pending?: unknown[] })._pending?.length ?? 0;
       return {
         enemies: enemies.group.countActive(true),
         projectiles: weapon.projectiles.countActive(true),

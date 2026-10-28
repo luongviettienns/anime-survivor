@@ -66,6 +66,9 @@ export type EnemyState = {
   maxHp: number;
   speed: number;
   dead: boolean;
+  knockbackUntilMs: number;
+  knockbackVx: number;
+  knockbackVy: number;
 };
 
 export function createEnemyState(id: number, maxHp: number, speed: number): EnemyState {
@@ -78,6 +81,9 @@ export function createEnemyState(id: number, maxHp: number, speed: number): Enem
     maxHp,
     speed,
     dead: false,
+    knockbackUntilMs: Number.NEGATIVE_INFINITY,
+    knockbackVx: 0,
+    knockbackVy: 0,
   };
 }
 
@@ -94,4 +100,28 @@ export function applyProjectileHit(
     return { damaged: true, killed: true };
   }
   return { damaged: true, killed: false };
+}
+
+export function applyEnemyKnockback(
+  enemy: EnemyState,
+  from: Vector,
+  enemyPos: Vector,
+  speedPxSec: number,
+  nowMs: number,
+  durationMs = 120
+): void {
+  if (
+    enemy.dead ||
+    !Number.isFinite(speedPxSec) ||
+    speedPxSec <= 0 ||
+    !Number.isFinite(nowMs) ||
+    !Number.isFinite(durationMs) ||
+    durationMs <= 0
+  ) {
+    return;
+  }
+  const dir = aimDirection(from, enemyPos);
+  enemy.knockbackVx = dir.x * speedPxSec;
+  enemy.knockbackVy = dir.y * speedPxSec;
+  enemy.knockbackUntilMs = nowMs + durationMs;
 }

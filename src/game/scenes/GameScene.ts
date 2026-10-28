@@ -1,13 +1,19 @@
 import Phaser from 'phaser';
-import { createProgression, type RunProgression } from '../../domain/progression';
+import { applyXpGain, createProgression, type RunProgression } from '../../domain/progression';
+import {
+  createPassiveStats,
+  type PassiveStats,
+  type UpgradeChoice,
+} from '../../domain/upgrades';
 import { HudOverlay } from '../../ui/HudOverlay';
-import { ENEMY, PLAYER, PROJECTILE, WORLD } from '../config/constants';
+import { ENEMY, PLAYER, WORLD } from '../config/constants';
 import { DamageSystem } from '../systems/DamageSystem';
 import { registerGameDebugApi } from '../systems/DebugBridge';
 import { EnemySystem } from '../systems/EnemySystem';
 import { MovementSystem } from '../systems/MovementSystem';
 import { PickupSystem } from '../systems/PickupSystem';
 import { WeaponSystem } from '../systems/WeaponSystem';
+import type { UpgradeScene } from './UpgradeScene';
 
 type OverlapObj = Parameters<Phaser.Types.Physics.Arcade.ArcadePhysicsCallback>[0];
 
@@ -21,6 +27,7 @@ export class GameScene extends Phaser.Scene {
   private hud!: HudOverlay;
   private spawnTimer?: Phaser.Time.TimerEvent;
   private progression: RunProgression = createProgression();
+  private passives: PassiveStats = createPassiveStats();
   private defeated = 0;
   private elapsed = 0;
   private running = false;
@@ -31,6 +38,7 @@ export class GameScene extends Phaser.Scene {
 
   create(): void {
     this.progression = createProgression();
+    this.passives = createPassiveStats();
     this.defeated = 0;
     this.elapsed = 0;
     this.running = true;
@@ -47,12 +55,14 @@ export class GameScene extends Phaser.Scene {
 
     this.movement = new MovementSystem(this, this.player);
     this.enemies = new EnemySystem(this, this.player);
-    this.weapon = new WeaponSystem(this, this.player, this.enemies);
+    this.weapon = new WeaponSystem(this, this.player, this.enemies, (x, y) => this.onEnemyKilled(x, y));
     this.damage = new DamageSystem(this.player);
     this.pickups = new PickupSystem(this);
     this.hud = new HudOverlay(this);
 
-    this.physics.add.overlap(this.weapon.projectiles, this.enemies.group, (a, b) => this.onProjectileEnemy(a, b));
+    this.physics.add.overlap(this.weapon.projectiles, this.enemies.group, (a, b) =>
+      this.weapon.handleProjectileHit(a as Phaser.GameObjects.GameObject, b as Phaser.GameObjects.GameObject)
+    );
     this.physics.add.overlap(this.player, this.enemies.group, () => this.onPlayerEnemyContact());
     this.physics.add.overlap(this.player, this.pickups.group, (_p, item) => this.onPlayerPickup(item));
 
@@ -77,21 +87,33 @@ export class GameScene extends Phaser.Scene {
   update(_now: number, delta: number): void {
     if (!this.running || !this.damage.state.alive) return;
     this.elapsed += delta / 1000;
-    this.movement.update(true);
+    this.movement.update(true, this.passives.moveSpeedMultiplier);
     this.enemies.update(false);
     this.weapon.update(this.time.now, true);
-    this.pickups.update(this.player, PLAYER.pickupMagnetRadius, PLAYER.pickupMagnetSpeed);
+    this.pickups.update(this.player, PLAYER.pickupMagnetRadius + this.passives.pickupRadiusBonusPx, PLAYER.pickupMagnetSpeed);
     this.damage.updateVisuals(this.time.now);
     this.player.setDepth(this.player.y);
     if (this.elapsed >= WORLD.runDurationSec) {
       this.endRun(true);
       return;
     }
+    this.openUpgradeModalIfNeeded();
     this.updateHud();
   }
 
-  getHudText(): string {
-    return this.hud.getStatusText();
+  getHudText(): string { return this.hud.getStatusText(); }
+
+  grantXp(amount: number): void {
+    if (applyXpGain(this.progression, amount).levelsGained > 0) this.openUpgradeModalIfNeeded();
+    this.updateHud();
+  }
+
+  getUpgradeChoices(): UpgradeChoice[] {
+    return this.scene.isActive('UpgradeScene') ? (this.scene.get('UpgradeScene') as UpgradeScene).getChoices() : [];
+  }
+
+  chooseUpgrade(index: number): boolean {
+    return this.scene.isActive('UpgradeScene') ? (this.scene.get('UpgradeScene') as UpgradeScene).selectChoice(index) : false;
   }
 
   private createScenery(): void {
@@ -104,19 +126,9 @@ export class GameScene extends Phaser.Scene {
     }
   }
 
-  private onProjectileEnemy(projObj: OverlapObj, enemyObj: OverlapObj): void {
-    if (!this.running) return;
-    const enemy = enemyObj as Phaser.Physics.Arcade.Sprite;
-    if (!enemy.active || !this.weapon.consumeProjectile(projObj as Phaser.GameObjects.GameObject)) return;
-    const outcome = this.enemies.damageEnemy(enemy, PROJECTILE.damage);
-    if (!outcome.damaged) return;
-    if (!outcome.killed) {
-      enemy.setTint(0xffffff);
-      this.time.delayedCall(85, () => { if (enemy.active) enemy.clearTint(); });
-      return;
-    }
+  private onEnemyKilled(x: number, y: number): void {
     this.defeated++;
-    this.pickups.spawnXpGem(outcome.x, outcome.y);
+    this.pickups.spawnXpGem(x, y);
   }
 
   private onPlayerEnemyContact(): void {
@@ -126,7 +138,24 @@ export class GameScene extends Phaser.Scene {
   private onPlayerPickup(pickupObj: OverlapObj): void {
     if (!this.running || !this.damage.state.alive) return;
     const res = this.pickups.collect(pickupObj as Phaser.GameObjects.GameObject, this.damage.state, this.progression);
-    if (res.collected && res.levelsGained > 0) this.cameras.main.flash(160, 130, 90, 200);
+    if (res.collected && res.levelsGained > 0) {
+      this.cameras.main.flash(160, 130, 90, 200);
+      this.openUpgradeModalIfNeeded();
+    }
+  }
+
+  private openUpgradeModalIfNeeded(): void {
+    if (!this.running || this.progression.pendingUpgrades <= 0 || this.scene.isActive('UpgradeScene')) return;
+    this.movement.update(false);
+    this.updateHud();
+    this.scene.pause();
+    this.scene.launch('UpgradeScene', {
+      inventory: this.weapon.inventory,
+      playerState: this.damage.state,
+      passives: this.passives,
+      progression: this.progression,
+      onApplied: () => this.updateHud(),
+    });
   }
 
   private endRun(victory: boolean): void {
@@ -140,12 +169,14 @@ export class GameScene extends Phaser.Scene {
   private cleanup(): void {
     this.running = false;
     this.spawnTimer?.remove(false);
+    if (this.scene.isActive('UpgradeScene')) this.scene.stop('UpgradeScene');
+    this.weapon.clear();
     this.enemies.clear();
     this.pickups.clear();
     this.hud.destroy();
   }
 
   private updateHud(): void {
-    this.hud.update({ player: this.damage.state, progression: this.progression, elapsedSec: this.elapsed, defeated: this.defeated });
+    this.hud.update({ player: this.damage.state, progression: this.progression, elapsedSec: this.elapsed, defeated: this.defeated, weapons: this.weapon.inventory });
   }
 }

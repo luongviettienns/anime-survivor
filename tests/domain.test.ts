@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   applyContactDamage,
+  applyEnemyKnockback,
   applyProjectileHit,
   clampHealth,
   createEnemyState,
@@ -70,6 +71,18 @@ describe('pure gameplay rules', () => {
     // Second projectile in the same frame cannot kill again
     const duplicateHit = applyProjectileHit(enemy, 28);
     expect(duplicateHit).toEqual({ damaged: false, killed: false });
+  });
+
+  it('applies enemy knockback velocity away from source when alive', () => {
+    const enemy = createEnemyState(2, 50, 94);
+    applyEnemyKnockback(enemy, { x: 100, y: 100 }, { x: 130, y: 140 }, 250, 1000, 120);
+    expect(enemy.knockbackVx).toBeCloseTo(150);
+    expect(enemy.knockbackVy).toBeCloseTo(200);
+    expect(enemy.knockbackUntilMs).toBe(1120);
+
+    enemy.dead = true;
+    applyEnemyKnockback(enemy, { x: 100, y: 100 }, { x: 100, y: 200 }, 300, 2000, 120);
+    expect(enemy.knockbackUntilMs).toBe(1120);
   });
 
   it('levels up across multiple thresholds and rejects negative experience', () => {

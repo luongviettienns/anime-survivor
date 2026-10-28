@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-test.describe('Anime Survivor Phase 1 Gameplay Logic E2E', () => {
+test.describe('Anime Survivor Phase 1 & 2 Gameplay Logic E2E', () => {
   test('A: boots game, normalizes diagonal vs cardinal displacement, and has no console errors', async ({
     page,
   }) => {
@@ -109,5 +109,62 @@ test.describe('Anime Survivor Phase 1 Gameplay Logic E2E', () => {
     expect(hudText).toContain('HP 100/100');
     expect(hudText).toContain('KILLS 1');
     expect(hudText).toContain('ORB Lv1');
+  });
+
+  test('F: opens UpgradeScene on level-up, applies weapon upgrades, and executes slash + orbital attacks', async ({
+    page,
+  }) => {
+    await page.goto('/');
+    await page.waitForFunction(() => Boolean(window.__ANIME_SURVIVOR__));
+    await page.evaluate(() => window.__ANIME_SURVIVOR__!.clearEnemies());
+
+    // Grant 5 XP to reach Lv2 and trigger UpgradeScene
+    await page.evaluate(() => window.__ANIME_SURVIVOR__!.grantXp(5));
+    await page.waitForFunction(
+      () => window.__ANIME_SURVIVOR__!.getUpgradeChoices().length === 3,
+      undefined,
+      { timeout: 2000 }
+    );
+
+    const progDuringModal = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getProgression());
+    expect(progDuringModal.level).toBe(2);
+    expect(progDuringModal.pendingUpgrades).toBe(1);
+
+    // Select first upgrade choice
+    const applied = await page.evaluate(() => window.__ANIME_SURVIVOR__!.chooseUpgrade(0));
+    expect(applied).toBe(true);
+
+    const progAfterModal = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getProgression());
+    expect(progAfterModal.pendingUpgrades).toBe(0);
+
+    // Unlock slash and orbital directly on inventory and verify close-range combat + HUD badges
+    await page.evaluate(() => {
+      const api = window.__ANIME_SURVIVOR__!;
+      const scene = api.getScene() as unknown as {
+        weapon: { inventory: { orb: number; slash: number; orbital: number } };
+        updateHud: () => void;
+      };
+      scene.weapon.inventory.orb = 0;
+      scene.weapon.inventory.slash = 1;
+      scene.weapon.inventory.orbital = 1;
+      scene.updateHud();
+      api.clearEnemies();
+      const pos = api.getPlayerPosition();
+      api.spawnEnemyAt(pos.x + 56, pos.y);
+    });
+
+    await page.waitForFunction(
+      () => window.__ANIME_SURVIVOR__!.getProgression().defeated >= 1,
+      undefined,
+      { timeout: 3000 }
+    );
+
+    const weapons = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getWeaponInventory());
+    expect(weapons.slash).toBe(1);
+    expect(weapons.orbital).toBe(1);
+
+    const hudText = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getScene().getHudText());
+    expect(hudText).toContain('SLASH Lv1');
+    expect(hudText).toContain('ORBIT Lv1');
   });
 });

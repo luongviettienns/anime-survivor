@@ -1,5 +1,10 @@
 import Phaser from 'phaser';
-import { applyProjectileHit, createEnemyState, type EnemyState } from '../../domain/combat';
+import {
+  applyEnemyKnockback,
+  applyProjectileHit,
+  createEnemyState,
+  type EnemyState,
+} from '../../domain/combat';
 import type { TargetCandidate } from '../../domain/targeting';
 import { chaseVelocity } from '../../domain/vector';
 import { ENEMY, WORLD } from '../config/constants';
@@ -9,7 +14,10 @@ export class EnemySystem {
   private nextId = 1;
   private readonly states = new Map<Phaser.Physics.Arcade.Sprite, EnemyState>();
 
-  constructor(scene: Phaser.Scene, private readonly target: Phaser.Physics.Arcade.Sprite) {
+  constructor(
+    private readonly scene: Phaser.Scene,
+    private readonly target: Phaser.Physics.Arcade.Sprite
+  ) {
     this.group = scene.physics.add.group();
   }
 
@@ -80,7 +88,9 @@ export class EnemySystem {
 
   damageEnemy(
     enemyObject: Phaser.GameObjects.GameObject,
-    damage: number
+    damage: number,
+    knockbackPxSec = 0,
+    sourcePos: { x: number; y: number } = this.target
   ): { damaged: boolean; killed: boolean; x: number; y: number } {
     const enemy = enemyObject as Phaser.Physics.Arcade.Sprite;
     const state = this.states.get(enemy);
@@ -94,15 +104,30 @@ export class EnemySystem {
       if (enemy.body) enemy.body.enable = false;
       this.states.delete(enemy);
       enemy.destroy();
+    } else if (result.damaged) {
+      enemy.setTint(0xffffff);
+      this.scene.time.delayedCall(85, () => {
+        if (enemy.active) enemy.clearTint();
+      });
+      if (knockbackPxSec > 0) {
+        applyEnemyKnockback(state, sourcePos, { x, y }, knockbackPxSec, this.scene.time.now);
+        enemy.setVelocity(state.knockbackVx, state.knockbackVy);
+      }
     }
     return { damaged: result.damaged, killed: result.killed, x, y };
   }
 
   update(playerDead = false): void {
+    const nowMs = this.scene.time.now;
     for (const object of this.group.getChildren()) {
       const enemy = object as Phaser.Physics.Arcade.Sprite;
       const state = this.states.get(enemy);
       if (!enemy.active || !state || state.dead) continue;
+      if (!playerDead && nowMs < state.knockbackUntilMs) {
+        enemy.setVelocity(state.knockbackVx, state.knockbackVy);
+        enemy.setDepth(enemy.y);
+        continue;
+      }
       const vel = chaseVelocity(enemy, this.target, state.speed, playerDead);
       enemy.setVelocity(vel.x, vel.y);
       if (Math.abs(vel.x) > 1e-3) {

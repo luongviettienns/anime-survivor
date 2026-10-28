@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import { BootScene } from './game/scenes/BootScene';
 import { GameScene } from './game/scenes/GameScene';
+import { UpgradeScene } from './game/scenes/UpgradeScene';
 import { GameOverScene } from './game/scenes/GameOverScene';
 import './app/style.css';
 
@@ -14,5 +15,5 @@ new Phaser.Game({
   roundPixels: true,
   scale: { mode: Phaser.Scale.FIT, autoCenter: Phaser.Scale.CENTER_BOTH },
   physics: { default: 'arcade', arcade: { debug: false } },
-  scene: [BootScene, GameScene, GameOverScene],
+  scene: [BootScene, GameScene, UpgradeScene, GameOverScene],
 });

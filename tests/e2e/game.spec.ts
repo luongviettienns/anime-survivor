@@ -42,7 +42,7 @@ test.describe('Anime Survivor Phase 1 Gameplay Logic E2E', () => {
     expect(errors).toEqual([]);
   });
 
-  test('B, C, D, E, G: enforces 3-enemy overlap single hit i-frames, auto-target kill, single pickup collider, heal clamp, and clean restart', async ({
+  test('B, C, D, E, G: enforces 3-enemy overlap single hit i-frames, auto-target kill, single pickup collider, magnetic attraction + pooling, heal clamp, and clean restart', async ({
     page,
   }) => {
     await page.goto('/');
@@ -69,7 +69,7 @@ test.describe('Anime Survivor Phase 1 Gameplay Logic E2E', () => {
     );
     expect(stateAfterOverlap.hp).toBe(89);
 
-    // Check C & D: auto-targeting shoots and kills nearby enemy, dropping XP gem without increasing collider count
+    // Check C & D: auto-targeting shoots and kills nearby enemy, dropping XP gem within magnet radius and magnetically collecting it
     await page.evaluate(() => {
       const api = window.__ANIME_SURVIVOR__!;
       api.clearEnemies();
@@ -78,21 +78,30 @@ test.describe('Anime Survivor Phase 1 Gameplay Logic E2E', () => {
     });
 
     await page.waitForFunction(
-      () => window.__ANIME_SURVIVOR__!.getProgression().defeated >= 1,
+      () =>
+        window.__ANIME_SURVIVOR__!.getProgression().defeated >= 1 &&
+        window.__ANIME_SURVIVOR__!.getProgression().xp >= 1,
       undefined,
       { timeout: 3000 }
     );
     const countsAfterKill = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getCounts());
     expect(countsAfterKill.colliders).toBe(3);
+    expect(countsAfterKill.pickups).toBe(0);
 
-    // Check E: heal pickup restores HP and clamps at 100
+    // Check E: heal pickup within magnet radius (60px away) is magnetically pulled in, restores HP, and clamps at 100
     await page.evaluate(() => {
       const api = window.__ANIME_SURVIVOR__!;
       const pos = api.getPlayerPosition();
-      api.spawnHealAt(pos.x, pos.y, 25);
+      api.spawnHealAt(pos.x + 60, pos.y, 25);
     });
-    await page.waitForTimeout(100);
+    await page.waitForFunction(
+      () => window.__ANIME_SURVIVOR__!.getPlayerState().hp === 100,
+      undefined,
+      { timeout: 2000 }
+    );
     const stateAfterHeal = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getPlayerState());
     expect(stateAfterHeal.hp).toBe(100);
+    const countsAfterHeal = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getCounts());
+    expect(countsAfterHeal.pickups).toBe(0);
   });
 });

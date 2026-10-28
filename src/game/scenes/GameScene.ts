@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
-import { createProgression, xpThreshold, type RunProgression } from '../../domain/progression';
-import { ENEMY, PROJECTILE, WORLD } from '../config/constants';
+import { createProgression, type RunProgression } from '../../domain/progression';
+import { HudOverlay } from '../../ui/HudOverlay';
+import { ENEMY, PLAYER, PROJECTILE, WORLD } from '../config/constants';
 import { DamageSystem } from '../systems/DamageSystem';
 import { registerGameDebugApi } from '../systems/DebugBridge';
 import { EnemySystem } from '../systems/EnemySystem';
@@ -15,7 +16,7 @@ export class GameScene extends Phaser.Scene {
   private movement!: MovementSystem;
   private damage!: DamageSystem;
   private pickups!: PickupSystem;
-  private hud!: Phaser.GameObjects.Text;
+  private hud!: HudOverlay;
   private spawnTimer?: Phaser.Time.TimerEvent;
   private progression: RunProgression = createProgression();
   private defeated = 0;
@@ -48,6 +49,7 @@ export class GameScene extends Phaser.Scene {
     this.weapon = new WeaponSystem(this, this.player, this.enemies);
     this.damage = new DamageSystem(this.player);
     this.pickups = new PickupSystem(this);
+    this.hud = new HudOverlay(this);
 
     this.physics.add.overlap(this.weapon.projectiles, this.enemies.group, (a, b) =>
       this.onProjectileEnemy(a, b)
@@ -56,27 +58,6 @@ export class GameScene extends Phaser.Scene {
     this.physics.add.overlap(this.player, this.pickups.group, (_p, item) =>
       this.onPlayerPickup(item)
     );
-
-    this.hud = this.add
-      .text(16, 14, '', {
-        fontFamily: 'monospace',
-        fontSize: '19px',
-        color: '#ffffff',
-        backgroundColor: '#1b1934bb',
-        padding: { x: 12, y: 9 },
-      })
-      .setScrollFactor(0)
-      .setDepth(10000);
-
-    this.add
-      .text(945, 20, 'WASD / Arrow keys', {
-        fontFamily: 'monospace',
-        fontSize: '15px',
-        color: '#e8d5ff',
-      })
-      .setOrigin(1, 0)
-      .setScrollFactor(0)
-      .setDepth(10000);
 
     this.spawnTimer = this.time.addEvent({
       delay: 1050,
@@ -109,6 +90,7 @@ export class GameScene extends Phaser.Scene {
     this.movement.update(true);
     this.enemies.update(false);
     this.weapon.update(this.time.now, true);
+    this.pickups.update(this.player, PLAYER.pickupMagnetRadius, PLAYER.pickupMagnetSpeed);
     this.damage.updateVisuals(this.time.now);
     this.player.setDepth(this.player.y);
 
@@ -153,8 +135,7 @@ export class GameScene extends Phaser.Scene {
 
   private onPlayerEnemyContact(): void {
     if (!this.running || !this.damage.state.alive) return;
-    const outcome = this.damage.tryContactDamage(this.time.now);
-    if (outcome.died) {
+    if (this.damage.tryContactDamage(this.time.now).died) {
       this.endRun(false);
     }
   }
@@ -189,16 +170,11 @@ export class GameScene extends Phaser.Scene {
   }
 
   private updateHud(): void {
-    const min = Math.floor(this.elapsed / 60)
-      .toString()
-      .padStart(2, '0');
-    const sec = Math.floor(this.elapsed % 60)
-      .toString()
-      .padStart(2, '0');
-    const { hp, maxHp } = this.damage.state;
-    const { level, xp } = this.progression;
-    this.hud.setText(
-      `ANIME SURVIVOR  |  HP ${hp}/${maxHp}  |  LV ${level}  XP ${xp}/${xpThreshold(level)}\nTIME ${min}:${sec}  |  KILLS ${this.defeated}`
-    );
+    this.hud.update({
+      player: this.damage.state,
+      progression: this.progression,
+      elapsedSec: this.elapsed,
+      defeated: this.defeated,
+    });
   }
 }

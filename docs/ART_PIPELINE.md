@@ -80,3 +80,7 @@ Kirito right run, side hit/defeat/basic and all3Wave animation variants now have
 
 ## Kirito transition and Dual X native extensions
 Twelve authored side windup/follow PNGs use scripts/pack_kirito_transitions.py and validate_kirito_transitions.py. Three travelling X loop poses in art/source/x-wave-cross combine existing Ice/Dark crescents; scripts/x_wave_art.py packs/checks native originals, exact padding-only sheets and runtime atlas placement. Both extensions preserve original RGBA bytes. X rotates with aim and loops at60ms per phase. Dash animation weights stretch to225ms to match gameplay. Evidence/limitations are recorded in docs/PROGRESS.md and batch qa folders.
+
+
+## Dual X camera correction
+User rejected the frontal X illustration. The active extension is art/source/x-wave-perspective with4native1536x1024RGBA frames:000/001right,002/003up. Each camera axis loops two90ms poses. Runtime selects the axis and rotates relative to its canonical heading; it no longer rotates the horizontal image90degrees for vertical shots. Source/public/dist images remain byte-identical; no alpha cleanup/resampling. scripts/x_wave_art.py packs/checks padding-only1792px sheets and exact runtime atlas placement. The previous3frame batch is archival and reproducible with --revision x-wave-cross. Opposite headings reuse180degree rotation; independent4heading artwork is not claimed.

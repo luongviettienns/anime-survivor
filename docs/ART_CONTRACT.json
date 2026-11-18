@@ -883,6 +883,31 @@
     }
   },
   "dual_x_wave_extension": {
+    "source": "art/source/x-wave-perspective/originals",
+    "frames": "art/source/x-wave-perspective/frames",
+    "sheets": "art/source/x-wave-perspective/sheets",
+    "contract": "art/source/x-wave-perspective/contract.json",
+    "runtime": "public/assets/dual-element/x-wave-perspective",
+    "frames_count": 4,
+    "durations_ms": [
+      90,
+      90
+    ],
+    "packing": "python scripts/x_wave_art.py",
+    "validation": "python scripts/x_wave_art.py --check",
+    "policy": "Native RGBA byte-identical PNGs; padding-only1792px cells. Separate horizontal and vertical oblique curved Ice/Dark energy shells; two90ms poses per axis. Vertical view does not rotate the horizontal illustration upright.",
+    "views": {
+      "horizontal": [
+        0,
+        1
+      ],
+      "vertical": [
+        2,
+        3
+      ]
+    }
+  },
+  "dual_x_wave_previous_revision": {
     "source": "art/source/x-wave-cross/originals",
     "frames": "art/source/x-wave-cross/frames",
     "sheets": "art/source/x-wave-cross/sheets",
@@ -894,8 +919,8 @@
       60,
       60
     ],
-    "packing": "python scripts/x_wave_art.py",
-    "validation": "python scripts/x_wave_art.py --check",
+    "packing": "python scripts/x_wave_art.py --revision x-wave-cross",
+    "validation": "python scripts/x_wave_art.py --revision x-wave-cross --check",
     "policy": "Native RGBA byte-identical copies; padding-only1792px cells; cyan Ice and violet Dark Fire crescent waves intersect into travelling X, rotated by aim."
   }
 }

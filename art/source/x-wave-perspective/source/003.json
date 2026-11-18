@@ -1,0 +1,8 @@
+{
+  "index": 3,
+  "prompt": "ONE SINGLE next animation frame of reference1, preserve its exact1536x1024transparent RGBA canvas, exact fixed center/scale, same low wide foreshortened X silhouette, same oblique TOP-DOWN view, strong curved thick cyan Ice shell in FRONT of dark violet flame shell, fixed sidewalls and four horns, no image rotation/shift/zoom. The effect travels NORTH/up across the ground. This is phase1 of a compact two-frame loop: only a subtle pulse in the white cutting edge, a few ice shards/sparks shift10px DOWN toward the trailing side, violet wisps curl a little; no new large forms, no shape growth. Keep native crisp pixel clusters and colors. CRITICAL: preserve source transparency exactly around the border. All effect/glow pixels stay inside x100..1436,y150..874; all outer100pixels at all4edges MUST be fullytransparent alpha0. No glow haze touching imageedges, opaque background, ground, ring, text, characters, sheet or grid. Do not turn into a tall upright X; it stays BROAD AND LOW with visible upper surfaces and thick lower sidewalls, upper far horns shorter and lower near horns broad. Exactly one VFX pose.",
+  "reference": [
+    "C:/Users/ASUS/.codex/generated_images/01a1ee04-31d9-76f3-993d-4f3b2888c393/exec-c6845d4a-bf24-43d2-8dd6-b2b17e3a0ccc.png"
+  ],
+  "path": "C:/Users/ASUS/.codex/generated_images/01a1ee04-31d9-76f3-993d-4f3b2888c393/exec-7bb8fa5f-0674-4dea-8244-4951fa9d789c.png"
+}

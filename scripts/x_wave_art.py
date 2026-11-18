@@ -1,4 +1,4 @@
-"""Pack/check three native crescent-combination X-wave frames without pixel edits."""
+"""Pack/check native crescent-combination X-wave frames without pixel edits."""
 import argparse
 import hashlib
 import shutil
@@ -8,14 +8,15 @@ from actor_v3_art import GAME, read, write
 import pack_frames
 import validate_sprites
 
-ROOT = GAME / 'art/source/x-wave-cross'
-OUT = GAME / 'public/assets/dual-element/x-wave-cross'
+ROOT = GAME / 'art/source/x-wave-perspective'
+OUT = GAME / 'public/assets/dual-element/x-wave-perspective'
 KEY = 'vfx_dual_element_x'
 CELL = 1792
+COUNT = 4
 
 def build():
     textures, entries = [], []
-    for index in range(3):
+    for index in range(COUNT):
         entry = read(ROOT / 'source' / f'{index:03}.json')
         saved = ROOT / 'originals' / f'{index:03}.png'
         original = Path(entry['path'])
@@ -51,21 +52,22 @@ def build():
                           'sha256': hashlib.sha256(saved.read_bytes()).hexdigest()})
         entries.append(entry)
     contract = {'version': 1,'sprites': {'x_wave_dual': {'frame_width': CELL,'frame_height': CELL,
-        'columns': 3,'rows': 1,'order': ['play'],'animations': {'play': 3}}},'single_images': {}}
+        'columns': COUNT,'rows': 1,'order': ['play'],'animations': {'play': COUNT}}},'single_images': {}}
     pack_frames.CONTRACT = contract
     pack_frames.pack_all(ROOT / 'frames', ROOT / 'sheets')
     write(ROOT / 'contract.json', contract)
     write(ROOT / 'provenance.json', {'tool': 'built-in image_gen','native_pixels_preserved': True,
-        'direction': 'right-facing travelling VFX; rotate with aim, no ground rings','records': entries})
+        'direction': 'Cross: right canonical. Perspective: 000-001 right, 002-003 up; rotate relative to chosen axis. No ground rings.',
+        'records': entries})
     write(OUT / f'{KEY}.atlas.json', {'textures': textures,'meta': {'format': 'RGBA8888','scale': '1'}})
 
 def verify():
     records = read(ROOT / 'provenance.json')['records']
     textures = read(OUT / f'{KEY}.atlas.json')['textures']
-    if len(records) != 3:
-        raise ValueError('Expected three independently authored X-wave poses')
-    if len(textures) != 3:
-        raise ValueError('Expected three runtime atlas pages')
+    if len(records) != COUNT:
+        raise ValueError(f'Expected {COUNT} independently authored X-wave poses')
+    if len(textures) != COUNT:
+        raise ValueError(f'Expected {COUNT} runtime atlas pages')
     for i, entry in enumerate(records):
         for source in [ROOT / 'originals' / f'{i:03}.png', OUT / 'originals' / f'{i:03}.png']:
             if hashlib.sha256(source.read_bytes()).hexdigest() != entry['sha256']:
@@ -85,11 +87,16 @@ def verify():
     validate_sprites.CONTRACT = read(ROOT / 'contract.json')
     validate_sprites.FRAMES, validate_sprites.OUT = ROOT / 'frames', ROOT / 'sheets'
     validate_sprites.verify()
-    print('PASS3native X-wave source/runtime images and exact archival crops')
+    print(f'PASS{COUNT}native X-wave source/runtime images and exact archival crops')
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--check', action='store_true')
-    if not parser.parse_args().check:
+    parser.add_argument('--revision', choices=['x-wave-cross', 'x-wave-perspective'], default='x-wave-perspective')
+    args = parser.parse_args()
+    ROOT = GAME / 'art/source' / args.revision
+    OUT = GAME / 'public/assets/dual-element' / args.revision
+    COUNT = 3 if args.revision == 'x-wave-cross' else 4
+    if not args.check:
         build()
     verify()

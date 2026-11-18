@@ -1,0 +1,9 @@
+# Oblique Dual X wave revision
+
+The user rejected the preceding cross revision because it looked front-facing in the game camera. This revision uses two broad curved energy shells seen obliquely from above, cyan Ice crossing in front of violet Dark Fire, visible sidewalls/top faces, unequal near/far horns and a wider lower silhouette. Four independently generated native RGBA frames form two180ms loops:000/001 face right,002/003 face up. Axis selection retains a broad low vertical perspective instead of rotating the right-facing image upright. Opposite headings rotate their corresponding canonical view180degrees. Source prompts and references are retained in source/ and provenance.json after packing. No source resampling, quantization or alpha cleanup.
+
+Packing/validation: python scripts/x_wave_art.py [--check]. The old revision remains reproducible via --revision x-wave-cross. Runtime PNGs are byte-identical originals;1792px cells only add transparent padding. Camera preview is a static harness, not gameplay evidence; check_effect.cjs exercises actual game projectiles separately. The first phase1 attempt had clipped edge glow and is excluded; its tool path/prompt is retained in rejected/.
+
+This is an art/camera revision; damage, size scaling, pierce, status effects and Dash duration remain unchanged.
+
+Verification: npm run verify passed22test files/86tests, TypeScript, lint, architecture, asset checks and production build. Actual gameplay at5184loaded all4native textures, selected000/001for horizontal and002/003for vertical, looped both frames in all4directions and applied Slow+Burn on hits. Dash remains225ms with220px level1path. No page/console/network errors. WASD movement passed. Source/public/dist hashes match; screenshots and contact sheet inspected. No full10minute run, crowded GPU profile or user visual approval claimed.

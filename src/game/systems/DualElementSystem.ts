@@ -19,6 +19,7 @@ type PendingWave = {
   knockbackPxSec: number;
   rangePx: number;
   pierceCount: number;
+  sizeScale: number;
   fallbackDir: Vec2;
 };
 type ShotMeta = {
@@ -67,7 +68,7 @@ export class DualElementSystem {
           this.queue.push({
             fireAtMs: nowMs + w.releaseDelayMs, kind: w.kind, level,
             damage: stats.damage, speedPxSec: stats.speedPxSec, knockbackPxSec: stats.knockbackPxSec,
-            rangePx: stats.rangePx, pierceCount: stage.pierceCount, fallbackDir: aim,
+            rangePx: stats.rangePx, pierceCount: stage.pierceCount, sizeScale: stage.sizeScale, fallbackDir: aim,
           });
         }
       }
@@ -122,7 +123,7 @@ export class DualElementSystem {
     const shot = reuse
       ? (reuse.enableBody(true, handX, handY, true, true), reuse)
       : (this.projectiles.create(handX, handY, art.tex, `${art.tex}/000`) as Phaser.Physics.Arcade.Sprite);
-    shot.setTexture(art.tex, `${art.tex}/000`).setOrigin(0.5, 0.5).setScale(art.scale * 1.75).setDepth(500_000_060);
+    shot.setTexture(art.tex, `${art.tex}/000`).setOrigin(0.5, 0.5).setScale(art.scale * 1.75 * item.sizeScale).setDepth(500_000_060);
     const circleOffset = Math.round(shot.width / 2 - art.radius / 1.75);
     shot.setCircle(art.radius / 1.75, circleOffset, circleOffset).setBlendMode('NORMAL').setRotation(Math.atan2(dir.y, dir.x))
       .setVelocity(dir.x * item.speedPxSec, dir.y * item.speedPxSec).play(art.anim, true);

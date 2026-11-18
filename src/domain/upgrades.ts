@@ -1,16 +1,9 @@
 import type { PlayerState } from './combat';
 import type { HeroId } from './heroes';
+import { MAX_PHANTOM_DASH_LEVEL } from './phantomDash';
 import { canUpgradeWeapon, upgradeWeapon, type WeaponId, type WeaponInventory } from './weapons';
 
-export type PassiveId =
-  | 'stat_max_hp'
-  | 'stat_damage_reduction'
-  | 'stat_damage'
-  | 'stat_cooldown'
-  | 'stat_move_speed'
-  | 'stat_magnet'
-  | 'stat_heavy_strike';
-
+export type PassiveId = 'stat_max_hp' | 'stat_damage_reduction' | 'stat_damage' | 'stat_cooldown' | 'stat_move_speed' | 'stat_magnet' | 'stat_heavy_strike';
 export type UpgradeId = 'skill_phantom_dash' | 'weapon_orb' | 'weapon_slash' | 'weapon_orbital' | 'weapon_mine' | 'weapon_dual_slash' | PassiveId;
 export const MAX_PASSIVE_LEVEL = 5;
 
@@ -24,34 +17,42 @@ export type PassiveStats = {
   heavyStrikeEvery: number;
   heavyStrikeBonus: number;
   attackCounter: number;
-  phantomDashUnlocked: boolean;
+  phantomDashLevel: number;
 };
 
-export type UpgradeChoice = {
-  id: UpgradeId;
-  title: string;
-  description: string;
-  icon: string;
-  category: 'weapon' | 'passive';
-  nextLevel?: number;
-};
-
+export type UpgradeChoice = { id: UpgradeId; title: string; description: string; icon: string; category: 'weapon' | 'passive'; nextLevel?: number };
 export type UpgradeRollContext = { playerLevel?: number; hpRatio?: number; heroId?: HeroId };
+
+const DUAL_SLASH_DESCS = [
+  'Unleash Ice wave (Slow, 1 pierce).',
+  'Unlock Ice + Dark Fire combo (2 pierce, +12% size, +knockback).',
+  '+Damage, 3 pierce, +24% size, stronger Slow & Burn.',
+  '+Damage, 4 pierce, +36% size, faster cooldown.',
+  'Unleash giant Dual X Wave (8 pierce, max Slow & Burn).',
+] as const;
+
+const PHANTOM_DASH_DESCS = [
+  'Auto-dash through 1 nearest foe (45 dmg, 7.0s CD).',
+  '60 dmg, 2 pierce, longer dash reach, 6.0s CD.',
+  'Dash 2x consecutively! 75 dmg, 3 pierce, 5.2s CD.',
+  '95 dmg, 4 pierce, wider reach, 4.4s CD.',
+  'Dash 3x consecutively! 115 dmg, 4 pierce, 3.6s CD.',
+] as const;
 
 const WEAPON_UPGRADE_META: ReadonlyArray<{
   upgradeId: 'weapon_orb' | 'weapon_slash' | 'weapon_orbital' | 'weapon_mine' | 'weapon_dual_slash';
   weaponId: WeaponId;
-  heroOnly?: HeroId;
+  heroOnly: HeroId;
   icon: string;
   title: string;
   unlockDesc: string;
   levelDesc: string;
 }> = [
   { upgradeId: 'weapon_orb', weaponId: 'orb', heroOnly: 'naruto', icon: 'icon-weapon_orb', title: 'Rasengan Chakra Orb', unlockDesc: 'Unlock auto-homing chakra orb.', levelDesc: '+9 Damage, faster cooldown & flight, extra orbs at Lv3/Lv5.' },
-  { upgradeId: 'weapon_dual_slash', weaponId: 'dual_slash', heroOnly: 'kirito', icon: 'icon-weapon_slash', title: 'Dual Element Slash', unlockDesc: 'Unleash Ice & Dark Fire energy waves.', levelDesc: 'Lv3 unlocks Dark Fire Burn combo; Lv5 unleashes Dual X Wave.' },
-  { upgradeId: 'weapon_slash', weaponId: 'slash', icon: 'icon-weapon_slash', title: 'Taijutsu Fist Combo', unlockDesc: 'Strike nearby foes with an empty-handed chakra punch.', levelDesc: '+14 Damage, wider reach, two-sided punches at Lv4.' },
-  { upgradeId: 'weapon_orbital', weaponId: 'orbital', icon: 'icon-weapon_orbital', title: 'Shadow Shuriken Ring', unlockDesc: 'Summon orbiting shadow shuriken that slice nearby foes.', levelDesc: '+7 Damage, faster spin, extra blades at Lv3/Lv5.' },
-  { upgradeId: 'weapon_mine', weaponId: 'mine', icon: 'icon-weapon_mine', title: 'Paper Bomb Tag', unlockDesc: 'Drop explosive shinobi tags behind you for blazing AOE blasts.', levelDesc: '+18 Blast Damage, wider radius, double drop at Lv4.' },
+  { upgradeId: 'weapon_dual_slash', weaponId: 'dual_slash', heroOnly: 'kirito', icon: 'icon-weapon_slash', title: 'Dual Element Slash', unlockDesc: DUAL_SLASH_DESCS[0], levelDesc: DUAL_SLASH_DESCS[1] },
+  { upgradeId: 'weapon_slash', weaponId: 'slash', heroOnly: 'naruto', icon: 'icon-weapon_slash', title: 'Taijutsu Fist Combo', unlockDesc: 'Strike nearby foes with an empty-handed chakra punch.', levelDesc: '+14 Damage, wider reach, two-sided punches at Lv4.' },
+  { upgradeId: 'weapon_orbital', weaponId: 'orbital', heroOnly: 'naruto', icon: 'icon-weapon_orbital', title: 'Shadow Shuriken Ring', unlockDesc: 'Summon orbiting shadow shuriken that slice nearby foes.', levelDesc: '+7 Damage, faster spin, extra blades at Lv3/Lv5.' },
+  { upgradeId: 'weapon_mine', weaponId: 'mine', heroOnly: 'naruto', icon: 'icon-weapon_mine', title: 'Paper Bomb Tag', unlockDesc: 'Drop explosive shinobi tags behind you for blazing AOE blasts.', levelDesc: '+18 Blast Damage, wider radius, double drop at Lv4.' },
 ];
 
 const HEAVY_EVERY = [6, 5, 5, 4, 3] as const;
@@ -70,7 +71,7 @@ export function createPassiveStats(): PassiveStats {
   return {
     levels: { stat_max_hp: 0, stat_damage_reduction: 0, stat_damage: 0, stat_cooldown: 0, stat_move_speed: 0, stat_magnet: 0, stat_heavy_strike: 0 },
     damageReduction: 0, damageBonus: 0, cooldownReductionMs: 0, moveSpeedBonusPxSec: 0,
-    pickupRadiusBonusPx: 0, heavyStrikeEvery: 0, heavyStrikeBonus: 0, attackCounter: 0, phantomDashUnlocked: false,
+    pickupRadiusBonusPx: 0, heavyStrikeEvery: 0, heavyStrikeBonus: 0, attackCounter: 0, phantomDashLevel: 0,
   };
 }
 
@@ -80,15 +81,16 @@ export function getAvailableUpgrades(
   heroId: HeroId = 'naruto'
 ): UpgradeChoice[] {
   const choices: UpgradeChoice[] = [];
-  if (heroId === 'kirito' && !passives.phantomDashUnlocked) choices.push({
-    id: 'skill_phantom_dash', title: 'Phantom Dash', description: 'Unlock SPACE / SHIFT: dash through foes and leave elemental afterimages.',
-    icon: 'icon-weapon_slash', category: 'weapon', nextLevel: 1,
-  });
+  if (heroId === 'kirito' && passives.phantomDashLevel < MAX_PHANTOM_DASH_LEVEL) {
+    const nextLevel = passives.phantomDashLevel + 1;
+    choices.push({ id: 'skill_phantom_dash', title: `Phantom Dash Lv.${nextLevel}`, description: PHANTOM_DASH_DESCS[nextLevel - 1]!, icon: 'icon-weapon_slash', category: 'weapon', nextLevel });
+  }
   for (const meta of WEAPON_UPGRADE_META) {
-    if (meta.heroOnly && meta.heroOnly !== heroId && inventory[meta.weaponId] === 0) continue;
+    if (meta.heroOnly !== heroId && inventory[meta.weaponId] === 0) continue;
     if (!canUpgradeWeapon(inventory, meta.weaponId)) continue;
     const nextLevel = inventory[meta.weaponId] + 1;
-    choices.push({ id: meta.upgradeId, title: `${meta.title} Lv.${nextLevel}`, description: nextLevel === 1 ? meta.unlockDesc : meta.levelDesc, icon: meta.icon, category: 'weapon', nextLevel });
+    const description = meta.weaponId === 'dual_slash' ? DUAL_SLASH_DESCS[nextLevel - 1]! : nextLevel === 1 ? meta.unlockDesc : meta.levelDesc;
+    choices.push({ id: meta.upgradeId, title: `${meta.title} Lv.${nextLevel}`, description, icon: meta.icon, category: 'weapon', nextLevel });
   }
   for (const id of PASSIVE_IDS) {
     const lv = passives.levels[id];
@@ -131,7 +133,7 @@ export function rollUpgradeChoices(
   rng: () => number = Math.random
 ): UpgradeChoice[] {
   const pool = getAvailableUpgrades(inventory, passives, ctx.heroId ?? 'naruto');
-  const owned = Object.values(inventory).filter((lv) => lv > 0).length;
+  const owned = Object.values(inventory).filter((lv) => lv > 0).length + (passives.phantomDashLevel > 0 ? 1 : 0);
   const hpRatio = ctx.hpRatio ?? 1;
   const weapons: UpgradeChoice[] = [], weaponW: number[] = [];
   const stats: UpgradeChoice[] = [], statW: number[] = [];
@@ -160,16 +162,16 @@ export function rollUpgradeChoices(
   return picked;
 }
 
+function isPassiveId(id: UpgradeId): id is PassiveId { return Object.prototype.hasOwnProperty.call(PASSIVE_META, id); }
+
 export function applyUpgradeChoice(choiceId: UpgradeId, inventory: WeaponInventory, player: PlayerState, passives: PassiveStats): void {
-  if (choiceId === 'weapon_orb') { upgradeWeapon(inventory, 'orb'); return; }
-  if (choiceId === 'weapon_dual_slash') { upgradeWeapon(inventory, 'dual_slash'); return; }
-  if (choiceId === 'weapon_slash') { upgradeWeapon(inventory, 'slash'); return; }
-  if (choiceId === 'weapon_orbital') { upgradeWeapon(inventory, 'orbital'); return; }
-  if (choiceId === 'weapon_mine') { upgradeWeapon(inventory, 'mine'); return; }
+  const weaponMeta = WEAPON_UPGRADE_META.find((m) => m.upgradeId === choiceId);
+  if (weaponMeta) { upgradeWeapon(inventory, weaponMeta.weaponId); return; }
   if (choiceId === 'skill_phantom_dash') {
-    if (passives.phantomDashUnlocked) throw new Error('Phantom Dash is already unlocked');
-    passives.phantomDashUnlocked = true; return;
+    if (passives.phantomDashLevel >= MAX_PHANTOM_DASH_LEVEL) throw new Error('Phantom Dash is already at max level');
+    passives.phantomDashLevel += 1; return;
   }
+  if (!isPassiveId(choiceId)) throw new Error(`Unknown upgrade ${choiceId}`);
   const lv = passives.levels[choiceId];
   if (lv >= MAX_PASSIVE_LEVEL) throw new Error(`Cannot upgrade passive ${choiceId} from level ${lv}`);
   const val = PASSIVE_META[choiceId].values[lv]!;

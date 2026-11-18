@@ -48,7 +48,7 @@ export type GameDebugApi = {
   spawnHealAt: (x: number, y: number, amount?: number) => void;
   setWeaponLevel: (id: WeaponId, level: number) => void;
   getEnemyStatuses: () => Array<{ id: number; hp: number; slowActive: boolean; burnActive: boolean }>;
-  getDashState: () => { enabled: boolean; dashing: boolean; cooldownRemainingMs: number };
+  getDashState: () => { enabled: boolean; level: number; dashing: boolean; cooldownRemainingMs: number };
   clearEnemies: () => void;
 };
 
@@ -142,6 +142,7 @@ export function registerGameDebugApi(
     },
     getDashState: () => ({
       enabled: phantomDash?.isUnlocked() ?? false,
+      level: phantomDash?.getLevel() ?? 0,
       dashing: phantomDash?.isDashing() ?? false,
       cooldownRemainingMs: phantomDash ? phantomDash.getCooldownRemainingMs(scene.time.now) : 0,
     }),

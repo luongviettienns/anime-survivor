@@ -82,11 +82,10 @@ export class GameScene extends Phaser.Scene {
     this.physics.add.overlap(this.player, this.pickups.group, (_p, item) => this.onPlayerPickup(item));
     this.spawnTimer = this.time.addEvent({ delay: 60_000, loop: true });
     const onPauseKey = (ev?: KeyboardEvent) => this.handlePauseKey(ev?.timeStamp);
-    const onDashKey = () => this.tryPhantomDash();
     const kb = this.input.keyboard;
-    kb?.on('keydown-ESC', onPauseKey); kb?.on('keydown-P', onPauseKey); kb?.on('keydown-SPACE', onDashKey); kb?.on('keydown-SHIFT', onDashKey);
+    kb?.on('keydown-ESC', onPauseKey); kb?.on('keydown-P', onPauseKey);
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
-      kb?.off('keydown-ESC', onPauseKey); kb?.off('keydown-P', onPauseKey); kb?.off('keydown-SPACE', onDashKey); kb?.off('keydown-SHIFT', onDashKey); this.cleanup();
+      kb?.off('keydown-ESC', onPauseKey); kb?.off('keydown-P', onPauseKey); this.cleanup();
     });
     registerGameDebugApi(this, this.player, this.damage, this.enemies, this.weapon, this.pickups, this.vfx, this.audio, this.map, () => ({ ...this.progression, defeated: this.defeated }), this.phantomDash);
     this.updateHud();
@@ -96,7 +95,7 @@ export class GameScene extends Phaser.Scene {
     this.elapsed += delta / 1000;
     if (this.elapsed >= WORLD.runDurationSec) this.enemies.ensureBossSpawned();
     if (!this.spawnTimer?.paused) this.enemies.stepWaves(delta, this.elapsed, this.player.body?.velocity);
-    const dashing = this.phantomDash?.update(this.time.now, this.passives, this.enemies,
+    const dashing = this.phantomDash?.update(this.time.now, this.passives, this.enemies, this.damage.state,
       (x, y, dmg, killed, crit) => this.onCombat('hit', x, y, dmg, killed, crit), (x, y, arch, xp) => this.onEnemyKilled(x, y, arch, xp)) ?? false;
     if (dashing) this.movement.syncDashVisual(); else this.movement.update(true, this.passives.moveSpeedBonusPxSec, delta);
     this.map.update(this.player.x, this.player.y);
@@ -188,15 +187,14 @@ export class GameScene extends Phaser.Scene {
     if (victory) this.time.delayedCall(500, finish);
     else if (!this.movement.playDefeat(finish)) finish();
   }
-  tryPhantomDash(): boolean {
-    if (!this.phantomDash || !this.running || !this.damage.state.alive || this.isPaused() || this.scene.isActive('UpgradeScene')) return false;
-    return this.phantomDash.tryTrigger(this.time.now, this.movement.getInputDirection(), this.movement.getFacingDirection(), this.passives, this.damage.state);
-  }
   private cleanup(): void {
     this.running = false; this.spawnTimer?.remove(false);
     if (this.scene.isActive('UpgradeScene')) this.scene.stop('UpgradeScene');
     if (this.scene.isActive('PauseScene')) this.scene.stop('PauseScene');
     this.phantomDash?.clear(); this.weapon.clear(); this.enemies.clear(); this.pickups.clear(); this.vfx.clear(); this.map.clear(); this.hud.destroy(); this.shadows.clear();
   }
-  private updateHud(): void { this.hud.update({ player: this.damage.state, progression: this.progression, elapsedSec: this.elapsed, defeated: this.defeated, weapons: this.weapon.inventory, passives: this.passives, bossHp: this.enemies.getActiveBossState(), dashCooldownMs: this.passives.phantomDashUnlocked ? this.phantomDash?.getCooldownRemainingMs(this.time.now) : undefined }); }
+  private updateHud(): void {
+    const dashLevel = this.passives.phantomDashLevel;
+    this.hud.update({ player: this.damage.state, progression: this.progression, elapsedSec: this.elapsed, defeated: this.defeated, weapons: this.weapon.inventory, passives: this.passives, bossHp: this.enemies.getActiveBossState(), dashLevel: dashLevel > 0 ? dashLevel : undefined, dashCooldownMs: dashLevel > 0 ? this.phantomDash?.getCooldownRemainingMs(this.time.now) : undefined });
+  }
 }

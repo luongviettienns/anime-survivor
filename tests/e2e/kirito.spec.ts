@@ -64,7 +64,8 @@ test('Kirito unlocked lobby launch, high-defense stats, and Lv1/Lv3/Lv5 Dual Ele
   await page.waitForFunction(() => window.__ANIME_SURVIVOR__!.getUpgradeChoices().length > 0);
   const choices = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getUpgradeChoices());
   expect(choices.some((c) => c.id === 'weapon_orb')).toBe(false);
-  await page.evaluate(() => window.__ANIME_SURVIVOR__!.chooseUpgrade(0));
+  const nonDashIdx = Math.max(0, choices.findIndex((c) => c.id !== 'skill_phantom_dash'));
+  await page.evaluate((idx) => window.__ANIME_SURVIVOR__!.chooseUpgrade(idx), nonDashIdx);
   await page.waitForFunction(() => window.__ANIME_SURVIVOR__!.getUpgradeChoices().length === 0);
 
   // Pause background wave spawner during controlled weapon-stage checks
@@ -83,8 +84,8 @@ test('Kirito unlocked lobby launch, high-defense stats, and Lv1/Lv3/Lv5 Dual Ele
   expect(lv1Status.burnActive).toBe(false);
   await page.screenshot({ path: 'test-results/kirito-lv1-ice.png' });
 
-  // Lv.3 Sequential Ice + Dark Fire -> Slow and Burn coexist independently, Burn ticks HP down
-  await setupWave(page, 3, [[170, 0]]);
+  // Lv.2 Sequential Ice + Dark Fire -> Slow and Burn coexist independently, Burn ticks HP down
+  await setupWave(page, 2, [[170, 0]]);
   await page.waitForFunction(() => {
     const st = window.__ANIME_SURVIVOR__!.getEnemyStatuses();
     return st.length > 0 && st[0]!.slowActive && st[0]!.burnActive;
@@ -113,6 +114,7 @@ test('Kirito unlocked lobby launch, high-defense stats, and Lv1/Lv3/Lv5 Dual Ele
   }
 
   // Earn Dash through real upgrade cards before testing its movement and damage.
+  await page.evaluate(() => window.__ANIME_SURVIVOR__!.clearEnemies());
   for (let attempt = 0; attempt < 12; attempt++) {
     if (await page.evaluate(() => window.__ANIME_SURVIVOR__!.getDashState().enabled)) break;
     const progress = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getProgression());
@@ -124,31 +126,30 @@ test('Kirito unlocked lobby launch, high-defense stats, and Lv1/Lv3/Lv5 Dual Ele
     await page.evaluate(index => window.__ANIME_SURVIVOR__!.chooseUpgrade(index), dashIndex >= 0 ? dashIndex : 0);
     await page.waitForFunction(() => window.__ANIME_SURVIVOR__!.getUpgradeChoices().length === 0);
   }
-  // Verify Phantom Dash: Space dashes ~220px along move dir, kills/damages slimes on path, and enters cooldown
-  expect(await page.evaluate(() => window.__ANIME_SURVIVOR__!.getDashState())).toMatchObject({ enabled: true, dashing: false, cooldownRemainingMs: 0 });
-  await page.evaluate(() => {
-    window.__ANIME_SURVIVOR__!.clearEnemies();
-    const p = window.__ANIME_SURVIVOR__!.getPlayerPosition();
-    window.__ANIME_SURVIVOR__!.spawnEnemyAt(p.x + 90, p.y);
-    window.__ANIME_SURVIVOR__!.spawnEnemyAt(p.x + 170, p.y);
-    return p;
-  });
-  await page.keyboard.down('d');
-  await page.waitForTimeout(60);
+  // Verify Auto Phantom Dash Lv.1: dashes automatically to nearest slime, crosses just past 1 slime without hitting 2nd slime behind it
+  expect(await page.evaluate(() => window.__ANIME_SURVIVOR__!.getDashState())).toMatchObject({ enabled: true, level: 1, dashing: false, cooldownRemainingMs: 0 });
   const dashBefore = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getPlayerPosition());
-  await page.keyboard.press('Space');
-  await page.keyboard.up('d');
-  await page.waitForTimeout(120);
+  await page.evaluate(() => {
+    const api = window.__ANIME_SURVIVOR__!;
+    api.setWeaponLevel('dual_slash', 0);
+    api.clearEnemies();
+    const p = api.getPlayerPosition();
+    api.spawnEnemyAt(p.x + 110, p.y);
+    api.spawnEnemyAt(p.x + 220, p.y);
+  });
+  await page.waitForFunction(() => {
+    const d = window.__ANIME_SURVIVOR__!.getDashState();
+    return !d.dashing && d.cooldownRemainingMs > 5000;
+  }, undefined, { timeout: 5000 });
   await page.screenshot({ path: 'test-results/kirito-phantom-dash.png' });
-  await page.waitForTimeout(150);
-  await page.keyboard.up('d');
   const dashAfter = await page.evaluate(() => ({
     pos: window.__ANIME_SURVIVOR__!.getPlayerPosition(),
     dash: window.__ANIME_SURVIVOR__!.getDashState(),
-    remaining: window.__ANIME_SURVIVOR__!.getEnemyStatuses().length,
+    statuses: window.__ANIME_SURVIVOR__!.getEnemyStatuses(),
   }));
-  expect(dashAfter.pos.x - dashBefore.x).toBeGreaterThanOrEqual(195);
-  expect(dashAfter.remaining).toBe(0);
+  expect(dashAfter.pos.x - dashBefore.x).toBeGreaterThanOrEqual(130);
+  expect(dashAfter.pos.x - dashBefore.x).toBeLessThan(190);
+  expect(dashAfter.statuses.map((s) => s.hp)).toEqual([5, 50]);
   expect(dashAfter.dash.cooldownRemainingMs).toBeGreaterThan(5000);
 
   expect(errors).toEqual([]);

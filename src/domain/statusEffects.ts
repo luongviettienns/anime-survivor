@@ -40,13 +40,18 @@ export function createEnemyStatusState(): EnemyStatusState {
   };
 }
 
+const SLOW_REDUCTION = [50, 50, 55, 55, 60] as const;
+const SLOW_DURATION = [2200, 2300, 2500, 2700, 3000] as const;
+const BURN_DAMAGE = [10, 10, 12, 14, 16] as const;
+const BURN_DURATION = [2500, 2500, 2500, 2800, 3000] as const;
+
 export function getDualSlashStatusConfig(level: number): DualSlashStatusConfig {
-  const clamped = Math.max(1, Math.min(5, Math.floor(level)));
+  const step = Math.max(0, Math.min(4, Math.floor(level) - 1));
   return {
-    slowReductionPxSec: clamped >= 5 ? 60 : clamped >= 3 ? 55 : 50,
-    slowDurationMs: clamped >= 5 ? 3000 : clamped >= 3 ? 2500 : 2200,
-    burnDamagePerTick: clamped >= 5 ? 16 : clamped >= 4 ? 14 : 12,
-    burnDurationMs: clamped >= 5 ? 3000 : 2500,
+    slowReductionPxSec: SLOW_REDUCTION[step]!,
+    slowDurationMs: SLOW_DURATION[step]!,
+    burnDamagePerTick: BURN_DAMAGE[step]!,
+    burnDurationMs: BURN_DURATION[step]!,
   };
 }
 

@@ -63,7 +63,7 @@ export class HudOverlay {
 
   update(dto: HudStateDto): void {
     const w=dto.weapons,p=dto.passives,b=dto.bossHp,dashTenths=dto.dashCooldownMs===undefined?-1:Math.ceil(dto.dashCooldownMs/100);
-    const key=`${dto.player.hp}/${dto.player.maxHp}|${dto.progression.level}:${dto.progression.xp}|${Math.floor(dto.elapsedSec)}|${dto.defeated}|${dashTenths}|${w?`${w.orb},${w.dual_slash},${w.slash},${w.orbital},${w.mine}`:''}|${p?`${p.damageReduction},${p.damageBonus},${p.cooldownReductionMs},${p.moveSpeedBonusPxSec},${p.heavyStrikeEvery},${p.heavyStrikeBonus}`:''}|${b?`${b.name}:${b.hp}/${b.maxHp}`:''}`;
+    const key=`${dto.player.hp}/${dto.player.maxHp}|${dto.progression.level}:${dto.progression.xp}|${Math.floor(dto.elapsedSec)}|${dto.defeated}|${dto.dashLevel??0}:${dashTenths}|${w?`${w.orb},${w.dual_slash},${w.slash},${w.orbital},${w.mine}`:''}|${p?`${p.damageReduction},${p.damageBonus},${p.cooldownReductionMs},${p.moveSpeedBonusPxSec},${p.heavyStrikeEvery},${p.heavyStrikeBonus}`:''}|${b?`${b.name}:${b.hp}/${b.maxHp}`:''}`;
     if (key===this.lastKey) return;
     this.lastKey=key;
     const reqXp=Math.max(1,xpThreshold(dto.progression.level)),l=this.layout;
@@ -86,10 +86,11 @@ export class HudOverlay {
       summary.push(`${slot.label} Lv${level}`);
     }
     this.passives.setText(formatPassives(dto.passives));
-    this.controls.setText(dto.dashCooldownMs === undefined ? 'WASD/Arrows | ESC Pause' : 'WASD/Arrows | SPACE/SHIFT Dash | ESC Pause');
+    this.controls.setText('WASD/Arrows | ESC Pause');
     this.dashBadge.setVisible(dto.dashCooldownMs !== undefined);
     if (dto.dashCooldownMs !== undefined) {
-      this.dashBadge.setText(dto.dashCooldownMs <= 0 ? 'PHANTOM DASH [READY]' : `PHANTOM DASH [${(dto.dashCooldownMs / 1000).toFixed(1)}s]`)
+      const lvTag = dto.dashLevel ? ` Lv.${dto.dashLevel}` : '';
+      this.dashBadge.setText(dto.dashCooldownMs <= 0 ? `PHANTOM DASH${lvTag} [AUTO]` : `PHANTOM DASH${lvTag} [${(dto.dashCooldownMs / 1000).toFixed(1)}s]`)
         .setColor(dto.dashCooldownMs <= 0 ? '#5ce1e6' : '#94a3b8');
     }
     this.bossText.setVisible(Boolean(b&&b.hp>0));

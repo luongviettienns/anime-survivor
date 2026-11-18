@@ -79,13 +79,17 @@ describe('weapons domain scaling and inventory', () => {
     expect(() => computeWeaponStats('orb', 0)).toThrow();
     expect(() => computeWeaponStats('mine', 6)).toThrow();
 
-    expect(computeWeaponStats('dual_slash', 1)).toMatchObject({ id: 'dual_slash', damage: 32, cooldownMs: 880, count: 1 });
-    expect(computeWeaponStats('dual_slash', 3)).toMatchObject({ id: 'dual_slash', damage: 36, cooldownMs: 960, count: 2 });
-    expect(computeWeaponStats('dual_slash', 5)).toMatchObject({ id: 'dual_slash', damage: 110, cooldownMs: 820, count: 1 });
+    expect(computeWeaponStats('dual_slash', 1)).toMatchObject({ id: 'dual_slash', damage: 32, cooldownMs: 880, count: 1, knockbackPxSec: 70 });
+    expect(computeWeaponStats('dual_slash', 2)).toMatchObject({ id: 'dual_slash', damage: 28, cooldownMs: 940, count: 2, knockbackPxSec: 85 });
+    expect(computeWeaponStats('dual_slash', 3)).toMatchObject({ id: 'dual_slash', damage: 38, cooldownMs: 880, count: 2, knockbackPxSec: 100 });
+    expect(computeWeaponStats('dual_slash', 4)).toMatchObject({ id: 'dual_slash', damage: 48, cooldownMs: 820, count: 2, knockbackPxSec: 115 });
+    expect(computeWeaponStats('dual_slash', 5)).toMatchObject({ id: 'dual_slash', damage: 115, cooldownMs: 780, count: 1, knockbackPxSec: 135 });
 
-    expect(getDualSlashStage(1)).toEqual({ animKey: 'kirito-wave-lv1', waves: [{ kind: 'ice', releaseDelayMs: 180 }], pierceCount: 1 });
-    expect(getDualSlashStage(3)).toEqual({ animKey: 'kirito-wave-lv2', waves: [{ kind: 'ice', releaseDelayMs: 180 }, { kind: 'dark_fire', releaseDelayMs: 450 }], pierceCount: 1 });
-    expect(getDualSlashStage(5)).toEqual({ animKey: 'kirito-wave-lv3', waves: [{ kind: 'dual_x', releaseDelayMs: 280 }], pierceCount: 8 });
+    expect(getDualSlashStage(1)).toEqual({ animKey: 'kirito-wave-lv1', waves: [{ kind: 'ice', releaseDelayMs: 180 }], pierceCount: 1, sizeScale: 1 });
+    expect(getDualSlashStage(2)).toEqual({ animKey: 'kirito-wave-lv2', waves: [{ kind: 'ice', releaseDelayMs: 180 }, { kind: 'dark_fire', releaseDelayMs: 450 }], pierceCount: 2, sizeScale: 1.12 });
+    expect(getDualSlashStage(3)).toEqual({ animKey: 'kirito-wave-lv2', waves: [{ kind: 'ice', releaseDelayMs: 180 }, { kind: 'dark_fire', releaseDelayMs: 450 }], pierceCount: 3, sizeScale: 1.24 });
+    expect(getDualSlashStage(4)).toEqual({ animKey: 'kirito-wave-lv2', waves: [{ kind: 'ice', releaseDelayMs: 180 }, { kind: 'dark_fire', releaseDelayMs: 450 }], pierceCount: 4, sizeScale: 1.36 });
+    expect(getDualSlashStage(5)).toEqual({ animKey: 'kirito-wave-lv3', waves: [{ kind: 'dual_x', releaseDelayMs: 280 }], pierceCount: 8, sizeScale: 1.15 });
   });
 });
 
@@ -100,7 +104,9 @@ describe('11-card flat upgrades, Max Lv.5 cap, heavy strike, and smart weighted 
 
     const kiritoAvail = getAvailableUpgrades(createWeaponInventory('dual_slash'), passives, 'kirito');
     expect(kiritoAvail.some((c) => c.id === 'weapon_dual_slash')).toBe(true);
+    expect(kiritoAvail.some((c) => c.id === 'skill_phantom_dash')).toBe(true);
     expect(kiritoAvail.some((c) => c.id === 'weapon_orb')).toBe(false);
+    expect(kiritoAvail.some((c) => c.id === 'weapon_mine')).toBe(false);
 
     const inv = { orb: 5, slash: 2, orbital: 5, mine: 5, dual_slash: 0 };
     passives.levels.stat_damage = 5;

@@ -24,7 +24,7 @@ export class HeroActionVisual {
   play(skill: WeaponId, aimX: number, animOverride?: string): void {
     if (this.defeated) return;
     const current = this.sprite.anims.currentAnim?.key ?? '';
-    if (this.sprite.anims.isPlaying && current.startsWith('kirito-dash-')) return;
+    if (this.sprite.anims.isPlaying && current.startsWith('kirito-dash-') && !animOverride?.startsWith('kirito-dash-')) return;
     let key = this.heroId === 'kirito' ? (animOverride ?? 'kirito-wave-lv1') : `naruto-action-${skill}`;
     if (this.heroId === 'kirito' && !animOverride?.startsWith('kirito-dash-') && !key.startsWith('actor-')) {
       const action = skill === 'slash' ? 'basic' : key.replace('kirito-wave-', '');

@@ -848,5 +848,14 @@
       64,
       64
     ]
+  },
+  "actor_animation_package": {
+    "source": "art/source/actor-v2/site/assets/actor-v2",
+    "runtime": "public/assets/actor-v2",
+    "metadata": "src/game/config/actorClips.json",
+    "dash_metadata": "src/game/config/phantomDashAssets.ts",
+    "export": "python scripts/export_actor_clips.py",
+    "check": "python scripts/export_actor_clips.py --check",
+    "policy": "Native RGBA, byte-identical PNG copy; measured per-frame origin, fixed standing-reference display scale112px/player-normal-elite and224px/boss; missing headings remain explicit temporary fallback."
   }
 }

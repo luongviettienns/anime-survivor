@@ -36,7 +36,7 @@ export class DamageSystem {
       return { damaged: false, died: false };
     }
     if (this.player.active) {
-      this.player.setTint(0xff6677);
+      this.player.setTint(0xff6677).setData('actor-hit', true);
     }
     return { damaged: true, died: !this.state.alive };
   }

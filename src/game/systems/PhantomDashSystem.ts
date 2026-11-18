@@ -12,7 +12,7 @@ import {
 import { rollCombatDamage, type PassiveStats } from '../../domain/upgrades';
 import type { Vec2 } from '../../domain/vector';
 import type { WeaponId } from '../../domain/weapons';
-import { KIRITO_ORIGIN_Y, KIRITO_WORLD_SCALE, PHANTOM_DASH_ANIM_KEY } from '../config/dualElementAssets';
+import { dashClip } from '../config/phantomDashAssets';
 import type { EnemySystem } from './EnemySystem';
 import type { VfxSystem } from './VfxSystem';
 
@@ -23,6 +23,7 @@ export class PhantomDashSystem {
   private readonly hitIds = new Set<number>();
   private readonly ghosts: GhostEntry[] = [];
   private active = false;
+  private unlocked = false;
   private nextGhostAtMs = 0;
 
   constructor(
@@ -34,7 +35,7 @@ export class PhantomDashSystem {
   ) {}
 
   tryTrigger(nowMs: number, moveDir: Vec2, lastAim: Vec2, passives: PassiveStats, playerState: PlayerState): boolean {
-    if (!this.player.active || !playerState.alive) return false;
+    if (!passives.phantomDashUnlocked || !this.player.active || !playerState.alive) return false;
     const triggered = triggerPhantomDash(
       this.state,
       { x: this.player.x, y: this.player.y },
@@ -50,7 +51,7 @@ export class PhantomDashSystem {
     this.nextGhostAtMs = nowMs;
     playerState.invulnerableUntilMs = Math.max(playerState.invulnerableUntilMs, nowMs + PHANTOM_DASH.iframeMs);
 
-    const animKey = this.scene.anims?.exists(PHANTOM_DASH_ANIM_KEY) ? PHANTOM_DASH_ANIM_KEY : 'kirito-wave-lv3';
+    const animKey = dashClip(this.state.dir).key;
     this.onSkillUsed?.('dual_slash', this.state.dir.x, animKey);
     this.onAudioCue?.('slash');
     this.vfx?.playDualEffect(
@@ -72,6 +73,7 @@ export class PhantomDashSystem {
     onHitFeedback?: (x: number, y: number, dmg: number, killed: boolean, critical: boolean) => void,
     onEnemyKilled?: (x: number, y: number, archetype: EnemyArchetypeId, xpValue: number) => void
   ): boolean {
+    this.unlocked = passives.phantomDashUnlocked;
     this.updateGhosts(nowMs);
     if (!this.active) return false;
 
@@ -106,6 +108,8 @@ export class PhantomDashSystem {
     return Math.max(0, this.state.readyAtMs - nowMs);
   }
 
+  isUnlocked(): boolean { return this.unlocked; }
+
   isDashing(): boolean {
     return this.active;
   }
@@ -117,18 +121,20 @@ export class PhantomDashSystem {
   }
 
   private spawnGhost(nowMs: number, x: number, y: number): void {
+    const clip = dashClip(this.state.dir);
+    const frame = `${clip.atlas}/${String(clip.ghostFrame).padStart(3, '0')}`;
     let entry = this.ghosts.find((g) => !g.sprite.active);
     if (!entry) {
       if (this.ghosts.length >= 6) return;
-      const sprite = this.scene.add.sprite(x, y, 'kirito_wave_lv1_ice', 'kirito_wave_lv1_ice/000')
-        .setOrigin(0.5, KIRITO_ORIGIN_Y).setScale(KIRITO_WORLD_SCALE);
+      const sprite = this.scene.add.sprite(x, y, clip.key, frame)
+        .setOrigin(0.5, 0.75).setScale(clip.scale);
       entry = { sprite, expiresAtMs: 0 };
       this.ghosts.push(entry);
     }
     const tint = this.ghosts.indexOf(entry) % 2 === 0 ? 0x5ce1e6 : 0xc084fc;
-    entry.sprite.setTexture('kirito_wave_lv1_ice', 'kirito_wave_lv1_ice/000')
+    entry.sprite.setTexture(clip.key, frame).setScale(clip.scale)
       .setPosition(Math.round(x), Math.round(y + 28))
-      .setFlipX(this.state.dir.x < 0)
+      .setFlipX(false)
       .setTint(tint).setAlpha(0.65).setDepth(y - 1).setActive(true).setVisible(true);
     entry.expiresAtMs = nowMs + 240;
   }

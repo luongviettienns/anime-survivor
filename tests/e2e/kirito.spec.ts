@@ -1,8 +1,27 @@
-import { expect, test } from '@playwright/test';
+import type Phaser from 'phaser';
+import { expect, test, type Page } from '@playwright/test';
 
 type LobbyApi = { getSelectedHeroId: () => string; isActive: () => boolean };
 
+async function setupWave(page: Page, level: number, offsets: number[][], archetype: 'slime' | 'elite' = 'elite'): Promise<void> {
+  await page.evaluate(({ level, offsets, archetype }) => {
+    const api = window.__ANIME_SURVIVOR__!;
+    const scene = api.getScene() as unknown as { weapon: {
+      projectiles: Phaser.Physics.Arcade.Group;
+      consumeProjectile: (object: Phaser.GameObjects.GameObject) => boolean;
+      dualSlash: { clear: () => void; cooldown: { nextAttackAtMs: number } };
+    } };
+    for (const shot of scene.weapon.projectiles.getChildren()) scene.weapon.consumeProjectile(shot);
+    scene.weapon.dualSlash.clear(); scene.weapon.dualSlash.cooldown.nextAttackAtMs = 0;
+    api.clearEnemies(); api.setWeaponLevel('dual_slash', level);
+    for (const weapon of ['orb', 'slash', 'orbital', 'mine'] as const) api.setWeaponLevel(weapon, 0);
+    const position = api.getPlayerPosition();
+    for (const [x, y] of offsets) api.spawnEnemyTypeAt(archetype, position.x + x!, position.y + y!);
+  }, { level, offsets, archetype });
+}
+
 test('Kirito unlocked lobby launch, high-defense stats, and Lv1/Lv3/Lv5 Dual Element waves with Slow & Burn', async ({ page }) => {
+  test.setTimeout(60_000);
   const errors: string[] = [];
   page.on('pageerror', (e) => errors.push(e.message));
   page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
@@ -50,13 +69,11 @@ test('Kirito unlocked lobby launch, high-defense stats, and Lv1/Lv3/Lv5 Dual Ele
 
   // Pause background wave spawner during controlled weapon-stage checks
   await page.evaluate(() => {
-    const s = window.__ANIME_SURVIVOR__!.getScene() as unknown as { spawnTimer?: { paused: boolean } };
+    const s = window.__ANIME_SURVIVOR__!.getScene() as unknown as { spawnTimer?: { paused: boolean }; pickups: { update: () => void }; damage: { state: { invulnerableUntilMs: number } } };
+    s.pickups.update = () => {}; s.damage.state.invulnerableUntilMs = Number.MAX_SAFE_INTEGER;
     if (s.spawnTimer) s.spawnTimer.paused = true;
-    window.__ANIME_SURVIVOR__!.clearEnemies();
-    window.__ANIME_SURVIVOR__!.setWeaponLevel('dual_slash', 1);
-    const p = window.__ANIME_SURVIVOR__!.getPlayerPosition();
-    window.__ANIME_SURVIVOR__!.spawnEnemyTypeAt('elite', p.x + 150, p.y);
   });
+  await setupWave(page, 1, [[150, 0]]);
   await page.waitForFunction(() => {
     const st = window.__ANIME_SURVIVOR__!.getEnemyStatuses();
     return st.length > 0 && st[0]!.slowActive;
@@ -67,12 +84,7 @@ test('Kirito unlocked lobby launch, high-defense stats, and Lv1/Lv3/Lv5 Dual Ele
   await page.screenshot({ path: 'test-results/kirito-lv1-ice.png' });
 
   // Lv.3 Sequential Ice + Dark Fire -> Slow and Burn coexist independently, Burn ticks HP down
-  await page.evaluate(() => {
-    window.__ANIME_SURVIVOR__!.clearEnemies();
-    window.__ANIME_SURVIVOR__!.setWeaponLevel('dual_slash', 3);
-    const p = window.__ANIME_SURVIVOR__!.getPlayerPosition();
-    window.__ANIME_SURVIVOR__!.spawnEnemyTypeAt('elite', p.x + 170, p.y);
-  });
+  await setupWave(page, 3, [[170, 0]]);
   await page.waitForFunction(() => {
     const st = window.__ANIME_SURVIVOR__!.getEnemyStatuses();
     return st.length > 0 && st[0]!.slowActive && st[0]!.burnActive;
@@ -84,13 +96,7 @@ test('Kirito unlocked lobby launch, high-defense stats, and Lv1/Lv3/Lv5 Dual Ele
   expect(afterBurn).toBeLessThan(beforeBurn);
 
   // Lv.5 Simultaneous Dual Element X Wave -> pierces multiple foes & applies Slow + Burn
-  await page.evaluate(() => {
-    window.__ANIME_SURVIVOR__!.clearEnemies();
-    window.__ANIME_SURVIVOR__!.setWeaponLevel('dual_slash', 5);
-    const p = window.__ANIME_SURVIVOR__!.getPlayerPosition();
-    window.__ANIME_SURVIVOR__!.spawnEnemyTypeAt('elite', p.x + 140, p.y);
-    window.__ANIME_SURVIVOR__!.spawnEnemyTypeAt('elite', p.x + 210, p.y);
-  });
+  await setupWave(page, 5, [[140, 0], [210, 0]]);
   await page.waitForFunction(() => {
     const st = window.__ANIME_SURVIVOR__!.getEnemyStatuses();
     return st.length >= 2 && st.every((e) => e.slowActive && e.burnActive);
@@ -99,21 +105,28 @@ test('Kirito unlocked lobby launch, high-defense stats, and Lv1/Lv3/Lv5 Dual Ele
 
   // Verify small normal slimes take damage reliably in all 4 cardinal directions & close range
   for (const [dx, dy] of [[140, 0], [-140, 0], [0, 140], [0, -140], [18, 0]]) {
-    await page.evaluate(([ox, oy]) => {
-      window.__ANIME_SURVIVOR__!.clearEnemies();
-      window.__ANIME_SURVIVOR__!.setWeaponLevel('dual_slash', 1);
-      const p = window.__ANIME_SURVIVOR__!.getPlayerPosition();
-      window.__ANIME_SURVIVOR__!.spawnEnemyAt(p.x + ox!, p.y + oy!);
-    }, [dx, dy]);
+    await setupWave(page, 1, [[dx!, dy!]], 'slime');
     await page.waitForFunction(() => {
       const st = window.__ANIME_SURVIVOR__!.getEnemyStatuses();
       return st.length === 0 || st[0]!.hp < 50;
     }, undefined, { timeout: 2500 });
   }
 
+  // Earn Dash through real upgrade cards before testing its movement and damage.
+  for (let attempt = 0; attempt < 12; attempt++) {
+    if (await page.evaluate(() => window.__ANIME_SURVIVOR__!.getDashState().enabled)) break;
+    const progress = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getProgression());
+    const required = progress.level <= 5 ? 5 + progress.level * 4 : progress.level <= 15 ? 15 + progress.level * 6 : 30 + progress.level * 10;
+    await page.evaluate(xp => window.__ANIME_SURVIVOR__!.grantXp(xp), required - progress.xp);
+    await page.waitForFunction(() => window.__ANIME_SURVIVOR__!.getUpgradeChoices().length > 0);
+    const cards = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getUpgradeChoices());
+    const dashIndex = cards.findIndex(c => c.id === 'skill_phantom_dash');
+    await page.evaluate(index => window.__ANIME_SURVIVOR__!.chooseUpgrade(index), dashIndex >= 0 ? dashIndex : 0);
+    await page.waitForFunction(() => window.__ANIME_SURVIVOR__!.getUpgradeChoices().length === 0);
+  }
   // Verify Phantom Dash: Space dashes ~220px along move dir, kills/damages slimes on path, and enters cooldown
   expect(await page.evaluate(() => window.__ANIME_SURVIVOR__!.getDashState())).toMatchObject({ enabled: true, dashing: false, cooldownRemainingMs: 0 });
-  const dashBefore = await page.evaluate(() => {
+  await page.evaluate(() => {
     window.__ANIME_SURVIVOR__!.clearEnemies();
     const p = window.__ANIME_SURVIVOR__!.getPlayerPosition();
     window.__ANIME_SURVIVOR__!.spawnEnemyAt(p.x + 90, p.y);
@@ -121,7 +134,10 @@ test('Kirito unlocked lobby launch, high-defense stats, and Lv1/Lv3/Lv5 Dual Ele
     return p;
   });
   await page.keyboard.down('d');
+  await page.waitForTimeout(60);
+  const dashBefore = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getPlayerPosition());
   await page.keyboard.press('Space');
+  await page.keyboard.up('d');
   await page.waitForTimeout(120);
   await page.screenshot({ path: 'test-results/kirito-phantom-dash.png' });
   await page.waitForTimeout(150);

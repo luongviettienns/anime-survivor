@@ -18,6 +18,7 @@ export class EnemyMeleeSkill {
   advance(delta: number): void { this.elapsed += delta; }
   private readonly sync = () => {
     for (const [enemy, entry] of this.entries) if (entry.pose?.visible) {
+      if (enemy.getData('actor-overlay-active')) { entry.pose.setVisible(false); entry.trail?.forEach(g => g.setVisible(false)); continue; }
       entry.pose.setPosition(enemy.x, enemy.y + (enemy.getData('footOffset') as number));
     }
   };
@@ -59,10 +60,10 @@ export class EnemyMeleeSkill {
       if (!entry.warning) {
         if (archetype !== 'boss') {
           entry.pose = this.scene.add.sprite(enemy.x, enemy.y, `${enemy.texture.key}_attack`)
-            .setScale(0.5).setOrigin(0.5, 0.75).setData('melee-actor', true);
+            .setScale(0.875).setOrigin(0.5, 0.75).setData('melee-actor', true);
           if (archetype === 'shade') {
             entry.trail = [0, 1].map(() => this.scene.add.sprite(enemy.x, enemy.y, 'enemy_shade_attack')
-              .setScale(0.5).setOrigin(0.5, 0.75).setTint(0xa95cec).setAlpha(0.2).setVisible(false).setData('melee-trail', true));
+              .setScale(0.875).setOrigin(0.5, 0.75).setTint(0xa95cec).setAlpha(0.2).setVisible(false).setData('melee-trail', true));
           }
         }
         entry.warning = this.scene.add.graphics().setData('melee-warning', true);
@@ -135,7 +136,7 @@ export class EnemyMeleeSkill {
     effect.setVisible(charging || age < 480);
     if (!charging && age >= 480) return;
     effect.setAlpha(charging ? 0.7 : Math.max(0, 1 - age / 480)).setFrame(charging ? 0 : Math.min(3, 1 + Math.floor(age / 160)))
-      .setScale(archetype === 'slime' ? 0.5 : 0.3, archetype === 'slime' ? 0.35 : 0.3)
+      .setScale(archetype === 'slime' ? 0.875 : 0.525, archetype === 'slime' ? 0.6125 : 0.525)
       .setPosition(archetype === 'slime' ? entry.origin.x : enemy.x + aim.x * 24, archetype === 'slime' ? entry.origin.y : enemy.y + aim.y * 24 - 8)
       .setRotation(archetype === 'slime' ? 0 : Math.atan2(aim.y, aim.x)).setDepth(archetype === 'slime' ? -500_000_000 : enemy.y + (entry.facing === 'up' ? -1 : 2));
   }

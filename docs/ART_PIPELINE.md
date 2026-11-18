@@ -66,3 +66,8 @@ Arcane UI:8 individual built-in ImageGen originals retained in art/source/arcane
 - Latest batch reduction: at most5 additional generated frames after the cap. Elite/boss reactions are reduced to front-only, one hit pose and one defeated pose, with intermediate falls/other directions deferred. Boss defeated is still missing because the image tool reached its usage limit. Never resume the archived192-frame target automatically.
 
 - Aura sizing correction: size elite/boss layers from fixed standing opaque model bounds, rather than multiplying independent aura scale constants. Outer aura is at most0.9body-height and1.2body-width; projected rings remain centered at footOffset. Recheck after global world-art scaling.
+
+## Consolidated main project — latest presentation override
+The user explicitly requested merging the review into the main project. Runtime src/ and public/assets/actor-v2/ are now canonical; old integration.patch/temporary-integration/ source snapshots are archival. Live actor metadata is src/game/config/actorClips.json and phantomDashAssets.ts. Export/check native bytes using scripts/export_actor_clips.py; it is included in npm run assets:validate.
+
+Latest target supersedes previous128/256px and1.5x preview values: standing player/normal/elite112px, boss224px, world camera1.3x, HUD camera1x. Scale changes affect rendering only; source pixels/alpha and collision dimensions remain unchanged. All earlier missing-state disclosures still apply. The sibling review project is retained as a backup;5184 serves the canonical main production build, not the old source copy.

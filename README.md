@@ -1,3 +1,17 @@
+# Anime Survivor — current unified project
+
+This folder is the canonical source. The directional-art review has been merged into src/ and public/assets/actor-v2/. The sibling AnimeSurvivor-AssetReview-4dir-20261118/project folder is an archived snapshot, not an independent development version.
+
+Run npm run dev -- --port 5173 --strictPort. Local game: http://127.0.0.1:5173/ . The5184 review server serves a build of this same main project.
+
+Current presentation: camera1.3x; standing player/normal/elite body112px and boss224px, consistent aura sizing and separate1xHUD camera. Native RGBA image files are preserved. Kirito starts with only Sword Wave (dual_slash Lv1). Other weapons and Phantom Dash are earned by selecting level-up cards; Space/Shift Dash is locked until its card is selected. Unlocks reset each run. Some missing directional art uses documented temporary fallback.
+
+Native actor export/check: python scripts/export_actor_clips.py [--check]. Historical source-generation plans and integration patches in art/source/actor-v2 are archival; live timing/scale metadata lives in src/game/config/. See docs/MERGE_ACCEPTANCE.md and docs/PROGRESS.md for scope and actual validation.
+
+---
+
+The original starter documentation below is historical and may describe older milestones.
+
 # Anime Survivor — Antigravity workspace / playable prototype
 
 A **starter workspace, NOT a fully finished game**. Designed so Google Antigravity can build a high-quality anime pixel-art web survivor game from A–Z without hand-drawn assets. Original code-generated hero, enemy, tile, tree, pickups, project specification and custom skills included.

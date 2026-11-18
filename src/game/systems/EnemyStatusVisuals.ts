@@ -13,7 +13,7 @@ import type { VfxSystem } from './VfxSystem';
 
 type EnemySprite = Phaser.Physics.Arcade.Sprite;
 
-const STATUS_SCALE = 0.042;
+const STATUS_SCALE = 0.0735;
 const END_SCALE = 0.048;
 
 export class EnemyStatusVisuals {

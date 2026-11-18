@@ -141,7 +141,7 @@ export function registerGameDebugApi(
         });
     },
     getDashState: () => ({
-      enabled: Boolean(phantomDash),
+      enabled: phantomDash?.isUnlocked() ?? false,
       dashing: phantomDash?.isDashing() ?? false,
       cooldownRemainingMs: phantomDash ? phantomDash.getCooldownRemainingMs(scene.time.now) : 0,
     }),

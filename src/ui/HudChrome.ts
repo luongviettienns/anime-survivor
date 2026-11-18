@@ -14,6 +14,7 @@ export class HudChrome {
     if (!panel) {
       panel = this.scene.add.nineslice(x, y, 'hud_panel', undefined, w * 64, h * 64, 256, 256, 256, 256).setScale(1 / 64)
         .setOrigin(0).setScrollFactor(0).setDepth(this.depth);
+      panel.cameraFilter = this.scene.cameras.main.id;
       this.panels.set(key, panel);
     }
     panel.setVisible(true).setTint(border === 0xfb7185 ? 0xffaaaa : 0xffffff);

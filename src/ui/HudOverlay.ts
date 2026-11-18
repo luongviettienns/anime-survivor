@@ -1,3 +1,4 @@
+import { isolateHudCamera } from './hudCamera';
 import Phaser from 'phaser';
 import type { HeroId } from '../domain/heroes';
 import { xpThreshold } from '../domain/progression';
@@ -34,6 +35,7 @@ export class HudOverlay {
   private lastKey = '';
 
   constructor(scene: Phaser.Scene, heroId: HeroId = 'naruto') {
+    const firstHudIndex = scene.children.list.length;
     const l = this.layout = hudLayout(scene.scale.width,scene.scale.height);
     this.chrome = new HudChrome(scene,Z-1);
     this.gauges = new HudGauges(scene,this.chrome,Z);
@@ -49,13 +51,14 @@ export class HudOverlay {
     this.timer = text(l.center,54,20,'#fff0c0').setOrigin(0.5).setData('hud-timer',true);
     this.kills = text(l.right-12,52,14,'#9beaff').setOrigin(1,0.5).setData('hud-kills',true);
     this.passives = text(310,92,12,'#d8c6ff');
-    this.controls = text(l.right,82,11,'#abc1dc').setOrigin(1,0).setText(heroId === 'kirito' ? 'WASD/Arrows | SPACE Dash | ESC Pause' : 'WASD/Arrows | ESC Pause');
+    this.controls = text(l.right,82,11,'#abc1dc').setOrigin(1,0).setText('WASD/Arrows | ESC Pause');
     this.dashBadge = text(l.right,98,12,'#5ce1e6').setOrigin(1,0).setVisible(heroId === 'kirito');
     this.bossText = text(l.center,l.boss.y-18,15,'#ffe4e6').setOrigin(0.5).setVisible(false).setData('hud-boss-title',true);
     for (const slot of SLOTS) {
       this.icons[slot.id] = scene.add.image(0,95,slot.icon).setDisplaySize(22,22).setScrollFactor(0).setDepth(Z+2).setVisible(false);
       this.badges[slot.id] = text(0,108,11,'#ffe5a0').setOrigin(1,1).setVisible(false);
     }
+    isolateHudCamera(scene, firstHudIndex);
   }
 
   update(dto: HudStateDto): void {
@@ -83,7 +86,9 @@ export class HudOverlay {
       summary.push(`${slot.label} Lv${level}`);
     }
     this.passives.setText(formatPassives(dto.passives));
-    if (this.dashBadge.visible && dto.dashCooldownMs !== undefined) {
+    this.controls.setText(dto.dashCooldownMs === undefined ? 'WASD/Arrows | ESC Pause' : 'WASD/Arrows | SPACE/SHIFT Dash | ESC Pause');
+    this.dashBadge.setVisible(dto.dashCooldownMs !== undefined);
+    if (dto.dashCooldownMs !== undefined) {
       this.dashBadge.setText(dto.dashCooldownMs <= 0 ? 'PHANTOM DASH [READY]' : `PHANTOM DASH [${(dto.dashCooldownMs / 1000).toFixed(1)}s]`)
         .setColor(dto.dashCooldownMs <= 0 ? '#5ce1e6' : '#94a3b8');
     }

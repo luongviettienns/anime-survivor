@@ -11,7 +11,8 @@ export type PoseMetrics = {
 export function fitEnemyPose(enemy: Phaser.Physics.Arcade.Sprite): void {
   if (enemy.getData('fittedFrame') === enemy.frame) return;
   const metrics = enemy.frame.customData as PoseMetrics;
-  const scale = metrics.displayScale ?? enemy.scaleY;
+  const neutral = enemy.texture.get(0).customData as PoseMetrics;
+  const scale = (enemy.texture.key === 'boss' ? 224 : 112) / (neutral.opaqueHeight ?? 160);
   const height = (metrics.opaqueHeight ?? 160) * scale;
   const footOffset = height / 2 - 4;
   const originY = 192 / enemy.height - footOffset / (enemy.height * scale);

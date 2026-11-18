@@ -19,7 +19,7 @@ export class GroundShadows {
       this.follow(actor, actor.texture.key === 'boss' ? 66 : actor.texture.key === 'enemy_elite' ? 48 : 34,
         (actor.getData('footOffset') as number | undefined) ?? 28, false);
     }
-    for (const object of pickups.getChildren()) this.follow(object as Actor, 18, 11, true);
+    for (const object of pickups.getChildren()) this.follow(object as Actor, 18, 19.25, true);
     for (const [actor, shadow] of this.shadows) {
       if (!actor.scene) { shadow.destroy(); this.shadows.delete(actor); }
       else if (!actor.active) shadow.setVisible(false);
@@ -34,7 +34,7 @@ export class GroundShadows {
         .setData('ground-shadow', true).setData('shadow-owner', actor).setDepth(-500_000_001);
       this.shadows.set(actor, shadow);
     }
-    shadow.setVisible(true).setPosition(actor.x, actor.y + footOffset).setDisplaySize(width,width/2);
+    shadow.setVisible(true).setPosition(actor.x, actor.y + footOffset).setDisplaySize(width * 1.75,width * 0.875);
   }
 
   clear(): void { this.scene.events.off('postupdate', this.sync); for (const shadow of this.shadows.values()) shadow.destroy(); this.shadows.clear(); }

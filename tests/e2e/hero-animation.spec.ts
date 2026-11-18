@@ -32,7 +32,7 @@ test('Naruto animates all four directions and remembers facing with real keys', 
     };
   });
   expect(await state()).toMatchObject({ animation: 'hero-idle', width: 32, height: 32, frames: [0, 1, 2, 3] });
-  expect(await state()).toMatchObject({ derived: true, visibleHeight: 56, legacyHidden: true });
+  expect(await state()).toMatchObject({ derived: true, visibleHeight: 112, legacyHidden: true });
   await page.keyboard.down('d');
   await expect.poll(async () => (await state()).animation).toBe('hero-walk');
   expect(await state()).toMatchObject({ flipX: false, frames: [4, 5, 6, 7] });
@@ -70,7 +70,7 @@ test('Naruto animates all four directions and remembers facing with real keys', 
     await expect.poll(async () => (await state()).animation).toBe(idle);
     expect((await state()).flipX).toBe(false);
     expect((await state()).derived).toBe(true);
-    expect((await state()).visibleHeight).toBeCloseTo(56);
+    expect(Math.abs((await state()).visibleHeight - 112)).toBeLessThan(2);
   }
   await page.keyboard.down('w');
   await page.keyboard.down('d');

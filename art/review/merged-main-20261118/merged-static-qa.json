@@ -1,0 +1,30 @@
+{
+  "state": {
+    "camera": 1.3,
+    "hudCamera": 1,
+    "inventory": {
+      "orb": 0,
+      "slash": 0,
+      "orbital": 0,
+      "mine": 0,
+      "dual_slash": 1
+    },
+    "dash": {
+      "enabled": false,
+      "dashing": false,
+      "cooldownRemainingMs": 0
+    },
+    "enemyBodies": [
+      {
+        "key": "enemy_elite",
+        "height": 112.00000000000001
+      },
+      {
+        "key": "enemy_mage",
+        "height": 112
+      }
+    ],
+    "actor": "actor-kirito_idle_down"
+  },
+  "errors": []
+}

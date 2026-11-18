@@ -1,3 +1,4 @@
+import { EnemyActorClips } from './EnemyActorClips';
 import Phaser from 'phaser';
 import { ART_FRAMES, ART_SCALE } from '../config/artDisplay';
 import { targetFacing, type Facing } from '../../domain/facing';
@@ -14,7 +15,10 @@ export class EnemyVisuals {
   private readonly pool: Phaser.GameObjects.Sprite[] = [];
   private readonly casts = new Map<Phaser.Physics.Arcade.Sprite, CastDisplay>();
 
-  constructor(private readonly scene: Phaser.Scene) {}
+  private readonly clips: EnemyActorClips;
+  constructor(private readonly scene: Phaser.Scene) { this.clips = new EnemyActorClips(scene); }
+  hit(enemy: Phaser.Physics.Arcade.Sprite): void { this.clips.hit(enemy); }
+  defeat(enemy: Phaser.Physics.Arcade.Sprite): void { this.clips.defeat(enemy); }
 
   spawn(enemy: Phaser.Physics.Arcade.Sprite, archetype: EnemyArchetypeId): void {
     this.release(enemy);
@@ -51,12 +55,13 @@ export class EnemyVisuals {
     if (hit) enemy.setTint(0xffffff);
     else if (enraged) enemy.setTint(0xff7799);
     else if (enemy.isTinted) enemy.clearTint();
+    this.clips.pose(enemy, Boolean(cast && (telegraphing || this.scene.time.now < cast.untilMs)), telegraphing, facing);
     if (cast) for (let index = 0; index < cast.glows.length; index++) {
       const glow = cast.glows[index]!;
       const placed = positionEnemyHand(enemy, index, glow);
       const releasing = this.scene.time.now < cast.untilMs - 120;
       const height = (glow.frame.customData as PoseMetrics).opaqueHeight ?? 1280;
-      glow.setVisible(placed && (telegraphing || releasing)).setScale((archetype === 'boss' ? 12 : 9) / height)
+      glow.setVisible(placed && (telegraphing || releasing)).setScale((archetype === 'boss' ? 21 : 15.75) / height)
         .setAlpha(telegraphing ? 0.8 : 0.55).setDepth(enemy.depth + (facing === 'up' ? -0.1 : 0.1));
     }
     if (!telegraphing) { this.releaseTelegraph(enemy); return; }
@@ -75,12 +80,13 @@ export class EnemyVisuals {
   }
 
   release(enemy: Phaser.Physics.Arcade.Sprite): void {
-    this.releaseTelegraph(enemy);
+    this.clips.release(enemy); this.releaseTelegraph(enemy);
     for (const glow of this.casts.get(enemy)?.glows ?? []) glow.destroy();
     this.casts.delete(enemy); this.auras.get(enemy)?.destroy(); this.auras.delete(enemy);
   }
 
   clear(): void {
+    this.clips.clear();
     for (const enemy of this.telegraphs.keys()) this.releaseTelegraph(enemy);
     for (const aura of this.auras.values()) aura.destroy();
     for (const cast of this.casts.values()) for (const glow of cast.glows) glow.destroy();

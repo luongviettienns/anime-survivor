@@ -37,7 +37,7 @@ export class HostileProjectilePool {
         : (this.group.create(x, y, 'enemy_bolt', 0) as Phaser.Physics.Arcade.Sprite);
       bolt.setTexture('enemy_bolt', 0);
       const metrics = bolt.frame.customData as { opaqueHeight?: number };
-      const scale = (hands.length > 1 ? 26 : 22) / (metrics.opaqueHeight ?? 1280);
+      const scale = (hands.length > 1 ? 45.5 : 38.5) / (metrics.opaqueHeight ?? 1280);
       bolt
         .setScale(scale)
         .setDepth(-500_000_010)

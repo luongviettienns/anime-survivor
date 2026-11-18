@@ -96,11 +96,12 @@ export class PickupSystem {
       : (this.group.create(x, y, texture, 0) as Phaser.Physics.Arcade.Sprite);
     sprite.setTexture(texture).clearTint().setVelocity(0, 0).setDepth(y);
     if (animKey) {
-      sprite.setScale(1.85 / 4).play(animKey, true);
+      sprite.setScale(1.61875 / 2).play(animKey, true);
     } else {
       sprite.anims?.stop();
-      sprite.setDisplaySize(24, 24);
+      sprite.setDisplaySize(42, 42);
     }
+    (sprite.body as Phaser.Physics.Arcade.Body).setSize(sprite.width / 1.75, sprite.height / 1.75, true);
     return sprite;
   }
 }

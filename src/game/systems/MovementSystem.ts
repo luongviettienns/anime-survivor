@@ -48,6 +48,7 @@ export class MovementSystem {
     this.player.setVelocity(velocity.x, velocity.y);
     const moving = velocity.x !== 0 || velocity.y !== 0;
     this.facing = movementFacing({ x: inputX, y: inputY }, this.facing);
+    this.player.setData('visual-facing', this.facing);
     this.animate(moving);
   }
 
@@ -65,6 +66,8 @@ export class MovementSystem {
     return { x: 0, y: 1 };
   }
 
+  playDefeat(done: () => void): boolean { return this.actionVisual.defeat(done); }
+
   syncDashVisual(): void {
     this.animate(true);
     this.actionVisual.update();
@@ -77,6 +80,10 @@ export class MovementSystem {
 
   playSkill(skill: WeaponId, aimX: number, animOverride?: string): void {
     if (!this.player.active) return;
+    if (animOverride?.startsWith('kirito-dash-')) {
+      this.actionVisual.play(skill, aimX, animOverride);
+      return;
+    }
     const baseAnim = skill === 'dual_slash' ? 'hero-skill-slash' : `hero-skill-${skill}`;
     if (this.player.anims.isPlaying && this.player.anims.currentAnim?.key === baseAnim) return;
     this.pendingSkills.set(skill, { aimX, animOverride });

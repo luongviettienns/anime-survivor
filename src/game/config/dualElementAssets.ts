@@ -23,7 +23,7 @@ export const DUAL_ELEMENT_CLIPS: readonly ClipSpec[] = [
   { atlasKey: 'vfx_dual_element_impact', animKey: 'vfx-dual-element-impact', durationsMs: [60, 80, 110], loop: false },
 ];
 
-export const KIRITO_WORLD_SCALE = 0.045;
+export const KIRITO_WORLD_SCALE = 0.09083536090835362;
 export const KIRITO_ORIGIN_Y = 1536 / 1792;
 export const PHANTOM_DASH_ANIM_KEY = 'kirito-phantom-dash';
 

@@ -1,3 +1,5 @@
+import { preloadDashAssets, registerDashAnimations } from '../config/phantomDashAssets';
+import { preloadActorClips, registerActorClips } from '../config/actorClips';
 import Phaser from 'phaser';
 import { AI_ART_KEYS, ART_FRAMES } from '../config/artDisplay';
 import { preloadDualElementAssets, registerDualElementAnimations } from '../config/dualElementAssets';
@@ -114,10 +116,12 @@ export class BootScene extends Phaser.Scene {
       this.load.audio(`sfx-${cue}`, `assets/audio/${cue}.wav`);
     }
     preloadDualElementAssets(this);
+    preloadDashAssets(this); preloadActorClips(this);
   }
 
   create(): void {
     registerDualElementAnimations(this);
+    registerDashAnimations(this); registerActorClips(this);
     for (const layoutKey of ['ui-layout', 'lobby-layout']) {
       const frames = this.cache.json.get(layoutKey) as Record<string, { x: number; y: number; w: number; h: number }> | undefined;
       if (frames) for (const [key, box] of Object.entries(frames)) this.textures.get(key)?.add('content', 0, box.x, box.y, box.w, box.h);

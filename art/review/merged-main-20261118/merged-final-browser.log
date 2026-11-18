@@ -1,0 +1,36 @@
+
+Running 9 tests using 1 worker
+
+(node:13944) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 1 tests\e2e\actor-scale.spec.ts:5:1 › Rasengan actor keeps standing-reference scale and foot position in both original-image poses (7.9s)
+  ok 2 tests\e2e\arcane-ui.spec.ts:20:1 › crystal HUD assets remain anchored at different browser viewport sizes and camera positions (9.4s)
+  ok 3 tests\e2e\arcane-ui.spec.ts:48:1 › arcane banner/cards/socket stay inside the canvas and mouse and keyboard choose upgrades (9.6s)
+  ok 4 tests\e2e\arcane-ui.spec.ts:75:1 › critical damage uses a small icon and larger digits, explosion damage uses a burst with no manga word labels (9.4s)
+  ok 5 tests\e2e\hero-animation.spec.ts:4:1 › Naruto animates all four directions and remembers facing with real keys (18.4s)
+  ok 6 tests\e2e\kirito-unlocks.spec.ts:5:1 › merged Kirito earns Dash and other skills from real level-up cards; restart locks them again (22.8s)
+  x  7 tests\e2e\kirito.spec.ts:5:1 › Kirito unlocked lobby launch, high-defense stats, and Lv1/Lv3/Lv5 Dual Element waves with Slow & Burn (20.9s)
+(node:13036) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ok 8 tests\e2e\lobby.spec.ts:5:1 › opens Lobby & Character Select by default at /, previews Naruto & unlocked Kirito, and starts GameScene (10.4s)
+  ok 9 tests\e2e\rendering.spec.ts:4:1 › map, actors, HUD and skills use smooth original-image sampling (9.9s)
+
+
+  1) tests\e2e\kirito.spec.ts:5:1 › Kirito unlocked lobby launch, high-defense stats, and Lv1/Lv3/Lv5 Dual Element waves with Slow & Burn
+
+    TimeoutError: page.waitForFunction: Timeout 5000ms exceeded.
+
+      93 |     window.__ANIME_SURVIVOR__!.spawnEnemyTypeAt('elite', p.x + 210, p.y);
+      94 |   });
+    > 95 |   await page.waitForFunction(() => {
+         |              ^
+      96 |     const st = window.__ANIME_SURVIVOR__!.getEnemyStatuses();
+      97 |     return st.length >= 2 && st.every((e) => e.slowActive && e.burnActive);
+      98 |   }, undefined, { timeout: 5000 });
+        at C:\Users\ASUS\Desktop\AnimeSurvivor-Antigravity-Starter\tests\e2e\kirito.spec.ts:95:14
+
+    Error Context: test-results\kirito-Kirito-unlocked-lob-1b655-lement-waves-with-Slow-Burn\error-context.md
+
+  1 failed
+    tests\e2e\kirito.spec.ts:5:1 › Kirito unlocked lobby launch, high-defense stats, and Lv1/Lv3/Lv5 Dual Element waves with Slow & Burn
+  8 passed (2.0m)

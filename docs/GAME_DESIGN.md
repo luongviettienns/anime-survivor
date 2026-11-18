@@ -34,3 +34,8 @@ Multiplayer, accounts, backend, gacha, cash shop, online leaderboards, large ope
 
 ## Arcane upgrade UI and combat readability
 Upgrade selection uses gold/silver cosmic-indigo card art, crystal sockets and a centered ability banner; keyboard1/2/3 and pointer selection remain functional. HUD anchors use logical canvas edges/center, crystal markers follow HP/XP fill, two crown emblems flank the centered bottom boss bar. Bitmap damage numbers remain small:12px normal,14px high/explosive damage,16px critical with8px crit icon. Explosion numbers use orange tint and a compact low-alpha burst; no CRIT/SMASH/BOOM word labels in combat. Numbers grow from72% to100% of the small size cap during the first30% of lifetime, stay readable, then fade during the final40%. Rise is anchored to the hit world point(x,y-14) and elapsed time; lifetime380/450/420ms for normal/crit/explosion. Crit icon and explosion mark stay attached.
+
+## Unified Kirito run progression and presentation (latest user override)
+Kirito begins with dual_slash level1 only. Normal slash, orbitals and mines unlock exclusively via chosen level-up cards. Phantom Dash is a Kirito-only one-time unlock card; Space/Shift does nothing until selected. Each new run resets its unlock. Existing Wave levels still progress through their own upgrade cards; no free basic attack is added.
+
+World camera1.3x replaces the previous1.5x review zoom. Standing body112px for player/normal/elite and224px for boss, with combat artwork reduced12.5% from the previous128/256px review. Source PNGs remain native and physics/stat formulas unchanged. HUD stays1x.

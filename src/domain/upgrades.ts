@@ -11,7 +11,7 @@ export type PassiveId =
   | 'stat_magnet'
   | 'stat_heavy_strike';
 
-export type UpgradeId = 'weapon_orb' | 'weapon_slash' | 'weapon_orbital' | 'weapon_mine' | 'weapon_dual_slash' | PassiveId;
+export type UpgradeId = 'skill_phantom_dash' | 'weapon_orb' | 'weapon_slash' | 'weapon_orbital' | 'weapon_mine' | 'weapon_dual_slash' | PassiveId;
 export const MAX_PASSIVE_LEVEL = 5;
 
 export type PassiveStats = {
@@ -24,6 +24,7 @@ export type PassiveStats = {
   heavyStrikeEvery: number;
   heavyStrikeBonus: number;
   attackCounter: number;
+  phantomDashUnlocked: boolean;
 };
 
 export type UpgradeChoice = {
@@ -69,7 +70,7 @@ export function createPassiveStats(): PassiveStats {
   return {
     levels: { stat_max_hp: 0, stat_damage_reduction: 0, stat_damage: 0, stat_cooldown: 0, stat_move_speed: 0, stat_magnet: 0, stat_heavy_strike: 0 },
     damageReduction: 0, damageBonus: 0, cooldownReductionMs: 0, moveSpeedBonusPxSec: 0,
-    pickupRadiusBonusPx: 0, heavyStrikeEvery: 0, heavyStrikeBonus: 0, attackCounter: 0,
+    pickupRadiusBonusPx: 0, heavyStrikeEvery: 0, heavyStrikeBonus: 0, attackCounter: 0, phantomDashUnlocked: false,
   };
 }
 
@@ -79,6 +80,10 @@ export function getAvailableUpgrades(
   heroId: HeroId = 'naruto'
 ): UpgradeChoice[] {
   const choices: UpgradeChoice[] = [];
+  if (heroId === 'kirito' && !passives.phantomDashUnlocked) choices.push({
+    id: 'skill_phantom_dash', title: 'Phantom Dash', description: 'Unlock SPACE / SHIFT: dash through foes and leave elemental afterimages.',
+    icon: 'icon-weapon_slash', category: 'weapon', nextLevel: 1,
+  });
   for (const meta of WEAPON_UPGRADE_META) {
     if (meta.heroOnly && meta.heroOnly !== heroId && inventory[meta.weaponId] === 0) continue;
     if (!canUpgradeWeapon(inventory, meta.weaponId)) continue;
@@ -161,6 +166,10 @@ export function applyUpgradeChoice(choiceId: UpgradeId, inventory: WeaponInvento
   if (choiceId === 'weapon_slash') { upgradeWeapon(inventory, 'slash'); return; }
   if (choiceId === 'weapon_orbital') { upgradeWeapon(inventory, 'orbital'); return; }
   if (choiceId === 'weapon_mine') { upgradeWeapon(inventory, 'mine'); return; }
+  if (choiceId === 'skill_phantom_dash') {
+    if (passives.phantomDashUnlocked) throw new Error('Phantom Dash is already unlocked');
+    passives.phantomDashUnlocked = true; return;
+  }
   const lv = passives.levels[choiceId];
   if (lv >= MAX_PASSIVE_LEVEL) throw new Error(`Cannot upgrade passive ${choiceId} from level ${lv}`);
   const val = PASSIVE_META[choiceId].values[lv]!;

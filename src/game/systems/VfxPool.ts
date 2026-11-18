@@ -1,3 +1,4 @@
+import { AI_ART_KEYS } from '../config/artDisplay';
 import type Phaser from 'phaser';
 
 export type OneShotOptions = {
@@ -41,7 +42,7 @@ export class VfxPool {
     }
     sp.setTexture(texture)
       .setPosition(x, y)
-      .setScale(opts?.scale ?? 1.5)
+      .setScale((opts?.scale ?? 1.5) * (AI_ART_KEYS.has(texture) ? 1 : 1.75))
       .setRotation(opts?.rotation ?? 0)
       .setFlipX(opts?.flipX ?? false)
       .setDepth(opts?.depth ?? 500_000_000)

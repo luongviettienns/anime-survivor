@@ -1,3 +1,4 @@
+import { actorAnimation, actorClip, actorHeading } from '../config/actorClips';
 import type Phaser from 'phaser';
 import type { DualWaveKind } from '../../domain/statusEffects';
 import { canWeaponFire, commitWeaponFire, createWeaponCooldown, selectNearestTarget, type TargetCandidate } from '../../domain/targeting';
@@ -59,7 +60,8 @@ export class DualElementSystem {
       if (target) {
         aim = aimDirection(this.player, target, lastAim);
         const stage = getDualSlashStage(level);
-        this.onSkillUsed?.('dual_slash', aim.x, stage.animKey);
+        const clip = actorClip('kirito', stage.animKey.replace('kirito-wave-', ''), actorHeading(aim));
+        this.onSkillUsed?.('dual_slash', aim.x, clip ? actorAnimation(clip) : stage.animKey);
         commitWeaponFire(this.cooldown, nowMs);
         for (const w of stage.waves) {
           this.queue.push({
@@ -120,9 +122,9 @@ export class DualElementSystem {
     const shot = reuse
       ? (reuse.enableBody(true, handX, handY, true, true), reuse)
       : (this.projectiles.create(handX, handY, art.tex, `${art.tex}/000`) as Phaser.Physics.Arcade.Sprite);
-    shot.setTexture(art.tex, `${art.tex}/000`).setOrigin(0.5, 0.5).setScale(art.scale).setDepth(500_000_060);
-    const circleOffset = Math.round(shot.width / 2 - art.radius);
-    shot.setCircle(art.radius, circleOffset, circleOffset).setBlendMode('NORMAL').setRotation(Math.atan2(dir.y, dir.x))
+    shot.setTexture(art.tex, `${art.tex}/000`).setOrigin(0.5, 0.5).setScale(art.scale * 1.75).setDepth(500_000_060);
+    const circleOffset = Math.round(shot.width / 2 - art.radius / 1.75);
+    shot.setCircle(art.radius / 1.75, circleOffset, circleOffset).setBlendMode('NORMAL').setRotation(Math.atan2(dir.y, dir.x))
       .setVelocity(dir.x * item.speedPxSec, dir.y * item.speedPxSec).play(art.anim, true);
     this.expiresAt.set(shot, nowMs + PROJECTILE.lifeMs);
     this.shotMeta.set(shot, {

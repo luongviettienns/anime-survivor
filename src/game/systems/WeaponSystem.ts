@@ -115,7 +115,7 @@ export class WeaponSystem {
       ? (reuse.enableBody(true, hand.x, hand.y, true, true), reuse)
       : (this.projectiles.create(hand.x, hand.y, 'rasengan', 0) as Phaser.Physics.Arcade.Sprite);
     // Keep the previous 10.5px world collision radius while enlarging the artwork.
-    shot.setTexture('rasengan').setScale(0.5).setDepth(500_000_050).setCircle(21, 75, 75)
+    shot.setTexture('rasengan').setScale(0.875).setDepth(500_000_050).setCircle(12, 84, 84)
       .setBlendMode('NORMAL').setRotation(0)
       .setVelocity(dir.x * speedPxSec, dir.y * speedPxSec).play('rasengan-spin', true);
     this.projectileExpiresAt.set(shot, nowMs + PROJECTILE.lifeMs);

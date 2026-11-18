@@ -1,0 +1,35 @@
+{
+  "canonical_source": "C:\\Users\\ASUS\\Desktop\\AnimeSurvivor-Antigravity-Starter",
+  "archive": "C:/Users/ASUS/Desktop/AnimeSurvivor-AssetReview-4dir-20261118/project",
+  "camera_zoom": 1.3,
+  "hud_zoom": 1,
+  "body_target_px": 112,
+  "boss_body_target_px": 224,
+  "starting_weapon": "dual_slash level1 only",
+  "dash_unlock": "Kirito-only level-up choice skill_phantom_dash; false each new run",
+  "native_files_check": 134,
+  "verify": "PASS:18test files/74unit tests, TS/lint, architecture, legacy sprites, native actor byte checks, build",
+  "browser": "9unique checks passed across final batch and corrected isolated combat test; initial browser failures and final successful follow-up retained in logs",
+  "browser_scope": [
+    "lobby",
+    "Naruto four-direction movement",
+    "constant standing-reference cast scale",
+    "smooth rendering",
+    "HUD viewport/camera anchors",
+    "upgrade mouse/keyboard selection",
+    "damage typography",
+    "Kirito real levelup unlocks+restart",
+    "KiritoWave1/3/5 status/piercing and Dash combat"
+  ],
+  "static5184": "PASS merged build: camera1.3/HUD1x, bodies112px, onlyWave and Dash locked; no page/console/network errors",
+  "not_checked": [
+    "Full10-minute run",
+    "Crowded-combat GPU profiling",
+    "User visual acceptance"
+  ],
+  "art_limitations": [
+    "Missing Kirito side actions/right run remain temporary fallback",
+    "Boss defeated pose absent",
+    "Elite/boss reactions front-only"
+  ]
+}

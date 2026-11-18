@@ -57,6 +57,7 @@ export class GameScene extends Phaser.Scene {
     this.map = new InfiniteMapSystem(this);
     this.player = this.physics.add.sprite(SPAWN_ORIGIN_X, SPAWN_ORIGIN_Y, 'hero', 0);
     this.player.setScale(2).setCollideWorldBounds(false).setDepth(5000).setCircle(10, 6, 13).play('hero-idle');
+    this.cameras.main.setZoom(1.3);
     this.cameras.main.startFollow(this.player, true, 0.14, 0.14);
     this.map.update(this.player.x, this.player.y);
     this.movement = new MovementSystem(this, this.player, this.heroConfig.id, this.heroConfig.moveSpeed);
@@ -183,7 +184,8 @@ export class GameScene extends Phaser.Scene {
   private endRun(victory: boolean): void {
     if (!this.running) return;
     this.running = false; this.movement.update(false); this.enemies.update(true);
-    this.scene.start('GameOverScene', { victory, score: this.defeated, survivalSec: Math.floor(this.elapsed), heroId: this.heroConfig.id });
+    const finish = () => this.scene.start('GameOverScene', { victory, score: this.defeated, survivalSec: Math.floor(this.elapsed), heroId: this.heroConfig.id });
+    if (victory || !this.movement.playDefeat(finish)) finish();
   }
   tryPhantomDash(): boolean {
     if (!this.phantomDash || !this.running || !this.damage.state.alive || this.isPaused() || this.scene.isActive('UpgradeScene')) return false;
@@ -195,5 +197,5 @@ export class GameScene extends Phaser.Scene {
     if (this.scene.isActive('PauseScene')) this.scene.stop('PauseScene');
     this.phantomDash?.clear(); this.weapon.clear(); this.enemies.clear(); this.pickups.clear(); this.vfx.clear(); this.map.clear(); this.hud.destroy(); this.shadows.clear();
   }
-  private updateHud(): void { this.hud.update({ player: this.damage.state, progression: this.progression, elapsedSec: this.elapsed, defeated: this.defeated, weapons: this.weapon.inventory, passives: this.passives, bossHp: this.enemies.getActiveBossState(), dashCooldownMs: this.phantomDash?.getCooldownRemainingMs(this.time.now) }); }
+  private updateHud(): void { this.hud.update({ player: this.damage.state, progression: this.progression, elapsedSec: this.elapsed, defeated: this.defeated, weapons: this.weapon.inventory, passives: this.passives, bossHp: this.enemies.getActiveBossState(), dashCooldownMs: this.passives.phantomDashUnlocked ? this.phantomDash?.getCooldownRemainingMs(this.time.now) : undefined }); }
 }

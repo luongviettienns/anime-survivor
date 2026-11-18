@@ -131,10 +131,10 @@ export class EnemySystem {
     if (!enemy.active || !state || state.dead) return { damaged: false, killed: false, x, y, archetype: state?.archetype ?? 'slime', xpValue: 0 };
     const result = applyProjectileHit(state, damage);
     if (result.killed) {
-      this.melee.release(enemy); this.statusFx.release(enemy); this.visuals.release(enemy);
+      this.visuals.defeat(enemy); this.melee.release(enemy); this.statusFx.release(enemy); this.visuals.release(enemy);
       this.states.delete(enemy); enemy.disableBody(true, true);
     } else if (result.damaged) {
-      state.hitTintUntilMs = this.scene.time.now + 85;
+      state.hitTintUntilMs = this.scene.time.now + 85; this.visuals.hit(enemy);
       enemy.setTint(0xffffff);
       const kb = knockbackPxSec * (ENEMY_ARCHETYPES[state.archetype].knockbackFactor ?? 1);
       if (kb > 0) {

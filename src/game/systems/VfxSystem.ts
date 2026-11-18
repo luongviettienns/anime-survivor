@@ -18,7 +18,7 @@ export class VfxSystem {
       emitting: false,
       lifespan: 240,
       speed: { min: 45, max: 135 },
-      scale: { start: 12 / 192, end: 0 },
+      scale: { start: 21 / 192, end: 0 },
       alpha: { start: 0.82, end: 0 },
     });
     this.emitter.setDepth(500_000_000);

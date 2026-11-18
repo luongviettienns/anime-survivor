@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 import type Phaser from 'phaser';
 import type { WeaponInventory } from '../../src/domain/weapons';
 
-test('Rasengan actor keeps idle height and foot position in both original-image poses', async ({ page }) => {
+test('Rasengan actor keeps standing-reference scale and foot position in both original-image poses', async ({ page }) => {
   await page.goto('/?play=1');
   await page.waitForFunction(() => Boolean(window.__ANIME_SURVIVOR__));
   const poses = await page.evaluate(() => {
@@ -21,12 +21,14 @@ test('Rasengan actor keeps idle height and foot position in both original-image 
       // Apply the same synchronization path used by the scene update.
       scene.movement.update();
       const data = sprite.frame.customData as { opaqueHeight?: number };
-      return { height: (data.opaqueHeight ?? 0) * sprite.scaleY,
+      const standing = sprite.texture.get(0).customData as { opaqueHeight?: number };
+      return { referenceHeight: (standing.opaqueHeight ?? 0) * sprite.scaleY, scale: sprite.scaleY, height: (data.opaqueHeight ?? 0) * sprite.scaleY,
         footY: sprite.y, expectedFoot: scene.player.y + 28, bodyWidth: scene.player.body!.width };
     });
   });
   for (const pose of poses) {
-    expect(pose.height).toBeCloseTo(56, 4);
+    expect(pose.referenceHeight).toBeCloseTo(112, 4);
+    expect(pose.scale).toBeCloseTo(poses[0]!.scale, 8);
     expect(pose.footY).toBeCloseTo(pose.expectedFoot, 4);
     expect(pose.bodyWidth).toBeCloseTo(40);
   }

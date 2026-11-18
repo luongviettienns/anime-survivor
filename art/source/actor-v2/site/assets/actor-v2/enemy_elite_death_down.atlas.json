@@ -1,0 +1,35 @@
+{
+  "textures": [
+    {
+      "image": "originals/enemy_elite/down/fallen.png",
+      "frames": [
+        {
+          "filename": "enemy_elite_death_down/000",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1254,
+            "h": 1254
+          },
+          "rotated": false,
+          "trimmed": true,
+          "spriteSourceSize": {
+            "x": 397,
+            "y": 460,
+            "w": 1254,
+            "h": 1254
+          },
+          "sourceSize": {
+            "w": 2048,
+            "h": 2048
+          }
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "format": "RGBA8888",
+    "scale": "1",
+    "app": "lossless isolated art review"
+  }
+}

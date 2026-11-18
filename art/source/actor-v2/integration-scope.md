@@ -1,0 +1,1 @@
+Attach authored four-direction Phantom Dash artwork and same-direction afterimages to existing logic in isolated project only. Preserve all domain stats. Acceptance: direction and hand identity, 180ms timeline, cooldown, pause and ghost cleanup; verify and browser gameplay on5184. Live5173 source untouched.

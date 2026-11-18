@@ -1,0 +1,108 @@
+{
+  "textures": [
+    {
+      "image": "originals/boss/up/neutral.png",
+      "frames": [
+        {
+          "filename": "boss_cast_up/000",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1254,
+            "h": 1254
+          },
+          "rotated": false,
+          "trimmed": true,
+          "spriteSourceSize": {
+            "x": 397,
+            "y": 340,
+            "w": 1254,
+            "h": 1254
+          },
+          "sourceSize": {
+            "w": 2048,
+            "h": 2048
+          }
+        },
+        {
+          "filename": "boss_cast_up/003",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1254,
+            "h": 1254
+          },
+          "rotated": false,
+          "trimmed": true,
+          "spriteSourceSize": {
+            "x": 397,
+            "y": 340,
+            "w": 1254,
+            "h": 1254
+          },
+          "sourceSize": {
+            "w": 2048,
+            "h": 2048
+          }
+        }
+      ]
+    },
+    {
+      "image": "originals/boss/up/cast_windup.png",
+      "frames": [
+        {
+          "filename": "boss_cast_up/001",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1254,
+            "h": 1254
+          },
+          "rotated": false,
+          "trimmed": true,
+          "spriteSourceSize": {
+            "x": 397,
+            "y": 371,
+            "w": 1254,
+            "h": 1254
+          },
+          "sourceSize": {
+            "w": 2048,
+            "h": 2048
+          }
+        }
+      ]
+    },
+    {
+      "image": "originals/boss/up/cast_release.png",
+      "frames": [
+        {
+          "filename": "boss_cast_up/002",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1254,
+            "h": 1254
+          },
+          "rotated": false,
+          "trimmed": true,
+          "spriteSourceSize": {
+            "x": 397,
+            "y": 383,
+            "w": 1254,
+            "h": 1254
+          },
+          "sourceSize": {
+            "w": 2048,
+            "h": 2048
+          }
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "format": "RGBA8888",
+    "scale": "1",
+    "app": "lossless isolated art review"
+  }
+}

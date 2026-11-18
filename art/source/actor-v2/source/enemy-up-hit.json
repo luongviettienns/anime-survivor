@@ -1,0 +1,8 @@
+{
+  "key": "enemy",
+  "direction": "up",
+  "pose": "hit",
+  "prompt": "Use case: stylized-concept. Generate exactly ONE game sprite animation frame, enemy up hit. The supplied PNG is strict MODEL, palette, pixel-cluster detail and elevated orthographic GAME CAMERA reference. Do not redesign this monster. Facing north/up AWAY from camera, back of head and armor/coat visible; NO face or eyes on the back. HIT REACTION keypose: brief nonlethal flinch, shoulders recoil and knees flex, eyes/mask and outfit intact; both feet remain at the ground baseline. Arms recoil naturally. No attack motion and no persistent damage or blood. Keep the identical head/mask shape, armor pieces, cloth, claws, colors and light direction, at the SAME anatomical scale as the reference; a collapsed body must occupy less height, do not zoom it up to fill the canvas. Camera is slightly elevated top-down 3/4, see top planes of head/shoulders/grounded body; not side-scroller, not eye-level character illustration. Full body, clear silhouette, generous clear transparent margins at least 60px on ALL sides, no clipping. Keep character center near canvas center and the lowest contact point near the reference feet baseline. Same original canvas dimensions as input. Sharp detailed stepped pixel clusters, no painterly blur, no soft aura, no text, no ground/scenery or baked shadow, no sprite grid. Transparent RGBA.",
+  "path": "C:\\Users\\ASUS\\.codex\\generated_images\\01a1ee04-31d9-76f3-993d-4f3b2888c393\\exec-50675aad-b33c-4210-b2d8-8770566346dd.png",
+  "reference": "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/ai-overhaul/enemy/walk-up/000.png"
+}

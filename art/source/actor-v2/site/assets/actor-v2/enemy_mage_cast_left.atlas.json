@@ -1,0 +1,108 @@
+{
+  "textures": [
+    {
+      "image": "originals/enemy_mage/left/neutral.png",
+      "frames": [
+        {
+          "filename": "enemy_mage_cast_left/000",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1312,
+            "h": 1199
+          },
+          "rotated": false,
+          "trimmed": true,
+          "spriteSourceSize": {
+            "x": 368,
+            "y": 425,
+            "w": 1312,
+            "h": 1199
+          },
+          "sourceSize": {
+            "w": 2048,
+            "h": 2048
+          }
+        },
+        {
+          "filename": "enemy_mage_cast_left/003",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1312,
+            "h": 1199
+          },
+          "rotated": false,
+          "trimmed": true,
+          "spriteSourceSize": {
+            "x": 368,
+            "y": 425,
+            "w": 1312,
+            "h": 1199
+          },
+          "sourceSize": {
+            "w": 2048,
+            "h": 2048
+          }
+        }
+      ]
+    },
+    {
+      "image": "originals/enemy_mage/left/cast_windup.png",
+      "frames": [
+        {
+          "filename": "enemy_mage_cast_left/001",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1312,
+            "h": 1199
+          },
+          "rotated": false,
+          "trimmed": true,
+          "spriteSourceSize": {
+            "x": 368,
+            "y": 426,
+            "w": 1312,
+            "h": 1199
+          },
+          "sourceSize": {
+            "w": 2048,
+            "h": 2048
+          }
+        }
+      ]
+    },
+    {
+      "image": "originals/enemy_mage/left/cast_release.png",
+      "frames": [
+        {
+          "filename": "enemy_mage_cast_left/002",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1312,
+            "h": 1199
+          },
+          "rotated": false,
+          "trimmed": true,
+          "spriteSourceSize": {
+            "x": 368,
+            "y": 435,
+            "w": 1312,
+            "h": 1199
+          },
+          "sourceSize": {
+            "w": 2048,
+            "h": 2048
+          }
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "format": "RGBA8888",
+    "scale": "1",
+    "app": "lossless isolated art review"
+  }
+}

@@ -1,0 +1,4613 @@
+{
+  "contract_version": 1,
+  "sprites": {
+    "kirito_idle_down_page0": {
+      "file": "kirito_idle_down_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "8432e0c2b3629b37a2fb90d0e7f4e7850f632a633b92903580dd2eb692cf2deb",
+          "alpha_bbox": [
+            397,
+            407,
+            1635,
+            1646
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "c473b346e47f56ecf8d42b0ba30cfcd292af51c3f6b3a2b7d97e694201ac6ed0",
+          "alpha_bbox": [
+            397,
+            412,
+            1637,
+            1645
+          ]
+        }
+      ]
+    },
+    "kirito_run_down_page0": {
+      "file": "kirito_run_down_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "72ec274ebb3b2c11be243e9b469002ce60e984d4e053e8e7c2316d219bc4ef76",
+          "alpha_bbox": [
+            422,
+            471,
+            1641,
+            1670
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "22921c73e81c071a305461d988c10787cbd5b2e2a7aabee1f1dab5926f180845",
+          "alpha_bbox": [
+            414,
+            413,
+            1639,
+            1652
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "634a86a022dadcae3f32bc880bfd97481976de5ad33d758cce9cfffb89789ea2",
+          "alpha_bbox": [
+            412,
+            431,
+            1633,
+            1668
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 3,
+          "sheet_index": 3,
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "4867d5c3ad65374bf95241844ee671278f47373180fdffc051220750bad4d42d",
+          "alpha_bbox": [
+            397,
+            397,
+            1645,
+            1642
+          ]
+        }
+      ]
+    },
+    "kirito_hit_down_page0": {
+      "file": "kirito_hit_down_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "8432e0c2b3629b37a2fb90d0e7f4e7850f632a633b92903580dd2eb692cf2deb",
+          "alpha_bbox": [
+            397,
+            407,
+            1635,
+            1646
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "6c42c840a2d0b5e52a012a8952b4bf17f41eee48324c30497721a85835821c78",
+          "alpha_bbox": [
+            397,
+            477,
+            1643,
+            1712
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "8432e0c2b3629b37a2fb90d0e7f4e7850f632a633b92903580dd2eb692cf2deb",
+          "alpha_bbox": [
+            397,
+            407,
+            1635,
+            1646
+          ]
+        }
+      ]
+    },
+    "kirito_death_down_page0": {
+      "file": "kirito_death_down_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "8432e0c2b3629b37a2fb90d0e7f4e7850f632a633b92903580dd2eb692cf2deb",
+          "alpha_bbox": [
+            397,
+            407,
+            1635,
+            1646
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "e33e5584857adc1d05735fb603817cea61657bea9cd43ec0ea6d3076ffae2d8f",
+          "alpha_bbox": [
+            397,
+            533,
+            1619,
+            1748
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "0b7adb0aca8320c248cd35e0759cee156207428c029992cd981dcfc0f3ce79e9",
+          "alpha_bbox": [
+            397,
+            475,
+            1639,
+            1700
+          ]
+        }
+      ]
+    },
+    "kirito_basic_down_page0": {
+      "file": "kirito_basic_down_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "8432e0c2b3629b37a2fb90d0e7f4e7850f632a633b92903580dd2eb692cf2deb",
+          "alpha_bbox": [
+            397,
+            407,
+            1635,
+            1646
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "c8a7bc015a72d8d826ae8185f2f30f8601921a44d9b79921277e33ee17ae63b2",
+          "alpha_bbox": [
+            422,
+            412,
+            1631,
+            1646
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "0da7d17b2139333c485d746d173ba7b8185a190e5980673a228104be0c4aeedd",
+          "alpha_bbox": [
+            397,
+            411,
+            1651,
+            1665
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 3,
+          "sheet_index": 3,
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "31f84b2e5b93ecfe44392d8a76ce1d8b56a6372f69f5734ccfcc151f18e16976",
+          "alpha_bbox": [
+            397,
+            362,
+            1615,
+            1595
+          ]
+        }
+      ]
+    },
+    "kirito_basic_down_page1": {
+      "file": "kirito_basic_down_page1.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "6df2390cc77ca803956741ca6ffcd297121dbcfaea92a237aae47f877807db94",
+          "alpha_bbox": [
+            397,
+            423,
+            1637,
+            1670
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "90150842a946979172f71396aca0a656ab6511a13d8ff05b55f3b55c6561a03a",
+          "alpha_bbox": [
+            397,
+            465,
+            1637,
+            1701
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "6178125d3f0eb5a0766064323b9c4161f4866f38339e3a1789477e1b76f46047",
+          "alpha_bbox": [
+            397,
+            378,
+            1635,
+            1632
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 3,
+          "sheet_index": 3,
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "5f681125380d90410b5fbcde3ddfcc63e8b4a342ce561278f5121f4f2645e569",
+          "alpha_bbox": [
+            428,
+            392,
+            1650,
+            1627
+          ]
+        }
+      ]
+    },
+    "kirito_basic_down_page2": {
+      "file": "kirito_basic_down_page2.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "f187b0db13e8b484f367dcb87e487847871a3163aaca46daedeaacd9c55e8576",
+          "alpha_bbox": [
+            446,
+            435,
+            1637,
+            1666
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "8432e0c2b3629b37a2fb90d0e7f4e7850f632a633b92903580dd2eb692cf2deb",
+          "alpha_bbox": [
+            397,
+            407,
+            1635,
+            1646
+          ]
+        }
+      ]
+    },
+    "kirito_lv1_down_page0": {
+      "file": "kirito_lv1_down_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "8432e0c2b3629b37a2fb90d0e7f4e7850f632a633b92903580dd2eb692cf2deb",
+          "alpha_bbox": [
+            397,
+            407,
+            1635,
+            1646
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "c8a7bc015a72d8d826ae8185f2f30f8601921a44d9b79921277e33ee17ae63b2",
+          "alpha_bbox": [
+            422,
+            412,
+            1631,
+            1646
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "0da7d17b2139333c485d746d173ba7b8185a190e5980673a228104be0c4aeedd",
+          "alpha_bbox": [
+            397,
+            411,
+            1651,
+            1665
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 3,
+          "sheet_index": 3,
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "31f84b2e5b93ecfe44392d8a76ce1d8b56a6372f69f5734ccfcc151f18e16976",
+          "alpha_bbox": [
+            397,
+            362,
+            1615,
+            1595
+          ]
+        }
+      ]
+    },
+    "kirito_lv1_down_page1": {
+      "file": "kirito_lv1_down_page1.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "6df2390cc77ca803956741ca6ffcd297121dbcfaea92a237aae47f877807db94",
+          "alpha_bbox": [
+            397,
+            423,
+            1637,
+            1670
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "8432e0c2b3629b37a2fb90d0e7f4e7850f632a633b92903580dd2eb692cf2deb",
+          "alpha_bbox": [
+            397,
+            407,
+            1635,
+            1646
+          ]
+        }
+      ]
+    },
+    "kirito_lv2_down_page0": {
+      "file": "kirito_lv2_down_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "8432e0c2b3629b37a2fb90d0e7f4e7850f632a633b92903580dd2eb692cf2deb",
+          "alpha_bbox": [
+            397,
+            407,
+            1635,
+            1646
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "c8a7bc015a72d8d826ae8185f2f30f8601921a44d9b79921277e33ee17ae63b2",
+          "alpha_bbox": [
+            422,
+            412,
+            1631,
+            1646
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "0da7d17b2139333c485d746d173ba7b8185a190e5980673a228104be0c4aeedd",
+          "alpha_bbox": [
+            397,
+            411,
+            1651,
+            1665
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 3,
+          "sheet_index": 3,
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "31f84b2e5b93ecfe44392d8a76ce1d8b56a6372f69f5734ccfcc151f18e16976",
+          "alpha_bbox": [
+            397,
+            362,
+            1615,
+            1595
+          ]
+        }
+      ]
+    },
+    "kirito_lv2_down_page1": {
+      "file": "kirito_lv2_down_page1.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "6df2390cc77ca803956741ca6ffcd297121dbcfaea92a237aae47f877807db94",
+          "alpha_bbox": [
+            397,
+            423,
+            1637,
+            1670
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "90150842a946979172f71396aca0a656ab6511a13d8ff05b55f3b55c6561a03a",
+          "alpha_bbox": [
+            397,
+            465,
+            1637,
+            1701
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "6178125d3f0eb5a0766064323b9c4161f4866f38339e3a1789477e1b76f46047",
+          "alpha_bbox": [
+            397,
+            378,
+            1635,
+            1632
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 3,
+          "sheet_index": 3,
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "5f681125380d90410b5fbcde3ddfcc63e8b4a342ce561278f5121f4f2645e569",
+          "alpha_bbox": [
+            428,
+            392,
+            1650,
+            1627
+          ]
+        }
+      ]
+    },
+    "kirito_lv2_down_page2": {
+      "file": "kirito_lv2_down_page2.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "f187b0db13e8b484f367dcb87e487847871a3163aaca46daedeaacd9c55e8576",
+          "alpha_bbox": [
+            446,
+            435,
+            1637,
+            1666
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "8432e0c2b3629b37a2fb90d0e7f4e7850f632a633b92903580dd2eb692cf2deb",
+          "alpha_bbox": [
+            397,
+            407,
+            1635,
+            1646
+          ]
+        }
+      ]
+    },
+    "kirito_lv3_down_page0": {
+      "file": "kirito_lv3_down_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "8432e0c2b3629b37a2fb90d0e7f4e7850f632a633b92903580dd2eb692cf2deb",
+          "alpha_bbox": [
+            397,
+            407,
+            1635,
+            1646
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "263cddfec9911e14ae8cac49b9a623dceb9150e017fd9bfe82e63577bbb7b89b",
+          "alpha_bbox": [
+            397,
+            517,
+            1637,
+            1745
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "828a2c2f6c2f2e275c8beecc7b413b164a460263d28cd95756d5a038d9980adb",
+          "alpha_bbox": [
+            397,
+            404,
+            1639,
+            1635
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 3,
+          "sheet_index": 3,
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "8c9964c347d5debad225c313f358ef4093caf1f203156c96c8ef5378bc1b700d",
+          "alpha_bbox": [
+            397,
+            418,
+            1637,
+            1649
+          ]
+        }
+      ]
+    },
+    "kirito_lv3_down_page1": {
+      "file": "kirito_lv3_down_page1.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "3146f0fd10b854631a2bf0647236f4111bdaac9e0da7b9236cb4dbc483cafc3e",
+          "alpha_bbox": [
+            397,
+            413,
+            1639,
+            1646
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "e9be5266a153126f5e27444e641c18038de886d29b4fa5e5d325ad362e03482d",
+          "alpha_bbox": [
+            397,
+            452,
+            1639,
+            1691
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "3e9a45c0718075a5e9a9cdbf0b18ea16435dbbb7a04898c541eabaa45f3e8a05",
+          "alpha_bbox": [
+            397,
+            399,
+            1639,
+            1644
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 3,
+          "sheet_index": 3,
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "8432e0c2b3629b37a2fb90d0e7f4e7850f632a633b92903580dd2eb692cf2deb",
+          "alpha_bbox": [
+            397,
+            407,
+            1635,
+            1646
+          ]
+        }
+      ]
+    },
+    "kirito_dash_down_page0": {
+      "file": "kirito_dash_down_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "8432e0c2b3629b37a2fb90d0e7f4e7850f632a633b92903580dd2eb692cf2deb",
+          "alpha_bbox": [
+            397,
+            407,
+            1635,
+            1646
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "ef827f6be3ce2485c3ea1faebddb0d6b8ba1906e1b72146164a6fb7bcb8a7f0b",
+          "alpha_bbox": [
+            397,
+            508,
+            1645,
+            1723
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "557aa4568ce7625950dd94ca0f2c3242b90728a88b1b74973dc06cd845a4701f",
+          "alpha_bbox": [
+            397,
+            462,
+            1645,
+            1695
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 3,
+          "sheet_index": 3,
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "c29cb5a1dfa69f80e09410cc73c2866e5da306a9a8268136bcdcdef3eb5c4b6e",
+          "alpha_bbox": [
+            397,
+            453,
+            1635,
+            1690
+          ]
+        }
+      ]
+    },
+    "kirito_dash_down_page1": {
+      "file": "kirito_dash_down_page1.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 1,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "8432e0c2b3629b37a2fb90d0e7f4e7850f632a633b92903580dd2eb692cf2deb",
+          "alpha_bbox": [
+            397,
+            407,
+            1635,
+            1646
+          ]
+        }
+      ]
+    },
+    "kirito_idle_up_page0": {
+      "file": "kirito_idle_up_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "6607c3dded73099afa761eeabcd2a5f5c57056515cc21e9d71e22762da1b435b",
+          "alpha_bbox": [
+            397,
+            357,
+            1643,
+            1611
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "14de4d68d6a6eea4150319102b146a933df1980098b3b7aeb0bf2171127d4827",
+          "alpha_bbox": [
+            397,
+            383,
+            1637,
+            1618
+          ]
+        }
+      ]
+    },
+    "kirito_run_up_page0": {
+      "file": "kirito_run_up_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "d3d90ca974d830d196fdaa6a251508de575d1286b32d1671c980ff52816d7102",
+          "alpha_bbox": [
+            397,
+            378,
+            1650,
+            1632
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "473e5bff53add958d1099a391f71a0849d4b3f2d62888f9623114cf09a640c43",
+          "alpha_bbox": [
+            397,
+            374,
+            1641,
+            1609
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "9a19f0df972a6b209cd5f3506c382363fd9097c8e8dd2c69fed7046d07331e93",
+          "alpha_bbox": [
+            397,
+            350,
+            1637,
+            1595
+          ]
+        }
+      ]
+    },
+    "kirito_hit_up_page0": {
+      "file": "kirito_hit_up_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "6607c3dded73099afa761eeabcd2a5f5c57056515cc21e9d71e22762da1b435b",
+          "alpha_bbox": [
+            397,
+            357,
+            1643,
+            1611
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "a73cfc837d32c9a639667475526439e32c4f2c02171f59684e20b1615ac47f0c",
+          "alpha_bbox": [
+            397,
+            426,
+            1631,
+            1659
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "6607c3dded73099afa761eeabcd2a5f5c57056515cc21e9d71e22762da1b435b",
+          "alpha_bbox": [
+            397,
+            357,
+            1643,
+            1611
+          ]
+        }
+      ]
+    },
+    "kirito_death_up_page0": {
+      "file": "kirito_death_up_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "6607c3dded73099afa761eeabcd2a5f5c57056515cc21e9d71e22762da1b435b",
+          "alpha_bbox": [
+            397,
+            357,
+            1643,
+            1611
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "5fcbed16a58dde84f26a22239902627f76c6a8ed626b3face01e1ad5ca4e01b7",
+          "alpha_bbox": [
+            397,
+            482,
+            1579,
+            1697
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "70d7cabb52a28cea9c1d42e3a966a132276e65a9c7c18721fd9c7193b9e21b48",
+          "alpha_bbox": [
+            397,
+            443,
+            1651,
+            1688
+          ]
+        }
+      ]
+    },
+    "kirito_basic_up_page0": {
+      "file": "kirito_basic_up_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "6607c3dded73099afa761eeabcd2a5f5c57056515cc21e9d71e22762da1b435b",
+          "alpha_bbox": [
+            397,
+            357,
+            1643,
+            1611
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "676c43c33ec206b4ef3bf09048e5e20d842caf1aed7af431c0055902ffd640a5",
+          "alpha_bbox": [
+            397,
+            379,
+            1633,
+            1614
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "bb36b6529ff25ce592a5eb5967e9b413343df43d980da4cda3232d39fd0f0663",
+          "alpha_bbox": [
+            397,
+            388,
+            1629,
+            1633
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 3,
+          "sheet_index": 3,
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "b75f29b131e05b00de5faebc971dce6bec3036ba7f2ea10a592a84d9aeb30c8f",
+          "alpha_bbox": [
+            430,
+            348,
+            1631,
+            1591
+          ]
+        }
+      ]
+    },
+    "kirito_basic_up_page1": {
+      "file": "kirito_basic_up_page1.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "6250cd9158dc07d68f8b85dc998b41b12169bf5a144829d2933befa00cfa6f8c",
+          "alpha_bbox": [
+            397,
+            399,
+            1627,
+            1634
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "83e94b53940cb3f282b12add21264b2de44ba4572e55ff58a4867c5fd2c75a7a",
+          "alpha_bbox": [
+            397,
+            462,
+            1637,
+            1629
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "cb5c60363e57e6d68314e3a337237b4b6c0a98d8a0df56f30347851ad0d88ffd",
+          "alpha_bbox": [
+            397,
+            383,
+            1637,
+            1618
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 3,
+          "sheet_index": 3,
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "b20a38cdd05ae647cf7b7db1b6371f99207e8c59c26062c73289ae446e881ed5",
+          "alpha_bbox": [
+            397,
+            322,
+            1637,
+            1576
+          ]
+        }
+      ]
+    },
+    "kirito_basic_up_page2": {
+      "file": "kirito_basic_up_page2.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "2f55ee9934c09984ccabc0ea8f9f73795a862be87963cac7ebbbd8a29d36b6ac",
+          "alpha_bbox": [
+            397,
+            381,
+            1633,
+            1614
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "6607c3dded73099afa761eeabcd2a5f5c57056515cc21e9d71e22762da1b435b",
+          "alpha_bbox": [
+            397,
+            357,
+            1643,
+            1611
+          ]
+        }
+      ]
+    },
+    "kirito_lv1_up_page0": {
+      "file": "kirito_lv1_up_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "6607c3dded73099afa761eeabcd2a5f5c57056515cc21e9d71e22762da1b435b",
+          "alpha_bbox": [
+            397,
+            357,
+            1643,
+            1611
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "676c43c33ec206b4ef3bf09048e5e20d842caf1aed7af431c0055902ffd640a5",
+          "alpha_bbox": [
+            397,
+            379,
+            1633,
+            1614
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "bb36b6529ff25ce592a5eb5967e9b413343df43d980da4cda3232d39fd0f0663",
+          "alpha_bbox": [
+            397,
+            388,
+            1629,
+            1633
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 3,
+          "sheet_index": 3,
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "b75f29b131e05b00de5faebc971dce6bec3036ba7f2ea10a592a84d9aeb30c8f",
+          "alpha_bbox": [
+            430,
+            348,
+            1631,
+            1591
+          ]
+        }
+      ]
+    },
+    "kirito_lv1_up_page1": {
+      "file": "kirito_lv1_up_page1.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "6250cd9158dc07d68f8b85dc998b41b12169bf5a144829d2933befa00cfa6f8c",
+          "alpha_bbox": [
+            397,
+            399,
+            1627,
+            1634
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "6607c3dded73099afa761eeabcd2a5f5c57056515cc21e9d71e22762da1b435b",
+          "alpha_bbox": [
+            397,
+            357,
+            1643,
+            1611
+          ]
+        }
+      ]
+    },
+    "kirito_lv2_up_page0": {
+      "file": "kirito_lv2_up_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "6607c3dded73099afa761eeabcd2a5f5c57056515cc21e9d71e22762da1b435b",
+          "alpha_bbox": [
+            397,
+            357,
+            1643,
+            1611
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "676c43c33ec206b4ef3bf09048e5e20d842caf1aed7af431c0055902ffd640a5",
+          "alpha_bbox": [
+            397,
+            379,
+            1633,
+            1614
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "bb36b6529ff25ce592a5eb5967e9b413343df43d980da4cda3232d39fd0f0663",
+          "alpha_bbox": [
+            397,
+            388,
+            1629,
+            1633
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 3,
+          "sheet_index": 3,
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "b75f29b131e05b00de5faebc971dce6bec3036ba7f2ea10a592a84d9aeb30c8f",
+          "alpha_bbox": [
+            430,
+            348,
+            1631,
+            1591
+          ]
+        }
+      ]
+    },
+    "kirito_lv2_up_page1": {
+      "file": "kirito_lv2_up_page1.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "6250cd9158dc07d68f8b85dc998b41b12169bf5a144829d2933befa00cfa6f8c",
+          "alpha_bbox": [
+            397,
+            399,
+            1627,
+            1634
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "83e94b53940cb3f282b12add21264b2de44ba4572e55ff58a4867c5fd2c75a7a",
+          "alpha_bbox": [
+            397,
+            462,
+            1637,
+            1629
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "cb5c60363e57e6d68314e3a337237b4b6c0a98d8a0df56f30347851ad0d88ffd",
+          "alpha_bbox": [
+            397,
+            383,
+            1637,
+            1618
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 3,
+          "sheet_index": 3,
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "b20a38cdd05ae647cf7b7db1b6371f99207e8c59c26062c73289ae446e881ed5",
+          "alpha_bbox": [
+            397,
+            322,
+            1637,
+            1576
+          ]
+        }
+      ]
+    },
+    "kirito_lv2_up_page2": {
+      "file": "kirito_lv2_up_page2.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "2f55ee9934c09984ccabc0ea8f9f73795a862be87963cac7ebbbd8a29d36b6ac",
+          "alpha_bbox": [
+            397,
+            381,
+            1633,
+            1614
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "6607c3dded73099afa761eeabcd2a5f5c57056515cc21e9d71e22762da1b435b",
+          "alpha_bbox": [
+            397,
+            357,
+            1643,
+            1611
+          ]
+        }
+      ]
+    },
+    "kirito_lv3_up_page0": {
+      "file": "kirito_lv3_up_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "6607c3dded73099afa761eeabcd2a5f5c57056515cc21e9d71e22762da1b435b",
+          "alpha_bbox": [
+            397,
+            357,
+            1643,
+            1611
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "cbb0feb559330ccc1688813b4bb30a4931807134f945d349b15f1e24e0082bdc",
+          "alpha_bbox": [
+            397,
+            409,
+            1651,
+            1642
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "46c4f2c41185024ad3cc164fbe4085abebc4fb76ca11eeddc74b942af7d728c7",
+          "alpha_bbox": [
+            397,
+            377,
+            1650,
+            1610
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 3,
+          "sheet_index": 3,
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "36552fb19c517aac61ad41ad17e27972e7e712473d9603657c0da5922e8a2d3d",
+          "alpha_bbox": [
+            397,
+            378,
+            1635,
+            1611
+          ]
+        }
+      ]
+    },
+    "kirito_lv3_up_page1": {
+      "file": "kirito_lv3_up_page1.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "75dc2b6ea49646cf52742d027a033cc40e1c3224c1e232c0519727d44ef17bc1",
+          "alpha_bbox": [
+            397,
+            345,
+            1627,
+            1581
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "ac85c99bf102b3b29d7e496e678c95ea08e46cfdbbcb45996d15a61474a05283",
+          "alpha_bbox": [
+            397,
+            401,
+            1637,
+            1655
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "443b71370ba548f0bc7fad66bf4b02dd3366498d2b43d06b881eb3a92a07d1f9",
+          "alpha_bbox": [
+            397,
+            432,
+            1619,
+            1610
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 3,
+          "sheet_index": 3,
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "6607c3dded73099afa761eeabcd2a5f5c57056515cc21e9d71e22762da1b435b",
+          "alpha_bbox": [
+            397,
+            357,
+            1643,
+            1611
+          ]
+        }
+      ]
+    },
+    "kirito_dash_up_page0": {
+      "file": "kirito_dash_up_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "6607c3dded73099afa761eeabcd2a5f5c57056515cc21e9d71e22762da1b435b",
+          "alpha_bbox": [
+            397,
+            357,
+            1643,
+            1611
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "fd545c2bbab64be055f9e108dd66384583b23e9d405411f59a7000dd98625a7d",
+          "alpha_bbox": [
+            397,
+            413,
+            1637,
+            1658
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "3ed903e22af7f65c1798fd96d0f7dd6b9d7f8ed17fc4f3a9557052a51d10ab0d",
+          "alpha_bbox": [
+            397,
+            387,
+            1637,
+            1631
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 3,
+          "sheet_index": 3,
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "2a6041135665d0d8249fca289c330d15aa9823ccca9bdb122988bf965ef37ca3",
+          "alpha_bbox": [
+            416,
+            450,
+            1629,
+            1681
+          ]
+        }
+      ]
+    },
+    "kirito_dash_up_page1": {
+      "file": "kirito_dash_up_page1.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 1,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "6607c3dded73099afa761eeabcd2a5f5c57056515cc21e9d71e22762da1b435b",
+          "alpha_bbox": [
+            397,
+            357,
+            1643,
+            1611
+          ]
+        }
+      ]
+    },
+    "kirito_idle_left_page0": {
+      "file": "kirito_idle_left_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "a7b6d99376d305335e903501eaaea15013302346fbdb31efe23d55e00a408d8c",
+          "alpha_bbox": [
+            416,
+            370,
+            1621,
+            1579
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "bc266643e30da60868dc780275f8ade443a415cca5986bb4825eb6c373cd1a9a",
+          "alpha_bbox": [
+            422,
+            358,
+            1615,
+            1575
+          ]
+        }
+      ]
+    },
+    "kirito_run_left_page0": {
+      "file": "kirito_run_left_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "4da668a2613593270012cc189bff240b3f2c54030e09bd623ce25e95d6c00735",
+          "alpha_bbox": [
+            420,
+            415,
+            1623,
+            1632
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "5b1470eec1a8b37c7b2ed54d32f94fdb89f7935c3c4cc7db82f0fd30082999d3",
+          "alpha_bbox": [
+            430,
+            415,
+            1621,
+            1669
+          ]
+        }
+      ]
+    },
+    "kirito_dash_left_page0": {
+      "file": "kirito_dash_left_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "a7b6d99376d305335e903501eaaea15013302346fbdb31efe23d55e00a408d8c",
+          "alpha_bbox": [
+            416,
+            370,
+            1621,
+            1579
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "9e4526abaa5fb9d71321ed42a9229ccade93f044dbe9472524ec18f8c1ab5bb5",
+          "alpha_bbox": [
+            397,
+            514,
+            1623,
+            1725
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "40b5a2571c9afa46b3ea699573f1ff56491f27f2cb38a6ee6a8e785ca3509a9a",
+          "alpha_bbox": [
+            462,
+            511,
+            1635,
+            1740
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 3,
+          "sheet_index": 3,
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "a7b6d99376d305335e903501eaaea15013302346fbdb31efe23d55e00a408d8c",
+          "alpha_bbox": [
+            416,
+            370,
+            1621,
+            1579
+          ]
+        }
+      ]
+    },
+    "kirito_idle_right_page0": {
+      "file": "kirito_idle_right_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 1,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "78ec5c92a956f498def6bd012b85bba21931ef283637f4c9e06c36ebe2d761e2",
+          "alpha_bbox": [
+            397,
+            340,
+            1637,
+            1577
+          ]
+        }
+      ]
+    },
+    "kirito_dash_right_page0": {
+      "file": "kirito_dash_right_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "78ec5c92a956f498def6bd012b85bba21931ef283637f4c9e06c36ebe2d761e2",
+          "alpha_bbox": [
+            397,
+            340,
+            1637,
+            1577
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "1e0aa9f9c8db9bf59d97451377bd0a28f042b63cbe9464d9248d7ff39a73a07c",
+          "alpha_bbox": [
+            414,
+            579,
+            1573,
+            1744
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "78ec5c92a956f498def6bd012b85bba21931ef283637f4c9e06c36ebe2d761e2",
+          "alpha_bbox": [
+            397,
+            340,
+            1637,
+            1577
+          ]
+        }
+      ]
+    },
+    "enemy_hit_down_page0": {
+      "file": "enemy_hit_down_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "7f780685931f35bdce9bedde33e3ea3694a25565380cab86f760577be30c2b3c",
+          "alpha_bbox": [
+            418,
+            287,
+            1627,
+            1541
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "1a01791d7da22342c653de5a6fb14294fafd4dd140053025b27f533f197fea8d",
+          "alpha_bbox": [
+            397,
+            458,
+            1627,
+            1693
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "7f780685931f35bdce9bedde33e3ea3694a25565380cab86f760577be30c2b3c",
+          "alpha_bbox": [
+            418,
+            287,
+            1627,
+            1541
+          ]
+        }
+      ]
+    },
+    "enemy_death_down_page0": {
+      "file": "enemy_death_down_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "7f780685931f35bdce9bedde33e3ea3694a25565380cab86f760577be30c2b3c",
+          "alpha_bbox": [
+            418,
+            287,
+            1627,
+            1541
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "f615af1875ef253ba15d55364d2b1db9f987bc69f0baa32ae39dcfbfb6f808f7",
+          "alpha_bbox": [
+            397,
+            458,
+            1633,
+            1693
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "a6d86f7c78cc53adb568bbce63f359d1727fff87c80fb6101aec5fa29293c67d",
+          "alpha_bbox": [
+            397,
+            515,
+            1621,
+            1704
+          ]
+        }
+      ]
+    },
+    "enemy_hit_up_page0": {
+      "file": "enemy_hit_up_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "c99a3f6137778d36d235ba817956c4969c6cb70f6416e486d68bdc7a7e70dd9c",
+          "alpha_bbox": [
+            397,
+            358,
+            1629,
+            1612
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "a9a35620d660dff446dea4fb69b9d15b40615bab06fe6af5860170577ee5b5de",
+          "alpha_bbox": [
+            537,
+            477,
+            1599,
+            1572
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "c99a3f6137778d36d235ba817956c4969c6cb70f6416e486d68bdc7a7e70dd9c",
+          "alpha_bbox": [
+            397,
+            358,
+            1629,
+            1612
+          ]
+        }
+      ]
+    },
+    "enemy_death_up_page0": {
+      "file": "enemy_death_up_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "c99a3f6137778d36d235ba817956c4969c6cb70f6416e486d68bdc7a7e70dd9c",
+          "alpha_bbox": [
+            397,
+            358,
+            1629,
+            1612
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "cb221683645fe6ab0b3f605947bc23c321201b574d4f0d4f0721b03fad0b27a6",
+          "alpha_bbox": [
+            454,
+            478,
+            1629,
+            1695
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "3c155052a30b566aed2240201722b8ebc3e3406af7540b02e32aca7b66c864fb",
+          "alpha_bbox": [
+            397,
+            482,
+            1625,
+            1623
+          ]
+        }
+      ]
+    },
+    "enemy_hit_left_page0": {
+      "file": "enemy_hit_left_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "492a3230e0ea089e42a23fdd3933317309c0fed30d8b4a6d8dad9bb7efebbab7",
+          "alpha_bbox": [
+            397,
+            398,
+            1639,
+            1615
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "b7c790ccc005b3ba7203c9714b9094a2bb94e6ceb7e00919fb9423f9b2020fb0",
+          "alpha_bbox": [
+            397,
+            405,
+            1627,
+            1631
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "492a3230e0ea089e42a23fdd3933317309c0fed30d8b4a6d8dad9bb7efebbab7",
+          "alpha_bbox": [
+            397,
+            398,
+            1639,
+            1615
+          ]
+        }
+      ]
+    },
+    "enemy_death_left_page0": {
+      "file": "enemy_death_left_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "492a3230e0ea089e42a23fdd3933317309c0fed30d8b4a6d8dad9bb7efebbab7",
+          "alpha_bbox": [
+            397,
+            398,
+            1639,
+            1615
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "d43d25ee8f82195946bbcd13d056656997172b426430ea17a7ee760e9725fbcf",
+          "alpha_bbox": [
+            397,
+            514,
+            1641,
+            1715
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "cdfb8bee5f7bd01cfb40430d9ede0902c90143215cf32d4163124681d33ce757",
+          "alpha_bbox": [
+            422,
+            646,
+            1611,
+            1853
+          ]
+        }
+      ]
+    },
+    "enemy_hit_right_page0": {
+      "file": "enemy_hit_right_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "3df1330904a8c73c6109c9326c7784fa36564415a9fa3855b9e4a780b7a23f41",
+          "alpha_bbox": [
+            414,
+            378,
+            1637,
+            1585
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "4674fa77e8898797136ecc94146454b93a52f816f3fbcbb233f58481be64c525",
+          "alpha_bbox": [
+            428,
+            443,
+            1629,
+            1672
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "3df1330904a8c73c6109c9326c7784fa36564415a9fa3855b9e4a780b7a23f41",
+          "alpha_bbox": [
+            414,
+            378,
+            1637,
+            1585
+          ]
+        }
+      ]
+    },
+    "enemy_death_right_page0": {
+      "file": "enemy_death_right_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "3df1330904a8c73c6109c9326c7784fa36564415a9fa3855b9e4a780b7a23f41",
+          "alpha_bbox": [
+            414,
+            378,
+            1637,
+            1585
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "d49350150619c0d64e1086bfa192d0f3d026a93376fe7556167bfb878aa1906c",
+          "alpha_bbox": [
+            397,
+            481,
+            1597,
+            1698
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "8b1822d2acda9416061c628ef8858afa1247af33a7d67ddb0aa380d53fe09ac7",
+          "alpha_bbox": [
+            478,
+            755,
+            1478,
+            1924
+          ]
+        }
+      ]
+    },
+    "enemy_shade_hit_down_page0": {
+      "file": "enemy_shade_hit_down_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "515357934dab762dcd999ff5cb1e8e3137ad82d2738681f74e073e2e06d13b9e",
+          "alpha_bbox": [
+            394,
+            359,
+            1631,
+            1600
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "a5f65ab00b5a2e0f2780a35d4ad7e431b3fc1522f2e63121e0212cb9b336fbcf",
+          "alpha_bbox": [
+            423,
+            508,
+            1641,
+            1702
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "515357934dab762dcd999ff5cb1e8e3137ad82d2738681f74e073e2e06d13b9e",
+          "alpha_bbox": [
+            394,
+            359,
+            1631,
+            1600
+          ]
+        }
+      ]
+    },
+    "enemy_shade_death_down_page0": {
+      "file": "enemy_shade_death_down_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "515357934dab762dcd999ff5cb1e8e3137ad82d2738681f74e073e2e06d13b9e",
+          "alpha_bbox": [
+            394,
+            359,
+            1631,
+            1600
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "d167810116a01a86ed106d99d2128a0bf4737d61c265ffef95f28799d8727386",
+          "alpha_bbox": [
+            431,
+            518,
+            1619,
+            1692
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "9e6deb3af6c315c1b247dcfddf253254da60b6a64a4f4b4e7f0b920c6c460fc1",
+          "alpha_bbox": [
+            411,
+            686,
+            1617,
+            1872
+          ]
+        }
+      ]
+    },
+    "enemy_shade_hit_up_page0": {
+      "file": "enemy_shade_hit_up_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "9cf4ea53eefee0c345acb0f8a09cdf490e549d20fc102a9066c9ecd89de731e7",
+          "alpha_bbox": [
+            394,
+            364,
+            1637,
+            1611
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "18370eeacab79d28887bcfc457ca6e3b8f99bd59da717e3571d49d9d0a0e2b00",
+          "alpha_bbox": [
+            427,
+            571,
+            1504,
+            1694
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "9cf4ea53eefee0c345acb0f8a09cdf490e549d20fc102a9066c9ecd89de731e7",
+          "alpha_bbox": [
+            394,
+            364,
+            1637,
+            1611
+          ]
+        }
+      ]
+    },
+    "enemy_shade_death_up_page0": {
+      "file": "enemy_shade_death_up_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "9cf4ea53eefee0c345acb0f8a09cdf490e549d20fc102a9066c9ecd89de731e7",
+          "alpha_bbox": [
+            394,
+            364,
+            1637,
+            1611
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "f1f6de4590619f85709113537b8fe7bfb8693ba5f59f16dcb1d34a8e904ceb33",
+          "alpha_bbox": [
+            522,
+            608,
+            1603,
+            1766
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "85e0894f9189185422413c7a50a76db180140d77acca4c091768256f2dc2a957",
+          "alpha_bbox": [
+            419,
+            495,
+            1568,
+            1681
+          ]
+        }
+      ]
+    },
+    "enemy_shade_hit_left_page0": {
+      "file": "enemy_shade_hit_left_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "d0ac2140b3065235d0e746ba502b64e8d3f4bda2f4f98258ee308c65de7f0e31",
+          "alpha_bbox": [
+            394,
+            470,
+            1625,
+            1663
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "49421312a4bbdd207840793ec05e73427321b0780345a806f916c9a9475daf7b",
+          "alpha_bbox": [
+            394,
+            507,
+            1625,
+            1678
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "d0ac2140b3065235d0e746ba502b64e8d3f4bda2f4f98258ee308c65de7f0e31",
+          "alpha_bbox": [
+            394,
+            470,
+            1625,
+            1663
+          ]
+        }
+      ]
+    },
+    "enemy_shade_death_left_page0": {
+      "file": "enemy_shade_death_left_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "d0ac2140b3065235d0e746ba502b64e8d3f4bda2f4f98258ee308c65de7f0e31",
+          "alpha_bbox": [
+            394,
+            470,
+            1625,
+            1663
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "bae2e163eafbb85d29510c6336f73ba5dae8bb8625f2829431ff3c6b8addebfb",
+          "alpha_bbox": [
+            508,
+            936,
+            1528,
+            1694
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "a55ae70d54e27214f88c4ae20114e1d9603533a213164a92edb6350bbb5255ff",
+          "alpha_bbox": [
+            435,
+            722,
+            1584,
+            1667
+          ]
+        }
+      ]
+    },
+    "enemy_shade_hit_right_page0": {
+      "file": "enemy_shade_hit_right_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "63185c3149aadf6aace3e8ba8d50a2f58d768e39d87184ec52588d17d5115db3",
+          "alpha_bbox": [
+            421,
+            447,
+            1627,
+            1664
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "12f8c3906c1d69cb38497da6fc7076d43919b0f2fc325fdff7da450a6df9113d",
+          "alpha_bbox": [
+            524,
+            546,
+            1576,
+            1710
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "63185c3149aadf6aace3e8ba8d50a2f58d768e39d87184ec52588d17d5115db3",
+          "alpha_bbox": [
+            421,
+            447,
+            1627,
+            1664
+          ]
+        }
+      ]
+    },
+    "enemy_shade_death_right_page0": {
+      "file": "enemy_shade_death_right_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "63185c3149aadf6aace3e8ba8d50a2f58d768e39d87184ec52588d17d5115db3",
+          "alpha_bbox": [
+            421,
+            447,
+            1627,
+            1664
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "44087094071a744cc22ec78ae941657e9ec0d0ea1aa51826da0827efdcc17377",
+          "alpha_bbox": [
+            460,
+            586,
+            1609,
+            1710
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "30866028be138eb77906e933368501527a2b620d293507057c11b29ab9653c33",
+          "alpha_bbox": [
+            458,
+            753,
+            1603,
+            1700
+          ]
+        }
+      ]
+    },
+    "enemy_mage_hit_down_page0": {
+      "file": "enemy_mage_hit_down_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "0d1596bd59ba95f3fcd3ac2ee93d00ca8075106968c5aef5b14610d8f50911b2",
+          "alpha_bbox": [
+            368,
+            388,
+            1653,
+            1550
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "5829ae3a67b415643db47ee6b07ec38c3d628a2533c495ac096e2f60f2a92171",
+          "alpha_bbox": [
+            401,
+            551,
+            1608,
+            1701
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "0d1596bd59ba95f3fcd3ac2ee93d00ca8075106968c5aef5b14610d8f50911b2",
+          "alpha_bbox": [
+            368,
+            388,
+            1653,
+            1550
+          ]
+        }
+      ]
+    },
+    "enemy_mage_death_down_page0": {
+      "file": "enemy_mage_death_down_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "0d1596bd59ba95f3fcd3ac2ee93d00ca8075106968c5aef5b14610d8f50911b2",
+          "alpha_bbox": [
+            368,
+            388,
+            1653,
+            1550
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "0e51755053d0ed95d6b1af984eea657ff929afb6cd37113accb369db628aa4f5",
+          "alpha_bbox": [
+            397,
+            531,
+            1628,
+            1691
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "8fd97ea5ba2f72370939441dabfe92068f02c9dd32d2a9b588867e94705f9dc3",
+          "alpha_bbox": [
+            368,
+            533,
+            1602,
+            1662
+          ]
+        }
+      ]
+    },
+    "enemy_mage_hit_up_page0": {
+      "file": "enemy_mage_hit_up_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "f3e8a856fd86fbcfefd55042bb36a2f8b898ee07043746363e7e148cee75ffe3",
+          "alpha_bbox": [
+            368,
+            439,
+            1648,
+            1591
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "8648e3c26a32a242fff4f66f84ce5c0ecc5406a3df8a0578504270a7ee5dd227",
+          "alpha_bbox": [
+            399,
+            512,
+            1650,
+            1676
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "f3e8a856fd86fbcfefd55042bb36a2f8b898ee07043746363e7e148cee75ffe3",
+          "alpha_bbox": [
+            368,
+            439,
+            1648,
+            1591
+          ]
+        }
+      ]
+    },
+    "enemy_mage_death_up_page0": {
+      "file": "enemy_mage_death_up_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "f3e8a856fd86fbcfefd55042bb36a2f8b898ee07043746363e7e148cee75ffe3",
+          "alpha_bbox": [
+            368,
+            439,
+            1648,
+            1591
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "3ed44285af4f510ddfd527cac788b30a80ab244dbf0d24f70561f4c7cb0b6e17",
+          "alpha_bbox": [
+            368,
+            590,
+            1634,
+            1703
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "959951f156340e193d151400266ae69540c416a5e62188532612950ce66f36d6",
+          "alpha_bbox": [
+            385,
+            539,
+            1660,
+            1675
+          ]
+        }
+      ]
+    },
+    "enemy_mage_hit_left_page0": {
+      "file": "enemy_mage_hit_left_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "cf410cd85b4f2bb54edd840e084974346569e4a74bb381944c344fa49dad6395",
+          "alpha_bbox": [
+            368,
+            442,
+            1644,
+            1624
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "ce942d24196897c7c2a3fa2df1962a27412c244f9f73bcb9c1d6e50d28d7c0a8",
+          "alpha_bbox": [
+            423,
+            482,
+            1650,
+            1660
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "cf410cd85b4f2bb54edd840e084974346569e4a74bb381944c344fa49dad6395",
+          "alpha_bbox": [
+            368,
+            442,
+            1644,
+            1624
+          ]
+        }
+      ]
+    },
+    "enemy_mage_death_left_page0": {
+      "file": "enemy_mage_death_left_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "cf410cd85b4f2bb54edd840e084974346569e4a74bb381944c344fa49dad6395",
+          "alpha_bbox": [
+            368,
+            442,
+            1644,
+            1624
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "b579b51e6721e93cecb4f02c53082639edd171712bb538432c24eade289372fa",
+          "alpha_bbox": [
+            457,
+            543,
+            1500,
+            1681
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "ddd99e132d4c114a992829997c75dc7e9a2d0221239ec0e1e5c020cc36609aa1",
+          "alpha_bbox": [
+            368,
+            676,
+            1666,
+            1820
+          ]
+        }
+      ]
+    },
+    "enemy_mage_hit_right_page0": {
+      "file": "enemy_mage_hit_right_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "c959f0b370e898b06680dafee32f13c3629aa25a538454f1e22462d5f09d9ff8",
+          "alpha_bbox": [
+            368,
+            430,
+            1662,
+            1586
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "1587eb93e643b3e45691855f7f3dc2249c256bb8487d873a397479530900f622",
+          "alpha_bbox": [
+            409,
+            500,
+            1658,
+            1677
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "c959f0b370e898b06680dafee32f13c3629aa25a538454f1e22462d5f09d9ff8",
+          "alpha_bbox": [
+            368,
+            430,
+            1662,
+            1586
+          ]
+        }
+      ]
+    },
+    "enemy_mage_death_right_page0": {
+      "file": "enemy_mage_death_right_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "c959f0b370e898b06680dafee32f13c3629aa25a538454f1e22462d5f09d9ff8",
+          "alpha_bbox": [
+            368,
+            430,
+            1662,
+            1586
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "20c43c382aa51ff332a698505e7829b1d7e1c6d25ef6ce5d2de37ac16d312b15",
+          "alpha_bbox": [
+            409,
+            467,
+            1644,
+            1627
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "ad9a74552175c333af70f5f9abc7811ceb81720bfe4771509d591ebc594c73ad",
+          "alpha_bbox": [
+            401,
+            780,
+            1602,
+            1723
+          ]
+        }
+      ]
+    },
+    "enemy_elite_hit_down_page0": {
+      "file": "enemy_elite_hit_down_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 1,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "9733b5e601612803fff4f1664f7030ef855a194f941d615f1a0eaf0ea1ef8d18",
+          "alpha_bbox": [
+            422,
+            473,
+            1633,
+            1693
+          ]
+        }
+      ]
+    },
+    "enemy_elite_death_down_page0": {
+      "file": "enemy_elite_death_down_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 1,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "a2be5b855562bfe32e9a359a50981b0211eb62ac7bbe391ff8dc89fd7facb6a8",
+          "alpha_bbox": [
+            426,
+            547,
+            1623,
+            1704
+          ]
+        }
+      ]
+    },
+    "boss_hit_down_page0": {
+      "file": "boss_hit_down_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 1,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "21c2bc9dbdfc4a2e6742f381001f11ec42e66f63a2260f18d7c23f233efe317b",
+          "alpha_bbox": [
+            397,
+            364,
+            1650,
+            1615
+          ]
+        }
+      ]
+    },
+    "enemy_mage_cast_down_page0": {
+      "file": "enemy_mage_cast_down_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "0d1596bd59ba95f3fcd3ac2ee93d00ca8075106968c5aef5b14610d8f50911b2",
+          "alpha_bbox": [
+            368,
+            388,
+            1653,
+            1550
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "6a3097d6ece542bfcf4e220652b6b6c1ba50ec038654ebe65c9dda7bedd82954",
+          "alpha_bbox": [
+            417,
+            387,
+            1656,
+            1549
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "b207403c84381f7c9d5d2dcd128b8f196fc5c619725ffd02d093dfc62b6827c8",
+          "alpha_bbox": [
+            368,
+            385,
+            1664,
+            1567
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 3,
+          "sheet_index": 3,
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "0d1596bd59ba95f3fcd3ac2ee93d00ca8075106968c5aef5b14610d8f50911b2",
+          "alpha_bbox": [
+            368,
+            388,
+            1653,
+            1550
+          ]
+        }
+      ]
+    },
+    "enemy_mage_cast_up_page0": {
+      "file": "enemy_mage_cast_up_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "f3e8a856fd86fbcfefd55042bb36a2f8b898ee07043746363e7e148cee75ffe3",
+          "alpha_bbox": [
+            368,
+            439,
+            1648,
+            1591
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "574562a2fcc879e5b0d40359ea1171113acc274b0ef89d1ed6d6418537c0eaaa",
+          "alpha_bbox": [
+            433,
+            415,
+            1648,
+            1601
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "76ffed6168d5a25f64b6c131dd4c12b4a65cc645b8b4740ead7d165c0a706eed",
+          "alpha_bbox": [
+            368,
+            432,
+            1660,
+            1596
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 3,
+          "sheet_index": 3,
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "f3e8a856fd86fbcfefd55042bb36a2f8b898ee07043746363e7e148cee75ffe3",
+          "alpha_bbox": [
+            368,
+            439,
+            1648,
+            1591
+          ]
+        }
+      ]
+    },
+    "enemy_mage_cast_left_page0": {
+      "file": "enemy_mage_cast_left_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "cf410cd85b4f2bb54edd840e084974346569e4a74bb381944c344fa49dad6395",
+          "alpha_bbox": [
+            368,
+            442,
+            1644,
+            1624
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "efe613764641122501e36a182c3930a043ca71163dd2edc499ed9370c581264f",
+          "alpha_bbox": [
+            389,
+            459,
+            1668,
+            1625
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "5de0ae4b53b70739a7b885d621f75f4e523206f2719e3ddf327c7face9098860",
+          "alpha_bbox": [
+            368,
+            456,
+            1656,
+            1634
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 3,
+          "sheet_index": 3,
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "cf410cd85b4f2bb54edd840e084974346569e4a74bb381944c344fa49dad6395",
+          "alpha_bbox": [
+            368,
+            442,
+            1644,
+            1624
+          ]
+        }
+      ]
+    },
+    "enemy_mage_cast_right_page0": {
+      "file": "enemy_mage_cast_right_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "c959f0b370e898b06680dafee32f13c3629aa25a538454f1e22462d5f09d9ff8",
+          "alpha_bbox": [
+            368,
+            430,
+            1662,
+            1586
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "ce6839b1a5dcb4e80e4659b579c8256d0db5ef062825977dd9d3d9996828f9ce",
+          "alpha_bbox": [
+            368,
+            444,
+            1644,
+            1595
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "130e8557b7b2129a159f511096a24da85a9cc64e2acb257dbe0287771538fc80",
+          "alpha_bbox": [
+            368,
+            426,
+            1666,
+            1618
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 3,
+          "sheet_index": 3,
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "c959f0b370e898b06680dafee32f13c3629aa25a538454f1e22462d5f09d9ff8",
+          "alpha_bbox": [
+            368,
+            430,
+            1662,
+            1586
+          ]
+        }
+      ]
+    },
+    "boss_cast_down_page0": {
+      "file": "boss_cast_down_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "3b6264b4ce9e2251eec1ae527fed3a361dc2d3146f79233d89761600429bebbd",
+          "alpha_bbox": [
+            397,
+            287,
+            1650,
+            1541
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "f176376e460ce4d38b506d1e249c570bb3a8c4d859944b1f7c46750ddfb8e165",
+          "alpha_bbox": [
+            397,
+            365,
+            1633,
+            1591
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "ee1583c4147ef500eaf87d375894d329ebfddf742eb9b7ecb54a17b9dbd4b906",
+          "alpha_bbox": [
+            397,
+            437,
+            1627,
+            1674
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 3,
+          "sheet_index": 3,
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "3b6264b4ce9e2251eec1ae527fed3a361dc2d3146f79233d89761600429bebbd",
+          "alpha_bbox": [
+            397,
+            287,
+            1650,
+            1541
+          ]
+        }
+      ]
+    },
+    "boss_cast_up_page0": {
+      "file": "boss_cast_up_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "ad9ab621bcacc6b7f8b19a8b0a7bacdd70f4fe6df5cbf51c6f9c1fd698cb627e",
+          "alpha_bbox": [
+            397,
+            357,
+            1650,
+            1594
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "e684b36ba2d3223b83b6ff6f9ee46e05ce00d0f210dafd160038f87f83c61ffd",
+          "alpha_bbox": [
+            397,
+            392,
+            1605,
+            1625
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "4c62c9a74c131ab56fcc36ef32ed5f45f5e283c60a74cdd889d180de03a8ccdd",
+          "alpha_bbox": [
+            397,
+            402,
+            1637,
+            1637
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 3,
+          "sheet_index": 3,
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "ad9ab621bcacc6b7f8b19a8b0a7bacdd70f4fe6df5cbf51c6f9c1fd698cb627e",
+          "alpha_bbox": [
+            397,
+            357,
+            1650,
+            1594
+          ]
+        }
+      ]
+    },
+    "boss_cast_left_page0": {
+      "file": "boss_cast_left_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "cc7413d19463c41e6af65ebe9ad2a805d9e337ad278b7bd6e59970ab0de69647",
+          "alpha_bbox": [
+            397,
+            401,
+            1605,
+            1596
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "38a9d03807ccdb3a7609f52f9a59c0fd8f366837e652462e9c99caf077e879c8",
+          "alpha_bbox": [
+            397,
+            417,
+            1599,
+            1626
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "b61934aef4b5424ea2d2ce2544cf914bb91dfb2a7f7b692220f1442232c6f585",
+          "alpha_bbox": [
+            397,
+            372,
+            1635,
+            1611
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 3,
+          "sheet_index": 3,
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "cc7413d19463c41e6af65ebe9ad2a805d9e337ad278b7bd6e59970ab0de69647",
+          "alpha_bbox": [
+            397,
+            401,
+            1605,
+            1596
+          ]
+        }
+      ]
+    },
+    "boss_cast_right_page0": {
+      "file": "boss_cast_right_page0.png",
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "fc9b86d9a5198ded89c917093eb8dc832915edbdd697c03437745635db27444d",
+          "alpha_bbox": [
+            397,
+            382,
+            1643,
+            1619
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "sha256": "cf6c758f51baa6c8dc6d9050c14ecd368818c8c9a2b9e88c7b2fb4c25ecd5f5d",
+          "alpha_bbox": [
+            397,
+            421,
+            1632,
+            1656
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "b345cddee792e06b360297879e9b0787262ce7bc58c6c4d0245336b390766958",
+          "alpha_bbox": [
+            397,
+            401,
+            1637,
+            1607
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 3,
+          "sheet_index": 3,
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "sha256": "fc9b86d9a5198ded89c917093eb8dc832915edbdd697c03437745635db27444d",
+          "alpha_bbox": [
+            397,
+            382,
+            1643,
+            1619
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "textures": [
+    {
+      "image": "originals/kirito/down/neutral.png",
+      "frames": [
+        {
+          "filename": "kirito_death_down/000",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1254,
+            "h": 1254
+          },
+          "rotated": false,
+          "trimmed": true,
+          "spriteSourceSize": {
+            "x": 397,
+            "y": 392,
+            "w": 1254,
+            "h": 1254
+          },
+          "sourceSize": {
+            "w": 2048,
+            "h": 2048
+          }
+        }
+      ]
+    },
+    {
+      "image": "originals/kirito/down/collapse.png",
+      "frames": [
+        {
+          "filename": "kirito_death_down/001",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1254,
+            "h": 1254
+          },
+          "rotated": false,
+          "trimmed": true,
+          "spriteSourceSize": {
+            "x": 397,
+            "y": 494,
+            "w": 1254,
+            "h": 1254
+          },
+          "sourceSize": {
+            "w": 2048,
+            "h": 2048
+          }
+        }
+      ]
+    },
+    {
+      "image": "originals/kirito/down/fallen.png",
+      "frames": [
+        {
+          "filename": "kirito_death_down/002",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1254,
+            "h": 1254
+          },
+          "rotated": false,
+          "trimmed": true,
+          "spriteSourceSize": {
+            "x": 397,
+            "y": 446,
+            "w": 1254,
+            "h": 1254
+          },
+          "sourceSize": {
+            "w": 2048,
+            "h": 2048
+          }
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "format": "RGBA8888",
+    "scale": "1",
+    "app": "lossless isolated art review"
+  }
+}

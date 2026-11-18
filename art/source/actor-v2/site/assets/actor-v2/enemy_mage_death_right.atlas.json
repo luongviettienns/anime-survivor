@@ -1,0 +1,87 @@
+{
+  "textures": [
+    {
+      "image": "originals/enemy_mage/right/neutral.png",
+      "frames": [
+        {
+          "filename": "enemy_mage_death_right/000",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1312,
+            "h": 1199
+          },
+          "rotated": false,
+          "trimmed": true,
+          "spriteSourceSize": {
+            "x": 368,
+            "y": 411,
+            "w": 1312,
+            "h": 1199
+          },
+          "sourceSize": {
+            "w": 2048,
+            "h": 2048
+          }
+        }
+      ]
+    },
+    {
+      "image": "originals/enemy_mage/right/collapse.png",
+      "frames": [
+        {
+          "filename": "enemy_mage_death_right/001",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1312,
+            "h": 1199
+          },
+          "rotated": false,
+          "trimmed": true,
+          "spriteSourceSize": {
+            "x": 368,
+            "y": 444,
+            "w": 1312,
+            "h": 1199
+          },
+          "sourceSize": {
+            "w": 2048,
+            "h": 2048
+          }
+        }
+      ]
+    },
+    {
+      "image": "originals/enemy_mage/right/fallen.png",
+      "frames": [
+        {
+          "filename": "enemy_mage_death_right/002",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1312,
+            "h": 1199
+          },
+          "rotated": false,
+          "trimmed": true,
+          "spriteSourceSize": {
+            "x": 368,
+            "y": 647,
+            "w": 1312,
+            "h": 1199
+          },
+          "sourceSize": {
+            "w": 2048,
+            "h": 2048
+          }
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "format": "RGBA8888",
+    "scale": "1",
+    "app": "lossless isolated art review"
+  }
+}

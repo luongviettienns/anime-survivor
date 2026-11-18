@@ -1,0 +1,145 @@
+
+> anime-survivor@0.1.0 verify
+> npm run typecheck && npm run lint && npm run test && npm run check:arch && npm run assets:validate && npm run build
+
+
+> anime-survivor@0.1.0 typecheck
+> tsc --noEmit
+
+
+> anime-survivor@0.1.0 lint
+> eslint src tests
+
+
+> anime-survivor@0.1.0 test
+> vitest run
+
+
+ RUN  v3.2.7 C:/Users/ASUS/Desktop/AnimeSurvivor-AssetReview-4dir-20261118/project
+
+ ✓ tests/storage.test.ts (4 tests) 6ms
+ ✓ tests/ui-layout.test.ts (2 tests) 3ms
+ ✓ tests/infinite-map.test.ts (3 tests) 6ms
+ ✓ tests/melee-attacks.test.ts (5 tests) 8ms
+ ✓ tests/vector.test.ts (5 tests) 8ms
+ ✓ tests/targeting.test.ts (4 tests) 4ms
+ ✓ tests/domain.test.ts (8 tests) 7ms
+ ✓ tests/damage-popup.test.ts (2 tests) 5ms
+ ✓ tests/heroes.test.ts (2 tests) 7ms
+ ✓ tests/status-effects.test.ts (3 tests) 7ms
+ ✓ tests/facing.test.ts (4 tests) 6ms
+ ✓ tests/phantom-dash.test.ts (3 tests) 6ms
+ ✓ tests/pickups.test.ts (6 tests) 10ms
+ ✓ tests/waves-enemies.test.ts (8 tests) 15ms
+ ✓ tests/weapons-upgrades.test.ts (6 tests) 16ms
+ ✓ tests/vfx-audio.test.ts (5 tests) 19ms
+
+ Test Files  16 passed (16)
+      Tests  70 passed (70)
+   Start at  22:28:26
+   Duration  1.02s (transform 1.12s, setup 0ms, collect 2.48s, tests 132ms, environment 4ms, prepare 3.66s)
+
+
+> anime-survivor@0.1.0 check:arch
+> node scripts/check-architecture.mjs
+
+Architecture boundaries and file sizes: OK
+
+> anime-survivor@0.1.0 assets:validate
+> python scripts/test_naruto_ai_art.py && python scripts/test_weapon_art.py && python scripts/test_ai_import.py && python scripts/test_melee_art.py && python scripts/test_ui_art.py && python scripts/validate_sprites.py
+
+C:\Users\ASUS\Desktop\AnimeSurvivor-AssetReview-4dir-20261118\project\scripts\naruto_ai_art.py:46: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  for r, g, b, a in frame.getdata():
+.C:\Users\ASUS\Desktop\AnimeSurvivor-AssetReview-4dir-20261118\project\scripts\test_naruto_ai_art.py:16: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  self.assertEqual(set(frame.getchannel('A').getdata()), {0, 255})
+C:\Users\ASUS\Desktop\AnimeSurvivor-AssetReview-4dir-20261118\project\scripts\test_naruto_ai_art.py:23: DeprecationWarning: Image.Image.getdata is deprecated and will be removed in Pillow 14 (2027-10-15). Use get_flattened_data instead.
+  colors.update(frame.getdata())
+...
+----------------------------------------------------------------------
+Ran 4 tests in 0.487s
+
+OK
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.486s
+
+OK
+.....
+----------------------------------------------------------------------
+Ran 5 tests in 11.527s
+
+OK
+..
+----------------------------------------------------------------------
+Ran 2 tests in 0.060s
+
+OK
+...
+----------------------------------------------------------------------
+Ran 3 tests in 0.029s
+
+OK
+PASS hero: all 22 crops pixel-identical to source frames
+PASS enemy: all 8 crops pixel-identical to source frames
+PASS enemy_shade: all 8 crops pixel-identical to source frames
+PASS enemy_mage: all 14 crops pixel-identical to source frames
+PASS boss: all 14 crops pixel-identical to source frames
+PASS orb: all 2 crops pixel-identical to source frames
+PASS kunai: all 2 crops pixel-identical to source frames
+PASS slash: all 6 crops pixel-identical to source frames
+PASS slash_x: all 2 crops pixel-identical to source frames
+PASS shuriken: all 2 crops pixel-identical to source frames
+PASS mine: all 2 crops pixel-identical to source frames
+PASS explosion: all 3 crops pixel-identical to source frames
+PASS enemy_bolt: all 2 crops pixel-identical to source frames
+PASS gem: all 4 crops pixel-identical to source frames
+PASS heal_pickup: all 4 crops pixel-identical to source frames
+PASS tree: all 1 crops pixel-identical to source frames
+PASS torii_gate: all 4 crops pixel-identical to source frames
+PASS shrine_plaza: all 1 crops pixel-identical to source frames
+PASS shrine_lantern: all 4 crops pixel-identical to source frames
+PASS spirit_flower: all 4 crops pixel-identical to source frames
+PASS vfx_hit: all 5 crops pixel-identical to source frames
+PASS vfx_death: all 2 crops pixel-identical to source frames
+PASS vfx_levelup: all 6 crops pixel-identical to source frames
+PASS vfx_telegraph: all 2 crops pixel-identical to source frames
+PASS rasengan: all 6 crops pixel-identical to source frames
+PASS punch: all 2 crops pixel-identical to source frames
+PASS hero_actions: all 8 crops pixel-identical to source frames
+PASS rasenshuriken: all 4 crops pixel-identical to source frames
+PASS wind_ground: all 2 crops pixel-identical to source frames
+PASS punch_max: all 2 crops pixel-identical to source frames
+PASS shuriken_max: all 2 crops pixel-identical to source frames
+PASS mine_max: all 2 crops pixel-identical to source frames
+PASS explosion_max: all 3 crops pixel-identical to source frames
+PASS enemy_elite: all 8 crops pixel-identical to source frames
+PASS aura_ring: all 2 crops pixel-identical to source frames
+PASS aura_outer: all 2 crops pixel-identical to source frames
+PASS aura_contact: all 2 crops pixel-identical to source frames
+PASS aura_accent: all 2 crops pixel-identical to source frames
+PASS boss_blood_slash: all 2 crops pixel-identical to source frames
+PASS hero_locomotion: all 14 crops pixel-identical to source frames
+PASS enemy_attack: all 12 crops pixel-identical to source frames
+PASS enemy_shade_attack: all 12 crops pixel-identical to source frames
+PASS slam_wave: all 4 crops pixel-identical to source frames
+PASS shade_claw: all 4 crops pixel-identical to source frames
+PASS player_skill_hit: all 6 crops pixel-identical to source frames
+PASS all 45 animated sheets, 11 tiles, and 10 icons
+
+> anime-survivor@0.1.0 build
+> tsc --noEmit && vite build
+
+vite v6.4.5 building for production...
+transforming...
+✓ 64 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                     0.46 kB │ gzip:   0.30 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+dist/assets/index-CXOq8zxF.css      0.21 kB │ gzip:   0.18 kB
+dist/assets/index-BgrpxyqL.js   1,799.84 kB │ gzip: 417.64 kB
+✓ built in 5.14s

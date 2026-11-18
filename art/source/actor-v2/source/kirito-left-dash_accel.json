@@ -1,0 +1,8 @@
+{
+  "key": "kirito",
+  "direction": "left",
+  "pose": "dash_accel",
+  "prompt": "Exactly ONE detailed pixel-art GAME animation frame of the supplied dual swordsman. Strictly preserve canonical image 1's camera, heading, anatomy/head scale, clothes and material pixel clusters. Image 2 is identity/detail only. Facing LEFT / west in a genuine left-facing profile-three-quarter: head, chest, boots all point LEFT. Character's LEFT arm is the NEAR arm on the lower/south side, holding CYAN sword foreground. RIGHT arm is the FAR arm upper/north side, holding VIOLET sword partly behind. Keep both swords distinguishable; never mirror another image. PHANTOM DASH acceleration: leading foot has just pushed off, body extends from the coil into a forward diagonal, trailing leg lengthens, coat flares backward; both swords stay in correct hands behind the body. Distinct halfway pose between launch and full glide. Slightly elevated top-down orthographic three-quarter view, visible top head/shoulder planes. LEFT hand CYAN ice sword, RIGHT hand VIOLET-BLACK sword, never swapped/mirrored. Same anatomical pixel scale when crouching; do not enlarge a crouched body to fill canvas. Full body and both sword tips inside with 60px clear margins. No huge VFX or baked trails, no ground/shadow/text/grid, single transparent RGBA frame, same original canvas.",
+  "path": "C:\\Users\\ASUS\\.codex\\generated_images\\01a1ee04-31d9-76f3-993d-4f3b2888c393\\exec-66a0a243-0e43-45da-95eb-0bb7ce91d090.png",
+  "reference": "C:\\Users\\ASUS\\.codex\\generated_images\\01a1ee04-31d9-76f3-993d-4f3b2888c393\\exec-cd84e9cd-b5a9-4ab5-a1c3-8461d9f086a5.png"
+}

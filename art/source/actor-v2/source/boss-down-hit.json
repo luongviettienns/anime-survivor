@@ -1,0 +1,7 @@
+{
+  "key": "boss",
+  "direction": "down",
+  "pose": "hit",
+  "prompt": "Single full-body high-detail pixel-art game sprite frame using reference solely as strict original red/gold demon samurai boss identity: horned helmet, tusked mask, layered armor, ragged cape. Front/down facing, slightly elevated top-down orthographic 3/4 camera. Pose HIT REACTION: small recoil of shoulders, knees slightly bent, arms flinch inward; still standing, original head and anatomical proportions. No impact effect, no damage text. Same pixel palette and fine crisp stepped shading, no painting. Entire body including horn tips and cape inside square transparent RGBA canvas with 70px clear margins; no clipping, no ground or shadow, no grid, one pose.",
+  "path": "C:/Users/ASUS/.codex/generated_images/01a1ee04-31d9-76f3-993d-4f3b2888c393/exec-80175aa2-8624-46c2-8099-6ab046d97056.png"
+}

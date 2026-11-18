@@ -1,0 +1,61 @@
+{
+  "results": [
+    {
+      "direction": "down",
+      "distance": 223.83333333333337,
+      "samples": 10,
+      "frames": [
+        "kirito_dash_down/000",
+        "kirito_dash_down/001",
+        "kirito_dash_down/002",
+        "kirito_dash_down/003",
+        "kirito_dash_down/004"
+      ],
+      "cooldown": 7333.3,
+      "ghostsCleared": true
+    },
+    {
+      "direction": "up",
+      "distance": 223.83333333333337,
+      "samples": 10,
+      "frames": [
+        "kirito_dash_up/000",
+        "kirito_dash_up/001",
+        "kirito_dash_up/002",
+        "kirito_dash_up/003",
+        "kirito_dash_up/004"
+      ],
+      "cooldown": 7316.6,
+      "ghostsCleared": true
+    },
+    {
+      "direction": "left",
+      "distance": 223.83333333333337,
+      "samples": 10,
+      "frames": [
+        "kirito_dash_left/000",
+        "kirito_dash_left/001",
+        "kirito_dash_left/002",
+        "kirito_dash_left/003"
+      ],
+      "cooldown": 7333.3,
+      "ghostsCleared": true
+    },
+    {
+      "direction": "right",
+      "distance": 220,
+      "samples": 10,
+      "frames": [
+        "kirito_dash_right/000",
+        "kirito_dash_right/001",
+        "kirito_dash_right/002"
+      ],
+      "cooldown": 6833.4,
+      "ghostsCleared": true
+    }
+  ],
+  "paused": true,
+  "errors": [],
+  "isolatedPort": 5184,
+  "statsUnchanged": true
+}

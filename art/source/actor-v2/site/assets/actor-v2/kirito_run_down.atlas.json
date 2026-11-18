@@ -1,0 +1,113 @@
+{
+  "textures": [
+    {
+      "image": "originals/kirito/down/run_contact_l.png",
+      "frames": [
+        {
+          "filename": "kirito_run_down/000",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1254,
+            "h": 1254
+          },
+          "rotated": false,
+          "trimmed": true,
+          "spriteSourceSize": {
+            "x": 397,
+            "y": 416,
+            "w": 1254,
+            "h": 1254
+          },
+          "sourceSize": {
+            "w": 2048,
+            "h": 2048
+          }
+        }
+      ]
+    },
+    {
+      "image": "originals/kirito/down/run_pass_l.png",
+      "frames": [
+        {
+          "filename": "kirito_run_down/001",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1254,
+            "h": 1254
+          },
+          "rotated": false,
+          "trimmed": true,
+          "spriteSourceSize": {
+            "x": 397,
+            "y": 398,
+            "w": 1254,
+            "h": 1254
+          },
+          "sourceSize": {
+            "w": 2048,
+            "h": 2048
+          }
+        }
+      ]
+    },
+    {
+      "image": "originals/kirito/down/run_contact_r.png",
+      "frames": [
+        {
+          "filename": "kirito_run_down/002",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1254,
+            "h": 1254
+          },
+          "rotated": false,
+          "trimmed": true,
+          "spriteSourceSize": {
+            "x": 397,
+            "y": 414,
+            "w": 1254,
+            "h": 1254
+          },
+          "sourceSize": {
+            "w": 2048,
+            "h": 2048
+          }
+        }
+      ]
+    },
+    {
+      "image": "originals/kirito/down/run_pass_r.png",
+      "frames": [
+        {
+          "filename": "kirito_run_down/003",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1254,
+            "h": 1254
+          },
+          "rotated": false,
+          "trimmed": true,
+          "spriteSourceSize": {
+            "x": 397,
+            "y": 388,
+            "w": 1254,
+            "h": 1254
+          },
+          "sourceSize": {
+            "w": 2048,
+            "h": 2048
+          }
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "format": "RGBA8888",
+    "scale": "1",
+    "app": "lossless isolated art review"
+  }
+}

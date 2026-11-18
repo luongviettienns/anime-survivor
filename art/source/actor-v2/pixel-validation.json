@@ -1,0 +1,28 @@
+{
+  "original_png_hashes": 141,
+  "exact_frame_crops": 220,
+  "reduced_clips": 58,
+  "world_art_multiplier": 2,
+  "body_target_px": 128,
+  "boss_target_px": 256,
+  "preview_camera_zoom": 1.5,
+  "generation_budget": {
+    "latest_user_limit_additional_frames": 5,
+    "additional_generation_calls_since_limit": 4,
+    "large_batches_cancelled": true,
+    "retained_at_stop": 112,
+    "policy": "Reuse existing compatible direction poses; never resume old 192-frame target.",
+    "reserved_jobs": [],
+    "remaining_allowance": 1,
+    "additional_successful_frames": 2,
+    "failed_calls": 2,
+    "generation_stopped_reason": "image tool usage_limit_reached; do not retry"
+  },
+  "deferred": [
+    "Kirito left/right hit/death and sword skills",
+    "Kirito right run",
+    "Elite/boss side/back hit/death",
+    "New dedicated Phantom Dash VFX textures; reuse actor afterimages and existing effects",
+    "Boss defeated pose: image tool usage limit reached; no substitute accepted"
+  ]
+}

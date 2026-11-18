@@ -246,3 +246,12 @@ pm run verify (67/67 Vitest unit tests, TypeScript, ESLint, architecture guard, 
 - Wired MovementSystem, HudOverlay/HudState, GameScene, and DebugBridge (getDashState).
 - Verified via 
 pm run verify (16 files / 70 Vitest tests, TS, ESLint, check-architecture, sprite validation, build) and Playwright kirito.spec.ts + lobby.spec.ts + visual check of 	est-results/kirito-phantom-dash.png.
+
+
+## Reduced directional art and 2x world-art review - 2026-11-18
+- Stopped expanded batches after user cap: four additional image calls, two successful PNGs (right Dash glide and front boss hit), two quota failures. Boss defeated, elite/boss side/back reactions and unfinished Kirito side actions remain deferred. No further generation.
+- art/source/actor-v2 retains141 byte-identical originals,58 reduced clips,220 padded entries and72 exact sheets. One clipped up-run source is excluded from playback; legacy boss source edge contact is recorded. No native PNG resampling or palette/alpha changes.
+- Size override in isolated preview: standing player/normal/elite128px, boss256px, world art +100% independently of camera1.5x. Skills/VFX/pickups/shadows enlarged; HUD uses its own1x camera. Constant standing-reference scales prevent caster model shrink; world collision sizes and dash domain stats retained.
+- Isolated source copy: C:/Users/ASUS/Desktop/AnimeSurvivor-AssetReview-4dir-20261118/project. Authored four-direction180ms Dash/afterimages attached to existing logic there; scoped source changes stored in art/source/actor-v2/integration.patch. Main live gameplay source/public runtime assets untouched.
+- Verified isolated npm run verify: PASS16files/70Vitest tests, TS, ESLint, architecture, sprite checks, production build. New package: PASS72sheets/220exact crops and141original PNG hashes/dimensions. Browser harness:58clips, no page/console/network errors. Actual keyboard Dash:4directions, no flipped ghosts, ghost expiry, cooldown and pause. Browser size checks:128/256body references, stable caster scale, pickup art59.2px with body29.6px. Final HUD/world screenshots inspected. Evidence in art/source/actor-v2/qa.
+- Game review: http://127.0.0.1:5184/?play=1&hero=kirito ; asset harness: /review.html . Protected5173 remains running. No deployment/user acceptance claimed; no60-second full run or crowded-combat GPU profile performed.

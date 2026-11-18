@@ -16,6 +16,7 @@ Read `README.md`, `docs/GAME_DESIGN.md`, `docs/ARCHITECTURE.md`, `docs/ART_PIPEL
 8. Keep frame rates/performance in mind: no per-frame DOM operations, expensive allocations, or O(N²) enemy search at scale. Profile before optimization.
 
 ## Art is source-controlled and deterministic
+- Latest user direction/camera and isolated-playtest rules are mandatory: read the final section of `docs/ART_PIPELINE.md`. Four authored directions are required for asymmetric character attacks; never swap sword hands by mirroring. Preserve original PNG quality. Protect the user's active port 5173 with an isolated review copy and a different strict port.
 - All baseline assets are original generated code in `scripts/generate_assets.py`.
 - For AI-generated assets: generate **one frame per file**, not a complete spritesheet image; consult `docs/ART_PIPELINE.md` and `docs/ART_CONTRACT.json`.
 - RGBA, exact canvas dimensions, common anchor, no clipping, nearest-neighbor only, same palette.

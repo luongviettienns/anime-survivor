@@ -1,0 +1,87 @@
+{
+  "textures": [
+    {
+      "image": "originals/enemy_shade/right/neutral.png",
+      "frames": [
+        {
+          "filename": "enemy_shade_death_right/000",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1261,
+            "h": 1247
+          },
+          "rotated": false,
+          "trimmed": true,
+          "spriteSourceSize": {
+            "x": 394,
+            "y": 417,
+            "w": 1261,
+            "h": 1247
+          },
+          "sourceSize": {
+            "w": 2048,
+            "h": 2048
+          }
+        }
+      ]
+    },
+    {
+      "image": "originals/enemy_shade/right/collapse.png",
+      "frames": [
+        {
+          "filename": "enemy_shade_death_right/001",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1261,
+            "h": 1247
+          },
+          "rotated": false,
+          "trimmed": true,
+          "spriteSourceSize": {
+            "x": 394,
+            "y": 530,
+            "w": 1261,
+            "h": 1247
+          },
+          "sourceSize": {
+            "w": 2048,
+            "h": 2048
+          }
+        }
+      ]
+    },
+    {
+      "image": "originals/enemy_shade/right/fallen.png",
+      "frames": [
+        {
+          "filename": "enemy_shade_death_right/002",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1261,
+            "h": 1247
+          },
+          "rotated": false,
+          "trimmed": true,
+          "spriteSourceSize": {
+            "x": 394,
+            "y": 664,
+            "w": 1261,
+            "h": 1247
+          },
+          "sourceSize": {
+            "w": 2048,
+            "h": 2048
+          }
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "format": "RGBA8888",
+    "scale": "1",
+    "app": "lossless isolated art review"
+  }
+}

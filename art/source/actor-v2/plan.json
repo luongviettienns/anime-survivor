@@ -1,0 +1,1381 @@
+{
+  "scope": "Reduced scope after user cap: no more than five additional generated images total. Elite/boss hit and defeated use one pose each, front only. Preserve all completed source art; omit unfinished actions/directions. User later requested +100% world art size independently of 1.5x camera; display only, native PNG unchanged.",
+  "protected_port": 5173,
+  "review_port": 5184,
+  "camera": "Slightly elevated orthographic top-down 3/4, matched to current game actor references",
+  "character": {
+    "directions": [
+      "down",
+      "up",
+      "left",
+      "right"
+    ],
+    "poses": [
+      "neutral",
+      "idle_breathe",
+      "run_contact_l",
+      "run_pass_l",
+      "run_contact_r",
+      "run_pass_r",
+      "hit",
+      "collapse",
+      "fallen",
+      "dash_launch",
+      "dash_glide",
+      "ice_windup",
+      "ice_draw",
+      "ice_cut",
+      "ice_follow",
+      "dark_windup",
+      "dark_draw",
+      "dark_cut",
+      "dark_follow",
+      "dual_windup",
+      "dual_charge",
+      "dual_pre_cross",
+      "dual_cross",
+      "dual_follow",
+      "dual_recover",
+      "dash_coil",
+      "dash_accel",
+      "dash_brake",
+      "dash_recover"
+    ],
+    "clips": {
+      "idle": {
+        "poses": [
+          "neutral",
+          "idle_breathe"
+        ],
+        "durations_ms": [
+          240,
+          240
+        ],
+        "loop": true
+      },
+      "run": {
+        "poses": [
+          "run_contact_l",
+          "run_pass_l",
+          "run_contact_r",
+          "run_pass_r"
+        ],
+        "durations_ms": [
+          95,
+          95,
+          95,
+          95
+        ],
+        "loop": true
+      },
+      "hit": {
+        "poses": [
+          "neutral",
+          "hit",
+          "neutral"
+        ],
+        "durations_ms": [
+          35,
+          85,
+          80
+        ],
+        "loop": false
+      },
+      "death": {
+        "poses": [
+          "neutral",
+          "collapse",
+          "fallen"
+        ],
+        "durations_ms": [
+          45,
+          110,
+          220
+        ],
+        "loop": false
+      },
+      "basic": {
+        "poses": [
+          "neutral",
+          "ice_windup",
+          "ice_draw",
+          "ice_cut",
+          "ice_follow",
+          "dark_windup",
+          "dark_draw",
+          "dark_cut",
+          "dark_follow",
+          "neutral"
+        ],
+        "durations_ms": [
+          40,
+          85,
+          45,
+          55,
+          50,
+          85,
+          45,
+          55,
+          60,
+          80
+        ],
+        "loop": false
+      },
+      "dash": {
+        "poses": [
+          "neutral",
+          "dash_coil",
+          "dash_launch",
+          "dash_accel",
+          "dash_glide",
+          "dash_brake",
+          "dash_recover",
+          "neutral"
+        ],
+        "durations_ms": [
+          16,
+          20,
+          20,
+          20,
+          40,
+          20,
+          24,
+          20
+        ],
+        "loop": false,
+        "motion_duration_ms": 180,
+        "motion_owner": "Existing src/domain/phantomDash.ts and PhantomDashSystem, preserve logic/stats"
+      },
+      "lv1": {
+        "poses": [
+          "neutral",
+          "ice_windup",
+          "ice_draw",
+          "ice_cut",
+          "ice_follow",
+          "neutral"
+        ],
+        "durations_ms": [
+          50,
+          100,
+          55,
+          70,
+          85,
+          100
+        ],
+        "loop": false,
+        "release_frames": [
+          3
+        ]
+      },
+      "lv2": {
+        "poses": [
+          "neutral",
+          "ice_windup",
+          "ice_draw",
+          "ice_cut",
+          "ice_follow",
+          "dark_windup",
+          "dark_draw",
+          "dark_cut",
+          "dark_follow",
+          "neutral"
+        ],
+        "durations_ms": [
+          50,
+          100,
+          55,
+          70,
+          65,
+          100,
+          55,
+          70,
+          85,
+          100
+        ],
+        "loop": false,
+        "release_frames": [
+          3,
+          7
+        ]
+      },
+      "lv3": {
+        "poses": [
+          "neutral",
+          "dual_windup",
+          "dual_charge",
+          "dual_pre_cross",
+          "dual_cross",
+          "dual_follow",
+          "dual_recover",
+          "neutral"
+        ],
+        "durations_ms": [
+          50,
+          85,
+          80,
+          50,
+          70,
+          65,
+          70,
+          100
+        ],
+        "loop": false,
+        "release_frames": [
+          4
+        ]
+      }
+    },
+    "basic_collision_frames": [
+      3,
+      7
+    ],
+    "dash_afterimage": "Reuse original dash_glide PNG with renderer-controlled alpha/position; no source edits and no new dash mechanic implemented"
+  },
+  "enemies": [
+    "enemy",
+    "enemy_shade",
+    "enemy_mage",
+    "enemy_elite",
+    "boss"
+  ],
+  "reactions": {
+    "hit": {
+      "poses": [
+        "neutral",
+        "hit",
+        "neutral"
+      ],
+      "durations_ms": [
+        35,
+        85,
+        80
+      ],
+      "loop": false
+    },
+    "death": {
+      "poses": [
+        "neutral",
+        "collapse",
+        "fallen"
+      ],
+      "durations_ms": [
+        45,
+        110,
+        220
+      ],
+      "loop": false,
+      "final_state": "hold fallen until external cleanup; never return to walking automatically"
+    }
+  },
+  "quality": "Unchanged original RGBA PNGs; padding-only sheets and paged atlases. No runtime resize, quantization, alpha edits or lossy encoding. Preview-only thumbnails labeled.",
+  "acceptance": [
+    "Three additional image calls; never exceed five",
+    "Elite/boss front-only single hit and single defeated pose",
+    "Authored four-direction dash, no actor flipping",
+    "Original RGBA preserved, padding-only packing",
+    "Isolated 5184 preview; live5173 untouched",
+    "Reduced-scope completeness does not imply full requested animation coverage"
+  ],
+  "preview_zoom": 1.5,
+  "display_body_height_px": {
+    "kirito": 128,
+    "naruto": 128,
+    "enemy_elite": 128,
+    "enemy": 128,
+    "enemy_shade": 128,
+    "enemy_mage": 128,
+    "boss": 256
+  },
+  "body_size_policy": "Measure neutral head-to-ground body height excluding weapons, aura and VFX. Keep SAME per-model scale in run, attack, cast and hit frames; do not fit an enlarged sword or cast aura into body-height budget. Death poses retain anatomical scale, not standing-height fitting.",
+  "camera_code": "Deferred by user; 1.5x applies only to isolated asset review for now",
+  "enemy_cast": {
+    "entities": [
+      "enemy_mage",
+      "boss"
+    ],
+    "poses": [
+      "neutral",
+      "cast_windup",
+      "cast_release",
+      "neutral"
+    ],
+    "durations_ms": [
+      50,
+      160,
+      85,
+      100
+    ],
+    "model_scale": "same reference scale as neutral, do not fit the total aura/raised-arm bounds"
+  },
+  "phantom_vfx": {},
+  "integration_authorization": "User subsequently authorized attaching completed Phantom Dash assets/animation to existing logic. Integrate/test only in isolated copy on5184, protect live5173. Other gameplay/camera code changes deferred.",
+  "explicit_clips": {
+    "kirito_idle_down": {
+      "entity": "kirito",
+      "direction": "down",
+      "action": "idle",
+      "poses": [
+        "neutral",
+        "idle_breathe"
+      ],
+      "durations_ms": [
+        240,
+        240
+      ],
+      "loop": true
+    },
+    "kirito_run_down": {
+      "entity": "kirito",
+      "direction": "down",
+      "action": "run",
+      "poses": [
+        "run_contact_l",
+        "run_pass_l",
+        "run_contact_r",
+        "run_pass_r"
+      ],
+      "durations_ms": [
+        95,
+        95,
+        95,
+        95
+      ],
+      "loop": true
+    },
+    "kirito_hit_down": {
+      "entity": "kirito",
+      "direction": "down",
+      "action": "hit",
+      "poses": [
+        "neutral",
+        "hit",
+        "neutral"
+      ],
+      "durations_ms": [
+        35,
+        85,
+        80
+      ],
+      "loop": false
+    },
+    "kirito_death_down": {
+      "entity": "kirito",
+      "direction": "down",
+      "action": "death",
+      "poses": [
+        "neutral",
+        "collapse",
+        "fallen"
+      ],
+      "durations_ms": [
+        45,
+        110,
+        220
+      ],
+      "loop": false
+    },
+    "kirito_basic_down": {
+      "entity": "kirito",
+      "direction": "down",
+      "action": "basic",
+      "poses": [
+        "neutral",
+        "ice_windup",
+        "ice_draw",
+        "ice_cut",
+        "ice_follow",
+        "dark_windup",
+        "dark_draw",
+        "dark_cut",
+        "dark_follow",
+        "neutral"
+      ],
+      "durations_ms": [
+        40,
+        85,
+        45,
+        55,
+        50,
+        85,
+        45,
+        55,
+        60,
+        80
+      ],
+      "loop": false
+    },
+    "kirito_lv1_down": {
+      "entity": "kirito",
+      "direction": "down",
+      "action": "lv1",
+      "poses": [
+        "neutral",
+        "ice_windup",
+        "ice_draw",
+        "ice_cut",
+        "ice_follow",
+        "neutral"
+      ],
+      "durations_ms": [
+        50,
+        100,
+        55,
+        70,
+        85,
+        100
+      ],
+      "loop": false,
+      "release_frames": [
+        3
+      ]
+    },
+    "kirito_lv2_down": {
+      "entity": "kirito",
+      "direction": "down",
+      "action": "lv2",
+      "poses": [
+        "neutral",
+        "ice_windup",
+        "ice_draw",
+        "ice_cut",
+        "ice_follow",
+        "dark_windup",
+        "dark_draw",
+        "dark_cut",
+        "dark_follow",
+        "neutral"
+      ],
+      "durations_ms": [
+        50,
+        100,
+        55,
+        70,
+        65,
+        100,
+        55,
+        70,
+        85,
+        100
+      ],
+      "loop": false,
+      "release_frames": [
+        3,
+        7
+      ]
+    },
+    "kirito_lv3_down": {
+      "entity": "kirito",
+      "direction": "down",
+      "action": "lv3",
+      "poses": [
+        "neutral",
+        "dual_windup",
+        "dual_charge",
+        "dual_pre_cross",
+        "dual_cross",
+        "dual_follow",
+        "dual_recover",
+        "neutral"
+      ],
+      "durations_ms": [
+        50,
+        85,
+        80,
+        50,
+        70,
+        65,
+        70,
+        100
+      ],
+      "loop": false,
+      "release_frames": [
+        4
+      ]
+    },
+    "kirito_dash_down": {
+      "entity": "kirito",
+      "direction": "down",
+      "action": "dash",
+      "poses": [
+        "neutral",
+        "dash_launch",
+        "dash_glide",
+        "dash_brake",
+        "neutral"
+      ],
+      "durations_ms": [
+        20,
+        30,
+        65,
+        40,
+        25
+      ],
+      "loop": false
+    },
+    "kirito_idle_up": {
+      "entity": "kirito",
+      "direction": "up",
+      "action": "idle",
+      "poses": [
+        "neutral",
+        "idle_breathe"
+      ],
+      "durations_ms": [
+        240,
+        240
+      ],
+      "loop": true
+    },
+    "kirito_run_up": {
+      "entity": "kirito",
+      "direction": "up",
+      "action": "run",
+      "poses": [
+        "run_contact_r",
+        "run_pass_l",
+        "run_pass_r"
+      ],
+      "durations_ms": [
+        125,
+        125,
+        125
+      ],
+      "loop": true
+    },
+    "kirito_hit_up": {
+      "entity": "kirito",
+      "direction": "up",
+      "action": "hit",
+      "poses": [
+        "neutral",
+        "hit",
+        "neutral"
+      ],
+      "durations_ms": [
+        35,
+        85,
+        80
+      ],
+      "loop": false
+    },
+    "kirito_death_up": {
+      "entity": "kirito",
+      "direction": "up",
+      "action": "death",
+      "poses": [
+        "neutral",
+        "collapse",
+        "fallen"
+      ],
+      "durations_ms": [
+        45,
+        110,
+        220
+      ],
+      "loop": false
+    },
+    "kirito_basic_up": {
+      "entity": "kirito",
+      "direction": "up",
+      "action": "basic",
+      "poses": [
+        "neutral",
+        "ice_windup",
+        "ice_draw",
+        "ice_cut",
+        "ice_follow",
+        "dark_windup",
+        "dark_draw",
+        "dark_cut",
+        "dark_follow",
+        "neutral"
+      ],
+      "durations_ms": [
+        40,
+        85,
+        45,
+        55,
+        50,
+        85,
+        45,
+        55,
+        60,
+        80
+      ],
+      "loop": false
+    },
+    "kirito_lv1_up": {
+      "entity": "kirito",
+      "direction": "up",
+      "action": "lv1",
+      "poses": [
+        "neutral",
+        "ice_windup",
+        "ice_draw",
+        "ice_cut",
+        "ice_follow",
+        "neutral"
+      ],
+      "durations_ms": [
+        50,
+        100,
+        55,
+        70,
+        85,
+        100
+      ],
+      "loop": false,
+      "release_frames": [
+        3
+      ]
+    },
+    "kirito_lv2_up": {
+      "entity": "kirito",
+      "direction": "up",
+      "action": "lv2",
+      "poses": [
+        "neutral",
+        "ice_windup",
+        "ice_draw",
+        "ice_cut",
+        "ice_follow",
+        "dark_windup",
+        "dark_draw",
+        "dark_cut",
+        "dark_follow",
+        "neutral"
+      ],
+      "durations_ms": [
+        50,
+        100,
+        55,
+        70,
+        65,
+        100,
+        55,
+        70,
+        85,
+        100
+      ],
+      "loop": false,
+      "release_frames": [
+        3,
+        7
+      ]
+    },
+    "kirito_lv3_up": {
+      "entity": "kirito",
+      "direction": "up",
+      "action": "lv3",
+      "poses": [
+        "neutral",
+        "dual_windup",
+        "dual_charge",
+        "dual_pre_cross",
+        "dual_cross",
+        "dual_follow",
+        "dual_recover",
+        "neutral"
+      ],
+      "durations_ms": [
+        50,
+        85,
+        80,
+        50,
+        70,
+        65,
+        70,
+        100
+      ],
+      "loop": false,
+      "release_frames": [
+        4
+      ]
+    },
+    "kirito_dash_up": {
+      "entity": "kirito",
+      "direction": "up",
+      "action": "dash",
+      "poses": [
+        "neutral",
+        "dash_launch",
+        "dash_glide",
+        "dash_brake",
+        "neutral"
+      ],
+      "durations_ms": [
+        20,
+        30,
+        65,
+        40,
+        25
+      ],
+      "loop": false
+    },
+    "kirito_idle_left": {
+      "entity": "kirito",
+      "direction": "left",
+      "action": "idle",
+      "poses": [
+        "neutral",
+        "idle_breathe"
+      ],
+      "durations_ms": [
+        240,
+        240
+      ],
+      "loop": true
+    },
+    "kirito_run_left": {
+      "entity": "kirito",
+      "direction": "left",
+      "action": "run",
+      "poses": [
+        "run_contact_l",
+        "run_contact_r"
+      ],
+      "durations_ms": [
+        140,
+        140
+      ],
+      "loop": true
+    },
+    "kirito_dash_left": {
+      "entity": "kirito",
+      "direction": "left",
+      "action": "dash",
+      "poses": [
+        "neutral",
+        "dash_coil",
+        "dash_accel",
+        "neutral"
+      ],
+      "durations_ms": [
+        20,
+        30,
+        100,
+        30
+      ],
+      "loop": false
+    },
+    "kirito_idle_right": {
+      "entity": "kirito",
+      "direction": "right",
+      "action": "idle",
+      "poses": [
+        "neutral"
+      ],
+      "durations_ms": [
+        480
+      ],
+      "loop": true
+    },
+    "kirito_dash_right": {
+      "entity": "kirito",
+      "direction": "right",
+      "action": "dash",
+      "poses": [
+        "neutral",
+        "dash_glide",
+        "neutral"
+      ],
+      "durations_ms": [
+        25,
+        120,
+        35
+      ],
+      "loop": false
+    },
+    "enemy_hit_down": {
+      "entity": "enemy",
+      "direction": "down",
+      "action": "hit",
+      "poses": [
+        "neutral",
+        "hit",
+        "neutral"
+      ],
+      "durations_ms": [
+        35,
+        85,
+        80
+      ],
+      "loop": false
+    },
+    "enemy_death_down": {
+      "entity": "enemy",
+      "direction": "down",
+      "action": "death",
+      "poses": [
+        "neutral",
+        "collapse",
+        "fallen"
+      ],
+      "durations_ms": [
+        45,
+        110,
+        220
+      ],
+      "loop": false,
+      "final_state": "hold fallen until external cleanup; never return to walking automatically"
+    },
+    "enemy_hit_up": {
+      "entity": "enemy",
+      "direction": "up",
+      "action": "hit",
+      "poses": [
+        "neutral",
+        "hit",
+        "neutral"
+      ],
+      "durations_ms": [
+        35,
+        85,
+        80
+      ],
+      "loop": false
+    },
+    "enemy_death_up": {
+      "entity": "enemy",
+      "direction": "up",
+      "action": "death",
+      "poses": [
+        "neutral",
+        "collapse",
+        "fallen"
+      ],
+      "durations_ms": [
+        45,
+        110,
+        220
+      ],
+      "loop": false,
+      "final_state": "hold fallen until external cleanup; never return to walking automatically"
+    },
+    "enemy_hit_left": {
+      "entity": "enemy",
+      "direction": "left",
+      "action": "hit",
+      "poses": [
+        "neutral",
+        "hit",
+        "neutral"
+      ],
+      "durations_ms": [
+        35,
+        85,
+        80
+      ],
+      "loop": false
+    },
+    "enemy_death_left": {
+      "entity": "enemy",
+      "direction": "left",
+      "action": "death",
+      "poses": [
+        "neutral",
+        "collapse",
+        "fallen"
+      ],
+      "durations_ms": [
+        45,
+        110,
+        220
+      ],
+      "loop": false,
+      "final_state": "hold fallen until external cleanup; never return to walking automatically"
+    },
+    "enemy_hit_right": {
+      "entity": "enemy",
+      "direction": "right",
+      "action": "hit",
+      "poses": [
+        "neutral",
+        "hit",
+        "neutral"
+      ],
+      "durations_ms": [
+        35,
+        85,
+        80
+      ],
+      "loop": false
+    },
+    "enemy_death_right": {
+      "entity": "enemy",
+      "direction": "right",
+      "action": "death",
+      "poses": [
+        "neutral",
+        "collapse",
+        "fallen"
+      ],
+      "durations_ms": [
+        45,
+        110,
+        220
+      ],
+      "loop": false,
+      "final_state": "hold fallen until external cleanup; never return to walking automatically"
+    },
+    "enemy_shade_hit_down": {
+      "entity": "enemy_shade",
+      "direction": "down",
+      "action": "hit",
+      "poses": [
+        "neutral",
+        "hit",
+        "neutral"
+      ],
+      "durations_ms": [
+        35,
+        85,
+        80
+      ],
+      "loop": false
+    },
+    "enemy_shade_death_down": {
+      "entity": "enemy_shade",
+      "direction": "down",
+      "action": "death",
+      "poses": [
+        "neutral",
+        "collapse",
+        "fallen"
+      ],
+      "durations_ms": [
+        45,
+        110,
+        220
+      ],
+      "loop": false,
+      "final_state": "hold fallen until external cleanup; never return to walking automatically"
+    },
+    "enemy_shade_hit_up": {
+      "entity": "enemy_shade",
+      "direction": "up",
+      "action": "hit",
+      "poses": [
+        "neutral",
+        "hit",
+        "neutral"
+      ],
+      "durations_ms": [
+        35,
+        85,
+        80
+      ],
+      "loop": false
+    },
+    "enemy_shade_death_up": {
+      "entity": "enemy_shade",
+      "direction": "up",
+      "action": "death",
+      "poses": [
+        "neutral",
+        "collapse",
+        "fallen"
+      ],
+      "durations_ms": [
+        45,
+        110,
+        220
+      ],
+      "loop": false,
+      "final_state": "hold fallen until external cleanup; never return to walking automatically"
+    },
+    "enemy_shade_hit_left": {
+      "entity": "enemy_shade",
+      "direction": "left",
+      "action": "hit",
+      "poses": [
+        "neutral",
+        "hit",
+        "neutral"
+      ],
+      "durations_ms": [
+        35,
+        85,
+        80
+      ],
+      "loop": false
+    },
+    "enemy_shade_death_left": {
+      "entity": "enemy_shade",
+      "direction": "left",
+      "action": "death",
+      "poses": [
+        "neutral",
+        "collapse",
+        "fallen"
+      ],
+      "durations_ms": [
+        45,
+        110,
+        220
+      ],
+      "loop": false,
+      "final_state": "hold fallen until external cleanup; never return to walking automatically"
+    },
+    "enemy_shade_hit_right": {
+      "entity": "enemy_shade",
+      "direction": "right",
+      "action": "hit",
+      "poses": [
+        "neutral",
+        "hit",
+        "neutral"
+      ],
+      "durations_ms": [
+        35,
+        85,
+        80
+      ],
+      "loop": false
+    },
+    "enemy_shade_death_right": {
+      "entity": "enemy_shade",
+      "direction": "right",
+      "action": "death",
+      "poses": [
+        "neutral",
+        "collapse",
+        "fallen"
+      ],
+      "durations_ms": [
+        45,
+        110,
+        220
+      ],
+      "loop": false,
+      "final_state": "hold fallen until external cleanup; never return to walking automatically"
+    },
+    "enemy_mage_hit_down": {
+      "entity": "enemy_mage",
+      "direction": "down",
+      "action": "hit",
+      "poses": [
+        "neutral",
+        "hit",
+        "neutral"
+      ],
+      "durations_ms": [
+        35,
+        85,
+        80
+      ],
+      "loop": false
+    },
+    "enemy_mage_death_down": {
+      "entity": "enemy_mage",
+      "direction": "down",
+      "action": "death",
+      "poses": [
+        "neutral",
+        "collapse",
+        "fallen"
+      ],
+      "durations_ms": [
+        45,
+        110,
+        220
+      ],
+      "loop": false,
+      "final_state": "hold fallen until external cleanup; never return to walking automatically"
+    },
+    "enemy_mage_hit_up": {
+      "entity": "enemy_mage",
+      "direction": "up",
+      "action": "hit",
+      "poses": [
+        "neutral",
+        "hit",
+        "neutral"
+      ],
+      "durations_ms": [
+        35,
+        85,
+        80
+      ],
+      "loop": false
+    },
+    "enemy_mage_death_up": {
+      "entity": "enemy_mage",
+      "direction": "up",
+      "action": "death",
+      "poses": [
+        "neutral",
+        "collapse",
+        "fallen"
+      ],
+      "durations_ms": [
+        45,
+        110,
+        220
+      ],
+      "loop": false,
+      "final_state": "hold fallen until external cleanup; never return to walking automatically"
+    },
+    "enemy_mage_hit_left": {
+      "entity": "enemy_mage",
+      "direction": "left",
+      "action": "hit",
+      "poses": [
+        "neutral",
+        "hit",
+        "neutral"
+      ],
+      "durations_ms": [
+        35,
+        85,
+        80
+      ],
+      "loop": false
+    },
+    "enemy_mage_death_left": {
+      "entity": "enemy_mage",
+      "direction": "left",
+      "action": "death",
+      "poses": [
+        "neutral",
+        "collapse",
+        "fallen"
+      ],
+      "durations_ms": [
+        45,
+        110,
+        220
+      ],
+      "loop": false,
+      "final_state": "hold fallen until external cleanup; never return to walking automatically"
+    },
+    "enemy_mage_hit_right": {
+      "entity": "enemy_mage",
+      "direction": "right",
+      "action": "hit",
+      "poses": [
+        "neutral",
+        "hit",
+        "neutral"
+      ],
+      "durations_ms": [
+        35,
+        85,
+        80
+      ],
+      "loop": false
+    },
+    "enemy_mage_death_right": {
+      "entity": "enemy_mage",
+      "direction": "right",
+      "action": "death",
+      "poses": [
+        "neutral",
+        "collapse",
+        "fallen"
+      ],
+      "durations_ms": [
+        45,
+        110,
+        220
+      ],
+      "loop": false,
+      "final_state": "hold fallen until external cleanup; never return to walking automatically"
+    },
+    "enemy_elite_hit_down": {
+      "entity": "enemy_elite",
+      "direction": "down",
+      "action": "hit",
+      "poses": [
+        "hit"
+      ],
+      "durations_ms": [
+        140
+      ],
+      "loop": false
+    },
+    "enemy_elite_death_down": {
+      "entity": "enemy_elite",
+      "direction": "down",
+      "action": "death",
+      "poses": [
+        "fallen"
+      ],
+      "durations_ms": [
+        250
+      ],
+      "loop": false
+    },
+    "boss_hit_down": {
+      "entity": "boss",
+      "direction": "down",
+      "action": "hit",
+      "poses": [
+        "hit"
+      ],
+      "durations_ms": [
+        140
+      ],
+      "loop": false
+    },
+    "enemy_mage_cast_down": {
+      "entity": "enemy_mage",
+      "direction": "down",
+      "action": "cast",
+      "poses": [
+        "neutral",
+        "cast_windup",
+        "cast_release",
+        "neutral"
+      ],
+      "durations_ms": [
+        50,
+        160,
+        85,
+        100
+      ],
+      "loop": false
+    },
+    "enemy_mage_cast_up": {
+      "entity": "enemy_mage",
+      "direction": "up",
+      "action": "cast",
+      "poses": [
+        "neutral",
+        "cast_windup",
+        "cast_release",
+        "neutral"
+      ],
+      "durations_ms": [
+        50,
+        160,
+        85,
+        100
+      ],
+      "loop": false
+    },
+    "enemy_mage_cast_left": {
+      "entity": "enemy_mage",
+      "direction": "left",
+      "action": "cast",
+      "poses": [
+        "neutral",
+        "cast_windup",
+        "cast_release",
+        "neutral"
+      ],
+      "durations_ms": [
+        50,
+        160,
+        85,
+        100
+      ],
+      "loop": false
+    },
+    "enemy_mage_cast_right": {
+      "entity": "enemy_mage",
+      "direction": "right",
+      "action": "cast",
+      "poses": [
+        "neutral",
+        "cast_windup",
+        "cast_release",
+        "neutral"
+      ],
+      "durations_ms": [
+        50,
+        160,
+        85,
+        100
+      ],
+      "loop": false
+    },
+    "boss_cast_down": {
+      "entity": "boss",
+      "direction": "down",
+      "action": "cast",
+      "poses": [
+        "neutral",
+        "cast_windup",
+        "cast_release",
+        "neutral"
+      ],
+      "durations_ms": [
+        50,
+        160,
+        85,
+        100
+      ],
+      "loop": false
+    },
+    "boss_cast_up": {
+      "entity": "boss",
+      "direction": "up",
+      "action": "cast",
+      "poses": [
+        "neutral",
+        "cast_windup",
+        "cast_release",
+        "neutral"
+      ],
+      "durations_ms": [
+        50,
+        160,
+        85,
+        100
+      ],
+      "loop": false
+    },
+    "boss_cast_left": {
+      "entity": "boss",
+      "direction": "left",
+      "action": "cast",
+      "poses": [
+        "neutral",
+        "cast_windup",
+        "cast_release",
+        "neutral"
+      ],
+      "durations_ms": [
+        50,
+        160,
+        85,
+        100
+      ],
+      "loop": false
+    },
+    "boss_cast_right": {
+      "entity": "boss",
+      "direction": "right",
+      "action": "cast",
+      "poses": [
+        "neutral",
+        "cast_windup",
+        "cast_release",
+        "neutral"
+      ],
+      "durations_ms": [
+        50,
+        160,
+        85,
+        100
+      ],
+      "loop": false
+    }
+  },
+  "deferred": [
+    "Kirito left/right hit/death and sword skills",
+    "Kirito right run",
+    "Elite/boss side/back hit/death",
+    "New dedicated Phantom Dash VFX textures; reuse actor afterimages and existing effects",
+    "Boss defeated pose: image tool usage limit reached; no substitute accepted"
+  ],
+  "rejected_sources": [
+    "kirito/up/run_contact_l: clipped left edge"
+  ],
+  "known_source_limitations": [
+    "Retained boss neutral and cast art may touch source canvas edges; no new clipping introduced by packing."
+  ],
+  "world_art_multiplier": 2
+}

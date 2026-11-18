@@ -1,0 +1,7018 @@
+{
+  "version": 1,
+  "complete": true,
+  "missing": [],
+  "camera_zoom": 1.5,
+  "pixel_policy": "Unchanged original RGBA PNGs; padding-only sheets and paged atlases. No runtime resize, quantization, alpha edits or lossy encoding. Preview-only thumbnails labeled.",
+  "comparison": {
+    "naruto": {
+      "file": "comparison/naruto.png",
+      "anchor": [
+        656,
+        1173
+      ],
+      "scale": 0.11188811188811189,
+      "body_height": 128
+    },
+    "elite": {
+      "file": "comparison/elite.png",
+      "anchor": [
+        627,
+        1247
+      ],
+      "scale": 0.10355987055016182,
+      "body_height": 128
+    }
+  },
+  "clips": {
+    "kirito_idle_down": {
+      "entity": "kirito",
+      "direction": "down",
+      "action": "idle",
+      "poses": [
+        "neutral",
+        "idle_breathe"
+      ],
+      "durations_ms": [
+        240,
+        240
+      ],
+      "loop": true,
+      "display_scale": 0.1198501872659176,
+      "body_reference_height": 1068,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 2,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 240,
+          "original": "originals/kirito/down/neutral.png",
+          "source_anchor": [
+            627,
+            1144
+          ],
+          "offset": [
+            397,
+            392
+          ],
+          "sheet": "kirito_idle_down_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "935ac24e170a4d843bd340fe07ec732d73e671cf18ad5f5516c7d790fb7abb61"
+        },
+        {
+          "index": 1,
+          "pose": "idle_breathe",
+          "duration_ms": 240,
+          "original": "originals/kirito/down/idle_breathe.png",
+          "source_anchor": [
+            627,
+            1145
+          ],
+          "offset": [
+            397,
+            391
+          ],
+          "sheet": "kirito_idle_down_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "e6066f70dac4fb62981638f718dd18e93e80d497fc97dd17f3eb6789b407938a"
+        }
+      ],
+      "atlas": "kirito_idle_down.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    },
+    "kirito_run_down": {
+      "entity": "kirito",
+      "direction": "down",
+      "action": "run",
+      "poses": [
+        "run_contact_l",
+        "run_pass_l",
+        "run_contact_r",
+        "run_pass_r"
+      ],
+      "durations_ms": [
+        95,
+        95,
+        95,
+        95
+      ],
+      "loop": true,
+      "display_scale": 0.1198501872659176,
+      "body_reference_height": 1068,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 4,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "run_contact_l",
+          "duration_ms": 95,
+          "original": "originals/kirito/down/run_contact_l.png",
+          "source_anchor": [
+            627,
+            1120
+          ],
+          "offset": [
+            397,
+            416
+          ],
+          "sheet": "kirito_run_down_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "2d4fcfdb830665e6b7f8f25a78b9d721af2c6ad217ba7aa4d5c7eed8a8420484"
+        },
+        {
+          "index": 1,
+          "pose": "run_pass_l",
+          "duration_ms": 95,
+          "original": "originals/kirito/down/run_pass_l.png",
+          "source_anchor": [
+            627,
+            1138
+          ],
+          "offset": [
+            397,
+            398
+          ],
+          "sheet": "kirito_run_down_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "5571e8023bfe48ead9f711f5fd1040c4b8ba0775ebde93462e9c9f386fcabe96"
+        },
+        {
+          "index": 2,
+          "pose": "run_contact_r",
+          "duration_ms": 95,
+          "original": "originals/kirito/down/run_contact_r.png",
+          "source_anchor": [
+            627,
+            1122
+          ],
+          "offset": [
+            397,
+            414
+          ],
+          "sheet": "kirito_run_down_page0.png",
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "64b33183b5f3f5e3d66660d7daa4449c399ec657b49468946e21c6ecfb79a09e"
+        },
+        {
+          "index": 3,
+          "pose": "run_pass_r",
+          "duration_ms": 95,
+          "original": "originals/kirito/down/run_pass_r.png",
+          "source_anchor": [
+            627,
+            1148
+          ],
+          "offset": [
+            397,
+            388
+          ],
+          "sheet": "kirito_run_down_page0.png",
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "d6de6f4e562ff2f52582a2c41c64b562636a0199c4f507c6347b9347eef73a28"
+        }
+      ],
+      "atlas": "kirito_run_down.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    },
+    "kirito_hit_down": {
+      "entity": "kirito",
+      "direction": "down",
+      "action": "hit",
+      "poses": [
+        "neutral",
+        "hit",
+        "neutral"
+      ],
+      "durations_ms": [
+        35,
+        85,
+        80
+      ],
+      "loop": false,
+      "display_scale": 0.1198501872659176,
+      "body_reference_height": 1068,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 3,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 35,
+          "original": "originals/kirito/down/neutral.png",
+          "source_anchor": [
+            627,
+            1144
+          ],
+          "offset": [
+            397,
+            392
+          ],
+          "sheet": "kirito_hit_down_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "935ac24e170a4d843bd340fe07ec732d73e671cf18ad5f5516c7d790fb7abb61"
+        },
+        {
+          "index": 1,
+          "pose": "hit",
+          "duration_ms": 85,
+          "original": "originals/kirito/down/hit.png",
+          "source_anchor": [
+            627,
+            1078
+          ],
+          "offset": [
+            397,
+            458
+          ],
+          "sheet": "kirito_hit_down_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "3cd692ecf546349f1ffb39e2b8effa2780c17c8938a97587c5aab69111bdca55"
+        },
+        {
+          "index": 2,
+          "pose": "neutral",
+          "duration_ms": 80,
+          "original": "originals/kirito/down/neutral.png",
+          "source_anchor": [
+            627,
+            1144
+          ],
+          "offset": [
+            397,
+            392
+          ],
+          "sheet": "kirito_hit_down_page0.png",
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "935ac24e170a4d843bd340fe07ec732d73e671cf18ad5f5516c7d790fb7abb61"
+        }
+      ],
+      "atlas": "kirito_hit_down.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    },
+    "kirito_death_down": {
+      "entity": "kirito",
+      "direction": "down",
+      "action": "death",
+      "poses": [
+        "neutral",
+        "collapse",
+        "fallen"
+      ],
+      "durations_ms": [
+        45,
+        110,
+        220
+      ],
+      "loop": false,
+      "display_scale": 0.1198501872659176,
+      "body_reference_height": 1068,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 3,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 45,
+          "original": "originals/kirito/down/neutral.png",
+          "source_anchor": [
+            627,
+            1144
+          ],
+          "offset": [
+            397,
+            392
+          ],
+          "sheet": "kirito_death_down_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "935ac24e170a4d843bd340fe07ec732d73e671cf18ad5f5516c7d790fb7abb61"
+        },
+        {
+          "index": 1,
+          "pose": "collapse",
+          "duration_ms": 110,
+          "original": "originals/kirito/down/collapse.png",
+          "source_anchor": [
+            627,
+            1042
+          ],
+          "offset": [
+            397,
+            494
+          ],
+          "sheet": "kirito_death_down_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "f62afefc783631dd0fc3fff350e31623de65c534a24c292a0b3961837c813b20"
+        },
+        {
+          "index": 2,
+          "pose": "fallen",
+          "duration_ms": 220,
+          "original": "originals/kirito/down/fallen.png",
+          "source_anchor": [
+            627,
+            1090
+          ],
+          "offset": [
+            397,
+            446
+          ],
+          "sheet": "kirito_death_down_page0.png",
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "4ea69a99429115ae1ed9ba6da154ede95d23a899c069690cc2f2abae1882a1b7"
+        }
+      ],
+      "atlas": "kirito_death_down.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": [],
+      "end_policy": "hold fallen; external cleanup only"
+    },
+    "kirito_basic_down": {
+      "entity": "kirito",
+      "direction": "down",
+      "action": "basic",
+      "poses": [
+        "neutral",
+        "ice_windup",
+        "ice_draw",
+        "ice_cut",
+        "ice_follow",
+        "dark_windup",
+        "dark_draw",
+        "dark_cut",
+        "dark_follow",
+        "neutral"
+      ],
+      "durations_ms": [
+        40,
+        85,
+        45,
+        55,
+        50,
+        85,
+        45,
+        55,
+        60,
+        80
+      ],
+      "loop": false,
+      "display_scale": 0.1198501872659176,
+      "body_reference_height": 1068,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 10,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 40,
+          "original": "originals/kirito/down/neutral.png",
+          "source_anchor": [
+            627,
+            1144
+          ],
+          "offset": [
+            397,
+            392
+          ],
+          "sheet": "kirito_basic_down_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "935ac24e170a4d843bd340fe07ec732d73e671cf18ad5f5516c7d790fb7abb61"
+        },
+        {
+          "index": 1,
+          "pose": "ice_windup",
+          "duration_ms": 85,
+          "original": "originals/kirito/down/ice_windup.png",
+          "source_anchor": [
+            627,
+            1144
+          ],
+          "offset": [
+            397,
+            392
+          ],
+          "sheet": "kirito_basic_down_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "ef1607e5b6fd0f8d343e83c969e723276f4fd6bc5b3f056eb20f9022c4dafb49"
+        },
+        {
+          "index": 2,
+          "pose": "ice_draw",
+          "duration_ms": 45,
+          "original": "originals/kirito/down/ice_draw.png",
+          "source_anchor": [
+            627,
+            1125
+          ],
+          "offset": [
+            397,
+            411
+          ],
+          "sheet": "kirito_basic_down_page0.png",
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "77672462dbbfe79e5d1d53005b7b43a4141aaac7b66ceeb870dd1b002fea8a09"
+        },
+        {
+          "index": 3,
+          "pose": "ice_cut",
+          "duration_ms": 55,
+          "original": "originals/kirito/down/ice_cut.png",
+          "source_anchor": [
+            627,
+            1195
+          ],
+          "offset": [
+            397,
+            341
+          ],
+          "sheet": "kirito_basic_down_page0.png",
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "73d5c713517f826975002e709b1936a6ef5070d5ca62de390b71d24c985b8a76"
+        },
+        {
+          "index": 4,
+          "pose": "ice_follow",
+          "duration_ms": 50,
+          "original": "originals/kirito/down/ice_follow.png",
+          "source_anchor": [
+            627,
+            1120
+          ],
+          "offset": [
+            397,
+            416
+          ],
+          "sheet": "kirito_basic_down_page1.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "bd2bb3a08e972215381d3c90db781b758eabbe8e30ec074594b8a8b3fbfc049f"
+        },
+        {
+          "index": 5,
+          "pose": "dark_windup",
+          "duration_ms": 85,
+          "original": "originals/kirito/down/dark_windup.png",
+          "source_anchor": [
+            627,
+            1089
+          ],
+          "offset": [
+            397,
+            447
+          ],
+          "sheet": "kirito_basic_down_page1.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "e23bdcc6b99baec7ff7acb97492a4579582b9910f2db58d9398da07c35c80441"
+        },
+        {
+          "index": 6,
+          "pose": "dark_draw",
+          "duration_ms": 45,
+          "original": "originals/kirito/down/dark_draw.png",
+          "source_anchor": [
+            627,
+            1158
+          ],
+          "offset": [
+            397,
+            378
+          ],
+          "sheet": "kirito_basic_down_page1.png",
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "7e6314b8aec02af9fc5449c73dc0748b28448dbb1d6e0ee039bf777e0f4381e5"
+        },
+        {
+          "index": 7,
+          "pose": "dark_cut",
+          "duration_ms": 55,
+          "original": "originals/kirito/down/dark_cut.png",
+          "source_anchor": [
+            627,
+            1163
+          ],
+          "offset": [
+            397,
+            373
+          ],
+          "sheet": "kirito_basic_down_page1.png",
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "b34915d9567b50962ebb4bc078772145fc50215d04e9fd93d51e576901cba50a"
+        },
+        {
+          "index": 8,
+          "pose": "dark_follow",
+          "duration_ms": 60,
+          "original": "originals/kirito/down/dark_follow.png",
+          "source_anchor": [
+            627,
+            1124
+          ],
+          "offset": [
+            397,
+            412
+          ],
+          "sheet": "kirito_basic_down_page2.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "d4fbfae33e98c61c837acff87c29826bb061e81de8aa0564b925cde35532213d"
+        },
+        {
+          "index": 9,
+          "pose": "neutral",
+          "duration_ms": 80,
+          "original": "originals/kirito/down/neutral.png",
+          "source_anchor": [
+            627,
+            1144
+          ],
+          "offset": [
+            397,
+            392
+          ],
+          "sheet": "kirito_basic_down_page2.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "935ac24e170a4d843bd340fe07ec732d73e671cf18ad5f5516c7d790fb7abb61"
+        }
+      ],
+      "atlas": "kirito_basic_down.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    },
+    "kirito_lv1_down": {
+      "entity": "kirito",
+      "direction": "down",
+      "action": "lv1",
+      "poses": [
+        "neutral",
+        "ice_windup",
+        "ice_draw",
+        "ice_cut",
+        "ice_follow",
+        "neutral"
+      ],
+      "durations_ms": [
+        50,
+        100,
+        55,
+        70,
+        85,
+        100
+      ],
+      "loop": false,
+      "release_frames": [
+        3
+      ],
+      "display_scale": 0.1198501872659176,
+      "body_reference_height": 1068,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 6,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 50,
+          "original": "originals/kirito/down/neutral.png",
+          "source_anchor": [
+            627,
+            1144
+          ],
+          "offset": [
+            397,
+            392
+          ],
+          "sheet": "kirito_lv1_down_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "935ac24e170a4d843bd340fe07ec732d73e671cf18ad5f5516c7d790fb7abb61"
+        },
+        {
+          "index": 1,
+          "pose": "ice_windup",
+          "duration_ms": 100,
+          "original": "originals/kirito/down/ice_windup.png",
+          "source_anchor": [
+            627,
+            1144
+          ],
+          "offset": [
+            397,
+            392
+          ],
+          "sheet": "kirito_lv1_down_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "ef1607e5b6fd0f8d343e83c969e723276f4fd6bc5b3f056eb20f9022c4dafb49"
+        },
+        {
+          "index": 2,
+          "pose": "ice_draw",
+          "duration_ms": 55,
+          "original": "originals/kirito/down/ice_draw.png",
+          "source_anchor": [
+            627,
+            1125
+          ],
+          "offset": [
+            397,
+            411
+          ],
+          "sheet": "kirito_lv1_down_page0.png",
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "77672462dbbfe79e5d1d53005b7b43a4141aaac7b66ceeb870dd1b002fea8a09"
+        },
+        {
+          "index": 3,
+          "pose": "ice_cut",
+          "duration_ms": 70,
+          "original": "originals/kirito/down/ice_cut.png",
+          "source_anchor": [
+            627,
+            1195
+          ],
+          "offset": [
+            397,
+            341
+          ],
+          "sheet": "kirito_lv1_down_page0.png",
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "73d5c713517f826975002e709b1936a6ef5070d5ca62de390b71d24c985b8a76"
+        },
+        {
+          "index": 4,
+          "pose": "ice_follow",
+          "duration_ms": 85,
+          "original": "originals/kirito/down/ice_follow.png",
+          "source_anchor": [
+            627,
+            1120
+          ],
+          "offset": [
+            397,
+            416
+          ],
+          "sheet": "kirito_lv1_down_page1.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "bd2bb3a08e972215381d3c90db781b758eabbe8e30ec074594b8a8b3fbfc049f"
+        },
+        {
+          "index": 5,
+          "pose": "neutral",
+          "duration_ms": 100,
+          "original": "originals/kirito/down/neutral.png",
+          "source_anchor": [
+            627,
+            1144
+          ],
+          "offset": [
+            397,
+            392
+          ],
+          "sheet": "kirito_lv1_down_page1.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "935ac24e170a4d843bd340fe07ec732d73e671cf18ad5f5516c7d790fb7abb61"
+        }
+      ],
+      "atlas": "kirito_lv1_down.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": [
+        {
+          "frame": 3,
+          "time_ms": 205
+        }
+      ]
+    },
+    "kirito_lv2_down": {
+      "entity": "kirito",
+      "direction": "down",
+      "action": "lv2",
+      "poses": [
+        "neutral",
+        "ice_windup",
+        "ice_draw",
+        "ice_cut",
+        "ice_follow",
+        "dark_windup",
+        "dark_draw",
+        "dark_cut",
+        "dark_follow",
+        "neutral"
+      ],
+      "durations_ms": [
+        50,
+        100,
+        55,
+        70,
+        65,
+        100,
+        55,
+        70,
+        85,
+        100
+      ],
+      "loop": false,
+      "release_frames": [
+        3,
+        7
+      ],
+      "display_scale": 0.1198501872659176,
+      "body_reference_height": 1068,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 10,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 50,
+          "original": "originals/kirito/down/neutral.png",
+          "source_anchor": [
+            627,
+            1144
+          ],
+          "offset": [
+            397,
+            392
+          ],
+          "sheet": "kirito_lv2_down_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "935ac24e170a4d843bd340fe07ec732d73e671cf18ad5f5516c7d790fb7abb61"
+        },
+        {
+          "index": 1,
+          "pose": "ice_windup",
+          "duration_ms": 100,
+          "original": "originals/kirito/down/ice_windup.png",
+          "source_anchor": [
+            627,
+            1144
+          ],
+          "offset": [
+            397,
+            392
+          ],
+          "sheet": "kirito_lv2_down_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "ef1607e5b6fd0f8d343e83c969e723276f4fd6bc5b3f056eb20f9022c4dafb49"
+        },
+        {
+          "index": 2,
+          "pose": "ice_draw",
+          "duration_ms": 55,
+          "original": "originals/kirito/down/ice_draw.png",
+          "source_anchor": [
+            627,
+            1125
+          ],
+          "offset": [
+            397,
+            411
+          ],
+          "sheet": "kirito_lv2_down_page0.png",
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "77672462dbbfe79e5d1d53005b7b43a4141aaac7b66ceeb870dd1b002fea8a09"
+        },
+        {
+          "index": 3,
+          "pose": "ice_cut",
+          "duration_ms": 70,
+          "original": "originals/kirito/down/ice_cut.png",
+          "source_anchor": [
+            627,
+            1195
+          ],
+          "offset": [
+            397,
+            341
+          ],
+          "sheet": "kirito_lv2_down_page0.png",
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "73d5c713517f826975002e709b1936a6ef5070d5ca62de390b71d24c985b8a76"
+        },
+        {
+          "index": 4,
+          "pose": "ice_follow",
+          "duration_ms": 65,
+          "original": "originals/kirito/down/ice_follow.png",
+          "source_anchor": [
+            627,
+            1120
+          ],
+          "offset": [
+            397,
+            416
+          ],
+          "sheet": "kirito_lv2_down_page1.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "bd2bb3a08e972215381d3c90db781b758eabbe8e30ec074594b8a8b3fbfc049f"
+        },
+        {
+          "index": 5,
+          "pose": "dark_windup",
+          "duration_ms": 100,
+          "original": "originals/kirito/down/dark_windup.png",
+          "source_anchor": [
+            627,
+            1089
+          ],
+          "offset": [
+            397,
+            447
+          ],
+          "sheet": "kirito_lv2_down_page1.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "e23bdcc6b99baec7ff7acb97492a4579582b9910f2db58d9398da07c35c80441"
+        },
+        {
+          "index": 6,
+          "pose": "dark_draw",
+          "duration_ms": 55,
+          "original": "originals/kirito/down/dark_draw.png",
+          "source_anchor": [
+            627,
+            1158
+          ],
+          "offset": [
+            397,
+            378
+          ],
+          "sheet": "kirito_lv2_down_page1.png",
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "7e6314b8aec02af9fc5449c73dc0748b28448dbb1d6e0ee039bf777e0f4381e5"
+        },
+        {
+          "index": 7,
+          "pose": "dark_cut",
+          "duration_ms": 70,
+          "original": "originals/kirito/down/dark_cut.png",
+          "source_anchor": [
+            627,
+            1163
+          ],
+          "offset": [
+            397,
+            373
+          ],
+          "sheet": "kirito_lv2_down_page1.png",
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "b34915d9567b50962ebb4bc078772145fc50215d04e9fd93d51e576901cba50a"
+        },
+        {
+          "index": 8,
+          "pose": "dark_follow",
+          "duration_ms": 85,
+          "original": "originals/kirito/down/dark_follow.png",
+          "source_anchor": [
+            627,
+            1124
+          ],
+          "offset": [
+            397,
+            412
+          ],
+          "sheet": "kirito_lv2_down_page2.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "d4fbfae33e98c61c837acff87c29826bb061e81de8aa0564b925cde35532213d"
+        },
+        {
+          "index": 9,
+          "pose": "neutral",
+          "duration_ms": 100,
+          "original": "originals/kirito/down/neutral.png",
+          "source_anchor": [
+            627,
+            1144
+          ],
+          "offset": [
+            397,
+            392
+          ],
+          "sheet": "kirito_lv2_down_page2.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "935ac24e170a4d843bd340fe07ec732d73e671cf18ad5f5516c7d790fb7abb61"
+        }
+      ],
+      "atlas": "kirito_lv2_down.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": [
+        {
+          "frame": 3,
+          "time_ms": 205
+        },
+        {
+          "frame": 7,
+          "time_ms": 495
+        }
+      ]
+    },
+    "kirito_lv3_down": {
+      "entity": "kirito",
+      "direction": "down",
+      "action": "lv3",
+      "poses": [
+        "neutral",
+        "dual_windup",
+        "dual_charge",
+        "dual_pre_cross",
+        "dual_cross",
+        "dual_follow",
+        "dual_recover",
+        "neutral"
+      ],
+      "durations_ms": [
+        50,
+        85,
+        80,
+        50,
+        70,
+        65,
+        70,
+        100
+      ],
+      "loop": false,
+      "release_frames": [
+        4
+      ],
+      "display_scale": 0.1198501872659176,
+      "body_reference_height": 1068,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 8,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 50,
+          "original": "originals/kirito/down/neutral.png",
+          "source_anchor": [
+            627,
+            1144
+          ],
+          "offset": [
+            397,
+            392
+          ],
+          "sheet": "kirito_lv3_down_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "935ac24e170a4d843bd340fe07ec732d73e671cf18ad5f5516c7d790fb7abb61"
+        },
+        {
+          "index": 1,
+          "pose": "dual_windup",
+          "duration_ms": 85,
+          "original": "originals/kirito/down/dual_windup.png",
+          "source_anchor": [
+            627,
+            1045
+          ],
+          "offset": [
+            397,
+            491
+          ],
+          "sheet": "kirito_lv3_down_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "5e3462e65c5ad4e6a446d5e3df0b220935ffd156545d98343292ae6448a24bc9"
+        },
+        {
+          "index": 2,
+          "pose": "dual_charge",
+          "duration_ms": 80,
+          "original": "originals/kirito/down/dual_charge.png",
+          "source_anchor": [
+            627,
+            1155
+          ],
+          "offset": [
+            397,
+            381
+          ],
+          "sheet": "kirito_lv3_down_page0.png",
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "4466c5074eb27f9d07ccd52d84dcbb7e5a8617b17ce25566a4d51cb7f5ce9813"
+        },
+        {
+          "index": 3,
+          "pose": "dual_pre_cross",
+          "duration_ms": 50,
+          "original": "originals/kirito/down/dual_pre_cross.png",
+          "source_anchor": [
+            627,
+            1141
+          ],
+          "offset": [
+            397,
+            395
+          ],
+          "sheet": "kirito_lv3_down_page0.png",
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "478a83856a8e9696f54802b7b8d216d6f22d4eecb3ca7ad2cf60d2c3358a4c98"
+        },
+        {
+          "index": 4,
+          "pose": "dual_cross",
+          "duration_ms": 70,
+          "original": "originals/kirito/down/dual_cross.png",
+          "source_anchor": [
+            627,
+            1144
+          ],
+          "offset": [
+            397,
+            392
+          ],
+          "sheet": "kirito_lv3_down_page1.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "10291eecaa3395389745b832efa7566dbf7389f55ad1a8cfcef19668f00a43a0"
+        },
+        {
+          "index": 5,
+          "pose": "dual_follow",
+          "duration_ms": 65,
+          "original": "originals/kirito/down/dual_follow.png",
+          "source_anchor": [
+            627,
+            1099
+          ],
+          "offset": [
+            397,
+            437
+          ],
+          "sheet": "kirito_lv3_down_page1.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "97cce8dd2b5a9868b77843b7f16de2df7365d1985814967d47edddf47b6af82e"
+        },
+        {
+          "index": 6,
+          "pose": "dual_recover",
+          "duration_ms": 70,
+          "original": "originals/kirito/down/dual_recover.png",
+          "source_anchor": [
+            627,
+            1146
+          ],
+          "offset": [
+            397,
+            390
+          ],
+          "sheet": "kirito_lv3_down_page1.png",
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "09da2af10dda2d2aa8dcb7873f4f0854ca032042a504b2a582f224155480ffa4"
+        },
+        {
+          "index": 7,
+          "pose": "neutral",
+          "duration_ms": 100,
+          "original": "originals/kirito/down/neutral.png",
+          "source_anchor": [
+            627,
+            1144
+          ],
+          "offset": [
+            397,
+            392
+          ],
+          "sheet": "kirito_lv3_down_page1.png",
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "935ac24e170a4d843bd340fe07ec732d73e671cf18ad5f5516c7d790fb7abb61"
+        }
+      ],
+      "atlas": "kirito_lv3_down.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": [
+        {
+          "frame": 4,
+          "time_ms": 265
+        }
+      ]
+    },
+    "kirito_dash_down": {
+      "entity": "kirito",
+      "direction": "down",
+      "action": "dash",
+      "poses": [
+        "neutral",
+        "dash_launch",
+        "dash_glide",
+        "dash_brake",
+        "neutral"
+      ],
+      "durations_ms": [
+        20,
+        30,
+        65,
+        40,
+        25
+      ],
+      "loop": false,
+      "display_scale": 0.1198501872659176,
+      "body_reference_height": 1068,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 5,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 20,
+          "original": "originals/kirito/down/neutral.png",
+          "source_anchor": [
+            627,
+            1144
+          ],
+          "offset": [
+            397,
+            392
+          ],
+          "sheet": "kirito_dash_down_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "935ac24e170a4d843bd340fe07ec732d73e671cf18ad5f5516c7d790fb7abb61"
+        },
+        {
+          "index": 1,
+          "pose": "dash_launch",
+          "duration_ms": 30,
+          "original": "originals/kirito/down/dash_launch.png",
+          "source_anchor": [
+            627,
+            1051
+          ],
+          "offset": [
+            397,
+            485
+          ],
+          "sheet": "kirito_dash_down_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "562945274fb1b62622630367b2e1ac6ef6d787009c6cfec0b186c3c9b13b1c99"
+        },
+        {
+          "index": 2,
+          "pose": "dash_glide",
+          "duration_ms": 65,
+          "original": "originals/kirito/down/dash_glide.png",
+          "source_anchor": [
+            627,
+            1095
+          ],
+          "offset": [
+            397,
+            441
+          ],
+          "sheet": "kirito_dash_down_page0.png",
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "1a724d2ac31d51a048a5223cd8f554a7ee2edeb93f5dabdba16528311778fa8a"
+        },
+        {
+          "index": 3,
+          "pose": "dash_brake",
+          "duration_ms": 40,
+          "original": "originals/kirito/down/dash_brake.png",
+          "source_anchor": [
+            627,
+            1100
+          ],
+          "offset": [
+            397,
+            436
+          ],
+          "sheet": "kirito_dash_down_page0.png",
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "f95c7354bafcd1773b1c93f724b255c677a290ed17dda396d16d975848120275"
+        },
+        {
+          "index": 4,
+          "pose": "neutral",
+          "duration_ms": 25,
+          "original": "originals/kirito/down/neutral.png",
+          "source_anchor": [
+            627,
+            1144
+          ],
+          "offset": [
+            397,
+            392
+          ],
+          "sheet": "kirito_dash_down_page1.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "935ac24e170a4d843bd340fe07ec732d73e671cf18ad5f5516c7d790fb7abb61"
+        }
+      ],
+      "atlas": "kirito_dash_down.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    },
+    "kirito_idle_up": {
+      "entity": "kirito",
+      "direction": "up",
+      "action": "idle",
+      "poses": [
+        "neutral",
+        "idle_breathe"
+      ],
+      "durations_ms": [
+        240,
+        240
+      ],
+      "loop": true,
+      "display_scale": 0.11636363636363636,
+      "body_reference_height": 1100,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 2,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 240,
+          "original": "originals/kirito/up/neutral.png",
+          "source_anchor": [
+            627,
+            1179
+          ],
+          "offset": [
+            397,
+            357
+          ],
+          "sheet": "kirito_idle_up_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "b4d226ef4f4acfe280b8e1c1663624f62cd6f4162b3d57bfe4049241afe5f64e"
+        },
+        {
+          "index": 1,
+          "pose": "idle_breathe",
+          "duration_ms": 240,
+          "original": "originals/kirito/up/idle_breathe.png",
+          "source_anchor": [
+            627,
+            1172
+          ],
+          "offset": [
+            397,
+            364
+          ],
+          "sheet": "kirito_idle_up_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "2fa44c2132364fd8751573f04ff9f1d35caa8d3af08fb7a976e3e33b9b580f92"
+        }
+      ],
+      "atlas": "kirito_idle_up.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    },
+    "kirito_run_up": {
+      "entity": "kirito",
+      "direction": "up",
+      "action": "run",
+      "poses": [
+        "run_contact_r",
+        "run_pass_l",
+        "run_pass_r"
+      ],
+      "durations_ms": [
+        125,
+        125,
+        125
+      ],
+      "loop": true,
+      "display_scale": 0.11636363636363636,
+      "body_reference_height": 1100,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 3,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "run_contact_r",
+          "duration_ms": 125,
+          "original": "originals/kirito/up/run_contact_r.png",
+          "source_anchor": [
+            627,
+            1158
+          ],
+          "offset": [
+            397,
+            378
+          ],
+          "sheet": "kirito_run_up_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "0e7619552014a794d7797c4c6969a7480a6dbc3305815e655d33cfa66578b8d4"
+        },
+        {
+          "index": 1,
+          "pose": "run_pass_l",
+          "duration_ms": 125,
+          "original": "originals/kirito/up/run_pass_l.png",
+          "source_anchor": [
+            627,
+            1181
+          ],
+          "offset": [
+            397,
+            355
+          ],
+          "sheet": "kirito_run_up_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "338598e01d6279b2b823c7bcaf130ad81181e6f4994d8c97f0b8c5e5513b3b85"
+        },
+        {
+          "index": 2,
+          "pose": "run_pass_r",
+          "duration_ms": 125,
+          "original": "originals/kirito/up/run_pass_r.png",
+          "source_anchor": [
+            627,
+            1195
+          ],
+          "offset": [
+            397,
+            341
+          ],
+          "sheet": "kirito_run_up_page0.png",
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "52b2c59a3ad4eac7e10d43c58e7ed712cd9b7e63c98a2d4f40f2cfb54b2117e6"
+        }
+      ],
+      "atlas": "kirito_run_up.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    },
+    "kirito_hit_up": {
+      "entity": "kirito",
+      "direction": "up",
+      "action": "hit",
+      "poses": [
+        "neutral",
+        "hit",
+        "neutral"
+      ],
+      "durations_ms": [
+        35,
+        85,
+        80
+      ],
+      "loop": false,
+      "display_scale": 0.11636363636363636,
+      "body_reference_height": 1100,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 3,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 35,
+          "original": "originals/kirito/up/neutral.png",
+          "source_anchor": [
+            627,
+            1179
+          ],
+          "offset": [
+            397,
+            357
+          ],
+          "sheet": "kirito_hit_up_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "b4d226ef4f4acfe280b8e1c1663624f62cd6f4162b3d57bfe4049241afe5f64e"
+        },
+        {
+          "index": 1,
+          "pose": "hit",
+          "duration_ms": 85,
+          "original": "originals/kirito/up/hit.png",
+          "source_anchor": [
+            627,
+            1131
+          ],
+          "offset": [
+            397,
+            405
+          ],
+          "sheet": "kirito_hit_up_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "f2a6135607fee4f095bca144fccd16ceeb8ea4757144ca5fbed129f482a2a980"
+        },
+        {
+          "index": 2,
+          "pose": "neutral",
+          "duration_ms": 80,
+          "original": "originals/kirito/up/neutral.png",
+          "source_anchor": [
+            627,
+            1179
+          ],
+          "offset": [
+            397,
+            357
+          ],
+          "sheet": "kirito_hit_up_page0.png",
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "b4d226ef4f4acfe280b8e1c1663624f62cd6f4162b3d57bfe4049241afe5f64e"
+        }
+      ],
+      "atlas": "kirito_hit_up.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    },
+    "kirito_death_up": {
+      "entity": "kirito",
+      "direction": "up",
+      "action": "death",
+      "poses": [
+        "neutral",
+        "collapse",
+        "fallen"
+      ],
+      "durations_ms": [
+        45,
+        110,
+        220
+      ],
+      "loop": false,
+      "display_scale": 0.11636363636363636,
+      "body_reference_height": 1100,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 3,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 45,
+          "original": "originals/kirito/up/neutral.png",
+          "source_anchor": [
+            627,
+            1179
+          ],
+          "offset": [
+            397,
+            357
+          ],
+          "sheet": "kirito_death_up_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "b4d226ef4f4acfe280b8e1c1663624f62cd6f4162b3d57bfe4049241afe5f64e"
+        },
+        {
+          "index": 1,
+          "pose": "collapse",
+          "duration_ms": 110,
+          "original": "originals/kirito/up/collapse.png",
+          "source_anchor": [
+            627,
+            1093
+          ],
+          "offset": [
+            397,
+            443
+          ],
+          "sheet": "kirito_death_up_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "fad096007432ce69286250ddee5cfd91509fe88c997ea72db4f315a313ed7e29"
+        },
+        {
+          "index": 2,
+          "pose": "fallen",
+          "duration_ms": 220,
+          "original": "originals/kirito/up/fallen.png",
+          "source_anchor": [
+            627,
+            1102
+          ],
+          "offset": [
+            397,
+            434
+          ],
+          "sheet": "kirito_death_up_page0.png",
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "d65df1d1acea337cd4573b2fe4b67987909d4dfa875deed5e98d8e9eb8a4d3fa"
+        }
+      ],
+      "atlas": "kirito_death_up.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": [],
+      "end_policy": "hold fallen; external cleanup only"
+    },
+    "kirito_basic_up": {
+      "entity": "kirito",
+      "direction": "up",
+      "action": "basic",
+      "poses": [
+        "neutral",
+        "ice_windup",
+        "ice_draw",
+        "ice_cut",
+        "ice_follow",
+        "dark_windup",
+        "dark_draw",
+        "dark_cut",
+        "dark_follow",
+        "neutral"
+      ],
+      "durations_ms": [
+        40,
+        85,
+        45,
+        55,
+        50,
+        85,
+        45,
+        55,
+        60,
+        80
+      ],
+      "loop": false,
+      "display_scale": 0.11636363636363636,
+      "body_reference_height": 1100,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 10,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 40,
+          "original": "originals/kirito/up/neutral.png",
+          "source_anchor": [
+            627,
+            1179
+          ],
+          "offset": [
+            397,
+            357
+          ],
+          "sheet": "kirito_basic_up_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "b4d226ef4f4acfe280b8e1c1663624f62cd6f4162b3d57bfe4049241afe5f64e"
+        },
+        {
+          "index": 1,
+          "pose": "ice_windup",
+          "duration_ms": 85,
+          "original": "originals/kirito/up/ice_windup.png",
+          "source_anchor": [
+            627,
+            1176
+          ],
+          "offset": [
+            397,
+            360
+          ],
+          "sheet": "kirito_basic_up_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "993bcaeb8a90130ec372288a97da8b5385a910e3c0989f7c923c6f85faf1ea92"
+        },
+        {
+          "index": 2,
+          "pose": "ice_draw",
+          "duration_ms": 45,
+          "original": "originals/kirito/up/ice_draw.png",
+          "source_anchor": [
+            627,
+            1157
+          ],
+          "offset": [
+            397,
+            379
+          ],
+          "sheet": "kirito_basic_up_page0.png",
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "26e6bd59886ab0b51cc2d0f30d78a337b8714ee88c506c3f635a06910b867263"
+        },
+        {
+          "index": 3,
+          "pose": "ice_cut",
+          "duration_ms": 55,
+          "original": "originals/kirito/up/ice_cut.png",
+          "source_anchor": [
+            627,
+            1199
+          ],
+          "offset": [
+            397,
+            337
+          ],
+          "sheet": "kirito_basic_up_page0.png",
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "fda106efe2225b07a41625661730b34c6b3f52525caefcabbd11d21c18bd8cb1"
+        },
+        {
+          "index": 4,
+          "pose": "ice_follow",
+          "duration_ms": 50,
+          "original": "originals/kirito/up/ice_follow.png",
+          "source_anchor": [
+            627,
+            1156
+          ],
+          "offset": [
+            397,
+            380
+          ],
+          "sheet": "kirito_basic_up_page1.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "d0e7763152694aaac3a73c50d71826d1c4e9c1186325ccd65bda05e32ca73d1d"
+        },
+        {
+          "index": 5,
+          "pose": "dark_windup",
+          "duration_ms": 85,
+          "original": "originals/kirito/up/dark_windup.png",
+          "source_anchor": [
+            627,
+            1161
+          ],
+          "offset": [
+            397,
+            375
+          ],
+          "sheet": "kirito_basic_up_page1.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "344a5b32bbd034099ea043f00d0c4f5d922e97aaa91c7b84859c0d1bf7ef8416"
+        },
+        {
+          "index": 6,
+          "pose": "dark_draw",
+          "duration_ms": 45,
+          "original": "originals/kirito/up/dark_draw.png",
+          "source_anchor": [
+            627,
+            1172
+          ],
+          "offset": [
+            397,
+            364
+          ],
+          "sheet": "kirito_basic_up_page1.png",
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "07287d43f77038a31a7fe27f3429aef5a571a3501b6a86fa3b5f8a00995fc488"
+        },
+        {
+          "index": 7,
+          "pose": "dark_cut",
+          "duration_ms": 55,
+          "original": "originals/kirito/up/dark_cut.png",
+          "source_anchor": [
+            627,
+            1214
+          ],
+          "offset": [
+            397,
+            322
+          ],
+          "sheet": "kirito_basic_up_page1.png",
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "78d285867f671bee5be176f5053bac9ff834991f8f0fd65f67ef6ee997773116"
+        },
+        {
+          "index": 8,
+          "pose": "dark_follow",
+          "duration_ms": 60,
+          "original": "originals/kirito/up/dark_follow.png",
+          "source_anchor": [
+            627,
+            1176
+          ],
+          "offset": [
+            397,
+            360
+          ],
+          "sheet": "kirito_basic_up_page2.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "4470cd6d219bc5759c509278cb0275016e0a076c6a12a40fb48e3c94f24c63cc"
+        },
+        {
+          "index": 9,
+          "pose": "neutral",
+          "duration_ms": 80,
+          "original": "originals/kirito/up/neutral.png",
+          "source_anchor": [
+            627,
+            1179
+          ],
+          "offset": [
+            397,
+            357
+          ],
+          "sheet": "kirito_basic_up_page2.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "b4d226ef4f4acfe280b8e1c1663624f62cd6f4162b3d57bfe4049241afe5f64e"
+        }
+      ],
+      "atlas": "kirito_basic_up.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    },
+    "kirito_lv1_up": {
+      "entity": "kirito",
+      "direction": "up",
+      "action": "lv1",
+      "poses": [
+        "neutral",
+        "ice_windup",
+        "ice_draw",
+        "ice_cut",
+        "ice_follow",
+        "neutral"
+      ],
+      "durations_ms": [
+        50,
+        100,
+        55,
+        70,
+        85,
+        100
+      ],
+      "loop": false,
+      "release_frames": [
+        3
+      ],
+      "display_scale": 0.11636363636363636,
+      "body_reference_height": 1100,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 6,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 50,
+          "original": "originals/kirito/up/neutral.png",
+          "source_anchor": [
+            627,
+            1179
+          ],
+          "offset": [
+            397,
+            357
+          ],
+          "sheet": "kirito_lv1_up_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "b4d226ef4f4acfe280b8e1c1663624f62cd6f4162b3d57bfe4049241afe5f64e"
+        },
+        {
+          "index": 1,
+          "pose": "ice_windup",
+          "duration_ms": 100,
+          "original": "originals/kirito/up/ice_windup.png",
+          "source_anchor": [
+            627,
+            1176
+          ],
+          "offset": [
+            397,
+            360
+          ],
+          "sheet": "kirito_lv1_up_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "993bcaeb8a90130ec372288a97da8b5385a910e3c0989f7c923c6f85faf1ea92"
+        },
+        {
+          "index": 2,
+          "pose": "ice_draw",
+          "duration_ms": 55,
+          "original": "originals/kirito/up/ice_draw.png",
+          "source_anchor": [
+            627,
+            1157
+          ],
+          "offset": [
+            397,
+            379
+          ],
+          "sheet": "kirito_lv1_up_page0.png",
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "26e6bd59886ab0b51cc2d0f30d78a337b8714ee88c506c3f635a06910b867263"
+        },
+        {
+          "index": 3,
+          "pose": "ice_cut",
+          "duration_ms": 70,
+          "original": "originals/kirito/up/ice_cut.png",
+          "source_anchor": [
+            627,
+            1199
+          ],
+          "offset": [
+            397,
+            337
+          ],
+          "sheet": "kirito_lv1_up_page0.png",
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "fda106efe2225b07a41625661730b34c6b3f52525caefcabbd11d21c18bd8cb1"
+        },
+        {
+          "index": 4,
+          "pose": "ice_follow",
+          "duration_ms": 85,
+          "original": "originals/kirito/up/ice_follow.png",
+          "source_anchor": [
+            627,
+            1156
+          ],
+          "offset": [
+            397,
+            380
+          ],
+          "sheet": "kirito_lv1_up_page1.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "d0e7763152694aaac3a73c50d71826d1c4e9c1186325ccd65bda05e32ca73d1d"
+        },
+        {
+          "index": 5,
+          "pose": "neutral",
+          "duration_ms": 100,
+          "original": "originals/kirito/up/neutral.png",
+          "source_anchor": [
+            627,
+            1179
+          ],
+          "offset": [
+            397,
+            357
+          ],
+          "sheet": "kirito_lv1_up_page1.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "b4d226ef4f4acfe280b8e1c1663624f62cd6f4162b3d57bfe4049241afe5f64e"
+        }
+      ],
+      "atlas": "kirito_lv1_up.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": [
+        {
+          "frame": 3,
+          "time_ms": 205
+        }
+      ]
+    },
+    "kirito_lv2_up": {
+      "entity": "kirito",
+      "direction": "up",
+      "action": "lv2",
+      "poses": [
+        "neutral",
+        "ice_windup",
+        "ice_draw",
+        "ice_cut",
+        "ice_follow",
+        "dark_windup",
+        "dark_draw",
+        "dark_cut",
+        "dark_follow",
+        "neutral"
+      ],
+      "durations_ms": [
+        50,
+        100,
+        55,
+        70,
+        65,
+        100,
+        55,
+        70,
+        85,
+        100
+      ],
+      "loop": false,
+      "release_frames": [
+        3,
+        7
+      ],
+      "display_scale": 0.11636363636363636,
+      "body_reference_height": 1100,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 10,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 50,
+          "original": "originals/kirito/up/neutral.png",
+          "source_anchor": [
+            627,
+            1179
+          ],
+          "offset": [
+            397,
+            357
+          ],
+          "sheet": "kirito_lv2_up_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "b4d226ef4f4acfe280b8e1c1663624f62cd6f4162b3d57bfe4049241afe5f64e"
+        },
+        {
+          "index": 1,
+          "pose": "ice_windup",
+          "duration_ms": 100,
+          "original": "originals/kirito/up/ice_windup.png",
+          "source_anchor": [
+            627,
+            1176
+          ],
+          "offset": [
+            397,
+            360
+          ],
+          "sheet": "kirito_lv2_up_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "993bcaeb8a90130ec372288a97da8b5385a910e3c0989f7c923c6f85faf1ea92"
+        },
+        {
+          "index": 2,
+          "pose": "ice_draw",
+          "duration_ms": 55,
+          "original": "originals/kirito/up/ice_draw.png",
+          "source_anchor": [
+            627,
+            1157
+          ],
+          "offset": [
+            397,
+            379
+          ],
+          "sheet": "kirito_lv2_up_page0.png",
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "26e6bd59886ab0b51cc2d0f30d78a337b8714ee88c506c3f635a06910b867263"
+        },
+        {
+          "index": 3,
+          "pose": "ice_cut",
+          "duration_ms": 70,
+          "original": "originals/kirito/up/ice_cut.png",
+          "source_anchor": [
+            627,
+            1199
+          ],
+          "offset": [
+            397,
+            337
+          ],
+          "sheet": "kirito_lv2_up_page0.png",
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "fda106efe2225b07a41625661730b34c6b3f52525caefcabbd11d21c18bd8cb1"
+        },
+        {
+          "index": 4,
+          "pose": "ice_follow",
+          "duration_ms": 65,
+          "original": "originals/kirito/up/ice_follow.png",
+          "source_anchor": [
+            627,
+            1156
+          ],
+          "offset": [
+            397,
+            380
+          ],
+          "sheet": "kirito_lv2_up_page1.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "d0e7763152694aaac3a73c50d71826d1c4e9c1186325ccd65bda05e32ca73d1d"
+        },
+        {
+          "index": 5,
+          "pose": "dark_windup",
+          "duration_ms": 100,
+          "original": "originals/kirito/up/dark_windup.png",
+          "source_anchor": [
+            627,
+            1161
+          ],
+          "offset": [
+            397,
+            375
+          ],
+          "sheet": "kirito_lv2_up_page1.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "344a5b32bbd034099ea043f00d0c4f5d922e97aaa91c7b84859c0d1bf7ef8416"
+        },
+        {
+          "index": 6,
+          "pose": "dark_draw",
+          "duration_ms": 55,
+          "original": "originals/kirito/up/dark_draw.png",
+          "source_anchor": [
+            627,
+            1172
+          ],
+          "offset": [
+            397,
+            364
+          ],
+          "sheet": "kirito_lv2_up_page1.png",
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "07287d43f77038a31a7fe27f3429aef5a571a3501b6a86fa3b5f8a00995fc488"
+        },
+        {
+          "index": 7,
+          "pose": "dark_cut",
+          "duration_ms": 70,
+          "original": "originals/kirito/up/dark_cut.png",
+          "source_anchor": [
+            627,
+            1214
+          ],
+          "offset": [
+            397,
+            322
+          ],
+          "sheet": "kirito_lv2_up_page1.png",
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "78d285867f671bee5be176f5053bac9ff834991f8f0fd65f67ef6ee997773116"
+        },
+        {
+          "index": 8,
+          "pose": "dark_follow",
+          "duration_ms": 85,
+          "original": "originals/kirito/up/dark_follow.png",
+          "source_anchor": [
+            627,
+            1176
+          ],
+          "offset": [
+            397,
+            360
+          ],
+          "sheet": "kirito_lv2_up_page2.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "4470cd6d219bc5759c509278cb0275016e0a076c6a12a40fb48e3c94f24c63cc"
+        },
+        {
+          "index": 9,
+          "pose": "neutral",
+          "duration_ms": 100,
+          "original": "originals/kirito/up/neutral.png",
+          "source_anchor": [
+            627,
+            1179
+          ],
+          "offset": [
+            397,
+            357
+          ],
+          "sheet": "kirito_lv2_up_page2.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "b4d226ef4f4acfe280b8e1c1663624f62cd6f4162b3d57bfe4049241afe5f64e"
+        }
+      ],
+      "atlas": "kirito_lv2_up.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": [
+        {
+          "frame": 3,
+          "time_ms": 205
+        },
+        {
+          "frame": 7,
+          "time_ms": 495
+        }
+      ]
+    },
+    "kirito_lv3_up": {
+      "entity": "kirito",
+      "direction": "up",
+      "action": "lv3",
+      "poses": [
+        "neutral",
+        "dual_windup",
+        "dual_charge",
+        "dual_pre_cross",
+        "dual_cross",
+        "dual_follow",
+        "dual_recover",
+        "neutral"
+      ],
+      "durations_ms": [
+        50,
+        85,
+        80,
+        50,
+        70,
+        65,
+        70,
+        100
+      ],
+      "loop": false,
+      "release_frames": [
+        4
+      ],
+      "display_scale": 0.11636363636363636,
+      "body_reference_height": 1100,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 8,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 50,
+          "original": "originals/kirito/up/neutral.png",
+          "source_anchor": [
+            627,
+            1179
+          ],
+          "offset": [
+            397,
+            357
+          ],
+          "sheet": "kirito_lv3_up_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "b4d226ef4f4acfe280b8e1c1663624f62cd6f4162b3d57bfe4049241afe5f64e"
+        },
+        {
+          "index": 1,
+          "pose": "dual_windup",
+          "duration_ms": 85,
+          "original": "originals/kirito/up/dual_windup.png",
+          "source_anchor": [
+            627,
+            1148
+          ],
+          "offset": [
+            397,
+            388
+          ],
+          "sheet": "kirito_lv3_up_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "f8903420d333ed4e34cd3680bd42e5df81a410d6e937ceb49f88ab22691b50a5"
+        },
+        {
+          "index": 2,
+          "pose": "dual_charge",
+          "duration_ms": 80,
+          "original": "originals/kirito/up/dual_charge.png",
+          "source_anchor": [
+            627,
+            1180
+          ],
+          "offset": [
+            397,
+            356
+          ],
+          "sheet": "kirito_lv3_up_page0.png",
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "8c193cf2c893d3e2241ca3796cebe934857218b4b2e40c636bf6ae4ffece3690"
+        },
+        {
+          "index": 3,
+          "pose": "dual_pre_cross",
+          "duration_ms": 50,
+          "original": "originals/kirito/up/dual_pre_cross.png",
+          "source_anchor": [
+            627,
+            1179
+          ],
+          "offset": [
+            397,
+            357
+          ],
+          "sheet": "kirito_lv3_up_page0.png",
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "de4eab28dc6f915ad77fe4ddcb139b23bc9ac33d16417e5de3be784c3d8d0005"
+        },
+        {
+          "index": 4,
+          "pose": "dual_cross",
+          "duration_ms": 70,
+          "original": "originals/kirito/up/dual_cross.png",
+          "source_anchor": [
+            627,
+            1191
+          ],
+          "offset": [
+            397,
+            345
+          ],
+          "sheet": "kirito_lv3_up_page1.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "24f6e58405c4bc6be5c34eec513c7a017f978d1a604bc305a6da7b6f820ac371"
+        },
+        {
+          "index": 5,
+          "pose": "dual_follow",
+          "duration_ms": 65,
+          "original": "originals/kirito/up/dual_follow.png",
+          "source_anchor": [
+            627,
+            1135
+          ],
+          "offset": [
+            397,
+            401
+          ],
+          "sheet": "kirito_lv3_up_page1.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "b7845bdb52540219c6ec4ead3c47f487a069db050caebbfc24529a5c3b6346e4"
+        },
+        {
+          "index": 6,
+          "pose": "dual_recover",
+          "duration_ms": 70,
+          "original": "originals/kirito/up/dual_recover.png",
+          "source_anchor": [
+            627,
+            1180
+          ],
+          "offset": [
+            397,
+            356
+          ],
+          "sheet": "kirito_lv3_up_page1.png",
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "3dbfc6c139297316deb5fee83d235eddba2e37dc19a484680d27fc539284033a"
+        },
+        {
+          "index": 7,
+          "pose": "neutral",
+          "duration_ms": 100,
+          "original": "originals/kirito/up/neutral.png",
+          "source_anchor": [
+            627,
+            1179
+          ],
+          "offset": [
+            397,
+            357
+          ],
+          "sheet": "kirito_lv3_up_page1.png",
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "b4d226ef4f4acfe280b8e1c1663624f62cd6f4162b3d57bfe4049241afe5f64e"
+        }
+      ],
+      "atlas": "kirito_lv3_up.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": [
+        {
+          "frame": 4,
+          "time_ms": 265
+        }
+      ]
+    },
+    "kirito_dash_up": {
+      "entity": "kirito",
+      "direction": "up",
+      "action": "dash",
+      "poses": [
+        "neutral",
+        "dash_launch",
+        "dash_glide",
+        "dash_brake",
+        "neutral"
+      ],
+      "durations_ms": [
+        20,
+        30,
+        65,
+        40,
+        25
+      ],
+      "loop": false,
+      "display_scale": 0.11636363636363636,
+      "body_reference_height": 1100,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 5,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 20,
+          "original": "originals/kirito/up/neutral.png",
+          "source_anchor": [
+            627,
+            1179
+          ],
+          "offset": [
+            397,
+            357
+          ],
+          "sheet": "kirito_dash_up_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "b4d226ef4f4acfe280b8e1c1663624f62cd6f4162b3d57bfe4049241afe5f64e"
+        },
+        {
+          "index": 1,
+          "pose": "dash_launch",
+          "duration_ms": 30,
+          "original": "originals/kirito/up/dash_launch.png",
+          "source_anchor": [
+            627,
+            1132
+          ],
+          "offset": [
+            397,
+            404
+          ],
+          "sheet": "kirito_dash_up_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "1e073cc7587a70f15f8e93b9c41625e6260140d1bfc352e9bd100c586e48532e"
+        },
+        {
+          "index": 2,
+          "pose": "dash_glide",
+          "duration_ms": 65,
+          "original": "originals/kirito/up/dash_glide.png",
+          "source_anchor": [
+            627,
+            1159
+          ],
+          "offset": [
+            397,
+            377
+          ],
+          "sheet": "kirito_dash_up_page0.png",
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "139368cc23d04c19d788ddf6364a7af0eeae4d348783bbdce9f0c747d2aed687"
+        },
+        {
+          "index": 3,
+          "pose": "dash_brake",
+          "duration_ms": 40,
+          "original": "originals/kirito/up/dash_brake.png",
+          "source_anchor": [
+            627,
+            1109
+          ],
+          "offset": [
+            397,
+            427
+          ],
+          "sheet": "kirito_dash_up_page0.png",
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "d10c84aae669c37e3fd0471de527d1a34d8b268aa5a81bd5abb714e393c92400"
+        },
+        {
+          "index": 4,
+          "pose": "neutral",
+          "duration_ms": 25,
+          "original": "originals/kirito/up/neutral.png",
+          "source_anchor": [
+            627,
+            1179
+          ],
+          "offset": [
+            397,
+            357
+          ],
+          "sheet": "kirito_dash_up_page1.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "b4d226ef4f4acfe280b8e1c1663624f62cd6f4162b3d57bfe4049241afe5f64e"
+        }
+      ],
+      "atlas": "kirito_dash_up.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    },
+    "kirito_idle_left": {
+      "entity": "kirito",
+      "direction": "left",
+      "action": "idle",
+      "poses": [
+        "neutral",
+        "idle_breathe"
+      ],
+      "durations_ms": [
+        240,
+        240
+      ],
+      "loop": true,
+      "display_scale": 0.11277533039647578,
+      "body_reference_height": 1135,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 2,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 240,
+          "original": "originals/kirito/left/neutral.png",
+          "source_anchor": [
+            627,
+            1195
+          ],
+          "offset": [
+            397,
+            341
+          ],
+          "sheet": "kirito_idle_left_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "ca8f494465e687cdc4d6e67a500db883efca41d781ff4a79ed286efb031985a9"
+        },
+        {
+          "index": 1,
+          "pose": "idle_breathe",
+          "duration_ms": 240,
+          "original": "originals/kirito/left/idle_breathe.png",
+          "source_anchor": [
+            627,
+            1197
+          ],
+          "offset": [
+            397,
+            339
+          ],
+          "sheet": "kirito_idle_left_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "75dacaf8d8bd92a844eeacd33ab0374d201babec6bf0d118ff5eb2ce0d381d22"
+        }
+      ],
+      "atlas": "kirito_idle_left.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    },
+    "kirito_run_left": {
+      "entity": "kirito",
+      "direction": "left",
+      "action": "run",
+      "poses": [
+        "run_contact_l",
+        "run_contact_r"
+      ],
+      "durations_ms": [
+        140,
+        140
+      ],
+      "loop": true,
+      "display_scale": 0.11277533039647578,
+      "body_reference_height": 1135,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 2,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "run_contact_l",
+          "duration_ms": 140,
+          "original": "originals/kirito/left/run_contact_l.png",
+          "source_anchor": [
+            627,
+            1140
+          ],
+          "offset": [
+            397,
+            396
+          ],
+          "sheet": "kirito_run_left_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "f777d25e8a36011ac70e5510aca5c30789bd096ba0bec62681d5b04fb12c2cb1"
+        },
+        {
+          "index": 1,
+          "pose": "run_contact_r",
+          "duration_ms": 140,
+          "original": "originals/kirito/left/run_contact_r.png",
+          "source_anchor": [
+            627,
+            1121
+          ],
+          "offset": [
+            397,
+            415
+          ],
+          "sheet": "kirito_run_left_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "c4a5080d32a6c64a8f0f436145743971983df6ac2f0277f249d1fea23d10d164"
+        }
+      ],
+      "atlas": "kirito_run_left.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    },
+    "kirito_dash_left": {
+      "entity": "kirito",
+      "direction": "left",
+      "action": "dash",
+      "poses": [
+        "neutral",
+        "dash_coil",
+        "dash_accel",
+        "neutral"
+      ],
+      "durations_ms": [
+        20,
+        30,
+        100,
+        30
+      ],
+      "loop": false,
+      "display_scale": 0.11277533039647578,
+      "body_reference_height": 1135,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 4,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 20,
+          "original": "originals/kirito/left/neutral.png",
+          "source_anchor": [
+            627,
+            1195
+          ],
+          "offset": [
+            397,
+            341
+          ],
+          "sheet": "kirito_dash_left_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "ca8f494465e687cdc4d6e67a500db883efca41d781ff4a79ed286efb031985a9"
+        },
+        {
+          "index": 1,
+          "pose": "dash_coil",
+          "duration_ms": 30,
+          "original": "originals/kirito/left/dash_coil.png",
+          "source_anchor": [
+            627,
+            1041
+          ],
+          "offset": [
+            397,
+            495
+          ],
+          "sheet": "kirito_dash_left_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "c47775be69110c79f1704f6aa72f6e456e378d4183707f983dbcba4bc728eb43"
+        },
+        {
+          "index": 2,
+          "pose": "dash_accel",
+          "duration_ms": 100,
+          "original": "originals/kirito/left/dash_accel.png",
+          "source_anchor": [
+            627,
+            1050
+          ],
+          "offset": [
+            397,
+            486
+          ],
+          "sheet": "kirito_dash_left_page0.png",
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "8f5e920749062c8a087fbb1cb4fcb0dd3dcfb91609f658b01044d339ba7edf75"
+        },
+        {
+          "index": 3,
+          "pose": "neutral",
+          "duration_ms": 30,
+          "original": "originals/kirito/left/neutral.png",
+          "source_anchor": [
+            627,
+            1195
+          ],
+          "offset": [
+            397,
+            341
+          ],
+          "sheet": "kirito_dash_left_page0.png",
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "ca8f494465e687cdc4d6e67a500db883efca41d781ff4a79ed286efb031985a9"
+        }
+      ],
+      "atlas": "kirito_dash_left.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    },
+    "kirito_idle_right": {
+      "entity": "kirito",
+      "direction": "right",
+      "action": "idle",
+      "poses": [
+        "neutral"
+      ],
+      "durations_ms": [
+        480
+      ],
+      "loop": true,
+      "display_scale": 0.1103448275862069,
+      "body_reference_height": 1160,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 1,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 480,
+          "original": "originals/kirito/right/neutral.png",
+          "source_anchor": [
+            627,
+            1213
+          ],
+          "offset": [
+            397,
+            323
+          ],
+          "sheet": "kirito_idle_right_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "992fa89c9dc4be76eff23acba2b9839a958775fe4a63cae9ed9dab4681c6817e"
+        }
+      ],
+      "atlas": "kirito_idle_right.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    },
+    "kirito_dash_right": {
+      "entity": "kirito",
+      "direction": "right",
+      "action": "dash",
+      "poses": [
+        "neutral",
+        "dash_glide",
+        "neutral"
+      ],
+      "durations_ms": [
+        25,
+        120,
+        35
+      ],
+      "loop": false,
+      "display_scale": 0.1103448275862069,
+      "body_reference_height": 1160,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 3,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 25,
+          "original": "originals/kirito/right/neutral.png",
+          "source_anchor": [
+            627,
+            1213
+          ],
+          "offset": [
+            397,
+            323
+          ],
+          "sheet": "kirito_dash_right_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "992fa89c9dc4be76eff23acba2b9839a958775fe4a63cae9ed9dab4681c6817e"
+        },
+        {
+          "index": 1,
+          "pose": "dash_glide",
+          "duration_ms": 120,
+          "original": "originals/kirito/right/dash_glide.png",
+          "source_anchor": [
+            627,
+            1006
+          ],
+          "offset": [
+            397,
+            530
+          ],
+          "sheet": "kirito_dash_right_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "4c889f84fec62e3c86ef4687d49175872674bf6ac2ebf852f5b5b56acf99a20e"
+        },
+        {
+          "index": 2,
+          "pose": "neutral",
+          "duration_ms": 35,
+          "original": "originals/kirito/right/neutral.png",
+          "source_anchor": [
+            627,
+            1213
+          ],
+          "offset": [
+            397,
+            323
+          ],
+          "sheet": "kirito_dash_right_page0.png",
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "992fa89c9dc4be76eff23acba2b9839a958775fe4a63cae9ed9dab4681c6817e"
+        }
+      ],
+      "atlas": "kirito_dash_right.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    },
+    "enemy_hit_down": {
+      "entity": "enemy",
+      "direction": "down",
+      "action": "hit",
+      "poses": [
+        "neutral",
+        "hit",
+        "neutral"
+      ],
+      "durations_ms": [
+        35,
+        85,
+        80
+      ],
+      "loop": false,
+      "display_scale": 0.1031426269137792,
+      "body_reference_height": 1241,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 3,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 35,
+          "original": "originals/enemy/down/neutral.png",
+          "source_anchor": [
+            627,
+            1249
+          ],
+          "offset": [
+            397,
+            287
+          ],
+          "sheet": "enemy_hit_down_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "6b3fabc09c8f7480b7b6a0144a5df1f4c74d3aa8496dd5b2bf3a1fa2f08cd066"
+        },
+        {
+          "index": 1,
+          "pose": "hit",
+          "duration_ms": 85,
+          "original": "originals/enemy/down/hit.png",
+          "source_anchor": [
+            627,
+            1097
+          ],
+          "offset": [
+            397,
+            439
+          ],
+          "sheet": "enemy_hit_down_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "0de53f0b153f6b30d660b899e8f7c0af3a548902d9db5b8d684527b5ca7c1c15"
+        },
+        {
+          "index": 2,
+          "pose": "neutral",
+          "duration_ms": 80,
+          "original": "originals/enemy/down/neutral.png",
+          "source_anchor": [
+            627,
+            1249
+          ],
+          "offset": [
+            397,
+            287
+          ],
+          "sheet": "enemy_hit_down_page0.png",
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "6b3fabc09c8f7480b7b6a0144a5df1f4c74d3aa8496dd5b2bf3a1fa2f08cd066"
+        }
+      ],
+      "atlas": "enemy_hit_down.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    },
+    "enemy_death_down": {
+      "entity": "enemy",
+      "direction": "down",
+      "action": "death",
+      "poses": [
+        "neutral",
+        "collapse",
+        "fallen"
+      ],
+      "durations_ms": [
+        45,
+        110,
+        220
+      ],
+      "loop": false,
+      "final_state": "hold fallen until external cleanup; never return to walking automatically",
+      "display_scale": 0.1031426269137792,
+      "body_reference_height": 1241,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 3,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 45,
+          "original": "originals/enemy/down/neutral.png",
+          "source_anchor": [
+            627,
+            1249
+          ],
+          "offset": [
+            397,
+            287
+          ],
+          "sheet": "enemy_death_down_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "6b3fabc09c8f7480b7b6a0144a5df1f4c74d3aa8496dd5b2bf3a1fa2f08cd066"
+        },
+        {
+          "index": 1,
+          "pose": "collapse",
+          "duration_ms": 110,
+          "original": "originals/enemy/down/collapse.png",
+          "source_anchor": [
+            627,
+            1097
+          ],
+          "offset": [
+            397,
+            439
+          ],
+          "sheet": "enemy_death_down_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "bcc1d9edc5ccd522996068edfb2162f7a4e9152d1afc3321d08be8c096d191ee"
+        },
+        {
+          "index": 2,
+          "pose": "fallen",
+          "duration_ms": 220,
+          "original": "originals/enemy/down/fallen.png",
+          "source_anchor": [
+            627,
+            1046
+          ],
+          "offset": [
+            397,
+            490
+          ],
+          "sheet": "enemy_death_down_page0.png",
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "0ab2c57e6e6b872082a549559be146083b2195c741b16e8118d024e905f43a40"
+        }
+      ],
+      "atlas": "enemy_death_down.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": [],
+      "end_policy": "hold fallen; external cleanup only"
+    },
+    "enemy_hit_up": {
+      "entity": "enemy",
+      "direction": "up",
+      "action": "hit",
+      "poses": [
+        "neutral",
+        "hit",
+        "neutral"
+      ],
+      "durations_ms": [
+        35,
+        85,
+        80
+      ],
+      "loop": false,
+      "display_scale": 0.11500449236298294,
+      "body_reference_height": 1113,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 3,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 35,
+          "original": "originals/enemy/up/neutral.png",
+          "source_anchor": [
+            627,
+            1178
+          ],
+          "offset": [
+            397,
+            358
+          ],
+          "sheet": "enemy_hit_up_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "01ef16e195152265504ff5403467307a98e47bcffeba9f6b3155eff969b61c19"
+        },
+        {
+          "index": 1,
+          "pose": "hit",
+          "duration_ms": 85,
+          "original": "originals/enemy/up/hit.png",
+          "source_anchor": [
+            627,
+            1126
+          ],
+          "offset": [
+            397,
+            410
+          ],
+          "sheet": "enemy_hit_up_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "03449fda8946e71018f73a8777b8edda7e938e631d26874470ae5c78dfbf4815"
+        },
+        {
+          "index": 2,
+          "pose": "neutral",
+          "duration_ms": 80,
+          "original": "originals/enemy/up/neutral.png",
+          "source_anchor": [
+            627,
+            1178
+          ],
+          "offset": [
+            397,
+            358
+          ],
+          "sheet": "enemy_hit_up_page0.png",
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "01ef16e195152265504ff5403467307a98e47bcffeba9f6b3155eff969b61c19"
+        }
+      ],
+      "atlas": "enemy_hit_up.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    },
+    "enemy_death_up": {
+      "entity": "enemy",
+      "direction": "up",
+      "action": "death",
+      "poses": [
+        "neutral",
+        "collapse",
+        "fallen"
+      ],
+      "durations_ms": [
+        45,
+        110,
+        220
+      ],
+      "loop": false,
+      "final_state": "hold fallen until external cleanup; never return to walking automatically",
+      "display_scale": 0.11500449236298294,
+      "body_reference_height": 1113,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 3,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 45,
+          "original": "originals/enemy/up/neutral.png",
+          "source_anchor": [
+            627,
+            1178
+          ],
+          "offset": [
+            397,
+            358
+          ],
+          "sheet": "enemy_death_up_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "01ef16e195152265504ff5403467307a98e47bcffeba9f6b3155eff969b61c19"
+        },
+        {
+          "index": 1,
+          "pose": "collapse",
+          "duration_ms": 110,
+          "original": "originals/enemy/up/collapse.png",
+          "source_anchor": [
+            627,
+            1095
+          ],
+          "offset": [
+            397,
+            441
+          ],
+          "sheet": "enemy_death_up_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "0185d94060e138cf731f573b7533faaf915735de0f0d200f0cef81093d12bcea"
+        },
+        {
+          "index": 2,
+          "pose": "fallen",
+          "duration_ms": 220,
+          "original": "originals/enemy/up/fallen.png",
+          "source_anchor": [
+            627,
+            1095
+          ],
+          "offset": [
+            397,
+            441
+          ],
+          "sheet": "enemy_death_up_page0.png",
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "6dc3879af548da601d453cfe6678b3dcaae5fb0569bd7e360d86756113c18b15"
+        }
+      ],
+      "atlas": "enemy_death_up.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": [],
+      "end_policy": "hold fallen; external cleanup only"
+    },
+    "enemy_hit_left": {
+      "entity": "enemy",
+      "direction": "left",
+      "action": "hit",
+      "poses": [
+        "neutral",
+        "hit",
+        "neutral"
+      ],
+      "durations_ms": [
+        35,
+        85,
+        80
+      ],
+      "loop": false,
+      "display_scale": 0.12155745489078823,
+      "body_reference_height": 1053,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 3,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 35,
+          "original": "originals/enemy/left/neutral.png",
+          "source_anchor": [
+            627,
+            1159
+          ],
+          "offset": [
+            397,
+            377
+          ],
+          "sheet": "enemy_hit_left_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "30c7283a73b7e51e9472a6501d3149898d65a6aad317af31eab667d78cdc4be8"
+        },
+        {
+          "index": 1,
+          "pose": "hit",
+          "duration_ms": 85,
+          "original": "originals/enemy/left/hit.png",
+          "source_anchor": [
+            627,
+            1139
+          ],
+          "offset": [
+            397,
+            397
+          ],
+          "sheet": "enemy_hit_left_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "896297b9bbc0aa6262af499f34528ae45f8e0fe9b061f5583bd2370e109b33fe"
+        },
+        {
+          "index": 2,
+          "pose": "neutral",
+          "duration_ms": 80,
+          "original": "originals/enemy/left/neutral.png",
+          "source_anchor": [
+            627,
+            1159
+          ],
+          "offset": [
+            397,
+            377
+          ],
+          "sheet": "enemy_hit_left_page0.png",
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "30c7283a73b7e51e9472a6501d3149898d65a6aad317af31eab667d78cdc4be8"
+        }
+      ],
+      "atlas": "enemy_hit_left.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    },
+    "enemy_death_left": {
+      "entity": "enemy",
+      "direction": "left",
+      "action": "death",
+      "poses": [
+        "neutral",
+        "collapse",
+        "fallen"
+      ],
+      "durations_ms": [
+        45,
+        110,
+        220
+      ],
+      "loop": false,
+      "final_state": "hold fallen until external cleanup; never return to walking automatically",
+      "display_scale": 0.12155745489078823,
+      "body_reference_height": 1053,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 3,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 45,
+          "original": "originals/enemy/left/neutral.png",
+          "source_anchor": [
+            627,
+            1159
+          ],
+          "offset": [
+            397,
+            377
+          ],
+          "sheet": "enemy_death_left_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "30c7283a73b7e51e9472a6501d3149898d65a6aad317af31eab667d78cdc4be8"
+        },
+        {
+          "index": 1,
+          "pose": "collapse",
+          "duration_ms": 110,
+          "original": "originals/enemy/left/collapse.png",
+          "source_anchor": [
+            627,
+            1075
+          ],
+          "offset": [
+            397,
+            461
+          ],
+          "sheet": "enemy_death_left_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "6adcf141849b66d6f232ba267a337e9a3da4c2c022d56debedbf8977b0313ed2"
+        },
+        {
+          "index": 2,
+          "pose": "fallen",
+          "duration_ms": 220,
+          "original": "originals/enemy/left/fallen.png",
+          "source_anchor": [
+            627,
+            913
+          ],
+          "offset": [
+            397,
+            623
+          ],
+          "sheet": "enemy_death_left_page0.png",
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "ec191bba57777f2121e8cce80b500a03ad602e89326e1990319839a8a19b5361"
+        }
+      ],
+      "atlas": "enemy_death_left.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": [],
+      "end_policy": "hold fallen; external cleanup only"
+    },
+    "enemy_hit_right": {
+      "entity": "enemy",
+      "direction": "right",
+      "action": "hit",
+      "poses": [
+        "neutral",
+        "hit",
+        "neutral"
+      ],
+      "durations_ms": [
+        35,
+        85,
+        80
+      ],
+      "loop": false,
+      "display_scale": 0.11862835959221502,
+      "body_reference_height": 1079,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 3,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 35,
+          "original": "originals/enemy/right/neutral.png",
+          "source_anchor": [
+            627,
+            1179
+          ],
+          "offset": [
+            397,
+            357
+          ],
+          "sheet": "enemy_hit_right_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "36bc06197f5d94c6a9cb2716190cdff82af73b6d4a60bd327a782d8d2de31628"
+        },
+        {
+          "index": 1,
+          "pose": "hit",
+          "duration_ms": 85,
+          "original": "originals/enemy/right/hit.png",
+          "source_anchor": [
+            627,
+            1118
+          ],
+          "offset": [
+            397,
+            418
+          ],
+          "sheet": "enemy_hit_right_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "47ce22f505a73a2ea29a0926b55e92bf9394ee5097a6000b2a2618d9925e7a31"
+        },
+        {
+          "index": 2,
+          "pose": "neutral",
+          "duration_ms": 80,
+          "original": "originals/enemy/right/neutral.png",
+          "source_anchor": [
+            627,
+            1179
+          ],
+          "offset": [
+            397,
+            357
+          ],
+          "sheet": "enemy_hit_right_page0.png",
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "36bc06197f5d94c6a9cb2716190cdff82af73b6d4a60bd327a782d8d2de31628"
+        }
+      ],
+      "atlas": "enemy_hit_right.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    },
+    "enemy_death_right": {
+      "entity": "enemy",
+      "direction": "right",
+      "action": "death",
+      "poses": [
+        "neutral",
+        "collapse",
+        "fallen"
+      ],
+      "durations_ms": [
+        45,
+        110,
+        220
+      ],
+      "loop": false,
+      "final_state": "hold fallen until external cleanup; never return to walking automatically",
+      "display_scale": 0.11862835959221502,
+      "body_reference_height": 1079,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 3,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 45,
+          "original": "originals/enemy/right/neutral.png",
+          "source_anchor": [
+            627,
+            1179
+          ],
+          "offset": [
+            397,
+            357
+          ],
+          "sheet": "enemy_death_right_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "36bc06197f5d94c6a9cb2716190cdff82af73b6d4a60bd327a782d8d2de31628"
+        },
+        {
+          "index": 1,
+          "pose": "collapse",
+          "duration_ms": 110,
+          "original": "originals/enemy/right/collapse.png",
+          "source_anchor": [
+            627,
+            1092
+          ],
+          "offset": [
+            397,
+            444
+          ],
+          "sheet": "enemy_death_right_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "6bad48e397a204a5893a360e801f1311e8026e2d0cc32f30133969f4970749a6"
+        },
+        {
+          "index": 2,
+          "pose": "fallen",
+          "duration_ms": 220,
+          "original": "originals/enemy/right/fallen.png",
+          "source_anchor": [
+            627,
+            834
+          ],
+          "offset": [
+            397,
+            702
+          ],
+          "sheet": "enemy_death_right_page0.png",
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "92590040a29a52d2c2445300b9bcc2b31fd4edc8a62888db889ad1c92e1daa15"
+        }
+      ],
+      "atlas": "enemy_death_right.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": [],
+      "end_policy": "hold fallen; external cleanup only"
+    },
+    "enemy_shade_hit_down": {
+      "entity": "enemy_shade",
+      "direction": "down",
+      "action": "hit",
+      "poses": [
+        "neutral",
+        "hit",
+        "neutral"
+      ],
+      "durations_ms": [
+        35,
+        85,
+        80
+      ],
+      "loop": false,
+      "display_scale": 0.1170018281535649,
+      "body_reference_height": 1094,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 3,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 35,
+          "original": "originals/enemy_shade/down/neutral.png",
+          "source_anchor": [
+            630,
+            1183
+          ],
+          "offset": [
+            394,
+            353
+          ],
+          "sheet": "enemy_shade_hit_down_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "901a4b5a214ada2fe2dff2530db3bcc0debd5dc4fd5a7c4d36ce2c061a9286e7"
+        },
+        {
+          "index": 1,
+          "pose": "hit",
+          "duration_ms": 85,
+          "original": "originals/enemy_shade/down/hit.png",
+          "source_anchor": [
+            630,
+            1049
+          ],
+          "offset": [
+            394,
+            487
+          ],
+          "sheet": "enemy_shade_hit_down_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "c9a767e2bc0e1c7cc3fa2d035358d93af4893b6ccf0fb5eb0fdd78401c916410"
+        },
+        {
+          "index": 2,
+          "pose": "neutral",
+          "duration_ms": 80,
+          "original": "originals/enemy_shade/down/neutral.png",
+          "source_anchor": [
+            630,
+            1183
+          ],
+          "offset": [
+            394,
+            353
+          ],
+          "sheet": "enemy_shade_hit_down_page0.png",
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "901a4b5a214ada2fe2dff2530db3bcc0debd5dc4fd5a7c4d36ce2c061a9286e7"
+        }
+      ],
+      "atlas": "enemy_shade_hit_down.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    },
+    "enemy_shade_death_down": {
+      "entity": "enemy_shade",
+      "direction": "down",
+      "action": "death",
+      "poses": [
+        "neutral",
+        "collapse",
+        "fallen"
+      ],
+      "durations_ms": [
+        45,
+        110,
+        220
+      ],
+      "loop": false,
+      "final_state": "hold fallen until external cleanup; never return to walking automatically",
+      "display_scale": 0.1170018281535649,
+      "body_reference_height": 1094,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 3,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 45,
+          "original": "originals/enemy_shade/down/neutral.png",
+          "source_anchor": [
+            630,
+            1183
+          ],
+          "offset": [
+            394,
+            353
+          ],
+          "sheet": "enemy_shade_death_down_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "901a4b5a214ada2fe2dff2530db3bcc0debd5dc4fd5a7c4d36ce2c061a9286e7"
+        },
+        {
+          "index": 1,
+          "pose": "collapse",
+          "duration_ms": 110,
+          "original": "originals/enemy_shade/down/collapse.png",
+          "source_anchor": [
+            630,
+            1059
+          ],
+          "offset": [
+            394,
+            477
+          ],
+          "sheet": "enemy_shade_death_down_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "5a459b3f3d852031992accef2b5b6c749338a1d0a52065573811538854939b2d"
+        },
+        {
+          "index": 2,
+          "pose": "fallen",
+          "duration_ms": 220,
+          "original": "originals/enemy_shade/down/fallen.png",
+          "source_anchor": [
+            630,
+            871
+          ],
+          "offset": [
+            394,
+            665
+          ],
+          "sheet": "enemy_shade_death_down_page0.png",
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "0d8be356a3410131243932890d1e6064cabb728c6754a845a9ff8d83ebc9c4fa"
+        }
+      ],
+      "atlas": "enemy_shade_death_down.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": [],
+      "end_policy": "hold fallen; external cleanup only"
+    },
+    "enemy_shade_hit_up": {
+      "entity": "enemy_shade",
+      "direction": "up",
+      "action": "hit",
+      "poses": [
+        "neutral",
+        "hit",
+        "neutral"
+      ],
+      "durations_ms": [
+        35,
+        85,
+        80
+      ],
+      "loop": false,
+      "display_scale": 0.11819021237303785,
+      "body_reference_height": 1083,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 3,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 35,
+          "original": "originals/enemy_shade/up/neutral.png",
+          "source_anchor": [
+            630,
+            1172
+          ],
+          "offset": [
+            394,
+            364
+          ],
+          "sheet": "enemy_shade_hit_up_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "8dc70d41869a4bf88df9e03786d9715361e5bf13209aabcd9215ee7692d6b0c0"
+        },
+        {
+          "index": 1,
+          "pose": "hit",
+          "duration_ms": 85,
+          "original": "originals/enemy_shade/up/hit.png",
+          "source_anchor": [
+            630,
+            1055
+          ],
+          "offset": [
+            394,
+            481
+          ],
+          "sheet": "enemy_shade_hit_up_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "21415f74b5ba6eb8b2442b7065b04e5e4f9e705c50dba7249679c84fc9f92cce"
+        },
+        {
+          "index": 2,
+          "pose": "neutral",
+          "duration_ms": 80,
+          "original": "originals/enemy_shade/up/neutral.png",
+          "source_anchor": [
+            630,
+            1172
+          ],
+          "offset": [
+            394,
+            364
+          ],
+          "sheet": "enemy_shade_hit_up_page0.png",
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "8dc70d41869a4bf88df9e03786d9715361e5bf13209aabcd9215ee7692d6b0c0"
+        }
+      ],
+      "atlas": "enemy_shade_hit_up.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    },
+    "enemy_shade_death_up": {
+      "entity": "enemy_shade",
+      "direction": "up",
+      "action": "death",
+      "poses": [
+        "neutral",
+        "collapse",
+        "fallen"
+      ],
+      "durations_ms": [
+        45,
+        110,
+        220
+      ],
+      "loop": false,
+      "final_state": "hold fallen until external cleanup; never return to walking automatically",
+      "display_scale": 0.11819021237303785,
+      "body_reference_height": 1083,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 3,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 45,
+          "original": "originals/enemy_shade/up/neutral.png",
+          "source_anchor": [
+            630,
+            1172
+          ],
+          "offset": [
+            394,
+            364
+          ],
+          "sheet": "enemy_shade_death_up_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "8dc70d41869a4bf88df9e03786d9715361e5bf13209aabcd9215ee7692d6b0c0"
+        },
+        {
+          "index": 1,
+          "pose": "collapse",
+          "duration_ms": 110,
+          "original": "originals/enemy_shade/up/collapse.png",
+          "source_anchor": [
+            630,
+            975
+          ],
+          "offset": [
+            394,
+            561
+          ],
+          "sheet": "enemy_shade_death_up_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "8c81dd9d38d2325d51db2ee64e6c03cf3c0e4004ccb076270e801c16de021f20"
+        },
+        {
+          "index": 2,
+          "pose": "fallen",
+          "duration_ms": 220,
+          "original": "originals/enemy_shade/up/fallen.png",
+          "source_anchor": [
+            630,
+            1062
+          ],
+          "offset": [
+            394,
+            474
+          ],
+          "sheet": "enemy_shade_death_up_page0.png",
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "1ac9677304fd687ac687cc5808326ee2274000edcfdcd3baecda9880f2472cef"
+        }
+      ],
+      "atlas": "enemy_shade_death_up.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": [],
+      "end_policy": "hold fallen; external cleanup only"
+    },
+    "enemy_shade_hit_left": {
+      "entity": "enemy_shade",
+      "direction": "left",
+      "action": "hit",
+      "poses": [
+        "neutral",
+        "hit",
+        "neutral"
+      ],
+      "durations_ms": [
+        35,
+        85,
+        80
+      ],
+      "loop": false,
+      "display_scale": 0.1306122448979592,
+      "body_reference_height": 980,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 3,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 35,
+          "original": "originals/enemy_shade/left/neutral.png",
+          "source_anchor": [
+            630,
+            1120
+          ],
+          "offset": [
+            394,
+            416
+          ],
+          "sheet": "enemy_shade_hit_left_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "f5d79a9423ed0d289b8738d24bcd0bb6d4f025663e2738407ac4025d5e9e09c4"
+        },
+        {
+          "index": 1,
+          "pose": "hit",
+          "duration_ms": 85,
+          "original": "originals/enemy_shade/left/hit.png",
+          "source_anchor": [
+            630,
+            1081
+          ],
+          "offset": [
+            394,
+            455
+          ],
+          "sheet": "enemy_shade_hit_left_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "605dc7345b70b1a624b476d19e1f408349469d1cfe57989560a65793b6ebe5d8"
+        },
+        {
+          "index": 2,
+          "pose": "neutral",
+          "duration_ms": 80,
+          "original": "originals/enemy_shade/left/neutral.png",
+          "source_anchor": [
+            630,
+            1120
+          ],
+          "offset": [
+            394,
+            416
+          ],
+          "sheet": "enemy_shade_hit_left_page0.png",
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "f5d79a9423ed0d289b8738d24bcd0bb6d4f025663e2738407ac4025d5e9e09c4"
+        }
+      ],
+      "atlas": "enemy_shade_hit_left.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    },
+    "enemy_shade_death_left": {
+      "entity": "enemy_shade",
+      "direction": "left",
+      "action": "death",
+      "poses": [
+        "neutral",
+        "collapse",
+        "fallen"
+      ],
+      "durations_ms": [
+        45,
+        110,
+        220
+      ],
+      "loop": false,
+      "final_state": "hold fallen until external cleanup; never return to walking automatically",
+      "display_scale": 0.1306122448979592,
+      "body_reference_height": 980,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 3,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 45,
+          "original": "originals/enemy_shade/left/neutral.png",
+          "source_anchor": [
+            630,
+            1120
+          ],
+          "offset": [
+            394,
+            416
+          ],
+          "sheet": "enemy_shade_death_left_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "f5d79a9423ed0d289b8738d24bcd0bb6d4f025663e2738407ac4025d5e9e09c4"
+        },
+        {
+          "index": 1,
+          "pose": "collapse",
+          "duration_ms": 110,
+          "original": "originals/enemy_shade/left/collapse.png",
+          "source_anchor": [
+            630,
+            1051
+          ],
+          "offset": [
+            394,
+            485
+          ],
+          "sheet": "enemy_shade_death_left_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "ef793a9e6a8dba26bfc6ae799303b01ef63840a3a6183f0f5cb4259f4be41c23"
+        },
+        {
+          "index": 2,
+          "pose": "fallen",
+          "duration_ms": 220,
+          "original": "originals/enemy_shade/left/fallen.png",
+          "source_anchor": [
+            630,
+            870
+          ],
+          "offset": [
+            394,
+            666
+          ],
+          "sheet": "enemy_shade_death_left_page0.png",
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "8851ffdd28406a2e776609fe1a76a05aeaab95d508a1344519b07339d6b76f96"
+        }
+      ],
+      "atlas": "enemy_shade_death_left.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": [],
+      "end_policy": "hold fallen; external cleanup only"
+    },
+    "enemy_shade_hit_right": {
+      "entity": "enemy_shade",
+      "direction": "right",
+      "action": "hit",
+      "poses": [
+        "neutral",
+        "hit",
+        "neutral"
+      ],
+      "durations_ms": [
+        35,
+        85,
+        80
+      ],
+      "loop": false,
+      "display_scale": 0.13101330603889458,
+      "body_reference_height": 977,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 3,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 35,
+          "original": "originals/enemy_shade/right/neutral.png",
+          "source_anchor": [
+            630,
+            1119
+          ],
+          "offset": [
+            394,
+            417
+          ],
+          "sheet": "enemy_shade_hit_right_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "ba1f41c5625c59de776f29dcb862c4956530a1cb3c86aa042a3087ffd6a6a990"
+        },
+        {
+          "index": 1,
+          "pose": "hit",
+          "duration_ms": 85,
+          "original": "originals/enemy_shade/right/hit.png",
+          "source_anchor": [
+            630,
+            1027
+          ],
+          "offset": [
+            394,
+            509
+          ],
+          "sheet": "enemy_shade_hit_right_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "15f91ba86dc5cbf4e33a063066bf4cded0dab0cb768bee49cb95999465f88816"
+        },
+        {
+          "index": 2,
+          "pose": "neutral",
+          "duration_ms": 80,
+          "original": "originals/enemy_shade/right/neutral.png",
+          "source_anchor": [
+            630,
+            1119
+          ],
+          "offset": [
+            394,
+            417
+          ],
+          "sheet": "enemy_shade_hit_right_page0.png",
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "ba1f41c5625c59de776f29dcb862c4956530a1cb3c86aa042a3087ffd6a6a990"
+        }
+      ],
+      "atlas": "enemy_shade_hit_right.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    },
+    "enemy_shade_death_right": {
+      "entity": "enemy_shade",
+      "direction": "right",
+      "action": "death",
+      "poses": [
+        "neutral",
+        "collapse",
+        "fallen"
+      ],
+      "durations_ms": [
+        45,
+        110,
+        220
+      ],
+      "loop": false,
+      "final_state": "hold fallen until external cleanup; never return to walking automatically",
+      "display_scale": 0.13101330603889458,
+      "body_reference_height": 977,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 3,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 45,
+          "original": "originals/enemy_shade/right/neutral.png",
+          "source_anchor": [
+            630,
+            1119
+          ],
+          "offset": [
+            394,
+            417
+          ],
+          "sheet": "enemy_shade_death_right_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "ba1f41c5625c59de776f29dcb862c4956530a1cb3c86aa042a3087ffd6a6a990"
+        },
+        {
+          "index": 1,
+          "pose": "collapse",
+          "duration_ms": 110,
+          "original": "originals/enemy_shade/right/collapse.png",
+          "source_anchor": [
+            630,
+            1006
+          ],
+          "offset": [
+            394,
+            530
+          ],
+          "sheet": "enemy_shade_death_right_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "764323aad299e87923e2e5ce4e3a67fa10f21a00fb14dcc4d298d27136ed8b68"
+        },
+        {
+          "index": 2,
+          "pose": "fallen",
+          "duration_ms": 220,
+          "original": "originals/enemy_shade/right/fallen.png",
+          "source_anchor": [
+            630,
+            872
+          ],
+          "offset": [
+            394,
+            664
+          ],
+          "sheet": "enemy_shade_death_right_page0.png",
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "d7c5e921ca2d3fda9827c7d707238b246601d1614470cf97ce78e6c615adc817"
+        }
+      ],
+      "atlas": "enemy_shade_death_right.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": [],
+      "end_policy": "hold fallen; external cleanup only"
+    },
+    "enemy_mage_hit_down": {
+      "entity": "enemy_mage",
+      "direction": "down",
+      "action": "hit",
+      "poses": [
+        "neutral",
+        "hit",
+        "neutral"
+      ],
+      "durations_ms": [
+        35,
+        85,
+        80
+      ],
+      "loop": false,
+      "display_scale": 0.11257695690413369,
+      "body_reference_height": 1137,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 3,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 35,
+          "original": "originals/enemy_mage/down/neutral.png",
+          "source_anchor": [
+            656,
+            1185
+          ],
+          "offset": [
+            368,
+            351
+          ],
+          "sheet": "enemy_mage_hit_down_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "c95c420c1a0bc3053fdf3a72b341526a0aba1646385074d18d855951439e5642"
+        },
+        {
+          "index": 1,
+          "pose": "hit",
+          "duration_ms": 85,
+          "original": "originals/enemy_mage/down/hit.png",
+          "source_anchor": [
+            656,
+            1034
+          ],
+          "offset": [
+            368,
+            502
+          ],
+          "sheet": "enemy_mage_hit_down_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "d607ea3a41af740ad0062322839890bc1b62a6ce9bc2fa8a608bde99866f685b"
+        },
+        {
+          "index": 2,
+          "pose": "neutral",
+          "duration_ms": 80,
+          "original": "originals/enemy_mage/down/neutral.png",
+          "source_anchor": [
+            656,
+            1185
+          ],
+          "offset": [
+            368,
+            351
+          ],
+          "sheet": "enemy_mage_hit_down_page0.png",
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "c95c420c1a0bc3053fdf3a72b341526a0aba1646385074d18d855951439e5642"
+        }
+      ],
+      "atlas": "enemy_mage_hit_down.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    },
+    "enemy_mage_death_down": {
+      "entity": "enemy_mage",
+      "direction": "down",
+      "action": "death",
+      "poses": [
+        "neutral",
+        "collapse",
+        "fallen"
+      ],
+      "durations_ms": [
+        45,
+        110,
+        220
+      ],
+      "loop": false,
+      "final_state": "hold fallen until external cleanup; never return to walking automatically",
+      "display_scale": 0.11257695690413369,
+      "body_reference_height": 1137,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 3,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 45,
+          "original": "originals/enemy_mage/down/neutral.png",
+          "source_anchor": [
+            656,
+            1185
+          ],
+          "offset": [
+            368,
+            351
+          ],
+          "sheet": "enemy_mage_death_down_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "c95c420c1a0bc3053fdf3a72b341526a0aba1646385074d18d855951439e5642"
+        },
+        {
+          "index": 1,
+          "pose": "collapse",
+          "duration_ms": 110,
+          "original": "originals/enemy_mage/down/collapse.png",
+          "source_anchor": [
+            656,
+            1044
+          ],
+          "offset": [
+            368,
+            492
+          ],
+          "sheet": "enemy_mage_death_down_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "1b455ea310a19fc0063a2d71b0ad5784bb2337fa3ced18dd0ae7401a22c91896"
+        },
+        {
+          "index": 2,
+          "pose": "fallen",
+          "duration_ms": 220,
+          "original": "originals/enemy_mage/down/fallen.png",
+          "source_anchor": [
+            656,
+            1073
+          ],
+          "offset": [
+            368,
+            463
+          ],
+          "sheet": "enemy_mage_death_down_page0.png",
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "2fa248bf7da87e6559b23101b7dd80c37ed96dabfb65234048da061409bf296e"
+        }
+      ],
+      "atlas": "enemy_mage_death_down.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": [],
+      "end_policy": "hold fallen; external cleanup only"
+    },
+    "enemy_mage_hit_up": {
+      "entity": "enemy_mage",
+      "direction": "up",
+      "action": "hit",
+      "poses": [
+        "neutral",
+        "hit",
+        "neutral"
+      ],
+      "durations_ms": [
+        35,
+        85,
+        80
+      ],
+      "loop": false,
+      "display_scale": 0.1170018281535649,
+      "body_reference_height": 1094,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 3,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 35,
+          "original": "originals/enemy_mage/up/neutral.png",
+          "source_anchor": [
+            656,
+            1144
+          ],
+          "offset": [
+            368,
+            392
+          ],
+          "sheet": "enemy_mage_hit_up_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "c6147075f4bb50eb00cd15c4a58ffd608ded50051e654d8933f55d2b7eb5b194"
+        },
+        {
+          "index": 1,
+          "pose": "hit",
+          "duration_ms": 85,
+          "original": "originals/enemy_mage/up/hit.png",
+          "source_anchor": [
+            656,
+            1059
+          ],
+          "offset": [
+            368,
+            477
+          ],
+          "sheet": "enemy_mage_hit_up_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "4d65ae6f984e600f9fcef3c65fde36e3cc6dd412e61711ddfdc984f2e634e093"
+        },
+        {
+          "index": 2,
+          "pose": "neutral",
+          "duration_ms": 80,
+          "original": "originals/enemy_mage/up/neutral.png",
+          "source_anchor": [
+            656,
+            1144
+          ],
+          "offset": [
+            368,
+            392
+          ],
+          "sheet": "enemy_mage_hit_up_page0.png",
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "c6147075f4bb50eb00cd15c4a58ffd608ded50051e654d8933f55d2b7eb5b194"
+        }
+      ],
+      "atlas": "enemy_mage_hit_up.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    },
+    "enemy_mage_death_up": {
+      "entity": "enemy_mage",
+      "direction": "up",
+      "action": "death",
+      "poses": [
+        "neutral",
+        "collapse",
+        "fallen"
+      ],
+      "durations_ms": [
+        45,
+        110,
+        220
+      ],
+      "loop": false,
+      "final_state": "hold fallen until external cleanup; never return to walking automatically",
+      "display_scale": 0.1170018281535649,
+      "body_reference_height": 1094,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 3,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 45,
+          "original": "originals/enemy_mage/up/neutral.png",
+          "source_anchor": [
+            656,
+            1144
+          ],
+          "offset": [
+            368,
+            392
+          ],
+          "sheet": "enemy_mage_death_up_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "c6147075f4bb50eb00cd15c4a58ffd608ded50051e654d8933f55d2b7eb5b194"
+        },
+        {
+          "index": 1,
+          "pose": "collapse",
+          "duration_ms": 110,
+          "original": "originals/enemy_mage/up/collapse.png",
+          "source_anchor": [
+            656,
+            1032
+          ],
+          "offset": [
+            368,
+            504
+          ],
+          "sheet": "enemy_mage_death_up_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "26e51beeaa26d3050ed46f4cc4d2ed72fff266d2f93ebc09f99dfc2151917771"
+        },
+        {
+          "index": 2,
+          "pose": "fallen",
+          "duration_ms": 220,
+          "original": "originals/enemy_mage/up/fallen.png",
+          "source_anchor": [
+            656,
+            1044
+          ],
+          "offset": [
+            368,
+            492
+          ],
+          "sheet": "enemy_mage_death_up_page0.png",
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "a199bcd4801136ed89de31c52c5dad35dded7a93ec840aec1582305a2f7770a3"
+        }
+      ],
+      "atlas": "enemy_mage_death_up.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": [],
+      "end_policy": "hold fallen; external cleanup only"
+    },
+    "enemy_mage_hit_left": {
+      "entity": "enemy_mage",
+      "direction": "left",
+      "action": "hit",
+      "poses": [
+        "neutral",
+        "hit",
+        "neutral"
+      ],
+      "durations_ms": [
+        35,
+        85,
+        80
+      ],
+      "loop": false,
+      "display_scale": 0.12343297974927676,
+      "body_reference_height": 1037,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 3,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 35,
+          "original": "originals/enemy_mage/left/neutral.png",
+          "source_anchor": [
+            656,
+            1111
+          ],
+          "offset": [
+            368,
+            425
+          ],
+          "sheet": "enemy_mage_hit_left_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "de19a203c190be026639ceee8c5f5e2e3930f19556ede3703a305683dcefd8c5"
+        },
+        {
+          "index": 1,
+          "pose": "hit",
+          "duration_ms": 85,
+          "original": "originals/enemy_mage/left/hit.png",
+          "source_anchor": [
+            656,
+            1075
+          ],
+          "offset": [
+            368,
+            461
+          ],
+          "sheet": "enemy_mage_hit_left_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "07f0a8d027f48abffb51f5620dfedd388ab8d9804b5299a852bdafa323a8a896"
+        },
+        {
+          "index": 2,
+          "pose": "neutral",
+          "duration_ms": 80,
+          "original": "originals/enemy_mage/left/neutral.png",
+          "source_anchor": [
+            656,
+            1111
+          ],
+          "offset": [
+            368,
+            425
+          ],
+          "sheet": "enemy_mage_hit_left_page0.png",
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "de19a203c190be026639ceee8c5f5e2e3930f19556ede3703a305683dcefd8c5"
+        }
+      ],
+      "atlas": "enemy_mage_hit_left.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    },
+    "enemy_mage_death_left": {
+      "entity": "enemy_mage",
+      "direction": "left",
+      "action": "death",
+      "poses": [
+        "neutral",
+        "collapse",
+        "fallen"
+      ],
+      "durations_ms": [
+        45,
+        110,
+        220
+      ],
+      "loop": false,
+      "final_state": "hold fallen until external cleanup; never return to walking automatically",
+      "display_scale": 0.12343297974927676,
+      "body_reference_height": 1037,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 3,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 45,
+          "original": "originals/enemy_mage/left/neutral.png",
+          "source_anchor": [
+            656,
+            1111
+          ],
+          "offset": [
+            368,
+            425
+          ],
+          "sheet": "enemy_mage_death_left_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "de19a203c190be026639ceee8c5f5e2e3930f19556ede3703a305683dcefd8c5"
+        },
+        {
+          "index": 1,
+          "pose": "collapse",
+          "duration_ms": 110,
+          "original": "originals/enemy_mage/left/collapse.png",
+          "source_anchor": [
+            656,
+            1054
+          ],
+          "offset": [
+            368,
+            482
+          ],
+          "sheet": "enemy_mage_death_left_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "2e61e9df5af6da0fa81c44abc39b32cfaf9be5db928086eaf4fc12b59093161e"
+        },
+        {
+          "index": 2,
+          "pose": "fallen",
+          "duration_ms": 220,
+          "original": "originals/enemy_mage/left/fallen.png",
+          "source_anchor": [
+            656,
+            883
+          ],
+          "offset": [
+            368,
+            653
+          ],
+          "sheet": "enemy_mage_death_left_page0.png",
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "a1b0d775fd20a84b4efcee55fbe34f0dc5ac3f73902a789a3978f88a9ec91a7c"
+        }
+      ],
+      "atlas": "enemy_mage_death_left.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": [],
+      "end_policy": "hold fallen; external cleanup only"
+    },
+    "enemy_mage_hit_right": {
+      "entity": "enemy_mage",
+      "direction": "right",
+      "action": "hit",
+      "poses": [
+        "neutral",
+        "hit",
+        "neutral"
+      ],
+      "durations_ms": [
+        35,
+        85,
+        80
+      ],
+      "loop": false,
+      "display_scale": 0.12237093690248566,
+      "body_reference_height": 1046,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 3,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 35,
+          "original": "originals/enemy_mage/right/neutral.png",
+          "source_anchor": [
+            656,
+            1125
+          ],
+          "offset": [
+            368,
+            411
+          ],
+          "sheet": "enemy_mage_hit_right_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "806c9ce935c41ea806a1633a5be5d5ffb6040a6edce2f4b76834070f42df2a0d"
+        },
+        {
+          "index": 1,
+          "pose": "hit",
+          "duration_ms": 85,
+          "original": "originals/enemy_mage/right/hit.png",
+          "source_anchor": [
+            656,
+            1058
+          ],
+          "offset": [
+            368,
+            478
+          ],
+          "sheet": "enemy_mage_hit_right_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "c4572d76ec4b7416fd7c24622feb7d3edc8e279b808088c1e2d5b64f81463d7e"
+        },
+        {
+          "index": 2,
+          "pose": "neutral",
+          "duration_ms": 80,
+          "original": "originals/enemy_mage/right/neutral.png",
+          "source_anchor": [
+            656,
+            1125
+          ],
+          "offset": [
+            368,
+            411
+          ],
+          "sheet": "enemy_mage_hit_right_page0.png",
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "806c9ce935c41ea806a1633a5be5d5ffb6040a6edce2f4b76834070f42df2a0d"
+        }
+      ],
+      "atlas": "enemy_mage_hit_right.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    },
+    "enemy_mage_death_right": {
+      "entity": "enemy_mage",
+      "direction": "right",
+      "action": "death",
+      "poses": [
+        "neutral",
+        "collapse",
+        "fallen"
+      ],
+      "durations_ms": [
+        45,
+        110,
+        220
+      ],
+      "loop": false,
+      "final_state": "hold fallen until external cleanup; never return to walking automatically",
+      "display_scale": 0.12237093690248566,
+      "body_reference_height": 1046,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 3,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 45,
+          "original": "originals/enemy_mage/right/neutral.png",
+          "source_anchor": [
+            656,
+            1125
+          ],
+          "offset": [
+            368,
+            411
+          ],
+          "sheet": "enemy_mage_death_right_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "806c9ce935c41ea806a1633a5be5d5ffb6040a6edce2f4b76834070f42df2a0d"
+        },
+        {
+          "index": 1,
+          "pose": "collapse",
+          "duration_ms": 110,
+          "original": "originals/enemy_mage/right/collapse.png",
+          "source_anchor": [
+            656,
+            1092
+          ],
+          "offset": [
+            368,
+            444
+          ],
+          "sheet": "enemy_mage_death_right_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "efdce05dbaafc0b50bb750bf46c8652159564d04ec405beab0ad3ad875a03e69"
+        },
+        {
+          "index": 2,
+          "pose": "fallen",
+          "duration_ms": 220,
+          "original": "originals/enemy_mage/right/fallen.png",
+          "source_anchor": [
+            656,
+            889
+          ],
+          "offset": [
+            368,
+            647
+          ],
+          "sheet": "enemy_mage_death_right_page0.png",
+          "rect": [
+            4096,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "e30b82b74cc9e0a5b60a6a540339f00ac7b1ab1cead865d033e12808c487ff36"
+        }
+      ],
+      "atlas": "enemy_mage_death_right.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": [],
+      "end_policy": "hold fallen; external cleanup only"
+    },
+    "enemy_elite_hit_down": {
+      "entity": "enemy_elite",
+      "direction": "down",
+      "action": "hit",
+      "poses": [
+        "hit"
+      ],
+      "durations_ms": [
+        140
+      ],
+      "loop": false,
+      "display_scale": 0.10355987055016182,
+      "body_reference_height": 1236,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 1,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "hit",
+          "duration_ms": 140,
+          "original": "originals/enemy_elite/down/hit.png",
+          "source_anchor": [
+            627,
+            1088
+          ],
+          "offset": [
+            397,
+            448
+          ],
+          "sheet": "enemy_elite_hit_down_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "368d40a47813ce83d3fc86b118e791a592add5085fbe141e82e01ce268e22360"
+        }
+      ],
+      "atlas": "enemy_elite_hit_down.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    },
+    "enemy_elite_death_down": {
+      "entity": "enemy_elite",
+      "direction": "down",
+      "action": "death",
+      "poses": [
+        "fallen"
+      ],
+      "durations_ms": [
+        250
+      ],
+      "loop": false,
+      "display_scale": 0.10355987055016182,
+      "body_reference_height": 1236,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 1,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "fallen",
+          "duration_ms": 250,
+          "original": "originals/enemy_elite/down/fallen.png",
+          "source_anchor": [
+            627,
+            1076
+          ],
+          "offset": [
+            397,
+            460
+          ],
+          "sheet": "enemy_elite_death_down_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "a244dacd305c87ea36c6934c458a9137f72df02d9901f796b18676e3fc5ca0d0"
+        }
+      ],
+      "atlas": "enemy_elite_death_down.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": [],
+      "end_policy": "hold fallen; external cleanup only"
+    },
+    "boss_hit_down": {
+      "entity": "boss",
+      "direction": "down",
+      "action": "hit",
+      "poses": [
+        "hit"
+      ],
+      "durations_ms": [
+        140
+      ],
+      "loop": false,
+      "display_scale": 0.20611916264090177,
+      "body_reference_height": 1242,
+      "body_target_height": 256,
+      "effect": false,
+      "frame_count": 1,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "hit",
+          "duration_ms": 140,
+          "original": "originals/boss/down/hit.png",
+          "source_anchor": [
+            627,
+            1175
+          ],
+          "offset": [
+            397,
+            361
+          ],
+          "sheet": "boss_hit_down_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "0f3b3da49c7c5d8de30408222681784e28f08347efc9e6095caa6bf3c6f48d32"
+        }
+      ],
+      "atlas": "boss_hit_down.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    },
+    "enemy_mage_cast_down": {
+      "entity": "enemy_mage",
+      "direction": "down",
+      "action": "cast",
+      "poses": [
+        "neutral",
+        "cast_windup",
+        "cast_release",
+        "neutral"
+      ],
+      "durations_ms": [
+        50,
+        160,
+        85,
+        100
+      ],
+      "loop": false,
+      "display_scale": 0.11257695690413369,
+      "body_reference_height": 1137,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 4,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 50,
+          "original": "originals/enemy_mage/down/neutral.png",
+          "source_anchor": [
+            656,
+            1185
+          ],
+          "offset": [
+            368,
+            351
+          ],
+          "sheet": "enemy_mage_cast_down_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "c95c420c1a0bc3053fdf3a72b341526a0aba1646385074d18d855951439e5642"
+        },
+        {
+          "index": 1,
+          "pose": "cast_windup",
+          "duration_ms": 160,
+          "original": "originals/enemy_mage/down/cast_windup.png",
+          "source_anchor": [
+            656,
+            1166
+          ],
+          "offset": [
+            368,
+            370
+          ],
+          "sheet": "enemy_mage_cast_down_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "15c91e1535409ba51ba96880912a40506c9b5c87c67ffc09463299e1482befb8"
+        },
+        {
+          "index": 2,
+          "pose": "cast_release",
+          "duration_ms": 85,
+          "original": "originals/enemy_mage/down/cast_release.png",
+          "source_anchor": [
+            656,
+            1168
+          ],
+          "offset": [
+            368,
+            368
+          ],
+          "sheet": "enemy_mage_cast_down_page0.png",
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "fb1192f1ce72e66383b426f5e1dc8fdb88ee54deffafe5382a890f4bd399963f"
+        },
+        {
+          "index": 3,
+          "pose": "neutral",
+          "duration_ms": 100,
+          "original": "originals/enemy_mage/down/neutral.png",
+          "source_anchor": [
+            656,
+            1185
+          ],
+          "offset": [
+            368,
+            351
+          ],
+          "sheet": "enemy_mage_cast_down_page0.png",
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "c95c420c1a0bc3053fdf3a72b341526a0aba1646385074d18d855951439e5642"
+        }
+      ],
+      "atlas": "enemy_mage_cast_down.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    },
+    "enemy_mage_cast_up": {
+      "entity": "enemy_mage",
+      "direction": "up",
+      "action": "cast",
+      "poses": [
+        "neutral",
+        "cast_windup",
+        "cast_release",
+        "neutral"
+      ],
+      "durations_ms": [
+        50,
+        160,
+        85,
+        100
+      ],
+      "loop": false,
+      "display_scale": 0.1170018281535649,
+      "body_reference_height": 1094,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 4,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 50,
+          "original": "originals/enemy_mage/up/neutral.png",
+          "source_anchor": [
+            656,
+            1144
+          ],
+          "offset": [
+            368,
+            392
+          ],
+          "sheet": "enemy_mage_cast_up_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "c6147075f4bb50eb00cd15c4a58ffd608ded50051e654d8933f55d2b7eb5b194"
+        },
+        {
+          "index": 1,
+          "pose": "cast_windup",
+          "duration_ms": 160,
+          "original": "originals/enemy_mage/up/cast_windup.png",
+          "source_anchor": [
+            656,
+            1134
+          ],
+          "offset": [
+            368,
+            402
+          ],
+          "sheet": "enemy_mage_cast_up_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "f2870de1a8792362d082a4bd1d259dc26d150b170d2e9024f3b03298561c2c43"
+        },
+        {
+          "index": 2,
+          "pose": "cast_release",
+          "duration_ms": 85,
+          "original": "originals/enemy_mage/up/cast_release.png",
+          "source_anchor": [
+            656,
+            1121
+          ],
+          "offset": [
+            368,
+            415
+          ],
+          "sheet": "enemy_mage_cast_up_page0.png",
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "330bd7a6f9d17c289d5cceec0d4ed71b73b15d8491c61f1513157febb92ddf9e"
+        },
+        {
+          "index": 3,
+          "pose": "neutral",
+          "duration_ms": 100,
+          "original": "originals/enemy_mage/up/neutral.png",
+          "source_anchor": [
+            656,
+            1144
+          ],
+          "offset": [
+            368,
+            392
+          ],
+          "sheet": "enemy_mage_cast_up_page0.png",
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "c6147075f4bb50eb00cd15c4a58ffd608ded50051e654d8933f55d2b7eb5b194"
+        }
+      ],
+      "atlas": "enemy_mage_cast_up.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    },
+    "enemy_mage_cast_left": {
+      "entity": "enemy_mage",
+      "direction": "left",
+      "action": "cast",
+      "poses": [
+        "neutral",
+        "cast_windup",
+        "cast_release",
+        "neutral"
+      ],
+      "durations_ms": [
+        50,
+        160,
+        85,
+        100
+      ],
+      "loop": false,
+      "display_scale": 0.12343297974927676,
+      "body_reference_height": 1037,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 4,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 50,
+          "original": "originals/enemy_mage/left/neutral.png",
+          "source_anchor": [
+            656,
+            1111
+          ],
+          "offset": [
+            368,
+            425
+          ],
+          "sheet": "enemy_mage_cast_left_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "de19a203c190be026639ceee8c5f5e2e3930f19556ede3703a305683dcefd8c5"
+        },
+        {
+          "index": 1,
+          "pose": "cast_windup",
+          "duration_ms": 160,
+          "original": "originals/enemy_mage/left/cast_windup.png",
+          "source_anchor": [
+            656,
+            1110
+          ],
+          "offset": [
+            368,
+            426
+          ],
+          "sheet": "enemy_mage_cast_left_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "e852f8966838baad5850bbdff251af819312b3282aef2890cb31edd4c923f9ba"
+        },
+        {
+          "index": 2,
+          "pose": "cast_release",
+          "duration_ms": 85,
+          "original": "originals/enemy_mage/left/cast_release.png",
+          "source_anchor": [
+            656,
+            1101
+          ],
+          "offset": [
+            368,
+            435
+          ],
+          "sheet": "enemy_mage_cast_left_page0.png",
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "eb886b5878d244e6a867db3dbeb869ceb8f10167651c2bc1693095d673e35163"
+        },
+        {
+          "index": 3,
+          "pose": "neutral",
+          "duration_ms": 100,
+          "original": "originals/enemy_mage/left/neutral.png",
+          "source_anchor": [
+            656,
+            1111
+          ],
+          "offset": [
+            368,
+            425
+          ],
+          "sheet": "enemy_mage_cast_left_page0.png",
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "de19a203c190be026639ceee8c5f5e2e3930f19556ede3703a305683dcefd8c5"
+        }
+      ],
+      "atlas": "enemy_mage_cast_left.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    },
+    "enemy_mage_cast_right": {
+      "entity": "enemy_mage",
+      "direction": "right",
+      "action": "cast",
+      "poses": [
+        "neutral",
+        "cast_windup",
+        "cast_release",
+        "neutral"
+      ],
+      "durations_ms": [
+        50,
+        160,
+        85,
+        100
+      ],
+      "loop": false,
+      "display_scale": 0.12237093690248566,
+      "body_reference_height": 1046,
+      "body_target_height": 128,
+      "effect": false,
+      "frame_count": 4,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 50,
+          "original": "originals/enemy_mage/right/neutral.png",
+          "source_anchor": [
+            656,
+            1125
+          ],
+          "offset": [
+            368,
+            411
+          ],
+          "sheet": "enemy_mage_cast_right_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "806c9ce935c41ea806a1633a5be5d5ffb6040a6edce2f4b76834070f42df2a0d"
+        },
+        {
+          "index": 1,
+          "pose": "cast_windup",
+          "duration_ms": 160,
+          "original": "originals/enemy_mage/right/cast_windup.png",
+          "source_anchor": [
+            656,
+            1117
+          ],
+          "offset": [
+            368,
+            419
+          ],
+          "sheet": "enemy_mage_cast_right_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "77d4e24bf303eb4936389a402d6a7a45afef865b47de922efe05bfeaee714566"
+        },
+        {
+          "index": 2,
+          "pose": "cast_release",
+          "duration_ms": 85,
+          "original": "originals/enemy_mage/right/cast_release.png",
+          "source_anchor": [
+            656,
+            1117
+          ],
+          "offset": [
+            368,
+            419
+          ],
+          "sheet": "enemy_mage_cast_right_page0.png",
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "0e2938e252bb7f963485f5c38a4d1fc89e6227b916012e4c368242d9e80d1523"
+        },
+        {
+          "index": 3,
+          "pose": "neutral",
+          "duration_ms": 100,
+          "original": "originals/enemy_mage/right/neutral.png",
+          "source_anchor": [
+            656,
+            1125
+          ],
+          "offset": [
+            368,
+            411
+          ],
+          "sheet": "enemy_mage_cast_right_page0.png",
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "806c9ce935c41ea806a1633a5be5d5ffb6040a6edce2f4b76834070f42df2a0d"
+        }
+      ],
+      "atlas": "enemy_mage_cast_right.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    },
+    "boss_cast_down": {
+      "entity": "boss",
+      "direction": "down",
+      "action": "cast",
+      "poses": [
+        "neutral",
+        "cast_windup",
+        "cast_release",
+        "neutral"
+      ],
+      "durations_ms": [
+        50,
+        160,
+        85,
+        100
+      ],
+      "loop": false,
+      "display_scale": 0.20611916264090177,
+      "body_reference_height": 1242,
+      "body_target_height": 256,
+      "effect": false,
+      "frame_count": 4,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 50,
+          "original": "originals/boss/down/neutral.png",
+          "source_anchor": [
+            627,
+            1249
+          ],
+          "offset": [
+            397,
+            287
+          ],
+          "sheet": "boss_cast_down_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "a940f1e4e33602233de8af719192ce09ed92f237d0f00b7903ad3839cc3ccb6f"
+        },
+        {
+          "index": 1,
+          "pose": "cast_windup",
+          "duration_ms": 160,
+          "original": "originals/boss/down/cast_windup.png",
+          "source_anchor": [
+            627,
+            1199
+          ],
+          "offset": [
+            397,
+            337
+          ],
+          "sheet": "boss_cast_down_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "f97b1034c141c17ccc6b915c3f6934a12b607448fa89fdd3b70588acf21248bd"
+        },
+        {
+          "index": 2,
+          "pose": "cast_release",
+          "duration_ms": 85,
+          "original": "originals/boss/down/cast_release.png",
+          "source_anchor": [
+            627,
+            1116
+          ],
+          "offset": [
+            397,
+            420
+          ],
+          "sheet": "boss_cast_down_page0.png",
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "fb7107728ec8c8b92fba06c992976dd4ec9abfa33b190fe9bb5107f2bbc26d4b"
+        },
+        {
+          "index": 3,
+          "pose": "neutral",
+          "duration_ms": 100,
+          "original": "originals/boss/down/neutral.png",
+          "source_anchor": [
+            627,
+            1249
+          ],
+          "offset": [
+            397,
+            287
+          ],
+          "sheet": "boss_cast_down_page0.png",
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "a940f1e4e33602233de8af719192ce09ed92f237d0f00b7903ad3839cc3ccb6f"
+        }
+      ],
+      "atlas": "boss_cast_down.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    },
+    "boss_cast_up": {
+      "entity": "boss",
+      "direction": "up",
+      "action": "cast",
+      "poses": [
+        "neutral",
+        "cast_windup",
+        "cast_release",
+        "neutral"
+      ],
+      "durations_ms": [
+        50,
+        160,
+        85,
+        100
+      ],
+      "loop": false,
+      "display_scale": 0.22377622377622378,
+      "body_reference_height": 1144,
+      "body_target_height": 256,
+      "effect": false,
+      "frame_count": 4,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 50,
+          "original": "originals/boss/up/neutral.png",
+          "source_anchor": [
+            627,
+            1196
+          ],
+          "offset": [
+            397,
+            340
+          ],
+          "sheet": "boss_cast_up_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "a5a71ebb20734b45c24b6f0b7222bd7465e6945e1162d7ae635791bc5e6f76c6"
+        },
+        {
+          "index": 1,
+          "pose": "cast_windup",
+          "duration_ms": 160,
+          "original": "originals/boss/up/cast_windup.png",
+          "source_anchor": [
+            627,
+            1165
+          ],
+          "offset": [
+            397,
+            371
+          ],
+          "sheet": "boss_cast_up_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "1745e8a74a7fc56e00e68d034c3e73e9f81e8924546792a232586ba4bcc86e4a"
+        },
+        {
+          "index": 2,
+          "pose": "cast_release",
+          "duration_ms": 85,
+          "original": "originals/boss/up/cast_release.png",
+          "source_anchor": [
+            627,
+            1153
+          ],
+          "offset": [
+            397,
+            383
+          ],
+          "sheet": "boss_cast_up_page0.png",
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "a2059396d3dd29a1e7ad01bec88017f1d90159f4a916cac8e927695e275afe9d"
+        },
+        {
+          "index": 3,
+          "pose": "neutral",
+          "duration_ms": 100,
+          "original": "originals/boss/up/neutral.png",
+          "source_anchor": [
+            627,
+            1196
+          ],
+          "offset": [
+            397,
+            340
+          ],
+          "sheet": "boss_cast_up_page0.png",
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "a5a71ebb20734b45c24b6f0b7222bd7465e6945e1162d7ae635791bc5e6f76c6"
+        }
+      ],
+      "atlas": "boss_cast_up.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    },
+    "boss_cast_left": {
+      "entity": "boss",
+      "direction": "left",
+      "action": "cast",
+      "poses": [
+        "neutral",
+        "cast_windup",
+        "cast_release",
+        "neutral"
+      ],
+      "durations_ms": [
+        50,
+        160,
+        85,
+        100
+      ],
+      "loop": false,
+      "display_scale": 0.23378995433789954,
+      "body_reference_height": 1095,
+      "body_target_height": 256,
+      "effect": false,
+      "frame_count": 4,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 50,
+          "original": "originals/boss/left/neutral.png",
+          "source_anchor": [
+            627,
+            1162
+          ],
+          "offset": [
+            397,
+            374
+          ],
+          "sheet": "boss_cast_left_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "8ef7aaa0a86a5b30383331f51717bd6363be8ceeab97de1b81fa54713a8f4a7d"
+        },
+        {
+          "index": 1,
+          "pose": "cast_windup",
+          "duration_ms": 160,
+          "original": "originals/boss/left/cast_windup.png",
+          "source_anchor": [
+            627,
+            1164
+          ],
+          "offset": [
+            397,
+            372
+          ],
+          "sheet": "boss_cast_left_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "22aabf62eb4b4bb9cf22982681fcd11c046f4f24036c339a51ab8b83eb15f781"
+        },
+        {
+          "index": 2,
+          "pose": "cast_release",
+          "duration_ms": 85,
+          "original": "originals/boss/left/cast_release.png",
+          "source_anchor": [
+            627,
+            1179
+          ],
+          "offset": [
+            397,
+            357
+          ],
+          "sheet": "boss_cast_left_page0.png",
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "1d6820160a9ca7f8ca69ffcce290697946a873670c82098738f51f91901c6b71"
+        },
+        {
+          "index": 3,
+          "pose": "neutral",
+          "duration_ms": 100,
+          "original": "originals/boss/left/neutral.png",
+          "source_anchor": [
+            627,
+            1162
+          ],
+          "offset": [
+            397,
+            374
+          ],
+          "sheet": "boss_cast_left_page0.png",
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "8ef7aaa0a86a5b30383331f51717bd6363be8ceeab97de1b81fa54713a8f4a7d"
+        }
+      ],
+      "atlas": "boss_cast_left.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    },
+    "boss_cast_right": {
+      "entity": "boss",
+      "direction": "right",
+      "action": "cast",
+      "poses": [
+        "neutral",
+        "cast_windup",
+        "cast_release",
+        "neutral"
+      ],
+      "durations_ms": [
+        50,
+        160,
+        85,
+        100
+      ],
+      "loop": false,
+      "display_scale": 0.23272727272727273,
+      "body_reference_height": 1100,
+      "body_target_height": 256,
+      "effect": false,
+      "frame_count": 4,
+      "canvas": [
+        2048,
+        2048
+      ],
+      "anchor": [
+        1024,
+        1536
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "pose": "neutral",
+          "duration_ms": 50,
+          "original": "originals/boss/right/neutral.png",
+          "source_anchor": [
+            627,
+            1171
+          ],
+          "offset": [
+            397,
+            365
+          ],
+          "sheet": "boss_cast_right_page0.png",
+          "rect": [
+            0,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "ecf27dee25317b79a117d7382599231b81c147fef004ea05c664526ae84e69b9"
+        },
+        {
+          "index": 1,
+          "pose": "cast_windup",
+          "duration_ms": 160,
+          "original": "originals/boss/right/cast_windup.png",
+          "source_anchor": [
+            627,
+            1134
+          ],
+          "offset": [
+            397,
+            402
+          ],
+          "sheet": "boss_cast_right_page0.png",
+          "rect": [
+            2048,
+            0,
+            2048,
+            2048
+          ],
+          "source_sha256": "399e2c870d022837d617121d7156f84dd5420685fdc1c08d40af99ba72aec326"
+        },
+        {
+          "index": 2,
+          "pose": "cast_release",
+          "duration_ms": 85,
+          "original": "originals/boss/right/cast_release.png",
+          "source_anchor": [
+            627,
+            1183
+          ],
+          "offset": [
+            397,
+            353
+          ],
+          "sheet": "boss_cast_right_page0.png",
+          "rect": [
+            0,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "6da7b91aae1cc5be64f508c15f81a9847314bf2e01a9068caa69d78d0f191941"
+        },
+        {
+          "index": 3,
+          "pose": "neutral",
+          "duration_ms": 100,
+          "original": "originals/boss/right/neutral.png",
+          "source_anchor": [
+            627,
+            1171
+          ],
+          "offset": [
+            397,
+            365
+          ],
+          "sheet": "boss_cast_right_page0.png",
+          "rect": [
+            2048,
+            2048,
+            2048,
+            2048
+          ],
+          "source_sha256": "ecf27dee25317b79a117d7382599231b81c147fef004ea05c664526ae84e69b9"
+        }
+      ],
+      "atlas": "boss_cast_right.atlas.json",
+      "integration": "asset-only, not applied to gameplay",
+      "release_events": []
+    }
+  }
+}

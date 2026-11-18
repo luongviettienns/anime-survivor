@@ -1,0 +1,870 @@
+{
+  "version": 1,
+  "sprites": {
+    "kirito_idle_down_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 2
+      }
+    },
+    "kirito_run_down_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "kirito_hit_down_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "kirito_death_down_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "kirito_basic_down_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "kirito_basic_down_page1": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "kirito_basic_down_page2": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 2
+      }
+    },
+    "kirito_lv1_down_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "kirito_lv1_down_page1": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 2
+      }
+    },
+    "kirito_lv2_down_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "kirito_lv2_down_page1": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "kirito_lv2_down_page2": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 2
+      }
+    },
+    "kirito_lv3_down_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "kirito_lv3_down_page1": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "kirito_dash_down_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "kirito_dash_down_page1": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 1,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 1
+      }
+    },
+    "kirito_idle_up_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 2
+      }
+    },
+    "kirito_run_up_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "kirito_hit_up_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "kirito_death_up_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "kirito_basic_up_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "kirito_basic_up_page1": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "kirito_basic_up_page2": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 2
+      }
+    },
+    "kirito_lv1_up_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "kirito_lv1_up_page1": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 2
+      }
+    },
+    "kirito_lv2_up_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "kirito_lv2_up_page1": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "kirito_lv2_up_page2": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 2
+      }
+    },
+    "kirito_lv3_up_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "kirito_lv3_up_page1": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "kirito_dash_up_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "kirito_dash_up_page1": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 1,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 1
+      }
+    },
+    "kirito_idle_left_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 2
+      }
+    },
+    "kirito_run_left_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 2
+      }
+    },
+    "kirito_dash_left_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "kirito_idle_right_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 1,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 1
+      }
+    },
+    "kirito_dash_right_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "enemy_hit_down_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "enemy_death_down_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "enemy_hit_up_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "enemy_death_up_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "enemy_hit_left_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "enemy_death_left_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "enemy_hit_right_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "enemy_death_right_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "enemy_shade_hit_down_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "enemy_shade_death_down_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "enemy_shade_hit_up_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "enemy_shade_death_up_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "enemy_shade_hit_left_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "enemy_shade_death_left_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "enemy_shade_hit_right_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "enemy_shade_death_right_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "enemy_mage_hit_down_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "enemy_mage_death_down_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "enemy_mage_hit_up_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "enemy_mage_death_up_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "enemy_mage_hit_left_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "enemy_mage_death_left_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "enemy_mage_hit_right_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "enemy_mage_death_right_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "enemy_elite_hit_down_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 1,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 1
+      }
+    },
+    "enemy_elite_death_down_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 1,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 1
+      }
+    },
+    "boss_hit_down_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 1,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 1
+      }
+    },
+    "enemy_mage_cast_down_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "enemy_mage_cast_up_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "enemy_mage_cast_left_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "enemy_mage_cast_right_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "boss_cast_down_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "boss_cast_up_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "boss_cast_left_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "boss_cast_right_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    }
+  },
+  "single_images": {}
+}

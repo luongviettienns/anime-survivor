@@ -1,0 +1,8 @@
+{
+  "key": "kirito",
+  "direction": "down",
+  "pose": "dual_follow",
+  "prompt": "Use case: stylized-concept. Exactly ONE full-body game pixel-art animation frame: dual swordsman down dual_follow. Image 1 is STRICT canonical direction/model/scale/camera reference. Preserve its exact outfit, head width, proportions, sword guards, light and detailed sharp pixel clusters. Image 2 is original identity/detail reference ONLY; do NOT adopt its front-facing camera. Facing DOWN / south toward the viewer: face visible. Character's left hand is on screen RIGHT holding cyan ice sword; right hand is on screen LEFT holding violet dark sword. DUAL X follow-through: BOTH arms pass the crossing and separate low/outward after simultaneous strike, torso follows, coat flares. Distinct from crossed release. Match image 1's slightly elevated top-down orthographic 3/4 camera and heading, with visible top planes. Character-local LEFT hand always CYAN ICE, RIGHT hand always VIOLET-BLACK FIRE; never mirror or swap. SAME anatomical pixel scale as neutral even when crouching/falling, not same full-body bounding height. Full body, boots and BOTH sword tips completely inside canvas with 60px transparent margins. Bend/re-angle sword instead of clipping or shrinking the model. Same original canvas dimensions as image 1. No soft painting, huge aura, baked shadow, ground/scenery/text/grid. Single transparent RGBA frame.",
+  "path": "C:\\Users\\ASUS\\.codex\\generated_images\\01a1ee04-31d9-76f3-993d-4f3b2888c393\\exec-567d50fd-25f4-47b2-beda-175fdaf2c6db.png",
+  "reference": "C:\\Users\\ASUS\\.codex\\generated_images\\01a1ee04-31d9-76f3-993d-4f3b2888c393\\exec-7cb33b4f-b3f3-4401-bab1-e6a06e896944.png"
+}

@@ -1,0 +1,8 @@
+{
+  "key": "enemy_shade",
+  "direction": "right",
+  "pose": "collapse",
+  "prompt": "Use case: stylized-concept. Generate exactly ONE game sprite animation frame, enemy_shade right collapse. The supplied PNG is strict MODEL, palette, pixel-cluster detail and elevated orthographic GAME CAMERA reference. Do not redesign this monster. Facing east/RIGHT, matching side reference; body/head/feet point RIGHT. DEFEAT frame 1: strength gives way, knees buckle and torso drops into a low collapsing kneel toward the ground. Head hangs, claws/hands slack. Keep the same facing heading. No victorious pose, no weapon swing, no blood or gore. NOT yet lying flat. Keep the identical head/mask shape, armor pieces, cloth, claws, colors and light direction, at the SAME anatomical scale as the reference; a collapsed body must occupy less height, do not zoom it up to fill the canvas. Camera is slightly elevated top-down 3/4, see top planes of head/shoulders/grounded body; not side-scroller, not eye-level character illustration. Full body, clear silhouette, generous clear transparent margins at least 60px on ALL sides, no clipping. Keep character center near canvas center and the lowest contact point near the reference feet baseline. Same original canvas dimensions as input. Sharp detailed stepped pixel clusters, no painterly blur, no soft aura, no text, no ground/scenery or baked shadow, no sprite grid. Transparent RGBA.",
+  "path": "C:\\Users\\ASUS\\.codex\\generated_images\\01a1ee04-31d9-76f3-993d-4f3b2888c393\\exec-72c609de-445e-4e68-9071-4c82a1d4ac7a.png",
+  "reference": "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/ai-overhaul/enemy_shade/walk-side/000.png"
+}

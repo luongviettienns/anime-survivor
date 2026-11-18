@@ -1,0 +1,495 @@
+--- a/src/ui/HudChrome.ts
++++ b/src/ui/HudChrome.ts
+@@ -14,6 +14,7 @@
+     if (!panel) {
+       panel = this.scene.add.nineslice(x, y, 'hud_panel', undefined, w * 64, h * 64, 256, 256, 256, 256).setScale(1 / 64)
+         .setOrigin(0).setScrollFactor(0).setDepth(this.depth);
++      panel.cameraFilter = this.scene.cameras.main.id;
+       this.panels.set(key, panel);
+     }
+     panel.setVisible(true).setTint(border === 0xfb7185 ? 0xffaaaa : 0xffffff);
+--- a/src/ui/HudOverlay.ts
++++ b/src/ui/HudOverlay.ts
+@@ -1,3 +1,4 @@
++import { isolateHudCamera } from './hudCamera';
+ import Phaser from 'phaser';
+ import type { HeroId } from '../domain/heroes';
+ import { xpThreshold } from '../domain/progression';
+@@ -34,6 +35,7 @@
+   private lastKey = '';
+ 
+   constructor(scene: Phaser.Scene, heroId: HeroId = 'naruto') {
++    const firstHudIndex = scene.children.list.length;
+     const l = this.layout = hudLayout(scene.scale.width,scene.scale.height);
+     this.chrome = new HudChrome(scene,Z-1);
+     this.gauges = new HudGauges(scene,this.chrome,Z);
+@@ -56,6 +58,7 @@
+       this.icons[slot.id] = scene.add.image(0,95,slot.icon).setDisplaySize(22,22).setScrollFactor(0).setDepth(Z+2).setVisible(false);
+       this.badges[slot.id] = text(0,108,11,'#ffe5a0').setOrigin(1,1).setVisible(false);
+     }
++    isolateHudCamera(scene, firstHudIndex);
+   }
+ 
+   update(dto: HudStateDto): void {
+--- a/src/game/config/artDisplay.ts
++++ b/src/game/config/artDisplay.ts
+@@ -1,35 +1,35 @@
+ export const ART_SCALE: Readonly<Record<string, number>> = {
+-  "hero_locomotion": 0.5,
+-  "enemy_bolt": 0.35,
+-  "vfx_telegraph": 0.6,
+-  "vfx_death": 0.35,
+-  "boss_blood_slash": 0.6,
+-  "enemy": 0.4,
+-  "enemy_shade": 0.4,
+-  "enemy_mage": 0.4,
+-  "enemy_elite": 0.6,
+-  "boss": 0.8,
+-  "aura_ring": 0.6,
+-  "aura_outer": 1.2,
+-  "aura_contact": 0.6,
+-  "aura_accent": 0.8,
+-  "rasengan": 0.5,
+-  "orb": 0.35,
+-  "shuriken": 0.35,
+-  "mine": 0.35,
+-  "kunai": 0.35,
+-  "slash_x": 0.35,
+-  "explosion": 0.35,
+-  "punch": 0.35,
+-  "hero_actions": 0.5,
+-  "tree": 0.25,
+-  "shrine_plaza": 0.4,
+-  "rasenshuriken": 0.35,
+-  "wind_ground": 0.6,
+-  "punch_max": 0.35,
+-  "shuriken_max": 0.35,
+-  "mine_max": 0.35,
+-  "explosion_max": 0.35
++  "hero_locomotion": 1.0,
++  "enemy_bolt": 0.7,
++  "vfx_telegraph": 1.2,
++  "vfx_death": 0.7,
++  "boss_blood_slash": 1.2,
++  "enemy": 0.8,
++  "enemy_shade": 0.8,
++  "enemy_mage": 0.8,
++  "enemy_elite": 1.2,
++  "boss": 1.6,
++  "aura_ring": 1.2,
++  "aura_outer": 2.4,
++  "aura_contact": 1.2,
++  "aura_accent": 1.6,
++  "rasengan": 1.0,
++  "orb": 0.7,
++  "shuriken": 0.7,
++  "mine": 0.7,
++  "kunai": 0.7,
++  "slash_x": 0.7,
++  "explosion": 0.7,
++  "punch": 0.7,
++  "hero_actions": 1.0,
++  "tree": 0.5,
++  "shrine_plaza": 0.8,
++  "rasenshuriken": 0.7,
++  "wind_ground": 1.2,
++  "punch_max": 0.7,
++  "shuriken_max": 0.7,
++  "mine_max": 0.7,
++  "explosion_max": 0.7
+ };
+ export const ART_FRAMES: Readonly<Record<string, Readonly<Record<string, readonly number[]>>>> = {
+   "hero_locomotion": {"idle": [0, 1, 2, 3], "walk": [4, 5, 6, 7], "walk-down": [8, 9], "idle-up": [10], "walk-up": [11, 12], "idle-side": [13]},
+--- a/src/game/config/dualElementAssets.ts
++++ b/src/game/config/dualElementAssets.ts
+@@ -23,7 +23,7 @@
+   { atlasKey: 'vfx_dual_element_impact', animKey: 'vfx-dual-element-impact', durationsMs: [60, 80, 110], loop: false },
+ ];
+ 
+-export const KIRITO_WORLD_SCALE = 0.045;
++export const KIRITO_WORLD_SCALE = 0.10381184103811841;
+ export const KIRITO_ORIGIN_Y = 1536 / 1792;
+ export const PHANTOM_DASH_ANIM_KEY = 'kirito-phantom-dash';
+ 
+--- a/src/game/scenes/BootScene.ts
++++ b/src/game/scenes/BootScene.ts
+@@ -1,3 +1,4 @@
++import { preloadDashAssets, registerDashAnimations } from '../config/phantomDashAssets';
+ import Phaser from 'phaser';
+ import { AI_ART_KEYS, ART_FRAMES } from '../config/artDisplay';
+ import { preloadDualElementAssets, registerDualElementAnimations } from '../config/dualElementAssets';
+@@ -114,10 +115,12 @@
+       this.load.audio(`sfx-${cue}`, `assets/audio/${cue}.wav`);
+     }
+     preloadDualElementAssets(this);
++    preloadDashAssets(this);
+   }
+ 
+   create(): void {
+     registerDualElementAnimations(this);
++    registerDashAnimations(this);
+     for (const layoutKey of ['ui-layout', 'lobby-layout']) {
+       const frames = this.cache.json.get(layoutKey) as Record<string, { x: number; y: number; w: number; h: number }> | undefined;
+       if (frames) for (const [key, box] of Object.entries(frames)) this.textures.get(key)?.add('content', 0, box.x, box.y, box.w, box.h);
+--- a/src/game/scenes/GameScene.ts
++++ b/src/game/scenes/GameScene.ts
+@@ -57,6 +57,7 @@
+     this.map = new InfiniteMapSystem(this);
+     this.player = this.physics.add.sprite(SPAWN_ORIGIN_X, SPAWN_ORIGIN_Y, 'hero', 0);
+     this.player.setScale(2).setCollideWorldBounds(false).setDepth(5000).setCircle(10, 6, 13).play('hero-idle');
++    this.cameras.main.setZoom(1.5);
+     this.cameras.main.startFollow(this.player, true, 0.14, 0.14);
+     this.map.update(this.player.x, this.player.y);
+     this.movement = new MovementSystem(this, this.player, this.heroConfig.id, this.heroConfig.moveSpeed);
+--- a/src/game/systems/DualElementSystem.ts
++++ b/src/game/systems/DualElementSystem.ts
+@@ -120,9 +120,9 @@
+     const shot = reuse
+       ? (reuse.enableBody(true, handX, handY, true, true), reuse)
+       : (this.projectiles.create(handX, handY, art.tex, `${art.tex}/000`) as Phaser.Physics.Arcade.Sprite);
+-    shot.setTexture(art.tex, `${art.tex}/000`).setOrigin(0.5, 0.5).setScale(art.scale).setDepth(500_000_060);
+-    const circleOffset = Math.round(shot.width / 2 - art.radius);
+-    shot.setCircle(art.radius, circleOffset, circleOffset).setBlendMode('NORMAL').setRotation(Math.atan2(dir.y, dir.x))
++    shot.setTexture(art.tex, `${art.tex}/000`).setOrigin(0.5, 0.5).setScale(art.scale * 2).setDepth(500_000_060);
++    const circleOffset = Math.round(shot.width / 2 - art.radius / 2);
++    shot.setCircle(art.radius / 2, circleOffset, circleOffset).setBlendMode('NORMAL').setRotation(Math.atan2(dir.y, dir.x))
+       .setVelocity(dir.x * item.speedPxSec, dir.y * item.speedPxSec).play(art.anim, true);
+     this.expiresAt.set(shot, nowMs + PROJECTILE.lifeMs);
+     this.shotMeta.set(shot, {
+--- a/src/game/systems/EnemyMeleeSkill.ts
++++ b/src/game/systems/EnemyMeleeSkill.ts
+@@ -59,10 +59,10 @@
+       if (!entry.warning) {
+         if (archetype !== 'boss') {
+           entry.pose = this.scene.add.sprite(enemy.x, enemy.y, `${enemy.texture.key}_attack`)
+-            .setScale(0.5).setOrigin(0.5, 0.75).setData('melee-actor', true);
++            .setScale(1).setOrigin(0.5, 0.75).setData('melee-actor', true);
+           if (archetype === 'shade') {
+             entry.trail = [0, 1].map(() => this.scene.add.sprite(enemy.x, enemy.y, 'enemy_shade_attack')
+-              .setScale(0.5).setOrigin(0.5, 0.75).setTint(0xa95cec).setAlpha(0.2).setVisible(false).setData('melee-trail', true));
++              .setScale(1).setOrigin(0.5, 0.75).setTint(0xa95cec).setAlpha(0.2).setVisible(false).setData('melee-trail', true));
+           }
+         }
+         entry.warning = this.scene.add.graphics().setData('melee-warning', true);
+@@ -135,7 +135,7 @@
+     effect.setVisible(charging || age < 480);
+     if (!charging && age >= 480) return;
+     effect.setAlpha(charging ? 0.7 : Math.max(0, 1 - age / 480)).setFrame(charging ? 0 : Math.min(3, 1 + Math.floor(age / 160)))
+-      .setScale(archetype === 'slime' ? 0.5 : 0.3, archetype === 'slime' ? 0.35 : 0.3)
++      .setScale(archetype === 'slime' ? 1 : 0.6, archetype === 'slime' ? 0.7 : 0.6)
+       .setPosition(archetype === 'slime' ? entry.origin.x : enemy.x + aim.x * 24, archetype === 'slime' ? entry.origin.y : enemy.y + aim.y * 24 - 8)
+       .setRotation(archetype === 'slime' ? 0 : Math.atan2(aim.y, aim.x)).setDepth(archetype === 'slime' ? -500_000_000 : enemy.y + (entry.facing === 'up' ? -1 : 2));
+   }
+--- a/src/game/systems/EnemyPose.ts
++++ b/src/game/systems/EnemyPose.ts
+@@ -11,7 +11,8 @@
+ export function fitEnemyPose(enemy: Phaser.Physics.Arcade.Sprite): void {
+   if (enemy.getData('fittedFrame') === enemy.frame) return;
+   const metrics = enemy.frame.customData as PoseMetrics;
+-  const scale = metrics.displayScale ?? enemy.scaleY;
++  const neutral = enemy.texture.get(0).customData as PoseMetrics;
++  const scale = (enemy.texture.key === 'boss' ? 256 : 128) / (neutral.opaqueHeight ?? 160);
+   const height = (metrics.opaqueHeight ?? 160) * scale;
+   const footOffset = height / 2 - 4;
+   const originY = 192 / enemy.height - footOffset / (enemy.height * scale);
+--- a/src/game/systems/EnemyStatusVisuals.ts
++++ b/src/game/systems/EnemyStatusVisuals.ts
+@@ -13,7 +13,7 @@
+ 
+ type EnemySprite = Phaser.Physics.Arcade.Sprite;
+ 
+-const STATUS_SCALE = 0.042;
++const STATUS_SCALE = 0.084;
+ const END_SCALE = 0.048;
+ 
+ export class EnemyStatusVisuals {
+--- a/src/game/systems/EnemyVisuals.ts
++++ b/src/game/systems/EnemyVisuals.ts
+@@ -56,7 +56,7 @@
+       const placed = positionEnemyHand(enemy, index, glow);
+       const releasing = this.scene.time.now < cast.untilMs - 120;
+       const height = (glow.frame.customData as PoseMetrics).opaqueHeight ?? 1280;
+-      glow.setVisible(placed && (telegraphing || releasing)).setScale((archetype === 'boss' ? 12 : 9) / height)
++      glow.setVisible(placed && (telegraphing || releasing)).setScale((archetype === 'boss' ? 24 : 18) / height)
+         .setAlpha(telegraphing ? 0.8 : 0.55).setDepth(enemy.depth + (facing === 'up' ? -0.1 : 0.1));
+     }
+     if (!telegraphing) { this.releaseTelegraph(enemy); return; }
+--- a/src/game/systems/GroundShadows.ts
++++ b/src/game/systems/GroundShadows.ts
+@@ -19,7 +19,7 @@
+       this.follow(actor, actor.texture.key === 'boss' ? 66 : actor.texture.key === 'enemy_elite' ? 48 : 34,
+         (actor.getData('footOffset') as number | undefined) ?? 28, false);
+     }
+-    for (const object of pickups.getChildren()) this.follow(object as Actor, 18, 11, true);
++    for (const object of pickups.getChildren()) this.follow(object as Actor, 18, 22, true);
+     for (const [actor, shadow] of this.shadows) {
+       if (!actor.scene) { shadow.destroy(); this.shadows.delete(actor); }
+       else if (!actor.active) shadow.setVisible(false);
+@@ -34,7 +34,7 @@
+         .setData('ground-shadow', true).setData('shadow-owner', actor).setDepth(-500_000_001);
+       this.shadows.set(actor, shadow);
+     }
+-    shadow.setVisible(true).setPosition(actor.x, actor.y + footOffset).setDisplaySize(width,width/2);
++    shadow.setVisible(true).setPosition(actor.x, actor.y + footOffset).setDisplaySize(width * 2,width);
+   }
+ 
+   clear(): void { this.scene.events.off('postupdate', this.sync); for (const shadow of this.shadows.values()) shadow.destroy(); this.shadows.clear(); }
+--- a/src/game/systems/HeroActionVisual.ts
++++ b/src/game/systems/HeroActionVisual.ts
+@@ -1,3 +1,4 @@
++import { DASH_CLIPS } from '../config/phantomDashAssets';
+ import type Phaser from 'phaser';
+ import type { HeroId } from '../../domain/heroes';
+ import type { WeaponId } from '../../domain/weapons';
+@@ -26,7 +27,9 @@
+ 
+   play(skill: WeaponId, aimX: number, animOverride?: string): void {
+     const key = this.heroId === 'kirito' ? (animOverride ?? 'kirito-wave-lv1') : `naruto-action-${skill}`;
+-    this.sprite.setFlipX(aimX < 0).setVisible(true).play(key);
++    if (this.sprite.anims.isPlaying && this.sprite.anims.currentAnim?.key.startsWith('kirito-dash-')) return;
++    this.sprite.setOrigin(0.5, key.startsWith('kirito-dash-') ? 0.75 : KIRITO_ORIGIN_Y);
++    this.sprite.setFlipX(!key.startsWith('kirito-dash-') && aimX < 0).setVisible(true).play(key);
+     this.player.setVisible(false);
+     this.update();
+   }
+@@ -34,19 +37,20 @@
+   update(): void {
+     if (this.heroId === 'kirito') {
+       if (!this.sprite.anims.isPlaying) {
+-        this.sprite.setTexture('kirito_wave_lv1_ice', 'kirito_wave_lv1_ice/000').setFlipX(this.player.flipX);
++        this.sprite.setTexture('kirito_wave_lv1_ice', 'kirito_wave_lv1_ice/000').setFlipX(this.player.flipX).setOrigin(0.5, KIRITO_ORIGIN_Y);
+       }
+       const moving = Boolean(this.player.body && this.player.body.velocity.lengthSq() > 4);
+       const bob = moving && !this.sprite.anims.isPlaying ? Math.sin((this.sprite.scene.time?.now ?? 0) / 80) * 1.5 : 0;
+-      this.sprite.setScale(KIRITO_WORLD_SCALE);
++      const dash = DASH_CLIPS.find((clip) => clip.key === this.sprite.anims.currentAnim?.key);
++      this.sprite.setScale(this.sprite.anims.isPlaying && dash ? dash.scale : KIRITO_WORLD_SCALE);
+       this.sprite.setPosition(Math.round(this.player.x), Math.round(this.player.y + 28 + bob)).setDepth(this.player.y + 2);
+     } else {
+       if (!this.sprite.anims.isPlaying) {
+         const frame = Number(this.player.frame.name);
+         this.sprite.setTexture('hero_locomotion', frame < 14 ? frame : 0).setFlipX(this.player.flipX);
+       }
+-      const metrics = this.sprite.frame.customData as { displayScale?: number };
+-      this.sprite.setScale(metrics.displayScale ?? 1 / 16);
++      const neutral = this.sprite.texture.get(0).customData as { opaqueHeight?: number };
++      this.sprite.setScale(128 / (neutral.opaqueHeight ?? 896));
+       this.sprite.setPosition(Math.round(this.player.x), Math.round(this.player.y + 28)).setDepth(this.player.y + 2);
+     }
+     if (this.player.isTinted) this.sprite.setTint(this.player.tintTopLeft);
+--- a/src/game/systems/HostileProjectilePool.ts
++++ b/src/game/systems/HostileProjectilePool.ts
+@@ -37,7 +37,7 @@
+         : (this.group.create(x, y, 'enemy_bolt', 0) as Phaser.Physics.Arcade.Sprite);
+       bolt.setTexture('enemy_bolt', 0);
+       const metrics = bolt.frame.customData as { opaqueHeight?: number };
+-      const scale = (hands.length > 1 ? 26 : 22) / (metrics.opaqueHeight ?? 1280);
++      const scale = (hands.length > 1 ? 52 : 44) / (metrics.opaqueHeight ?? 1280);
+       bolt
+         .setScale(scale)
+         .setDepth(-500_000_010)
+--- a/src/game/systems/MovementSystem.ts
++++ b/src/game/systems/MovementSystem.ts
+@@ -77,6 +77,10 @@
+ 
+   playSkill(skill: WeaponId, aimX: number, animOverride?: string): void {
+     if (!this.player.active) return;
++    if (animOverride?.startsWith('kirito-dash-')) {
++      this.actionVisual.play(skill, aimX, animOverride);
++      return;
++    }
+     const baseAnim = skill === 'dual_slash' ? 'hero-skill-slash' : `hero-skill-${skill}`;
+     if (this.player.anims.isPlaying && this.player.anims.currentAnim?.key === baseAnim) return;
+     this.pendingSkills.set(skill, { aimX, animOverride });
+--- a/src/game/systems/PhantomDashSystem.ts
++++ b/src/game/systems/PhantomDashSystem.ts
+@@ -12,7 +12,7 @@
+ import { rollCombatDamage, type PassiveStats } from '../../domain/upgrades';
+ import type { Vec2 } from '../../domain/vector';
+ import type { WeaponId } from '../../domain/weapons';
+-import { KIRITO_ORIGIN_Y, KIRITO_WORLD_SCALE, PHANTOM_DASH_ANIM_KEY } from '../config/dualElementAssets';
++import { dashClip } from '../config/phantomDashAssets';
+ import type { EnemySystem } from './EnemySystem';
+ import type { VfxSystem } from './VfxSystem';
+ 
+@@ -50,7 +50,7 @@
+     this.nextGhostAtMs = nowMs;
+     playerState.invulnerableUntilMs = Math.max(playerState.invulnerableUntilMs, nowMs + PHANTOM_DASH.iframeMs);
+ 
+-    const animKey = this.scene.anims?.exists(PHANTOM_DASH_ANIM_KEY) ? PHANTOM_DASH_ANIM_KEY : 'kirito-wave-lv3';
++    const animKey = dashClip(this.state.dir).key;
+     this.onSkillUsed?.('dual_slash', this.state.dir.x, animKey);
+     this.onAudioCue?.('slash');
+     this.vfx?.playDualEffect(
+@@ -117,18 +117,20 @@
+   }
+ 
+   private spawnGhost(nowMs: number, x: number, y: number): void {
++    const clip = dashClip(this.state.dir);
++    const frame = `${clip.atlas}/${String(clip.ghostFrame).padStart(3, '0')}`;
+     let entry = this.ghosts.find((g) => !g.sprite.active);
+     if (!entry) {
+       if (this.ghosts.length >= 6) return;
+-      const sprite = this.scene.add.sprite(x, y, 'kirito_wave_lv1_ice', 'kirito_wave_lv1_ice/000')
+-        .setOrigin(0.5, KIRITO_ORIGIN_Y).setScale(KIRITO_WORLD_SCALE);
++      const sprite = this.scene.add.sprite(x, y, clip.key, frame)
++        .setOrigin(0.5, 0.75).setScale(clip.scale);
+       entry = { sprite, expiresAtMs: 0 };
+       this.ghosts.push(entry);
+     }
+     const tint = this.ghosts.indexOf(entry) % 2 === 0 ? 0x5ce1e6 : 0xc084fc;
+-    entry.sprite.setTexture('kirito_wave_lv1_ice', 'kirito_wave_lv1_ice/000')
++    entry.sprite.setTexture(clip.key, frame).setScale(clip.scale)
+       .setPosition(Math.round(x), Math.round(y + 28))
+-      .setFlipX(this.state.dir.x < 0)
++      .setFlipX(false)
+       .setTint(tint).setAlpha(0.65).setDepth(y - 1).setActive(true).setVisible(true);
+     entry.expiresAtMs = nowMs + 240;
+   }
+--- a/src/game/systems/PickupSystem.ts
++++ b/src/game/systems/PickupSystem.ts
+@@ -96,11 +96,12 @@
+       : (this.group.create(x, y, texture, 0) as Phaser.Physics.Arcade.Sprite);
+     sprite.setTexture(texture).clearTint().setVelocity(0, 0).setDepth(y);
+     if (animKey) {
+-      sprite.setScale(1.85 / 4).play(animKey, true);
++      sprite.setScale(1.85 / 2).play(animKey, true);
+     } else {
+       sprite.anims?.stop();
+-      sprite.setDisplaySize(24, 24);
++      sprite.setDisplaySize(48, 48);
+     }
++    (sprite.body as Phaser.Physics.Arcade.Body).setSize(sprite.width / 2, sprite.height / 2, true);
+     return sprite;
+   }
+ }
+--- a/src/game/systems/VfxPool.ts
++++ b/src/game/systems/VfxPool.ts
+@@ -1,3 +1,4 @@
++import { AI_ART_KEYS } from '../config/artDisplay';
+ import type Phaser from 'phaser';
+ 
+ export type OneShotOptions = {
+@@ -41,7 +42,7 @@
+     }
+     sp.setTexture(texture)
+       .setPosition(x, y)
+-      .setScale(opts?.scale ?? 1.5)
++      .setScale((opts?.scale ?? 1.5) * (AI_ART_KEYS.has(texture) ? 1 : 2))
+       .setRotation(opts?.rotation ?? 0)
+       .setFlipX(opts?.flipX ?? false)
+       .setDepth(opts?.depth ?? 500_000_000)
+--- a/src/game/systems/VfxSystem.ts
++++ b/src/game/systems/VfxSystem.ts
+@@ -18,7 +18,7 @@
+       emitting: false,
+       lifespan: 240,
+       speed: { min: 45, max: 135 },
+-      scale: { start: 12 / 192, end: 0 },
++      scale: { start: 24 / 192, end: 0 },
+       alpha: { start: 0.82, end: 0 },
+     });
+     this.emitter.setDepth(500_000_000);
+--- a/src/game/systems/WeaponSystem.ts
++++ b/src/game/systems/WeaponSystem.ts
+@@ -115,7 +115,7 @@
+       ? (reuse.enableBody(true, hand.x, hand.y, true, true), reuse)
+       : (this.projectiles.create(hand.x, hand.y, 'rasengan', 0) as Phaser.Physics.Arcade.Sprite);
+     // Keep the previous 10.5px world collision radius while enlarging the artwork.
+-    shot.setTexture('rasengan').setScale(0.5).setDepth(500_000_050).setCircle(21, 75, 75)
++    shot.setTexture('rasengan').setScale(1).setDepth(500_000_050).setCircle(10.5, 85.5, 85.5)
+       .setBlendMode('NORMAL').setRotation(0)
+       .setVelocity(dir.x * speedPxSec, dir.y * speedPxSec).play('rasengan-spin', true);
+     this.projectileExpiresAt.set(shot, nowMs + PROJECTILE.lifeMs);
+--- /dev/null
++++ b/src/game/config/phantomDashAssets.ts
+@@ -0,0 +1,74 @@
++import type Phaser from 'phaser';
++import type { Vec2 } from '../../domain/vector';
++
++export const DASH_CLIPS = [
++  {
++    "direction": "down",
++    "key": "kirito-dash-down",
++    "atlas": "kirito_dash_down",
++    "scale": 0.1198501872659176,
++    "durations": [
++      20,
++      30,
++      65,
++      40,
++      25
++    ],
++    "ghostFrame": 2
++  },
++  {
++    "direction": "up",
++    "key": "kirito-dash-up",
++    "atlas": "kirito_dash_up",
++    "scale": 0.11636363636363636,
++    "durations": [
++      20,
++      30,
++      65,
++      40,
++      25
++    ],
++    "ghostFrame": 2
++  },
++  {
++    "direction": "left",
++    "key": "kirito-dash-left",
++    "atlas": "kirito_dash_left",
++    "scale": 0.11277533039647578,
++    "durations": [
++      20,
++      30,
++      100,
++      30
++    ],
++    "ghostFrame": 2
++  },
++  {
++    "direction": "right",
++    "key": "kirito-dash-right",
++    "atlas": "kirito_dash_right",
++    "scale": 0.1103448275862069,
++    "durations": [
++      25,
++      120,
++      35
++    ],
++    "ghostFrame": 1
++  }
++] as const;
++export function dashClip(direction: Vec2) {
++  const heading = Math.abs(direction.x) >= Math.abs(direction.y)
++    ? (direction.x < 0 ? 'left' : 'right') : (direction.y < 0 ? 'up' : 'down');
++  return DASH_CLIPS.find((clip) => clip.direction === heading)!;
++}
++export function preloadDashAssets(scene: Phaser.Scene): void {
++  for (const clip of DASH_CLIPS) scene.load.multiatlas(clip.key,
++    `assets/actor-v2/${clip.atlas}.atlas.json`, 'assets/actor-v2');
++}
++export function registerDashAnimations(scene: Phaser.Scene): void {
++  for (const clip of DASH_CLIPS) scene.anims.create({
++    key: clip.key, frameRate: 1000, repeat: 0,
++    frames: clip.durations.map((duration, index) => ({ key: clip.key,
++      frame: `${clip.atlas}/${String(index).padStart(3, '0')}`, duration })),
++  });
++}
+--- /dev/null
++++ b/src/ui/hudCamera.ts
+@@ -0,0 +1,12 @@
++import type Phaser from 'phaser';
++
++/** Keep screen coordinates and UI sizes stable while the world camera zooms. */
++export function isolateHudCamera(scene: Phaser.Scene, firstHudIndex: number): void {
++  const hud = scene.children.list.slice(firstHudIndex);
++  const camera = scene.cameras.add(0, 0, scene.scale.width, scene.scale.height, false, 'hud');
++  scene.cameras.main.ignore(hud);
++  camera.ignore(scene.children.list.slice(0, firstHudIndex));
++  const ignoreWorldObject = (object: Phaser.GameObjects.GameObject) => camera.ignore(object);
++  scene.events.on('addedtoscene', ignoreWorldObject);
++  scene.events.once('shutdown', () => scene.events.off('addedtoscene', ignoreWorldObject));
++}

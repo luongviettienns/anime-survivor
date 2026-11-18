@@ -1,0 +1,8 @@
+{
+  "key": "boss",
+  "direction": "left",
+  "pose": "cast_windup",
+  "prompt": "Generate ONE detailed pixel-art game sprite frame, boss cast_windup, facing LEFT/WEST. Strict identity, palette, material and elevated orthographic top-down 3/4 GAME CAMERA from the reference. Genuinely redraw the model facing LEFT; do not mirror the right-facing PNG or swap character-local horn/armor/cape details. Head, torso, feet and action point LEFT. Spell CHARGE anticipation: raise the same casting hands used by the model, open claws and gather only tiny localized violet-red sparks at hands. No huge halo. Match neutral anatomical head size and body proportions exactly. Do not shrink the body to fit raised arms or spell sparks; re-angle arms to fit. Entire body inside canvas with 65px clear transparent margins on every side. Same canvas size as input, crisp stepped pixel clusters, no smooth painting, no shadow/ground/scenery/text/grid. Single transparent RGBA frame.",
+  "path": "C:\\Users\\ASUS\\.codex\\generated_images\\01a1ee04-31d9-76f3-993d-4f3b2888c393\\exec-85cf9e09-e27e-445e-bf95-7dc807c0a627.png",
+  "reference": "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/ai-overhaul/boss/walk-side/000.png"
+}

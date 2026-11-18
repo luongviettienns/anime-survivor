@@ -1,0 +1,133 @@
+{
+  "results": [
+    {
+      "hero": "naruto",
+      "camera": 1.5,
+      "actorScale": 0.9561157796451915,
+      "actorHeight": 128,
+      "enemies": [
+        {
+          "texture": "enemy_elite",
+          "scale": 0.8284789644012945,
+          "standingHeight": 128,
+          "radius": 24,
+          "footOffset": 52.699029126213595
+        },
+        {
+          "texture": "enemy_mage",
+          "scale": 0.9006156552330695,
+          "standingHeight": 128,
+          "radius": 16,
+          "footOffset": 54.87774846086192
+        },
+        {
+          "texture": "boss",
+          "scale": 1.6489533011272142,
+          "standingHeight": 256,
+          "radius": 32,
+          "footOffset": 109.36553945249598
+        }
+      ],
+      "castScaleStable": true,
+      "hand": [
+        {
+          "x": 968.6165910290238,
+          "y": 672.1774758135443
+        }
+      ],
+      "shadows": [
+        {
+          "width": 64,
+          "owner": "hero"
+        },
+        {
+          "width": 96,
+          "owner": "enemy_elite"
+        },
+        {
+          "width": 68,
+          "owner": "enemy_mage"
+        },
+        {
+          "width": 132,
+          "owner": "boss"
+        },
+        {
+          "width": 36,
+          "owner": "heal_pickup"
+        }
+      ],
+      "pickups": [
+        {
+          "width": 59.2,
+          "bodyWidth": 29.6
+        }
+      ]
+    },
+    {
+      "hero": "kirito",
+      "camera": 1.5,
+      "actorScale": 0.10381184103811841,
+      "actorHeight": null,
+      "enemies": [
+        {
+          "texture": "enemy_elite",
+          "scale": 0.8284789644012945,
+          "standingHeight": 128,
+          "radius": 24,
+          "footOffset": 52.699029126213595
+        },
+        {
+          "texture": "enemy_mage",
+          "scale": 0.9006156552330695,
+          "standingHeight": 128,
+          "radius": 16,
+          "footOffset": 54.87774846086192
+        },
+        {
+          "texture": "boss",
+          "scale": 1.6489533011272142,
+          "standingHeight": 256,
+          "radius": 32,
+          "footOffset": 109.36553945249598
+        }
+      ],
+      "castScaleStable": true,
+      "hand": [
+        {
+          "x": 968.6165910290238,
+          "y": 672.1774758135443
+        }
+      ],
+      "shadows": [
+        {
+          "width": 64,
+          "owner": "hero"
+        },
+        {
+          "width": 96,
+          "owner": "enemy_elite"
+        },
+        {
+          "width": 68,
+          "owner": "enemy_mage"
+        },
+        {
+          "width": 132,
+          "owner": "boss"
+        },
+        {
+          "width": 36,
+          "owner": "heal_pickup"
+        }
+      ],
+      "pickups": [
+        {
+          "width": 59.2,
+          "bodyWidth": 29.6
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

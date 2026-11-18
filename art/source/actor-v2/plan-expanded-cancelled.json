@@ -1,0 +1,349 @@
+{
+  "scope": "ASSETS ONLY, no gameplay/camera code edits. Full four-direction Kirito actions (detailed 6/10/8-frame energy skills, 8-frame Phantom Dash), monster hit/death and left cast counterparts. Test at isolated port5184, preview zoom1.5, character/elite body64px.",
+  "protected_port": 5173,
+  "review_port": 5184,
+  "camera": "Slightly elevated orthographic top-down 3/4, matched to current game actor references",
+  "character": {
+    "directions": [
+      "down",
+      "up",
+      "left",
+      "right"
+    ],
+    "poses": [
+      "neutral",
+      "idle_breathe",
+      "run_contact_l",
+      "run_pass_l",
+      "run_contact_r",
+      "run_pass_r",
+      "hit",
+      "collapse",
+      "fallen",
+      "dash_launch",
+      "dash_glide",
+      "ice_windup",
+      "ice_draw",
+      "ice_cut",
+      "ice_follow",
+      "dark_windup",
+      "dark_draw",
+      "dark_cut",
+      "dark_follow",
+      "dual_windup",
+      "dual_charge",
+      "dual_pre_cross",
+      "dual_cross",
+      "dual_follow",
+      "dual_recover",
+      "dash_coil",
+      "dash_accel",
+      "dash_brake",
+      "dash_recover"
+    ],
+    "clips": {
+      "idle": {
+        "poses": [
+          "neutral",
+          "idle_breathe"
+        ],
+        "durations_ms": [
+          240,
+          240
+        ],
+        "loop": true
+      },
+      "run": {
+        "poses": [
+          "run_contact_l",
+          "run_pass_l",
+          "run_contact_r",
+          "run_pass_r"
+        ],
+        "durations_ms": [
+          95,
+          95,
+          95,
+          95
+        ],
+        "loop": true
+      },
+      "hit": {
+        "poses": [
+          "neutral",
+          "hit",
+          "neutral"
+        ],
+        "durations_ms": [
+          35,
+          85,
+          80
+        ],
+        "loop": false
+      },
+      "death": {
+        "poses": [
+          "neutral",
+          "collapse",
+          "fallen"
+        ],
+        "durations_ms": [
+          45,
+          110,
+          220
+        ],
+        "loop": false
+      },
+      "basic": {
+        "poses": [
+          "neutral",
+          "ice_windup",
+          "ice_draw",
+          "ice_cut",
+          "ice_follow",
+          "dark_windup",
+          "dark_draw",
+          "dark_cut",
+          "dark_follow",
+          "neutral"
+        ],
+        "durations_ms": [
+          40,
+          85,
+          45,
+          55,
+          50,
+          85,
+          45,
+          55,
+          60,
+          80
+        ],
+        "loop": false
+      },
+      "dash": {
+        "poses": [
+          "neutral",
+          "dash_coil",
+          "dash_launch",
+          "dash_accel",
+          "dash_glide",
+          "dash_brake",
+          "dash_recover",
+          "neutral"
+        ],
+        "durations_ms": [
+          16,
+          20,
+          20,
+          20,
+          40,
+          20,
+          24,
+          20
+        ],
+        "loop": false,
+        "motion_duration_ms": 180,
+        "motion_owner": "Existing src/domain/phantomDash.ts and PhantomDashSystem, preserve logic/stats"
+      },
+      "lv1": {
+        "poses": [
+          "neutral",
+          "ice_windup",
+          "ice_draw",
+          "ice_cut",
+          "ice_follow",
+          "neutral"
+        ],
+        "durations_ms": [
+          50,
+          100,
+          55,
+          70,
+          85,
+          100
+        ],
+        "loop": false,
+        "release_frames": [
+          3
+        ]
+      },
+      "lv2": {
+        "poses": [
+          "neutral",
+          "ice_windup",
+          "ice_draw",
+          "ice_cut",
+          "ice_follow",
+          "dark_windup",
+          "dark_draw",
+          "dark_cut",
+          "dark_follow",
+          "neutral"
+        ],
+        "durations_ms": [
+          50,
+          100,
+          55,
+          70,
+          65,
+          100,
+          55,
+          70,
+          85,
+          100
+        ],
+        "loop": false,
+        "release_frames": [
+          3,
+          7
+        ]
+      },
+      "lv3": {
+        "poses": [
+          "neutral",
+          "dual_windup",
+          "dual_charge",
+          "dual_pre_cross",
+          "dual_cross",
+          "dual_follow",
+          "dual_recover",
+          "neutral"
+        ],
+        "durations_ms": [
+          50,
+          85,
+          80,
+          50,
+          70,
+          65,
+          70,
+          100
+        ],
+        "loop": false,
+        "release_frames": [
+          4
+        ]
+      }
+    },
+    "basic_collision_frames": [
+      3,
+      7
+    ],
+    "dash_afterimage": "Reuse original dash_glide PNG with renderer-controlled alpha/position; no source edits and no new dash mechanic implemented"
+  },
+  "enemies": [
+    "enemy",
+    "enemy_shade",
+    "enemy_mage",
+    "enemy_elite",
+    "boss"
+  ],
+  "reactions": {
+    "hit": {
+      "poses": [
+        "neutral",
+        "hit",
+        "neutral"
+      ],
+      "durations_ms": [
+        35,
+        85,
+        80
+      ],
+      "loop": false
+    },
+    "death": {
+      "poses": [
+        "neutral",
+        "collapse",
+        "fallen"
+      ],
+      "durations_ms": [
+        45,
+        110,
+        220
+      ],
+      "loop": false,
+      "final_state": "hold fallen until external cleanup; never return to walking automatically"
+    }
+  },
+  "quality": "Unchanged original RGBA PNGs; padding-only sheets and paged atlases. No runtime resize, quantization, alpha edits or lossy encoding. Preview-only thumbnails labeled.",
+  "acceptance": [
+    "All four headings authored; sword hands preserved",
+    "All five enemy types have hit and defeated clips",
+    "No clipping, common measured ground anchors",
+    "Exact source/crop/atlas pixel comparisons",
+    "Phaser asset harness on isolated 5184 with keyboard directions and no network/console errors",
+    "Do not claim integration or actual enemy damage/death logic from harness"
+  ],
+  "preview_zoom": 1.5,
+  "display_body_height_px": {
+    "kirito": 64,
+    "naruto": 64,
+    "enemy_elite": 64,
+    "enemy": 64,
+    "enemy_shade": 64,
+    "enemy_mage": 64,
+    "boss": 128
+  },
+  "body_size_policy": "Measure neutral head-to-ground body height excluding weapons, aura and VFX. Keep SAME per-model scale in run, attack, cast and hit frames; do not fit an enlarged sword or cast aura into body-height budget. Death poses retain anatomical scale, not standing-height fitting.",
+  "camera_code": "Deferred by user; 1.5x applies only to isolated asset review for now",
+  "enemy_cast": {
+    "entities": [
+      "enemy_mage",
+      "boss"
+    ],
+    "poses": [
+      "neutral",
+      "cast_windup",
+      "cast_release",
+      "neutral"
+    ],
+    "durations_ms": [
+      50,
+      160,
+      85,
+      100
+    ],
+    "model_scale": "same reference scale as neutral, do not fit the total aura/raised-arm bounds"
+  },
+  "phantom_vfx": {
+    "start": {
+      "poses": [
+        "start0",
+        "start1"
+      ],
+      "durations_ms": [
+        45,
+        75
+      ],
+      "loop": false
+    },
+    "trail": {
+      "poses": [
+        "trail0",
+        "trail1",
+        "trail2"
+      ],
+      "durations_ms": [
+        50,
+        50,
+        50
+      ],
+      "loop": true
+    },
+    "end": {
+      "poses": [
+        "end0",
+        "end1"
+      ],
+      "durations_ms": [
+        60,
+        100
+      ],
+      "loop": false
+    }
+  },
+  "integration_authorization": "User subsequently authorized attaching completed Phantom Dash assets/animation to existing logic. Integrate/test only in isolated copy on5184, protect live5173. Other gameplay/camera code changes deferred."
+}

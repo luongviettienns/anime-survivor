@@ -1,0 +1,8 @@
+{
+  "key": "enemy_shade",
+  "direction": "left",
+  "pose": "neutral",
+  "prompt": "Generate ONE detailed pixel-art game sprite frame, enemy_shade neutral, facing LEFT/WEST. Strict identity, palette, material and elevated orthographic top-down 3/4 GAME CAMERA from the reference. Genuinely redraw the model facing LEFT; do not mirror the right-facing PNG or swap character-local horn/armor/cape details. Head, torso, feet and action point LEFT. Neutral combat-ready standing stance, no attack, no recoil or collapse. Match neutral anatomical head size and body proportions exactly. Do not shrink the body to fit raised arms or spell sparks; re-angle arms to fit. Entire body inside canvas with 65px clear transparent margins on every side. Same canvas size as input, crisp stepped pixel clusters, no smooth painting, no shadow/ground/scenery/text/grid. Single transparent RGBA frame.",
+  "path": "C:\\Users\\ASUS\\.codex\\generated_images\\01a1ee04-31d9-76f3-993d-4f3b2888c393\\exec-22315a73-64aa-4d0b-82e6-0a002ecec605.png",
+  "reference": "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/ai-overhaul/enemy_shade/walk-side/000.png"
+}

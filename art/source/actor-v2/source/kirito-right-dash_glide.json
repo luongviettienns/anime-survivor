@@ -1,0 +1,7 @@
+{
+  "key": "kirito",
+  "direction": "right",
+  "pose": "dash_glide",
+  "prompt": "Single authored game sprite frame, same black-coated dual swordsman as reference, SAME high-detail crisp stepped pixel art, palette, costume, sword guards, head/anatomical size. Camera slightly elevated orthographic top-down 3/4, facing RIGHT/east. Pose: Phantom Dash forward glide, torso leaning right, front knee bent forward, rear leg extended left, coat tails streaming left; swords trail diagonally back left, both hands visible. Character RIGHT hand is NEAR foreground lower/south holding VIOLET BLACK sword. Character LEFT hand is FAR upper/north holding CYAN ICE sword. Never exchange hands or mirror. Match the reference body scale, not cropped closeup. Entire body, both blades and tips inside square1254x1254 canvas with generous transparent margins. One frame only, no sheet/grid, no ground, text, aura or baked shadows. RGBA transparent. This is the single missing right-facing dash keypose, preserve identity and clean pixel edges.",
+  "path": "C:/Users/ASUS/.codex/generated_images/01a1ee04-31d9-76f3-993d-4f3b2888c393/exec-e55ccea1-fb4f-407b-82db-adbad979b241.png"
+}

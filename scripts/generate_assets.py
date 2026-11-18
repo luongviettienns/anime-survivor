@@ -3,9 +3,8 @@ from __future__ import annotations
 from PIL import Image, ImageDraw
 from pack_frames import ROOT, CONTRACT, pack_all
 from generate_audio import generate_audio
+from naruto_ai_art import draw_hero as draw_ai_hero
 from naruto_shippuden_art import (
-    draw_naruto_idle,
-    draw_naruto_walk,
     draw_rasengan_orb,
     draw_rogue_ninja_enemy,
 )
@@ -28,7 +27,7 @@ def pixel_canvas(size: tuple[int, int]) -> tuple[Image.Image, ImageDraw.ImageDra
 
 
 def draw_hero(frame: int, walking: bool) -> Image.Image:
-    return draw_naruto_walk(frame) if walking else draw_naruto_idle(frame)
+    return draw_ai_hero('walk' if walking else 'idle', frame)
 
 
 def draw_sprite_frame(sprite: str, animation: str, frame: int) -> Image.Image:

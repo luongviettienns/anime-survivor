@@ -56,3 +56,15 @@
   - `npm run test:e2e` -> PASS (5/5 Playwright E2E scenarios passed).
 
 Do not tick items without actual evidence. Update this log during every Antigravity session.
+
+## Naruto AI sprite integration (2026-11-18, in progress)
+- Behavior: replace hero artwork with the approved Naruto reference, idle breathing and running, retaining WASD/arrows and horizontal facing.
+- Files: hero source frames, deterministic hero import module, generate_assets.py hero branch, packed hero/manifest, provenance, animation browser test.
+- Acceptance: 32x32 RGBA, shared palette/anchor, no edge contact; pixel-identical sheet crops; idle/run switch and left/right facing; verify and browser gameplay/logs/screenshots.
+- Scope: user explicitly requested Naruto fan-art in this local game; no publication rights claimed. Existing unrelated working changes remain untouched.
+
+### Naruto integration verification result
+- Completed shared-palette 32x32 hero, 4 idle slots (2 held poses), 4 distinct running frames and deterministic asset regeneration. Existing animation controls retained.
+- PASS: 3 Python asset tests; sheet pack/validation (23 sheets); npm run verify (43 Vitest tests, typecheck/lint/arch/build); npm run test:e2e (6/6 Chromium scenarios, zero console/page errors).
+- Inspected running and idle screenshots under test-results/. Locked running upper body to eliminate AI head drift.
+- Not checked: human review, other browsers, deployment. Existing Vite bundle-size warning remains. No up/down-specific poses added.

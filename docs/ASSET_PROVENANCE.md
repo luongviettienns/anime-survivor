@@ -7,3 +7,6 @@
 | orb, gem, tile, tree | Rasengan orb & environment generator | Project-owned | `scripts/naruto_shippuden_art.py` + `scripts/generate_assets.py` | Exact contract dimensions verified |
 
 When replacing a procedural asset with AI-produced art: record the generator/tool, model if known, creation date, human reviewer, original prompts, license/use restrictions and output file hashes. This ledger is required even when the art was made free of charge.
+
+## Naruto AI replacement — 2026-11-18
+Hero idle/walk now uses six separately generated ImageGen source PNGs, normalized deterministically to 32x32. This supersedes the old hero ledger row above. See [Naruto sprite integration](NARUTO_SPRITES.md) and `art/source/naruto-ai/provenance.json` for source hashes, prompt summaries, review status and character rights limits.

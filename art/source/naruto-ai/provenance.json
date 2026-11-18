@@ -1,0 +1,40 @@
+{
+  "date": "2026-11-18",
+  "tool": "built-in ImageGen",
+  "model": "not exposed by tool",
+  "human_review": "pending",
+  "rights": "Naruto fan art explicitly requested by user; no franchise rights granted",
+  "prompt_notes": "Prompt summaries; full original tool prompts remain in the Codex chat.",
+  "sources": [
+    {
+      "file": "idle/000.png",
+      "sha256": "a0ecfa63b69feddc3a9a3948bfb49306fb8ec0f2104df4fe7104c1c3c7f7b5e7",
+      "prompt_summary": "Single front-facing full-body Naruto Shippuden pixel sprite, neutral idle, black/orange outfit, blond spiky hair, blue eyes, leaf forehead protector, whisker marks; transparent background, crisp 32x32 logical pixel design, fixed feet, no text or grid."
+    },
+    {
+      "file": "idle/001.png",
+      "sha256": "6616ccd0e62e6b45498b6b07fb155e803ef6e991094c45925c30dfe04d1b6a0b",
+      "prompt_summary": "Next breathing idle frame based on idle reference: identical design and placement, fixed feet, slightly raised shoulders and forearms; transparent background, one character."
+    },
+    {
+      "file": "walk/000.png",
+      "sha256": "48eb341be001f4644ab16f3240430743f894cecf2ac937d62bfa56e4a189b672",
+      "prompt_summary": "Reference Naruto running screen-right in three-quarter view, torso leaning forward, both arms swept back, near leg forward and far leg back, feet on common baseline; transparent full body, pixel clusters."
+    },
+    {
+      "file": "walk/001.png",
+      "sha256": "b793ac3854322a93bbd5b007b0faa61513f8ff4e35f1073a319f7bf5ac1b6632",
+      "prompt_summary": "Running passing/down pose: same head, torso and arms; legs pass beneath pelvis, near knee bent advancing and far foot beneath body on same baseline."
+    },
+    {
+      "file": "walk/002.png",
+      "sha256": "015fbf86bdc50b229df8079bd202909509817eb92f51de9a4fb2d1f5247ed7de",
+      "prompt_summary": "Opposite running contact stride: same upper body, reverse legs, wrapped near leg forward and unwrapped far leg back; transparent pixel art."
+    },
+    {
+      "file": "walk/003.png",
+      "sha256": "c040140e04e3eea838959ee661de756cbb6c00896fa83f46830545508d0650fa",
+      "prompt_summary": "Recovery passing running pose: same upper body, wrapped leg bent and lifted beneath body, unwrapped leg down with sandal contacting baseline; transparent pixel art."
+    }
+  ]
+}

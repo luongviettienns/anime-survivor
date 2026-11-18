@@ -57,6 +57,15 @@
 
 Do not tick items without actual evidence. Update this log during every Antigravity session.
 
+## Phase 5: Full Animated VFX (`pixelfx`), 10-Card Upgrade System, Endless Shrine Map & Pixel RPG UI (2026-11-18)
+- [x] Upgraded `docs/ART_CONTRACT.json` (v3) to 21 animated spritesheets (zero static combat/pickup/prop sprites), distinct per-entity signature palettes, `128x128` seamless twilight shrine meadow `grass.png`, and 10 `16x16` CC0 card icons.
+- [x] Built hybrid asset pipeline: `scripts/export_pixelfx.mjs` (11 `vendor/pixelfx` effects including evolved `slash_x` double-slash) + `scripts/vfx_and_world_art.py` (`shuriken`, `mine`, `tree` 40x48, `shrine_lantern`, `spirit_flower`, `grass` 128x128).
+- [x] Completed Visual Self-Critique Gate 1 (2 rounds on 4x contact sheets `art/contact_sheet.png` and `art/vfx_contact_sheet.png`: fixed `orb` floor reflection, replaced horizontal `shuriken` with top-down 4-blade spinning star, upgraded `explosion` to pure fire/smoke and `vfx_hit` to centered starburst).
+- [x] Implemented 4th weapon (`mine` Paper Bomb Tag AOE) + 4 new passives (`stat_damage`, `stat_cooldown`, `stat_magnet`, `stat_crit` 2x critical hits), Boss Phase 2 `[ENRAGED]` 12-way spiral barrage, and `SplitMix32` endless chunked map (`src/domain/infiniteMap.ts`, `src/game/systems/InfiniteMapSystem.ts`).
+- [x] Implemented `VfxPool.ts` (48 pooled animated sprites with Additive blend glow, Trauma screen shake, cooldown-gated micro hit-stop) and upgraded `HudOverlay.ts` + `UpgradeScene.ts` to ornate Pixel RPG UI.
+- [x] Completed Visual Self-Critique Gate 2 (2 rounds on 3 live Chrome screenshots `qa-upgrade-ui.png`, `qa-combat-vfx.png`, `qa-boss-endless.png`: fixed negative-Y ground depth occlusion at `y < -1000`, improved dark obsidian icon contrast in emblem frames, and verified clean 120-enemy combat & endless Boss Phase 2).
+- [x] Full verification passed: `npm run verify` (9 test files / 43 Vitest tests, 0 TS/ESLint/arch errors, 21 animated sheets + 1 tile + 10 icons SHA-256 verified, Vite production build) and `npm run test:e2e` (5/5 Playwright E2E scenarios passed in 12.2s, 0 console errors).
+
 ## Naruto AI sprite integration (2026-11-18, in progress)
 - Behavior: replace hero artwork with the approved Naruto reference, idle breathing and running, retaining WASD/arrows and horizontal facing.
 - Files: hero source frames, deterministic hero import module, generate_assets.py hero branch, packed hero/manifest, provenance, animation browser test.
@@ -80,3 +89,84 @@ Do not tick items without actual evidence. Update this log during every Antigrav
 - Inspected up/down live screenshots and 4x hero contact sheet. All 14 installed frames reproduced from generator.
 - Default contact-sheet save failed with Windows OSError 22; hero-only export succeeded at output/naruto-preview/directions-contact-sheet.png.
 - Not checked: human review, other browsers, deployment. Up/side idle are single held poses; diagonals reuse side view. Existing Vite large-bundle warning remains.
+
+## Per-skill Naruto actions (2026-11-18, in progress)
+- User scope: separate animation per existing skill, 2-3 frames each. Implement two poses each for orb/Rasengan, slash/kunai, orbital/shuriken, mine/paper tag.
+- Behavior: event-driven one-shot skill gestures; input and combat timing remain responsive. Each action plays once and returns to current directional locomotion. Simultaneous skill events must not restart the current action or starve other skills.
+- Files: individual AI sources, hero importer/contract/frames/sheet/manifest, BootScene, skill animation controller, MovementSystem/WeaponSystem/GameScene integration, asset/unit/browser tests, provenance.
+- Acceptance: four visually distinct two-frame actions, shared palette/anchor and exact sheet crops; each actual weapon event triggers its matching gesture, no movement lock, actions finish and return to locomotion, all checks and browser gameplay/screenshots.
+
+### Matched weapon assets extension
+- User added scope: larger, readable shuriken/kunai/paper-tag/Rasengan assets matching the character and action poses; visible connection from hands/placement to weapon effects.
+- Plan: four individual AI weapon references, deterministic palette/nearest-neighbor animated frames; replace orb/shuriken/mine sheets and add a kunai swing sheet; enlarge display sizes and align launch/placement origins; update contract/generator/loader/tests/provenance.
+- Acceptance: four readable matched weapons, exact source crops and reproducible generation; actual projectiles/slashes/orbitals/mines render the new art at larger size without breaking combat or animation queue.
+
+## Applied visual asset overhaul (2026-11-18, in progress)
+- Latest steering: apply assets immediately; keep reliable character movement and original generated PNGs, fix skill readability. No new gameplay features.
+- Native sizes: orb/shuriken24, mine16, slash_x/explosion56, enemies24, boss48. Master character images stay unmodified; existing locomotion stays in place.
+- Visual scope: distinct 2-pose gestures per existing skill, bold spiral chakra, metallic shuriken with pixel arcs, crossed slash/star/ashes, red seal tag accelerating before 3-stage explosion, grass meadow/props, pixel HUD/weapon icons.
+- Files: deterministic art modules/generator/contracts/PNG frames/sheets/provenance, visual-only Phaser wiring/scales/font/hand origins; asset and browser tests.
+- Acceptance: clean RGBA borders, exact source crops, hue-shifted material ramps, no resampled rotation/blur, integer visual scale, projectile hitbox and damage/cooldowns unchanged; inspect contact sheets and live gameplay; verify and full browser suite.
+
+### AI-only art source correction
+- User explicitly requires generated image artwork, no more drawing assets with code. The newly drafted procedural pixel_style/weapon renderer will not be used. New art must be individual ImageGen PNG frames; scripts may only normalize transparency/canvas/nearest-neighbor export and pack/validate.
+- Existing character ImageGen masters remain byte-identical; retain working movement. Generate matched weapon/VFX frames, enemy/boss frames, meadow environment and HUD skin as image sources.
+
+### Naruto empty-hand correction
+- Naruto melee is now Taijutsu Fist Combo (existing internal slash ID retained for save/upgrade compatibility); no sword or kunai visuals, even at level4. Generated two empty-hand actor poses and two blunt pressure VFX frames.
+- Twin slash and kunai sources/sheets remain a future-character asset library; Naruto must never emit these textures. High-resolution action visual follows physics player separately so artwork does not change movement/hitboxes.
+
+### Monster-first and 56px skill revision
+- Latest priority: design monsters first, all as ImageGen PNGs. New native sizes override earlier24/48 rule: regular64x64, elite96x96, boss128x128. Add only art/locomotion; monster skills remain future work.
+- All player skill artwork now minimum56x56; Naruto melee becomes a single normal curved air-sweep effect, never a flying fist or twin slash. Preserve existing combat formulas; evolution and elite gameplay remain notes/art only.
+
+### Distinct enemy identities and reusable aura
+- User adds distinct per-monster silhouettes: regular no aura, elite purple aura, boss red aura. Aura is a separate reusable transparent VFX layer, never baked into actor PNGs.
+- Supplied behavior reference is recorded as visual guidance; no new combat AI/skills. Files: AI source ledger, enemy/aura contract/frames/sheets, importer, loader/render adapters, preview and validation.
+- Acceptance: 64/96/128 native actor canvases, common bottom-center feet, four-phase locomotion, separate purple/red aura layers on oblique ground plane, exact packed crops; verify plus live browser inspection.
+
+### Final visual-overhaul verification (2026-11-18)
+- Replaced regular monsters with three original64px identities, added96px elite artwork and128px Crimson Archon. Four distinct walk/sprint poses each; mage/boss also have charge/release poses following existing ranged AI states.
+- Reusable four-layer aura images: ordinary monsters none, purple elite preview, red live boss. Elite spawn/combat rules remain unimplemented. Added dark violet/crimson projectiles, transient spell ellipses and defeat smoke;96px blood-moon slash is art-only, no new boss melee rule.
+- Raised active/native player skill exports and max variants to at least56px. Naruto remains empty-handed and emits one curved pressure sweep. Original HD actor/Rasengan masters are preserved.
+- Validation on the working tree: `npm run verify` PASS (TypeScript, lint,45 domain tests, architecture,10 Python tests,39 sheets/2 tiles/10 icons, production build). `npm run test:e2e -- --workers=1`:14/14 PASS, including real keys,120-enemy load, actual skill events, native actor/collider sizes, aura cleanup and boss charge/release.
+- Rebuilt assets twice:51 PNGs byte-identical. Inspected actors/base/evolution/aura contact sheets, live boss charge/release screenshots and32-card gallery. No browser page/console errors in the tests.
+- Full prompts and raw source hashes are in `art/source/ai-overhaul/provenance.json`; ImageGen model version not exposed. Human art review remains pending.
+- Known limits: low-end/mobile and non-Chromium browsers not tested; HD master textures have a substantial GPU memory cost; existing Vite large-bundle and Pillow deprecation warnings remain. No deployment. Evolution suction/end-range wind explosion remains notes/art only.
+- Repository already contains pending gameplay/map/skill-management changes outside this art task. The focused source-art checkpoint records original PNGs, provenance, reviews and design documentation; verified exports, pipeline and local runtime adapters remain in the working tree alongside those existing changes.
+
+### Original-image restoration after visual feedback
+- User rejected jagged compressed exports and explicitly requested the already-generated original images. Previous native64/96/128 and56px export/palette decisions are superseded; those are only display guides now.
+- Reused the existing original PNGs. No regeneration, resize, quantization, alpha threshold or orphan cleanup. New master sheets only add transparent padding; runtime multi-atlas pages copy PNG files byte-for-byte to avoid uploading the padding to GPU.
+- Original grass/HUD panel/weapon-icon files are also restored. Existing working character locomotion stays unchanged. Removed fallback rebuilding from the overhaul generator.
+- Source preservation checks PASS for every imported RGBA frame and runtime PNG file, including the supplied1254x1254 Rasengan reference. Targeted browser checks3/3 PASS after multi-atlas wiring, with original source pages over1000px and old world collision sizes retained.
+- Supersedes earlier9/10-test summaries: current validation has45 domain tests and9 Python tests. `npm run verify` PASS after original-image restoration; final full browser rerun is recorded below when complete.
+
+- Final original-image browser rerun:14/14 PASS (`--workers=1`), including120-enemy combat, real movement keys, all skill gestures, boss charge/release and original-image gallery. `npm run verify` PASS;39 exact-crop sheets and byte-identical runtime/source PNG checks passed. Source images over1000px are loaded directly, while collision dimensions remain unchanged. Low-end hardware/non-Chromium and deployment remain untested.
+
+### Naruto idle versus Rasengan size audit (2026-11-18)
+- User requested verification only. No gameplay or visual scaling changed in this audit.
+- Measured actual loaded textures in Chromium, opaque coverage at alpha>=128: idle24x56 world pixels; Rasengan action frame0=38.375x66.9375, frame1=29.625x71.75. Thus actor height grows19.53% and28.125% versus idle. Width also changes with pose.
+- Cause: idle uses32px compatibility frame scaled2; separate original HD action PNGs use a fixed1/16 scale, without matching their occupied height to the idle silhouette. Action frames also differ in their own authored height.
+- Ground anchor is identical (feetY628 in captured scene), physics player body remains40px wide in all three captures; no browser page errors. Size mismatch is visual, not a collider change.
+- Evidence: `output/hero-scale-check/measurements.json`, `idle.png`, `rasengan-0.png`, `rasengan-1.png`. Full verify suite not rerun because this was a read-only runtime/art measurement, not an implementation change.
+
+## Matched character scale, directional monsters and readable casting (2026-11-18)
+- Behavior: match Naruto Rasengan pose height to idle56px, retain common feet and original PNG bytes. Add authored side/back two-frame walks for all five monster identities, mirror side for left; add side/back charge/release poses for mage/boss.
+- Casting: align small dark gathering VFX to actual pose hands, synchronize release with existing AI fire event, render hostile effects beneath actors so they cannot hide the caster. Preserve existing damage, cooldown, projectile collision/trajectory rules.
+- Files: original ImageGen sources/ledger, art contract/import/export metadata, HeroActionVisual, enemy visual/hostile projectile adapters, Boot animations, preview and asset/browser tests.
+- Acceptance: idle/cast actor heights and feet match; monsters face north/south/east/west with correct authored frames; cast pose faces aim and hand VFX/shot release occur together; source PNG bytes and collider sizes remain intact; verify, real browser keys/combat/screenshots.
+
+## Restore original player locomotion (2026-11-18)
+- Cause: visible idle/walk still used palette-reduced32px frames, unlike HD action art. Reuse all original individual movement PNGs, pad/pack only, keep source bytes.
+- Files: import/export contract, original locomotion atlas, HeroActionVisual and browser source/scale checks.
+- Acceptance: all movement directions render original PNG pages; height56 and common foot anchor; original player physics unchanged; full verify and browser regression.
+
+- Original player movement rebuilt as14 padded frames with12 shared original GPU pages; no source pixels/colors/alpha changed. Hidden32px controller retains physics and animation names. Browser checks verify actual full-resolution pages,56px actor height, four directions and matching Rasengan feet.
+- Windows mapped-file locks blocked rewriting unchanged grass and some old sheets in the all-assets command. Rebuilt the new locomotion sheet with pack_frames.pack_sprite and exported original atlases separately; full40-sheet pixel validation passes.
+- Directional cast/trajectory browser checks2/2 PASS. Flight probe measures physics world-step time; paused scene wall time includes screenshot delays and is unsuitable for expected travel distance.
+- Source-art checkpoint preserves new directional originals and notes; runtime/pipeline work remains applied locally alongside pre-existing gameplay changes.
+
+- Final `npm run verify` PASS:47 domain tests,10 Python tests,40 exact-crop sheets, typecheck/lint/architecture and production build. HD locomotion uses72MiB decoded RGBA versus126MiB padded-sheet upload; hardware overhead is additional.
+- Visually inspected actual Chromium output `output/hero-original-applied.png`, directional mage hand charge and boss release screenshots. No low-end/mobile/non-Chromium validation; existing bundle-size/Pillow deprecation warnings remain.
+- Final stable browser regression:17/17 PASS (single Chromium worker), including real directional keys, original-image actor scale, all skill gestures, synchronized enemy casts/physical travel and120-enemy combat. No deployment.

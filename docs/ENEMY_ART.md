@@ -57,3 +57,6 @@ but not emitted as a new melee attack: no such combat rule has been added.
 Build: `python scripts/generate_assets.py`, `python scripts/pack_frames.py`,
 `python scripts/validate_sprites.py`. Inspect `/art-preview.html` and the exact
 manifest crops in `art/review/actors.png` and `art/review/enemy-aura.png`.
+
+## Four-direction casting and movement
+Five monster identities now have authored front4, side2 and back2 walking frames (left mirrors side). Mage/boss also have charge/release pairs for front, side and back. Direction follows dominant target axis. CAST_HAND_ANCHORS.json locates actual palms in unchanged source PNG coordinates. Small dark9/12px gathering glows follow hands; release follows the existing AI fire event. Hostile projectiles render beneath actors and ease their artwork from the palms over150ms while preserving physical trajectory,17px body diameter, speed and damage. Each actor pose fits its64/96/128px display height; feet and body dimensions remain stable. Elite is still art-only, without a new spawn/combat rule.

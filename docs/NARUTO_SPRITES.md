@@ -1,59 +1,54 @@
-# Naruto sprite integration — 2026-11-18
+# Naruto visual integration — November 2026
 
-User requested this Naruto Shippuden fan-art replacement explicitly. This does
-not grant ownership of the Naruto character or permission to publish that IP.
+The user's requested fan-art character remains in the game. Existing generated
+movement PNGs are preserved in `art/source/naruto-ai`; the source ledger records
+prompts and hashes. ImageGen does not expose its model version. Human review is
+pending; this document does not claim ownership of the Naruto character.
 
-## Source and generation
+## Active animations
 
-Twelve individual transparent PNGs in `art/source/naruto-ai/` were generated with
-the built-in ImageGen tool. The tool did not expose a model version. No external
-art pack was downloaded. Original files are retained, and SHA-256 hashes and
-prompts are recorded in `art/source/naruto-ai/provenance.json`.
+The 32px locomotion/compatibility sheet has22 frames: idle0–3, side run4–7,
+down8–9, rear idle10, rear run11–12, side idle13, and four skill pairs14–21.
+WASD/arrows retain working four-direction locomotion and last-facing idle.
 
-`scripts/naruto_ai_art.py` uses a shared crop for each animation, nearest-neighbor
-scaling, binary alpha, a fixed 21-color palette and a feet baseline at y=29.
-The running head is locked to pose 0 to remove drift between poses; sideways
-running also locks the torso while vertical running retains opposing arm swings.
-Each final frame is 32x32 RGBA. Idle has two breathing poses held in four slots;
-sideways running has four strides and up/down running each have two distinct
-steps. Up and side idle each hold a separate standing pose.
+A separate 1536px master sheet, `hero_actions`, provides two full-resolution
+poses each for Rasengan, empty-hand taijutsu, shuriken and paper-tag placement.
+Its feet are anchored at[768,1408], and its runtime visual follows the unchanged
+physics player. Original generated action pixels are preserved on padded canvases.
+Naruto has no sword or kunai. Taijutsu uses one curved pressure-sweep VFX, never a
+flying fist, crossed slash or twin strike. The internal `slash` weapon ID remains
+for save compatibility; existing damage formulas have not changed.
 
-`scripts/generate_assets.py` now imports this hero instead of the old procedural
-hero. `npm run assets:generate` preserves this artwork when rebuilding assets.
-`python scripts/pack_frames.py` creates `public/assets/hero.png` (448x32) and
-the manifest; every sheet crop must match its individual frame exactly.
+Rasengan has two charge, two flight-spin and two impact poses at1536px. Flight
+displays a96px canvas while retaining the old21px collision diameter. The supplied
+blue orb reference and generated variants are stored as original PNGs. New weapon/HUD images now use the original PNG files directly. No export is
+resized or palette-reduced; display size is set separately by the renderer.
 
-## Runtime
+## Additional artwork
 
-| Animation | Frames | FPS |
-|---|---|---|
-| Down idle | 0–3 | 5 |
-| Side run (left mirrors right) | 4–7 | 10 |
-| Down run | 8–9 | 8 |
-| Up idle | 10 | 5 |
-| Up run | 11–12 | 8 |
-| Side idle (left mirrors right) | 13 | 5 |
+`art/source/ai-overhaul` contains individual generated weapon/VFX, meadow and HUD
+images with prompts/hashes in its provenance ledger. Scripts only normalize and
+pack those images. `/art-preview.html` previews actual sheets and manifest crops.
+Twin slash/kunai remain for another character. Max-color variants and
+Rasenshuriken/ground-wind art are prepared but their evolution rules are not
+enabled; see `SKILL_EVOLUTION_ART.md`. Monster artwork is in `ENEMY_ART.md`.
 
-WASD/arrows switch animation. Releasing movement retains the last facing.
-Diagonal input prefers horizontal facing. Vertical animation clears horizontal
-flip, including when transitioning from facing left. There are four directional
-views; diagonal movement reuses a side view.
-No gameplay timing, movement speed or collision rules changed.
+## Validation
 
-## Verification
+Run `npm run verify`, `npm run test:e2e`, and `npm run assets:preview`.
+Python checks cover source hashes, master-pixel preservation, fixed feet,
+transparent margins, distinct animation poses and exact sheet/frame equality.
+Browser tests cover real movement keys, matching skill gestures, combat,
+projectile collision sizes and absence of sword effects. Current results and
+limitations are recorded in `PROGRESS.md`; deployment remains unperformed.
 
-- Three Python checks: binary alpha/palette/feet, stable running upper body,
-  invalid animation/frame rejection. Included in `npm run assets:validate`.
-- `npm run verify`: TypeScript, lint, 45 domain tests, architecture, all 23
-  sheet crop validators and production build passed.
-- `npm run test:e2e`: 6/6 Chromium scenarios passed, including actual keys,
-  idle/run/facing transitions, multi-frame playback and no console/page errors.
-- Screenshots inspected: `test-results/naruto-up.png`, `naruto-down.png`,
-  `naruto-idle.png` and `naruto-running.png`. Browser gameplay regression scenarios
-  cover combat, pickups, upgrades, pause and boss completion.
+## Final source-preservation correction
+The user rejected compressed pixel exports. Every new AI frame, weapon icon,
+grass tile and HUD panel now uses byte-identical original PNG copies in
+`public/assets/runtime` or its direct image path. Multi-atlas metadata handles
+virtual padding without changing image pixels. Tests compare both RGBA crops
+and entire runtime/source files. The old native-size/palette export policy is
+superseded. Existing reliable character locomotion remains unchanged.
 
-Human review is pending. Production deployment and other browsers were not tested.
-Vite still reports the existing large bundle warning.
-The default contact-sheet output failed to write with Windows `OSError 22`;
-the hero contact sheet was successfully exported to
-`output/naruto-preview/directions-contact-sheet.png` and inspected at 4x scale.
+## Original movement restoration
+Visible idle/walk now uses original PNGs via hero_locomotion, never32px palette-reduced exports.14 slots share12 original GPU pages; repeated idle holds reuse textures.56px occupied height and feet match action art. Legacy hero remains hidden, keeping its40px physical body and animation state. Source bytes and original provenance remain unchanged.

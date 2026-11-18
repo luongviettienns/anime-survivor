@@ -432,6 +432,146 @@
       "file": "vfx_death/poof/001.png",
       "prompt": "ONE dark enemy DEFEAT spirit-smoke VFX animation frame1, for slightly oblique topdown pixel survival game. Late dissipation: center EMPTY transparent, four disconnected thick angular plum-violet smoke curls drift outward and upward; small low broken crescent ground wisp. Sinister dark anime palette charcoal-violet outline, deep plum midtone, muted magenta highlights, tiny crimson accents. No white/cyan/gold/fire. Crisp hard pixel clusters, 3-4shades/material no blur/AA/softglow/gradients/dither/orphan speckles. Native56x56 export, centered complete effect generous TRANSPARENT margin, no body, blood, character, letters/text/grid/floor or spritesheet. Exactly one frame.",
       "sha256": "d114c4711db26ee0b34751cf560473266a288d8c9477f0e0fccb5aeb0462f686"
+    },
+    {
+      "file": "enemy/walk-side/000.png",
+      "prompt": "Edit the reference into EXACTLY ONE individual full-body WALK animation frame0 of the SAME original dark-anime game monster. CHANGE VIEW ONLY to RIGHT-facing side three-quarter profile, torso/face pointing east, both legs in short walk contact pose, see top of head/shoulders from overhead-oblique game camera; NOT a front view. Preserve identical outfit, mask/horns/hood/armor design, hair/cape, palette and chunky pixel-art technique of reference; character scale and body/head proportions unchanged. Feet same bottom-center anchor. Full figure including feet, hands, horns and cloth tips fully inside image with GENEROUS 12percent transparent margin on EVERY edge, no clipping. Original high-resolution PNG, keep detailed crisp pixel clusters; do not turn it into a tiny64px icon or crush palette. No aura, spell, weapon attack, ground, text, labels, grid or other figures. Exactly one frame not spritesheet.",
+      "sha256": "36bc06197f5d94c6a9cb2716190cdff82af73b6d4a60bd327a782d8d2de31628"
+    },
+    {
+      "file": "enemy/walk-up/000.png",
+      "prompt": "Edit the reference into EXACTLY ONE individual full-body WALK animation frame0 of the SAME original dark-anime game monster. CHANGE VIEW ONLY to BACK view facing north/away from viewer, back of head and shoulders/cape clearly visible, NO face or mask visible on the back; short walk contact pose. Preserve identical outfit, mask/horns/hood/armor design, hair/cape, palette and chunky pixel-art technique of reference; character scale and body/head proportions unchanged. Feet same bottom-center anchor. Full figure including feet, hands, horns and cloth tips fully inside image with GENEROUS 12percent transparent margin on EVERY edge, no clipping. Original high-resolution PNG, keep detailed crisp pixel clusters; do not turn it into a tiny64px icon or crush palette. No aura, spell, weapon attack, ground, text, labels, grid or other figures. Exactly one frame not spritesheet.",
+      "sha256": "01ef16e195152265504ff5403467307a98e47bcffeba9f6b3155eff969b61c19"
+    },
+    {
+      "file": "enemy_shade/walk-side/000.png",
+      "prompt": "Edit the reference into EXACTLY ONE individual full-body WALK animation frame0 of the SAME original dark-anime game monster. CHANGE VIEW ONLY to RIGHT-facing side three-quarter profile, torso/face pointing east, both legs in short walk contact pose, see top of head/shoulders from overhead-oblique game camera; NOT a front view. Preserve identical outfit, mask/horns/hood/armor design, hair/cape, palette and chunky pixel-art technique of reference; character scale and body/head proportions unchanged. Feet same bottom-center anchor. Full figure including feet, hands, horns and cloth tips fully inside image with GENEROUS 12percent transparent margin on EVERY edge, no clipping. Original high-resolution PNG, keep detailed crisp pixel clusters; do not turn it into a tiny64px icon or crush palette. No aura, spell, weapon attack, ground, text, labels, grid or other figures. Exactly one frame not spritesheet.",
+      "sha256": "ba1f41c5625c59de776f29dcb862c4956530a1cb3c86aa042a3087ffd6a6a990"
+    },
+    {
+      "file": "enemy_shade/walk-up/000.png",
+      "prompt": "Edit the reference into EXACTLY ONE individual full-body WALK animation frame0 of the SAME original dark-anime game monster. CHANGE VIEW ONLY to BACK view facing north/away from viewer, back of head and shoulders/cape clearly visible, NO face or mask visible on the back; short walk contact pose. Preserve identical outfit, mask/horns/hood/armor design, hair/cape, palette and chunky pixel-art technique of reference; character scale and body/head proportions unchanged. Feet same bottom-center anchor. Full figure including feet, hands, horns and cloth tips fully inside image with GENEROUS 12percent transparent margin on EVERY edge, no clipping. Original high-resolution PNG, keep detailed crisp pixel clusters; do not turn it into a tiny64px icon or crush palette. No aura, spell, weapon attack, ground, text, labels, grid or other figures. Exactly one frame not spritesheet.",
+      "sha256": "8dc70d41869a4bf88df9e03786d9715361e5bf13209aabcd9215ee7692d6b0c0"
+    },
+    {
+      "file": "enemy_mage/walk-side/000.png",
+      "prompt": "Edit the reference into EXACTLY ONE individual full-body WALK animation frame0 of the SAME original dark-anime game monster. CHANGE VIEW ONLY to RIGHT-facing side three-quarter profile, torso/face pointing east, both legs in short walk contact pose, see top of head/shoulders from overhead-oblique game camera; NOT a front view. Preserve identical outfit, mask/horns/hood/armor design, hair/cape, palette and chunky pixel-art technique of reference; character scale and body/head proportions unchanged. Feet same bottom-center anchor. Full figure including feet, hands, horns and cloth tips fully inside image with GENEROUS 12percent transparent margin on EVERY edge, no clipping. Original high-resolution PNG, keep detailed crisp pixel clusters; do not turn it into a tiny64px icon or crush palette. No aura, spell, weapon attack, ground, text, labels, grid or other figures. Exactly one frame not spritesheet.",
+      "sha256": "806c9ce935c41ea806a1633a5be5d5ffb6040a6edce2f4b76834070f42df2a0d"
+    },
+    {
+      "file": "enemy_mage/walk-up/000.png",
+      "prompt": "Edit the reference into EXACTLY ONE individual full-body WALK animation frame0 of the SAME original dark-anime game monster. CHANGE VIEW ONLY to BACK view facing north/away from viewer, back of head and shoulders/cape clearly visible, NO face or mask visible on the back; short walk contact pose. Preserve identical outfit, mask/horns/hood/armor design, hair/cape, palette and chunky pixel-art technique of reference; character scale and body/head proportions unchanged. Feet same bottom-center anchor. Full figure including feet, hands, horns and cloth tips fully inside image with GENEROUS 12percent transparent margin on EVERY edge, no clipping. Original high-resolution PNG, keep detailed crisp pixel clusters; do not turn it into a tiny64px icon or crush palette. No aura, spell, weapon attack, ground, text, labels, grid or other figures. Exactly one frame not spritesheet.",
+      "sha256": "c6147075f4bb50eb00cd15c4a58ffd608ded50051e654d8933f55d2b7eb5b194"
+    },
+    {
+      "file": "enemy_elite/walk-side/000.png",
+      "prompt": "Edit the reference into EXACTLY ONE individual full-body WALK animation frame0 of the SAME original dark-anime game monster. CHANGE VIEW ONLY to RIGHT-facing side three-quarter profile, torso/face pointing east, both legs in short walk contact pose, see top of head/shoulders from overhead-oblique game camera; NOT a front view. Preserve identical outfit, mask/horns/hood/armor design, hair/cape, palette and chunky pixel-art technique of reference; character scale and body/head proportions unchanged. Feet same bottom-center anchor. Full figure including feet, hands, horns and cloth tips fully inside image with GENEROUS 12percent transparent margin on EVERY edge, no clipping. Original high-resolution PNG, keep detailed crisp pixel clusters; do not turn it into a tiny64px icon or crush palette. No aura, spell, weapon attack, ground, text, labels, grid or other figures. Exactly one frame not spritesheet.",
+      "sha256": "5b45c376cea15506c884c18630f2b16b244442423756581e5f4f57c3ed7c70bc"
+    },
+    {
+      "file": "enemy_elite/walk-up/000.png",
+      "prompt": "Edit the reference into EXACTLY ONE individual full-body WALK animation frame0 of the SAME original dark-anime game monster. CHANGE VIEW ONLY to BACK view facing north/away from viewer, back of head and shoulders/cape clearly visible, NO face or mask visible on the back; short walk contact pose. Preserve identical outfit, mask/horns/hood/armor design, hair/cape, palette and chunky pixel-art technique of reference; character scale and body/head proportions unchanged. Feet same bottom-center anchor. Full figure including feet, hands, horns and cloth tips fully inside image with GENEROUS 12percent transparent margin on EVERY edge, no clipping. Original high-resolution PNG, keep detailed crisp pixel clusters; do not turn it into a tiny64px icon or crush palette. No aura, spell, weapon attack, ground, text, labels, grid or other figures. Exactly one frame not spritesheet.",
+      "sha256": "fd211d3f5210eb7735ce1d5ce30a7144e618d4e56394270cb01c4f4c01017dab"
+    },
+    {
+      "file": "boss/walk-side/000.png",
+      "prompt": "Edit the reference into EXACTLY ONE individual full-body WALK animation frame0 of the SAME original dark-anime game monster. CHANGE VIEW ONLY to RIGHT-facing side three-quarter profile, torso/face pointing east, both legs in short walk contact pose, see top of head/shoulders from overhead-oblique game camera; NOT a front view. Preserve identical outfit, mask/horns/hood/armor design, hair/cape, palette and chunky pixel-art technique of reference; character scale and body/head proportions unchanged. Feet same bottom-center anchor. Full figure including feet, hands, horns and cloth tips fully inside image with GENEROUS 12percent transparent margin on EVERY edge, no clipping. Original high-resolution PNG, keep detailed crisp pixel clusters; do not turn it into a tiny64px icon or crush palette. No aura, spell, weapon attack, ground, text, labels, grid or other figures. Exactly one frame not spritesheet.",
+      "sha256": "ecf27dee25317b79a117d7382599231b81c147fef004ea05c664526ae84e69b9"
+    },
+    {
+      "file": "boss/walk-up/000.png",
+      "prompt": "Edit the reference into EXACTLY ONE individual full-body WALK animation frame0 of the SAME original dark-anime game monster. CHANGE VIEW ONLY to BACK view facing north/away from viewer, back of head and shoulders/cape clearly visible, NO face or mask visible on the back; short walk contact pose. Preserve identical outfit, mask/horns/hood/armor design, hair/cape, palette and chunky pixel-art technique of reference; character scale and body/head proportions unchanged. Feet same bottom-center anchor. Full figure including feet, hands, horns and cloth tips fully inside image with GENEROUS 12percent transparent margin on EVERY edge, no clipping. Original high-resolution PNG, keep detailed crisp pixel clusters; do not turn it into a tiny64px icon or crush palette. No aura, spell, weapon attack, ground, text, labels, grid or other figures. Exactly one frame not spritesheet.",
+      "sha256": "a5a71ebb20734b45c24b6f0b7222bd7465e6945e1162d7ae635791bc5e6f76c6"
+    },
+    {
+      "file": "enemy_mage/cast-side/000.png",
+      "prompt": "Edit reference into ONE skill animation frame of the SAME monster, RIGHT-facing east oblique SIDE profile. CHARGE: one leading claw hand cupped near the chest/forward waist, other hand supports, fingers gather imaginary dark magic, feet planted. Keep exact reference identity/colors/outfit, head and body proportions, overhead-oblique game camera, fullbody scale/foot baseline. NO spell/orb/VFX baked in; palms must remain empty for separate effects. Preserve clear readable silhouette and generous transparent12percent margin around horns, cape, outstretched hands and feet. Original high-resolution pixel-art PNG matching reference, no tinyicon/downscaling, no text/grid/ground/extrafigures. Exactly ONE frame not spritesheet.",
+      "sha256": "77d4e24bf303eb4936389a402d6a7a45afef865b47de922efe05bfeaee714566"
+    },
+    {
+      "file": "enemy_mage/cast-side/001.png",
+      "prompt": "Edit reference into ONE skill animation frame of the SAME monster, RIGHT-facing east oblique SIDE profile. RELEASE: leading claw arm extends fully toward the facing direction, open palm clearly visible, other hand retreats, cloth follows through, stable planted feet. Keep exact reference identity/colors/outfit, head and body proportions, overhead-oblique game camera, fullbody scale/foot baseline. NO spell/orb/VFX baked in; palms must remain empty for separate effects. Preserve clear readable silhouette and generous transparent12percent margin around horns, cape, outstretched hands and feet. Original high-resolution pixel-art PNG matching reference, no tinyicon/downscaling, no text/grid/ground/extrafigures. Exactly ONE frame not spritesheet.",
+      "sha256": "0e2938e252bb7f963485f5c38a4d1fc89e6227b916012e4c368242d9e80d1523"
+    },
+    {
+      "file": "enemy_mage/cast-up/000.png",
+      "prompt": "Edit reference into ONE skill animation frame of the SAME monster, BACK view facing NORTH away from camera, no face/mask visible, show hands protruding at body sides. CHARGE: one leading claw hand cupped near the chest/forward waist, other hand supports, fingers gather imaginary dark magic, feet planted. Keep exact reference identity/colors/outfit, head and body proportions, overhead-oblique game camera, fullbody scale/foot baseline. NO spell/orb/VFX baked in; palms must remain empty for separate effects. Preserve clear readable silhouette and generous transparent12percent margin around horns, cape, outstretched hands and feet. Original high-resolution pixel-art PNG matching reference, no tinyicon/downscaling, no text/grid/ground/extrafigures. Exactly ONE frame not spritesheet.",
+      "sha256": "f2870de1a8792362d082a4bd1d259dc26d150b170d2e9024f3b03298561c2c43"
+    },
+    {
+      "file": "enemy_mage/cast-up/001.png",
+      "prompt": "Edit reference into ONE skill animation frame of the SAME monster, BACK view facing NORTH away from camera, no face/mask visible, show hands protruding at body sides. RELEASE: leading claw arm extends fully toward the facing direction, open palm clearly visible, other hand retreats, cloth follows through, stable planted feet. Keep exact reference identity/colors/outfit, head and body proportions, overhead-oblique game camera, fullbody scale/foot baseline. NO spell/orb/VFX baked in; palms must remain empty for separate effects. Preserve clear readable silhouette and generous transparent12percent margin around horns, cape, outstretched hands and feet. Original high-resolution pixel-art PNG matching reference, no tinyicon/downscaling, no text/grid/ground/extrafigures. Exactly ONE frame not spritesheet.",
+      "sha256": "330bd7a6f9d17c289d5cceec0d4ed71b73b15d8491c61f1513157febb92ddf9e"
+    },
+    {
+      "file": "boss/cast-side/000.png",
+      "prompt": "Edit reference into ONE skill animation frame of the SAME monster, RIGHT-facing east oblique SIDE profile. CHARGE: both heavy gauntlets bend inward near waist, elbows back, shoulders tense, weight planted. Keep exact reference identity/colors/outfit, head and body proportions, overhead-oblique game camera, fullbody scale/foot baseline. NO spell/orb/VFX baked in; palms must remain empty for separate effects. Preserve clear readable silhouette and generous transparent12percent margin around horns, cape, outstretched hands and feet. Original high-resolution pixel-art PNG matching reference, no tinyicon/downscaling, no text/grid/ground/extrafigures. Exactly ONE frame not spritesheet.",
+      "sha256": "399e2c870d022837d617121d7156f84dd5420685fdc1c08d40af99ba72aec326"
+    },
+    {
+      "file": "boss/cast-side/001.png",
+      "prompt": "Edit reference into ONE skill animation frame of the SAME monster, RIGHT-facing east oblique SIDE profile. RADIAL RELEASE: both heavy gauntlets spread clearly out to the sides, open palms visible, armored chest remains clearly exposed, cape follows behind, planted wide stance. Keep exact reference identity/colors/outfit, head and body proportions, overhead-oblique game camera, fullbody scale/foot baseline. NO spell/orb/VFX baked in; palms must remain empty for separate effects. Preserve clear readable silhouette and generous transparent12percent margin around horns, cape, outstretched hands and feet. Original high-resolution pixel-art PNG matching reference, no tinyicon/downscaling, no text/grid/ground/extrafigures. Exactly ONE frame not spritesheet.",
+      "sha256": "6da7b91aae1cc5be64f508c15f81a9847314bf2e01a9068caa69d78d0f191941"
+    },
+    {
+      "file": "boss/cast-up/000.png",
+      "prompt": "Edit reference into ONE skill animation frame of the SAME monster, BACK view facing NORTH away from camera, no face/mask visible, show hands protruding at body sides. CHARGE: both heavy gauntlets bend inward near waist, elbows back, shoulders tense, weight planted. Keep exact reference identity/colors/outfit, head and body proportions, overhead-oblique game camera, fullbody scale/foot baseline. NO spell/orb/VFX baked in; palms must remain empty for separate effects. Preserve clear readable silhouette and generous transparent12percent margin around horns, cape, outstretched hands and feet. Original high-resolution pixel-art PNG matching reference, no tinyicon/downscaling, no text/grid/ground/extrafigures. Exactly ONE frame not spritesheet.",
+      "sha256": "1745e8a74a7fc56e00e68d034c3e73e9f81e8924546792a232586ba4bcc86e4a"
+    },
+    {
+      "file": "boss/cast-up/001.png",
+      "prompt": "Edit reference into ONE skill animation frame of the SAME monster, BACK view facing NORTH away from camera, no face/mask visible, show hands protruding at body sides. RADIAL RELEASE: both heavy gauntlets spread clearly out to the sides, open palms visible, armored chest remains clearly exposed, cape follows behind, planted wide stance. Keep exact reference identity/colors/outfit, head and body proportions, overhead-oblique game camera, fullbody scale/foot baseline. NO spell/orb/VFX baked in; palms must remain empty for separate effects. Preserve clear readable silhouette and generous transparent12percent margin around horns, cape, outstretched hands and feet. Original high-resolution pixel-art PNG matching reference, no tinyicon/downscaling, no text/grid/ground/extrafigures. Exactly ONE frame not spritesheet.",
+      "sha256": "a2059396d3dd29a1e7ad01bec88017f1d90159f4a916cac8e927695e275afe9d"
+    },
+    {
+      "file": "enemy/walk-side/001.png",
+      "prompt": "Edit THIS EXACT directional monster reference into ONE next WALK animation frame1. Maintain the exact RIGHT-facing oblique side profile facing east view, outfit, anatomy/proportions, headsize, palette, camera overhead angle, character scale and transparent margins. Change ONLY gait: opposite foot now contacts ground, opposite knee lifts subtly, counter-swing arms, cloak/scarf follows through slightly. Smooth short restrained stride, not attack. Keep foot baseline and head height stable. Full figure with ALL cloth tips/horns/hands/feet safely inside image, generous transparent margin. Original high-resolution crisp pixel art matching reference, no downscale or reduced palette, no aura/ground/spell/labels/grid/text. Exactly ONE individual frame, not sheet.",
+      "sha256": "9e0b89e5f8260fab135876b449d35c8a84942ee0c49eef88ac7aa2b7148239a4"
+    },
+    {
+      "file": "enemy/walk-up/001.png",
+      "prompt": "Edit THIS EXACT directional monster reference into ONE next WALK animation frame1. Maintain the exact BACK facing north away from camera, NO face or eyes visible view, outfit, anatomy/proportions, headsize, palette, camera overhead angle, character scale and transparent margins. Change ONLY gait: opposite foot now contacts ground, opposite knee lifts subtly, counter-swing arms, cloak/scarf follows through slightly. Smooth short restrained stride, not attack. Keep foot baseline and head height stable. Full figure with ALL cloth tips/horns/hands/feet safely inside image, generous transparent margin. Original high-resolution crisp pixel art matching reference, no downscale or reduced palette, no aura/ground/spell/labels/grid/text. Exactly ONE individual frame, not sheet.",
+      "sha256": "a3eed83a2d4282cf70105cd86abb6c742b1dc9d98cd096a7918e865ad8ceafd0"
+    },
+    {
+      "file": "enemy_shade/walk-side/001.png",
+      "prompt": "Edit THIS EXACT directional monster reference into ONE next WALK animation frame1. Maintain the exact RIGHT-facing oblique side profile facing east view, outfit, anatomy/proportions, headsize, palette, camera overhead angle, character scale and transparent margins. Change ONLY gait: opposite foot now contacts ground, opposite knee lifts subtly, counter-swing arms, cloak/scarf follows through slightly. Smooth short restrained stride, not attack. Keep foot baseline and head height stable. Full figure with ALL cloth tips/horns/hands/feet safely inside image, generous transparent margin. Original high-resolution crisp pixel art matching reference, no downscale or reduced palette, no aura/ground/spell/labels/grid/text. Exactly ONE individual frame, not sheet.",
+      "sha256": "2a794f0b99fdb34a0cebb70685f6cbf9b88029fbd645fe7cfe7fe00b37939090"
+    },
+    {
+      "file": "enemy_shade/walk-up/001.png",
+      "prompt": "Edit THIS EXACT directional monster reference into ONE next WALK animation frame1. Maintain the exact BACK facing north away from camera, NO face or eyes visible view, outfit, anatomy/proportions, headsize, palette, camera overhead angle, character scale and transparent margins. Change ONLY gait: opposite foot now contacts ground, opposite knee lifts subtly, counter-swing arms, cloak/scarf follows through slightly. Smooth short restrained stride, not attack. Keep foot baseline and head height stable. Full figure with ALL cloth tips/horns/hands/feet safely inside image, generous transparent margin. Original high-resolution crisp pixel art matching reference, no downscale or reduced palette, no aura/ground/spell/labels/grid/text. Exactly ONE individual frame, not sheet.",
+      "sha256": "18f58bb4ed0145571ef7cbd5a15a926a0f1cd49ad470fa7a080675b1744c023c"
+    },
+    {
+      "file": "enemy_mage/walk-side/001.png",
+      "prompt": "Edit THIS EXACT directional monster reference into ONE next WALK animation frame1. Maintain the exact RIGHT-facing oblique side profile facing east view, outfit, anatomy/proportions, headsize, palette, camera overhead angle, character scale and transparent margins. Change ONLY gait: opposite foot now contacts ground, opposite knee lifts subtly, counter-swing arms, cloak/scarf follows through slightly. Smooth short restrained stride, not attack. Keep foot baseline and head height stable. Full figure with ALL cloth tips/horns/hands/feet safely inside image, generous transparent margin. Original high-resolution crisp pixel art matching reference, no downscale or reduced palette, no aura/ground/spell/labels/grid/text. Exactly ONE individual frame, not sheet.",
+      "sha256": "dd5f78199bbbaff8b11b2150d90acede66cf19f1f1bb5ab7396e31186c0c3bdb"
+    },
+    {
+      "file": "enemy_mage/walk-up/001.png",
+      "prompt": "Edit THIS EXACT directional monster reference into ONE next WALK animation frame1. Maintain the exact BACK facing north away from camera, NO face or eyes visible view, outfit, anatomy/proportions, headsize, palette, camera overhead angle, character scale and transparent margins. Change ONLY gait: opposite foot now contacts ground, opposite knee lifts subtly, counter-swing arms, cloak/scarf follows through slightly. Smooth short restrained stride, not attack. Keep foot baseline and head height stable. Full figure with ALL cloth tips/horns/hands/feet safely inside image, generous transparent margin. Original high-resolution crisp pixel art matching reference, no downscale or reduced palette, no aura/ground/spell/labels/grid/text. Exactly ONE individual frame, not sheet.",
+      "sha256": "c4aa0b477c68d754b4012ac620e42fe9b8305ecb6406faa8ea33a1008bcd17bb"
+    },
+    {
+      "file": "enemy_elite/walk-side/001.png",
+      "prompt": "Edit THIS EXACT directional monster reference into ONE next WALK animation frame1. Maintain the exact RIGHT-facing oblique side profile facing east view, outfit, anatomy/proportions, headsize, palette, camera overhead angle, character scale and transparent margins. Change ONLY gait: opposite foot now contacts ground, opposite knee lifts subtly, counter-swing arms, cloak/scarf follows through slightly. Smooth short restrained stride, not attack. Keep foot baseline and head height stable. Full figure with ALL cloth tips/horns/hands/feet safely inside image, generous transparent margin. Original high-resolution crisp pixel art matching reference, no downscale or reduced palette, no aura/ground/spell/labels/grid/text. Exactly ONE individual frame, not sheet.",
+      "sha256": "e60f26848f6d4ff59e1827af1136089a039d5de292839f1eedfdf0c9bf719444"
+    },
+    {
+      "file": "enemy_elite/walk-up/001.png",
+      "prompt": "Edit THIS EXACT directional monster reference into ONE next WALK animation frame1. Maintain the exact BACK facing north away from camera, NO face or eyes visible view, outfit, anatomy/proportions, headsize, palette, camera overhead angle, character scale and transparent margins. Change ONLY gait: opposite foot now contacts ground, opposite knee lifts subtly, counter-swing arms, cloak/scarf follows through slightly. Smooth short restrained stride, not attack. Keep foot baseline and head height stable. Full figure with ALL cloth tips/horns/hands/feet safely inside image, generous transparent margin. Original high-resolution crisp pixel art matching reference, no downscale or reduced palette, no aura/ground/spell/labels/grid/text. Exactly ONE individual frame, not sheet.",
+      "sha256": "63b6dbfa5eb51dfaea3e18f7ad5c3a40aa329f23750537ab797a3983d737eea6"
+    },
+    {
+      "file": "boss/walk-side/001.png",
+      "prompt": "Edit THIS EXACT directional monster reference into ONE next WALK animation frame1. Maintain the exact RIGHT-facing oblique side profile facing east view, outfit, anatomy/proportions, headsize, palette, camera overhead angle, character scale and transparent margins. Change ONLY gait: opposite foot now contacts ground, opposite knee lifts subtly, counter-swing arms, cloak/scarf follows through slightly. Smooth short restrained stride, not attack. Keep foot baseline and head height stable. Full figure with ALL cloth tips/horns/hands/feet safely inside image, generous transparent margin. Original high-resolution crisp pixel art matching reference, no downscale or reduced palette, no aura/ground/spell/labels/grid/text. Exactly ONE individual frame, not sheet.",
+      "sha256": "55a880e23aacb341ef97585b3ed8b05a57b563e7e7634eeae22b6598f63a6c02"
+    },
+    {
+      "file": "boss/walk-up/001.png",
+      "prompt": "Edit THIS EXACT directional monster reference into ONE next WALK animation frame1. Maintain the exact BACK facing north away from camera, NO face or eyes visible view, outfit, anatomy/proportions, headsize, palette, camera overhead angle, character scale and transparent margins. Change ONLY gait: opposite foot now contacts ground, opposite knee lifts subtly, counter-swing arms, cloak/scarf follows through slightly. Smooth short restrained stride, not attack. Keep foot baseline and head height stable. Full figure with ALL cloth tips/horns/hands/feet safely inside image, generous transparent margin. Original high-resolution crisp pixel art matching reference, no downscale or reduced palette, no aura/ground/spell/labels/grid/text. Exactly ONE individual frame, not sheet.",
+      "sha256": "40e2d7607bf82a2bde404e4993f3a303ec64a6baeed4d0ea296fab161b21ec7c"
     }
   ]
 }

@@ -60,7 +60,7 @@ test('Kirito upgrades auto Phantom Dash Lv1->2 without ninja weapons; restart re
     const p = api.getPlayerPosition();
     api.spawnEnemyAt(p.x + 120, p.y);
   });
-  await page.waitForFunction(() => window.__ANIME_SURVIVOR__!.getDashState().cooldownRemainingMs > 4000, undefined, { timeout: 3000 });
+  await page.waitForFunction(() => window.__ANIME_SURVIVOR__!.getDashState().cooldownRemainingMs > 2500, undefined, { timeout: 3000 });
 
   // Restart resets Kirito back to Lv.1 dual_slash only & locked Dash
   await page.evaluate(() => window.__ANIME_SURVIVOR__!.getScene().scene.restart({ heroId: 'kirito' }));

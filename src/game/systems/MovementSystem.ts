@@ -43,17 +43,31 @@ export class MovementSystem {
       this.knockbackRemaining -= deltaMs;
       this.player.setVelocity(this.knockback.x, this.knockback.y); return;
     }
-    const inputX =
-      Number(this.arrows.right.isDown || this.wasd.D.isDown) -
-      Number(this.arrows.left.isDown || this.wasd.A.isDown);
-    const inputY =
-      Number(this.arrows.down.isDown || this.wasd.S.isDown) -
-      Number(this.arrows.up.isDown || this.wasd.W.isDown);
+    const { x: inputX, y: inputY } = this.getInputDirection();
     const velocity = movementVelocity({ x: inputX, y: inputY }, this.baseSpeedPxSec + speedBonusPxSec);
     this.player.setVelocity(velocity.x, velocity.y);
     const moving = velocity.x !== 0 || velocity.y !== 0;
     this.facing = movementFacing({ x: inputX, y: inputY }, this.facing);
     this.animate(moving);
+  }
+
+  getInputDirection(): { x: number; y: number } {
+    return {
+      x: Number(this.arrows.right.isDown || this.wasd.D.isDown) - Number(this.arrows.left.isDown || this.wasd.A.isDown),
+      y: Number(this.arrows.down.isDown || this.wasd.S.isDown) - Number(this.arrows.up.isDown || this.wasd.W.isDown),
+    };
+  }
+
+  getFacingDirection(): { x: number; y: number } {
+    if (this.facing === 'left') return { x: -1, y: 0 };
+    if (this.facing === 'right') return { x: 1, y: 0 };
+    if (this.facing === 'up') return { x: 0, y: -1 };
+    return { x: 0, y: 1 };
+  }
+
+  syncDashVisual(): void {
+    this.animate(true);
+    this.actionVisual.update();
   }
 
   applyKnockback(direction: { x: number; y: number }, speed: number): void {

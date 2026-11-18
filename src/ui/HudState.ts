@@ -11,6 +11,7 @@ export type HudStateDto = {
   weapons?: WeaponInventory;
   passives?: PassiveStats;
   bossHp?: { hp: number; maxHp: number; name: string } | null;
+  dashCooldownMs?: number;
 };
 
 export function formatPassives(stats?: PassiveStats): string {

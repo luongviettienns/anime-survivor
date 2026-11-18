@@ -16,6 +16,7 @@ import { EnemySystem } from '../systems/EnemySystem';
 import { GroundShadows } from '../systems/GroundShadows';
 import { InfiniteMapSystem } from '../systems/InfiniteMapSystem';
 import { MovementSystem } from '../systems/MovementSystem';
+import { PhantomDashSystem } from '../systems/PhantomDashSystem';
 import { PickupSystem } from '../systems/PickupSystem';
 import { VfxSystem } from '../systems/VfxSystem';
 import { WeaponSystem } from '../systems/WeaponSystem';
@@ -35,6 +36,7 @@ export class GameScene extends Phaser.Scene {
   private audio!: AudioSystem;
   private shadows!: GroundShadows;
   private hud!: HudOverlay;
+  private phantomDash?: PhantomDashSystem;
   private spawnTimer?: Phaser.Time.TimerEvent;
   private heroConfig: HeroConfig = getHeroConfig('naruto');
   private progression: RunProgression = createProgression();
@@ -71,14 +73,21 @@ export class GameScene extends Phaser.Scene {
     this.damage = new DamageSystem(this.player, this.heroConfig.maxHp, this.heroConfig.armor, this.heroConfig.invulnerabilityMs);
     this.pickups = new PickupSystem(this);
     this.hud = new HudOverlay(this, this.heroConfig.id); this.shadows = new GroundShadows(this, this.player, this.enemies.group, this.pickups.group);
+    this.phantomDash = this.heroConfig.id === 'kirito'
+      ? new PhantomDashSystem(this, this.player, this.vfx, (s, x, a) => this.movement.playSkill(s, x, a), (c) => this.onCombat(c))
+      : undefined;
     this.physics.add.overlap(this.weapon.projectiles, this.enemies.group, (a, b) => this.weapon.handleProjectileHit(a as Phaser.GameObjects.GameObject, b as Phaser.GameObjects.GameObject));
     this.physics.add.overlap(this.player, this.enemies.group, (_p, e) => this.onPlayerEnemyContact(e));
     this.physics.add.overlap(this.player, this.pickups.group, (_p, item) => this.onPlayerPickup(item));
     this.spawnTimer = this.time.addEvent({ delay: 60_000, loop: true });
     const onPauseKey = (ev?: KeyboardEvent) => this.handlePauseKey(ev?.timeStamp);
-    this.input.keyboard?.on('keydown-ESC', onPauseKey); this.input.keyboard?.on('keydown-P', onPauseKey);
-    this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => { this.input.keyboard?.off('keydown-ESC', onPauseKey); this.input.keyboard?.off('keydown-P', onPauseKey); this.cleanup(); });
-    registerGameDebugApi(this, this.player, this.damage, this.enemies, this.weapon, this.pickups, this.vfx, this.audio, this.map, () => ({ ...this.progression, defeated: this.defeated }));
+    const onDashKey = () => this.tryPhantomDash();
+    const kb = this.input.keyboard;
+    kb?.on('keydown-ESC', onPauseKey); kb?.on('keydown-P', onPauseKey); kb?.on('keydown-SPACE', onDashKey); kb?.on('keydown-SHIFT', onDashKey);
+    this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
+      kb?.off('keydown-ESC', onPauseKey); kb?.off('keydown-P', onPauseKey); kb?.off('keydown-SPACE', onDashKey); kb?.off('keydown-SHIFT', onDashKey); this.cleanup();
+    });
+    registerGameDebugApi(this, this.player, this.damage, this.enemies, this.weapon, this.pickups, this.vfx, this.audio, this.map, () => ({ ...this.progression, defeated: this.defeated }), this.phantomDash);
     this.updateHud();
   }
   update(_now: number, delta: number): void {
@@ -86,7 +95,9 @@ export class GameScene extends Phaser.Scene {
     this.elapsed += delta / 1000;
     if (this.elapsed >= WORLD.runDurationSec) this.enemies.ensureBossSpawned();
     if (!this.spawnTimer?.paused) this.enemies.stepWaves(delta, this.elapsed, this.player.body?.velocity);
-    this.movement.update(true, this.passives.moveSpeedBonusPxSec, delta);
+    const dashing = this.phantomDash?.update(this.time.now, this.passives, this.enemies,
+      (x, y, dmg, killed, crit) => this.onCombat('hit', x, y, dmg, killed, crit), (x, y, arch, xp) => this.onEnemyKilled(x, y, arch, xp)) ?? false;
+    if (dashing) this.movement.syncDashVisual(); else this.movement.update(true, this.passives.moveSpeedBonusPxSec, delta);
     this.map.update(this.player.x, this.player.y);
     this.enemies.update(false, (dmg, impact) => this.applyPlayerHit(dmg, impact), delta, (bx, by, dmg, killed, arch, xp) => {
       this.onCombat('hit', bx, by, dmg, killed);
@@ -174,11 +185,15 @@ export class GameScene extends Phaser.Scene {
     this.running = false; this.movement.update(false); this.enemies.update(true);
     this.scene.start('GameOverScene', { victory, score: this.defeated, survivalSec: Math.floor(this.elapsed), heroId: this.heroConfig.id });
   }
+  tryPhantomDash(): boolean {
+    if (!this.phantomDash || !this.running || !this.damage.state.alive || this.isPaused() || this.scene.isActive('UpgradeScene')) return false;
+    return this.phantomDash.tryTrigger(this.time.now, this.movement.getInputDirection(), this.movement.getFacingDirection(), this.passives, this.damage.state);
+  }
   private cleanup(): void {
     this.running = false; this.spawnTimer?.remove(false);
     if (this.scene.isActive('UpgradeScene')) this.scene.stop('UpgradeScene');
     if (this.scene.isActive('PauseScene')) this.scene.stop('PauseScene');
-    this.weapon.clear(); this.enemies.clear(); this.pickups.clear(); this.vfx.clear(); this.map.clear(); this.hud.destroy(); this.shadows.clear();
+    this.phantomDash?.clear(); this.weapon.clear(); this.enemies.clear(); this.pickups.clear(); this.vfx.clear(); this.map.clear(); this.hud.destroy(); this.shadows.clear();
   }
-  private updateHud(): void { this.hud.update({ player: this.damage.state, progression: this.progression, elapsedSec: this.elapsed, defeated: this.defeated, weapons: this.weapon.inventory, passives: this.passives, bossHp: this.enemies.getActiveBossState() }); }
+  private updateHud(): void { this.hud.update({ player: this.damage.state, progression: this.progression, elapsedSec: this.elapsed, defeated: this.defeated, weapons: this.weapon.inventory, passives: this.passives, bossHp: this.enemies.getActiveBossState(), dashCooldownMs: this.phantomDash?.getCooldownRemainingMs(this.time.now) }); }
 }

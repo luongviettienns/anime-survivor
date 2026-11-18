@@ -25,6 +25,7 @@ export const DUAL_ELEMENT_CLIPS: readonly ClipSpec[] = [
 
 export const KIRITO_WORLD_SCALE = 0.045;
 export const KIRITO_ORIGIN_Y = 1536 / 1792;
+export const PHANTOM_DASH_ANIM_KEY = 'kirito-phantom-dash';
 
 export function preloadDualElementAssets(scene: Phaser.Scene): void {
   for (const clip of DUAL_ELEMENT_CLIPS) {

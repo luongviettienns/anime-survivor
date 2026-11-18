@@ -8,6 +8,7 @@ import type { AudioSystem, SoundCue } from './AudioSystem';
 import type { DamageSystem } from './DamageSystem';
 import type { EnemySystem } from './EnemySystem';
 import type { InfiniteMapSystem } from './InfiniteMapSystem';
+import type { PhantomDashSystem } from './PhantomDashSystem';
 import type { PickupSystem } from './PickupSystem';
 import { loadSaveData } from './StorageSystem';
 import type { VfxSystem } from './VfxSystem';
@@ -47,6 +48,7 @@ export type GameDebugApi = {
   spawnHealAt: (x: number, y: number, amount?: number) => void;
   setWeaponLevel: (id: WeaponId, level: number) => void;
   getEnemyStatuses: () => Array<{ id: number; hp: number; slowActive: boolean; burnActive: boolean }>;
+  getDashState: () => { enabled: boolean; dashing: boolean; cooldownRemainingMs: number };
   clearEnemies: () => void;
 };
 
@@ -66,7 +68,8 @@ export function registerGameDebugApi(
   vfx: VfxSystem,
   audio: AudioSystem,
   map: InfiniteMapSystem,
-  getProgression: () => RunProgression & { defeated: number }
+  getProgression: () => RunProgression & { defeated: number },
+  phantomDash?: PhantomDashSystem
 ): void {
   window.__ANIME_SURVIVOR__ = {
     getScene: () => scene,
@@ -137,6 +140,11 @@ export function registerGameDebugApi(
           };
         });
     },
+    getDashState: () => ({
+      enabled: Boolean(phantomDash),
+      dashing: phantomDash?.isDashing() ?? false,
+      cooldownRemainingMs: phantomDash ? phantomDash.getCooldownRemainingMs(scene.time.now) : 0,
+    }),
     clearEnemies: () => {
       enemies.group.clear(true, true);
       enemies.enemyProjectiles.clear(true, true);

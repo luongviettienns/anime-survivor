@@ -25,6 +25,7 @@ export class HudOverlay {
   private readonly kills: Phaser.GameObjects.Text;
   private readonly passives: Phaser.GameObjects.Text;
   private readonly controls: Phaser.GameObjects.Text;
+  private readonly dashBadge: Phaser.GameObjects.Text;
   private readonly bossText: Phaser.GameObjects.Text;
   private readonly icons = {} as Record<WeaponId,Phaser.GameObjects.Image>;
   private readonly badges = {} as Record<WeaponId,Phaser.GameObjects.Text>;
@@ -48,7 +49,8 @@ export class HudOverlay {
     this.timer = text(l.center,54,20,'#fff0c0').setOrigin(0.5).setData('hud-timer',true);
     this.kills = text(l.right-12,52,14,'#9beaff').setOrigin(1,0.5).setData('hud-kills',true);
     this.passives = text(310,92,12,'#d8c6ff');
-    this.controls = text(l.right,82,11,'#abc1dc').setOrigin(1,0).setText('WASD/Arrows | ESC Pause');
+    this.controls = text(l.right,82,11,'#abc1dc').setOrigin(1,0).setText(heroId === 'kirito' ? 'WASD/Arrows | SPACE Dash | ESC Pause' : 'WASD/Arrows | ESC Pause');
+    this.dashBadge = text(l.right,98,12,'#5ce1e6').setOrigin(1,0).setVisible(heroId === 'kirito');
     this.bossText = text(l.center,l.boss.y-18,15,'#ffe4e6').setOrigin(0.5).setVisible(false).setData('hud-boss-title',true);
     for (const slot of SLOTS) {
       this.icons[slot.id] = scene.add.image(0,95,slot.icon).setDisplaySize(22,22).setScrollFactor(0).setDepth(Z+2).setVisible(false);
@@ -57,8 +59,8 @@ export class HudOverlay {
   }
 
   update(dto: HudStateDto): void {
-    const w=dto.weapons,p=dto.passives,b=dto.bossHp;
-    const key=`${dto.player.hp}/${dto.player.maxHp}|${dto.progression.level}:${dto.progression.xp}|${Math.floor(dto.elapsedSec)}|${dto.defeated}|${w?`${w.orb},${w.dual_slash},${w.slash},${w.orbital},${w.mine}`:''}|${p?`${p.damageReduction},${p.damageBonus},${p.cooldownReductionMs},${p.moveSpeedBonusPxSec},${p.heavyStrikeEvery},${p.heavyStrikeBonus}`:''}|${b?`${b.name}:${b.hp}/${b.maxHp}`:''}`;
+    const w=dto.weapons,p=dto.passives,b=dto.bossHp,dashTenths=dto.dashCooldownMs===undefined?-1:Math.ceil(dto.dashCooldownMs/100);
+    const key=`${dto.player.hp}/${dto.player.maxHp}|${dto.progression.level}:${dto.progression.xp}|${Math.floor(dto.elapsedSec)}|${dto.defeated}|${dashTenths}|${w?`${w.orb},${w.dual_slash},${w.slash},${w.orbital},${w.mine}`:''}|${p?`${p.damageReduction},${p.damageBonus},${p.cooldownReductionMs},${p.moveSpeedBonusPxSec},${p.heavyStrikeEvery},${p.heavyStrikeBonus}`:''}|${b?`${b.name}:${b.hp}/${b.maxHp}`:''}`;
     if (key===this.lastKey) return;
     this.lastKey=key;
     const reqXp=Math.max(1,xpThreshold(dto.progression.level)),l=this.layout;
@@ -81,6 +83,10 @@ export class HudOverlay {
       summary.push(`${slot.label} Lv${level}`);
     }
     this.passives.setText(formatPassives(dto.passives));
+    if (this.dashBadge.visible && dto.dashCooldownMs !== undefined) {
+      this.dashBadge.setText(dto.dashCooldownMs <= 0 ? 'PHANTOM DASH [READY]' : `PHANTOM DASH [${(dto.dashCooldownMs / 1000).toFixed(1)}s]`)
+        .setColor(dto.dashCooldownMs <= 0 ? '#5ce1e6' : '#94a3b8');
+    }
     this.bossText.setVisible(Boolean(b&&b.hp>0));
     if (b&&b.hp>0) this.bossText.setText(`${b.name}  ${b.hp}/${b.maxHp}${b.hp/b.maxHp<=0.5?' [ENRAGED]':''}`);
     this.status=`ANIME SURVIVOR | HP ${dto.player.hp}/${dto.player.maxHp} | LVL ${dto.progression.level} XP ${dto.progression.xp}/${reqXp}\nTIME ${min}:${sec} | KILLS ${dto.defeated} | ${summary.join('  ')||'ORB Lv1'}`;
@@ -88,7 +94,7 @@ export class HudOverlay {
   getStatusText(): string { return this.bossText.visible?`${this.status}\n${this.bossText.text}`:this.status; }
   destroy(): void {
     this.gauges.destroy();this.chrome.destroy();this.portrait.destroy();this.heart.destroy();
-    for (const label of [this.hpLabel,this.lvlLabel,this.timer,this.kills,this.passives,this.controls,this.bossText]) label.destroy();
+    for (const label of [this.hpLabel,this.lvlLabel,this.timer,this.kills,this.passives,this.controls,this.dashBadge,this.bossText]) label.destroy();
     for (const slot of SLOTS) {this.icons[slot.id].destroy();this.badges[slot.id].destroy();}
   }
 }

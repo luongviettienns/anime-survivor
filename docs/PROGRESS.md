@@ -239,3 +239,10 @@ Asset-only validation passed:5 retained source hashes unchanged;5 runtime PNG si
 - Integrated all 13 public/assets/dual-element/*.atlas.json animations and status VFX loops/endings (src/game/config/dualElementAssets.ts, HeroActionVisual.ts, DualElementSystem.ts, EnemyStatusVisuals.ts, EnemySystem.ts).
 - Verified via 
 pm run verify (67/67 Vitest unit tests, TypeScript, ESLint, architecture guard, sprite validation, Vite build) and 20 Playwright E2E tests across kirito.spec.ts, lobby.spec.ts, game.spec.ts, alance-drops.spec.ts, rcane-ui.spec.ts, damage-popup-motion.spec.ts, hero-animation.spec.ts, skill-animation.spec.ts + visual inspection of Lobby & Lv.1/Lv.3/Lv.5 screenshots.
+
+## Kirito Phantom Dash logic (feat/kirito-dual-element) — 2026-11-18
+- Implemented pure src/domain/phantomDash.ts (Space/Shift trigger, 220px ease-out dash over 180ms, 500ms i-frame, 8000ms cooldown floored at 3500ms with CD reduction, 55 flat dmg + 15 status synergy bonus on segment-circle sweep, 160 px/s knockback).
+- Added src/game/systems/PhantomDashSystem.ts with pooled cyan/purple afterimages, status-synergy impact VFX, and ready-to-plug PHANTOM_DASH_ANIM_KEY = 'kirito-phantom-dash' hook in dualElementAssets.ts.
+- Wired MovementSystem, HudOverlay/HudState, GameScene, and DebugBridge (getDashState).
+- Verified via 
+pm run verify (16 files / 70 Vitest tests, TS, ESLint, check-architecture, sprite validation, build) and Playwright kirito.spec.ts + lobby.spec.ts + visual check of 	est-results/kirito-phantom-dash.png.

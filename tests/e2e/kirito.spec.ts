@@ -111,5 +111,29 @@ test('Kirito unlocked lobby launch, high-defense stats, and Lv1/Lv3/Lv5 Dual Ele
     }, undefined, { timeout: 2500 });
   }
 
+  // Verify Phantom Dash: Space dashes ~220px along move dir, kills/damages slimes on path, and enters cooldown
+  expect(await page.evaluate(() => window.__ANIME_SURVIVOR__!.getDashState())).toMatchObject({ enabled: true, dashing: false, cooldownRemainingMs: 0 });
+  const dashBefore = await page.evaluate(() => {
+    window.__ANIME_SURVIVOR__!.clearEnemies();
+    const p = window.__ANIME_SURVIVOR__!.getPlayerPosition();
+    window.__ANIME_SURVIVOR__!.spawnEnemyAt(p.x + 90, p.y);
+    window.__ANIME_SURVIVOR__!.spawnEnemyAt(p.x + 170, p.y);
+    return p;
+  });
+  await page.keyboard.down('d');
+  await page.keyboard.press('Space');
+  await page.waitForTimeout(120);
+  await page.screenshot({ path: 'test-results/kirito-phantom-dash.png' });
+  await page.waitForTimeout(150);
+  await page.keyboard.up('d');
+  const dashAfter = await page.evaluate(() => ({
+    pos: window.__ANIME_SURVIVOR__!.getPlayerPosition(),
+    dash: window.__ANIME_SURVIVOR__!.getDashState(),
+    remaining: window.__ANIME_SURVIVOR__!.getEnemyStatuses().length,
+  }));
+  expect(dashAfter.pos.x - dashBefore.x).toBeGreaterThanOrEqual(195);
+  expect(dashAfter.remaining).toBe(0);
+  expect(dashAfter.dash.cooldownRemainingMs).toBeGreaterThan(5000);
+
   expect(errors).toEqual([]);
 });

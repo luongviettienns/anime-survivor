@@ -1,0 +1,148 @@
+{
+  "textures": [
+    {
+      "image": "spin-000.png",
+      "frames": [
+        {
+          "filename": "0",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 157,
+            "h": 157
+          },
+          "spriteSourceSize": {
+            "x": 50,
+            "y": 50,
+            "w": 157,
+            "h": 157
+          },
+          "sourceSize": {
+            "w": 256,
+            "h": 256
+          },
+          "animation": "spin",
+          "poseIndex": 0,
+          "opaqueHeight": 136.125,
+          "displayScale": 0.35,
+          "opaqueBounds": [
+            57.375,
+            59.75,
+            195.875,
+            195.875
+          ]
+        }
+      ]
+    },
+    {
+      "image": "spin-001.png",
+      "frames": [
+        {
+          "filename": "1",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 157,
+            "h": 157
+          },
+          "spriteSourceSize": {
+            "x": 50,
+            "y": 50,
+            "w": 157,
+            "h": 157
+          },
+          "sourceSize": {
+            "w": 256,
+            "h": 256
+          },
+          "animation": "spin",
+          "poseIndex": 1,
+          "opaqueHeight": 143.375,
+          "displayScale": 0.35,
+          "opaqueBounds": [
+            54.0,
+            56.375,
+            202.125,
+            199.75
+          ]
+        }
+      ]
+    },
+    {
+      "image": "hit-000.png",
+      "frames": [
+        {
+          "filename": "2",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 192,
+            "h": 128
+          },
+          "spriteSourceSize": {
+            "x": 32,
+            "y": 64,
+            "w": 192,
+            "h": 128
+          },
+          "sourceSize": {
+            "w": 256,
+            "h": 256
+          },
+          "animation": "hit",
+          "poseIndex": 0,
+          "opaqueHeight": 80.5,
+          "displayScale": 0.35,
+          "opaqueBounds": [
+            58.625,
+            87.125,
+            195.625,
+            167.625
+          ]
+        }
+      ]
+    },
+    {
+      "image": "hit-001.png",
+      "frames": [
+        {
+          "filename": "3",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 222,
+            "h": 111
+          },
+          "spriteSourceSize": {
+            "x": 17,
+            "y": 72,
+            "w": 222,
+            "h": 111
+          },
+          "sourceSize": {
+            "w": 256,
+            "h": 256
+          },
+          "animation": "hit",
+          "poseIndex": 1,
+          "opaqueHeight": 50.75,
+          "displayScale": 0.35,
+          "opaqueBounds": [
+            28.75,
+            103.125,
+            227.25,
+            153.875
+          ]
+        }
+      ]
+    }
+  ]
+}

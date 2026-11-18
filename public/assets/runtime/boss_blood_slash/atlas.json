@@ -1,0 +1,76 @@
+{
+  "textures": [
+    {
+      "image": "cut-000.png",
+      "frames": [
+        {
+          "filename": "0",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 192,
+            "h": 128
+          },
+          "spriteSourceSize": {
+            "x": 32,
+            "y": 64,
+            "w": 192,
+            "h": 128
+          },
+          "sourceSize": {
+            "w": 256,
+            "h": 256
+          },
+          "animation": "cut",
+          "poseIndex": 0,
+          "opaqueHeight": 120.25,
+          "displayScale": 0.6,
+          "opaqueBounds": [
+            39.125,
+            68.875,
+            215.75,
+            189.125
+          ]
+        }
+      ]
+    },
+    {
+      "image": "cut-001.png",
+      "frames": [
+        {
+          "filename": "1",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 192,
+            "h": 128
+          },
+          "spriteSourceSize": {
+            "x": 32,
+            "y": 64,
+            "w": 192,
+            "h": 128
+          },
+          "sourceSize": {
+            "w": 256,
+            "h": 256
+          },
+          "animation": "cut",
+          "poseIndex": 1,
+          "opaqueHeight": 116.5,
+          "displayScale": 0.6,
+          "opaqueBounds": [
+            47.375,
+            70.75,
+            206.625,
+            187.25
+          ]
+        }
+      ]
+    }
+  ]
+}

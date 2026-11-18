@@ -28,6 +28,14 @@ class HeroArtTest(unittest.TestCase):
         for index in range(1, 4):
             self.assertEqual(draw_hero('walk', index).crop((0, 0, 32, 21)).tobytes(), reference)
 
+    def test_each_weapon_has_its_own_two_distinct_action_frames(self):
+        signatures = set()
+        for skill in ('orb', 'slash', 'orbital', 'mine'):
+            frames = [draw_hero(f'skill-{skill}', i).tobytes() for i in range(2)]
+            self.assertNotEqual(frames[0], frames[1])
+            signatures.add(tuple(frames))
+        self.assertEqual(len(signatures), 4)
+
     def test_rejects_invalid_animation_or_frame(self):
         for animation, index in [('attack', 0), ('idle', -1), ('walk', 4), ('walk-up', 2)]:
             with self.assertRaises(ValueError):

@@ -9,24 +9,30 @@ import {
 export const SAVE_STORAGE_KEY = 'anime-survivor-save-v1';
 
 let memoryFallback: SaveData = createDefaultSaveData();
+let cachedSave: SaveData | null = null;
 
 export function loadSaveData(): SaveData {
+  if (cachedSave) return cachedSave;
   try {
     if (typeof window !== 'undefined' && window.localStorage) {
       const raw = window.localStorage.getItem(SAVE_STORAGE_KEY);
       const parsed = parseSaveData(raw);
       memoryFallback = parsed;
+      cachedSave = parsed;
       return parsed;
     }
   } catch {
-    return parseSaveData(JSON.stringify(memoryFallback));
+    cachedSave = parseSaveData(JSON.stringify(memoryFallback));
+    return cachedSave;
   }
-  return parseSaveData(JSON.stringify(memoryFallback));
+  cachedSave = parseSaveData(JSON.stringify(memoryFallback));
+  return cachedSave;
 }
 
 export function saveSaveData(data: SaveData): void {
   const sanitized = parseSaveData(JSON.stringify(data));
   memoryFallback = sanitized;
+  cachedSave = sanitized;
   try {
     if (typeof window !== 'undefined' && window.localStorage) {
       window.localStorage.setItem(SAVE_STORAGE_KEY, JSON.stringify(sanitized));

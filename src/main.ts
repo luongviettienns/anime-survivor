@@ -10,8 +10,8 @@ import './app/style.css';
 new Phaser.Game({
   type: Phaser.AUTO,
   parent: 'app',
-  width: 960,
-  height: 540,
+  width: 1280,
+  height: 720,
   backgroundColor: '#0b1128',
   pixelArt: false,
   antialias: true,

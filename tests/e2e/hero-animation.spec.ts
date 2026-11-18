@@ -5,20 +5,34 @@ test('Naruto animates all four directions and remembers facing with real keys', 
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
   page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
-  await page.goto('/');
+  await page.goto('/?play=1');
   await page.waitForFunction(() => Boolean(window.__ANIME_SURVIVOR__));
+  await page.evaluate(() => {
+    const api = window.__ANIME_SURVIVOR__!;
+    const scene = api.getScene() as unknown as {
+      weapon: { inventory: Record<string, number> }; spawnTimer: Phaser.Time.TimerEvent;
+    };
+    scene.spawnTimer.paused = true; api.clearEnemies();
+    Object.assign(scene.weapon.inventory, { orb: 0, slash: 0, orbital: 0, mine: 0 });
+  });
   const state = () => page.evaluate(() => {
     const scene = window.__ANIME_SURVIVOR__!.getScene();
     const hero = scene.children.list.find((child) =>
       (child as Phaser.GameObjects.Sprite).texture?.key === 'hero'
     ) as Phaser.GameObjects.Sprite;
+    const visual = scene.children.list.find((child) => child.getData('hero-action')) as Phaser.GameObjects.Sprite;
+    const metrics = visual.frame.customData as { opaqueHeight: number };
     return {
       animation: hero.anims.currentAnim?.key, frame: Number(hero.frame.name),
       flipX: hero.flipX, width: hero.frame.width, height: hero.frame.height,
       frames: hero.anims.currentAnim?.frames.map((frame) => Number(frame.textureFrame)),
+      derived: visual.texture.key === 'hero_locomotion' && visual.frame.source.width >= 128 && visual.frame.source.width <= 256,
+      visibleHeight: metrics.opaqueHeight * visual.scaleY,
+      legacyHidden: !hero.visible,
     };
   });
   expect(await state()).toMatchObject({ animation: 'hero-idle', width: 32, height: 32, frames: [0, 1, 2, 3] });
+  expect(await state()).toMatchObject({ derived: true, visibleHeight: 56, legacyHidden: true });
   await page.keyboard.down('d');
   await expect.poll(async () => (await state()).animation).toBe('hero-walk');
   expect(await state()).toMatchObject({ flipX: false, frames: [4, 5, 6, 7] });
@@ -55,6 +69,8 @@ test('Naruto animates all four directions and remembers facing with real keys', 
     await page.keyboard.up(key);
     await expect.poll(async () => (await state()).animation).toBe(idle);
     expect((await state()).flipX).toBe(false);
+    expect((await state()).derived).toBe(true);
+    expect((await state()).visibleHeight).toBeCloseTo(56);
   }
   await page.keyboard.down('w');
   await page.keyboard.down('d');

@@ -1,0 +1,80 @@
+{
+  "tool": "built-in imagegen",
+  "date": "2026-11-18",
+  "model": "not exposed",
+  "human_review": "pending",
+  "sources": [
+    {
+      "file": "enemy/down/windup.png",
+      "sha256": "2e2310f6def3acbb30f85cad1bc9e2a0297d52b2b3ba73afdaaf7b8518c547b3",
+      "prompt": "Create exactly ONE animation keyframe, ONE character ONLY, no sheet/grid/text. Use reference image as strict character identity and rendering style reference. Same original dark purple spiked armored horned ivory skull-mask warrior, red scarf, red eyes, same proportions and details. Top-down three-quarter game camera identical to reference. Facing down/south toward viewer, WINDUP pose for double claw ground slam: both elbows raised outward, claw hands above shoulders, knees bent, weight braced. Full body with ample transparent margin, same top-left lighting, hi-bit detailed anime sprite rendering. No effect, no background, no shadow floor, preserve costume. Genuine transparent RGBA. This must be a newly articulated pose, never simply rotated neutral image.",
+      "reference": "art/source/ai-overhaul/enemy/walk/000.png"
+    },
+    {
+      "file": "enemy/down/strike.png",
+      "sha256": "85deb5bb7b0dffc18499b8349155e792afdae30984c56b7406b6ed47f6a8188c",
+      "prompt": "Create exactly ONE game animation KEYFRAME, one character, NO spritesheet/grid/text. Reference image is strict identity, costume, proportions and art-style reference. Same spiked dark purple armored warrior, horned ivory skull mask, red scarf, claw gauntlets. Facing down/south, three-quarter front view. Action: both claw fists driven down to ground in front of feet, crouched compressed powerful ground-slam impact pose. Camera: same slightly elevated top-down three-quarter orthographic as reference, never cinematic/horizontal camera. Full body with ample transparent margins. Hi-bit detailed anime sprite rendering, fine crisp edges, same dark palette and top-left lighting. Preserve ALL identifying details. Anatomically articulated new attack pose, not a rotated standing picture. NO VFX, no floor, no background, transparent RGBA.",
+      "reference": "art/source/ai-overhaul/enemy/walk/000.png"
+    },
+    {
+      "file": "enemy/side/windup.png",
+      "sha256": "e355115185a8d3901f8788935c5fe4b34700195c0ba1d9646b12094c0d11ef91",
+      "prompt": "Create exactly ONE game animation KEYFRAME, one character, NO spritesheet/grid/text. Reference image is strict identity, costume, proportions and art-style reference. Same spiked dark purple armored warrior, horned ivory skull mask, red scarf, claw gauntlets. Facing right/east, side view. Action: both claw fists raised to shoulder height, knees deeply braced, windup for ground slam. Camera: same slightly elevated top-down three-quarter orthographic as reference, never cinematic/horizontal camera. Full body with ample transparent margins. Hi-bit detailed anime sprite rendering, fine crisp edges, same dark palette and top-left lighting. Preserve ALL identifying details. Anatomically articulated new attack pose, not a rotated standing picture. NO VFX, no floor, no background, transparent RGBA.",
+      "reference": "art/source/ai-overhaul/enemy/walk-side/000.png"
+    },
+    {
+      "file": "enemy/side/strike.png",
+      "sha256": "f238f5d6475efd0a4636b2e57572cfc6493903ea98bdbf662b6f7d996b27e7e2",
+      "prompt": "Create exactly ONE game animation KEYFRAME, one character, NO spritesheet/grid/text. Reference image is strict identity, costume, proportions and art-style reference. Same spiked dark purple armored warrior, horned ivory skull mask, red scarf, claw gauntlets. Facing right/east, side view. Action: both claw fists driven down to ground in front of feet, crouched compressed powerful ground-slam impact pose. Camera: same slightly elevated top-down three-quarter orthographic as reference, never cinematic/horizontal camera. Full body with ample transparent margins. Hi-bit detailed anime sprite rendering, fine crisp edges, same dark palette and top-left lighting. Preserve ALL identifying details. Anatomically articulated new attack pose, not a rotated standing picture. NO VFX, no floor, no background, transparent RGBA.",
+      "reference": "art/source/ai-overhaul/enemy/walk-side/000.png"
+    },
+    {
+      "file": "enemy/up/windup.png",
+      "sha256": "edc35adce1ddcf7fdde38d8bb170fded30e0f3a80ff7afb71d2edda520467e75",
+      "prompt": "Create exactly ONE game animation KEYFRAME, one character, NO spritesheet/grid/text. Reference image is strict identity, costume, proportions and art-style reference. Same spiked dark purple armored warrior, horned ivory skull mask, red scarf, claw gauntlets. Facing up/north, BACK VIEW, hide face completely. Action: both claw fists raised to shoulder height, knees deeply braced, windup for ground slam. Camera: same slightly elevated top-down three-quarter orthographic as reference, never cinematic/horizontal camera. Full body with ample transparent margins. Hi-bit detailed anime sprite rendering, fine crisp edges, same dark palette and top-left lighting. Preserve ALL identifying details. Anatomically articulated new attack pose, not a rotated standing picture. NO VFX, no floor, no background, transparent RGBA.",
+      "reference": "art/source/ai-overhaul/enemy/walk-up/000.png"
+    },
+    {
+      "file": "enemy/up/strike.png",
+      "sha256": "332e4d45061ee430d2565e95cda55071a06078094a9ca3c811be0b9f6377070d",
+      "prompt": "Create exactly ONE game animation KEYFRAME, one character, NO spritesheet/grid/text. Reference image is strict identity, costume, proportions and art-style reference. Same spiked dark purple armored warrior, horned ivory skull mask, red scarf, claw gauntlets. Facing up/north, BACK VIEW, hide face completely. Action: both claw fists driven down to ground in front of feet, crouched compressed powerful ground-slam impact pose. Camera: same slightly elevated top-down three-quarter orthographic as reference, never cinematic/horizontal camera. Full body with ample transparent margins. Hi-bit detailed anime sprite rendering, fine crisp edges, same dark palette and top-left lighting. Preserve ALL identifying details. Anatomically articulated new attack pose, not a rotated standing picture. NO VFX, no floor, no background, transparent RGBA.",
+      "reference": "art/source/ai-overhaul/enemy/walk-up/000.png"
+    },
+    {
+      "file": "enemy_shade/down/windup.png",
+      "sha256": "b32a9855b78bcfec369aa7bcd5aeabd8226579265680a5a29c22df41a5839f58",
+      "prompt": "Create exactly ONE game animation KEYFRAME, one character, NO spritesheet/grid/text. Reference image is strict identity, costume, proportions and art-style reference. Same slim hooded purple assassin, ivory pointed bird mask, magenta eyes, tattered purple cloak, ivory claws. Facing down/south, three-quarter front view. Action: low crouched coil, rear leg loaded, one claw pulled back ready for forward lunging slash. Camera: same slightly elevated top-down three-quarter orthographic as reference, never cinematic/horizontal camera. Full body with ample transparent margins. Hi-bit detailed anime sprite rendering, fine crisp edges, same dark palette and top-left lighting. Preserve ALL identifying details. Anatomically articulated new attack pose, not a rotated standing picture. NO VFX, no floor, no background, transparent RGBA.",
+      "reference": "art/source/ai-overhaul/enemy_shade/walk/000.png"
+    },
+    {
+      "file": "enemy_shade/down/strike.png",
+      "sha256": "1203cc27ada872a739b3dfa67e3fbb914297d5e17d24f90af1ffe3d90d7982a9",
+      "prompt": "Create exactly ONE game animation KEYFRAME, one character, NO spritesheet/grid/text. Reference image is strict identity, costume, proportions and art-style reference. Same slim hooded purple assassin, ivory pointed bird mask, magenta eyes, tattered purple cloak, ivory claws. Facing down/south, three-quarter front view. Action: forward lunging claw slash, leading claw extended toward facing direction, rear leg stretched back, cloak trails behind. Camera: same slightly elevated top-down three-quarter orthographic as reference, never cinematic/horizontal camera. Full body with ample transparent margins. Hi-bit detailed anime sprite rendering, fine crisp edges, same dark palette and top-left lighting. Preserve ALL identifying details. Anatomically articulated new attack pose, not a rotated standing picture. NO VFX, no floor, no background, transparent RGBA.",
+      "reference": "art/source/ai-overhaul/enemy_shade/walk/000.png"
+    },
+    {
+      "file": "enemy_shade/side/windup.png",
+      "sha256": "b4314d97f0f39d07d1ed8a400ce4e84ccf97cf430bf40f8142f5446279c454ab",
+      "prompt": "Create exactly ONE game animation KEYFRAME, one character, NO spritesheet/grid/text. Reference image is strict identity, costume, proportions and art-style reference. Same slim hooded purple assassin, ivory pointed bird mask, magenta eyes, tattered purple cloak, ivory claws. Facing right/east, side view. Action: low crouched coil, rear leg loaded, one claw pulled back ready for forward lunging slash. Camera: same slightly elevated top-down three-quarter orthographic as reference, never cinematic/horizontal camera. Full body with ample transparent margins. Hi-bit detailed anime sprite rendering, fine crisp edges, same dark palette and top-left lighting. Preserve ALL identifying details. Anatomically articulated new attack pose, not a rotated standing picture. NO VFX, no floor, no background, transparent RGBA.",
+      "reference": "art/source/ai-overhaul/enemy_shade/walk-side/000.png"
+    },
+    {
+      "file": "enemy_shade/side/strike.png",
+      "sha256": "c1b121b7f7de516e69b0762ccd42af4b19d05b43d7d4783f0259c160274f1803",
+      "prompt": "Create exactly ONE game animation KEYFRAME, one character, NO spritesheet/grid/text. Reference image is strict identity, costume, proportions and art-style reference. Same slim hooded purple assassin, ivory pointed bird mask, magenta eyes, tattered purple cloak, ivory claws. Facing right/east, side view. Action: forward lunging claw slash, leading claw extended toward facing direction, rear leg stretched back, cloak trails behind. Camera: same slightly elevated top-down three-quarter orthographic as reference, never cinematic/horizontal camera. Full body with ample transparent margins. Hi-bit detailed anime sprite rendering, fine crisp edges, same dark palette and top-left lighting. Preserve ALL identifying details. Anatomically articulated new attack pose, not a rotated standing picture. NO VFX, no floor, no background, transparent RGBA.",
+      "reference": "art/source/ai-overhaul/enemy_shade/walk-side/000.png"
+    },
+    {
+      "file": "enemy_shade/up/windup.png",
+      "sha256": "2e1a64871438ac392070c4f4cdfb625c54da763bbc65c4939b65bb92dc402d3c",
+      "prompt": "Create exactly ONE game animation KEYFRAME, one character, NO spritesheet/grid/text. Reference image is strict identity, costume, proportions and art-style reference. Same slim hooded purple assassin, ivory pointed bird mask, magenta eyes, tattered purple cloak, ivory claws. Facing up/north, BACK VIEW, hide face completely. Action: low crouched coil, rear leg loaded, one claw pulled back ready for forward lunging slash. Camera: same slightly elevated top-down three-quarter orthographic as reference, never cinematic/horizontal camera. Full body with ample transparent margins. Hi-bit detailed anime sprite rendering, fine crisp edges, same dark palette and top-left lighting. Preserve ALL identifying details. Anatomically articulated new attack pose, not a rotated standing picture. NO VFX, no floor, no background, transparent RGBA.",
+      "reference": "art/source/ai-overhaul/enemy_shade/walk-up/000.png"
+    },
+    {
+      "file": "enemy_shade/up/strike.png",
+      "sha256": "47e2c811b153123e0d2a88f89a2cbb4b075d53d03806727195471537657fb633",
+      "prompt": "Create exactly ONE game animation KEYFRAME, one character, NO spritesheet/grid/text. Reference image is strict identity, costume, proportions and art-style reference. Same slim hooded purple assassin, ivory pointed bird mask, magenta eyes, tattered purple cloak, ivory claws. Facing up/north, BACK VIEW, hide face completely. Action: forward lunging claw slash, leading claw extended toward facing direction, rear leg stretched back, cloak trails behind. Camera: same slightly elevated top-down three-quarter orthographic as reference, never cinematic/horizontal camera. Full body with ample transparent margins. Hi-bit detailed anime sprite rendering, fine crisp edges, same dark palette and top-left lighting. Preserve ALL identifying details. Anatomically articulated new attack pose, not a rotated standing picture. NO VFX, no floor, no background, transparent RGBA.",
+      "reference": "art/source/ai-overhaul/enemy_shade/walk-up/000.png"
+    }
+  ]
+}

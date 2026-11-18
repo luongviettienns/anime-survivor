@@ -29,3 +29,11 @@ project-owned label must not be read as ownership of the Naruto character.
 The final export policy copies original PNG bytes, including palette/color and
 alpha, directly into runtime multi-atlas pages. No new image is downscaled or
 quantized. Only offline sheet padding and runtime display transformations remain.
+
+2026-11-18: scripts/hibit_items.py creates original procedural 64px stat/pickup art. Four weapon icons derive from retained local weapon sources; no new external art. Runtime atlas pages are deterministic Lanczos derivatives of existing sources, not new originals. Human aesthetic review pending.
+
+2026-11-18: 12 original single-pose transparent PNGs generated using built-in imagegen with existing enemy/enemy_shade directional references. Retained in art/source/melee-attacks; complete prompts/references/SHA256 in provenance.json. Model version not exposed; human aesthetic approval pending. scripts/melee_art.py creates runtime attack derivatives and procedural blood-seal/claw/player-impact VFX; originals remain untouched. 24 character frames and18 VFX frames are packed pixel-identically.
+
+2026-11-18 replacement: procedural slam/claw VFX superseded by8 original individual ImageGen PNGs (4 stages per skill);2 clipped candidates retained as drafts and regenerated with safe margins. art/source/skill-vfx/provenance.json records full prompts, edit references and SHA256. Runtime384px derivatives only; originals preserved. Shadow textures are original deterministic radial alpha code in scripts/shadow_art.py. Human aesthetic review pending.
+
+2026-11-18 Arcane UI:8 original single PNGs generated with built-in imagegen, retained with SHA256/full prompts in art/source/arcane-ui/provenance.json. Runtime uses ui_card_base,ui_emblem_socket,ui_banner_levelup,hud_pip_glow,icon_boss_crown at256px. Three wordmark originals were rejected by the user for gameplay and remain source-only. Numeric font and explosion-number mark are original deterministic code in scripts/damage_font.py; no external typeface. Human aesthetic approval pending.

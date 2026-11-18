@@ -1,0 +1,568 @@
+{
+  "textures": [
+    {
+      "image": "walk-000.png",
+      "frames": [
+        {
+          "filename": "0",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 157,
+            "h": 157
+          },
+          "spriteSourceSize": {
+            "x": 50,
+            "y": 36,
+            "w": 157,
+            "h": 157
+          },
+          "sourceSize": {
+            "w": 256,
+            "h": 256
+          },
+          "animation": "walk",
+          "poseIndex": 0,
+          "opaqueHeight": 155.25,
+          "displayScale": 0.8244766505636071,
+          "opaqueBounds": [
+            55.0,
+            36.75,
+            194.0,
+            192.0
+          ]
+        }
+      ]
+    },
+    {
+      "image": "walk-001.png",
+      "frames": [
+        {
+          "filename": "1",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 157,
+            "h": 157
+          },
+          "spriteSourceSize": {
+            "x": 50,
+            "y": 41,
+            "w": 157,
+            "h": 157
+          },
+          "sourceSize": {
+            "w": 256,
+            "h": 256
+          },
+          "animation": "walk",
+          "poseIndex": 1,
+          "opaqueHeight": 140.5,
+          "displayScale": 0.9110320284697508,
+          "opaqueBounds": [
+            55.75,
+            51.5,
+            196.25,
+            192.0
+          ]
+        }
+      ]
+    },
+    {
+      "image": "walk-002.png",
+      "frames": [
+        {
+          "filename": "2",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 157,
+            "h": 157
+          },
+          "spriteSourceSize": {
+            "x": 50,
+            "y": 40,
+            "w": 157,
+            "h": 157
+          },
+          "sourceSize": {
+            "w": 256,
+            "h": 256
+          },
+          "animation": "walk",
+          "poseIndex": 2,
+          "opaqueHeight": 150.625,
+          "displayScale": 0.8497925311203319,
+          "opaqueBounds": [
+            51.0,
+            41.375,
+            195.75,
+            192.0
+          ]
+        }
+      ]
+    },
+    {
+      "image": "walk-003.png",
+      "frames": [
+        {
+          "filename": "3",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 157,
+            "h": 157
+          },
+          "spriteSourceSize": {
+            "x": 50,
+            "y": 41,
+            "w": 157,
+            "h": 157
+          },
+          "sourceSize": {
+            "w": 256,
+            "h": 256
+          },
+          "animation": "walk",
+          "poseIndex": 3,
+          "opaqueHeight": 150.0,
+          "displayScale": 0.8533333333333334,
+          "opaqueBounds": [
+            72.0,
+            42.0,
+            203.5,
+            192.0
+          ]
+        }
+      ]
+    },
+    {
+      "image": "cast-000.png",
+      "frames": [
+        {
+          "filename": "4",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 157,
+            "h": 157
+          },
+          "spriteSourceSize": {
+            "x": 50,
+            "y": 42,
+            "w": 157,
+            "h": 157
+          },
+          "sourceSize": {
+            "w": 256,
+            "h": 256
+          },
+          "animation": "cast",
+          "poseIndex": 0,
+          "opaqueHeight": 142.625,
+          "displayScale": 0.8974583698510079,
+          "opaqueBounds": [
+            74.25,
+            49.375,
+            181.875,
+            192.0
+          ],
+          "hands": [
+            [
+              114.67625,
+              122.0675
+            ],
+            [
+              155.9015,
+              120.1865
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "image": "cast-001.png",
+      "frames": [
+        {
+          "filename": "5",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 157,
+            "h": 157
+          },
+          "spriteSourceSize": {
+            "x": 50,
+            "y": 52,
+            "w": 157,
+            "h": 157
+          },
+          "sourceSize": {
+            "w": 256,
+            "h": 256
+          },
+          "animation": "cast",
+          "poseIndex": 1,
+          "opaqueHeight": 123.0,
+          "displayScale": 1.0406504065040652,
+          "opaqueBounds": [
+            55.875,
+            69.0,
+            201.5,
+            192.0
+          ],
+          "hands": [
+            [
+              80.975,
+              108.93
+            ],
+            [
+              179.7275,
+              101.0925
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "image": "walk-side-000.png",
+      "frames": [
+        {
+          "filename": "6",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 157,
+            "h": 157
+          },
+          "spriteSourceSize": {
+            "x": 50,
+            "y": 46,
+            "w": 157,
+            "h": 157
+          },
+          "sourceSize": {
+            "w": 256,
+            "h": 256
+          },
+          "animation": "walk-side",
+          "poseIndex": 0,
+          "opaqueHeight": 137.5,
+          "displayScale": 0.9309090909090909,
+          "opaqueBounds": [
+            63.125,
+            54.5,
+            185.75,
+            192.0
+          ]
+        }
+      ]
+    },
+    {
+      "image": "walk-side-001.png",
+      "frames": [
+        {
+          "filename": "7",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 157,
+            "h": 157
+          },
+          "spriteSourceSize": {
+            "x": 50,
+            "y": 48,
+            "w": 157,
+            "h": 157
+          },
+          "sourceSize": {
+            "w": 256,
+            "h": 256
+          },
+          "animation": "walk-side",
+          "poseIndex": 1,
+          "opaqueHeight": 135.875,
+          "displayScale": 0.9420423183072677,
+          "opaqueBounds": [
+            58.25,
+            56.125,
+            180.75,
+            192.0
+          ]
+        }
+      ]
+    },
+    {
+      "image": "walk-up-000.png",
+      "frames": [
+        {
+          "filename": "8",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 157,
+            "h": 157
+          },
+          "spriteSourceSize": {
+            "x": 50,
+            "y": 42,
+            "w": 157,
+            "h": 157
+          },
+          "sourceSize": {
+            "w": 256,
+            "h": 256
+          },
+          "animation": "walk-up",
+          "poseIndex": 0,
+          "opaqueHeight": 143.0,
+          "displayScale": 0.8951048951048951,
+          "opaqueBounds": [
+            66.25,
+            49.0,
+            190.125,
+            192.0
+          ]
+        }
+      ]
+    },
+    {
+      "image": "walk-up-001.png",
+      "frames": [
+        {
+          "filename": "9",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 157,
+            "h": 157
+          },
+          "spriteSourceSize": {
+            "x": 50,
+            "y": 42,
+            "w": 157,
+            "h": 157
+          },
+          "sourceSize": {
+            "w": 256,
+            "h": 256
+          },
+          "animation": "walk-up",
+          "poseIndex": 1,
+          "opaqueHeight": 143.625,
+          "displayScale": 0.8912097476066144,
+          "opaqueBounds": [
+            64.0,
+            48.375,
+            190.25,
+            192.0
+          ]
+        }
+      ]
+    },
+    {
+      "image": "cast-side-000.png",
+      "frames": [
+        {
+          "filename": "10",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 157,
+            "h": 157
+          },
+          "spriteSourceSize": {
+            "x": 50,
+            "y": 50,
+            "w": 157,
+            "h": 157
+          },
+          "sourceSize": {
+            "w": 256,
+            "h": 256
+          },
+          "animation": "cast-side",
+          "poseIndex": 0,
+          "opaqueHeight": 128.0,
+          "displayScale": 1.0,
+          "opaqueBounds": [
+            56.75,
+            64.0,
+            185.375,
+            192.0
+          ],
+          "hands": [
+            [
+              124.55149999999999,
+              137.7165
+            ],
+            [
+              168.44150000000002,
+              137.7165
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "image": "cast-side-001.png",
+      "frames": [
+        {
+          "filename": "11",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 157,
+            "h": 157
+          },
+          "spriteSourceSize": {
+            "x": 50,
+            "y": 44,
+            "w": 157,
+            "h": 157
+          },
+          "sourceSize": {
+            "w": 256,
+            "h": 256
+          },
+          "animation": "cast-side",
+          "poseIndex": 1,
+          "opaqueHeight": 140.375,
+          "displayScale": 0.9118432769367765,
+          "opaqueBounds": [
+            55.0,
+            51.625,
+            199.75,
+            192.0
+          ],
+          "hands": [
+            [
+              85.20725,
+              114.19225
+            ],
+            [
+              187.09475,
+              109.80324999999999
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "image": "cast-up-000.png",
+      "frames": [
+        {
+          "filename": "12",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 157,
+            "h": 157
+          },
+          "spriteSourceSize": {
+            "x": 50,
+            "y": 46,
+            "w": 157,
+            "h": 157
+          },
+          "sourceSize": {
+            "w": 256,
+            "h": 256
+          },
+          "animation": "cast-up",
+          "poseIndex": 0,
+          "opaqueHeight": 138.625,
+          "displayScale": 0.9233543733092876,
+          "opaqueBounds": [
+            59.75,
+            53.375,
+            195.875,
+            192.0
+          ],
+          "hands": [
+            [
+              102.92,
+              121.615
+            ],
+            [
+              153.07999999999998,
+              121.615
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "image": "cast-up-001.png",
+      "frames": [
+        {
+          "filename": "13",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 157,
+            "h": 157
+          },
+          "spriteSourceSize": {
+            "x": 50,
+            "y": 48,
+            "w": 157,
+            "h": 157
+          },
+          "sourceSize": {
+            "w": 256,
+            "h": 256
+          },
+          "animation": "cast-up",
+          "poseIndex": 1,
+          "opaqueHeight": 138.75,
+          "displayScale": 0.9225225225225225,
+          "opaqueBounds": [
+            54.25,
+            53.25,
+            201.625,
+            192.0
+          ],
+          "hands": [
+            [
+              67.80799999999999,
+              114.18025
+            ],
+            [
+              189.60275000000001,
+              114.18025
+            ]
+          ]
+        }
+      ]
+    }
+  ]
+}

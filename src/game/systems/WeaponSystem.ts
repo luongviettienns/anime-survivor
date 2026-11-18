@@ -1,154 +1,141 @@
 import Phaser from 'phaser';
 import type { EnemyArchetypeId } from '../../domain/enemies';
-import {
-  canWeaponFire, commitWeaponFire, createWeaponCooldown,
-  selectNearestTarget, type TargetCandidate,
-} from '../../domain/targeting';
+import { canWeaponFire, commitWeaponFire, createWeaponCooldown, selectNearestTarget, type TargetCandidate } from '../../domain/targeting';
+import { createPassiveStats, rollCombatDamage, type PassiveStats } from '../../domain/upgrades';
 import { aimDirection, type Vec2 } from '../../domain/vector';
-import { computeWeaponStats, createWeaponInventory, type WeaponInventory } from '../../domain/weapons';
-import { PLAYER, PROJECTILE } from '../config/constants';
+import { applyWeaponModifiers, computeWeaponStats, createWeaponInventory, type WeaponId, type WeaponInventory } from '../../domain/weapons';
+import { PROJECTILE } from '../config/constants';
 import type { EnemySystem } from './EnemySystem';
+import { MineSystem } from './MineSystem';
+import { OrbitalSystem } from './OrbitalSystem';
+import type { VfxSystem } from './VfxSystem';
 
 type Candidate = TargetCandidate & { sprite: Phaser.Physics.Arcade.Sprite };
 
 export class WeaponSystem {
   readonly projectiles: Phaser.Physics.Arcade.Group;
   readonly inventory: WeaponInventory = createWeaponInventory();
-  private readonly orbCooldown = createWeaponCooldown(PLAYER.attackIntervalMs);
-  private readonly slashCooldown = createWeaponCooldown(820);
-  private readonly projectileExpiresAt = new Map<Phaser.Physics.Arcade.Image, number>();
-  private readonly orbitals: Phaser.GameObjects.Image[] = [];
-  private readonly orbitalHitUntil = new Map<number, number>();
+  private readonly orbCooldown = createWeaponCooldown(760);
+  private readonly slashCooldown = createWeaponCooldown(900);
+  private readonly projectileExpiresAt = new Map<Phaser.Physics.Arcade.Sprite, number>();
+  private readonly mines: MineSystem;
+  private readonly orbital: OrbitalSystem;
+  private activePassives: PassiveStats = createPassiveStats();
   private lastAim: Vec2 = { x: 1, y: 0 };
 
   constructor(
-    private readonly scene: Phaser.Scene,
+    scene: Phaser.Scene,
     private readonly player: Phaser.Physics.Arcade.Sprite,
     private readonly enemies: EnemySystem,
     private readonly onEnemyKilled?: (x: number, y: number, archetype: EnemyArchetypeId, xpValue: number) => void,
-    private readonly onCombatFeedback?: (cue: 'shoot' | 'slash' | 'hit', x?: number, y?: number, dmg?: number, killed?: boolean) => void
+    private readonly onCombatFeedback?: (cue: 'shoot' | 'slash' | 'hit', x?: number, y?: number, dmg?: number, killed?: boolean, critical?: boolean, explosive?: boolean) => void,
+    private readonly vfx?: VfxSystem,
+    private readonly onSkillUsed?: (skill: WeaponId, aimX: number) => void
   ) {
+    this.mines = new MineSystem(scene, player, (e, d, k, pos) => this.damageAndReward(e, d, k, pos, true),
+      () => this.onSkillUsed?.('mine', this.lastAim.x), () => this.onCombatFeedback?.('slash'), vfx);
     this.projectiles = scene.physics.add.group();
+    this.orbital = new OrbitalSystem(scene, player, (e, d, k) => this.damageAndReward(e, d, k),
+      (aimX) => this.onSkillUsed?.('orbital', aimX));
   }
 
-  update(nowMs: number, enabled = true): void {
+  update(nowMs: number, enabled = true, passives: PassiveStats = this.activePassives): void {
+    this.activePassives = passives;
     for (const [shot, expiresAt] of this.projectileExpiresAt) {
       if (!shot.active || nowMs >= expiresAt) this.consumeProjectile(shot);
     }
     if (!enabled || !this.player.active) return;
-
     const vel = this.player.body?.velocity;
     if (vel && (Math.abs(vel.x) > 1 || Math.abs(vel.y) > 1)) {
       this.lastAim = aimDirection({ x: 0, y: 0 }, vel, this.lastAim);
     }
-
     const candidates = this.enemies.getCandidates();
     if (this.inventory.orb >= 1) this.updateOrb(nowMs, candidates);
     if (this.inventory.slash >= 1) this.updateSlash(nowMs, candidates);
-    if (this.inventory.orbital >= 1) this.updateOrbital(nowMs, candidates);
+    this.orbital.update(nowMs, this.inventory.orbital, this.activePassives, candidates, this.lastAim.x);
+    this.mines.update(nowMs, this.inventory.mine, this.lastAim, this.activePassives, candidates);
   }
 
   handleProjectileHit(projObj: Phaser.GameObjects.GameObject, enemyObj: Phaser.GameObjects.GameObject): void {
     const enemy = enemyObj as Phaser.Physics.Arcade.Sprite;
     if (!enemy.active || !this.consumeProjectile(projObj)) return;
+    this.vfx?.playRasenganHit(enemy.x, enemy.y);
     const stats = computeWeaponStats('orb', Math.max(1, this.inventory.orb));
     this.damageAndReward(enemy, stats.damage, stats.knockbackPxSec);
   }
 
   consumeProjectile(projectileObject: Phaser.GameObjects.GameObject): boolean {
-    const projectile = projectileObject as Phaser.Physics.Arcade.Image;
+    const projectile = projectileObject as Phaser.Physics.Arcade.Sprite;
     if (!projectile.active || !this.projectileExpiresAt.has(projectile)) return false;
     this.projectileExpiresAt.delete(projectile);
+    projectile.anims?.stop();
     projectile.disableBody(true, true);
     return true;
   }
 
   clear(): void {
     this.projectileExpiresAt.clear();
-    this.orbitalHitUntil.clear();
-    for (const blade of this.orbitals) blade.destroy();
-    this.orbitals.length = 0;
+    this.orbital.clear();
+    this.mines.clear();
   }
 
   private updateOrb(nowMs: number, candidates: Candidate[]): void {
-    const stats = computeWeaponStats('orb', this.inventory.orb);
-    this.orbCooldown.intervalMs = stats.cooldownMs;
     if (!canWeaponFire(this.orbCooldown, nowMs)) return;
+    const stats = applyWeaponModifiers(computeWeaponStats('orb', this.inventory.orb), this.activePassives);
+    this.orbCooldown.intervalMs = stats.cooldownMs;
     const target = selectNearestTarget(this.player, candidates, stats.rangePx);
     if (!target) return;
 
-    this.lastAim = aimDirection(this.player, target, this.lastAim);
+    const facingX = target.x < this.player.x ? -1 : 1;
+    const hand = { x: this.player.x + facingX * 18, y: this.player.y - 4 };
+    this.lastAim = aimDirection(hand, target, this.lastAim);
     const baseAngle = Math.atan2(this.lastAim.y, this.lastAim.x);
     for (let i = 0; i < stats.count; i++) {
       const angle = baseAngle + (i - (stats.count - 1) / 2) * 0.18;
-      this.spawnOrb(nowMs, { x: Math.cos(angle), y: Math.sin(angle) }, stats.speedPxSec);
+      this.spawnOrb(nowMs, { x: Math.cos(angle), y: Math.sin(angle) }, stats.speedPxSec, hand);
     }
-    this.onCombatFeedback?.('shoot');
+    this.vfx?.playCastFlare(hand.x, hand.y);
+    this.onCombatFeedback?.('shoot'); this.onSkillUsed?.('orb', facingX);
     commitWeaponFire(this.orbCooldown, nowMs);
   }
 
-  private spawnOrb(nowMs: number, dir: Vec2, speedPxSec: number): void {
-    const reuse = this.projectiles.getFirstDead(false) as Phaser.Physics.Arcade.Image | null;
+  private spawnOrb(nowMs: number, dir: Vec2, speedPxSec: number, hand: Vec2): void {
+    const reuse = this.projectiles.getFirstDead(false) as Phaser.Physics.Arcade.Sprite | null;
     const shot = reuse
-      ? (reuse.enableBody(true, this.player.x, this.player.y, true, true), reuse)
-      : (this.projectiles.create(this.player.x, this.player.y, 'orb') as Phaser.Physics.Arcade.Image);
-    shot.setTexture('orb').setScale(2).setDepth(2000).setVelocity(dir.x * speedPxSec, dir.y * speedPxSec);
+      ? (reuse.enableBody(true, hand.x, hand.y, true, true), reuse)
+      : (this.projectiles.create(hand.x, hand.y, 'rasengan', 0) as Phaser.Physics.Arcade.Sprite);
+    // Keep the previous 10.5px world collision radius while enlarging the artwork.
+    shot.setTexture('rasengan').setScale(0.5).setDepth(500_000_050).setCircle(21, 75, 75)
+      .setBlendMode('NORMAL').setRotation(0)
+      .setVelocity(dir.x * speedPxSec, dir.y * speedPxSec).play('rasengan-spin', true);
     this.projectileExpiresAt.set(shot, nowMs + PROJECTILE.lifeMs);
   }
 
   private updateSlash(nowMs: number, candidates: Candidate[]): void {
-    const stats = computeWeaponStats('slash', this.inventory.slash);
-    this.slashCooldown.intervalMs = stats.cooldownMs;
     if (!canWeaponFire(this.slashCooldown, nowMs)) return;
+    const base = computeWeaponStats('slash', this.inventory.slash);
+    const stats = applyWeaponModifiers(base, this.activePassives);
+    this.slashCooldown.intervalMs = stats.cooldownMs;
     const target = selectNearestTarget(this.player, candidates, stats.rangePx);
     if (!target) return;
 
     const dir = aimDirection(this.player, target, this.lastAim);
     this.lastAim = dir;
-    for (const d of stats.count >= 2 ? [dir, { x: -dir.x, y: -dir.y }] : [dir]) {
-      const fx = this.scene.add
-        .image(this.player.x + d.x * 28, this.player.y + d.y * 28, 'slash')
-        .setScale(2)
-        .setDepth(4999)
-        .setRotation(Math.atan2(d.y, d.x));
-      this.scene.time.delayedCall(140, () => fx.destroy());
-    }
-    this.onCombatFeedback?.('slash');
+    this.vfx?.playPunch(this.player.x + dir.x * 30, this.player.y + dir.y * 30 - 4, dir.x < 0);
+    this.onCombatFeedback?.('slash'); this.onSkillUsed?.('slash', dir.x);
     for (const cand of candidates) {
-      const dx = cand.x - this.player.x;
-      const dy = cand.y - this.player.y;
-      const dist = Math.hypot(dx, dy);
-      if (dist <= stats.rangePx && (stats.count >= 2 || (dist <= 1e-3 || (dx * dir.x + dy * dir.y) / dist >= -0.25))) {
-        this.damageAndReward(cand.sprite, stats.damage, stats.knockbackPxSec);
+      const dx = cand.x - this.player.x, dy = cand.y - this.player.y, dist = Math.hypot(dx, dy);
+      if (dist <= stats.rangePx && (stats.count >= 2 || dist <= 1e-3 || (dx * dir.x + dy * dir.y) / dist >= -0.25)) {
+        this.damageAndReward(cand.sprite, base.damage, stats.knockbackPxSec);
       }
     }
     commitWeaponFire(this.slashCooldown, nowMs);
   }
 
-  private updateOrbital(nowMs: number, candidates: Candidate[]): void {
-    const stats = computeWeaponStats('orbital', this.inventory.orbital);
-    while (this.orbitals.length < stats.count) {
-      this.orbitals.push(this.scene.add.image(this.player.x, this.player.y, 'shuriken').setScale(2).setDepth(4998));
-    }
-    for (let i = stats.count; i < this.orbitals.length; i++) this.orbitals[i]!.setVisible(false);
-    const baseAngle = (nowMs / 1000) * stats.speedPxSec;
-    for (let i = 0; i < stats.count; i++) {
-      const angle = baseAngle + (i * Math.PI * 2) / stats.count;
-      const bx = this.player.x + Math.cos(angle) * stats.rangePx;
-      const by = this.player.y + Math.sin(angle) * stats.rangePx;
-      this.orbitals[i]!.setPosition(bx, by).setRotation(angle * 2).setVisible(true);
-      for (const cand of candidates) {
-        if (!cand.active || cand.dead || Math.hypot(cand.x - bx, cand.y - by) > 28) continue;
-        if (nowMs < (this.orbitalHitUntil.get(cand.id) ?? Number.NEGATIVE_INFINITY)) continue;
-        this.orbitalHitUntil.set(cand.id, nowMs + stats.cooldownMs);
-        this.damageAndReward(cand.sprite, stats.damage, stats.knockbackPxSec);
-      }
-    }
-  }
-
-  private damageAndReward(enemy: Phaser.Physics.Arcade.Sprite, damage: number, knockbackPxSec: number): void {
-    const outcome = this.enemies.damageEnemy(enemy, damage, knockbackPxSec, this.player);
-    if (outcome.damaged) this.onCombatFeedback?.('hit', outcome.x, outcome.y, damage, outcome.killed);
+  private damageAndReward(enemy: Phaser.Physics.Arcade.Sprite, baseDamage: number, knockbackPxSec: number, sourcePos?: Vec2, explosive = false): void {
+    const rolled = rollCombatDamage(baseDamage, this.activePassives);
+    const outcome = this.enemies.damageEnemy(enemy, rolled.damage, knockbackPxSec, sourcePos ?? this.player);
+    if (outcome.damaged) this.onCombatFeedback?.('hit', outcome.x, outcome.y, rolled.damage, outcome.killed, rolled.critical, explosive);
     if (outcome.killed) this.onEnemyKilled?.(outcome.x, outcome.y, outcome.archetype, outcome.xpValue);
   }
 }

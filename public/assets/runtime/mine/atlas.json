@@ -1,0 +1,76 @@
+{
+  "textures": [
+    {
+      "image": "pulse-000.png",
+      "frames": [
+        {
+          "filename": "0",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 136,
+            "h": 181
+          },
+          "spriteSourceSize": {
+            "x": 60,
+            "y": 22,
+            "w": 136,
+            "h": 181
+          },
+          "sourceSize": {
+            "w": 256,
+            "h": 256
+          },
+          "animation": "pulse",
+          "poseIndex": 0,
+          "opaqueHeight": 147.125,
+          "displayScale": 0.35,
+          "opaqueBounds": [
+            97.875,
+            44.875,
+            158.125,
+            192.0
+          ]
+        }
+      ]
+    },
+    {
+      "image": "pulse-001.png",
+      "frames": [
+        {
+          "filename": "1",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 136,
+            "h": 181
+          },
+          "spriteSourceSize": {
+            "x": 60,
+            "y": 22,
+            "w": 136,
+            "h": 181
+          },
+          "sourceSize": {
+            "w": 256,
+            "h": 256
+          },
+          "animation": "pulse",
+          "poseIndex": 1,
+          "opaqueHeight": 147.625,
+          "displayScale": 0.35,
+          "opaqueBounds": [
+            97.625,
+            44.375,
+            158.375,
+            192.0
+          ]
+        }
+      ]
+    }
+  ]
+}

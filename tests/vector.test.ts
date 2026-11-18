@@ -25,7 +25,7 @@ describe('vector and movement domain rules', () => {
     expect(PROJECTILE.lifeMs).toBe(1400);
     expect(PROJECTILE.range).toBe(520);
     expect(PICKUP.xpPerKill).toBe(1);
-    expect(PICKUP.healAmount).toBe(25);
+    expect(PICKUP.healAmount).toBe(30);
   });
 
   it('normalizes vectors and returns (0,0) for zero/coincident vectors', () => {

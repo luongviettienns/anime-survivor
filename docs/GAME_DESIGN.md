@@ -25,3 +25,12 @@ No pasted-in third-party art. Anime-inspired rather than branded: violet-haired 
 
 ## Non-goals until v1.0
 Multiplayer, accounts, backend, gacha, cash shop, online leaderboards, large open world, advanced ECS, mobile-first controls, dozens of heroes, voiced scenes, commercial anime character IP.
+
+## Normal monster signature attacks (2026-11-18)
+- Armored masked warrior (`slime` internal ID): Blood Seal Groundbreak / Huyet An Chan Dia. 400ms braced double-claw windup, 72px radial impact for 16 damage, illustrated crimson seal/fissures/flame/smoke (480ms cosmetic afterglow), 140ms impact and 360ms recovery. Starts within68px, cooldown1800ms. Escape the circle or interrupt with knockback.
+- Hooded Shade: Shadowstep Triple Claw / Anh Bo Tam Trao. 450ms crouched telegraph, commits to the initial target direction, dashes460px/s for220ms with purple afterimages and three illustrated ivory-purple plasma claw blades with smoke/shards and480ms cosmetic afterglow. One14-damage hit within38px of its path,330ms recovery,2200ms cooldown. Starts within130px. Dodge sideways; the dash never homes after windup.
+- Both use direction-specific windup/strike poses: south, north/back, east; west mirrors east. Timed neutral/windup/strike/recovery frames stay at the same foot anchor and separate from physics bodies. Contact damage is suppressed during the attack cycle.
+- Successful skills and hostile bolts use shared player i-frames. Accepted hits create a player-centered impact VFX and140ms directional knockback (slam240px/s, dash/bolt180px/s). Blocked hits produce no extra VFX/knockback. Existing reduced shake/flash settings apply. Attacks cancel on monster knockback/death; pause freezes simulation.
+
+## Arcane upgrade UI and combat readability
+Upgrade selection uses gold/silver cosmic-indigo card art, crystal sockets and a centered ability banner; keyboard1/2/3 and pointer selection remain functional. HUD anchors use logical canvas edges/center, crystal markers follow HP/XP fill, two crown emblems flank the centered bottom boss bar. Bitmap damage numbers remain small:12px normal,14px high/explosive damage,16px critical with8px crit icon. Explosion numbers use orange tint and a compact low-alpha burst; no CRIT/SMASH/BOOM word labels in combat. Numbers grow from72% to100% of the small size cap during the first30% of lifetime, stay readable, then fade during the final40%. Rise is anchored to the hit world point(x,y-14) and elapsed time; lifetime380/450/420ms for normal/crit/explosion. Crit icon and explosion mark stay attached.

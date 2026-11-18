@@ -1,6 +1,8 @@
 export function xpThreshold(level: number): number {
   if (!Number.isInteger(level) || level < 1) throw new Error('level must be >= 1');
-  return 3 + level * 2;
+  if (level <= 5) return 5 + level * 4;
+  if (level <= 15) return 15 + level * 6;
+  return 30 + level * 10;
 }
 
 export type Progress = { level: number; xp: number };

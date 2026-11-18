@@ -50,13 +50,15 @@ def pack_sprite(sprite: str, source: Path, output: Path) -> dict:
             'sha256': sha256(frame), 'alpha_bbox': list(box),
         })
     output.mkdir(parents=True, exist_ok=True)
-    sheet.save(output / f'{sprite}.png')
+    pending = output / f'{sprite}.pending.png'
+    sheet.save(pending)
+    pending.replace(output / f'{sprite}.png')
     return {'file': f'{sprite}.png', 'frame_width': width, 'frame_height': height,
             'columns': spec['columns'], 'rows': spec['rows'], 'frames': manifest_frames}
 
 
 def pack_all(source: Path, output: Path) -> dict:
-    manifest = {'contract_version': 1, 'sprites': {}}
+    manifest = {'contract_version': CONTRACT['version'], 'sprites': {}}
     for sprite in CONTRACT['sprites']:
         manifest['sprites'][sprite] = pack_sprite(sprite, source, output)
     (output / 'sprites.manifest.json').write_text(

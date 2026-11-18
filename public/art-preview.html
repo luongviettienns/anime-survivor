@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="vi">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Anime Survivor — Art Review</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#101a24;color:#f8edcd;font:15px system-ui,sans-serif}
+main{max-width:1240px;margin:auto;padding:32px}h1{margin:0 0 12px;font-size:30px}p{line-height:1.6;color:#bbcdd3}
+a{color:#75e4f4}header{margin-bottom:24px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+article{background:#192936;border:1px solid #465664;padding:12px;border-radius:8px}h2{font-size:17px;margin:4px 0 10px}
+canvas{width:256px;height:192px;max-width:100%;image-rendering:pixelated;display:block;margin:auto}
+small{display:block;color:#b9c9d2;margin:10px 0 4px;line-height:1.5}.tag{color:#ffd080}
+button{background:#2c4555;color:white;padding:8px 14px;border:1px solid #708390;border-radius:4px;cursor:pointer}
+</style>
+<main><header><h1>Bộ ảnh gốc · Nhân vật / Quái / VFX</h1>
+<p>Ảnh AI từng frame, giữ nguyên nguồn gốc. Bộ thường áp dụng trong game; Rasenshuriken, sóng mặt đất và bản max bên dưới là artwork chuẩn bị cho bước gameplay sau.</p>
+<p><a href="/">Mở game</a> · <button id="pause">Dừng / phát animation</button> · <label>Hướng quái <select id="direction"><option value="cycle">Tự đổi 4 hướng</option><option value="down">Xuống</option><option value="right">Phải</option><option value="up">Lên</option><option value="left">Trái</option></select></label></p></header>
+<div class="grid" id="gallery"></div><p id="status">Đang tải ảnh…</p></main>
+<script type="module" src="/art-preview.js"></script>
+</html>

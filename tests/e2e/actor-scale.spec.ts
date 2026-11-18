@@ -1,0 +1,34 @@
+import { expect, test } from '@playwright/test';
+import type Phaser from 'phaser';
+import type { WeaponInventory } from '../../src/domain/weapons';
+
+test('Rasengan actor keeps idle height and foot position in both original-image poses', async ({ page }) => {
+  await page.goto('/?play=1');
+  await page.waitForFunction(() => Boolean(window.__ANIME_SURVIVOR__));
+  const poses = await page.evaluate(() => {
+    const api = window.__ANIME_SURVIVOR__!;
+    const scene = api.getScene() as unknown as Phaser.Scene & {
+      player: Phaser.Physics.Arcade.Sprite; spawnTimer: Phaser.Time.TimerEvent;
+      weapon: { inventory: WeaponInventory };
+      movement: { playSkill: (skill: 'orb', aim: number) => void; update: () => void };
+    };
+    scene.spawnTimer.paused = true; api.clearEnemies();
+    Object.assign(scene.weapon.inventory, { orb: 0, slash: 0, orbital: 0, mine: 0 });
+    scene.movement.playSkill('orb', 1); scene.movement.update(); scene.scene.pause();
+    const sprite = scene.children.list.find((child) => child.getData('hero-action')) as Phaser.GameObjects.Sprite;
+    return [0, 1].map((index) => {
+      sprite.setFrame(index);
+      // Apply the same synchronization path used by the scene update.
+      scene.movement.update();
+      const data = sprite.frame.customData as { opaqueHeight?: number };
+      return { height: (data.opaqueHeight ?? 0) * sprite.scaleY,
+        footY: sprite.y, expectedFoot: scene.player.y + 28, bodyWidth: scene.player.body!.width };
+    });
+  });
+  for (const pose of poses) {
+    expect(pose.height).toBeCloseTo(56, 4);
+    expect(pose.footY).toBeCloseTo(pose.expectedFoot, 4);
+    expect(pose.bodyWidth).toBeCloseTo(40);
+  }
+  await page.screenshot({ path: 'test-results/naruto-cast-scale-fixed.png' });
+});

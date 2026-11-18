@@ -1,8 +1,7 @@
-"""Validate sprite sheets byte-for-byte against the source frames and contract."""
+"""Validate all animated sprite sheets byte-for-byte against source frames, single tiles, and card icons."""
 from __future__ import annotations
 import hashlib
 import json
-from pathlib import Path
 from PIL import Image
 from pack_frames import ROOT, CONTRACT
 
@@ -19,7 +18,7 @@ def verify() -> None:
         sheet = Image.open(OUT / metadata['file']).convert('RGBA')
         w, h = spec['frame_width'], spec['frame_height']
         if sheet.size != (w * spec['columns'], h * spec['rows']):
-            raise AssertionError(f'{sprite}: incorrect sheet dimensions')
+            raise AssertionError(f'{sprite}: incorrect sheet dimensions {sheet.size}')
         assert len(metadata['frames']) == spec['columns'] * spec['rows']
         for entry in metadata['frames']:
             x, y, width, height = entry['rect']
@@ -38,8 +37,15 @@ def verify() -> None:
     for name, size in CONTRACT['single_images'].items():
         with Image.open(OUT / f'{name}.png') as image:
             if list(image.size) != size:
-                raise AssertionError(f'{name}: incorrect size')
-    print('PASS all generated asset dimensions')
+                raise AssertionError(f'{name}: incorrect size {image.size} != {size}')
+    for icon in CONTRACT.get('icons', []):
+        icon_path = OUT / 'icons' / f'{icon}.png'
+        if not icon_path.is_file():
+            raise AssertionError(f'Missing required icon: {icon_path}')
+        with Image.open(icon_path) as image:
+            if list(image.size) != CONTRACT.get('icon_sizes', {}).get(icon, [16, 16]) or image.mode != 'RGBA':
+                raise AssertionError(f'icon/{icon}: incorrect original icon size or mode, got {image.size} {image.mode}')
+    print(f'PASS all {len(CONTRACT["sprites"])} animated sheets, {len(CONTRACT["single_images"])} tiles, and {len(CONTRACT.get("icons", []))} icons')
 
 
 if __name__ == '__main__':

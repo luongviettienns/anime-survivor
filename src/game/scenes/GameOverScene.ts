@@ -7,6 +7,7 @@ export class GameOverScene extends Phaser.Scene {
   }
 
   create(data: { victory?: boolean; score?: number; survivalSec?: number }): void {
+    this.cameras.main.setZoom(this.scale.width / 960).centerOn(480, 270);
     const saved = saveRunResult({
       kills: data.score ?? 0,
       survivalSec: Math.floor(data.survivalSec ?? 0),

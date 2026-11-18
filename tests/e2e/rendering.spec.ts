@@ -4,7 +4,7 @@ import type Phaser from 'phaser';
 test('map, actors, HUD and skills use smooth original-image sampling', async ({ page }) => {
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
-  await page.goto('/');
+  await page.goto('/?play=1');
   await page.waitForFunction(() => Boolean(window.__ANIME_SURVIVOR__));
   const rendering = await page.evaluate(() => {
     const scene = window.__ANIME_SURVIVOR__!.getScene();

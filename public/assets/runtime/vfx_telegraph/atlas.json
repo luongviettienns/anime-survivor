@@ -1,0 +1,76 @@
+{
+  "textures": [
+    {
+      "image": "charge-000.png",
+      "frames": [
+        {
+          "filename": "0",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 248,
+            "h": 99
+          },
+          "spriteSourceSize": {
+            "x": 4,
+            "y": 78,
+            "w": 248,
+            "h": 99
+          },
+          "sourceSize": {
+            "w": 256,
+            "h": 256
+          },
+          "animation": "charge",
+          "poseIndex": 0,
+          "opaqueHeight": 80.875,
+          "displayScale": 0.6,
+          "opaqueBounds": [
+            14.0,
+            89.5,
+            241.875,
+            170.375
+          ]
+        }
+      ]
+    },
+    {
+      "image": "charge-001.png",
+      "frames": [
+        {
+          "filename": "1",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 248,
+            "h": 99
+          },
+          "spriteSourceSize": {
+            "x": 4,
+            "y": 78,
+            "w": 248,
+            "h": 99
+          },
+          "sourceSize": {
+            "w": 256,
+            "h": 256
+          },
+          "animation": "charge",
+          "poseIndex": 1,
+          "opaqueHeight": 80.625,
+          "displayScale": 0.6,
+          "opaqueBounds": [
+            13.625,
+            89.125,
+            242.125,
+            169.75
+          ]
+        }
+      ]
+    }
+  ]
+}

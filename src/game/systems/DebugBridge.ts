@@ -7,6 +7,7 @@ import type { GameScene } from '../scenes/GameScene';
 import type { AudioSystem, SoundCue } from './AudioSystem';
 import type { DamageSystem } from './DamageSystem';
 import type { EnemySystem } from './EnemySystem';
+import type { InfiniteMapSystem } from './InfiniteMapSystem';
 import type { PickupSystem } from './PickupSystem';
 import { loadSaveData } from './StorageSystem';
 import type { VfxSystem } from './VfxSystem';
@@ -16,6 +17,8 @@ export type GameDebugApi = {
   getScene: () => GameScene;
   getPlayerPosition: () => { x: number; y: number };
   getPlayerVelocity: () => { x: number; y: number };
+  teleportPlayer: (x: number, y: number) => void;
+  getLoadedChunks: () => number;
   getPlayerState: () => { hp: number; maxHp: number; alive: boolean; invulnerableUntilMs: number };
   getProgression: () => RunProgression & { defeated: number };
   getWeapons: () => WeaponInventory;
@@ -60,6 +63,7 @@ export function registerGameDebugApi(
   pickups: PickupSystem,
   vfx: VfxSystem,
   audio: AudioSystem,
+  map: InfiniteMapSystem,
   getProgression: () => RunProgression & { defeated: number }
 ): void {
   window.__ANIME_SURVIVOR__ = {
@@ -69,6 +73,12 @@ export function registerGameDebugApi(
       x: player.body?.velocity.x ?? 0,
       y: player.body?.velocity.y ?? 0,
     }),
+    teleportPlayer: (x: number, y: number) => {
+      player.setPosition(x, y);
+      scene.cameras.main.centerOn(x, y);
+      map.update(x, y);
+    },
+    getLoadedChunks: () => map.getLoadedChunkCount(),
     getPlayerState: () => ({ ...damage.state }),
     getProgression,
     getWeapons: () => ({ ...weapon.inventory }),
@@ -96,22 +106,18 @@ export function registerGameDebugApi(
     },
     getBossState: () => enemies.getActiveBossState(),
     spawnEnemyAt: (x: number, y: number) => enemies.spawnAt(x, y, 'slime'),
-    spawnEnemyTypeAt: (type: EnemyArchetypeId, x: number, y: number) =>
-      enemies.spawnAt(x, y, type),
+    spawnEnemyTypeAt: (type: EnemyArchetypeId, x: number, y: number) => enemies.spawnAt(x, y, type),
     spawnSwarm: (count: number) => {
       const types: EnemyArchetypeId[] = ['slime', 'shade', 'mage'];
       for (let i = 0; i < count && enemies.group.countActive(true) < 130; i++) {
         const angle = (i / Math.max(1, count)) * Math.PI * 2;
         const radius = 140 + (i % 4) * 45;
-        const x = Math.max(40, Math.min(1760, player.x + Math.cos(angle) * radius));
-        const y = Math.max(40, Math.min(1160, player.y + Math.sin(angle) * radius));
-        enemies.spawnAt(x, y, types[i % types.length]!);
+        enemies.spawnAt(player.x + Math.cos(angle) * radius, player.y + Math.sin(angle) * radius, types[i % types.length]!);
       }
       return enemies.group.countActive(true);
     },
     spawnBossAt: (x: number, y: number) => enemies.spawnAt(x, y, 'boss'),
-    spawnHealAt: (x: number, y: number, amount?: number) =>
-      pickups.spawnHealPickup(x, y, amount),
+    spawnHealAt: (x: number, y: number, amount?: number) => pickups.spawnHealPickup(x, y, amount),
     clearEnemies: () => {
       enemies.group.clear(true, true);
       enemies.enemyProjectiles.clear(true, true);

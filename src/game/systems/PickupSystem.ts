@@ -13,29 +13,37 @@ import { PICKUP, PLAYER } from '../config/constants';
 export class PickupSystem {
   readonly group: Phaser.Physics.Arcade.Group;
   private nextId = 1;
-  private readonly states = new Map<Phaser.Physics.Arcade.Image, PickupState>();
+  private readonly states = new Map<Phaser.Physics.Arcade.Sprite, PickupState>();
+  private readonly globalMagnetized = new Set<Phaser.Physics.Arcade.Sprite>();
 
   constructor(scene: Phaser.Scene) {
     this.group = scene.physics.add.group();
   }
 
-  spawnXpGem(x: number, y: number, value: number = PICKUP.xpPerKill): Phaser.Physics.Arcade.Image {
-    const gem = this.acquireSprite(x, y);
-    const state = createPickupState(this.nextId++, 'xp', value, x, y);
-    this.states.set(gem, state);
+  spawnXpGem(x: number, y: number, value: number = PICKUP.xpPerKill): Phaser.Physics.Arcade.Sprite {
+    const gem = this.acquireSprite(x, y, 'gem', 'gem-gleam');
+    this.states.set(gem, createPickupState(this.nextId++, 'xp', value, x, y));
     return gem;
   }
 
-  spawnHealPickup(
-    x: number,
-    y: number,
-    value: number = PICKUP.healAmount
-  ): Phaser.Physics.Arcade.Image {
-    const heal = this.acquireSprite(x, y);
-    heal.setTint(0x66ff99);
-    const state = createPickupState(this.nextId++, 'heal', value, x, y);
-    this.states.set(heal, state);
+  spawnHealPickup(x: number, y: number, value: number = PICKUP.healAmount): Phaser.Physics.Arcade.Sprite {
+    const heal = this.acquireSprite(x, y, 'heal_pickup', 'heal-beat');
+    this.states.set(heal, createPickupState(this.nextId++, 'heal', value, x, y));
     return heal;
+  }
+
+  spawnMagnetPickup(x: number, y: number): Phaser.Physics.Arcade.Sprite {
+    const magnet = this.acquireSprite(x, y, 'icon-stat_magnet');
+    this.states.set(magnet, createPickupState(this.nextId++, 'magnet', 1, x, y));
+    return magnet;
+  }
+
+  activateGlobalMagnet(): void {
+    for (const [sprite, state] of this.states) {
+      if (sprite.active && state.state === 'ground' && state.type === 'xp') {
+        this.globalMagnetized.add(sprite);
+      }
+    }
   }
 
   update(
@@ -44,37 +52,30 @@ export class PickupSystem {
     magnetSpeed: number = PLAYER.pickupMagnetSpeed
   ): void {
     for (const child of this.group.getChildren()) {
-      const image = child as Phaser.Physics.Arcade.Image;
-      if (!image.active) continue;
-      const state = this.states.get(image);
+      const sprite = child as Phaser.Physics.Arcade.Sprite;
+      if (!sprite.active) continue;
+      const state = this.states.get(sprite);
       if (!state || state.state !== 'ground') continue;
-      const vel = magnetVelocity(image, playerPos, magnetRadius, magnetSpeed);
-      image.setVelocity(vel.x, vel.y);
-      image.setDepth(image.y);
-      state.x = image.x;
-      state.y = image.y;
+      const pullAll = this.globalMagnetized.has(sprite);
+      const vel = magnetVelocity(sprite, playerPos, pullAll ? 1_000_000 : magnetRadius, pullAll ? Math.max(magnetSpeed, 440) : magnetSpeed);
+      sprite.setVelocity(vel.x, vel.y).setDepth(sprite.y);
+      state.x = sprite.x;
+      state.y = sprite.y;
     }
   }
 
-  collect(
-    pickupObject: Phaser.GameObjects.GameObject,
-    playerState: PlayerState,
-    progression: RunProgression
-  ): PickupCollectionResult {
-    const image = pickupObject as Phaser.Physics.Arcade.Image;
-    const state = this.states.get(image);
-    if (!image.active || !state || state.state !== 'ground') {
-      return {
-        collected: false,
-        levelsGained: 0,
-        hpBefore: playerState.hp,
-        hpAfter: playerState.hp,
-      };
+  collect(pickupObject: Phaser.GameObjects.GameObject, playerState: PlayerState, progression: RunProgression): PickupCollectionResult {
+    const sprite = pickupObject as Phaser.Physics.Arcade.Sprite;
+    const state = this.states.get(sprite);
+    if (!sprite.active || !state || state.state !== 'ground') {
+      return { collected: false, levelsGained: 0, hpBefore: playerState.hp, hpAfter: playerState.hp };
     }
     const result = collectPickup(state, playerState, progression);
     if (result.collected) {
-      this.states.delete(image);
-      image.disableBody(true, true);
+      this.states.delete(sprite);
+      this.globalMagnetized.delete(sprite);
+      sprite.anims?.stop();
+      sprite.disableBody(true, true);
     }
     return result;
   }
@@ -85,20 +86,21 @@ export class PickupSystem {
 
   clear(): void {
     this.states.clear();
+    this.globalMagnetized.clear();
   }
 
-  private acquireSprite(x: number, y: number): Phaser.Physics.Arcade.Image {
-    const reuse = this.group.getFirstDead(false) as Phaser.Physics.Arcade.Image | null;
-    if (reuse) {
-      reuse.enableBody(true, x, y, true, true);
-      reuse.setTexture('gem');
-      reuse.clearTint();
-      reuse.setVelocity(0, 0);
-      reuse.setScale(2).setDepth(y);
-      return reuse;
+  private acquireSprite(x: number, y: number, texture: string, animKey?: string): Phaser.Physics.Arcade.Sprite {
+    const reuse = this.group.getFirstDead(false) as Phaser.Physics.Arcade.Sprite | null;
+    const sprite = reuse
+      ? (reuse.enableBody(true, x, y, true, true), reuse)
+      : (this.group.create(x, y, texture, 0) as Phaser.Physics.Arcade.Sprite);
+    sprite.setTexture(texture).clearTint().setVelocity(0, 0).setDepth(y);
+    if (animKey) {
+      sprite.setScale(1.85 / 4).play(animKey, true);
+    } else {
+      sprite.anims?.stop();
+      sprite.setDisplaySize(24, 24);
     }
-    const created = this.group.create(x, y, 'gem') as Phaser.Physics.Arcade.Image;
-    created.setScale(2).setDepth(y);
-    return created;
+    return sprite;
   }
 }

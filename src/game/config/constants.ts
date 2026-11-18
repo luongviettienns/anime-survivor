@@ -32,5 +32,5 @@ export const PROJECTILE = {
 
 export const PICKUP = {
   xpPerKill: 1,
-  healAmount: 25,
+  healAmount: 30,
 } as const;

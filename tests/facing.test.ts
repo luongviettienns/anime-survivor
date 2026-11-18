@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { movementFacing } from '../src/domain/facing';
+import { movementFacing, targetFacing } from '../src/domain/facing';
 
 describe('movement facing', () => {
   it('faces each cardinal direction and retains it on release', () => {
@@ -13,5 +13,19 @@ describe('movement facing', () => {
   it('prefers horizontal facing on diagonals', () => {
     expect(movementFacing({ x: 1, y: -1 }, 'up')).toBe('right');
     expect(movementFacing({ x: -1, y: 1 }, 'down')).toBe('left');
+  });
+});
+
+describe('monster target facing', () => {
+  it('uses the dominant aim axis, including small horizontal drift on a vertical target', () => {
+    expect(targetFacing({ x: 1, y: -200 }, 'down')).toBe('up');
+    expect(targetFacing({ x: -2, y: 100 }, 'up')).toBe('down');
+    expect(targetFacing({ x: -100, y: 5 }, 'up')).toBe('left');
+    expect(targetFacing({ x: 100, y: -5 }, 'up')).toBe('right');
+  });
+
+  it('keeps the previous facing at zero aim and breaks diagonal ties horizontally', () => {
+    expect(targetFacing({ x: 0, y: 0 }, 'left')).toBe('left');
+    expect(targetFacing({ x: 10, y: -10 }, 'down')).toBe('right');
   });
 });

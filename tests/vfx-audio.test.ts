@@ -3,6 +3,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { createDefaultSaveData } from '../src/domain/storageSchema';
 import { AudioSystem } from '../src/game/systems/AudioSystem';
 import { saveSaveData, updateSettings } from '../src/game/systems/StorageSystem';
+import { createMockVfxScene } from './helpers/vfxScene';
 import { VfxSystem } from '../src/game/systems/VfxSystem';
 
 function createMockAudioScene(opts?: { audioExists?: boolean; throwOnPlay?: boolean }) {
@@ -17,89 +18,6 @@ function createMockAudioScene(opts?: { audioExists?: boolean; throwOnPlay?: bool
     sound: { play: playMock },
   } as unknown as Phaser.Scene;
   return { scene, playMock, existsMock };
-}
-
-function createMockVfxScene() {
-  const explodeMock = vi.fn();
-  const reserveMock = vi.fn();
-  const stopMock = vi.fn();
-  const flashMock = vi.fn();
-  const shakeMock = vi.fn();
-
-  const createdTexts: Array<{
-    x: number;
-    y: number;
-    text: string;
-    alpha: number;
-    active: boolean;
-    visible: boolean;
-    setText: (t: string) => unknown;
-    setPosition: (x: number, y: number) => unknown;
-    setAlpha: (a: number) => unknown;
-    setActive: (a: boolean) => unknown;
-    setVisible: (v: boolean) => unknown;
-    setOrigin: () => unknown;
-    setDepth: () => unknown;
-  }> = [];
-
-  const scene = {
-    time: { now: 500 },
-    add: {
-      particles: vi.fn(() => ({
-        setDepth: vi.fn().mockReturnThis(),
-        reserve: reserveMock,
-        explode: explodeMock,
-        stop: stopMock,
-      })),
-      text: vi.fn((x: number, y: number, initial: string) => {
-        const obj = {
-          x,
-          y,
-          text: initial,
-          alpha: 1,
-          active: true,
-          visible: true,
-          setText(t: string) {
-            obj.text = t;
-            return obj;
-          },
-          setPosition(nx: number, ny: number) {
-            obj.x = nx;
-            obj.y = ny;
-            return obj;
-          },
-          setAlpha(a: number) {
-            obj.alpha = a;
-            return obj;
-          },
-          setActive(a: boolean) {
-            obj.active = a;
-            return obj;
-          },
-          setVisible(v: boolean) {
-            obj.visible = v;
-            return obj;
-          },
-          setOrigin() {
-            return obj;
-          },
-          setDepth() {
-            return obj;
-          },
-        };
-        createdTexts.push(obj);
-        return obj;
-      }),
-    },
-    cameras: {
-      main: {
-        flash: flashMock,
-        shake: shakeMock,
-      },
-    },
-  } as unknown as Phaser.Scene;
-
-  return { scene, explodeMock, reserveMock, stopMock, flashMock, shakeMock, createdTexts };
 }
 
 describe('AudioSystem', () => {

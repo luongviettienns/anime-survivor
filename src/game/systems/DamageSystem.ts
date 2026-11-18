@@ -5,6 +5,7 @@ import {
   isPlayerInvulnerable,
   type PlayerState,
 } from '../../domain/combat';
+import { loadSaveData } from './StorageSystem';
 import { ENEMY, PLAYER } from '../config/constants';
 
 export class DamageSystem {
@@ -16,13 +17,15 @@ export class DamageSystem {
 
   tryContactDamage(
     nowMs: number,
-    amount: number = ENEMY.touchDamage
+    amount: number = ENEMY.touchDamage,
+    flatDamageReduction = 0
   ): { damaged: boolean; died: boolean } {
     const damaged = applyContactDamage(
       this.state,
       amount,
       nowMs,
-      PLAYER.invulnerabilityMs
+      PLAYER.invulnerabilityMs,
+      flatDamageReduction
     );
     if (!damaged) {
       return { damaged: false, died: false };
@@ -36,7 +39,7 @@ export class DamageSystem {
   updateVisuals(nowMs: number): void {
     if (!this.player.active) return;
     if (isPlayerInvulnerable(this.state, nowMs)) {
-      const blinkOn = Math.floor(nowMs / 100) % 2 === 0;
+      const blinkOn = loadSaveData().settings.reduceFlashing || Math.floor(nowMs / 100) % 2 === 0;
       if (blinkOn) {
         this.player.setTint(0xff6677);
       } else {

@@ -1,0 +1,292 @@
+{
+  "textures": [
+    {
+      "image": "orb-000.png",
+      "frames": [
+        {
+          "filename": "0",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 164
+          },
+          "spriteSourceSize": {
+            "x": 21,
+            "y": 25,
+            "w": 150,
+            "h": 164
+          },
+          "sourceSize": {
+            "w": 192,
+            "h": 192
+          },
+          "animation": "orb",
+          "poseIndex": 0,
+          "opaqueHeight": 133.875,
+          "displayScale": 0.41830065359477125,
+          "opaqueBounds": [
+            55.625,
+            42.125,
+            132.375,
+            176.0
+          ]
+        }
+      ]
+    },
+    {
+      "image": "orb-001.png",
+      "frames": [
+        {
+          "filename": "1",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 164
+          },
+          "spriteSourceSize": {
+            "x": 21,
+            "y": 22,
+            "w": 150,
+            "h": 164
+          },
+          "sourceSize": {
+            "w": 192,
+            "h": 192
+          },
+          "animation": "orb",
+          "poseIndex": 1,
+          "opaqueHeight": 143.5,
+          "displayScale": 0.3902439024390244,
+          "opaqueBounds": [
+            68.0,
+            32.5,
+            127.25,
+            176.0
+          ]
+        }
+      ]
+    },
+    {
+      "image": "slash-000.png",
+      "frames": [
+        {
+          "filename": "2",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 164
+          },
+          "spriteSourceSize": {
+            "x": 21,
+            "y": 20,
+            "w": 150,
+            "h": 164
+          },
+          "sourceSize": {
+            "w": 192,
+            "h": 192
+          },
+          "animation": "slash",
+          "poseIndex": 0,
+          "opaqueHeight": 143.5,
+          "displayScale": 0.3902439024390244,
+          "opaqueBounds": [
+            41.875,
+            32.5,
+            156.75,
+            176.0
+          ]
+        }
+      ]
+    },
+    {
+      "image": "slash-001.png",
+      "frames": [
+        {
+          "filename": "3",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 164
+          },
+          "spriteSourceSize": {
+            "x": 21,
+            "y": 23,
+            "w": 150,
+            "h": 164
+          },
+          "sourceSize": {
+            "w": 192,
+            "h": 192
+          },
+          "animation": "slash",
+          "poseIndex": 1,
+          "opaqueHeight": 139.875,
+          "displayScale": 0.40035746201966044,
+          "opaqueBounds": [
+            58.625,
+            36.125,
+            123.875,
+            176.0
+          ]
+        }
+      ]
+    },
+    {
+      "image": "orbital-000.png",
+      "frames": [
+        {
+          "filename": "4",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 164
+          },
+          "spriteSourceSize": {
+            "x": 21,
+            "y": 22,
+            "w": 150,
+            "h": 164
+          },
+          "sourceSize": {
+            "w": 192,
+            "h": 192
+          },
+          "animation": "orbital",
+          "poseIndex": 0,
+          "opaqueHeight": 144.5,
+          "displayScale": 0.3875432525951557,
+          "opaqueBounds": [
+            64.625,
+            31.5,
+            156.0,
+            176.0
+          ]
+        }
+      ]
+    },
+    {
+      "image": "orbital-001.png",
+      "frames": [
+        {
+          "filename": "5",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 164
+          },
+          "spriteSourceSize": {
+            "x": 21,
+            "y": 21,
+            "w": 150,
+            "h": 164
+          },
+          "sourceSize": {
+            "w": 192,
+            "h": 192
+          },
+          "animation": "orbital",
+          "poseIndex": 1,
+          "opaqueHeight": 143.625,
+          "displayScale": 0.38990426457789384,
+          "opaqueBounds": [
+            69.125,
+            32.375,
+            117.0,
+            176.0
+          ]
+        }
+      ]
+    },
+    {
+      "image": "mine-000.png",
+      "frames": [
+        {
+          "filename": "6",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 164
+          },
+          "spriteSourceSize": {
+            "x": 21,
+            "y": 22,
+            "w": 150,
+            "h": 164
+          },
+          "sourceSize": {
+            "w": 192,
+            "h": 192
+          },
+          "animation": "mine",
+          "poseIndex": 0,
+          "opaqueHeight": 103.625,
+          "displayScale": 0.5,
+          "opaqueBounds": [
+            58.625,
+            72.375,
+            129.25,
+            176.0
+          ]
+        }
+      ]
+    },
+    {
+      "image": "mine-001.png",
+      "frames": [
+        {
+          "filename": "7",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 164
+          },
+          "spriteSourceSize": {
+            "x": 21,
+            "y": 22,
+            "w": 150,
+            "h": 164
+          },
+          "sourceSize": {
+            "w": 192,
+            "h": 192
+          },
+          "animation": "mine",
+          "poseIndex": 1,
+          "opaqueHeight": 140.0,
+          "displayScale": 0.4,
+          "opaqueBounds": [
+            64.375,
+            36.0,
+            123.375,
+            176.0
+          ]
+        }
+      ]
+    }
+  ]
+}

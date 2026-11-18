@@ -16,6 +16,7 @@ export class PauseScene extends Phaser.Scene {
   }
 
   create(data?: PauseSceneData): void {
+    this.cameras.main.setZoom(this.scale.width / 960).centerOn(480, 270);
     this.add.rectangle(480, 270, 960, 540, 0x090b1a, 0.84);
     this.add
       .rectangle(480, 270, 620, 360, 0x161936, 0.96)

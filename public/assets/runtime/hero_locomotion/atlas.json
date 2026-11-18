@@ -1,0 +1,498 @@
+{
+  "textures": [
+    {
+      "image": "idle-000.png",
+      "frames": [
+        {
+          "filename": "0",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 164,
+            "h": 150
+          },
+          "spriteSourceSize": {
+            "x": 14,
+            "y": 29,
+            "w": 164,
+            "h": 150
+          },
+          "sourceSize": {
+            "w": 192,
+            "h": 192
+          },
+          "animation": "idle",
+          "poseIndex": 0,
+          "opaqueHeight": 143.0,
+          "displayScale": 0.3916083916083916,
+          "opaqueBounds": [
+            63.0,
+            33.0,
+            126.625,
+            176.0
+          ]
+        },
+        {
+          "filename": "3",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 164,
+            "h": 150
+          },
+          "spriteSourceSize": {
+            "x": 14,
+            "y": 29,
+            "w": 164,
+            "h": 150
+          },
+          "sourceSize": {
+            "w": 192,
+            "h": 192
+          },
+          "animation": "idle",
+          "poseIndex": 3,
+          "opaqueHeight": 143.0,
+          "displayScale": 0.3916083916083916,
+          "opaqueBounds": [
+            63.0,
+            33.0,
+            126.625,
+            176.0
+          ]
+        }
+      ]
+    },
+    {
+      "image": "idle-001.png",
+      "frames": [
+        {
+          "filename": "1",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 164,
+            "h": 150
+          },
+          "spriteSourceSize": {
+            "x": 14,
+            "y": 30,
+            "w": 164,
+            "h": 150
+          },
+          "sourceSize": {
+            "w": 192,
+            "h": 192
+          },
+          "animation": "idle",
+          "poseIndex": 1,
+          "opaqueHeight": 142.875,
+          "displayScale": 0.39195100612423445,
+          "opaqueBounds": [
+            63.875,
+            33.125,
+            125.5,
+            176.0
+          ]
+        },
+        {
+          "filename": "2",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 164,
+            "h": 150
+          },
+          "spriteSourceSize": {
+            "x": 14,
+            "y": 30,
+            "w": 164,
+            "h": 150
+          },
+          "sourceSize": {
+            "w": 192,
+            "h": 192
+          },
+          "animation": "idle",
+          "poseIndex": 2,
+          "opaqueHeight": 142.875,
+          "displayScale": 0.39195100612423445,
+          "opaqueBounds": [
+            63.875,
+            33.125,
+            125.5,
+            176.0
+          ]
+        }
+      ]
+    },
+    {
+      "image": "walk-000.png",
+      "frames": [
+        {
+          "filename": "4",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 164
+          },
+          "spriteSourceSize": {
+            "x": 21,
+            "y": 21,
+            "w": 150,
+            "h": 164
+          },
+          "sourceSize": {
+            "w": 192,
+            "h": 192
+          },
+          "animation": "walk",
+          "poseIndex": 0,
+          "opaqueHeight": 138.875,
+          "displayScale": 0.40324032403240323,
+          "opaqueBounds": [
+            43.25,
+            37.125,
+            142.875,
+            176.0
+          ]
+        }
+      ]
+    },
+    {
+      "image": "walk-001.png",
+      "frames": [
+        {
+          "filename": "5",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 164
+          },
+          "spriteSourceSize": {
+            "x": 21,
+            "y": 20,
+            "w": 150,
+            "h": 164
+          },
+          "sourceSize": {
+            "w": 192,
+            "h": 192
+          },
+          "animation": "walk",
+          "poseIndex": 1,
+          "opaqueHeight": 138.5,
+          "displayScale": 0.4043321299638989,
+          "opaqueBounds": [
+            42.375,
+            37.5,
+            141.25,
+            176.0
+          ]
+        }
+      ]
+    },
+    {
+      "image": "walk-002.png",
+      "frames": [
+        {
+          "filename": "6",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 164
+          },
+          "spriteSourceSize": {
+            "x": 21,
+            "y": 20,
+            "w": 150,
+            "h": 164
+          },
+          "sourceSize": {
+            "w": 192,
+            "h": 192
+          },
+          "animation": "walk",
+          "poseIndex": 2,
+          "opaqueHeight": 140.25,
+          "displayScale": 0.39928698752228164,
+          "opaqueBounds": [
+            37.625,
+            35.75,
+            143.625,
+            176.0
+          ]
+        }
+      ]
+    },
+    {
+      "image": "walk-003.png",
+      "frames": [
+        {
+          "filename": "7",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 164
+          },
+          "spriteSourceSize": {
+            "x": 21,
+            "y": 20,
+            "w": 150,
+            "h": 164
+          },
+          "sourceSize": {
+            "w": 192,
+            "h": 192
+          },
+          "animation": "walk",
+          "poseIndex": 3,
+          "opaqueHeight": 139.25,
+          "displayScale": 0.4021543985637343,
+          "opaqueBounds": [
+            41.25,
+            36.75,
+            141.125,
+            176.0
+          ]
+        }
+      ]
+    },
+    {
+      "image": "walk-down-000.png",
+      "frames": [
+        {
+          "filename": "8",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 164,
+            "h": 150
+          },
+          "spriteSourceSize": {
+            "x": 14,
+            "y": 30,
+            "w": 164,
+            "h": 150
+          },
+          "sourceSize": {
+            "w": 192,
+            "h": 192
+          },
+          "animation": "walk-down",
+          "poseIndex": 0,
+          "opaqueHeight": 143.125,
+          "displayScale": 0.39126637554585153,
+          "opaqueBounds": [
+            62.375,
+            32.875,
+            125.125,
+            176.0
+          ]
+        }
+      ]
+    },
+    {
+      "image": "walk-down-001.png",
+      "frames": [
+        {
+          "filename": "9",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 164,
+            "h": 150
+          },
+          "spriteSourceSize": {
+            "x": 14,
+            "y": 30,
+            "w": 164,
+            "h": 150
+          },
+          "sourceSize": {
+            "w": 192,
+            "h": 192
+          },
+          "animation": "walk-down",
+          "poseIndex": 1,
+          "opaqueHeight": 143.0,
+          "displayScale": 0.3916083916083916,
+          "opaqueBounds": [
+            64.375,
+            33.0,
+            126.75,
+            176.0
+          ]
+        }
+      ]
+    },
+    {
+      "image": "idle-up-000.png",
+      "frames": [
+        {
+          "filename": "10",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 164,
+            "h": 150
+          },
+          "spriteSourceSize": {
+            "x": 14,
+            "y": 30,
+            "w": 164,
+            "h": 150
+          },
+          "sourceSize": {
+            "w": 192,
+            "h": 192
+          },
+          "animation": "idle-up",
+          "poseIndex": 0,
+          "opaqueHeight": 142.5,
+          "displayScale": 0.3929824561403509,
+          "opaqueBounds": [
+            64.75,
+            33.5,
+            124.75,
+            176.0
+          ]
+        }
+      ]
+    },
+    {
+      "image": "walk-up-000.png",
+      "frames": [
+        {
+          "filename": "11",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 164,
+            "h": 150
+          },
+          "spriteSourceSize": {
+            "x": 14,
+            "y": 30,
+            "w": 164,
+            "h": 150
+          },
+          "sourceSize": {
+            "w": 192,
+            "h": 192
+          },
+          "animation": "walk-up",
+          "poseIndex": 0,
+          "opaqueHeight": 142.625,
+          "displayScale": 0.39263803680981596,
+          "opaqueBounds": [
+            64.625,
+            33.375,
+            127.75,
+            176.0
+          ]
+        }
+      ]
+    },
+    {
+      "image": "walk-up-001.png",
+      "frames": [
+        {
+          "filename": "12",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 164,
+            "h": 150
+          },
+          "spriteSourceSize": {
+            "x": 14,
+            "y": 30,
+            "w": 164,
+            "h": 150
+          },
+          "sourceSize": {
+            "w": 192,
+            "h": 192
+          },
+          "animation": "walk-up",
+          "poseIndex": 1,
+          "opaqueHeight": 142.5,
+          "displayScale": 0.3929824561403509,
+          "opaqueBounds": [
+            62.0,
+            33.5,
+            123.625,
+            176.0
+          ]
+        }
+      ]
+    },
+    {
+      "image": "idle-side-000.png",
+      "frames": [
+        {
+          "filename": "13",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 150,
+            "h": 164
+          },
+          "spriteSourceSize": {
+            "x": 21,
+            "y": 21,
+            "w": 150,
+            "h": 164
+          },
+          "sourceSize": {
+            "w": 192,
+            "h": 192
+          },
+          "animation": "idle-side",
+          "poseIndex": 0,
+          "opaqueHeight": 146.25,
+          "displayScale": 0.38290598290598293,
+          "opaqueBounds": [
+            67.625,
+            29.75,
+            117.875,
+            176.0
+          ]
+        }
+      ]
+    }
+  ]
+}

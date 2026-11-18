@@ -1,125 +1,90 @@
 import Phaser from 'phaser';
-import type { PlayerState } from '../domain/combat';
-import { xpThreshold, type RunProgression } from '../domain/progression';
-import type { WeaponId, WeaponInventory } from '../domain/weapons';
+import { xpThreshold } from '../domain/progression';
+import type { WeaponId } from '../domain/weapons';
+import { formatPassives, type HudStateDto } from './HudState';
+import { HudChrome } from './HudChrome';
+import { HudGauges } from './HudGauges';
+import { hudLayout } from './layout';
 
-export type HudStateDto = {
-  player: PlayerState;
-  progression: RunProgression;
-  elapsedSec: number;
-  defeated: number;
-  weapons?: WeaponInventory;
-  bossHp?: { hp: number; maxHp: number; name: string } | null;
-};
-
-const WEAPON_LABELS: Record<WeaponId, string> = {
-  orb: 'ORB',
-  slash: 'SLASH',
-  orbital: 'ORBIT',
-};
+const SLOTS: ReadonlyArray<{id:WeaponId;label:string;icon:string}> = [
+  {id:'orb',label:'ORB',icon:'icon-weapon_orb'}, {id:'slash',label:'PUNCH',icon:'icon-weapon_slash'},
+  {id:'orbital',label:'ORBIT',icon:'icon-weapon_orbital'}, {id:'mine',label:'MINE',icon:'icon-weapon_mine'},
+];
+const Z = 1_000_000_000;
 
 export class HudOverlay {
-  private readonly graphics: Phaser.GameObjects.Graphics;
-  private readonly statusText: Phaser.GameObjects.Text;
-  private readonly controlsText: Phaser.GameObjects.Text;
+  private readonly chrome: HudChrome;
+  private readonly gauges: HudGauges;
+  private readonly portrait: Phaser.GameObjects.Sprite;
+  private readonly heart: Phaser.GameObjects.Image;
+  private readonly hpLabel: Phaser.GameObjects.Text;
+  private readonly lvlLabel: Phaser.GameObjects.Text;
+  private readonly timer: Phaser.GameObjects.Text;
+  private readonly kills: Phaser.GameObjects.Text;
+  private readonly passives: Phaser.GameObjects.Text;
+  private readonly controls: Phaser.GameObjects.Text;
   private readonly bossText: Phaser.GameObjects.Text;
+  private readonly icons = {} as Record<WeaponId,Phaser.GameObjects.Image>;
+  private readonly badges = {} as Record<WeaponId,Phaser.GameObjects.Text>;
+  private readonly layout: ReturnType<typeof hudLayout>;
+  private status = '';
+  private lastKey = '';
 
   constructor(scene: Phaser.Scene) {
-    this.graphics = scene.add.graphics().setScrollFactor(0).setDepth(10000);
-    this.statusText = scene.add
-      .text(16, 44, '', {
-        fontFamily: 'monospace',
-        fontSize: '15px',
-        color: '#ffffff',
-        backgroundColor: '#1b1934bb',
-        padding: { x: 10, y: 6 },
-      })
-      .setScrollFactor(0)
-      .setDepth(10000);
-
-    this.controlsText = scene.add
-      .text(944, 22, 'WASD / Arrows | ESC Pause', {
-        fontFamily: 'monospace',
-        fontSize: '14px',
-        color: '#e8d5ff',
-      })
-      .setOrigin(1, 0)
-      .setScrollFactor(0)
-      .setDepth(10000);
-
-    this.bossText = scene.add
-      .text(480, 488, '', {
-        fontFamily: 'monospace',
-        fontSize: '14px',
-        color: '#ffccd5',
-      })
-      .setOrigin(0.5, 0.5)
-      .setScrollFactor(0)
-      .setDepth(10001)
-      .setVisible(false);
-  }
-
-  update(dto: HudStateDto): void {
-    this.graphics.clear();
-
-    const reqXp = Math.max(1, xpThreshold(dto.progression.level));
-    const xpRatio = Phaser.Math.Clamp(dto.progression.xp / reqXp, 0, 1);
-    this.graphics.fillStyle(0x1b1934, 0.85).fillRect(16, 8, 928, 8);
-    this.graphics.fillStyle(0x5ce1e6, 1).fillRect(16, 8, Math.round(928 * xpRatio), 8);
-    this.graphics.lineStyle(1, 0x9b87f5, 0.9).strokeRect(16, 8, 928, 8);
-
-    const maxHp = Math.max(1, dto.player.maxHp);
-    const hpRatio = Phaser.Math.Clamp(dto.player.hp / maxHp, 0, 1);
-    this.graphics.fillStyle(0x4a1525, 0.9).fillRect(16, 24, 220, 14);
-    this.graphics
-      .fillStyle(hpRatio > 0.35 ? 0x4ade80 : 0xf43f5e, 1)
-      .fillRect(16, 24, Math.round(220 * hpRatio), 14);
-    this.graphics.lineStyle(1, 0xffffff, 0.7).strokeRect(16, 24, 220, 14);
-
-    const min = Math.floor(dto.elapsedSec / 60)
-      .toString()
-      .padStart(2, '0');
-    const sec = Math.floor(dto.elapsedSec % 60)
-      .toString()
-      .padStart(2, '0');
-    const weaponsLabel = this.formatWeapons(dto.weapons);
-
-    this.statusText.setText(
-      `ANIME SURVIVOR | HP ${dto.player.hp}/${dto.player.maxHp} | LVL ${dto.progression.level} XP ${dto.progression.xp}/${reqXp}\nTIME ${min}:${sec} | KILLS ${dto.defeated} | ${weaponsLabel}`
-    );
-
-    if (dto.bossHp && dto.bossHp.hp > 0) {
-      const bossMax = Math.max(1, dto.bossHp.maxHp);
-      const bossRatio = Phaser.Math.Clamp(dto.bossHp.hp / bossMax, 0, 1);
-      this.graphics.fillStyle(0x2a0f1d, 0.9).fillRect(260, 502, 440, 14);
-      this.graphics.fillStyle(0xe11d48, 1).fillRect(260, 502, Math.round(440 * bossRatio), 14);
-      this.graphics.lineStyle(1, 0xffccd5, 0.85).strokeRect(260, 502, 440, 14);
-      this.bossText
-        .setText(`${dto.bossHp.name}  ${dto.bossHp.hp}/${dto.bossHp.maxHp}`)
-        .setVisible(true);
-    } else {
-      this.bossText.setVisible(false);
+    const l = this.layout = hudLayout(scene.scale.width,scene.scale.height);
+    this.chrome = new HudChrome(scene,Z-1);
+    this.gauges = new HudGauges(scene,this.chrome,Z);
+    const text = (x:number,y:number,size:number,color:string) => scene.add.text(x,y,'',{
+      fontFamily:'monospace',fontSize:`${size}px`,color,stroke:'#070a14',strokeThickness:3,
+    }).setScrollFactor(0).setDepth(Z+3);
+    this.portrait = scene.add.sprite(40,66,'hero',0).setScrollFactor(0).setDepth(Z+2).play('hero-idle');
+    this.heart = scene.add.image(90,55,'icon-stat_max_hp').setDisplaySize(16,16).setScrollFactor(0).setDepth(Z+3);
+    this.hpLabel = text(106,47,13,'#ffffff');
+    this.lvlLabel = text(l.levelX,12,13,'#ffe5a0').setOrigin(0.5);
+    this.timer = text(l.center,54,20,'#fff0c0').setOrigin(0.5).setData('hud-timer',true);
+    this.kills = text(l.right-12,52,14,'#9beaff').setOrigin(1,0.5).setData('hud-kills',true);
+    this.passives = text(310,92,12,'#d8c6ff');
+    this.controls = text(l.right,82,11,'#abc1dc').setOrigin(1,0).setText('WASD/Arrows | ESC Pause');
+    this.bossText = text(l.center,l.boss.y-18,15,'#ffe4e6').setOrigin(0.5).setVisible(false).setData('hud-boss-title',true);
+    for (const slot of SLOTS) {
+      this.icons[slot.id] = scene.add.image(0,95,slot.icon).setDisplaySize(22,22).setScrollFactor(0).setDepth(Z+2).setVisible(false);
+      this.badges[slot.id] = text(0,108,11,'#ffe5a0').setOrigin(1,1).setVisible(false);
     }
   }
 
-  getStatusText(): string {
-    return this.bossText.visible
-      ? `${this.statusText.text}\n${this.bossText.text}`
-      : this.statusText.text;
+  update(dto: HudStateDto): void {
+    const w=dto.weapons,p=dto.passives,b=dto.bossHp;
+    const key=`${dto.player.hp}/${dto.player.maxHp}|${dto.progression.level}:${dto.progression.xp}|${Math.floor(dto.elapsedSec)}|${dto.defeated}|${w?`${w.orb},${w.slash},${w.orbital},${w.mine}`:''}|${p?`${p.damageReduction},${p.damageBonus},${p.cooldownReductionMs},${p.moveSpeedBonusPxSec},${p.heavyStrikeEvery},${p.heavyStrikeBonus}`:''}|${b?`${b.name}:${b.hp}/${b.maxHp}`:''}`;
+    if (key===this.lastKey) return;
+    this.lastKey=key;
+    const reqXp=Math.max(1,xpThreshold(dto.progression.level)),l=this.layout;
+    this.gauges.draw(dto,reqXp);
+    this.chrome.panel(16,42,48,48,0x18213e,0xe4c86d);
+    this.chrome.panel(l.levelX-44,5,88,22,0x18213e,0xe4c86d);
+    this.chrome.panel(l.center-64,36,128,36,0x18213e,0xe4c86d);
+    this.chrome.panel(l.right-160,36,160,30,0x18213e,0x8cccf7);
+    const min=Math.floor(dto.elapsedSec/60).toString().padStart(2,'0'),sec=Math.floor(dto.elapsedSec%60).toString().padStart(2,'0');
+    this.timer.setText(`${min}:${sec}`);this.lvlLabel.setText(`LV ${dto.progression.level}`);
+    this.hpLabel.setText(`HP ${dto.player.hp}/${dto.player.maxHp}`);this.kills.setText(`KILLS ${dto.defeated}`);
+    const summary:string[]=[];let index=0;
+    for (const slot of SLOTS) {
+      const level=dto.weapons?.[slot.id]??(slot.id==='orb'?1:0);
+      this.icons[slot.id].setVisible(level>0);this.badges[slot.id].setVisible(level>0);
+      if (level<=0) continue;
+      const x=92+index++*42;
+      this.chrome.panel(x-18,76,36,36,0x18213e,0xe4c86d);
+      this.icons[slot.id].setPosition(x,94);this.badges[slot.id].setPosition(x+16,110).setText(`${level}`);
+      summary.push(`${slot.label} Lv${level}`);
+    }
+    this.passives.setText(formatPassives(dto.passives));
+    this.bossText.setVisible(Boolean(b&&b.hp>0));
+    if (b&&b.hp>0) this.bossText.setText(`${b.name}  ${b.hp}/${b.maxHp}${b.hp/b.maxHp<=0.5?' [ENRAGED]':''}`);
+    this.status=`ANIME SURVIVOR | HP ${dto.player.hp}/${dto.player.maxHp} | LVL ${dto.progression.level} XP ${dto.progression.xp}/${reqXp}\nTIME ${min}:${sec} | KILLS ${dto.defeated} | ${summary.join('  ')||'ORB Lv1'}`;
   }
-
+  getStatusText(): string { return this.bossText.visible?`${this.status}\n${this.bossText.text}`:this.status; }
   destroy(): void {
-    this.graphics.destroy();
-    this.statusText.destroy();
-    this.controlsText.destroy();
-    this.bossText.destroy();
-  }
-
-  private formatWeapons(weapons?: WeaponInventory): string {
-    if (!weapons) return 'ORB Lv1';
-    const badges = (Object.keys(WEAPON_LABELS) as WeaponId[])
-      .filter((id) => weapons[id] > 0)
-      .map((id) => `${WEAPON_LABELS[id]} Lv${weapons[id]}`);
-    return badges.length > 0 ? badges.join('  ') : 'ORB Lv1';
+    this.gauges.destroy();this.chrome.destroy();this.portrait.destroy();this.heart.destroy();
+    for (const label of [this.hpLabel,this.lvlLabel,this.timer,this.kills,this.passives,this.controls,this.bossText]) label.destroy();
+    for (const slot of SLOTS) {this.icons[slot.id].destroy();this.badges[slot.id].destroy();}
   }
 }

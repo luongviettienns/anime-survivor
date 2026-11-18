@@ -1,0 +1,48 @@
+{
+  "tool": "built-in imagegen",
+  "model": "not exposed",
+  "date": "2026-11-18",
+  "human_review": "pending",
+  "sources": [
+    {
+      "file": "ui_card_base.png",
+      "sha256": "1c24ec22035b6ce6005b788348b42bedbe6a15da799e34ba8f8b018b523ab675",
+      "prompt": "Create exactly ONE original polished HI-BIT ANIME game UI asset, not a sheet/grid/mockup. ONE blank anime RPG ARCANE TAROT CARD FRAME. Full rectangular square outer frame, straight rails, refined beveled gold and silver metal, small diamond-cut cyan/violet crystal at EACH of FOUR corners. Large quiet cosmic indigo gradient interior with subtle sparse stardust. No central emblem, no illustration, no text. This is a nine-slice UI frame: corners and border decorations confined to outer 18 percent; straight repeatable edges; center 64 percent quiet flat indigo for readable text. Rectangular silhouette, no floating ornaments beyond frame. Match an original anime survival RPG with richly detailed indigo, gold, silver and crystal UI. Precise clean contours, subtle painterly metal and crystal highlights, no coarse pixel grid. Square canvas1024x1024. ALL artwork completely inside x128..896 y128..896, generous transparent margins, no clipping. True transparent RGBA outside the object and in open holes. NO floor, no scene, no characters. NO text, NO letters, NO numbers."
+    },
+    {
+      "file": "ui_emblem_socket.png",
+      "sha256": "16d3ea45d9b7fa052869338ebc68ca59878eb1eaf51982fdb1bdc6ee888e02b3",
+      "prompt": "Create exactly ONE original polished HI-BIT ANIME game UI asset, not a sheet/grid/mockup. ONE empty anime magic EMBLEM SOCKET, eight-point star formed by elegant beveled gold-silver metal and icy violet crystal facets. Empty dark indigo circular/diamond inner well occupies central 55 percent to place a skill icon. Perfectly symmetrical, compact silhouette, restrained luminous cyan rim, exquisite small filigree, no icon and no text. Match an original anime survival RPG with richly detailed indigo, gold, silver and crystal UI. Precise clean contours, subtle painterly metal and crystal highlights, no coarse pixel grid. Square canvas1024x1024. ALL artwork completely inside x128..896 y128..896, generous transparent margins, no clipping. True transparent RGBA outside the object and in open holes. NO floor, no scene, no characters. NO text, NO letters, NO numbers."
+    },
+    {
+      "file": "ui_banner_levelup.png",
+      "sha256": "1876f36ad7b15b27cd1380ec91cd9967322df47343331a2f80c1807c21a7547a",
+      "prompt": "Create exactly ONE original polished HI-BIT ANIME game UI asset, not a sheet/grid/mockup. ONE blank horizontal anime RPG LEVEL-UP TITLE BANNER frame centered inside square canvas. Actual banner aspect ratio about 4.5 to1, lies within central horizontal band. Beveled gold/silver wings and modern cyan neon accents, dark cosmic indigo flat quiet central field for overlay title. No text, no letters, no character, no gems in the text area. Crisp balanced left/right ornamental endcaps. Match an original anime survival RPG with richly detailed indigo, gold, silver and crystal UI. Precise clean contours, subtle painterly metal and crystal highlights, no coarse pixel grid. Square canvas1024x1024. ALL artwork completely inside x128..896 y128..896, generous transparent margins, no clipping. True transparent RGBA outside the object and in open holes. NO floor, no scene, no characters. NO text, NO letters, NO numbers."
+    },
+    {
+      "file": "hud_pip_glow.png",
+      "sha256": "74ae77fea6f76b918270b6c02ba1212844a3364f8ce7f598d6dae57a464691a2",
+      "prompt": "Create exactly ONE original polished HI-BIT ANIME game UI asset, not a sheet/grid/mockup. ONE small vertical luminous crystal energy gauge endpoint. Refined diamond-shaped faceted cyan/aquamarine gemstone with ivory highlight and very restrained small cyan bloom, thin gold-silver collar, tapered top and bottom. Compact symmetrical isolated HUD marker; empty transparent space around it. No background, no text. Match an original anime survival RPG with richly detailed indigo, gold, silver and crystal UI. Precise clean contours, subtle painterly metal and crystal highlights, no coarse pixel grid. Square canvas1024x1024. ALL artwork completely inside x128..896 y128..896, generous transparent margins, no clipping. True transparent RGBA outside the object and in open holes. NO floor, no scene, no characters. NO text, NO letters, NO numbers."
+    },
+    {
+      "file": "icon_boss_crown.png",
+      "sha256": "a3db1941735089e9eecebf6654bc41b6c8ed9e6d59bbad0fa3426b6f078406a8",
+      "prompt": "Create exactly ONE original polished HI-BIT ANIME game UI asset, not a sheet/grid/mockup. ONE dangerous regal demonic BOSS CROWN emblem, angular blackened silver and antique gold crown with five sharp spikes, a small ivory skull at center and crimson-violet gemstone. Refined highly legible silhouette at32px, detailed anime RPG icon, red rim glow restrained, centered and symmetrical. No lettering, no backdrop. Match an original anime survival RPG with richly detailed indigo, gold, silver and crystal UI. Precise clean contours, subtle painterly metal and crystal highlights, no coarse pixel grid. Square canvas1024x1024. ALL artwork completely inside x128..896 y128..896, generous transparent margins, no clipping. True transparent RGBA outside the object and in open holes. NO floor, no scene, no characters. NO text, NO letters, NO numbers."
+    },
+    {
+      "file": "label_crit.png",
+      "sha256": "4d178ce7b367367836c1c68e497e0bf5ff773fad1451ad827f24180996e5cf32",
+      "prompt": "Create exactly ONE original polished HI-BIT ANIME game UI asset, not a sheet/grid/mockup. Exact text CRIT! only, hand-lettered manga fighting-game impact wordmark. Bold sharply slanted gold-to-ivory letters, thick near-black outline and red offset shadow, small restrained angular red burst behind letters. Extremely readable at48px. No other text or symbols. Match an original anime survival RPG with richly detailed indigo, gold, silver and crystal UI. Precise clean contours, subtle painterly metal and crystal highlights, no coarse pixel grid. Square canvas1024x1024. ALL artwork completely inside x128..896 y128..896, generous transparent margins, no clipping. True transparent RGBA outside the object and in open holes. NO floor, no scene, no characters. Spell the requested single word EXACTLY."
+    },
+    {
+      "file": "label_smash.png",
+      "sha256": "d63caf3f3e3129f3d30dcd0acfdbe04a06934937191fadc36fb30dba55e02943",
+      "prompt": "Create exactly ONE original polished HI-BIT ANIME game UI asset, not a sheet/grid/mockup. Exact text SMASH! only, hand-lettered manga fighting-game impact wordmark. Bold sharply slanted ivory-to-orange letters, thick near-black outline and crimson offset shadow, small restrained angular orange burst behind letters. Extremely readable at64px. No other text or symbols. Match an original anime survival RPG with richly detailed indigo, gold, silver and crystal UI. Precise clean contours, subtle painterly metal and crystal highlights, no coarse pixel grid. Square canvas1024x1024. ALL artwork completely inside x128..896 y128..896, generous transparent margins, no clipping. True transparent RGBA outside the object and in open holes. NO floor, no scene, no characters. Spell the requested single word EXACTLY."
+    },
+    {
+      "file": "label_boom.png",
+      "sha256": "4341f57323043bb34cf11ec872a766880f0d97aa91969b4b24be82ae028eb5ef",
+      "prompt": "Create exactly ONE original polished HI-BIT ANIME game UI asset, not a sheet/grid/mockup. Exact text BOOM! only, hand-lettered manga fighting-game impact wordmark. Bold sharply slanted gold-to-ivory letters, thick near-black outline and orange-red offset shadow, small restrained angular orange burst behind letters. Extremely readable at56px. No other text or symbols. Match an original anime survival RPG with richly detailed indigo, gold, silver and crystal UI. Precise clean contours, subtle painterly metal and crystal highlights, no coarse pixel grid. Square canvas1024x1024. ALL artwork completely inside x128..896 y128..896, generous transparent margins, no clipping. True transparent RGBA outside the object and in open holes. NO floor, no scene, no characters. Spell the requested single word EXACTLY."
+    }
+  ]
+}

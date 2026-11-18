@@ -1,5 +1,7 @@
 import Phaser from 'phaser';
 import type { EnemyArchetypeId } from '../../domain/enemies';
+import { SPAWN_ORIGIN_X, SPAWN_ORIGIN_Y } from '../../domain/infiniteMap';
+import { computeEliteDrops, computeKillDrops } from '../../domain/pickups';
 import { applyXpGain, createProgression, type RunProgression } from '../../domain/progression';
 import { createPassiveStats, type PassiveStats, type UpgradeChoice } from '../../domain/upgrades';
 import { isRunVictory } from '../../domain/waves';
@@ -8,7 +10,10 @@ import { PICKUP, PLAYER, WORLD } from '../config/constants';
 import { AudioSystem, type SoundCue } from '../systems/AudioSystem';
 import { DamageSystem } from '../systems/DamageSystem';
 import { registerGameDebugApi } from '../systems/DebugBridge';
+import type { EnemyImpact } from '../systems/EnemyMeleeSkill';
 import { EnemySystem } from '../systems/EnemySystem';
+import { GroundShadows } from '../systems/GroundShadows';
+import { InfiniteMapSystem } from '../systems/InfiniteMapSystem';
 import { MovementSystem } from '../systems/MovementSystem';
 import { PickupSystem } from '../systems/PickupSystem';
 import { VfxSystem } from '../systems/VfxSystem';
@@ -19,6 +24,7 @@ type OverlapObj = Parameters<Phaser.Types.Physics.Arcade.ArcadePhysicsCallback>[
 
 export class GameScene extends Phaser.Scene {
   private player!: Phaser.Physics.Arcade.Sprite;
+  private map!: InfiniteMapSystem;
   private enemies!: EnemySystem;
   private weapon!: WeaponSystem;
   private movement!: MovementSystem;
@@ -26,11 +32,14 @@ export class GameScene extends Phaser.Scene {
   private pickups!: PickupSystem;
   private vfx!: VfxSystem;
   private audio!: AudioSystem;
+  private shadows!: GroundShadows;
   private hud!: HudOverlay;
   private spawnTimer?: Phaser.Time.TimerEvent;
   private progression: RunProgression = createProgression();
   private passives: PassiveStats = createPassiveStats();
   private defeated = 0;
+  private normalKills = 0;
+  private eliteKills = 0;
   private elapsed = 0;
   private running = false;
   private lastPauseEventTs = -1;
@@ -39,53 +48,52 @@ export class GameScene extends Phaser.Scene {
 
   create(): void {
     this.progression = createProgression(); this.passives = createPassiveStats();
-    this.defeated = 0; this.elapsed = 0; this.running = true;
-    this.physics.world.setBounds(0, 0, WORLD.width, WORLD.height);
-    this.add.tileSprite(0, 0, WORLD.width, WORLD.height, 'grass').setOrigin(0);
-    this.createScenery();
-
-    this.player = this.physics.add.sprite(WORLD.width / 2, WORLD.height / 2, 'hero', 0);
-    this.player.setScale(2).setCollideWorldBounds(true).setDepth(5000).setCircle(10, 6, 13).play('hero-idle');
-    this.cameras.main.setBounds(0, 0, WORLD.width, WORLD.height).startFollow(this.player, true, 0.12, 0.12);
-
+    this.defeated = 0; this.normalKills = 0; this.eliteKills = 0; this.elapsed = 0; this.running = true;
+    this.map = new InfiniteMapSystem(this);
+    this.player = this.physics.add.sprite(SPAWN_ORIGIN_X, SPAWN_ORIGIN_Y, 'hero', 0);
+    this.player.setScale(2).setCollideWorldBounds(false).setDepth(5000).setCircle(10, 6, 13).play('hero-idle');
+    this.cameras.main.startFollow(this.player, true, 0.14, 0.14);
+    this.map.update(this.player.x, this.player.y);
     this.movement = new MovementSystem(this, this.player);
     this.enemies = new EnemySystem(this, this.player);
     this.vfx = new VfxSystem(this, this.player);
     this.audio = new AudioSystem(this);
-    this.weapon = new WeaponSystem(this, this.player, this.enemies, (x, y, arch, xp) => this.onEnemyKilled(x, y, arch, xp), (c, x, y, d, k) => this.onCombat(c, x, y, d, k));
+    this.weapon = new WeaponSystem(
+      this, this.player, this.enemies,
+      (x, y, arch, xp) => this.onEnemyKilled(x, y, arch, xp),
+      (c, x, y, d, k, crit, boom) => this.onCombat(c, x, y, d, k, crit, boom),
+      this.vfx, (skill, aimX) => this.movement.playSkill(skill, aimX)
+    );
     this.damage = new DamageSystem(this.player);
     this.pickups = new PickupSystem(this);
-    this.hud = new HudOverlay(this);
-
+    this.hud = new HudOverlay(this); this.shadows = new GroundShadows(this, this.player, this.enemies.group, this.pickups.group);
     this.physics.add.overlap(this.weapon.projectiles, this.enemies.group, (a, b) => this.weapon.handleProjectileHit(a as Phaser.GameObjects.GameObject, b as Phaser.GameObjects.GameObject));
     this.physics.add.overlap(this.player, this.enemies.group, (_p, e) => this.onPlayerEnemyContact(e));
     this.physics.add.overlap(this.player, this.pickups.group, (_p, item) => this.onPlayerPickup(item));
-    this.spawnTimer = this.time.addEvent({ delay: 1050, loop: true, callback: () => { if (this.running) this.enemies.spawnWaveTick(this.elapsed); } });
-
+    this.spawnTimer = this.time.addEvent({ delay: 60_000, loop: true });
     const onPauseKey = (ev?: KeyboardEvent) => this.handlePauseKey(ev?.timeStamp);
     this.input.keyboard?.on('keydown-ESC', onPauseKey); this.input.keyboard?.on('keydown-P', onPauseKey);
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => { this.input.keyboard?.off('keydown-ESC', onPauseKey); this.input.keyboard?.off('keydown-P', onPauseKey); this.cleanup(); });
-    registerGameDebugApi(this, this.player, this.damage, this.enemies, this.weapon, this.pickups, this.vfx, this.audio, () => ({ ...this.progression, defeated: this.defeated }));
+    registerGameDebugApi(this, this.player, this.damage, this.enemies, this.weapon, this.pickups, this.vfx, this.audio, this.map, () => ({ ...this.progression, defeated: this.defeated }));
     this.updateHud();
   }
-
   update(_now: number, delta: number): void {
     if (!this.running || !this.damage.state.alive) return;
     this.elapsed += delta / 1000;
     if (this.elapsed >= WORLD.runDurationSec) this.enemies.ensureBossSpawned();
-    this.movement.update(true, this.passives.moveSpeedMultiplier);
-    this.enemies.update(false, (dmg) => this.applyPlayerHit(dmg));
-    this.weapon.update(this.time.now, true);
+    if (!this.spawnTimer?.paused) this.enemies.stepWaves(delta, this.elapsed, this.player.body?.velocity);
+    this.movement.update(true, this.passives.moveSpeedBonusPxSec, delta);
+    this.map.update(this.player.x, this.player.y);
+    this.enemies.update(false, (dmg, impact) => this.applyPlayerHit(dmg, impact), delta);
+    this.weapon.update(this.time.now, true, this.passives);
     this.pickups.update(this.player, PLAYER.pickupMagnetRadius + this.passives.pickupRadiusBonusPx, PLAYER.pickupMagnetSpeed);
     this.damage.updateVisuals(this.time.now); this.vfx.update(this.time.now, delta);
     this.player.setDepth(this.player.y); this.openUpgradeModalIfNeeded(); this.updateHud();
   }
-
   getHudText(): string { return this.hud.getStatusText(); }
   getUpgradeChoices(): UpgradeChoice[] { return this.scene.isActive('UpgradeScene') ? (this.scene.get('UpgradeScene') as UpgradeScene).getChoices() : []; }
   chooseUpgrade(index: number): boolean { return this.scene.isActive('UpgradeScene') ? (this.scene.get('UpgradeScene') as UpgradeScene).selectChoice(index) : false; }
   isPaused(): boolean { return this.scene.isPaused('GameScene') || this.scene.isActive('PauseScene'); }
-
   handlePauseKey(timeStamp?: number): boolean {
     if (timeStamp !== undefined && timeStamp === this.lastPauseEventTs) return this.isPaused();
     if (timeStamp !== undefined) this.lastPauseEventTs = timeStamp;
@@ -102,34 +110,50 @@ export class GameScene extends Phaser.Scene {
     if (applyXpGain(this.progression, amount).levelsGained > 0) this.triggerLevelUp();
     this.updateHud();
   }
-
-  private onCombat(cue: SoundCue, x?: number, y?: number, dmg?: number, killed?: boolean): void {
+  private onCombat(cue: SoundCue, x?: number, y?: number, dmg?: number, killed?: boolean, critical?: boolean, explosive?: boolean): void {
     this.audio.play(cue);
-    if (cue === 'hit' && x !== undefined && y !== undefined && dmg !== undefined) this.vfx.emitHit(x, y, dmg, killed);
+    if (cue === 'hit' && x !== undefined && y !== undefined && dmg !== undefined) this.vfx.emitHit(x, y, dmg, killed, critical, explosive);
   }
   private triggerLevelUp(): void { this.vfx.onLevelUp(); this.audio.play('levelup'); this.openUpgradeModalIfNeeded(); }
-  private createScenery(): void {
-    const random = new Phaser.Math.RandomDataGenerator(['anime-survivor-world-v1']);
-    for (let i = 0; i < 100; i++) {
-      const x = random.between(40, WORLD.width - 40), y = random.between(40, WORLD.height - 40);
-      if (Math.hypot(x - WORLD.width / 2, y - WORLD.height / 2) >= 190) this.add.image(x, y, 'tree').setScale(random.realInRange(1.5, 2.2)).setDepth(y);
-    }
-  }
   private onEnemyKilled(x: number, y: number, archetype: EnemyArchetypeId = 'slime', xpValue: number = PICKUP.xpPerKill): void {
     this.defeated++; this.pickups.spawnXpGem(x, y, xpValue);
+    if (archetype === 'elite') {
+      this.eliteKills++;
+      for (const drop of computeEliteDrops(this.eliteKills)) {
+        if (drop === 'heal') this.pickups.spawnHealPickup(x + 12, y, PICKUP.healAmount);
+        else this.pickups.spawnMagnetPickup(x - 12, y);
+      }
+    } else if (archetype !== 'boss') {
+      this.normalKills++;
+      for (const drop of computeKillDrops(this.normalKills)) {
+        if (drop === 'heal') this.pickups.spawnHealPickup(x + 12, y, PICKUP.healAmount);
+        else this.pickups.spawnMagnetPickup(x - 12, y);
+      }
+    }
     if (isRunVictory(archetype, true)) this.endRun(true);
   }
   private onPlayerEnemyContact(enemyObj: OverlapObj): void { this.applyPlayerHit(this.enemies.getTouchDamage(enemyObj as Phaser.GameObjects.GameObject)); }
-  private applyPlayerHit(damage: number): void {
+  private applyPlayerHit(damage: number, impact?: EnemyImpact): void {
     if (!this.running || !this.damage.state.alive) return;
-    const res = this.damage.tryContactDamage(this.time.now, damage);
-    if (res.damaged) { this.vfx.onPlayerHurt(); this.audio.play('hurt'); }
+    const res = this.damage.tryContactDamage(this.time.now, damage, this.passives.damageReduction);
+    if (res.damaged) {
+      this.vfx.onPlayerHurt(); this.audio.play('hurt');
+      if (impact) {
+        const dir = impact.direction;
+        this.vfx.playPlayerSkillHit(this.player.x, this.player.y, Math.atan2(dir.y, dir.x), impact.kind === 'dash');
+        this.movement.applyKnockback(dir, impact.kind === 'boss_slash' ? 280 : impact.kind === 'slam' ? 240 : 180);
+      }
+    }
     if (res.died) this.endRun(false);
   }
   private onPlayerPickup(pickupObj: OverlapObj): void {
     if (!this.running || !this.damage.state.alive) return;
-    const res = this.pickups.collect(pickupObj as Phaser.GameObjects.GameObject, this.damage.state, this.progression);
+    const item = pickupObj as Phaser.Physics.Arcade.Sprite;
+    const px = item.x, py = item.y;
+    const res = this.pickups.collect(item, this.damage.state, this.progression);
     if (!res.collected) return;
+    if (res.type === 'magnet') this.pickups.activateGlobalMagnet();
+    this.vfx.playPickupBurst(px, py, res.type === 'heal');
     this.audio.play('pickup');
     if (res.levelsGained > 0) this.triggerLevelUp();
   }
@@ -147,7 +171,7 @@ export class GameScene extends Phaser.Scene {
     this.running = false; this.spawnTimer?.remove(false);
     if (this.scene.isActive('UpgradeScene')) this.scene.stop('UpgradeScene');
     if (this.scene.isActive('PauseScene')) this.scene.stop('PauseScene');
-    this.weapon.clear(); this.enemies.clear(); this.pickups.clear(); this.vfx.clear(); this.hud.destroy();
+    this.weapon.clear(); this.enemies.clear(); this.pickups.clear(); this.vfx.clear(); this.map.clear(); this.hud.destroy(); this.shadows.clear();
   }
-  private updateHud(): void { this.hud.update({ player: this.damage.state, progression: this.progression, elapsedSec: this.elapsed, defeated: this.defeated, weapons: this.weapon.inventory, bossHp: this.enemies.getActiveBossState() }); }
+  private updateHud(): void { this.hud.update({ player: this.damage.state, progression: this.progression, elapsedSec: this.elapsed, defeated: this.defeated, weapons: this.weapon.inventory, passives: this.passives, bossHp: this.enemies.getActiveBossState() }); }
 }

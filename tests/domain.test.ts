@@ -85,13 +85,28 @@ describe('pure gameplay rules', () => {
     expect(enemy.knockbackUntilMs).toBe(1120);
   });
 
-  it('levels up across multiple thresholds and rejects negative experience', () => {
+  it('clamps player damage with flat damageReduction to a minimum of 2', () => {
+    const player = createPlayerState(100);
+    expect(applyContactDamage(player, 10, 0, 800, 5)).toBe(true);
+    expect(player.hp).toBe(95);
+    expect(applyContactDamage(player, 10, 800, 800, 18)).toBe(true);
+    expect(player.hp).toBe(93);
+  });
+
+  it('uses 3-stage XP threshold curve and levels up across multiple thresholds', () => {
+    expect(xpThreshold(1)).toBe(9);
+    expect(xpThreshold(5)).toBe(25);
+    expect(xpThreshold(6)).toBe(51);
+    expect(xpThreshold(15)).toBe(105);
+    expect(xpThreshold(16)).toBe(190);
+    expect(xpThreshold(20)).toBe(230);
+
     expect(awardXp({ level: 1, xp: 0 }, xpThreshold(1))).toEqual({
       level: 2,
       xp: 0,
       levelsGained: 1,
     });
-    expect(awardXp({ level: 1, xp: 0 }, 12)).toEqual({
+    expect(awardXp({ level: 1, xp: 0 }, 22)).toEqual({
       level: 3,
       xp: 0,
       levelsGained: 2,

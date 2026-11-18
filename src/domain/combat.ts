@@ -40,7 +40,8 @@ export function applyContactDamage(
   state: PlayerState,
   amount: number,
   nowMs: number,
-  invulnerabilityMs = 800
+  invulnerabilityMs = 800,
+  flatDamageReduction = 0
 ): boolean {
   if (
     !state.alive ||
@@ -52,7 +53,9 @@ export function applyContactDamage(
   ) {
     return false;
   }
-  state.hp = clampHealth(state.hp - amount, state.maxHp);
+  const reduction = Number.isFinite(flatDamageReduction) ? Math.max(0, flatDamageReduction) : 0;
+  const effectiveDamage = reduction > 0 ? Math.max(2, amount - reduction) : amount;
+  state.hp = clampHealth(state.hp - effectiveDamage, state.maxHp);
   state.invulnerableUntilMs = nowMs + invulnerabilityMs;
   if (state.hp === 0) {
     state.alive = false;

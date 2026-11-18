@@ -1,32 +1,44 @@
-"""Render source animation rows at large nearest-neighbor scale for human/agent QA."""
-from __future__ import annotations
+"""Compose asset previews from exact manifest rectangles; never author artwork."""
+import argparse
+import json
+from pathlib import Path
 from PIL import Image, ImageDraw
-from pack_frames import ROOT, CONTRACT
+from pack_frames import ROOT
 
-OUT = ROOT / 'art/contact_sheet.png'
-COLS, SCALE, GAP = 8, 5, 12
-CANVAS_W = 1430
-CANVAS_H = max(500, 68 + sum(spec['frame_height'] * SCALE + 65 for spec in CONTRACT['sprites'].values()) + 20)
-canvas = Image.new('RGBA', (CANVAS_W, CANVAS_H), '#12182f')
-d = ImageDraw.Draw(canvas)
-d.text((25, 18), 'ANIME SURVIVOR - frame registration and QA contact sheet', fill='#f9eafa')
-y = 68
-for sprite, spec in CONTRACT['sprites'].items():
-    w, h = spec['frame_width'], spec['frame_height']
-    sheet = Image.open(ROOT / 'public/assets' / f'{sprite}.png').convert('RGBA')
-    n = spec['columns'] * spec['rows']
-    d.text((25, y), f'{sprite.upper()}   {w}x{h} RGBA  /  {n} frames', fill='#7ae3de')
-    for index in range(n):
-        ox = 25 + index * (w * SCALE + GAP)
-        oy = y + 25
-        check_size = 10
-        for cx in range(0, w * SCALE, check_size):
-            for cy in range(0, h * SCALE, check_size):
-                color = '#242b49' if (cx // check_size + cy // check_size) % 2 else '#303858'
-                d.rectangle((ox+cx, oy+cy, ox+cx+check_size-1, oy+cy+check_size-1), fill=color)
-        cropped = sheet.crop((index*w, 0, (index+1)*w, h))
-        canvas.alpha_composite(cropped.resize((w*SCALE, h*SCALE), Image.Resampling.NEAREST), (ox, oy))
-    y += h * SCALE + 65
-OUT.parent.mkdir(parents=True, exist_ok=True)
-canvas.convert('RGB').save(OUT)
-print(f'Wrote {OUT}')
+GROUPS = {
+    'enemy-aura': ['aura_contact', 'aura_ring', 'aura_outer', 'aura_accent', 'enemy_bolt', 'vfx_telegraph', 'vfx_death', 'boss_blood_slash'],
+    'actors': ['hero_actions', 'enemy', 'enemy_shade', 'enemy_mage', 'enemy_elite', 'boss'],
+    'base-vfx': ['rasengan', 'orb', 'punch', 'shuriken', 'mine', 'explosion'],
+    'evolution-vfx': ['rasenshuriken', 'wind_ground', 'punch_max', 'shuriken_max', 'mine_max', 'explosion_max', 'slash_x'],
+}
+
+
+def render_sheet(keys, out_path, title, scale=3):
+    manifest = json.loads((ROOT / 'public/assets/sprites.manifest.json').read_text(encoding='utf-8'))
+    records = [(name, entry) for name in keys for entry in manifest['sprites'][name]['frames']]
+    cols, cell_w, cell_h = 6, 174, 176
+    preview = Image.new('RGB', (cols*cell_w, 50 + ((len(records)+cols-1)//cols)*cell_h), '#152530')
+    draw = ImageDraw.Draw(preview)
+    draw.text((16, 16), title, fill='#fff0d0')
+    for index, (name, entry) in enumerate(records):
+        x, y = (index%cols)*cell_w+10, (index//cols)*cell_h+50
+        meta = manifest['sprites'][name]
+        with Image.open(ROOT / 'public/assets' / meta['file']) as sheet:
+            sx, sy, w, h = entry['rect']
+            frame = sheet.crop((sx, sy, sx+w, sy+h)).convert('RGBA')
+        factor = min(scale, 128/max(w, h))
+        thumb = frame.resize((round(w*factor), round(h*factor)), Image.Resampling.NEAREST)
+        preview.paste(thumb, (x+(154-thumb.width)//2, y), thumb)
+        draw.text((x, y+132), name, fill='#8ee7f2')
+        draw.text((x, y+145), f'{entry["animation"]}/{entry["index"]}', fill='#f4d18b')
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    preview.save(out_path)
+    print(f'Wrote {out_path}')
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--output', type=Path, default=ROOT/'art/review')
+    args = parser.parse_args()
+    for name, keys in GROUPS.items():
+        render_sheet(keys, args.output/f'{name}.png', f'ANIME SURVIVOR / {name.upper()} / AI SOURCE ART')

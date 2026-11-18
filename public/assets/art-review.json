@@ -1,0 +1,236 @@
+{
+  "hero": {
+    "usage": "Applied in game",
+    "display_width": 32,
+    "display_height": 32,
+    "original_pixels": false
+  },
+  "enemy": {
+    "usage": "Applied in game",
+    "display_width": 64,
+    "display_height": 64,
+    "original_pixels": true
+  },
+  "enemy_shade": {
+    "usage": "Applied in game",
+    "display_width": 64,
+    "display_height": 64,
+    "original_pixels": true
+  },
+  "enemy_mage": {
+    "usage": "Applied in game",
+    "display_width": 64,
+    "display_height": 64,
+    "original_pixels": true
+  },
+  "boss": {
+    "usage": "Applied in game",
+    "display_width": 128,
+    "display_height": 128,
+    "original_pixels": true
+  },
+  "orb": {
+    "usage": "Applied in game",
+    "display_width": 56,
+    "display_height": 56,
+    "original_pixels": true
+  },
+  "kunai": {
+    "usage": "future-character-only",
+    "display_width": 56,
+    "display_height": 56,
+    "original_pixels": true
+  },
+  "slash": {
+    "usage": "retained-future-character-only",
+    "display_width": 48,
+    "display_height": 48,
+    "original_pixels": false
+  },
+  "slash_x": {
+    "usage": "future-character-only",
+    "display_width": 56,
+    "display_height": 56,
+    "original_pixels": true
+  },
+  "shuriken": {
+    "usage": "Applied in game",
+    "display_width": 56,
+    "display_height": 56,
+    "original_pixels": true
+  },
+  "mine": {
+    "usage": "Applied in game",
+    "display_width": 56,
+    "display_height": 56,
+    "original_pixels": true
+  },
+  "explosion": {
+    "usage": "Applied in game",
+    "display_width": 56,
+    "display_height": 56,
+    "original_pixels": true
+  },
+  "enemy_bolt": {
+    "usage": "Applied in game",
+    "display_width": 56,
+    "display_height": 56,
+    "original_pixels": true
+  },
+  "gem": {
+    "usage": "Applied in game",
+    "display_width": 16,
+    "display_height": 16,
+    "original_pixels": false
+  },
+  "heal_pickup": {
+    "usage": "Applied in game",
+    "display_width": 16,
+    "display_height": 16,
+    "original_pixels": false
+  },
+  "tree": {
+    "usage": "Applied in game",
+    "display_width": 40,
+    "display_height": 48,
+    "original_pixels": true
+  },
+  "torii_gate": {
+    "usage": "Applied in game",
+    "display_width": 48,
+    "display_height": 48,
+    "original_pixels": false
+  },
+  "shrine_plaza": {
+    "usage": "Applied in game",
+    "display_width": 64,
+    "display_height": 64,
+    "original_pixels": true
+  },
+  "shrine_lantern": {
+    "usage": "Applied in game",
+    "display_width": 24,
+    "display_height": 32,
+    "original_pixels": false
+  },
+  "spirit_flower": {
+    "usage": "Applied in game",
+    "display_width": 16,
+    "display_height": 16,
+    "original_pixels": false
+  },
+  "vfx_hit": {
+    "usage": "Applied in game",
+    "display_width": 32,
+    "display_height": 32,
+    "original_pixels": false
+  },
+  "vfx_death": {
+    "usage": "Applied in game",
+    "display_width": 56,
+    "display_height": 56,
+    "original_pixels": true
+  },
+  "vfx_levelup": {
+    "usage": "Applied in game",
+    "display_width": 56,
+    "display_height": 64,
+    "original_pixels": false
+  },
+  "vfx_telegraph": {
+    "usage": "Applied in game",
+    "display_width": 96,
+    "display_height": 64,
+    "original_pixels": true
+  },
+  "rasengan": {
+    "usage": "Applied in game",
+    "display_width": 1536,
+    "display_height": 1536,
+    "original_pixels": true
+  },
+  "punch": {
+    "usage": "Applied in game",
+    "display_width": 56,
+    "display_height": 56,
+    "original_pixels": true
+  },
+  "hero_actions": {
+    "usage": "Applied in game",
+    "display_width": 1536,
+    "display_height": 1536,
+    "original_pixels": true
+  },
+  "rasenshuriken": {
+    "usage": "art-only-evolution",
+    "display_width": 56,
+    "display_height": 56,
+    "original_pixels": true
+  },
+  "wind_ground": {
+    "usage": "art-only-evolution",
+    "display_width": 96,
+    "display_height": 64,
+    "original_pixels": true
+  },
+  "punch_max": {
+    "usage": "art-only-max",
+    "display_width": 56,
+    "display_height": 56,
+    "original_pixels": true
+  },
+  "shuriken_max": {
+    "usage": "art-only-max",
+    "display_width": 56,
+    "display_height": 56,
+    "original_pixels": true
+  },
+  "mine_max": {
+    "usage": "art-only-max",
+    "display_width": 56,
+    "display_height": 56,
+    "original_pixels": true
+  },
+  "explosion_max": {
+    "usage": "art-only-max",
+    "display_width": 56,
+    "display_height": 56,
+    "original_pixels": true
+  },
+  "enemy_elite": {
+    "usage": "art-only-elite-no-spawn-rules",
+    "display_width": 96,
+    "display_height": 96,
+    "original_pixels": true
+  },
+  "aura_ring": {
+    "usage": "shared-layer-purple-elite-red-boss",
+    "display_width": 96,
+    "display_height": 56,
+    "original_pixels": true
+  },
+  "aura_outer": {
+    "usage": "shared-layer-purple-elite-red-boss",
+    "display_width": 192,
+    "display_height": 192,
+    "original_pixels": true
+  },
+  "aura_contact": {
+    "usage": "shared-layer-purple-elite-red-boss",
+    "display_width": 96,
+    "display_height": 56,
+    "original_pixels": true
+  },
+  "aura_accent": {
+    "usage": "shared-layer-purple-elite-red-boss",
+    "display_width": 128,
+    "display_height": 96,
+    "original_pixels": true
+  },
+  "boss_blood_slash": {
+    "usage": "art-only-boss-melee-no-new-attack-rule",
+    "display_width": 96,
+    "display_height": 96,
+    "original_pixels": true
+  }
+}

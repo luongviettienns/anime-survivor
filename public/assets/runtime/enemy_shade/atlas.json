@@ -1,0 +1,292 @@
+{
+  "textures": [
+    {
+      "image": "walk-000.png",
+      "frames": [
+        {
+          "filename": "0",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 158,
+            "h": 156
+          },
+          "spriteSourceSize": {
+            "x": 49,
+            "y": 44,
+            "w": 158,
+            "h": 156
+          },
+          "sourceSize": {
+            "w": 256,
+            "h": 256
+          },
+          "animation": "walk",
+          "poseIndex": 0,
+          "opaqueHeight": 136.75,
+          "displayScale": 0.4680073126142596,
+          "opaqueBounds": [
+            66.25,
+            55.25,
+            182.75,
+            192.0
+          ]
+        }
+      ]
+    },
+    {
+      "image": "walk-001.png",
+      "frames": [
+        {
+          "filename": "1",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 158,
+            "h": 156
+          },
+          "spriteSourceSize": {
+            "x": 49,
+            "y": 48,
+            "w": 158,
+            "h": 156
+          },
+          "sourceSize": {
+            "w": 256,
+            "h": 256
+          },
+          "animation": "walk",
+          "poseIndex": 1,
+          "opaqueHeight": 133.5,
+          "displayScale": 0.4794007490636704,
+          "opaqueBounds": [
+            66.25,
+            58.5,
+            171.5,
+            192.0
+          ]
+        }
+      ]
+    },
+    {
+      "image": "walk-002.png",
+      "frames": [
+        {
+          "filename": "2",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 158,
+            "h": 156
+          },
+          "spriteSourceSize": {
+            "x": 49,
+            "y": 46,
+            "w": 158,
+            "h": 156
+          },
+          "sourceSize": {
+            "w": 256,
+            "h": 256
+          },
+          "animation": "walk",
+          "poseIndex": 2,
+          "opaqueHeight": 135.0,
+          "displayScale": 0.4740740740740741,
+          "opaqueBounds": [
+            66.25,
+            57.0,
+            183.875,
+            192.0
+          ]
+        }
+      ]
+    },
+    {
+      "image": "walk-003.png",
+      "frames": [
+        {
+          "filename": "3",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 158,
+            "h": 156
+          },
+          "spriteSourceSize": {
+            "x": 49,
+            "y": 46,
+            "w": 158,
+            "h": 156
+          },
+          "sourceSize": {
+            "w": 256,
+            "h": 256
+          },
+          "animation": "walk",
+          "poseIndex": 3,
+          "opaqueHeight": 134.375,
+          "displayScale": 0.4762790697674419,
+          "opaqueBounds": [
+            72.125,
+            57.625,
+            191.625,
+            192.0
+          ]
+        }
+      ]
+    },
+    {
+      "image": "walk-side-000.png",
+      "frames": [
+        {
+          "filename": "4",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 158,
+            "h": 156
+          },
+          "spriteSourceSize": {
+            "x": 49,
+            "y": 52,
+            "w": 158,
+            "h": 156
+          },
+          "sourceSize": {
+            "w": 256,
+            "h": 256
+          },
+          "animation": "walk-side",
+          "poseIndex": 0,
+          "opaqueHeight": 122.125,
+          "displayScale": 0.5240532241555783,
+          "opaqueBounds": [
+            73.375,
+            69.875,
+            174.5,
+            192.0
+          ]
+        }
+      ]
+    },
+    {
+      "image": "walk-side-001.png",
+      "frames": [
+        {
+          "filename": "5",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 158,
+            "h": 156
+          },
+          "spriteSourceSize": {
+            "x": 49,
+            "y": 53,
+            "w": 158,
+            "h": 156
+          },
+          "sourceSize": {
+            "w": 256,
+            "h": 256
+          },
+          "animation": "walk-side",
+          "poseIndex": 1,
+          "opaqueHeight": 121.5,
+          "displayScale": 0.5267489711934157,
+          "opaqueBounds": [
+            71.875,
+            70.5,
+            173.5,
+            192.0
+          ]
+        }
+      ]
+    },
+    {
+      "image": "walk-up-000.png",
+      "frames": [
+        {
+          "filename": "6",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 158,
+            "h": 156
+          },
+          "spriteSourceSize": {
+            "x": 49,
+            "y": 46,
+            "w": 158,
+            "h": 156
+          },
+          "sourceSize": {
+            "w": 256,
+            "h": 256
+          },
+          "animation": "walk-up",
+          "poseIndex": 0,
+          "opaqueHeight": 135.375,
+          "displayScale": 0.4727608494921514,
+          "opaqueBounds": [
+            71.0,
+            56.625,
+            171.25,
+            192.0
+          ]
+        }
+      ]
+    },
+    {
+      "image": "walk-up-001.png",
+      "frames": [
+        {
+          "filename": "7",
+          "rotated": false,
+          "trimmed": true,
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 158,
+            "h": 156
+          },
+          "spriteSourceSize": {
+            "x": 49,
+            "y": 52,
+            "w": 158,
+            "h": 156
+          },
+          "sourceSize": {
+            "w": 256,
+            "h": 256
+          },
+          "animation": "walk-up",
+          "poseIndex": 1,
+          "opaqueHeight": 129.5,
+          "displayScale": 0.4942084942084942,
+          "opaqueBounds": [
+            68.875,
+            62.5,
+            168.875,
+            192.0
+          ]
+        }
+      ]
+    }
+  ]
+}

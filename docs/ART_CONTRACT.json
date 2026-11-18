@@ -1,18 +1,852 @@
 {
-  "version": 5,
+  "version": 14,
   "pixel_art": {
     "native_pixel_scale": 1,
-    "upscale_filter": "nearest-neighbor",
+    "upscale_filter": "linear at runtime (user-requested smooth presentation); nearest only for offline pixel-grid previews",
     "background": "transparent",
     "sprite_origin": "bottom-center",
-    "palette": ["#19213b", "#2c3159", "#4b467e", "#7867a6", "#ffd2b1", "#9d4bd9", "#6de0db", "#f6d27a", "#ffffff", "#ff729e"]
+    "palette_mode": "per-entity-signature",
+    "export_policy": "original RGBA pixels, padding only; no resizing, palette reduction or alpha cleanup",
+    "runtime_export_policy": "Derived runtime atlases use 1/8 Lanczos; original sources and archival sheets retain original pixels."
   },
   "sprites": {
-    "hero": {"frame_width":32,"frame_height":32,"animations":{"idle":4,"walk":4,"walk-down":2,"idle-up":1,"walk-up":2,"idle-side":1},"order":["idle","walk","walk-down","idle-up","walk-up","idle-side"],"columns":14,"rows":1},
-    "enemy": {"frame_width":24,"frame_height":24,"animations":{"walk":4},"order":["walk"],"columns":4,"rows":1},
-    "enemy_shade": {"frame_width":24,"frame_height":24,"animations":{"walk":4},"order":["walk"],"columns":4,"rows":1},
-    "enemy_mage": {"frame_width":24,"frame_height":24,"animations":{"walk":4},"order":["walk"],"columns":4,"rows":1},
-    "boss": {"frame_width":48,"frame_height":48,"animations":{"walk":4},"order":["walk"],"columns":4,"rows":1}
+    "hero": {
+      "frame_width": 32,
+      "frame_height": 32,
+      "animations": {
+        "idle": 4,
+        "walk": 4,
+        "walk-down": 2,
+        "idle-up": 1,
+        "walk-up": 2,
+        "idle-side": 1,
+        "skill-orb": 2,
+        "skill-slash": 2,
+        "skill-orbital": 2,
+        "skill-mine": 2
+      },
+      "order": [
+        "idle",
+        "walk",
+        "walk-down",
+        "idle-up",
+        "walk-up",
+        "idle-side",
+        "skill-orb",
+        "skill-slash",
+        "skill-orbital",
+        "skill-mine"
+      ],
+      "columns": 22,
+      "rows": 1
+    },
+    "enemy": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "animations": {
+        "walk": 4,
+        "walk-side": 2,
+        "walk-up": 2
+      },
+      "order": [
+        "walk",
+        "walk-side",
+        "walk-up"
+      ],
+      "columns": 2,
+      "rows": 4,
+      "foot_anchor": [
+        1024,
+        1536
+      ],
+      "display_width": 64,
+      "display_height": 64
+    },
+    "enemy_shade": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "animations": {
+        "walk": 4,
+        "walk-side": 2,
+        "walk-up": 2
+      },
+      "order": [
+        "walk",
+        "walk-side",
+        "walk-up"
+      ],
+      "columns": 2,
+      "rows": 4,
+      "foot_anchor": [
+        1024,
+        1536
+      ],
+      "display_width": 64,
+      "display_height": 64
+    },
+    "enemy_mage": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "animations": {
+        "walk": 4,
+        "cast": 2,
+        "walk-side": 2,
+        "walk-up": 2,
+        "cast-side": 2,
+        "cast-up": 2
+      },
+      "order": [
+        "walk",
+        "cast",
+        "walk-side",
+        "walk-up",
+        "cast-side",
+        "cast-up"
+      ],
+      "columns": 2,
+      "rows": 7,
+      "foot_anchor": [
+        1024,
+        1536
+      ],
+      "display_width": 64,
+      "display_height": 64
+    },
+    "boss": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "animations": {
+        "walk": 4,
+        "cast": 2,
+        "walk-side": 2,
+        "walk-up": 2,
+        "cast-side": 2,
+        "cast-up": 2
+      },
+      "order": [
+        "walk",
+        "cast",
+        "walk-side",
+        "walk-up",
+        "cast-side",
+        "cast-up"
+      ],
+      "columns": 2,
+      "rows": 7,
+      "foot_anchor": [
+        1024,
+        1536
+      ],
+      "display_width": 128,
+      "display_height": 128
+    },
+    "orb": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "animations": {
+        "spin": 2
+      },
+      "order": [
+        "spin"
+      ],
+      "columns": 2,
+      "rows": 1,
+      "display_width": 56,
+      "display_height": 56
+    },
+    "kunai": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "animations": {
+        "cut": 2
+      },
+      "order": [
+        "cut"
+      ],
+      "columns": 2,
+      "rows": 1,
+      "usage": "future-character-only",
+      "display_width": 56,
+      "display_height": 56
+    },
+    "slash": {
+      "frame_width": 48,
+      "frame_height": 48,
+      "animations": {
+        "cut": 6
+      },
+      "order": [
+        "cut"
+      ],
+      "columns": 6,
+      "rows": 1,
+      "usage": "retained-future-character-only"
+    },
+    "slash_x": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "animations": {
+        "cut": 2
+      },
+      "order": [
+        "cut"
+      ],
+      "columns": 2,
+      "rows": 1,
+      "usage": "future-character-only",
+      "display_width": 56,
+      "display_height": 56
+    },
+    "shuriken": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "animations": {
+        "spin": 2
+      },
+      "order": [
+        "spin"
+      ],
+      "columns": 2,
+      "rows": 1,
+      "display_width": 56,
+      "display_height": 56
+    },
+    "mine": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "animations": {
+        "pulse": 2
+      },
+      "order": [
+        "pulse"
+      ],
+      "columns": 2,
+      "rows": 1,
+      "display_width": 56,
+      "display_height": 56
+    },
+    "explosion": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "animations": {
+        "boom": 3
+      },
+      "order": [
+        "boom"
+      ],
+      "columns": 1,
+      "rows": 3,
+      "display_width": 56,
+      "display_height": 56
+    },
+    "enemy_bolt": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "animations": {
+        "pulse": 2
+      },
+      "order": [
+        "pulse"
+      ],
+      "columns": 2,
+      "rows": 1,
+      "display_width": 56,
+      "display_height": 56
+    },
+    "gem": {
+      "frame_width": 64,
+      "frame_height": 64,
+      "animations": {
+        "gleam": 4
+      },
+      "order": [
+        "gleam"
+      ],
+      "columns": 4,
+      "rows": 1
+    },
+    "heal_pickup": {
+      "frame_width": 64,
+      "frame_height": 64,
+      "animations": {
+        "beat": 4
+      },
+      "order": [
+        "beat"
+      ],
+      "columns": 4,
+      "rows": 1
+    },
+    "tree": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "animations": {
+        "sway": 1
+      },
+      "order": [
+        "sway"
+      ],
+      "columns": 1,
+      "rows": 1,
+      "display_width": 40,
+      "display_height": 48
+    },
+    "torii_gate": {
+      "frame_width": 48,
+      "frame_height": 48,
+      "animations": {
+        "sway": 4
+      },
+      "order": [
+        "sway"
+      ],
+      "columns": 4,
+      "rows": 1
+    },
+    "shrine_plaza": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "animations": {
+        "gleam": 1
+      },
+      "order": [
+        "gleam"
+      ],
+      "columns": 1,
+      "rows": 1,
+      "display_width": 64,
+      "display_height": 64
+    },
+    "shrine_lantern": {
+      "frame_width": 24,
+      "frame_height": 32,
+      "animations": {
+        "glow": 4
+      },
+      "order": [
+        "glow"
+      ],
+      "columns": 4,
+      "rows": 1
+    },
+    "spirit_flower": {
+      "frame_width": 16,
+      "frame_height": 16,
+      "animations": {
+        "sway": 4
+      },
+      "order": [
+        "sway"
+      ],
+      "columns": 4,
+      "rows": 1
+    },
+    "vfx_hit": {
+      "frame_width": 32,
+      "frame_height": 32,
+      "animations": {
+        "burst": 5
+      },
+      "order": [
+        "burst"
+      ],
+      "columns": 5,
+      "rows": 1
+    },
+    "vfx_death": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "animations": {
+        "poof": 2
+      },
+      "order": [
+        "poof"
+      ],
+      "columns": 2,
+      "rows": 1,
+      "display_width": 56,
+      "display_height": 56
+    },
+    "vfx_levelup": {
+      "frame_width": 56,
+      "frame_height": 64,
+      "animations": {
+        "pillar": 6
+      },
+      "order": [
+        "pillar"
+      ],
+      "columns": 6,
+      "rows": 1
+    },
+    "vfx_telegraph": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "animations": {
+        "charge": 2
+      },
+      "order": [
+        "charge"
+      ],
+      "columns": 2,
+      "rows": 1,
+      "display_width": 96,
+      "display_height": 64
+    },
+    "rasengan": {
+      "frame_width": 1536,
+      "frame_height": 1536,
+      "animations": {
+        "spin": 2,
+        "charge": 2,
+        "hit": 2
+      },
+      "order": [
+        "spin",
+        "charge",
+        "hit"
+      ],
+      "columns": 3,
+      "rows": 2,
+      "display_width": 1536,
+      "display_height": 1536
+    },
+    "punch": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "animations": {
+        "hit": 2
+      },
+      "order": [
+        "hit"
+      ],
+      "columns": 2,
+      "rows": 1,
+      "display_width": 56,
+      "display_height": 56
+    },
+    "hero_actions": {
+      "frame_width": 1536,
+      "frame_height": 1536,
+      "animations": {
+        "orb": 2,
+        "slash": 2,
+        "orbital": 2,
+        "mine": 2
+      },
+      "order": [
+        "orb",
+        "slash",
+        "orbital",
+        "mine"
+      ],
+      "columns": 4,
+      "rows": 2,
+      "foot_anchor": [
+        768,
+        1408
+      ],
+      "display_width": 1536,
+      "display_height": 1536
+    },
+    "rasenshuriken": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "animations": {
+        "spin": 2,
+        "hit": 2
+      },
+      "order": [
+        "spin",
+        "hit"
+      ],
+      "columns": 2,
+      "rows": 2,
+      "usage": "art-only-evolution",
+      "display_width": 56,
+      "display_height": 56
+    },
+    "wind_ground": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "animations": {
+        "burst": 2
+      },
+      "order": [
+        "burst"
+      ],
+      "columns": 2,
+      "rows": 1,
+      "usage": "art-only-evolution",
+      "display_width": 96,
+      "display_height": 64
+    },
+    "punch_max": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "animations": {
+        "hit": 2
+      },
+      "order": [
+        "hit"
+      ],
+      "columns": 2,
+      "rows": 1,
+      "usage": "art-only-max",
+      "display_width": 56,
+      "display_height": 56
+    },
+    "shuriken_max": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "animations": {
+        "spin": 2
+      },
+      "order": [
+        "spin"
+      ],
+      "columns": 2,
+      "rows": 1,
+      "usage": "art-only-max",
+      "display_width": 56,
+      "display_height": 56
+    },
+    "mine_max": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "animations": {
+        "pulse": 2
+      },
+      "order": [
+        "pulse"
+      ],
+      "columns": 2,
+      "rows": 1,
+      "usage": "art-only-max",
+      "display_width": 56,
+      "display_height": 56
+    },
+    "explosion_max": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "animations": {
+        "boom": 3
+      },
+      "order": [
+        "boom"
+      ],
+      "columns": 1,
+      "rows": 3,
+      "usage": "art-only-max",
+      "display_width": 56,
+      "display_height": 56
+    },
+    "enemy_elite": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "animations": {
+        "walk": 4,
+        "walk-side": 2,
+        "walk-up": 2
+      },
+      "order": [
+        "walk",
+        "walk-side",
+        "walk-up"
+      ],
+      "columns": 2,
+      "rows": 4,
+      "foot_anchor": [
+        1024,
+        1536
+      ],
+      "usage": "art-only-elite-no-spawn-rules",
+      "display_width": 96,
+      "display_height": 96
+    },
+    "aura_ring": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "animations": {
+        "pulse": 2
+      },
+      "order": [
+        "pulse"
+      ],
+      "columns": 2,
+      "rows": 1,
+      "usage": "shared-layer-purple-elite-red-boss",
+      "display_width": 96,
+      "display_height": 56
+    },
+    "aura_outer": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "animations": {
+        "pulse": 2
+      },
+      "order": [
+        "pulse"
+      ],
+      "columns": 2,
+      "rows": 1,
+      "usage": "shared-layer-purple-elite-red-boss",
+      "display_width": 192,
+      "display_height": 192,
+      "foot_anchor": [
+        1024,
+        1536
+      ]
+    },
+    "aura_contact": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "animations": {
+        "pulse": 2
+      },
+      "order": [
+        "pulse"
+      ],
+      "columns": 2,
+      "rows": 1,
+      "usage": "shared-layer-purple-elite-red-boss",
+      "display_width": 96,
+      "display_height": 56
+    },
+    "aura_accent": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "animations": {
+        "pulse": 2
+      },
+      "order": [
+        "pulse"
+      ],
+      "columns": 2,
+      "rows": 1,
+      "usage": "shared-layer-purple-elite-red-boss",
+      "display_width": 128,
+      "display_height": 96
+    },
+    "boss_blood_slash": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "animations": {
+        "cut": 2
+      },
+      "order": [
+        "cut"
+      ],
+      "columns": 2,
+      "rows": 1,
+      "usage": "art-only-boss-melee-no-new-attack-rule",
+      "display_width": 96,
+      "display_height": 96
+    },
+    "hero_locomotion": {
+      "frame_width": 1536,
+      "frame_height": 1536,
+      "animations": {
+        "idle": 4,
+        "walk": 4,
+        "walk-down": 2,
+        "idle-up": 1,
+        "walk-up": 2,
+        "idle-side": 1
+      },
+      "order": [
+        "idle",
+        "walk",
+        "walk-down",
+        "idle-up",
+        "walk-up",
+        "idle-side"
+      ],
+      "columns": 2,
+      "rows": 7,
+      "foot_anchor": [
+        768,
+        1408
+      ],
+      "display_width": 56,
+      "display_height": 56,
+      "usage": "Original full-resolution player movement; legacy32 sprite is hidden physics controller"
+    },
+    "enemy_attack": {
+      "frame_width": 256,
+      "frame_height": 256,
+      "animations": {
+        "attack-down": 4,
+        "attack-side": 4,
+        "attack-up": 4
+      },
+      "order": [
+        "attack-down",
+        "attack-side",
+        "attack-up"
+      ],
+      "columns": 4,
+      "rows": 3,
+      "foot_anchor": [
+        128,
+        192
+      ]
+    },
+    "enemy_shade_attack": {
+      "frame_width": 256,
+      "frame_height": 256,
+      "animations": {
+        "attack-down": 4,
+        "attack-side": 4,
+        "attack-up": 4
+      },
+      "order": [
+        "attack-down",
+        "attack-side",
+        "attack-up"
+      ],
+      "columns": 4,
+      "rows": 3,
+      "foot_anchor": [
+        128,
+        192
+      ]
+    },
+    "slam_wave": {
+      "frame_width": 384,
+      "frame_height": 384,
+      "animations": {
+        "burst": 4
+      },
+      "order": [
+        "burst"
+      ],
+      "columns": 4,
+      "rows": 1
+    },
+    "shade_claw": {
+      "frame_width": 384,
+      "frame_height": 384,
+      "animations": {
+        "burst": 4
+      },
+      "order": [
+        "burst"
+      ],
+      "columns": 4,
+      "rows": 1
+    },
+    "player_skill_hit": {
+      "frame_width": 256,
+      "frame_height": 256,
+      "animations": {
+        "burst": 6
+      },
+      "order": [
+        "burst"
+      ],
+      "columns": 6,
+      "rows": 1
+    }
   },
-  "single_images": {"orb":[8,8],"gem":[12,12],"grass":[32,32],"tree":[32,40],"shuriken":[12,12],"slash":[32,32],"enemy_bolt":[8,8]}
+  "single_images": {
+    "grass": [
+      1254,
+      1254
+    ],
+    "hud_panel": [
+      1774,
+      887
+    ],
+    "shadow_actor": [
+      128,
+      64
+    ],
+    "shadow_pickup": [
+      64,
+      32
+    ],
+    "ui_card_base": [
+      256,
+      256
+    ],
+    "ui_emblem_socket": [
+      256,
+      256
+    ],
+    "ui_banner_levelup": [
+      256,
+      256
+    ],
+    "hud_pip_glow": [
+      256,
+      256
+    ],
+    "icon_boss_crown": [
+      256,
+      256
+    ],
+    "font_damage_anime": [
+      256,
+      256
+    ],
+    "damage_explosion_mark": [
+      96,
+      96
+    ]
+  },
+  "icons": [
+    "weapon_orb",
+    "weapon_slash",
+    "weapon_orbital",
+    "weapon_mine",
+    "stat_max_hp",
+    "stat_move_speed",
+    "stat_damage",
+    "stat_cooldown",
+    "stat_magnet",
+    "stat_crit"
+  ],
+  "icon_sizes": {
+    "weapon_orb": [
+      64,
+      64
+    ],
+    "weapon_slash": [
+      64,
+      64
+    ],
+    "weapon_orbital": [
+      64,
+      64
+    ],
+    "weapon_mine": [
+      64,
+      64
+    ],
+    "stat_max_hp": [
+      64,
+      64
+    ],
+    "stat_move_speed": [
+      64,
+      64
+    ],
+    "stat_damage": [
+      64,
+      64
+    ],
+    "stat_cooldown": [
+      64,
+      64
+    ],
+    "stat_magnet": [
+      64,
+      64
+    ],
+    "stat_crit": [
+      64,
+      64
+    ]
+  }
 }

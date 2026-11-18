@@ -180,3 +180,10 @@ Do not tick items without actual evidence. Update this log during every Antigrav
 - Files: src/main.ts, src/app/style.css, rendering browser check, art pipeline documentation.
 - Acceptance: actual texture sources use LINEAR, canvas CSS is auto, keyboard/skills remain working, no browser errors; inspect before/after screenshot and run verify.
 - Validation PASS: npm run verify (47 domain,10 Python,40 exact-crop sheets, lint/typecheck/architecture/build); targeted browser4/4 PASS, asserting actual GL min/mag filters9729 (LINEAR) on actor/map/HUD/skill sources and computed canvas style auto, real movement keys and skill presentation. Before/after output/render-nearest-before.png and output/render-smooth-after.png visually inspected. Full18-case browser suite and low-end/mobile not rerun; tiny legacy assets may appear softer. No gameplay or PNG source changes.
+
+
+## Dual-element sword and VFX assets only — 2026-11-18
+- Added 3 cast clips (6/8/6 entries) and 10 VFX clips (25 frames): ice/dark-fire/X travel, 3 impacts, persistent Slow/Burn loops and separate status endings. Source reference and full prompt/hash provenance retained under art/source/dual-element.
+- Original 1254x1254 RGBA PNG pages are copied byte-for-byte into public/assets/dual-element/originals; 1792px padding-only frames, 13 exact sheets, paged atlases, anchors and release events supplied. No gameplay/loader/UI code changed by this task.
+- Package validation passed:36 original file hashes,45 source/sheet crop pixel comparisons,45 atlas frame reconstructions,4 release events; all distribution files match delivery files. npm run verify passed (14 Vitest files/60 tests plus TS/lint/architecture/existing asset checks/build).
+- Agent inspected art/review/dual-element/overview.png and character/VFX contact sheets; replaced inconsistent ice frames and erroneous footprint. No user review or in-game animation/collision/GPU validation claimed. One front cast direction only; runtime integration and additional directions remain outstanding.

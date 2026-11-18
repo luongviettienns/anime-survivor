@@ -1,0 +1,1438 @@
+{
+  "version": 1,
+  "pixel_policy": "Original RGBA PNG pages copied byte-for-byte for runtime; no resize, quantization or lossy compression. Padding only for packed frames.",
+  "direction": "south/front; projectiles travel east and can be rotated by runtime; no additional character directions claimed",
+  "status_contract": {
+    "Slow": {
+      "binding": "feet",
+      "loop": "vfx_ice_slow_loop",
+      "end": "vfx_ice_break",
+      "immobilizes": false
+    },
+    "Burn": {
+      "binding": "torso",
+      "loop": "vfx_dark_fire_burn_loop",
+      "end": "vfx_dark_fire_end"
+    },
+    "lifetime": "externally controlled independently for each status",
+    "stats": "no damage, slow percentage or status duration baked into asset metadata"
+  },
+  "originals": {
+    "neutral": {
+      "file": "originals/neutral.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        627,
+        1241
+      ],
+      "visible_alpha128_bbox": [
+        195,
+        8,
+        1059,
+        1241
+      ],
+      "sha256": "ebecb9f0eb5eef384fcde805b7cee8c87575f5a7b047378f62f7edd076e583b3"
+    },
+    "ice_windup": {
+      "file": "originals/ice_windup.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        627,
+        1240
+      ],
+      "visible_alpha128_bbox": [
+        90,
+        14,
+        993,
+        1240
+      ],
+      "sha256": "d0b1aaa8e95af3fe2e0af28b079b97da3b6359d149f99b1476b27b55458afa92"
+    },
+    "ice_cut": {
+      "file": "originals/ice_cut.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        627,
+        1201
+      ],
+      "visible_alpha128_bbox": [
+        188,
+        12,
+        1040,
+        1225
+      ],
+      "sha256": "f14b6b29511b83b2f240e163ff413a39aaae492642b8000f0b0e2afc09167766"
+    },
+    "ice_follow": {
+      "file": "originals/ice_follow.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        627,
+        1225
+      ],
+      "visible_alpha128_bbox": [
+        220,
+        45,
+        1041,
+        1225
+      ],
+      "sha256": "517f133de9b27e1620d41c9c6628f3af62de1b3a9302ff69f566a2dbb38544ea"
+    },
+    "dark_windup": {
+      "file": "originals/dark_windup.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        627,
+        1230
+      ],
+      "visible_alpha128_bbox": [
+        81,
+        11,
+        1129,
+        1230
+      ],
+      "sha256": "a5ab15f714c702463c5cdf5f302b8f220c98557c9fe6682c1c41e9e311536e2f"
+    },
+    "dark_cut": {
+      "file": "originals/dark_cut.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        627,
+        1235
+      ],
+      "visible_alpha128_bbox": [
+        225,
+        8,
+        1056,
+        1235
+      ],
+      "sha256": "d139acc4a7797c5e22d3016dd1cdb1098885cee57bb2672afea28d42a553b9c7"
+    },
+    "dark_follow": {
+      "file": "originals/dark_follow.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        627,
+        1239
+      ],
+      "visible_alpha128_bbox": [
+        145,
+        16,
+        1091,
+        1239
+      ],
+      "sha256": "e9960078da9b4b1fd5b0f0870aae3d77197c3d67902d4d25e9053413f2aa1a65"
+    },
+    "dual_windup": {
+      "file": "originals/dual_windup.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        627,
+        1149
+      ],
+      "visible_alpha128_bbox": [
+        31,
+        107,
+        1223,
+        1149
+      ],
+      "sha256": "2c13697ca821b1b5d30ce60d3a992d729eb29420630d28e4bec146c5b1eb813d"
+    },
+    "dual_charge": {
+      "file": "originals/dual_charge.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        627,
+        1235
+      ],
+      "visible_alpha128_bbox": [
+        32,
+        28,
+        1221,
+        1235
+      ],
+      "sha256": "14e508a53675093c01f992d054b6395bc8b8ca070bfa1edb76e322cfee3d6c28"
+    },
+    "dual_cross": {
+      "file": "originals/dual_cross.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        627,
+        1238
+      ],
+      "visible_alpha128_bbox": [
+        243,
+        8,
+        991,
+        1238
+      ],
+      "sha256": "11d1b39c5f185e70567788fc95689f60227842982b207fb1a895c3734798fbd7"
+    },
+    "dual_follow": {
+      "file": "originals/dual_follow.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        627,
+        1239
+      ],
+      "visible_alpha128_bbox": [
+        23,
+        5,
+        1233,
+        1239
+      ],
+      "sha256": "0d246e0b47606c4da6576c33bfdf520666fdd25d0dc22aacbca046ed645dca2b"
+    },
+    "ice_wave/000": {
+      "file": "originals/ice_wave/000.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        627,
+        627
+      ],
+      "visible_alpha128_bbox": [
+        470,
+        222,
+        806,
+        1010
+      ],
+      "sha256": "468ef2c4c0dc2665aff5db584279874cb54538f75aa3c3c68b4190d628d69e35"
+    },
+    "ice_wave/001": {
+      "file": "originals/ice_wave/001.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        627,
+        627
+      ],
+      "visible_alpha128_bbox": [
+        466,
+        199,
+        828,
+        1058
+      ],
+      "sha256": "64ebfa50cbc69bd6bdc83facb89ba4247b8f71644c76c0d1838f9e19dc08187e"
+    },
+    "dark_fire_wave/000": {
+      "file": "originals/dark_fire_wave/000.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        627,
+        627
+      ],
+      "visible_alpha128_bbox": [
+        401,
+        227,
+        791,
+        1004
+      ],
+      "sha256": "d0fdfc6515a2816662b5fabad7932e3f29c8c2a80fd0d7c178a2fd06f4e16618"
+    },
+    "dark_fire_wave/001": {
+      "file": "originals/dark_fire_wave/001.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        627,
+        627
+      ],
+      "visible_alpha128_bbox": [
+        305,
+        215,
+        820,
+        1026
+      ],
+      "sha256": "73a748e0b38cce9ec1be365766edf9f30afadc02dd9e4c2dc04823edd9f2525e"
+    },
+    "dual_element_x/000": {
+      "file": "originals/dual_element_x/000.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        627,
+        627
+      ],
+      "visible_alpha128_bbox": [
+        185,
+        210,
+        1067,
+        1066
+      ],
+      "sha256": "d95e09ba8d8dcf1f17a180ae87ae957fcd4c50844e9e7c2048b4539daa853f36"
+    },
+    "dual_element_x/001": {
+      "file": "originals/dual_element_x/001.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        627,
+        627
+      ],
+      "visible_alpha128_bbox": [
+        138,
+        160,
+        1116,
+        1094
+      ],
+      "sha256": "f6d6804ee0876602dfaab25eea09674ef1da2c57b62d30d96f626a9ea96fc9f2"
+    },
+    "ice_impact/000": {
+      "file": "originals/ice_impact/000.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        627,
+        627
+      ],
+      "visible_alpha128_bbox": [
+        358,
+        340,
+        901,
+        844
+      ],
+      "sha256": "54054d1a6728565f2661f2b9bb1974a8e102c4dcc19842892839f9743f5add32"
+    },
+    "ice_impact/001": {
+      "file": "originals/ice_impact/001.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        627,
+        627
+      ],
+      "visible_alpha128_bbox": [
+        183,
+        162,
+        1067,
+        1038
+      ],
+      "sha256": "62c2e5a8026f2791d91c5e45afe9a6f4baf802404ed347cf41cd6348512deb5b"
+    },
+    "ice_impact/002": {
+      "file": "originals/ice_impact/002.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        627,
+        627
+      ],
+      "visible_alpha128_bbox": [
+        233,
+        257,
+        1019,
+        969
+      ],
+      "sha256": "eb6ff6351a1c1a542197c48158d480b54be796a1678894b1edad143d09d6d369"
+    },
+    "ice_slow_loop/000": {
+      "file": "originals/ice_slow_loop/000.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        627,
+        820
+      ],
+      "visible_alpha128_bbox": [
+        201,
+        664,
+        1057,
+        970
+      ],
+      "sha256": "cd724a922b52e9db0ad577cceb73f73bc66c839c9e519bd5d0ce9143761904ba"
+    },
+    "ice_slow_loop/001": {
+      "file": "originals/ice_slow_loop/001.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        627,
+        820
+      ],
+      "visible_alpha128_bbox": [
+        203,
+        664,
+        1054,
+        973
+      ],
+      "sha256": "6d82e484eebab8bcfd0a8aa7350f255c70349a41fe2f54aa5dfaf0fcddd52023"
+    },
+    "ice_break/000": {
+      "file": "originals/ice_break/000.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        627,
+        820
+      ],
+      "visible_alpha128_bbox": [
+        192,
+        662,
+        1058,
+        974
+      ],
+      "sha256": "4a505e65b4d96fd1782a8974d3a293c78e70b749e293386d6777960199831081"
+    },
+    "ice_break/001": {
+      "file": "originals/ice_break/001.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        627,
+        627
+      ],
+      "visible_alpha128_bbox": [
+        145,
+        252,
+        1113,
+        993
+      ],
+      "sha256": "0acd48159aa23699c27a8ac3bd1684eee7a44d11ba8470e193e3886c407336e0"
+    },
+    "ice_break/002": {
+      "file": "originals/ice_break/002.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        627,
+        627
+      ],
+      "visible_alpha128_bbox": [
+        151,
+        500,
+        1080,
+        994
+      ],
+      "sha256": "b57b89102482f63b754e221de1ff607c0dfa5af9dc242c9c9646a247a0ba05ca"
+    },
+    "dark_fire_impact/000": {
+      "file": "originals/dark_fire_impact/000.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        617,
+        741
+      ],
+      "visible_alpha128_bbox": [
+        326,
+        271,
+        905,
+        901
+      ],
+      "sha256": "7f9b2ae6f0803452e5194bcaedd3e1c124de5ddc030d9e169f5a250876cdb826"
+    },
+    "dark_fire_impact/001": {
+      "file": "originals/dark_fire_impact/001.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        603,
+        763
+      ],
+      "visible_alpha128_bbox": [
+        136,
+        148,
+        1118,
+        1098
+      ],
+      "sha256": "c4f4f45b3764c5e5af7065a7841d32fc001142c5e52f9cd6f08382df72b1f8c3"
+    },
+    "dark_fire_impact/002": {
+      "file": "originals/dark_fire_impact/002.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        627,
+        627
+      ],
+      "visible_alpha128_bbox": [
+        224,
+        216,
+        1023,
+        1021
+      ],
+      "sha256": "fce6262d3731eead0b33e686742edb4629854a643ccac3871593c8f9778b6c32"
+    },
+    "dark_fire_burn_loop/000": {
+      "file": "originals/dark_fire_burn_loop/000.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        627,
+        627
+      ],
+      "visible_alpha128_bbox": [
+        283,
+        162,
+        945,
+        1050
+      ],
+      "sha256": "26d3cc459b316bcbc0ce4a1299cef8a79179ab2fc69983116828037132ff5afd"
+    },
+    "dark_fire_burn_loop/001": {
+      "file": "originals/dark_fire_burn_loop/001.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        627,
+        627
+      ],
+      "visible_alpha128_bbox": [
+        339,
+        110,
+        941,
+        1015
+      ],
+      "sha256": "7e99ea58eb72ea094a4137de9afdf1339a6c2205e61f3660c8241ac083f73b0b"
+    },
+    "dark_fire_end/000": {
+      "file": "originals/dark_fire_end/000.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        627,
+        627
+      ],
+      "visible_alpha128_bbox": [
+        287,
+        322,
+        987,
+        930
+      ],
+      "sha256": "39f606c999517ecdc7758a7bff45d78626102504265226f2f559594d51e5a6c9"
+    },
+    "dark_fire_end/001": {
+      "file": "originals/dark_fire_end/001.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        627,
+        627
+      ],
+      "visible_alpha128_bbox": [
+        164,
+        101,
+        1092,
+        1105
+      ],
+      "sha256": "c0484d4474e021e9cb25c7bd20545f6b5c779049e02de2dbe2d1e709444f91c5"
+    },
+    "dark_fire_end/002": {
+      "file": "originals/dark_fire_end/002.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        627,
+        627
+      ],
+      "visible_alpha128_bbox": [
+        211,
+        162,
+        1062,
+        1094
+      ],
+      "sha256": "170eb6cdcb7c627c8b47c7e1f580a28d3eb9efa58d754b9734aa0d168d340623"
+    },
+    "dual_element_impact/000": {
+      "file": "originals/dual_element_impact/000.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        627,
+        666
+      ],
+      "visible_alpha128_bbox": [
+        291,
+        221,
+        935,
+        911
+      ],
+      "sha256": "8c9418006b80bf7ac570feeb29d3d1a1505e27b016f408217746546b4f5142b6"
+    },
+    "dual_element_impact/001": {
+      "file": "originals/dual_element_impact/001.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        618,
+        684
+      ],
+      "visible_alpha128_bbox": [
+        120,
+        115,
+        1086,
+        1108
+      ],
+      "sha256": "fbd959a12f01684cf89fac099b9e92278232c966495c52e9ab861c091a19c437"
+    },
+    "dual_element_impact/002": {
+      "file": "originals/dual_element_impact/002.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "anchor": [
+        627,
+        627
+      ],
+      "visible_alpha128_bbox": [
+        132,
+        194,
+        1120,
+        1055
+      ],
+      "sha256": "1480a7094357cd3c5443967c0aa6b138d940a16648e0bcb7f6f2d471985bb417"
+    }
+  },
+  "clips": {
+    "kirito_wave_lv1_ice": {
+      "poses": [
+        "neutral",
+        "ice_windup",
+        "ice_cut",
+        "ice_follow",
+        "ice_follow",
+        "neutral"
+      ],
+      "durations_ms": [
+        60,
+        120,
+        70,
+        70,
+        50,
+        120
+      ],
+      "events": [
+        {
+          "frame": 2,
+          "event": "release_projectile",
+          "asset": "vfx_ice_wave",
+          "time_ms": 180,
+          "collision_owner": "projectile gameplay system; visual frames never apply damage"
+        }
+      ],
+      "frame_count": 6,
+      "direction": "south/front only",
+      "canvas": [
+        1792,
+        1792
+      ],
+      "anchor": [
+        896,
+        1536
+      ],
+      "loop": false,
+      "frames": [
+        {
+          "index": 0,
+          "original": "neutral",
+          "offset": [
+            269,
+            295
+          ],
+          "duration_ms": 60
+        },
+        {
+          "index": 1,
+          "original": "ice_windup",
+          "offset": [
+            269,
+            296
+          ],
+          "duration_ms": 120
+        },
+        {
+          "index": 2,
+          "original": "ice_cut",
+          "offset": [
+            269,
+            335
+          ],
+          "duration_ms": 70
+        },
+        {
+          "index": 3,
+          "original": "ice_follow",
+          "offset": [
+            269,
+            311
+          ],
+          "duration_ms": 70
+        },
+        {
+          "index": 4,
+          "original": "ice_follow",
+          "offset": [
+            269,
+            311
+          ],
+          "duration_ms": 50
+        },
+        {
+          "index": 5,
+          "original": "neutral",
+          "offset": [
+            269,
+            295
+          ],
+          "duration_ms": 120
+        }
+      ]
+    },
+    "kirito_wave_lv2_sequential": {
+      "poses": [
+        "neutral",
+        "ice_windup",
+        "ice_cut",
+        "ice_follow",
+        "dark_windup",
+        "dark_cut",
+        "dark_follow",
+        "neutral"
+      ],
+      "durations_ms": [
+        60,
+        120,
+        70,
+        80,
+        120,
+        70,
+        90,
+        120
+      ],
+      "events": [
+        {
+          "frame": 2,
+          "event": "release_projectile",
+          "asset": "vfx_ice_wave",
+          "time_ms": 180,
+          "collision_owner": "projectile gameplay system; visual frames never apply damage"
+        },
+        {
+          "frame": 5,
+          "event": "release_projectile",
+          "asset": "vfx_dark_fire_wave",
+          "time_ms": 450,
+          "collision_owner": "projectile gameplay system; visual frames never apply damage"
+        }
+      ],
+      "frame_count": 8,
+      "direction": "south/front only",
+      "canvas": [
+        1792,
+        1792
+      ],
+      "anchor": [
+        896,
+        1536
+      ],
+      "loop": false,
+      "frames": [
+        {
+          "index": 0,
+          "original": "neutral",
+          "offset": [
+            269,
+            295
+          ],
+          "duration_ms": 60
+        },
+        {
+          "index": 1,
+          "original": "ice_windup",
+          "offset": [
+            269,
+            296
+          ],
+          "duration_ms": 120
+        },
+        {
+          "index": 2,
+          "original": "ice_cut",
+          "offset": [
+            269,
+            335
+          ],
+          "duration_ms": 70
+        },
+        {
+          "index": 3,
+          "original": "ice_follow",
+          "offset": [
+            269,
+            311
+          ],
+          "duration_ms": 80
+        },
+        {
+          "index": 4,
+          "original": "dark_windup",
+          "offset": [
+            269,
+            306
+          ],
+          "duration_ms": 120
+        },
+        {
+          "index": 5,
+          "original": "dark_cut",
+          "offset": [
+            269,
+            301
+          ],
+          "duration_ms": 70
+        },
+        {
+          "index": 6,
+          "original": "dark_follow",
+          "offset": [
+            269,
+            297
+          ],
+          "duration_ms": 90
+        },
+        {
+          "index": 7,
+          "original": "neutral",
+          "offset": [
+            269,
+            295
+          ],
+          "duration_ms": 120
+        }
+      ]
+    },
+    "kirito_wave_lv3_x": {
+      "poses": [
+        "neutral",
+        "dual_windup",
+        "dual_charge",
+        "dual_cross",
+        "dual_follow",
+        "neutral"
+      ],
+      "durations_ms": [
+        60,
+        120,
+        100,
+        80,
+        110,
+        120
+      ],
+      "events": [
+        {
+          "frame": 3,
+          "event": "release_projectile",
+          "asset": "vfx_dual_element_x",
+          "collision_checks": 1,
+          "applies": [
+            "Slow",
+            "Burn"
+          ],
+          "time_ms": 280,
+          "collision_owner": "projectile gameplay system; visual frames never apply damage"
+        }
+      ],
+      "frame_count": 6,
+      "direction": "south/front only",
+      "canvas": [
+        1792,
+        1792
+      ],
+      "anchor": [
+        896,
+        1536
+      ],
+      "loop": false,
+      "frames": [
+        {
+          "index": 0,
+          "original": "neutral",
+          "offset": [
+            269,
+            295
+          ],
+          "duration_ms": 60
+        },
+        {
+          "index": 1,
+          "original": "dual_windup",
+          "offset": [
+            269,
+            387
+          ],
+          "duration_ms": 120
+        },
+        {
+          "index": 2,
+          "original": "dual_charge",
+          "offset": [
+            269,
+            301
+          ],
+          "duration_ms": 100
+        },
+        {
+          "index": 3,
+          "original": "dual_cross",
+          "offset": [
+            269,
+            298
+          ],
+          "duration_ms": 80
+        },
+        {
+          "index": 4,
+          "original": "dual_follow",
+          "offset": [
+            269,
+            297
+          ],
+          "duration_ms": 110
+        },
+        {
+          "index": 5,
+          "original": "neutral",
+          "offset": [
+            269,
+            295
+          ],
+          "duration_ms": 120
+        }
+      ]
+    },
+    "vfx_ice_wave": {
+      "source_key": "ice_wave",
+      "frame_count": 2,
+      "durations_ms": [
+        80,
+        80
+      ],
+      "loop": true,
+      "binding": "projectile",
+      "end_condition": "runtime projectile collision/lifetime",
+      "gameplay_values": "runtime-configured; no baked damage/slow percentage/duration",
+      "canvas": [
+        1792,
+        1792
+      ],
+      "anchor": [
+        896,
+        896
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "original": "ice_wave/000",
+          "offset": [
+            269,
+            269
+          ],
+          "duration_ms": 80
+        },
+        {
+          "index": 1,
+          "original": "ice_wave/001",
+          "offset": [
+            269,
+            269
+          ],
+          "duration_ms": 80
+        }
+      ]
+    },
+    "vfx_dark_fire_wave": {
+      "source_key": "dark_fire_wave",
+      "frame_count": 2,
+      "durations_ms": [
+        80,
+        80
+      ],
+      "loop": true,
+      "binding": "projectile",
+      "end_condition": "runtime projectile collision/lifetime",
+      "gameplay_values": "runtime-configured; no baked damage/slow percentage/duration",
+      "canvas": [
+        1792,
+        1792
+      ],
+      "anchor": [
+        896,
+        896
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "original": "dark_fire_wave/000",
+          "offset": [
+            269,
+            269
+          ],
+          "duration_ms": 80
+        },
+        {
+          "index": 1,
+          "original": "dark_fire_wave/001",
+          "offset": [
+            269,
+            269
+          ],
+          "duration_ms": 80
+        }
+      ]
+    },
+    "vfx_dual_element_x": {
+      "source_key": "dual_element_x",
+      "frame_count": 2,
+      "durations_ms": [
+        80,
+        80
+      ],
+      "loop": true,
+      "binding": "projectile",
+      "end_condition": "runtime projectile collision/lifetime",
+      "gameplay_values": "runtime-configured; no baked damage/slow percentage/duration",
+      "canvas": [
+        1792,
+        1792
+      ],
+      "anchor": [
+        896,
+        896
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "original": "dual_element_x/000",
+          "offset": [
+            269,
+            269
+          ],
+          "duration_ms": 80
+        },
+        {
+          "index": 1,
+          "original": "dual_element_x/001",
+          "offset": [
+            269,
+            269
+          ],
+          "duration_ms": 80
+        }
+      ]
+    },
+    "vfx_ice_impact": {
+      "source_key": "ice_impact",
+      "frame_count": 3,
+      "durations_ms": [
+        60,
+        80,
+        110
+      ],
+      "loop": false,
+      "binding": "hit_point",
+      "end_condition": "last frame",
+      "gameplay_values": "runtime-configured; no baked damage/slow percentage/duration",
+      "canvas": [
+        1792,
+        1792
+      ],
+      "anchor": [
+        896,
+        896
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "original": "ice_impact/000",
+          "offset": [
+            269,
+            269
+          ],
+          "duration_ms": 60
+        },
+        {
+          "index": 1,
+          "original": "ice_impact/001",
+          "offset": [
+            269,
+            269
+          ],
+          "duration_ms": 80
+        },
+        {
+          "index": 2,
+          "original": "ice_impact/002",
+          "offset": [
+            269,
+            269
+          ],
+          "duration_ms": 110
+        }
+      ]
+    },
+    "vfx_ice_slow_loop": {
+      "source_key": "ice_slow_loop",
+      "frame_count": 2,
+      "durations_ms": [
+        140,
+        140
+      ],
+      "loop": true,
+      "binding": "target_feet",
+      "end_condition": "external status expiry; do not bake gameplay duration into artwork",
+      "gameplay_values": "runtime-configured; no baked damage/slow percentage/duration",
+      "canvas": [
+        1792,
+        1792
+      ],
+      "anchor": [
+        896,
+        896
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "original": "ice_slow_loop/000",
+          "offset": [
+            269,
+            76
+          ],
+          "duration_ms": 140
+        },
+        {
+          "index": 1,
+          "original": "ice_slow_loop/001",
+          "offset": [
+            269,
+            76
+          ],
+          "duration_ms": 140
+        }
+      ]
+    },
+    "vfx_ice_break": {
+      "source_key": "ice_break",
+      "frame_count": 3,
+      "durations_ms": [
+        60,
+        80,
+        110
+      ],
+      "loop": false,
+      "binding": "target_feet",
+      "end_condition": "last frame",
+      "gameplay_values": "runtime-configured; no baked damage/slow percentage/duration",
+      "canvas": [
+        1792,
+        1792
+      ],
+      "anchor": [
+        896,
+        896
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "original": "ice_break/000",
+          "offset": [
+            269,
+            76
+          ],
+          "duration_ms": 60
+        },
+        {
+          "index": 1,
+          "original": "ice_break/001",
+          "offset": [
+            269,
+            269
+          ],
+          "duration_ms": 80
+        },
+        {
+          "index": 2,
+          "original": "ice_break/002",
+          "offset": [
+            269,
+            269
+          ],
+          "duration_ms": 110
+        }
+      ]
+    },
+    "vfx_dark_fire_impact": {
+      "source_key": "dark_fire_impact",
+      "frame_count": 3,
+      "durations_ms": [
+        60,
+        80,
+        110
+      ],
+      "loop": false,
+      "binding": "hit_point",
+      "end_condition": "last frame",
+      "gameplay_values": "runtime-configured; no baked damage/slow percentage/duration",
+      "canvas": [
+        1792,
+        1792
+      ],
+      "anchor": [
+        896,
+        896
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "original": "dark_fire_impact/000",
+          "offset": [
+            279,
+            155
+          ],
+          "duration_ms": 60
+        },
+        {
+          "index": 1,
+          "original": "dark_fire_impact/001",
+          "offset": [
+            293,
+            133
+          ],
+          "duration_ms": 80
+        },
+        {
+          "index": 2,
+          "original": "dark_fire_impact/002",
+          "offset": [
+            269,
+            269
+          ],
+          "duration_ms": 110
+        }
+      ]
+    },
+    "vfx_dark_fire_burn_loop": {
+      "source_key": "dark_fire_burn_loop",
+      "frame_count": 2,
+      "durations_ms": [
+        140,
+        140
+      ],
+      "loop": true,
+      "binding": "target_torso",
+      "end_condition": "external status expiry; do not bake gameplay duration into artwork",
+      "gameplay_values": "runtime-configured; no baked damage/slow percentage/duration",
+      "canvas": [
+        1792,
+        1792
+      ],
+      "anchor": [
+        896,
+        896
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "original": "dark_fire_burn_loop/000",
+          "offset": [
+            269,
+            269
+          ],
+          "duration_ms": 140
+        },
+        {
+          "index": 1,
+          "original": "dark_fire_burn_loop/001",
+          "offset": [
+            269,
+            269
+          ],
+          "duration_ms": 140
+        }
+      ]
+    },
+    "vfx_dark_fire_end": {
+      "source_key": "dark_fire_end",
+      "frame_count": 3,
+      "durations_ms": [
+        60,
+        80,
+        110
+      ],
+      "loop": false,
+      "binding": "target_torso",
+      "end_condition": "last frame",
+      "gameplay_values": "runtime-configured; no baked damage/slow percentage/duration",
+      "canvas": [
+        1792,
+        1792
+      ],
+      "anchor": [
+        896,
+        896
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "original": "dark_fire_end/000",
+          "offset": [
+            269,
+            269
+          ],
+          "duration_ms": 60
+        },
+        {
+          "index": 1,
+          "original": "dark_fire_end/001",
+          "offset": [
+            269,
+            269
+          ],
+          "duration_ms": 80
+        },
+        {
+          "index": 2,
+          "original": "dark_fire_end/002",
+          "offset": [
+            269,
+            269
+          ],
+          "duration_ms": 110
+        }
+      ]
+    },
+    "vfx_dual_element_impact": {
+      "source_key": "dual_element_impact",
+      "frame_count": 3,
+      "durations_ms": [
+        60,
+        80,
+        110
+      ],
+      "loop": false,
+      "binding": "hit_point",
+      "end_condition": "last frame",
+      "gameplay_values": "runtime-configured; no baked damage/slow percentage/duration",
+      "canvas": [
+        1792,
+        1792
+      ],
+      "anchor": [
+        896,
+        896
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "original": "dual_element_impact/000",
+          "offset": [
+            269,
+            230
+          ],
+          "duration_ms": 60
+        },
+        {
+          "index": 1,
+          "original": "dual_element_impact/001",
+          "offset": [
+            278,
+            212
+          ],
+          "duration_ms": 80
+        },
+        {
+          "index": 2,
+          "original": "dual_element_impact/002",
+          "offset": [
+            269,
+            269
+          ],
+          "duration_ms": 110
+        }
+      ]
+    }
+  }
+}

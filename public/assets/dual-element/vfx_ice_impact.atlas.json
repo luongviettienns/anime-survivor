@@ -1,0 +1,87 @@
+{
+  "textures": [
+    {
+      "image": "originals/ice_impact/000.png",
+      "frames": [
+        {
+          "filename": "vfx_ice_impact/000",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1254,
+            "h": 1254
+          },
+          "rotated": false,
+          "trimmed": true,
+          "spriteSourceSize": {
+            "x": 269,
+            "y": 269,
+            "w": 1254,
+            "h": 1254
+          },
+          "sourceSize": {
+            "w": 1792,
+            "h": 1792
+          }
+        }
+      ]
+    },
+    {
+      "image": "originals/ice_impact/001.png",
+      "frames": [
+        {
+          "filename": "vfx_ice_impact/001",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1254,
+            "h": 1254
+          },
+          "rotated": false,
+          "trimmed": true,
+          "spriteSourceSize": {
+            "x": 269,
+            "y": 269,
+            "w": 1254,
+            "h": 1254
+          },
+          "sourceSize": {
+            "w": 1792,
+            "h": 1792
+          }
+        }
+      ]
+    },
+    {
+      "image": "originals/ice_impact/002.png",
+      "frames": [
+        {
+          "filename": "vfx_ice_impact/002",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1254,
+            "h": 1254
+          },
+          "rotated": false,
+          "trimmed": true,
+          "spriteSourceSize": {
+            "x": 269,
+            "y": 269,
+            "w": 1254,
+            "h": 1254
+          },
+          "sourceSize": {
+            "w": 1792,
+            "h": 1792
+          }
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "app": "dual-element lossless package",
+    "format": "RGBA8888",
+    "scale": "1"
+  }
+}

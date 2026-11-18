@@ -1,0 +1,9 @@
+{
+  "originals_byte_identical": 36,
+  "frames_pixel_identical": 45,
+  "sheets": 13,
+  "gameplay_integration": "not performed; assets-only scope",
+  "atlas_reconstruction_frames": 45,
+  "release_events_validated": 4,
+  "distribution_all_files_byte_identical": true
+}

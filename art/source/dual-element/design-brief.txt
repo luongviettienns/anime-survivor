@@ -1,0 +1,163 @@
+# SKILL 1 – DUAL ELEMENT ENERGY SLASH
+
+Tạo spritesheet animation Pixel Art 256×256 cho kỹ năng Sóng Kiếm của Kirito, sử dụng asset Kirito đã cung cấp.
+
+Kỹ năng có 3 cấp độ tiến hóa. Mỗi cấp thay đổi cách sử dụng hai thanh kiếm, số lượng sóng năng lượng và hiệu ứng trạng thái áp dụng lên kẻ địch.
+
+## 1. Quy tắc hai thanh kiếm
+
+**Dark Repulser – ICE SWORD**
+
+- Màu sắc: xanh băng, cyan, trắng xanh.
+- Nguyên tố: Băng (Ice).
+- Sóng kiếm: một vệt năng lượng dọc màu xanh băng.
+- Khi trúng kẻ địch: gây sát thương, áp dụng trạng thái Slow.
+- VFX trúng đòn: tinh thể băng và lớp sương giá xuất hiện trên cơ thể, đặc biệt tại chân kẻ địch.
+- VFX Slow tồn tại theo thời gian hiệu lực, không biến mất ngay sau khi sóng trúng.
+- Chỉ gây làm chậm, không tự động làm mục tiêu bất động hoàn toàn.
+
+**Elucidator – DARK FIRE SWORD**
+
+- Lưỡi kiếm màu đen, ánh sáng năng lượng tím đậm.
+- Nguyên tố: Lửa bóng tối (Dark Fire).
+- Sóng kiếm: một vệt năng lượng dọc màu tím, lõi tối, viền tím sáng và các hạt lửa.
+- Khi trúng kẻ địch: gây sát thương, áp dụng trạng thái Burn.
+- VFX trúng đòn: ngọn lửa tím đen bám trên cơ thể kẻ địch.
+- VFX Burn nhấp nháy và cháy liên tục trong thời gian hiệu lực.
+- Burn gây sát thương theo thời gian do game engine xử lý.
+
+Không được hoán đổi màu sắc hoặc hiệu ứng trạng thái giữa hai thanh kiếm.
+
+## 2. LEVEL 1 – SINGLE ICE WAVE
+
+Kirito chỉ sử dụng kiếm xanh Dark Repulser để phóng một sóng năng lượng băng.
+
+Animation gồm 16 frame, 16 FPS.
+
+- Frame 01–04: Kirito hạ trọng tâm, tay cầm kiếm xanh đưa ra sau chuẩn bị chém. Tay cầm kiếm đen giữ ở tư thế phòng thủ, không thực hiện đòn tấn công.
+- Frame 05–07: Tay cầm kiếm xanh vung mạnh theo đường chém dọc, tạo vệt sáng cyan.
+- Frame 08: Giải phóng một sóng kiếm băng dựng đứng về phía trước.
+- Frame 09–12: Sóng băng tách khỏi lưỡi kiếm và bay theo hướng tấn công; Kirito hoàn tất chuyển động chém.
+- Frame 13–16: Kirito thu kiếm, trở về tư thế chiến đấu.
+
+**VFX projectile:**
+
+Một lưỡi liềm năng lượng đứng dọc màu xanh băng, lõi sáng trắng xanh, viền cyan và những tinh thể băng nhỏ kéo theo phía sau.
+
+**VFX on hit:**
+
+Khi sóng băng va chạm mục tiêu:
+
+1. Tạo hiệu ứng băng vỡ ngắn tại điểm va chạm.
+2. Các tinh thể băng nhỏ bám quanh chân và phần dưới cơ thể kẻ địch.
+3. Xuất hiện lớp sương băng nhạt quanh mục tiêu.
+4. Trong thời gian Slow, các tinh thể băng và sương giá tiếp tục hiển thị.
+5. Khi Slow hết hiệu lực, tinh thể băng nứt, tan dần và biến mất.
+
+## 3. LEVEL 2 – SEQUENTIAL ICE AND DARK FIRE WAVES
+
+Kirito được mở khóa sử dụng cả hai thanh kiếm để phóng hai sóng liên tiếp.
+
+**Bắt buộc: Chém lần lượt, không chém cùng lúc.**
+
+Animation gồm 24 frame, 16 FPS.
+
+**Giai đoạn 1 – Ice Slash (Frame 01–09)**
+
+- Kirito đưa kiếm xanh ra sau.
+- Vung kiếm xanh dứt khoát theo đường chém dọc.
+- Frame 07: Phóng sóng băng xanh thứ nhất.
+- Sóng xanh bay độc lập về phía mục tiêu.
+- Kiếm đen vẫn giữ nguyên, chưa chém.
+
+**Giai đoạn 2 – Dark Fire Slash (Frame 10–18)**
+
+- Kirito chuyển trọng tâm cơ thể.
+- Đưa kiếm đen Elucidator ra sau lấy đà.
+- Vung kiếm đen theo hướng chém ngược với nhát kiếm xanh.
+- Frame 16: Phóng sóng lửa bóng tối màu tím đen thứ hai.
+- Sóng tím bay theo cùng hướng tấn công, phía sau sóng xanh.
+- Khoảng cách thời gian giữa hai lần phóng phải rõ ràng.
+
+**Giai đoạn 3 – Recovery (Frame 19–24)**
+
+- Kirito kết thúc chuyển động chém thứ hai.
+- Hai kiếm thu về tư thế chiến đấu.
+- Áo choàng chuyển động theo quán tính.
+- Nhân vật sẵn sàng cho hành động tiếp theo.
+
+**VFX và hiệu ứng trạng thái:**
+
+- Sóng xanh gây Slow và tạo hiệu ứng đóng băng.
+- Sóng tím đen gây Burn và tạo hiệu ứng thiêu đốt.
+- Hai sóng là hai projectile riêng, được xử lý va chạm độc lập.
+- Hai hiệu ứng trạng thái có thể cùng tồn tại nếu cả hai sóng đều trúng.
+- Không tự động xóa Slow khi Burn được áp dụng, hoặc ngược lại, trừ khi có quy tắc gameplay riêng.
+
+## 4. LEVEL 3 – SIMULTANEOUS DUAL ELEMENT X WAVE
+
+Đây là nâng cấp cuối của Skill Sóng Kiếm.
+
+Kirito không còn chém hai sóng riêng lần lượt. Thay vào đó, Kirito đồng thời sử dụng hai tay để phóng ra một sóng năng lượng chữ X.
+
+Animation gồm 16 frame, 16 FPS.
+
+- Frame 01–04: Kirito hạ thấp cơ thể, hai tay đưa kiếm sang hai bên, tạo thế chuẩn bị.
+- Frame 05–06: Hai kiếm tích tụ năng lượng. Kiếm xanh phát sáng băng cyan, kiếm đen phát sáng lửa tím.
+- Frame 07–09: Hai tay đồng thời vung kiếm theo hai đường chéo ngược nhau, giao nhau phía trước cơ thể.
+- Frame 10: Hai vệt năng lượng tạo thành hình chữ X và được phóng ra đồng thời.
+- Frame 11–13: Sóng X bay về phía kẻ địch, giữ nguyên hình dạng chữ X.
+- Frame 14–16: Kirito thu hai kiếm và trở lại tư thế chiến đấu.
+
+**VFX X Wave:**
+
+- Nhánh chéo thứ nhất màu xanh băng, có hạt tuyết và tinh thể băng.
+- Nhánh chéo thứ hai màu tím đen, có hạt lửa và khói tím.
+- Cả hai nhánh hợp thành một chữ X rõ ràng.
+- Khi di chuyển, sóng X duy trì hai màu riêng biệt.
+- Không tạo hai sóng bay lệch thời điểm.
+- Không biến X thành một vòng xoáy hoặc tia laser.
+
+**VFX on hit:**
+
+Khi sóng X chạm kẻ địch:
+
+1. Bùng phát tác động kép băng xanh và lửa tím tại vị trí va chạm.
+2. Áp dụng Slow và Burn theo quy tắc gameplay.
+3. Hiệu ứng băng bám quanh chân, lửa tím bám quanh phần thân mục tiêu.
+4. Hai trạng thái có thể cùng hiển thị mà không che khuất hoàn toàn nhân vật.
+5. Các VFX trạng thái kết thúc khi hiệu lực tương ứng hết hạn.
+
+Sóng X được coi là một projectile kết hợp, có một lần kiểm tra va chạm chính, không tạo sát thương hai lần ngoài ý muốn.
+
+## 5. Xuất assets
+
+**Character animations:**
+
+- `kirito_wave_lv1_ice.png` – 16 frame, 4×4.
+- `kirito_wave_lv2_sequential.png` – 24 frame, 6×4.
+- `kirito_wave_lv3_x.png` – 16 frame, 4×4.
+
+**Projectile VFX:**
+
+- `vfx_ice_wave.png` – Sóng kiếm xanh.
+- `vfx_dark_fire_wave.png` – Sóng kiếm tím đen.
+- `vfx_dual_element_x.png` – Sóng chữ X hai nguyên tố.
+
+**Enemy status VFX:**
+
+- `vfx_ice_impact.png` – Va chạm băng.
+- `vfx_ice_slow_loop.png` – Hiệu ứng đóng băng làm chậm, có thể loop.
+- `vfx_ice_break.png` – Băng tan hoặc vỡ khi Slow kết thúc.
+- `vfx_dark_fire_impact.png` – Va chạm lửa tím.
+- `vfx_dark_fire_burn_loop.png` – Lửa tím thiêu đốt, có thể loop.
+- `vfx_dark_fire_end.png` – Lửa tắt khi Burn kết thúc.
+- `vfx_dual_element_impact.png` – Va chạm kết hợp băng và lửa.
+
+Mỗi ô animation nhân vật 256×256 px, PNG trong suốt, các frame sắp xếp theo thứ tự từ trái sang phải, từ trên xuống dưới.
+
+Tạo metadata JSON cho từng animation và VFX, gồm frame count, frame duration, điểm neo, thời điểm phóng projectile, các frame gây sát thương, trạng thái VFX loop và thời điểm kết thúc.
+
+**Quan trọng:** Không cố định phần trăm làm chậm, thời gian Slow, sát thương Burn hoặc thời gian Burn vào hình ảnh. Những giá trị này được định nghĩa bằng cấu hình gameplay để dễ cân bằng kỹ năng.
+
+Giữ nguyên toàn bộ thiết kế Kirito và các animation Basic Attack, Phantom Dash đã mô tả trước đó. Chỉ thay thế cơ chế Skill Sóng Kiếm theo ba cấp mới.

@@ -1,0 +1,162 @@
+{
+  "version": 1,
+  "sprites": {
+    "kirito_wave_lv1_ice": {
+      "frame_width": 1792,
+      "frame_height": 1792,
+      "columns": 2,
+      "rows": 3,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 6
+      }
+    },
+    "kirito_wave_lv2_sequential": {
+      "frame_width": 1792,
+      "frame_height": 1792,
+      "columns": 2,
+      "rows": 4,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 8
+      }
+    },
+    "kirito_wave_lv3_x": {
+      "frame_width": 1792,
+      "frame_height": 1792,
+      "columns": 2,
+      "rows": 3,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 6
+      }
+    },
+    "vfx_ice_wave": {
+      "frame_width": 1792,
+      "frame_height": 1792,
+      "columns": 2,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 2
+      }
+    },
+    "vfx_dark_fire_wave": {
+      "frame_width": 1792,
+      "frame_height": 1792,
+      "columns": 2,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 2
+      }
+    },
+    "vfx_dual_element_x": {
+      "frame_width": 1792,
+      "frame_height": 1792,
+      "columns": 2,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 2
+      }
+    },
+    "vfx_ice_impact": {
+      "frame_width": 1792,
+      "frame_height": 1792,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "vfx_ice_slow_loop": {
+      "frame_width": 1792,
+      "frame_height": 1792,
+      "columns": 2,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 2
+      }
+    },
+    "vfx_ice_break": {
+      "frame_width": 1792,
+      "frame_height": 1792,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "vfx_dark_fire_impact": {
+      "frame_width": 1792,
+      "frame_height": 1792,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "vfx_dark_fire_burn_loop": {
+      "frame_width": 1792,
+      "frame_height": 1792,
+      "columns": 2,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 2
+      }
+    },
+    "vfx_dark_fire_end": {
+      "frame_width": 1792,
+      "frame_height": 1792,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "vfx_dual_element_impact": {
+      "frame_width": 1792,
+      "frame_height": 1792,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    }
+  },
+  "single_images": {}
+}

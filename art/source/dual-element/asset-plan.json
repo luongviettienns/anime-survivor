@@ -1,0 +1,272 @@
+{
+  "scope": "Assets only. No gameplay or loader code changes.",
+  "quality": "Original RGBA PNG pages copied byte-for-byte for runtime; no resize, quantization or lossy compression. Padding only for packed frames.",
+  "reference_sha256": "ebecb9f0eb5eef384fcde805b7cee8c87575f5a7b047378f62f7edd076e583b3",
+  "canonical_direction": "south/front; projectiles travel east and can be rotated by runtime; no additional character directions claimed",
+  "swords": {
+    "character_left_hand_viewer_right": {
+      "element": "ice",
+      "palette": [
+        "cyan",
+        "ice blue",
+        "white"
+      ],
+      "status": "Slow"
+    },
+    "character_right_hand_viewer_left": {
+      "element": "dark_fire",
+      "palette": [
+        "near black",
+        "violet"
+      ],
+      "status": "Burn"
+    }
+  },
+  "characters": {
+    "kirito_wave_lv1_ice": {
+      "poses": [
+        "neutral",
+        "ice_windup",
+        "ice_cut",
+        "ice_follow",
+        "ice_follow",
+        "neutral"
+      ],
+      "durations_ms": [
+        60,
+        120,
+        70,
+        70,
+        50,
+        120
+      ],
+      "events": [
+        {
+          "frame": 2,
+          "event": "release_projectile",
+          "asset": "vfx_ice_wave",
+          "time_ms": 180,
+          "collision_owner": "projectile gameplay system; visual frames never apply damage"
+        }
+      ],
+      "frame_count": 6,
+      "direction": "south/front only"
+    },
+    "kirito_wave_lv2_sequential": {
+      "poses": [
+        "neutral",
+        "ice_windup",
+        "ice_cut",
+        "ice_follow",
+        "dark_windup",
+        "dark_cut",
+        "dark_follow",
+        "neutral"
+      ],
+      "durations_ms": [
+        60,
+        120,
+        70,
+        80,
+        120,
+        70,
+        90,
+        120
+      ],
+      "events": [
+        {
+          "frame": 2,
+          "event": "release_projectile",
+          "asset": "vfx_ice_wave",
+          "time_ms": 180,
+          "collision_owner": "projectile gameplay system; visual frames never apply damage"
+        },
+        {
+          "frame": 5,
+          "event": "release_projectile",
+          "asset": "vfx_dark_fire_wave",
+          "time_ms": 450,
+          "collision_owner": "projectile gameplay system; visual frames never apply damage"
+        }
+      ],
+      "frame_count": 8,
+      "direction": "south/front only"
+    },
+    "kirito_wave_lv3_x": {
+      "poses": [
+        "neutral",
+        "dual_windup",
+        "dual_charge",
+        "dual_cross",
+        "dual_follow",
+        "neutral"
+      ],
+      "durations_ms": [
+        60,
+        120,
+        100,
+        80,
+        110,
+        120
+      ],
+      "events": [
+        {
+          "frame": 3,
+          "event": "release_projectile",
+          "asset": "vfx_dual_element_x",
+          "collision_checks": 1,
+          "applies": [
+            "Slow",
+            "Burn"
+          ],
+          "time_ms": 280,
+          "collision_owner": "projectile gameplay system; visual frames never apply damage"
+        }
+      ],
+      "frame_count": 6,
+      "direction": "south/front only"
+    }
+  },
+  "vfx": {
+    "vfx_ice_wave": {
+      "source_key": "ice_wave",
+      "frame_count": 2,
+      "durations_ms": [
+        80,
+        80
+      ],
+      "loop": true,
+      "binding": "projectile",
+      "end_condition": "runtime projectile collision/lifetime",
+      "gameplay_values": "runtime-configured; no baked damage/slow percentage/duration"
+    },
+    "vfx_dark_fire_wave": {
+      "source_key": "dark_fire_wave",
+      "frame_count": 2,
+      "durations_ms": [
+        80,
+        80
+      ],
+      "loop": true,
+      "binding": "projectile",
+      "end_condition": "runtime projectile collision/lifetime",
+      "gameplay_values": "runtime-configured; no baked damage/slow percentage/duration"
+    },
+    "vfx_dual_element_x": {
+      "source_key": "dual_element_x",
+      "frame_count": 2,
+      "durations_ms": [
+        80,
+        80
+      ],
+      "loop": true,
+      "binding": "projectile",
+      "end_condition": "runtime projectile collision/lifetime",
+      "gameplay_values": "runtime-configured; no baked damage/slow percentage/duration"
+    },
+    "vfx_ice_impact": {
+      "source_key": "ice_impact",
+      "frame_count": 3,
+      "durations_ms": [
+        60,
+        80,
+        110
+      ],
+      "loop": false,
+      "binding": "hit_point",
+      "end_condition": "last frame",
+      "gameplay_values": "runtime-configured; no baked damage/slow percentage/duration"
+    },
+    "vfx_ice_slow_loop": {
+      "source_key": "ice_slow_loop",
+      "frame_count": 2,
+      "durations_ms": [
+        140,
+        140
+      ],
+      "loop": true,
+      "binding": "target_feet",
+      "end_condition": "external status expiry; do not bake gameplay duration into artwork",
+      "gameplay_values": "runtime-configured; no baked damage/slow percentage/duration"
+    },
+    "vfx_ice_break": {
+      "source_key": "ice_break",
+      "frame_count": 3,
+      "durations_ms": [
+        60,
+        80,
+        110
+      ],
+      "loop": false,
+      "binding": "target_feet",
+      "end_condition": "last frame",
+      "gameplay_values": "runtime-configured; no baked damage/slow percentage/duration"
+    },
+    "vfx_dark_fire_impact": {
+      "source_key": "dark_fire_impact",
+      "frame_count": 3,
+      "durations_ms": [
+        60,
+        80,
+        110
+      ],
+      "loop": false,
+      "binding": "hit_point",
+      "end_condition": "last frame",
+      "gameplay_values": "runtime-configured; no baked damage/slow percentage/duration"
+    },
+    "vfx_dark_fire_burn_loop": {
+      "source_key": "dark_fire_burn_loop",
+      "frame_count": 2,
+      "durations_ms": [
+        140,
+        140
+      ],
+      "loop": true,
+      "binding": "target_torso",
+      "end_condition": "external status expiry; do not bake gameplay duration into artwork",
+      "gameplay_values": "runtime-configured; no baked damage/slow percentage/duration"
+    },
+    "vfx_dark_fire_end": {
+      "source_key": "dark_fire_end",
+      "frame_count": 3,
+      "durations_ms": [
+        60,
+        80,
+        110
+      ],
+      "loop": false,
+      "binding": "target_torso",
+      "end_condition": "last frame",
+      "gameplay_values": "runtime-configured; no baked damage/slow percentage/duration"
+    },
+    "vfx_dual_element_impact": {
+      "source_key": "dual_element_impact",
+      "frame_count": 3,
+      "durations_ms": [
+        60,
+        80,
+        110
+      ],
+      "loop": false,
+      "binding": "hit_point",
+      "end_condition": "last frame",
+      "gameplay_values": "runtime-configured; no baked damage/slow percentage/duration"
+    }
+  },
+  "status_contract": {
+    "Slow": {
+      "binding": "feet",
+      "loop": "vfx_ice_slow_loop",
+      "end": "vfx_ice_break",
+      "immobilizes": false
+    },
+    "Burn": {
+      "binding": "torso",
+      "loop": "vfx_dark_fire_burn_loop",
+      "end": "vfx_dark_fire_end"
+    },
+    "lifetime": "externally controlled independently for each status",
+    "stats": "no damage, slow percentage or status duration baked into asset metadata"
+  }
+}

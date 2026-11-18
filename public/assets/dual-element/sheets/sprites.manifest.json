@@ -1,0 +1,932 @@
+{
+  "contract_version": 1,
+  "sprites": {
+    "kirito_wave_lv1_ice": {
+      "file": "kirito_wave_lv1_ice.png",
+      "frame_width": 1792,
+      "frame_height": 1792,
+      "columns": 2,
+      "rows": 3,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            1792,
+            1792
+          ],
+          "sha256": "fc264643acf5d2679b06ec3c17dbc186cb5ec2bbaee6db19174439759a5f3115",
+          "alpha_bbox": [
+            269,
+            295,
+            1499,
+            1549
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            1792,
+            0,
+            1792,
+            1792
+          ],
+          "sha256": "b0425328d476dc864a744754dcaa54b9a319c3d96f3ac0d2288361875428545a",
+          "alpha_bbox": [
+            290,
+            307,
+            1475,
+            1550
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            0,
+            1792,
+            1792,
+            1792
+          ],
+          "sha256": "3fd1f6f703b179cf8b7a84f84f354b7223aa56bc63c9c9b36309eca6dfc1f845",
+          "alpha_bbox": [
+            269,
+            340,
+            1505,
+            1589
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 3,
+          "sheet_index": 3,
+          "rect": [
+            1792,
+            1792,
+            1792,
+            1792
+          ],
+          "sha256": "02665535ba55f73f933e9b45ff4e9722c208f97b5ecc71fb6fa84be6c3fd87b9",
+          "alpha_bbox": [
+            269,
+            330,
+            1499,
+            1565
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 4,
+          "sheet_index": 4,
+          "rect": [
+            0,
+            3584,
+            1792,
+            1792
+          ],
+          "sha256": "02665535ba55f73f933e9b45ff4e9722c208f97b5ecc71fb6fa84be6c3fd87b9",
+          "alpha_bbox": [
+            269,
+            330,
+            1499,
+            1565
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 5,
+          "sheet_index": 5,
+          "rect": [
+            1792,
+            3584,
+            1792,
+            1792
+          ],
+          "sha256": "fc264643acf5d2679b06ec3c17dbc186cb5ec2bbaee6db19174439759a5f3115",
+          "alpha_bbox": [
+            269,
+            295,
+            1499,
+            1549
+          ]
+        }
+      ]
+    },
+    "kirito_wave_lv2_sequential": {
+      "file": "kirito_wave_lv2_sequential.png",
+      "frame_width": 1792,
+      "frame_height": 1792,
+      "columns": 2,
+      "rows": 4,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            1792,
+            1792
+          ],
+          "sha256": "fc264643acf5d2679b06ec3c17dbc186cb5ec2bbaee6db19174439759a5f3115",
+          "alpha_bbox": [
+            269,
+            295,
+            1499,
+            1549
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            1792,
+            0,
+            1792,
+            1792
+          ],
+          "sha256": "b0425328d476dc864a744754dcaa54b9a319c3d96f3ac0d2288361875428545a",
+          "alpha_bbox": [
+            290,
+            307,
+            1475,
+            1550
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            0,
+            1792,
+            1792,
+            1792
+          ],
+          "sha256": "3fd1f6f703b179cf8b7a84f84f354b7223aa56bc63c9c9b36309eca6dfc1f845",
+          "alpha_bbox": [
+            269,
+            340,
+            1505,
+            1589
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 3,
+          "sheet_index": 3,
+          "rect": [
+            1792,
+            1792,
+            1792,
+            1792
+          ],
+          "sha256": "02665535ba55f73f933e9b45ff4e9722c208f97b5ecc71fb6fa84be6c3fd87b9",
+          "alpha_bbox": [
+            269,
+            330,
+            1499,
+            1565
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 4,
+          "sheet_index": 4,
+          "rect": [
+            0,
+            3584,
+            1792,
+            1792
+          ],
+          "sha256": "3906e1331834455cf825865c948b90b667b3c2a468f1b15933b1b1df6616a603",
+          "alpha_bbox": [
+            269,
+            306,
+            1507,
+            1560
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 5,
+          "sheet_index": 5,
+          "rect": [
+            1792,
+            3584,
+            1792,
+            1792
+          ],
+          "sha256": "8b8facfb3556ef03b07fd289133366c6010c6ae37e9663051b2532f6522e4035",
+          "alpha_bbox": [
+            269,
+            301,
+            1523,
+            1555
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 6,
+          "sheet_index": 6,
+          "rect": [
+            0,
+            5376,
+            1792,
+            1792
+          ],
+          "sha256": "8c10410e688779d14c5dd3bf3e9e516063a5943c5843b1dafdc61edfe063f7af",
+          "alpha_bbox": [
+            269,
+            311,
+            1511,
+            1551
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 7,
+          "sheet_index": 7,
+          "rect": [
+            1792,
+            5376,
+            1792,
+            1792
+          ],
+          "sha256": "fc264643acf5d2679b06ec3c17dbc186cb5ec2bbaee6db19174439759a5f3115",
+          "alpha_bbox": [
+            269,
+            295,
+            1499,
+            1549
+          ]
+        }
+      ]
+    },
+    "kirito_wave_lv3_x": {
+      "file": "kirito_wave_lv3_x.png",
+      "frame_width": 1792,
+      "frame_height": 1792,
+      "columns": 2,
+      "rows": 3,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            1792,
+            1792
+          ],
+          "sha256": "fc264643acf5d2679b06ec3c17dbc186cb5ec2bbaee6db19174439759a5f3115",
+          "alpha_bbox": [
+            269,
+            295,
+            1499,
+            1549
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            1792,
+            0,
+            1792,
+            1792
+          ],
+          "sha256": "034e67208d651bfaa5e0ab27b90046a47cad27838ef893eddfce02a2adc3dd48",
+          "alpha_bbox": [
+            292,
+            400,
+            1505,
+            1625
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            0,
+            1792,
+            1792,
+            1792
+          ],
+          "sha256": "3d39e581322906da2c4d686bdfc578c4277513a607a3685e6a3efc572fbf3dfc",
+          "alpha_bbox": [
+            269,
+            326,
+            1497,
+            1555
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 3,
+          "sheet_index": 3,
+          "rect": [
+            1792,
+            1792,
+            1792,
+            1792
+          ],
+          "sha256": "a7ca6ad74d25163fc5d4ad8f96b2eaa1eb87fa9ac0b6ad16a593fda0d21901a6",
+          "alpha_bbox": [
+            269,
+            298,
+            1497,
+            1539
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 4,
+          "sheet_index": 4,
+          "rect": [
+            0,
+            3584,
+            1792,
+            1792
+          ],
+          "sha256": "d0fe7384478ef064562b32adc50b9c9d832ea4ba6192f4fb0d1d7367057b6679",
+          "alpha_bbox": [
+            269,
+            297,
+            1509,
+            1551
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 5,
+          "sheet_index": 5,
+          "rect": [
+            1792,
+            3584,
+            1792,
+            1792
+          ],
+          "sha256": "fc264643acf5d2679b06ec3c17dbc186cb5ec2bbaee6db19174439759a5f3115",
+          "alpha_bbox": [
+            269,
+            295,
+            1499,
+            1549
+          ]
+        }
+      ]
+    },
+    "vfx_ice_wave": {
+      "file": "vfx_ice_wave.png",
+      "frame_width": 1792,
+      "frame_height": 1792,
+      "columns": 2,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            1792,
+            1792
+          ],
+          "sha256": "fbbcf5d41715991e41f36e3739dc8c20f07dffb46cf01588f4c6ea2bf4565d48",
+          "alpha_bbox": [
+            269,
+            397,
+            1439,
+            1384
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            1792,
+            0,
+            1792,
+            1792
+          ],
+          "sha256": "f48fa0b5cd4aa044557fa5ec1955ec4648ed88e03936b57ff53fac6509ec43e0",
+          "alpha_bbox": [
+            316,
+            300,
+            1455,
+            1523
+          ]
+        }
+      ]
+    },
+    "vfx_dark_fire_wave": {
+      "file": "vfx_dark_fire_wave.png",
+      "frame_width": 1792,
+      "frame_height": 1792,
+      "columns": 2,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            1792,
+            1792
+          ],
+          "sha256": "d0f7b133d76b1af49bbcb24e9eb26917686c62c8f678fea15f00da62a4461d4b",
+          "alpha_bbox": [
+            318,
+            307,
+            1435,
+            1499
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            1792,
+            0,
+            1792,
+            1792
+          ],
+          "sha256": "266d0e5f527d38d6dc58c36d3b491b0cee42830f60a4cbccd984065dcb06af6f",
+          "alpha_bbox": [
+            318,
+            284,
+            1503,
+            1523
+          ]
+        }
+      ]
+    },
+    "vfx_dual_element_x": {
+      "file": "vfx_dual_element_x.png",
+      "frame_width": 1792,
+      "frame_height": 1792,
+      "columns": 2,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            1792,
+            1792
+          ],
+          "sha256": "07d059b5d43b56ac6095dce757cb0ae0b1e354a6441b3618930163d1db705434",
+          "alpha_bbox": [
+            269,
+            278,
+            1505,
+            1523
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            1792,
+            0,
+            1792,
+            1792
+          ],
+          "sha256": "dbc7f25d96f062fc1ca18b9823fe7633b46626374980512912d1f412dcdf76df",
+          "alpha_bbox": [
+            269,
+            278,
+            1499,
+            1523
+          ]
+        }
+      ]
+    },
+    "vfx_ice_impact": {
+      "file": "vfx_ice_impact.png",
+      "frame_width": 1792,
+      "frame_height": 1792,
+      "columns": 3,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            1792,
+            1792
+          ],
+          "sha256": "34953a0ddce3a8c4dfa7974435c67869bc89a986f29b9197799fd1c50d79510f",
+          "alpha_bbox": [
+            318,
+            300,
+            1461,
+            1499
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            1792,
+            0,
+            1792,
+            1792
+          ],
+          "sha256": "c07fd3c2d1b24ae05ee223bbe5da6909a60be40317252b383ddebbd4067b30fd",
+          "alpha_bbox": [
+            269,
+            269,
+            1523,
+            1523
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            3584,
+            0,
+            1792,
+            1792
+          ],
+          "sha256": "2018b7af6e6a2f127e63dc0c26310b426768b3cc8b938115f18078ac260356de",
+          "alpha_bbox": [
+            318,
+            332,
+            1417,
+            1499
+          ]
+        }
+      ]
+    },
+    "vfx_ice_slow_loop": {
+      "file": "vfx_ice_slow_loop.png",
+      "frame_width": 1792,
+      "frame_height": 1792,
+      "columns": 2,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            1792,
+            1792
+          ],
+          "sha256": "051a5a3bec073242a924a089722fb394e4ec1d2cad9659cf69eff60ece01e983",
+          "alpha_bbox": [
+            292,
+            177,
+            1443,
+            1233
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            1792,
+            0,
+            1792,
+            1792
+          ],
+          "sha256": "4c8587cbcf00c07aa931c59d0d89e772b5e862fbd2afca1112f9e54d25eb5738",
+          "alpha_bbox": [
+            269,
+            193,
+            1493,
+            1270
+          ]
+        }
+      ]
+    },
+    "vfx_ice_break": {
+      "file": "vfx_ice_break.png",
+      "frame_width": 1792,
+      "frame_height": 1792,
+      "columns": 3,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            1792,
+            1792
+          ],
+          "sha256": "7ed9b9e12d80e334633ae1528224bcc30fdfd7a204f268b278cdf8a738a7bbdd",
+          "alpha_bbox": [
+            300,
+            131,
+            1501,
+            1248
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            1792,
+            0,
+            1792,
+            1792
+          ],
+          "sha256": "8d143d531eadfd807b127ade4c37fbe3ff192c1910356061be3c82ed177cb24b",
+          "alpha_bbox": [
+            269,
+            288,
+            1523,
+            1523
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            3584,
+            0,
+            1792,
+            1792
+          ],
+          "sha256": "bea6fd3b7b12b9c2817116f088e5ef05e97866958d4cd1a54b176cb2872e45d2",
+          "alpha_bbox": [
+            269,
+            286,
+            1523,
+            1523
+          ]
+        }
+      ]
+    },
+    "vfx_dark_fire_impact": {
+      "file": "vfx_dark_fire_impact.png",
+      "frame_width": 1792,
+      "frame_height": 1792,
+      "columns": 3,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            1792,
+            1792
+          ],
+          "sha256": "9645f69c2a0f4e6e8d299f513768d6e3267c52f3c8e2cf7db601cf0e92bfaf45",
+          "alpha_bbox": [
+            431,
+            274,
+            1511,
+            1192
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            1792,
+            0,
+            1792,
+            1792
+          ],
+          "sha256": "98d99dfea5167287f1e99a3195ea44e09be8ddb303451bd8883145139562be73",
+          "alpha_bbox": [
+            293,
+            156,
+            1539,
+            1387
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            3584,
+            0,
+            1792,
+            1792
+          ],
+          "sha256": "1c3ba9ef0e71b432ac5fba496d817aaa297c044e8f911535dd8b0dea7a2c46c2",
+          "alpha_bbox": [
+            316,
+            339,
+            1499,
+            1440
+          ]
+        }
+      ]
+    },
+    "vfx_dark_fire_burn_loop": {
+      "file": "vfx_dark_fire_burn_loop.png",
+      "frame_width": 1792,
+      "frame_height": 1792,
+      "columns": 2,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            1792,
+            1792
+          ],
+          "sha256": "fdff79d648bac8fc920fb971c6b16baaa5a85c319c16b07b2a5e86e96596f66d",
+          "alpha_bbox": [
+            300,
+            288,
+            1503,
+            1497
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            1792,
+            0,
+            1792,
+            1792
+          ],
+          "sha256": "b0008d9126f896a8af95f1759df0b72c40b0738a29ad3b280727dc45993d7211",
+          "alpha_bbox": [
+            296,
+            287,
+            1493,
+            1481
+          ]
+        }
+      ]
+    },
+    "vfx_dark_fire_end": {
+      "file": "vfx_dark_fire_end.png",
+      "frame_width": 1792,
+      "frame_height": 1792,
+      "columns": 3,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            1792,
+            1792
+          ],
+          "sha256": "51c6f22e8f777a8375f90b3d12c873786391ac6d85af79e7e99efb2c622deff5",
+          "alpha_bbox": [
+            302,
+            352,
+            1469,
+            1443
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            1792,
+            0,
+            1792,
+            1792
+          ],
+          "sha256": "590f06e489be5343688ac31d0abc7928644da151bb91167cc06bffdd25e094cb",
+          "alpha_bbox": [
+            294,
+            298,
+            1507,
+            1523
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            3584,
+            0,
+            1792,
+            1792
+          ],
+          "sha256": "4debe8080391e0e8118498f7280873c276d1d1bf919c88306bfdb992a4b687e2",
+          "alpha_bbox": [
+            294,
+            290,
+            1477,
+            1523
+          ]
+        }
+      ]
+    },
+    "vfx_dual_element_impact": {
+      "file": "vfx_dual_element_impact.png",
+      "frame_width": 1792,
+      "frame_height": 1792,
+      "columns": 3,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            1792,
+            1792
+          ],
+          "sha256": "483a6fad11b1cb3ec86a0fe68b811f2d548dc682fade446c26fe5cd4fec1d6b7",
+          "alpha_bbox": [
+            302,
+            253,
+            1501,
+            1467
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            1792,
+            0,
+            1792,
+            1792
+          ],
+          "sha256": "e89973d95d2385e9008af275006e66511a252fb1ae3f185cbb6bfb81abb12849",
+          "alpha_bbox": [
+            278,
+            225,
+            1518,
+            1466
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            3584,
+            0,
+            1792,
+            1792
+          ],
+          "sha256": "306666c506f233f7cedd292ed19cf39eb9c9ade5c23f12016d73d2eb49229896",
+          "alpha_bbox": [
+            269,
+            316,
+            1511,
+            1497
+          ]
+        }
+      ]
+    }
+  }
+}

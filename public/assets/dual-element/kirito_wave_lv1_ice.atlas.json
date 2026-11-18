@@ -1,0 +1,155 @@
+{
+  "textures": [
+    {
+      "image": "originals/neutral.png",
+      "frames": [
+        {
+          "filename": "kirito_wave_lv1_ice/000",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1254,
+            "h": 1254
+          },
+          "rotated": false,
+          "trimmed": true,
+          "spriteSourceSize": {
+            "x": 269,
+            "y": 295,
+            "w": 1254,
+            "h": 1254
+          },
+          "sourceSize": {
+            "w": 1792,
+            "h": 1792
+          }
+        },
+        {
+          "filename": "kirito_wave_lv1_ice/005",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1254,
+            "h": 1254
+          },
+          "rotated": false,
+          "trimmed": true,
+          "spriteSourceSize": {
+            "x": 269,
+            "y": 295,
+            "w": 1254,
+            "h": 1254
+          },
+          "sourceSize": {
+            "w": 1792,
+            "h": 1792
+          }
+        }
+      ]
+    },
+    {
+      "image": "originals/ice_windup.png",
+      "frames": [
+        {
+          "filename": "kirito_wave_lv1_ice/001",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1254,
+            "h": 1254
+          },
+          "rotated": false,
+          "trimmed": true,
+          "spriteSourceSize": {
+            "x": 269,
+            "y": 296,
+            "w": 1254,
+            "h": 1254
+          },
+          "sourceSize": {
+            "w": 1792,
+            "h": 1792
+          }
+        }
+      ]
+    },
+    {
+      "image": "originals/ice_cut.png",
+      "frames": [
+        {
+          "filename": "kirito_wave_lv1_ice/002",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1254,
+            "h": 1254
+          },
+          "rotated": false,
+          "trimmed": true,
+          "spriteSourceSize": {
+            "x": 269,
+            "y": 335,
+            "w": 1254,
+            "h": 1254
+          },
+          "sourceSize": {
+            "w": 1792,
+            "h": 1792
+          }
+        }
+      ]
+    },
+    {
+      "image": "originals/ice_follow.png",
+      "frames": [
+        {
+          "filename": "kirito_wave_lv1_ice/003",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1254,
+            "h": 1254
+          },
+          "rotated": false,
+          "trimmed": true,
+          "spriteSourceSize": {
+            "x": 269,
+            "y": 311,
+            "w": 1254,
+            "h": 1254
+          },
+          "sourceSize": {
+            "w": 1792,
+            "h": 1792
+          }
+        },
+        {
+          "filename": "kirito_wave_lv1_ice/004",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1254,
+            "h": 1254
+          },
+          "rotated": false,
+          "trimmed": true,
+          "spriteSourceSize": {
+            "x": 269,
+            "y": 311,
+            "w": 1254,
+            "h": 1254
+          },
+          "sourceSize": {
+            "w": 1792,
+            "h": 1792
+          }
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "app": "dual-element lossless package",
+    "format": "RGBA8888",
+    "scale": "1"
+  }
+}

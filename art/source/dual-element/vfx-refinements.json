@@ -1,0 +1,14 @@
+[
+  {
+    "key": "ice_wave",
+    "frame": 0,
+    "prompt": "Edit this one ice energy wave VFX frame. Remove the entire broad pale fog and soft glow halo; all negative space around the sharp cyan crescent and between crystals must be fully transparent. Retain crisp cyan-white stepped pixel crescent edge and the few angular ice shards. Do not change the upright crescent orientation, canvas size or center point. Pure pixel clusters like the reference character's cyan sword, no gradients, no blurred mist, no new objects. Transparent RGBA, single frame.",
+    "path": "C:\\Users\\ASUS\\.codex\\generated_images\\01a1ee04-31d9-76f3-993d-4f3b2888c393\\exec-9b398b21-6f21-4e65-9a0f-723b940d7743.png"
+  },
+  {
+    "key": "ice_slow_loop",
+    "frame": 1,
+    "prompt": "Edit this exact single ice Slow status VFX animation frame to make its adjacent loop frame. Preserve the entire elliptical ring silhouette, all crystal sizes and positions, canvas placement, and hollow transparent center EXACTLY. Change ONLY three tiny sparkle positions and a few white highlight pixels on the ice facets. Keep sparse sharp cyan-white stepped pixel clusters. No soft glow, no extra fog, no blobs, no resizing, no repositioning the ring. This ring is an ankle-level effect, not a freeze prison. Single transparent RGBA frame.",
+    "path": "C:\\Users\\ASUS\\.codex\\generated_images\\01a1ee04-31d9-76f3-993d-4f3b2888c393\\exec-03117c4c-afc6-445b-8e43-e4ae3e935d1c.png"
+  }
+]

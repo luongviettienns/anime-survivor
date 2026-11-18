@@ -17,27 +17,27 @@
 
  RUN  v3.2.7 C:/Users/ASUS/Desktop/AnimeSurvivor-AssetReview-4dir-20261118/project
 
- ✓ tests/storage.test.ts (4 tests) 6ms
- ✓ tests/ui-layout.test.ts (2 tests) 3ms
- ✓ tests/infinite-map.test.ts (3 tests) 6ms
- ✓ tests/melee-attacks.test.ts (5 tests) 8ms
- ✓ tests/vector.test.ts (5 tests) 8ms
- ✓ tests/targeting.test.ts (4 tests) 4ms
+ ✓ tests/storage.test.ts (4 tests) 5ms
+ ✓ tests/melee-attacks.test.ts (5 tests) 5ms
+ ✓ tests/facing.test.ts (4 tests) 4ms
+ ✓ tests/status-effects.test.ts (3 tests) 5ms
+ ✓ tests/infinite-map.test.ts (3 tests) 8ms
+ ✓ tests/damage-popup.test.ts (2 tests) 4ms
+ ✓ tests/heroes.test.ts (2 tests) 8ms
  ✓ tests/domain.test.ts (8 tests) 7ms
- ✓ tests/damage-popup.test.ts (2 tests) 5ms
- ✓ tests/heroes.test.ts (2 tests) 7ms
- ✓ tests/status-effects.test.ts (3 tests) 7ms
- ✓ tests/facing.test.ts (4 tests) 6ms
- ✓ tests/phantom-dash.test.ts (3 tests) 6ms
- ✓ tests/pickups.test.ts (6 tests) 10ms
- ✓ tests/waves-enemies.test.ts (8 tests) 15ms
+ ✓ tests/vector.test.ts (5 tests) 6ms
+ ✓ tests/phantom-dash.test.ts (3 tests) 5ms
+ ✓ tests/targeting.test.ts (4 tests) 5ms
+ ✓ tests/ui-layout.test.ts (2 tests) 4ms
+ ✓ tests/pickups.test.ts (6 tests) 6ms
+ ✓ tests/waves-enemies.test.ts (8 tests) 10ms
  ✓ tests/weapons-upgrades.test.ts (6 tests) 16ms
- ✓ tests/vfx-audio.test.ts (5 tests) 19ms
+ ✓ tests/vfx-audio.test.ts (5 tests) 18ms
 
  Test Files  16 passed (16)
       Tests  70 passed (70)
-   Start at  22:28:26
-   Duration  1.02s (transform 1.12s, setup 0ms, collect 2.48s, tests 132ms, environment 4ms, prepare 3.66s)
+   Start at  22:33:37
+   Duration  980ms (transform 1.20s, setup 0ms, collect 2.56s, tests 114ms, environment 4ms, prepare 3.80s)
 
 
 > anime-survivor@0.1.0 check:arch
@@ -56,27 +56,27 @@ C:\Users\ASUS\Desktop\AnimeSurvivor-AssetReview-4dir-20261118\project\scripts\te
   colors.update(frame.getdata())
 ...
 ----------------------------------------------------------------------
-Ran 4 tests in 0.487s
+Ran 4 tests in 0.478s
 
 OK
 .
 ----------------------------------------------------------------------
-Ran 1 test in 0.486s
+Ran 1 test in 0.468s
 
 OK
 .....
 ----------------------------------------------------------------------
-Ran 5 tests in 11.527s
+Ran 5 tests in 11.298s
 
 OK
 ..
 ----------------------------------------------------------------------
-Ran 2 tests in 0.060s
+Ran 2 tests in 0.065s
 
 OK
 ...
 ----------------------------------------------------------------------
-Ran 3 tests in 0.029s
+Ran 3 tests in 0.031s
 
 OK
 PASS hero: all 22 crops pixel-identical to source frames
@@ -134,12 +134,12 @@ transforming...
 ✓ 64 modules transformed.
 rendering chunks...
 computing gzip size...
-dist/index.html                     0.46 kB │ gzip:   0.30 kB
+dist/index.html                     0.46 kB │ gzip:   0.31 kB
 
 (!) Some chunks are larger than 500 kB after minification. Consider:
 - Using dynamic import() to code-split the application
 - Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
 - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
 dist/assets/index-CXOq8zxF.css      0.21 kB │ gzip:   0.18 kB
-dist/assets/index-BgrpxyqL.js   1,799.84 kB │ gzip: 417.64 kB
-✓ built in 5.14s
+dist/assets/index-BDZgcHZN.js   1,800.16 kB │ gzip: 417.79 kB
+✓ built in 4.29s

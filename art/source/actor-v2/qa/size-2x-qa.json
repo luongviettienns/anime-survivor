@@ -3,7 +3,7 @@
     {
       "hero": "naruto",
       "camera": 1.5,
-      "actorScale": 0.9561157796451915,
+      "actorScale": 0.8951048951048951,
       "actorHeight": 128,
       "enemies": [
         {
@@ -31,8 +31,8 @@
       "castScaleStable": true,
       "hand": [
         {
-          "x": 968.6165910290238,
-          "y": 672.1774758135443
+          "x": 968.0965910290238,
+          "y": 671.7874758135443
         }
       ],
       "shadows": [

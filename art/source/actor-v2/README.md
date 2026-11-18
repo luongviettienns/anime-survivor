@@ -13,3 +13,5 @@ The staged integration.patch applies only to the recorded source snapshot in the
 QA evidence is in qa/. Existing legacy boss neutral/cast source may touch image edges; packing adds padding but cannot restore already missing source pixels. Native high-resolution art is larger in download/VRAM than downsampled art. No user visual acceptance or long-run performance test is claimed.
 
 The standalone HTML expects /vendor/phaser.js. For a fresh standalone preview copy the already-installed node_modules/phaser/dist/phaser.js into site/vendor/phaser.js before serving site/. This dependency is intentionally not vendored in Git.
+
+Aura follow-up: staged EnemyAura now fits elite/boss layers to fixed standing bounds, with outer height capped at90%body and width120%body. See qa/aura-fitted.png and qa/aura-fit-qa.json. No additional images were generated for this fix.

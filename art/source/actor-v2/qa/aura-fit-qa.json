@@ -1,0 +1,75 @@
+{
+  "result": [
+    {
+      "model": "enemy_elite",
+      "bodyWidth": 101.79935275080906,
+      "bodyHeight": 128,
+      "layers": [
+        {
+          "texture": "aura_contact",
+          "width": 101.79935275080906,
+          "height": 25.16172681199243,
+          "anchorError": 0.3009708737864045,
+          "scale": 0.7682970018928986
+        },
+        {
+          "texture": "aura_ring",
+          "width": 116.85370114942529,
+          "height": 43.52,
+          "anchorError": 0.3009708737864045,
+          "scale": 0.8003678160919541
+        },
+        {
+          "texture": "aura_outer",
+          "width": 122.15922330097085,
+          "height": 106.03506008554551,
+          "anchorError": 0.3009708737864045,
+          "scale": 0.854260302803992
+        },
+        {
+          "texture": "aura_accent",
+          "width": 65.44947735191637,
+          "height": 32,
+          "anchorError": 0.3009708737864045,
+          "scale": 0.89198606271777
+        }
+      ]
+    },
+    {
+      "model": "boss",
+      "bodyWidth": 229.20450885668276,
+      "bodyHeight": 256,
+      "layers": [
+        {
+          "texture": "aura_contact",
+          "width": 227.85954198473283,
+          "height": 56.32,
+          "anchorError": 0.5070192991808966,
+          "scale": 1.7196946564885496
+        },
+        {
+          "texture": "aura_ring",
+          "width": 233.70740229885058,
+          "height": 87.04,
+          "anchorError": 0.5070192991808966,
+          "scale": 1.6007356321839081
+        },
+        {
+          "texture": "aura_outer",
+          "width": 265.4356495468278,
+          "height": 230.4,
+          "anchorError": 0.5070192991808966,
+          "scale": 1.8561933534743202
+        },
+        {
+          "texture": "aura_accent",
+          "width": 130.89895470383274,
+          "height": 64,
+          "anchorError": 0.5070192991808966,
+          "scale": 1.78397212543554
+        }
+      ]
+    }
+  ],
+  "errors": []
+}

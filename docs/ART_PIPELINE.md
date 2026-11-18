@@ -64,3 +64,5 @@ Arcane UI:8 individual built-in ImageGen originals retained in art/source/arcane
 
 - Latest size override (2026-11-18): independently of camera1.5x, enlarge combat world artwork +100%; normalized player/normal/elite standing body128px, boss256px. Enlarge skills/VFX/pickups/shadows together, preserve source PNGs, world collision sizes and HUD/damage-text sizes. A separate HUD camera keeps UI anchors stable. Apply/playtest in the isolated copy before changing protected5173.
 - Latest batch reduction: at most5 additional generated frames after the cap. Elite/boss reactions are reduced to front-only, one hit pose and one defeated pose, with intermediate falls/other directions deferred. Boss defeated is still missing because the image tool reached its usage limit. Never resume the archived192-frame target automatically.
+
+- Aura sizing correction: size elite/boss layers from fixed standing opaque model bounds, rather than multiplying independent aura scale constants. Outer aura is at most0.9body-height and1.2body-width; projected rings remain centered at footOffset. Recheck after global world-art scaling.

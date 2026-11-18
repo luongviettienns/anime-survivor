@@ -15,3 +15,5 @@ QA evidence is in qa/. Existing legacy boss neutral/cast source may touch image 
 The standalone HTML expects /vendor/phaser.js. For a fresh standalone preview copy the already-installed node_modules/phaser/dist/phaser.js into site/vendor/phaser.js before serving site/. This dependency is intentionally not vendored in Git.
 
 Aura follow-up: staged EnemyAura now fits elite/boss layers to fixed standing bounds, with outer height capped at90%body and width120%body. See qa/aura-fitted.png and qa/aura-fit-qa.json. No additional images were generated for this fix.
+
+Temporary gameplay attachment completed subsequently: available locomotion, sword skills, hero/enemy hit/death and caster-phase art are now active in isolated5184. See temporary-integration/README.md and qa/temporary-*. Earlier statements about asset-only coverage describe the previous stage. No additional image generation occurred.

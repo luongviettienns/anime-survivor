@@ -113,21 +113,22 @@
  
 --- a/src/game/scenes/BootScene.ts
 +++ b/src/game/scenes/BootScene.ts
-@@ -1,3 +1,4 @@
+@@ -1,3 +1,5 @@
 +import { preloadDashAssets, registerDashAnimations } from '../config/phantomDashAssets';
++import { preloadActorClips, registerActorClips } from '../config/actorClips';
  import Phaser from 'phaser';
  import { AI_ART_KEYS, ART_FRAMES } from '../config/artDisplay';
  import { preloadDualElementAssets, registerDualElementAnimations } from '../config/dualElementAssets';
-@@ -114,10 +115,12 @@
+@@ -114,10 +116,12 @@
        this.load.audio(`sfx-${cue}`, `assets/audio/${cue}.wav`);
      }
      preloadDualElementAssets(this);
-+    preloadDashAssets(this);
++    preloadDashAssets(this); preloadActorClips(this);
    }
  
    create(): void {
      registerDualElementAnimations(this);
-+    registerDashAnimations(this);
++    registerDashAnimations(this); registerActorClips(this);
      for (const layoutKey of ['ui-layout', 'lobby-layout']) {
        const frames = this.cache.json.get(layoutKey) as Record<string, { x: number; y: number; w: number; h: number }> | undefined;
        if (frames) for (const [key, box] of Object.entries(frames)) this.textures.get(key)?.add('content', 0, box.x, box.y, box.w, box.h);
@@ -141,9 +142,34 @@
      this.cameras.main.startFollow(this.player, true, 0.14, 0.14);
      this.map.update(this.player.x, this.player.y);
      this.movement = new MovementSystem(this, this.player, this.heroConfig.id, this.heroConfig.moveSpeed);
+@@ -183,7 +184,8 @@
+   private endRun(victory: boolean): void {
+     if (!this.running) return;
+     this.running = false; this.movement.update(false); this.enemies.update(true);
+-    this.scene.start('GameOverScene', { victory, score: this.defeated, survivalSec: Math.floor(this.elapsed), heroId: this.heroConfig.id });
++    const finish = () => this.scene.start('GameOverScene', { victory, score: this.defeated, survivalSec: Math.floor(this.elapsed), heroId: this.heroConfig.id });
++    if (victory || !this.movement.playDefeat(finish)) finish();
+   }
+   tryPhantomDash(): boolean {
+     if (!this.phantomDash || !this.running || !this.damage.state.alive || this.isPaused() || this.scene.isActive('UpgradeScene')) return false;
 --- a/src/game/systems/DualElementSystem.ts
 +++ b/src/game/systems/DualElementSystem.ts
-@@ -120,9 +120,9 @@
+@@ -1,3 +1,4 @@
++import { actorAnimation, actorClip, actorHeading } from '../config/actorClips';
+ import type Phaser from 'phaser';
+ import type { DualWaveKind } from '../../domain/statusEffects';
+ import { canWeaponFire, commitWeaponFire, createWeaponCooldown, selectNearestTarget, type TargetCandidate } from '../../domain/targeting';
+@@ -59,7 +60,8 @@
+       if (target) {
+         aim = aimDirection(this.player, target, lastAim);
+         const stage = getDualSlashStage(level);
+-        this.onSkillUsed?.('dual_slash', aim.x, stage.animKey);
++        const clip = actorClip('kirito', stage.animKey.replace('kirito-wave-', ''), actorHeading(aim));
++        this.onSkillUsed?.('dual_slash', aim.x, clip ? actorAnimation(clip) : stage.animKey);
+         commitWeaponFire(this.cooldown, nowMs);
+         for (const w of stage.waves) {
+           this.queue.push({
+@@ -120,9 +122,9 @@
      const shot = reuse
        ? (reuse.enableBody(true, handX, handY, true, true), reuse)
        : (this.projectiles.create(handX, handY, art.tex, `${art.tex}/000`) as Phaser.Physics.Arcade.Sprite);
@@ -198,7 +224,15 @@
      }
 --- a/src/game/systems/EnemyMeleeSkill.ts
 +++ b/src/game/systems/EnemyMeleeSkill.ts
-@@ -59,10 +59,10 @@
+@@ -18,6 +18,7 @@
+   advance(delta: number): void { this.elapsed += delta; }
+   private readonly sync = () => {
+     for (const [enemy, entry] of this.entries) if (entry.pose?.visible) {
++      if (enemy.getData('actor-overlay-active')) { entry.pose.setVisible(false); entry.trail?.forEach(g => g.setVisible(false)); continue; }
+       entry.pose.setPosition(enemy.x, enemy.y + (enemy.getData('footOffset') as number));
+     }
+   };
+@@ -59,10 +60,10 @@
        if (!entry.warning) {
          if (archetype !== 'boss') {
            entry.pose = this.scene.add.sprite(enemy.x, enemy.y, `${enemy.texture.key}_attack`)
@@ -211,7 +245,7 @@
            }
          }
          entry.warning = this.scene.add.graphics().setData('melee-warning', true);
-@@ -135,7 +135,7 @@
+@@ -135,7 +136,7 @@
      effect.setVisible(charging || age < 480);
      if (!charging && age >= 480) return;
      effect.setAlpha(charging ? 0.7 : Math.max(0, 1 - age / 480)).setFrame(charging ? 0 : Math.min(3, 1 + Math.floor(age / 160)))
@@ -245,7 +279,30 @@
  export class EnemyStatusVisuals {
 --- a/src/game/systems/EnemyVisuals.ts
 +++ b/src/game/systems/EnemyVisuals.ts
-@@ -56,7 +56,7 @@
+@@ -1,3 +1,4 @@
++import { EnemyActorClips } from './EnemyActorClips';
+ import Phaser from 'phaser';
+ import { ART_FRAMES, ART_SCALE } from '../config/artDisplay';
+ import { targetFacing, type Facing } from '../../domain/facing';
+@@ -14,7 +15,10 @@
+   private readonly pool: Phaser.GameObjects.Sprite[] = [];
+   private readonly casts = new Map<Phaser.Physics.Arcade.Sprite, CastDisplay>();
+ 
+-  constructor(private readonly scene: Phaser.Scene) {}
++  private readonly clips: EnemyActorClips;
++  constructor(private readonly scene: Phaser.Scene) { this.clips = new EnemyActorClips(scene); }
++  hit(enemy: Phaser.Physics.Arcade.Sprite): void { this.clips.hit(enemy); }
++  defeat(enemy: Phaser.Physics.Arcade.Sprite): void { this.clips.defeat(enemy); }
+ 
+   spawn(enemy: Phaser.Physics.Arcade.Sprite, archetype: EnemyArchetypeId): void {
+     this.release(enemy);
+@@ -51,12 +55,13 @@
+     if (hit) enemy.setTint(0xffffff);
+     else if (enraged) enemy.setTint(0xff7799);
+     else if (enemy.isTinted) enemy.clearTint();
++    this.clips.pose(enemy, Boolean(cast && (telegraphing || this.scene.time.now < cast.untilMs)), telegraphing, facing);
+     if (cast) for (let index = 0; index < cast.glows.length; index++) {
+       const glow = cast.glows[index]!;
        const placed = positionEnemyHand(enemy, index, glow);
        const releasing = this.scene.time.now < cast.untilMs - 120;
        const height = (glow.frame.customData as PoseMetrics).opaqueHeight ?? 1280;
@@ -254,6 +311,21 @@
          .setAlpha(telegraphing ? 0.8 : 0.55).setDepth(enemy.depth + (facing === 'up' ? -0.1 : 0.1));
      }
      if (!telegraphing) { this.releaseTelegraph(enemy); return; }
+@@ -75,12 +80,13 @@
+   }
+ 
+   release(enemy: Phaser.Physics.Arcade.Sprite): void {
+-    this.releaseTelegraph(enemy);
++    this.clips.release(enemy); this.releaseTelegraph(enemy);
+     for (const glow of this.casts.get(enemy)?.glows ?? []) glow.destroy();
+     this.casts.delete(enemy); this.auras.get(enemy)?.destroy(); this.auras.delete(enemy);
+   }
+ 
+   clear(): void {
++    this.clips.clear();
+     for (const enemy of this.telegraphs.keys()) this.releaseTelegraph(enemy);
+     for (const aura of this.auras.values()) aura.destroy();
+     for (const cast of this.casts.values()) for (const glow of cast.glows) glow.destroy();
 --- a/src/game/systems/GroundShadows.ts
 +++ b/src/game/systems/GroundShadows.ts
 @@ -19,7 +19,7 @@
@@ -276,35 +348,93 @@
    clear(): void { this.scene.events.off('postupdate', this.sync); for (const shadow of this.shadows.values()) shadow.destroy(); this.shadows.clear(); }
 --- a/src/game/systems/HeroActionVisual.ts
 +++ b/src/game/systems/HeroActionVisual.ts
-@@ -1,3 +1,4 @@
-+import { DASH_CLIPS } from '../config/phantomDashAssets';
+@@ -1,60 +1,76 @@
  import type Phaser from 'phaser';
  import type { HeroId } from '../../domain/heroes';
  import type { WeaponId } from '../../domain/weapons';
-@@ -26,7 +27,9 @@
++import { actorAnimation, actorClip, ACTOR_CLIPS, fitActorFrame } from '../config/actorClips';
++import { DASH_CLIPS } from '../config/phantomDashAssets';
+ import { KIRITO_ORIGIN_Y, KIRITO_WORLD_SCALE } from '../config/dualElementAssets';
  
-   play(skill: WeaponId, aimX: number, animOverride?: string): void {
-     const key = this.heroId === 'kirito' ? (animOverride ?? 'kirito-wave-lv1') : `naruto-action-${skill}`;
--    this.sprite.setFlipX(aimX < 0).setVisible(true).play(key);
-+    if (this.sprite.anims.isPlaying && this.sprite.anims.currentAnim?.key.startsWith('kirito-dash-')) return;
-+    this.sprite.setOrigin(0.5, key.startsWith('kirito-dash-') ? 0.75 : KIRITO_ORIGIN_Y);
-+    this.sprite.setFlipX(!key.startsWith('kirito-dash-') && aimX < 0).setVisible(true).play(key);
-     this.player.setVisible(false);
-     this.update();
+ /** Separate visual sprite preserves the player's movement and physics body. */
+ export class HeroActionVisual {
+   private readonly sprite: Phaser.GameObjects.Sprite;
+-
+-  constructor(
+-    scene: Phaser.Scene,
+-    private readonly player: Phaser.Physics.Arcade.Sprite,
+-    private readonly heroId: HeroId = 'naruto'
+-  ) {
++  private defeated = false;
++  constructor(scene: Phaser.Scene, private readonly player: Phaser.Physics.Arcade.Sprite,
++    private readonly heroId: HeroId = 'naruto') {
+     this.sprite = heroId === 'kirito'
+       ? scene.add.sprite(player.x, player.y, 'kirito_wave_lv1_ice', 'kirito_wave_lv1_ice/000')
+-          .setOrigin(0.5, KIRITO_ORIGIN_Y).setScale(KIRITO_WORLD_SCALE)
++        .setOrigin(0.5, KIRITO_ORIGIN_Y).setScale(KIRITO_WORLD_SCALE)
+       : scene.add.sprite(player.x, player.y, 'hero_locomotion', 0)
+-          .setOrigin(0.5, 1408 / 1536).setScale(1 / 16);
+-    this.sprite.setData('hero-action', true);
+-    this.player.setVisible(false);
+-    this.update();
++        .setOrigin(0.5, 1408 / 1536).setScale(1 / 16);
++    this.sprite.setData('hero-action', true); this.player.setVisible(false); this.update();
+     scene.events.on('postupdate', this.update, this);
+     scene.events.once('shutdown', () => { scene.events.off('postupdate', this.update, this); this.sprite.destroy(); });
    }
-@@ -34,19 +37,20 @@
+-
++  private facing(): string { return (this.player.getData('visual-facing') as string | undefined) ?? 'down'; }
+   play(skill: WeaponId, aimX: number, animOverride?: string): void {
+-    const key = this.heroId === 'kirito' ? (animOverride ?? 'kirito-wave-lv1') : `naruto-action-${skill}`;
+-    this.sprite.setFlipX(aimX < 0).setVisible(true).play(key);
+-    this.player.setVisible(false);
+-    this.update();
++    if (this.defeated) return;
++    const current = this.sprite.anims.currentAnim?.key ?? '';
++    if (this.sprite.anims.isPlaying && current.startsWith('kirito-dash-')) return;
++    let key = this.heroId === 'kirito' ? (animOverride ?? 'kirito-wave-lv1') : `naruto-action-${skill}`;
++    if (this.heroId === 'kirito' && !animOverride?.startsWith('kirito-dash-') && !key.startsWith('actor-')) {
++      const action = skill === 'slash' ? 'basic' : key.replace('kirito-wave-', '');
++      const clip = actorClip('kirito', action, this.facing());
++      if (clip) key = actorAnimation(clip);
++    }
++    this.sprite.setOrigin(0.5, key.startsWith('kirito-dash-') ? 0.75 : this.heroId === 'kirito' ? KIRITO_ORIGIN_Y : 1408 / 1536)
++      .setFlipX(this.heroId !== 'kirito' && aimX < 0).setVisible(true).play(key);
++    this.player.setVisible(false); this.update();
+   }
+-
++  defeat(done: () => void): boolean {
++    const clip = this.heroId === 'kirito' ? actorClip('kirito', 'death', this.facing()) : undefined;
++    if (!clip) return false;
++    this.defeated = true; this.sprite.play(actorAnimation(clip));
++    this.sprite.once('animationcomplete', done); return true;
++  }
    update(): void {
      if (this.heroId === 'kirito') {
-       if (!this.sprite.anims.isPlaying) {
+-      if (!this.sprite.anims.isPlaying) {
 -        this.sprite.setTexture('kirito_wave_lv1_ice', 'kirito_wave_lv1_ice/000').setFlipX(this.player.flipX);
-+        this.sprite.setTexture('kirito_wave_lv1_ice', 'kirito_wave_lv1_ice/000').setFlipX(this.player.flipX).setOrigin(0.5, KIRITO_ORIGIN_Y);
++      if (this.player.getData('actor-hit') && !this.defeated) {
++        this.player.setData('actor-hit', false);
++        const hit = actorClip('kirito', 'hit', this.facing());
++        if (hit) this.sprite.play(actorAnimation(hit));
        }
-       const moving = Boolean(this.player.body && this.player.body.velocity.lengthSq() > 4);
-       const bob = moving && !this.sprite.anims.isPlaying ? Math.sin((this.sprite.scene.time?.now ?? 0) / 80) * 1.5 : 0;
+-      const moving = Boolean(this.player.body && this.player.body.velocity.lengthSq() > 4);
+-      const bob = moving && !this.sprite.anims.isPlaying ? Math.sin((this.sprite.scene.time?.now ?? 0) / 80) * 1.5 : 0;
 -      this.sprite.setScale(KIRITO_WORLD_SCALE);
-+      const dash = DASH_CLIPS.find((clip) => clip.key === this.sprite.anims.currentAnim?.key);
-+      this.sprite.setScale(this.sprite.anims.isPlaying && dash ? dash.scale : KIRITO_WORLD_SCALE);
-       this.sprite.setPosition(Math.round(this.player.x), Math.round(this.player.y + 28 + bob)).setDepth(this.player.y + 2);
+-      this.sprite.setPosition(Math.round(this.player.x), Math.round(this.player.y + 28 + bob)).setDepth(this.player.y + 2);
++      let key = this.sprite.anims.currentAnim?.key ?? '';
++      const clip = ACTOR_CLIPS[key.replace(/^actor-/, '')];
++      const dash = DASH_CLIPS.find(c => c.key === key);
++      const busy = this.defeated || (this.sprite.anims.isPlaying && (dash || !clip || !['idle', 'run'].includes(clip.action)));
++      if (!busy) {
++        const moving = Boolean(this.player.body && this.player.body.velocity.lengthSq() > 4);
++        const idle = actorClip('kirito', moving ? 'run' : 'idle', this.facing()) ?? actorClip('kirito', 'idle', this.facing());
++        if (idle) this.sprite.play(actorAnimation(idle), true);
++        key = this.sprite.anims.currentAnim?.key ?? '';
++      }
++      if (key.startsWith('actor-')) fitActorFrame(this.sprite);
++      else this.sprite.setScale(dash?.scale ?? KIRITO_WORLD_SCALE);
++      this.sprite.setPosition(Math.round(this.player.x), Math.round(this.player.y + 28)).setDepth(this.player.y + 2);
      } else {
        if (!this.sprite.anims.isPlaying) {
          const frame = Number(this.player.frame.name);
@@ -316,7 +446,17 @@
 +      this.sprite.setScale(128 / (neutral.opaqueHeight ?? 896));
        this.sprite.setPosition(Math.round(this.player.x), Math.round(this.player.y + 28)).setDepth(this.player.y + 2);
      }
-     if (this.player.isTinted) this.sprite.setTint(this.player.tintTopLeft);
+-    if (this.player.isTinted) this.sprite.setTint(this.player.tintTopLeft);
+-    else this.sprite.clearTint();
++    if (this.player.isTinted) this.sprite.setTint(this.player.tintTopLeft); else this.sprite.clearTint();
+   }
+-
+-  clear(): void {
+-    this.sprite.stop();
+-    this.update();
+-  }
++  clear(): void { this.sprite.stop(); this.update(); }
+ }
 --- a/src/game/systems/HostileProjectilePool.ts
 +++ b/src/game/systems/HostileProjectilePool.ts
 @@ -37,7 +37,7 @@
@@ -330,7 +470,24 @@
          .setDepth(-500_000_010)
 --- a/src/game/systems/MovementSystem.ts
 +++ b/src/game/systems/MovementSystem.ts
-@@ -77,6 +77,10 @@
+@@ -48,6 +48,7 @@
+     this.player.setVelocity(velocity.x, velocity.y);
+     const moving = velocity.x !== 0 || velocity.y !== 0;
+     this.facing = movementFacing({ x: inputX, y: inputY }, this.facing);
++    this.player.setData('visual-facing', this.facing);
+     this.animate(moving);
+   }
+ 
+@@ -65,6 +66,8 @@
+     return { x: 0, y: 1 };
+   }
+ 
++  playDefeat(done: () => void): boolean { return this.actionVisual.defeat(done); }
++
+   syncDashVisual(): void {
+     this.animate(true);
+     this.actionVisual.update();
+@@ -77,6 +80,10 @@
  
    playSkill(skill: WeaponId, aimX: number, animOverride?: string): void {
      if (!this.player.active) return;
@@ -441,6 +598,32 @@
        .setBlendMode('NORMAL').setRotation(0)
        .setVelocity(dir.x * speedPxSec, dir.y * speedPxSec).play('rasengan-spin', true);
      this.projectileExpiresAt.set(shot, nowMs + PROJECTILE.lifeMs);
+--- a/src/game/systems/DamageSystem.ts
++++ b/src/game/systems/DamageSystem.ts
+@@ -36,7 +36,7 @@
+       return { damaged: false, died: false };
+     }
+     if (this.player.active) {
+-      this.player.setTint(0xff6677);
++      this.player.setTint(0xff6677).setData('actor-hit', true);
+     }
+     return { damaged: true, died: !this.state.alive };
+   }
+--- a/src/game/systems/EnemySystem.ts
++++ b/src/game/systems/EnemySystem.ts
+@@ -131,10 +131,10 @@
+     if (!enemy.active || !state || state.dead) return { damaged: false, killed: false, x, y, archetype: state?.archetype ?? 'slime', xpValue: 0 };
+     const result = applyProjectileHit(state, damage);
+     if (result.killed) {
+-      this.melee.release(enemy); this.statusFx.release(enemy); this.visuals.release(enemy);
++      this.visuals.defeat(enemy); this.melee.release(enemy); this.statusFx.release(enemy); this.visuals.release(enemy);
+       this.states.delete(enemy); enemy.disableBody(true, true);
+     } else if (result.damaged) {
+-      state.hitTintUntilMs = this.scene.time.now + 85;
++      state.hitTintUntilMs = this.scene.time.now + 85; this.visuals.hit(enemy);
+       enemy.setTint(0xffffff);
+       const kb = knockbackPxSec * (ENEMY_ARCHETYPES[state.archetype].knockbackFactor ?? 1);
+       if (kb > 0) {
 --- /dev/null
 +++ b/src/game/config/phantomDashAssets.ts
 @@ -0,0 +1,74 @@
@@ -533,3 +716,164 @@
 +  scene.events.on('addedtoscene', ignoreWorldObject);
 +  scene.events.once('shutdown', () => scene.events.off('addedtoscene', ignoreWorldObject));
 +}
+--- /dev/null
++++ b/src/game/config/actorClips.ts
+@@ -0,0 +1,41 @@
++import type Phaser from 'phaser';
++import catalog from './actorClips.json';
++import type { Vec2 } from '../../domain/vector';
++
++type ClipFrame = { image: string; origin: number[] };
++export type ActorClip = { entity: string; action: string; direction: string; scale: number;
++  durations: number[]; loop: boolean; frames: ClipFrame[] };
++export const ACTOR_CLIPS: Readonly<Record<string, ActorClip>> = catalog;
++const textureKey = (image: string) => `actor/${image}`;
++export function actorHeading(direction: Vec2): string {
++  return Math.abs(direction.x) >= Math.abs(direction.y)
++    ? (direction.x < 0 ? 'left' : 'right') : (direction.y < 0 ? 'up' : 'down');
++}
++export function actorClip(entity: string, action: string, direction: string): ActorClip | undefined {
++  return ACTOR_CLIPS[`${entity}_${action}_${direction}`];
++}
++export function actorAnimation(clip: ActorClip): string {
++  return `actor-${clip.entity}_${clip.action}_${clip.direction}`;
++}
++export function preloadActorClips(scene: Phaser.Scene): void {
++  const images = new Set(Object.values(ACTOR_CLIPS).flatMap(c => c.frames.map(f => f.image)));
++  for (const image of images) scene.load.image(textureKey(image), `assets/actor-v2/${image}`);
++}
++export function registerActorClips(scene: Phaser.Scene): void {
++  for (const clip of Object.values(ACTOR_CLIPS)) {
++    for (const frame of clip.frames) scene.textures.get(textureKey(frame.image)).get().customData = {
++      actorOrigin: frame.origin, actorScale: clip.scale,
++    };
++    scene.anims.create({ key: actorAnimation(clip), frameRate: 1000, repeat: clip.loop ? -1 : 0,
++      frames: clip.frames.map((frame, i) => ({ key: textureKey(frame.image), duration: clip.durations[i] })),
++    });
++  }
++}
++export function fitActorFrame(sprite: Phaser.GameObjects.Sprite): void {
++  const data = sprite.frame.customData as { actorOrigin?: number[]; actorScale?: number };
++  if (data.actorOrigin && data.actorScale) sprite.setOrigin(data.actorOrigin[0]!, data.actorOrigin[1]!)
++    .setScale(data.actorScale).setFlipX(false);
++}
++export function setActorPose(sprite: Phaser.GameObjects.Sprite, clip: ActorClip, index: number): void {
++  sprite.stop().setTexture(textureKey(clip.frames[index]!.image)); fitActorFrame(sprite);
++}
+--- /dev/null
++++ b/src/game/systems/EnemyActorClips.ts
+@@ -0,0 +1,83 @@
++import type Phaser from 'phaser';
++import { actorAnimation, actorClip, fitActorFrame, setActorPose, type ActorClip } from '../config/actorClips';
++type Enemy = Phaser.Physics.Arcade.Sprite;
++type Entry = { sprite: Phaser.GameObjects.Sprite; until: number; mode: 'hit' | 'cast' };
++/** Cosmetic overlays and detached corpses never retain an enemy physics body. */
++export class EnemyActorClips {
++  private readonly entries = new Map<Enemy, Entry>();
++  private readonly pool: Phaser.GameObjects.Sprite[] = [];
++  private readonly corpses = new Map<Phaser.GameObjects.Sprite, number>();
++  private created = 0;
++  constructor(private readonly scene: Phaser.Scene) {
++    scene.events.on('postupdate', this.sync, this);
++    scene.events.once('shutdown', () => { scene.events.off('postupdate', this.sync, this); this.clear(); });
++  }
++  private clip(enemy: Enemy, action: string, direction: string): ActorClip | undefined {
++    return actorClip(enemy.texture.key, action, direction) ??
++      (['enemy_elite', 'boss'].includes(enemy.texture.key) ? actorClip(enemy.texture.key, action, 'down') : undefined);
++  }
++  private acquire(): Phaser.GameObjects.Sprite | undefined {
++    const reused = this.pool.pop(); if (reused) return reused.setActive(true).setVisible(true).setAlpha(1);
++    if (this.created >= 64) return undefined;
++    this.created++;
++    return this.scene.add.sprite(0, 0, 'enemy').setData('actor-overlay', true);
++  }
++  private entry(enemy: Enemy): Entry | undefined {
++    let entry = this.entries.get(enemy);
++    if (!entry) {
++      const sprite = this.acquire(); if (!sprite) return undefined;
++      entry = { sprite, until: 0, mode: 'cast' }; this.entries.set(enemy, entry);
++    }
++    enemy.setData('actor-overlay-active', true); return entry;
++  }
++  hit(enemy: Enemy): void {
++    const clip = this.clip(enemy, 'hit', enemy.getData('enemy-facing') as string);
++    if (!clip) return;
++    const entry = this.entry(enemy); if (!entry) return;
++    entry.mode = 'hit'; entry.until = this.scene.time.now + clip.durations.reduce((a, b) => a + b, 0);
++    entry.sprite.play(actorAnimation(clip));
++  }
++  pose(enemy: Enemy, casting: boolean, charging: boolean, direction: string): void {
++    const entry = this.entries.get(enemy);
++    if (entry?.mode === 'hit' && this.scene.time.now < entry.until) return;
++    const clip = casting ? this.clip(enemy, 'cast', direction) : undefined;
++    if (!clip) { this.release(enemy); return; }
++    const cast = this.entry(enemy); if (!cast) return;
++    cast.mode = 'cast'; setActorPose(cast.sprite, clip, charging ? 1 : 2);
++  }
++  defeat(enemy: Enemy): void {
++    const clip = this.clip(enemy, 'death', enemy.getData('enemy-facing') as string);
++    if (!clip) return;
++    this.release(enemy); const sprite = this.acquire(); if (!sprite) return;
++    sprite.setPosition(Math.round(enemy.x), Math.round(enemy.y + (enemy.getData('footOffset') as number)))
++      .setDepth(enemy.y - 0.5).clearTint().play(actorAnimation(clip));
++    fitActorFrame(sprite);
++    this.corpses.set(sprite, this.scene.time.now + clip.durations.reduce((a, b) => a + b, 0) + 300);
++  }
++  private sync(): void {
++    for (const [enemy, entry] of this.entries) {
++      if (!enemy.active) { this.release(enemy); continue; }
++      entry.sprite.setPosition(Math.round(enemy.x), Math.round(enemy.y + (enemy.getData('footOffset') as number)))
++        .setDepth(enemy.y + 1); fitActorFrame(entry.sprite); enemy.setVisible(false);
++      if (enemy.isTinted) entry.sprite.setTint(enemy.tintTopLeft); else entry.sprite.clearTint();
++    }
++    for (const [sprite, until] of this.corpses) {
++      const left = until - this.scene.time.now;
++      if (left <= 0) { this.corpses.delete(sprite); this.recycle(sprite); }
++      else { fitActorFrame(sprite); sprite.setAlpha(Math.min(1, left / 200)); }
++    }
++  }
++  private recycle(sprite: Phaser.GameObjects.Sprite): void {
++    sprite.stop().setActive(false).setVisible(false).clearTint(); this.pool.push(sprite);
++  }
++  release(enemy: Enemy): void {
++    const entry = this.entries.get(enemy);
++    if (entry) { this.recycle(entry.sprite); this.entries.delete(enemy); }
++    enemy.setData('actor-overlay-active', false).setVisible(true);
++  }
++  clear(): void {
++    for (const enemy of this.entries.keys()) this.release(enemy);
++    for (const sprite of this.corpses.keys()) sprite.destroy(); this.corpses.clear();
++    for (const sprite of this.pool) sprite.destroy(); this.pool.length = 0; this.created = 0;
++  }
++}
+--- /dev/null
++++ b/tests/actor-clips.test.ts
+@@ -0,0 +1,28 @@
++import { describe, expect, it } from 'vitest';
++import { ACTOR_CLIPS } from '../src/game/config/actorClips';
++import { getDualSlashStage } from '../src/domain/weapons';
++
++describe('temporary actor asset integration', () => {
++  it('matches authored cut frames to the existing gameplay release times', () => {
++    for (const direction of ['down', 'up']) for (const [action, level, poses] of [
++      ['lv1', 1, ['ice_cut']], ['lv2', 3, ['ice_cut', 'dark_cut']], ['lv3', 5, ['dual_cross']],
++    ] as const) {
++      const clip = ACTOR_CLIPS[`kirito_${action}_${direction}`]!;
++      const releases = poses.map(pose => {
++        const index = clip.frames.findIndex(frame => frame.image.endsWith(`/${pose}.png`));
++        expect(index).toBeGreaterThan(0);
++        return clip.durations.slice(0, index).reduce((sum, duration) => sum + duration, 0);
++      });
++      expect(releases).toEqual(getDualSlashStage(level).waves.map(wave => wave.releaseDelayMs));
++    }
++  });
++  it('keeps every source anchor inside its native canvas and excludes the clipped run draft', () => {
++    for (const clip of Object.values(ACTOR_CLIPS)) {
++      expect(clip.durations.length).toBe(clip.frames.length);
++      expect(clip.scale).toBeGreaterThan(0);
++      expect(clip.durations.every(duration => duration > 0)).toBe(true);
++      for (const frame of clip.frames) expect(frame.origin.every(value => value > 0 && value < 1)).toBe(true);
++    }
++    expect(ACTOR_CLIPS.kirito_run_up!.frames.some(frame => frame.image.endsWith('/run_contact_l.png'))).toBe(false);
++  });
++});

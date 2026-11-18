@@ -11,7 +11,7 @@
         "kirito_dash_down/003",
         "kirito_dash_down/004"
       ],
-      "cooldown": 7333.3,
+      "cooldown": 7283.4,
       "ghostsCleared": true
     },
     {
@@ -25,7 +25,7 @@
         "kirito_dash_up/003",
         "kirito_dash_up/004"
       ],
-      "cooldown": 7316.6,
+      "cooldown": 7316.700000000001,
       "ghostsCleared": true
     },
     {
@@ -38,19 +38,19 @@
         "kirito_dash_left/002",
         "kirito_dash_left/003"
       ],
-      "cooldown": 7333.3,
+      "cooldown": 7300.1,
       "ghostsCleared": true
     },
     {
       "direction": "right",
-      "distance": 220,
+      "distance": 223.83333333333326,
       "samples": 10,
       "frames": [
         "kirito_dash_right/000",
         "kirito_dash_right/001",
         "kirito_dash_right/002"
       ],
-      "cooldown": 6833.4,
+      "cooldown": 6733.400000000001,
       "ghostsCleared": true
     }
   ],

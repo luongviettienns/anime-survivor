@@ -1,0 +1,2220 @@
+{
+  "kirito_idle_down": {
+    "entity": "kirito",
+    "action": "idle",
+    "direction": "down",
+    "scale": 0.1198501872659176,
+    "durations": [
+      240,
+      240
+    ],
+    "loop": true,
+    "frames": [
+      {
+        "image": "originals/kirito/down/neutral.png",
+        "origin": [
+          0.5,
+          0.9122807017543859
+        ]
+      },
+      {
+        "image": "originals/kirito/down/idle_breathe.png",
+        "origin": [
+          0.5,
+          0.9130781499202552
+        ]
+      }
+    ]
+  },
+  "kirito_run_down": {
+    "entity": "kirito",
+    "action": "run",
+    "direction": "down",
+    "scale": 0.1198501872659176,
+    "durations": [
+      95,
+      95,
+      95,
+      95
+    ],
+    "loop": true,
+    "frames": [
+      {
+        "image": "originals/kirito/down/run_contact_l.png",
+        "origin": [
+          0.5,
+          0.8931419457735247
+        ]
+      },
+      {
+        "image": "originals/kirito/down/run_pass_l.png",
+        "origin": [
+          0.5,
+          0.9074960127591707
+        ]
+      },
+      {
+        "image": "originals/kirito/down/run_contact_r.png",
+        "origin": [
+          0.5,
+          0.8947368421052632
+        ]
+      },
+      {
+        "image": "originals/kirito/down/run_pass_r.png",
+        "origin": [
+          0.5,
+          0.9154704944178629
+        ]
+      }
+    ]
+  },
+  "kirito_hit_down": {
+    "entity": "kirito",
+    "action": "hit",
+    "direction": "down",
+    "scale": 0.1198501872659176,
+    "durations": [
+      35,
+      85,
+      80
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/kirito/down/neutral.png",
+        "origin": [
+          0.5,
+          0.9122807017543859
+        ]
+      },
+      {
+        "image": "originals/kirito/down/hit.png",
+        "origin": [
+          0.5,
+          0.8596491228070176
+        ]
+      },
+      {
+        "image": "originals/kirito/down/neutral.png",
+        "origin": [
+          0.5,
+          0.9122807017543859
+        ]
+      }
+    ]
+  },
+  "kirito_death_down": {
+    "entity": "kirito",
+    "action": "death",
+    "direction": "down",
+    "scale": 0.1198501872659176,
+    "durations": [
+      45,
+      110,
+      220
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/kirito/down/neutral.png",
+        "origin": [
+          0.5,
+          0.9122807017543859
+        ]
+      },
+      {
+        "image": "originals/kirito/down/collapse.png",
+        "origin": [
+          0.5,
+          0.8309409888357256
+        ]
+      },
+      {
+        "image": "originals/kirito/down/fallen.png",
+        "origin": [
+          0.5,
+          0.8692185007974481
+        ]
+      }
+    ]
+  },
+  "kirito_basic_down": {
+    "entity": "kirito",
+    "action": "basic",
+    "direction": "down",
+    "scale": 0.1198501872659176,
+    "durations": [
+      40,
+      85,
+      45,
+      55,
+      50,
+      85,
+      45,
+      55,
+      60,
+      80
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/kirito/down/neutral.png",
+        "origin": [
+          0.5,
+          0.9122807017543859
+        ]
+      },
+      {
+        "image": "originals/kirito/down/ice_windup.png",
+        "origin": [
+          0.5,
+          0.9122807017543859
+        ]
+      },
+      {
+        "image": "originals/kirito/down/ice_draw.png",
+        "origin": [
+          0.5,
+          0.8971291866028708
+        ]
+      },
+      {
+        "image": "originals/kirito/down/ice_cut.png",
+        "origin": [
+          0.5,
+          0.9529505582137161
+        ]
+      },
+      {
+        "image": "originals/kirito/down/ice_follow.png",
+        "origin": [
+          0.5,
+          0.8931419457735247
+        ]
+      },
+      {
+        "image": "originals/kirito/down/dark_windup.png",
+        "origin": [
+          0.5,
+          0.868421052631579
+        ]
+      },
+      {
+        "image": "originals/kirito/down/dark_draw.png",
+        "origin": [
+          0.5,
+          0.9234449760765551
+        ]
+      },
+      {
+        "image": "originals/kirito/down/dark_cut.png",
+        "origin": [
+          0.5,
+          0.9274322169059012
+        ]
+      },
+      {
+        "image": "originals/kirito/down/dark_follow.png",
+        "origin": [
+          0.5,
+          0.8963317384370016
+        ]
+      },
+      {
+        "image": "originals/kirito/down/neutral.png",
+        "origin": [
+          0.5,
+          0.9122807017543859
+        ]
+      }
+    ]
+  },
+  "kirito_lv1_down": {
+    "entity": "kirito",
+    "action": "lv1",
+    "direction": "down",
+    "scale": 0.1198501872659176,
+    "durations": [
+      40,
+      85,
+      55,
+      70,
+      85,
+      100
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/kirito/down/neutral.png",
+        "origin": [
+          0.5,
+          0.9122807017543859
+        ]
+      },
+      {
+        "image": "originals/kirito/down/ice_windup.png",
+        "origin": [
+          0.5,
+          0.9122807017543859
+        ]
+      },
+      {
+        "image": "originals/kirito/down/ice_draw.png",
+        "origin": [
+          0.5,
+          0.8971291866028708
+        ]
+      },
+      {
+        "image": "originals/kirito/down/ice_cut.png",
+        "origin": [
+          0.5,
+          0.9529505582137161
+        ]
+      },
+      {
+        "image": "originals/kirito/down/ice_follow.png",
+        "origin": [
+          0.5,
+          0.8931419457735247
+        ]
+      },
+      {
+        "image": "originals/kirito/down/neutral.png",
+        "origin": [
+          0.5,
+          0.9122807017543859
+        ]
+      }
+    ]
+  },
+  "kirito_lv2_down": {
+    "entity": "kirito",
+    "action": "lv2",
+    "direction": "down",
+    "scale": 0.1198501872659176,
+    "durations": [
+      40,
+      85,
+      55,
+      70,
+      50,
+      95,
+      55,
+      70,
+      85,
+      100
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/kirito/down/neutral.png",
+        "origin": [
+          0.5,
+          0.9122807017543859
+        ]
+      },
+      {
+        "image": "originals/kirito/down/ice_windup.png",
+        "origin": [
+          0.5,
+          0.9122807017543859
+        ]
+      },
+      {
+        "image": "originals/kirito/down/ice_draw.png",
+        "origin": [
+          0.5,
+          0.8971291866028708
+        ]
+      },
+      {
+        "image": "originals/kirito/down/ice_cut.png",
+        "origin": [
+          0.5,
+          0.9529505582137161
+        ]
+      },
+      {
+        "image": "originals/kirito/down/ice_follow.png",
+        "origin": [
+          0.5,
+          0.8931419457735247
+        ]
+      },
+      {
+        "image": "originals/kirito/down/dark_windup.png",
+        "origin": [
+          0.5,
+          0.868421052631579
+        ]
+      },
+      {
+        "image": "originals/kirito/down/dark_draw.png",
+        "origin": [
+          0.5,
+          0.9234449760765551
+        ]
+      },
+      {
+        "image": "originals/kirito/down/dark_cut.png",
+        "origin": [
+          0.5,
+          0.9274322169059012
+        ]
+      },
+      {
+        "image": "originals/kirito/down/dark_follow.png",
+        "origin": [
+          0.5,
+          0.8963317384370016
+        ]
+      },
+      {
+        "image": "originals/kirito/down/neutral.png",
+        "origin": [
+          0.5,
+          0.9122807017543859
+        ]
+      }
+    ]
+  },
+  "kirito_lv3_down": {
+    "entity": "kirito",
+    "action": "lv3",
+    "direction": "down",
+    "scale": 0.1198501872659176,
+    "durations": [
+      50,
+      85,
+      80,
+      65,
+      70,
+      65,
+      70,
+      100
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/kirito/down/neutral.png",
+        "origin": [
+          0.5,
+          0.9122807017543859
+        ]
+      },
+      {
+        "image": "originals/kirito/down/dual_windup.png",
+        "origin": [
+          0.5,
+          0.8333333333333334
+        ]
+      },
+      {
+        "image": "originals/kirito/down/dual_charge.png",
+        "origin": [
+          0.5,
+          0.9210526315789473
+        ]
+      },
+      {
+        "image": "originals/kirito/down/dual_pre_cross.png",
+        "origin": [
+          0.5,
+          0.9098883572567783
+        ]
+      },
+      {
+        "image": "originals/kirito/down/dual_cross.png",
+        "origin": [
+          0.5,
+          0.9122807017543859
+        ]
+      },
+      {
+        "image": "originals/kirito/down/dual_follow.png",
+        "origin": [
+          0.5,
+          0.8763955342902712
+        ]
+      },
+      {
+        "image": "originals/kirito/down/dual_recover.png",
+        "origin": [
+          0.5,
+          0.9138755980861244
+        ]
+      },
+      {
+        "image": "originals/kirito/down/neutral.png",
+        "origin": [
+          0.5,
+          0.9122807017543859
+        ]
+      }
+    ]
+  },
+  "kirito_idle_up": {
+    "entity": "kirito",
+    "action": "idle",
+    "direction": "up",
+    "scale": 0.11636363636363636,
+    "durations": [
+      240,
+      240
+    ],
+    "loop": true,
+    "frames": [
+      {
+        "image": "originals/kirito/up/neutral.png",
+        "origin": [
+          0.5,
+          0.9401913875598086
+        ]
+      },
+      {
+        "image": "originals/kirito/up/idle_breathe.png",
+        "origin": [
+          0.5,
+          0.9346092503987241
+        ]
+      }
+    ]
+  },
+  "kirito_run_up": {
+    "entity": "kirito",
+    "action": "run",
+    "direction": "up",
+    "scale": 0.11636363636363636,
+    "durations": [
+      125,
+      125,
+      125
+    ],
+    "loop": true,
+    "frames": [
+      {
+        "image": "originals/kirito/up/run_contact_r.png",
+        "origin": [
+          0.5,
+          0.9234449760765551
+        ]
+      },
+      {
+        "image": "originals/kirito/up/run_pass_l.png",
+        "origin": [
+          0.5,
+          0.9417862838915471
+        ]
+      },
+      {
+        "image": "originals/kirito/up/run_pass_r.png",
+        "origin": [
+          0.5,
+          0.9529505582137161
+        ]
+      }
+    ]
+  },
+  "kirito_hit_up": {
+    "entity": "kirito",
+    "action": "hit",
+    "direction": "up",
+    "scale": 0.11636363636363636,
+    "durations": [
+      35,
+      85,
+      80
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/kirito/up/neutral.png",
+        "origin": [
+          0.5,
+          0.9401913875598086
+        ]
+      },
+      {
+        "image": "originals/kirito/up/hit.png",
+        "origin": [
+          0.5,
+          0.9019138755980861
+        ]
+      },
+      {
+        "image": "originals/kirito/up/neutral.png",
+        "origin": [
+          0.5,
+          0.9401913875598086
+        ]
+      }
+    ]
+  },
+  "kirito_death_up": {
+    "entity": "kirito",
+    "action": "death",
+    "direction": "up",
+    "scale": 0.11636363636363636,
+    "durations": [
+      45,
+      110,
+      220
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/kirito/up/neutral.png",
+        "origin": [
+          0.5,
+          0.9401913875598086
+        ]
+      },
+      {
+        "image": "originals/kirito/up/collapse.png",
+        "origin": [
+          0.5,
+          0.8716108452950558
+        ]
+      },
+      {
+        "image": "originals/kirito/up/fallen.png",
+        "origin": [
+          0.5,
+          0.8787878787878788
+        ]
+      }
+    ]
+  },
+  "kirito_basic_up": {
+    "entity": "kirito",
+    "action": "basic",
+    "direction": "up",
+    "scale": 0.11636363636363636,
+    "durations": [
+      40,
+      85,
+      45,
+      55,
+      50,
+      85,
+      45,
+      55,
+      60,
+      80
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/kirito/up/neutral.png",
+        "origin": [
+          0.5,
+          0.9401913875598086
+        ]
+      },
+      {
+        "image": "originals/kirito/up/ice_windup.png",
+        "origin": [
+          0.5,
+          0.937799043062201
+        ]
+      },
+      {
+        "image": "originals/kirito/up/ice_draw.png",
+        "origin": [
+          0.5,
+          0.9226475279106858
+        ]
+      },
+      {
+        "image": "originals/kirito/up/ice_cut.png",
+        "origin": [
+          0.5,
+          0.956140350877193
+        ]
+      },
+      {
+        "image": "originals/kirito/up/ice_follow.png",
+        "origin": [
+          0.5,
+          0.9218500797448166
+        ]
+      },
+      {
+        "image": "originals/kirito/up/dark_windup.png",
+        "origin": [
+          0.5,
+          0.9258373205741627
+        ]
+      },
+      {
+        "image": "originals/kirito/up/dark_draw.png",
+        "origin": [
+          0.5,
+          0.9346092503987241
+        ]
+      },
+      {
+        "image": "originals/kirito/up/dark_cut.png",
+        "origin": [
+          0.5,
+          0.9681020733652312
+        ]
+      },
+      {
+        "image": "originals/kirito/up/dark_follow.png",
+        "origin": [
+          0.5,
+          0.937799043062201
+        ]
+      },
+      {
+        "image": "originals/kirito/up/neutral.png",
+        "origin": [
+          0.5,
+          0.9401913875598086
+        ]
+      }
+    ]
+  },
+  "kirito_lv1_up": {
+    "entity": "kirito",
+    "action": "lv1",
+    "direction": "up",
+    "scale": 0.11636363636363636,
+    "durations": [
+      40,
+      85,
+      55,
+      70,
+      85,
+      100
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/kirito/up/neutral.png",
+        "origin": [
+          0.5,
+          0.9401913875598086
+        ]
+      },
+      {
+        "image": "originals/kirito/up/ice_windup.png",
+        "origin": [
+          0.5,
+          0.937799043062201
+        ]
+      },
+      {
+        "image": "originals/kirito/up/ice_draw.png",
+        "origin": [
+          0.5,
+          0.9226475279106858
+        ]
+      },
+      {
+        "image": "originals/kirito/up/ice_cut.png",
+        "origin": [
+          0.5,
+          0.956140350877193
+        ]
+      },
+      {
+        "image": "originals/kirito/up/ice_follow.png",
+        "origin": [
+          0.5,
+          0.9218500797448166
+        ]
+      },
+      {
+        "image": "originals/kirito/up/neutral.png",
+        "origin": [
+          0.5,
+          0.9401913875598086
+        ]
+      }
+    ]
+  },
+  "kirito_lv2_up": {
+    "entity": "kirito",
+    "action": "lv2",
+    "direction": "up",
+    "scale": 0.11636363636363636,
+    "durations": [
+      40,
+      85,
+      55,
+      70,
+      50,
+      95,
+      55,
+      70,
+      85,
+      100
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/kirito/up/neutral.png",
+        "origin": [
+          0.5,
+          0.9401913875598086
+        ]
+      },
+      {
+        "image": "originals/kirito/up/ice_windup.png",
+        "origin": [
+          0.5,
+          0.937799043062201
+        ]
+      },
+      {
+        "image": "originals/kirito/up/ice_draw.png",
+        "origin": [
+          0.5,
+          0.9226475279106858
+        ]
+      },
+      {
+        "image": "originals/kirito/up/ice_cut.png",
+        "origin": [
+          0.5,
+          0.956140350877193
+        ]
+      },
+      {
+        "image": "originals/kirito/up/ice_follow.png",
+        "origin": [
+          0.5,
+          0.9218500797448166
+        ]
+      },
+      {
+        "image": "originals/kirito/up/dark_windup.png",
+        "origin": [
+          0.5,
+          0.9258373205741627
+        ]
+      },
+      {
+        "image": "originals/kirito/up/dark_draw.png",
+        "origin": [
+          0.5,
+          0.9346092503987241
+        ]
+      },
+      {
+        "image": "originals/kirito/up/dark_cut.png",
+        "origin": [
+          0.5,
+          0.9681020733652312
+        ]
+      },
+      {
+        "image": "originals/kirito/up/dark_follow.png",
+        "origin": [
+          0.5,
+          0.937799043062201
+        ]
+      },
+      {
+        "image": "originals/kirito/up/neutral.png",
+        "origin": [
+          0.5,
+          0.9401913875598086
+        ]
+      }
+    ]
+  },
+  "kirito_lv3_up": {
+    "entity": "kirito",
+    "action": "lv3",
+    "direction": "up",
+    "scale": 0.11636363636363636,
+    "durations": [
+      50,
+      85,
+      80,
+      65,
+      70,
+      65,
+      70,
+      100
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/kirito/up/neutral.png",
+        "origin": [
+          0.5,
+          0.9401913875598086
+        ]
+      },
+      {
+        "image": "originals/kirito/up/dual_windup.png",
+        "origin": [
+          0.5,
+          0.9154704944178629
+        ]
+      },
+      {
+        "image": "originals/kirito/up/dual_charge.png",
+        "origin": [
+          0.5,
+          0.9409888357256778
+        ]
+      },
+      {
+        "image": "originals/kirito/up/dual_pre_cross.png",
+        "origin": [
+          0.5,
+          0.9401913875598086
+        ]
+      },
+      {
+        "image": "originals/kirito/up/dual_cross.png",
+        "origin": [
+          0.5,
+          0.9497607655502392
+        ]
+      },
+      {
+        "image": "originals/kirito/up/dual_follow.png",
+        "origin": [
+          0.5,
+          0.905103668261563
+        ]
+      },
+      {
+        "image": "originals/kirito/up/dual_recover.png",
+        "origin": [
+          0.5,
+          0.9409888357256778
+        ]
+      },
+      {
+        "image": "originals/kirito/up/neutral.png",
+        "origin": [
+          0.5,
+          0.9401913875598086
+        ]
+      }
+    ]
+  },
+  "kirito_idle_left": {
+    "entity": "kirito",
+    "action": "idle",
+    "direction": "left",
+    "scale": 0.11277533039647578,
+    "durations": [
+      240,
+      240
+    ],
+    "loop": true,
+    "frames": [
+      {
+        "image": "originals/kirito/left/neutral.png",
+        "origin": [
+          0.5,
+          0.9529505582137161
+        ]
+      },
+      {
+        "image": "originals/kirito/left/idle_breathe.png",
+        "origin": [
+          0.5,
+          0.9545454545454546
+        ]
+      }
+    ]
+  },
+  "kirito_run_left": {
+    "entity": "kirito",
+    "action": "run",
+    "direction": "left",
+    "scale": 0.11277533039647578,
+    "durations": [
+      140,
+      140
+    ],
+    "loop": true,
+    "frames": [
+      {
+        "image": "originals/kirito/left/run_contact_l.png",
+        "origin": [
+          0.5,
+          0.9090909090909091
+        ]
+      },
+      {
+        "image": "originals/kirito/left/run_contact_r.png",
+        "origin": [
+          0.5,
+          0.8939393939393939
+        ]
+      }
+    ]
+  },
+  "kirito_idle_right": {
+    "entity": "kirito",
+    "action": "idle",
+    "direction": "right",
+    "scale": 0.1103448275862069,
+    "durations": [
+      480
+    ],
+    "loop": true,
+    "frames": [
+      {
+        "image": "originals/kirito/right/neutral.png",
+        "origin": [
+          0.5,
+          0.967304625199362
+        ]
+      }
+    ]
+  },
+  "enemy_hit_down": {
+    "entity": "enemy",
+    "action": "hit",
+    "direction": "down",
+    "scale": 0.1031426269137792,
+    "durations": [
+      35,
+      85,
+      80
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/enemy/down/neutral.png",
+        "origin": [
+          0.5,
+          0.9960127591706539
+        ]
+      },
+      {
+        "image": "originals/enemy/down/hit.png",
+        "origin": [
+          0.5,
+          0.8748006379585327
+        ]
+      },
+      {
+        "image": "originals/enemy/down/neutral.png",
+        "origin": [
+          0.5,
+          0.9960127591706539
+        ]
+      }
+    ]
+  },
+  "enemy_death_down": {
+    "entity": "enemy",
+    "action": "death",
+    "direction": "down",
+    "scale": 0.1031426269137792,
+    "durations": [
+      45,
+      110,
+      220
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/enemy/down/neutral.png",
+        "origin": [
+          0.5,
+          0.9960127591706539
+        ]
+      },
+      {
+        "image": "originals/enemy/down/collapse.png",
+        "origin": [
+          0.5,
+          0.8748006379585327
+        ]
+      },
+      {
+        "image": "originals/enemy/down/fallen.png",
+        "origin": [
+          0.5,
+          0.8341307814992025
+        ]
+      }
+    ]
+  },
+  "enemy_hit_up": {
+    "entity": "enemy",
+    "action": "hit",
+    "direction": "up",
+    "scale": 0.11500449236298294,
+    "durations": [
+      35,
+      85,
+      80
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/enemy/up/neutral.png",
+        "origin": [
+          0.5,
+          0.9393939393939394
+        ]
+      },
+      {
+        "image": "originals/enemy/up/hit.png",
+        "origin": [
+          0.5,
+          0.89792663476874
+        ]
+      },
+      {
+        "image": "originals/enemy/up/neutral.png",
+        "origin": [
+          0.5,
+          0.9393939393939394
+        ]
+      }
+    ]
+  },
+  "enemy_death_up": {
+    "entity": "enemy",
+    "action": "death",
+    "direction": "up",
+    "scale": 0.11500449236298294,
+    "durations": [
+      45,
+      110,
+      220
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/enemy/up/neutral.png",
+        "origin": [
+          0.5,
+          0.9393939393939394
+        ]
+      },
+      {
+        "image": "originals/enemy/up/collapse.png",
+        "origin": [
+          0.5,
+          0.8732057416267942
+        ]
+      },
+      {
+        "image": "originals/enemy/up/fallen.png",
+        "origin": [
+          0.5,
+          0.8732057416267942
+        ]
+      }
+    ]
+  },
+  "enemy_hit_left": {
+    "entity": "enemy",
+    "action": "hit",
+    "direction": "left",
+    "scale": 0.12155745489078823,
+    "durations": [
+      35,
+      85,
+      80
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/enemy/left/neutral.png",
+        "origin": [
+          0.5,
+          0.9242424242424242
+        ]
+      },
+      {
+        "image": "originals/enemy/left/hit.png",
+        "origin": [
+          0.5,
+          0.9082934609250398
+        ]
+      },
+      {
+        "image": "originals/enemy/left/neutral.png",
+        "origin": [
+          0.5,
+          0.9242424242424242
+        ]
+      }
+    ]
+  },
+  "enemy_death_left": {
+    "entity": "enemy",
+    "action": "death",
+    "direction": "left",
+    "scale": 0.12155745489078823,
+    "durations": [
+      45,
+      110,
+      220
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/enemy/left/neutral.png",
+        "origin": [
+          0.5,
+          0.9242424242424242
+        ]
+      },
+      {
+        "image": "originals/enemy/left/collapse.png",
+        "origin": [
+          0.5,
+          0.8572567783094099
+        ]
+      },
+      {
+        "image": "originals/enemy/left/fallen.png",
+        "origin": [
+          0.5,
+          0.7280701754385965
+        ]
+      }
+    ]
+  },
+  "enemy_hit_right": {
+    "entity": "enemy",
+    "action": "hit",
+    "direction": "right",
+    "scale": 0.11862835959221502,
+    "durations": [
+      35,
+      85,
+      80
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/enemy/right/neutral.png",
+        "origin": [
+          0.5,
+          0.9401913875598086
+        ]
+      },
+      {
+        "image": "originals/enemy/right/hit.png",
+        "origin": [
+          0.5,
+          0.8915470494417863
+        ]
+      },
+      {
+        "image": "originals/enemy/right/neutral.png",
+        "origin": [
+          0.5,
+          0.9401913875598086
+        ]
+      }
+    ]
+  },
+  "enemy_death_right": {
+    "entity": "enemy",
+    "action": "death",
+    "direction": "right",
+    "scale": 0.11862835959221502,
+    "durations": [
+      45,
+      110,
+      220
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/enemy/right/neutral.png",
+        "origin": [
+          0.5,
+          0.9401913875598086
+        ]
+      },
+      {
+        "image": "originals/enemy/right/collapse.png",
+        "origin": [
+          0.5,
+          0.8708133971291866
+        ]
+      },
+      {
+        "image": "originals/enemy/right/fallen.png",
+        "origin": [
+          0.5,
+          0.6650717703349283
+        ]
+      }
+    ]
+  },
+  "enemy_shade_hit_down": {
+    "entity": "enemy_shade",
+    "action": "hit",
+    "direction": "down",
+    "scale": 0.1170018281535649,
+    "durations": [
+      35,
+      85,
+      80
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/enemy_shade/down/neutral.png",
+        "origin": [
+          0.49960348929421095,
+          0.9486768243785084
+        ]
+      },
+      {
+        "image": "originals/enemy_shade/down/hit.png",
+        "origin": [
+          0.49960348929421095,
+          0.8412189254210104
+        ]
+      },
+      {
+        "image": "originals/enemy_shade/down/neutral.png",
+        "origin": [
+          0.49960348929421095,
+          0.9486768243785084
+        ]
+      }
+    ]
+  },
+  "enemy_shade_death_down": {
+    "entity": "enemy_shade",
+    "action": "death",
+    "direction": "down",
+    "scale": 0.1170018281535649,
+    "durations": [
+      45,
+      110,
+      220
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/enemy_shade/down/neutral.png",
+        "origin": [
+          0.49960348929421095,
+          0.9486768243785084
+        ]
+      },
+      {
+        "image": "originals/enemy_shade/down/collapse.png",
+        "origin": [
+          0.49960348929421095,
+          0.8492381716118684
+        ]
+      },
+      {
+        "image": "originals/enemy_shade/down/fallen.png",
+        "origin": [
+          0.49960348929421095,
+          0.698476343223737
+        ]
+      }
+    ]
+  },
+  "enemy_shade_hit_up": {
+    "entity": "enemy_shade",
+    "action": "hit",
+    "direction": "up",
+    "scale": 0.11819021237303785,
+    "durations": [
+      35,
+      85,
+      80
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/enemy_shade/up/neutral.png",
+        "origin": [
+          0.49960348929421095,
+          0.9398556535685646
+        ]
+      },
+      {
+        "image": "originals/enemy_shade/up/hit.png",
+        "origin": [
+          0.49960348929421095,
+          0.8460304731355253
+        ]
+      },
+      {
+        "image": "originals/enemy_shade/up/neutral.png",
+        "origin": [
+          0.49960348929421095,
+          0.9398556535685646
+        ]
+      }
+    ]
+  },
+  "enemy_shade_death_up": {
+    "entity": "enemy_shade",
+    "action": "death",
+    "direction": "up",
+    "scale": 0.11819021237303785,
+    "durations": [
+      45,
+      110,
+      220
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/enemy_shade/up/neutral.png",
+        "origin": [
+          0.49960348929421095,
+          0.9398556535685646
+        ]
+      },
+      {
+        "image": "originals/enemy_shade/up/collapse.png",
+        "origin": [
+          0.49960348929421095,
+          0.7818765036086608
+        ]
+      },
+      {
+        "image": "originals/enemy_shade/up/fallen.png",
+        "origin": [
+          0.49960348929421095,
+          0.8516439454691259
+        ]
+      }
+    ]
+  },
+  "enemy_shade_hit_left": {
+    "entity": "enemy_shade",
+    "action": "hit",
+    "direction": "left",
+    "scale": 0.1306122448979592,
+    "durations": [
+      35,
+      85,
+      80
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/enemy_shade/left/neutral.png",
+        "origin": [
+          0.49960348929421095,
+          0.8981555733761026
+        ]
+      },
+      {
+        "image": "originals/enemy_shade/left/hit.png",
+        "origin": [
+          0.49960348929421095,
+          0.8668805132317562
+        ]
+      },
+      {
+        "image": "originals/enemy_shade/left/neutral.png",
+        "origin": [
+          0.49960348929421095,
+          0.8981555733761026
+        ]
+      }
+    ]
+  },
+  "enemy_shade_death_left": {
+    "entity": "enemy_shade",
+    "action": "death",
+    "direction": "left",
+    "scale": 0.1306122448979592,
+    "durations": [
+      45,
+      110,
+      220
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/enemy_shade/left/neutral.png",
+        "origin": [
+          0.49960348929421095,
+          0.8981555733761026
+        ]
+      },
+      {
+        "image": "originals/enemy_shade/left/collapse.png",
+        "origin": [
+          0.49960348929421095,
+          0.842822774659182
+        ]
+      },
+      {
+        "image": "originals/enemy_shade/left/fallen.png",
+        "origin": [
+          0.49960348929421095,
+          0.6976744186046512
+        ]
+      }
+    ]
+  },
+  "enemy_shade_hit_right": {
+    "entity": "enemy_shade",
+    "action": "hit",
+    "direction": "right",
+    "scale": 0.13101330603889458,
+    "durations": [
+      35,
+      85,
+      80
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/enemy_shade/right/neutral.png",
+        "origin": [
+          0.49960348929421095,
+          0.8973536487570168
+        ]
+      },
+      {
+        "image": "originals/enemy_shade/right/hit.png",
+        "origin": [
+          0.49960348929421095,
+          0.8235765838011226
+        ]
+      },
+      {
+        "image": "originals/enemy_shade/right/neutral.png",
+        "origin": [
+          0.49960348929421095,
+          0.8973536487570168
+        ]
+      }
+    ]
+  },
+  "enemy_shade_death_right": {
+    "entity": "enemy_shade",
+    "action": "death",
+    "direction": "right",
+    "scale": 0.13101330603889458,
+    "durations": [
+      45,
+      110,
+      220
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/enemy_shade/right/neutral.png",
+        "origin": [
+          0.49960348929421095,
+          0.8973536487570168
+        ]
+      },
+      {
+        "image": "originals/enemy_shade/right/collapse.png",
+        "origin": [
+          0.49960348929421095,
+          0.8067361668003208
+        ]
+      },
+      {
+        "image": "originals/enemy_shade/right/fallen.png",
+        "origin": [
+          0.49960348929421095,
+          0.6992782678428228
+        ]
+      }
+    ]
+  },
+  "enemy_mage_hit_down": {
+    "entity": "enemy_mage",
+    "action": "hit",
+    "direction": "down",
+    "scale": 0.11257695690413369,
+    "durations": [
+      35,
+      85,
+      80
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/enemy_mage/down/neutral.png",
+        "origin": [
+          0.5,
+          0.9883236030025021
+        ]
+      },
+      {
+        "image": "originals/enemy_mage/down/hit.png",
+        "origin": [
+          0.5,
+          0.8623853211009175
+        ]
+      },
+      {
+        "image": "originals/enemy_mage/down/neutral.png",
+        "origin": [
+          0.5,
+          0.9883236030025021
+        ]
+      }
+    ]
+  },
+  "enemy_mage_death_down": {
+    "entity": "enemy_mage",
+    "action": "death",
+    "direction": "down",
+    "scale": 0.11257695690413369,
+    "durations": [
+      45,
+      110,
+      220
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/enemy_mage/down/neutral.png",
+        "origin": [
+          0.5,
+          0.9883236030025021
+        ]
+      },
+      {
+        "image": "originals/enemy_mage/down/collapse.png",
+        "origin": [
+          0.5,
+          0.8707256046705588
+        ]
+      },
+      {
+        "image": "originals/enemy_mage/down/fallen.png",
+        "origin": [
+          0.5,
+          0.8949124270225187
+        ]
+      }
+    ]
+  },
+  "enemy_mage_hit_up": {
+    "entity": "enemy_mage",
+    "action": "hit",
+    "direction": "up",
+    "scale": 0.1170018281535649,
+    "durations": [
+      35,
+      85,
+      80
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/enemy_mage/up/neutral.png",
+        "origin": [
+          0.5,
+          0.9541284403669725
+        ]
+      },
+      {
+        "image": "originals/enemy_mage/up/hit.png",
+        "origin": [
+          0.5,
+          0.8832360300250208
+        ]
+      },
+      {
+        "image": "originals/enemy_mage/up/neutral.png",
+        "origin": [
+          0.5,
+          0.9541284403669725
+        ]
+      }
+    ]
+  },
+  "enemy_mage_death_up": {
+    "entity": "enemy_mage",
+    "action": "death",
+    "direction": "up",
+    "scale": 0.1170018281535649,
+    "durations": [
+      45,
+      110,
+      220
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/enemy_mage/up/neutral.png",
+        "origin": [
+          0.5,
+          0.9541284403669725
+        ]
+      },
+      {
+        "image": "originals/enemy_mage/up/collapse.png",
+        "origin": [
+          0.5,
+          0.8607172643869891
+        ]
+      },
+      {
+        "image": "originals/enemy_mage/up/fallen.png",
+        "origin": [
+          0.5,
+          0.8707256046705588
+        ]
+      }
+    ]
+  },
+  "enemy_mage_hit_left": {
+    "entity": "enemy_mage",
+    "action": "hit",
+    "direction": "left",
+    "scale": 0.12343297974927676,
+    "durations": [
+      35,
+      85,
+      80
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/enemy_mage/left/neutral.png",
+        "origin": [
+          0.5,
+          0.926605504587156
+        ]
+      },
+      {
+        "image": "originals/enemy_mage/left/hit.png",
+        "origin": [
+          0.5,
+          0.896580483736447
+        ]
+      },
+      {
+        "image": "originals/enemy_mage/left/neutral.png",
+        "origin": [
+          0.5,
+          0.926605504587156
+        ]
+      }
+    ]
+  },
+  "enemy_mage_death_left": {
+    "entity": "enemy_mage",
+    "action": "death",
+    "direction": "left",
+    "scale": 0.12343297974927676,
+    "durations": [
+      45,
+      110,
+      220
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/enemy_mage/left/neutral.png",
+        "origin": [
+          0.5,
+          0.926605504587156
+        ]
+      },
+      {
+        "image": "originals/enemy_mage/left/collapse.png",
+        "origin": [
+          0.5,
+          0.8790658882402002
+        ]
+      },
+      {
+        "image": "originals/enemy_mage/left/fallen.png",
+        "origin": [
+          0.5,
+          0.7364470391993327
+        ]
+      }
+    ]
+  },
+  "enemy_mage_hit_right": {
+    "entity": "enemy_mage",
+    "action": "hit",
+    "direction": "right",
+    "scale": 0.12237093690248566,
+    "durations": [
+      35,
+      85,
+      80
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/enemy_mage/right/neutral.png",
+        "origin": [
+          0.5,
+          0.9382819015846539
+        ]
+      },
+      {
+        "image": "originals/enemy_mage/right/hit.png",
+        "origin": [
+          0.5,
+          0.8824020016680567
+        ]
+      },
+      {
+        "image": "originals/enemy_mage/right/neutral.png",
+        "origin": [
+          0.5,
+          0.9382819015846539
+        ]
+      }
+    ]
+  },
+  "enemy_mage_death_right": {
+    "entity": "enemy_mage",
+    "action": "death",
+    "direction": "right",
+    "scale": 0.12237093690248566,
+    "durations": [
+      45,
+      110,
+      220
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/enemy_mage/right/neutral.png",
+        "origin": [
+          0.5,
+          0.9382819015846539
+        ]
+      },
+      {
+        "image": "originals/enemy_mage/right/collapse.png",
+        "origin": [
+          0.5,
+          0.9107589658048374
+        ]
+      },
+      {
+        "image": "originals/enemy_mage/right/fallen.png",
+        "origin": [
+          0.5,
+          0.7414512093411176
+        ]
+      }
+    ]
+  },
+  "enemy_elite_hit_down": {
+    "entity": "enemy_elite",
+    "action": "hit",
+    "direction": "down",
+    "scale": 0.10355987055016182,
+    "durations": [
+      140
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/enemy_elite/down/hit.png",
+        "origin": [
+          0.5,
+          0.8676236044657097
+        ]
+      }
+    ]
+  },
+  "enemy_elite_death_down": {
+    "entity": "enemy_elite",
+    "action": "death",
+    "direction": "down",
+    "scale": 0.10355987055016182,
+    "durations": [
+      250
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/enemy_elite/down/fallen.png",
+        "origin": [
+          0.5,
+          0.8580542264752791
+        ]
+      }
+    ]
+  },
+  "boss_hit_down": {
+    "entity": "boss",
+    "action": "hit",
+    "direction": "down",
+    "scale": 0.20611916264090177,
+    "durations": [
+      140
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/boss/down/hit.png",
+        "origin": [
+          0.5,
+          0.9370015948963317
+        ]
+      }
+    ]
+  },
+  "enemy_mage_cast_down": {
+    "entity": "enemy_mage",
+    "action": "cast",
+    "direction": "down",
+    "scale": 0.11257695690413369,
+    "durations": [
+      50,
+      160,
+      85,
+      100
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/enemy_mage/down/neutral.png",
+        "origin": [
+          0.5,
+          0.9883236030025021
+        ]
+      },
+      {
+        "image": "originals/enemy_mage/down/cast_windup.png",
+        "origin": [
+          0.5,
+          0.9724770642201835
+        ]
+      },
+      {
+        "image": "originals/enemy_mage/down/cast_release.png",
+        "origin": [
+          0.5,
+          0.9741451209341118
+        ]
+      },
+      {
+        "image": "originals/enemy_mage/down/neutral.png",
+        "origin": [
+          0.5,
+          0.9883236030025021
+        ]
+      }
+    ]
+  },
+  "enemy_mage_cast_up": {
+    "entity": "enemy_mage",
+    "action": "cast",
+    "direction": "up",
+    "scale": 0.1170018281535649,
+    "durations": [
+      50,
+      160,
+      85,
+      100
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/enemy_mage/up/neutral.png",
+        "origin": [
+          0.5,
+          0.9541284403669725
+        ]
+      },
+      {
+        "image": "originals/enemy_mage/up/cast_windup.png",
+        "origin": [
+          0.5,
+          0.9457881567973311
+        ]
+      },
+      {
+        "image": "originals/enemy_mage/up/cast_release.png",
+        "origin": [
+          0.5,
+          0.9349457881567973
+        ]
+      },
+      {
+        "image": "originals/enemy_mage/up/neutral.png",
+        "origin": [
+          0.5,
+          0.9541284403669725
+        ]
+      }
+    ]
+  },
+  "enemy_mage_cast_left": {
+    "entity": "enemy_mage",
+    "action": "cast",
+    "direction": "left",
+    "scale": 0.12343297974927676,
+    "durations": [
+      50,
+      160,
+      85,
+      100
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/enemy_mage/left/neutral.png",
+        "origin": [
+          0.5,
+          0.926605504587156
+        ]
+      },
+      {
+        "image": "originals/enemy_mage/left/cast_windup.png",
+        "origin": [
+          0.5,
+          0.9257714762301918
+        ]
+      },
+      {
+        "image": "originals/enemy_mage/left/cast_release.png",
+        "origin": [
+          0.5,
+          0.9182652210175146
+        ]
+      },
+      {
+        "image": "originals/enemy_mage/left/neutral.png",
+        "origin": [
+          0.5,
+          0.926605504587156
+        ]
+      }
+    ]
+  },
+  "enemy_mage_cast_right": {
+    "entity": "enemy_mage",
+    "action": "cast",
+    "direction": "right",
+    "scale": 0.12237093690248566,
+    "durations": [
+      50,
+      160,
+      85,
+      100
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/enemy_mage/right/neutral.png",
+        "origin": [
+          0.5,
+          0.9382819015846539
+        ]
+      },
+      {
+        "image": "originals/enemy_mage/right/cast_windup.png",
+        "origin": [
+          0.5,
+          0.9316096747289407
+        ]
+      },
+      {
+        "image": "originals/enemy_mage/right/cast_release.png",
+        "origin": [
+          0.5,
+          0.9316096747289407
+        ]
+      },
+      {
+        "image": "originals/enemy_mage/right/neutral.png",
+        "origin": [
+          0.5,
+          0.9382819015846539
+        ]
+      }
+    ]
+  },
+  "boss_cast_down": {
+    "entity": "boss",
+    "action": "cast",
+    "direction": "down",
+    "scale": 0.20611916264090177,
+    "durations": [
+      50,
+      160,
+      85,
+      100
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/boss/down/neutral.png",
+        "origin": [
+          0.5,
+          0.9960127591706539
+        ]
+      },
+      {
+        "image": "originals/boss/down/cast_windup.png",
+        "origin": [
+          0.5,
+          0.956140350877193
+        ]
+      },
+      {
+        "image": "originals/boss/down/cast_release.png",
+        "origin": [
+          0.5,
+          0.8899521531100478
+        ]
+      },
+      {
+        "image": "originals/boss/down/neutral.png",
+        "origin": [
+          0.5,
+          0.9960127591706539
+        ]
+      }
+    ]
+  },
+  "boss_cast_up": {
+    "entity": "boss",
+    "action": "cast",
+    "direction": "up",
+    "scale": 0.22377622377622378,
+    "durations": [
+      50,
+      160,
+      85,
+      100
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/boss/up/neutral.png",
+        "origin": [
+          0.5,
+          0.9537480063795853
+        ]
+      },
+      {
+        "image": "originals/boss/up/cast_windup.png",
+        "origin": [
+          0.5,
+          0.9290271132376395
+        ]
+      },
+      {
+        "image": "originals/boss/up/cast_release.png",
+        "origin": [
+          0.5,
+          0.919457735247209
+        ]
+      },
+      {
+        "image": "originals/boss/up/neutral.png",
+        "origin": [
+          0.5,
+          0.9537480063795853
+        ]
+      }
+    ]
+  },
+  "boss_cast_left": {
+    "entity": "boss",
+    "action": "cast",
+    "direction": "left",
+    "scale": 0.23378995433789954,
+    "durations": [
+      50,
+      160,
+      85,
+      100
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/boss/left/neutral.png",
+        "origin": [
+          0.5,
+          0.9266347687400319
+        ]
+      },
+      {
+        "image": "originals/boss/left/cast_windup.png",
+        "origin": [
+          0.5,
+          0.9282296650717703
+        ]
+      },
+      {
+        "image": "originals/boss/left/cast_release.png",
+        "origin": [
+          0.5,
+          0.9401913875598086
+        ]
+      },
+      {
+        "image": "originals/boss/left/neutral.png",
+        "origin": [
+          0.5,
+          0.9266347687400319
+        ]
+      }
+    ]
+  },
+  "boss_cast_right": {
+    "entity": "boss",
+    "action": "cast",
+    "direction": "right",
+    "scale": 0.23272727272727273,
+    "durations": [
+      50,
+      160,
+      85,
+      100
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/boss/right/neutral.png",
+        "origin": [
+          0.5,
+          0.9338118022328549
+        ]
+      },
+      {
+        "image": "originals/boss/right/cast_windup.png",
+        "origin": [
+          0.5,
+          0.9043062200956937
+        ]
+      },
+      {
+        "image": "originals/boss/right/cast_release.png",
+        "origin": [
+          0.5,
+          0.9433811802232854
+        ]
+      },
+      {
+        "image": "originals/boss/right/neutral.png",
+        "origin": [
+          0.5,
+          0.9338118022328549
+        ]
+      }
+    ]
+  }
+}

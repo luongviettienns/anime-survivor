@@ -1,0 +1,160 @@
+{
+  "movement": [
+    "actor-kirito_run_down",
+    "actor-kirito_run_up",
+    "actor-kirito_run_left",
+    "actor-kirito_idle_right"
+  ],
+  "skills": [
+    "actor-kirito_lv1_down",
+    "actor-kirito_lv2_down",
+    "actor-kirito_lv3_down",
+    "actor-kirito_lv1_up",
+    "actor-kirito_lv2_up",
+    "actor-kirito_lv3_up"
+  ],
+  "basic": true,
+  "hit": {
+    "time": 14120.4,
+    "key": "actor-kirito_hit_down",
+    "frame": "__BASE",
+    "texture": "actor/originals/kirito/down/hit.png",
+    "flipX": false
+  },
+  "death": "actor-kirito_death_down",
+  "reactions": {
+    "cases": [
+      {
+        "archetype": "slime",
+        "direction": "down",
+        "radius": 16
+      },
+      {
+        "archetype": "slime",
+        "direction": "up",
+        "radius": 16
+      },
+      {
+        "archetype": "slime",
+        "direction": "left",
+        "radius": 16
+      },
+      {
+        "archetype": "slime",
+        "direction": "right",
+        "radius": 16
+      },
+      {
+        "archetype": "shade",
+        "direction": "down",
+        "radius": 16
+      },
+      {
+        "archetype": "shade",
+        "direction": "up",
+        "radius": 16
+      },
+      {
+        "archetype": "shade",
+        "direction": "left",
+        "radius": 16
+      },
+      {
+        "archetype": "shade",
+        "direction": "right",
+        "radius": 16
+      },
+      {
+        "archetype": "mage",
+        "direction": "down",
+        "radius": 16
+      },
+      {
+        "archetype": "mage",
+        "direction": "up",
+        "radius": 16
+      },
+      {
+        "archetype": "mage",
+        "direction": "left",
+        "radius": 16
+      },
+      {
+        "archetype": "mage",
+        "direction": "right",
+        "radius": 16
+      },
+      {
+        "archetype": "elite",
+        "direction": "down",
+        "radius": 24
+      },
+      {
+        "archetype": "boss",
+        "direction": "down",
+        "radius": 32
+      }
+    ],
+    "corpses": 13
+  },
+  "corpseCount": 0,
+  "casts": [
+    {
+      "archetype": "mage",
+      "direction": "down",
+      "windup": "actor/originals/enemy_mage/down/cast_windup.png",
+      "release": "actor/originals/enemy_mage/down/cast_release.png",
+      "flip": false
+    },
+    {
+      "archetype": "mage",
+      "direction": "up",
+      "windup": "actor/originals/enemy_mage/up/cast_windup.png",
+      "release": "actor/originals/enemy_mage/up/cast_release.png",
+      "flip": false
+    },
+    {
+      "archetype": "mage",
+      "direction": "left",
+      "windup": "actor/originals/enemy_mage/left/cast_windup.png",
+      "release": "actor/originals/enemy_mage/left/cast_release.png",
+      "flip": false
+    },
+    {
+      "archetype": "mage",
+      "direction": "right",
+      "windup": "actor/originals/enemy_mage/right/cast_windup.png",
+      "release": "actor/originals/enemy_mage/right/cast_release.png",
+      "flip": false
+    },
+    {
+      "archetype": "boss",
+      "direction": "down",
+      "windup": "actor/originals/boss/down/cast_windup.png",
+      "release": "actor/originals/boss/down/cast_release.png",
+      "flip": false
+    },
+    {
+      "archetype": "boss",
+      "direction": "up",
+      "windup": "actor/originals/boss/up/cast_windup.png",
+      "release": "actor/originals/boss/up/cast_release.png",
+      "flip": false
+    },
+    {
+      "archetype": "boss",
+      "direction": "left",
+      "windup": "actor/originals/boss/left/cast_windup.png",
+      "release": "actor/originals/boss/left/cast_release.png",
+      "flip": false
+    },
+    {
+      "archetype": "boss",
+      "direction": "right",
+      "windup": "actor/originals/boss/right/cast_windup.png",
+      "release": "actor/originals/boss/right/cast_release.png",
+      "flip": false
+    }
+  ],
+  "errors": []
+}

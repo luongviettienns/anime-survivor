@@ -1,0 +1,137 @@
+{
+  "casts": [
+    {
+      "archetype": "mage",
+      "direction": "down",
+      "windup": {
+        "image": "actor/originals/enemy_mage/down/cast_windup.png",
+        "flip": false,
+        "scale": 0.11257695690413369,
+        "anchorError": 0.043095866314864395
+      },
+      "release": {
+        "image": "actor/originals/enemy_mage/down/cast_release.png",
+        "scale": 0.11257695690413369,
+        "bolts": 1
+      }
+    },
+    {
+      "archetype": "mage",
+      "direction": "up",
+      "windup": {
+        "image": "actor/originals/enemy_mage/up/cast_windup.png",
+        "flip": false,
+        "scale": 0.1170018281535649,
+        "anchorError": 0.41072999120493137
+      },
+      "release": {
+        "image": "actor/originals/enemy_mage/up/cast_release.png",
+        "scale": 0.1170018281535649,
+        "bolts": 1
+      }
+    },
+    {
+      "archetype": "mage",
+      "direction": "left",
+      "windup": {
+        "image": "actor/originals/enemy_mage/left/cast_windup.png",
+        "flip": false,
+        "scale": 0.12343297974927676,
+        "anchorError": 0.37115215479332164
+      },
+      "release": {
+        "image": "actor/originals/enemy_mage/left/cast_release.png",
+        "scale": 0.12343297974927676,
+        "bolts": 1
+      }
+    },
+    {
+      "archetype": "mage",
+      "direction": "right",
+      "windup": {
+        "image": "actor/originals/enemy_mage/right/cast_windup.png",
+        "flip": false,
+        "scale": 0.12237093690248566,
+        "anchorError": 0.37115215479332164
+      },
+      "release": {
+        "image": "actor/originals/enemy_mage/right/cast_release.png",
+        "scale": 0.12237093690248566,
+        "bolts": 1
+      }
+    },
+    {
+      "archetype": "boss",
+      "direction": "down",
+      "windup": {
+        "image": "actor/originals/boss/down/cast_windup.png",
+        "flip": false,
+        "scale": 0.20611916264090177,
+        "anchorError": 0.40901771336554305
+      },
+      "release": {
+        "image": "actor/originals/boss/down/cast_release.png",
+        "scale": 0.20611916264090177,
+        "bolts": 8
+      }
+    },
+    {
+      "archetype": "boss",
+      "direction": "up",
+      "windup": {
+        "image": "actor/originals/boss/up/cast_windup.png",
+        "flip": false,
+        "scale": 0.22377622377622378,
+        "anchorError": 0.2930756843800282
+      },
+      "release": {
+        "image": "actor/originals/boss/up/cast_release.png",
+        "scale": 0.22377622377622378,
+        "bolts": 8
+      }
+    },
+    {
+      "archetype": "boss",
+      "direction": "left",
+      "windup": {
+        "image": "actor/originals/boss/left/cast_windup.png",
+        "flip": false,
+        "scale": 0.23378995433789954,
+        "anchorError": 0.4669887278582934
+      },
+      "release": {
+        "image": "actor/originals/boss/left/cast_release.png",
+        "scale": 0.23378995433789954,
+        "bolts": 8
+      }
+    },
+    {
+      "archetype": "boss",
+      "direction": "right",
+      "windup": {
+        "image": "actor/originals/boss/right/cast_windup.png",
+        "flip": false,
+        "scale": 0.23272727272727273,
+        "anchorError": 0.4669887278582934
+      },
+      "release": {
+        "image": "actor/originals/boss/right/cast_release.png",
+        "scale": 0.23272727272727273,
+        "bolts": 8
+      }
+    }
+  ],
+  "blinkDoesNotRestartHit": true,
+  "stress": {
+    "maxCorpses": 64,
+    "remaining": 0
+  },
+  "naruto": {
+    "velocity": {
+      "x": 250,
+      "y": 0
+    },
+    "cameras": 2
+  },
+  "errors": []
+}

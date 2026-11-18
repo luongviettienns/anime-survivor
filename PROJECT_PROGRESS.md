@@ -58,7 +58,7 @@
   - [x] Thiết kế lại UpgradeScene và HudOverlay theo pixel art cao cấp.
   - [x] Kiểm thử toàn diện: npm run verify (43/43 tests, 0 lint/arch/typecheck errs) và npm run test:e2e (5/5 E2E scenarios PASS).
 
-- [ ] **Phase 6: Balance Overhaul (Flat Stats), Multi-Hero & Evolution Metamorphosis** 🔄 *(Đang triển khai — Nhánh `feat/flat-balance-scaling-drops`: đã hoàn tất Mục 1 & Mục 2)*
+- [ ] **Phase 6: Balance Overhaul (Flat Stats), Multi-Hero & Evolution Metamorphosis** 🔄 *(Đang triển khai — Nhánh `feat/update-gameplay`)*
   - [x] Đặc tả phân tách 2 mục độc lập tại [docs/EVOLUTION_SPEC.md](docs/EVOLUTION_SPEC.md) (7 chỉ số bị động số cụ thể không dùng % + 2 nhánh tiến hóa Cửu Vĩ / Tiên Nhân Cóc + KCM cuối game).
   - [x] Nghiên cứu & lập Bảng thông số cân bằng số cụ thể (Flat-Number Balance, Enemy Scaling theo phút, Đường cong XP, Item rơi bắt buộc nhặt & Đa nhân vật Mạnh/Yếu riêng): xem tại [docs/GAME_BALANCE_SHEET.md](docs/GAME_BALANCE_SHEET.md).
   - [x] Tổng hợp kế hoạch các mục nâng cấp & quy chuẩn từ bộ skills (`physics-arcade`, `game-ui-ux`, `game-performance`, `audio-design`, `procedural-gen`, `game-feel`, `roguelike`, `phaser-gameplay`) tại [docs/UPGRADE_AND_SYSTEM_PLAN.md](docs/UPGRADE_AND_SYSTEM_PLAN.md) (bao gồm: Đa màn chơi, Không shop tăng chỉ số ngoài trận, Thuật Clone thoát hiểm).

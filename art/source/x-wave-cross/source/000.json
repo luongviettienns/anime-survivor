@@ -1,0 +1,10 @@
+{
+  "index": 0,
+  "prompt": "ONE SINGLE high-detail pixel-art game VFX frame, transparent RGBA1254x1254, not a sheet. Design the UPGRADED DUAL-X SWORD WAVE as an unmistakable LARGE X FORMED FROM TWO CURVED CRESCENT ENERGY WAVES. Reference1 is the existing CYAN ICE crescent: preserve its broad curved blade, sharp white cutting edge, crystalline thickness and icy fragments. Reference2 is the existing VIOLET DARK FIRE crescent: preserve its broad curved flame blade, white-violet cutting edge and dark purple body. Combine these SAME TWO SINGLE WAVES, enlarged/thicker/more forceful, one slanted / and the other slanted backslash, crossing at their midsections into a READABLE X silhouette with FOUR SWEPT CURVED TIPS. Reference3 provides ONLY X arrangement, NOT its straight-bar geometry. Both crescents must remain individually recognizable as crescent sword waves, not straight stripes/swords, NOT horizontal intertwined ribbons or snake heads. White-hot intersection compressed at center, brighter denser cores, larger ice shards and violet flame wisps trailing slightly LEFT to show forward travel RIGHT/east; keep the X silhouette dominant, strong and compact. Slightly elevated orthographic top-down three-quarter game camera, dimensional blade thickness visible, no ground/ring/shadow. Fine crisp stepped anime pixel clusters exactly matching single-wave refs; no smooth airbrush. Entire effect fits inside100px transparent margins on all four edges, no clipping. No characters, objects, letters, UI, creatures or scenery. One animation pose only. Frame0: full-power crossing, crests taut and sparks held near center.",
+  "reference": [
+    "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/public/assets/dual-element/originals/ice_wave/000.png",
+    "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/public/assets/dual-element/originals/dark_fire_wave/000.png",
+    "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/public/assets/dual-element/originals/dual_element_x/000.png"
+  ],
+  "path": "C:\\Users\\ASUS\\.codex\\generated_images\\01a1ee04-31d9-76f3-993d-4f3b2888c393\\exec-f05f2dc4-f86a-4420-837b-6f41810133fb.png"
+}

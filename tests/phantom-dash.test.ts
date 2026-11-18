@@ -5,7 +5,6 @@ import {
   createPhantomDashState,
   findPhantomDashTargets,
   getPhantomDashStats,
-  PHANTOM_DASH,
   planAutoPhantomDash,
   stepPhantomDashPosition,
   triggerAutoPhantomDash,

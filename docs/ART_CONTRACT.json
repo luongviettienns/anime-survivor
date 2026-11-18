@@ -869,5 +869,21 @@
       "runtime_prefix": "v3/",
       "source_policy": "Unchanged native RGBA PNG; measured foot anchors, padding-only exact sheets."
     }
+  },
+  "dual_x_wave_extension": {
+    "source": "art/source/x-wave-cross/originals",
+    "frames": "art/source/x-wave-cross/frames",
+    "sheets": "art/source/x-wave-cross/sheets",
+    "contract": "art/source/x-wave-cross/contract.json",
+    "runtime": "public/assets/dual-element/x-wave-cross",
+    "frames_count": 3,
+    "durations_ms": [
+      60,
+      60,
+      60
+    ],
+    "packing": "python scripts/x_wave_art.py",
+    "validation": "python scripts/x_wave_art.py --check",
+    "policy": "Native RGBA byte-identical copies; padding-only1792px cells; cyan Ice and violet Dark Fire crescent waves intersect into travelling X, rotated by aim."
   }
 }

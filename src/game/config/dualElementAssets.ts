@@ -13,7 +13,7 @@ export const DUAL_ELEMENT_CLIPS: readonly ClipSpec[] = [
   { atlasKey: 'kirito_wave_lv3_x', animKey: 'kirito-wave-lv3', durationsMs: [60, 120, 100, 80, 110, 120], loop: false },
   { atlasKey: 'vfx_ice_wave', animKey: 'vfx-ice-wave', durationsMs: [80, 80], loop: true },
   { atlasKey: 'vfx_dark_fire_wave', animKey: 'vfx-dark-fire-wave', durationsMs: [80, 80], loop: true },
-  { atlasKey: 'vfx_dual_element_x', animKey: 'vfx-dual-element-x', durationsMs: [80, 80], loop: true },
+  { atlasKey: 'vfx_dual_element_x', animKey: 'vfx-dual-element-x', durationsMs: [60, 60, 60], loop: true },
   { atlasKey: 'vfx_ice_impact', animKey: 'vfx-ice-impact', durationsMs: [60, 80, 110], loop: false },
   { atlasKey: 'vfx_ice_slow_loop', animKey: 'vfx-ice-slow-loop', durationsMs: [140, 140], loop: true },
   { atlasKey: 'vfx_ice_break', animKey: 'vfx-ice-break', durationsMs: [60, 80, 110], loop: false },
@@ -29,7 +29,8 @@ export const PHANTOM_DASH_ANIM_KEY = 'kirito-phantom-dash';
 
 export function preloadDualElementAssets(scene: Phaser.Scene): void {
   for (const clip of DUAL_ELEMENT_CLIPS) {
-    scene.load.multiatlas(clip.atlasKey, `assets/dual-element/${clip.atlasKey}.atlas.json`, 'assets/dual-element');
+    const base = clip.atlasKey === 'vfx_dual_element_x' ? 'assets/dual-element/x-wave-cross' : 'assets/dual-element';
+    scene.load.multiatlas(clip.atlasKey, `${base}/${clip.atlasKey}.atlas.json`, base);
   }
 }
 

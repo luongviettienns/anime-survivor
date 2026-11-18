@@ -39,3 +39,6 @@ Image-generation tools may not produce exact RGBA, pixel grid, or consistent fra
 
 ## Player quality priority
 Use the highest-quality retained original PNGs for visible player art. Optimize repeated frames and transparent canvas uploads rather than reducing source resolution or palette. Current locomotion:14 slots,12 original texture pages,72MiB decoded RGBA versus126MiB for14 padded1536px textures (before driver overhead). Logical display height and gameplay collider remain independent.
+
+## Smooth runtime display (latest user preference)
+The user rejected hard blocky edges across game assets. Runtime now uses Phaser pixelArt:false, antialias:true (LINEAR texture sampling), and CSS image-rendering:auto. This supersedes older nearest-only display instructions. PNG sources, padded frames and packed sheets remain byte-identical; only sampling changes. Rounded game positions stay enabled. Small legacy pixel textures may look softer; this is the intended display preference, not resampled source art.

@@ -174,3 +174,9 @@ Do not tick items without actual evidence. Update this log during every Antigrav
 ## Asset dimension inventory (2026-11-18)
 - Added scripts/asset_inventory.py and art/review/asset-inventory.png + CSV:52 catalog entries (40 sprites,2 standalone images,10 icons), measured PNG dimensions, packed canvas, sheet size, frame counts and design display guides. Runtime effects may scale differently; Rasengan flight canvas96x96 is explicit.
 - Read every preview and source PNG;52-entry assertion passed; visually inspected generated sheet. Presentation-only output, no game asset pixels or gameplay changed; full verify/browser suite not rerun.
+
+## Smooth asset presentation (2026-11-18)
+- User clarified the issue is hard/jagged sampling across all map assets. Supersedes earlier nearest-only display preference: enable Phaser antialias/linear texture filtering and browser canvas smoothing; retain original PNG bytes, actor sizes, physics and rounded positions.
+- Files: src/main.ts, src/app/style.css, rendering browser check, art pipeline documentation.
+- Acceptance: actual texture sources use LINEAR, canvas CSS is auto, keyboard/skills remain working, no browser errors; inspect before/after screenshot and run verify.
+- Validation PASS: npm run verify (47 domain,10 Python,40 exact-crop sheets, lint/typecheck/architecture/build); targeted browser4/4 PASS, asserting actual GL min/mag filters9729 (LINEAR) on actor/map/HUD/skill sources and computed canvas style auto, real movement keys and skill presentation. Before/after output/render-nearest-before.png and output/render-smooth-after.png visually inspected. Full18-case browser suite and low-end/mobile not rerun; tiny legacy assets may appear softer. No gameplay or PNG source changes.

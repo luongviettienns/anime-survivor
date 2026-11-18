@@ -97,5 +97,19 @@ test('Kirito unlocked lobby launch, high-defense stats, and Lv1/Lv3/Lv5 Dual Ele
   }, undefined, { timeout: 5000 });
   await page.screenshot({ path: 'test-results/kirito-lv3-xwave.png' });
 
+  // Verify small normal slimes take damage reliably in all 4 cardinal directions & close range
+  for (const [dx, dy] of [[140, 0], [-140, 0], [0, 140], [0, -140], [18, 0]]) {
+    await page.evaluate(([ox, oy]) => {
+      window.__ANIME_SURVIVOR__!.clearEnemies();
+      window.__ANIME_SURVIVOR__!.setWeaponLevel('dual_slash', 1);
+      const p = window.__ANIME_SURVIVOR__!.getPlayerPosition();
+      window.__ANIME_SURVIVOR__!.spawnEnemyAt(p.x + ox!, p.y + oy!);
+    }, [dx, dy]);
+    await page.waitForFunction(() => {
+      const st = window.__ANIME_SURVIVOR__!.getEnemyStatuses();
+      return st.length === 0 || st[0]!.hp < 50;
+    }, undefined, { timeout: 2500 });
+  }
+
   expect(errors).toEqual([]);
 });

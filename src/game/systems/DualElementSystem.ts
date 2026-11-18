@@ -30,9 +30,9 @@ type ShotMeta = {
 };
 
 const WAVE_ART: Record<DualWaveKind, { tex: string; anim: string; impactTex: string; impactAnim: string; scale: number; radius: number }> = {
-  ice: { tex: 'vfx_ice_wave', anim: 'vfx-ice-wave', impactTex: 'vfx_ice_impact', impactAnim: 'vfx-ice-impact', scale: 0.055, radius: 360 },
-  dark_fire: { tex: 'vfx_dark_fire_wave', anim: 'vfx-dark-fire-wave', impactTex: 'vfx_dark_fire_impact', impactAnim: 'vfx-dark-fire-impact', scale: 0.055, radius: 360 },
-  dual_x: { tex: 'vfx_dual_element_x', anim: 'vfx-dual-element-x', impactTex: 'vfx_dual_element_impact', impactAnim: 'vfx-dual-element-impact', scale: 0.075, radius: 420 },
+  ice: { tex: 'vfx_ice_wave', anim: 'vfx-ice-wave', impactTex: 'vfx_ice_impact', impactAnim: 'vfx-ice-impact', scale: 0.055, radius: 480 },
+  dark_fire: { tex: 'vfx_dark_fire_wave', anim: 'vfx-dark-fire-wave', impactTex: 'vfx_dark_fire_impact', impactAnim: 'vfx-dark-fire-impact', scale: 0.055, radius: 480 },
+  dual_x: { tex: 'vfx_dual_element_x', anim: 'vfx-dual-element-x', impactTex: 'vfx_dual_element_impact', impactAnim: 'vfx-dual-element-impact', scale: 0.075, radius: 540 },
 };
 
 export class DualElementSystem {
@@ -113,15 +113,16 @@ export class DualElementSystem {
   }
 
   private spawnWave(nowMs: number, dir: Vec2, item: PendingWave): void {
-    const handX = this.player.x + dir.x * 20;
-    const handY = this.player.y + dir.y * 20 - 4;
+    const handX = this.player.x + dir.x * 10;
+    const handY = this.player.y + dir.y * 10;
     const art = WAVE_ART[item.kind];
     const reuse = this.projectiles.getFirstDead(false) as Phaser.Physics.Arcade.Sprite | null;
     const shot = reuse
       ? (reuse.enableBody(true, handX, handY, true, true), reuse)
       : (this.projectiles.create(handX, handY, art.tex, `${art.tex}/000`) as Phaser.Physics.Arcade.Sprite);
-    shot.setTexture(art.tex, `${art.tex}/000`).setScale(art.scale).setDepth(500_000_060)
-      .setCircle(art.radius).setBlendMode('NORMAL').setRotation(Math.atan2(dir.y, dir.x))
+    shot.setTexture(art.tex, `${art.tex}/000`).setOrigin(0.5, 0.5).setScale(art.scale).setDepth(500_000_060);
+    const circleOffset = Math.round(shot.width / 2 - art.radius);
+    shot.setCircle(art.radius, circleOffset, circleOffset).setBlendMode('NORMAL').setRotation(Math.atan2(dir.y, dir.x))
       .setVelocity(dir.x * item.speedPxSec, dir.y * item.speedPxSec).play(art.anim, true);
     this.expiresAt.set(shot, nowMs + PROJECTILE.lifeMs);
     this.shotMeta.set(shot, {

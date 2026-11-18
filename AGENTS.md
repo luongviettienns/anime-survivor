@@ -44,3 +44,7 @@ Read the relevant skill before a related task. External curated skill links: `do
 
 ## Scope guard
 Finish a playable 60-second vertical slice with reliable movement/auto-attack/XP before building the full 10-minute run. Menu, pause, upgrades and boss are roadmap items until implemented and verified; never mark them finished based on mocks.
+
+## Core Design Law: Asymmetric Identity & Dilemma (Bắt buộc ghi nhớ cho mọi lần dev)
+1. **Mỗi nhân vật và mỗi skill phải có điểm mạnh, điểm yếu riêng biệt**: Không được quá yếu hoặc tạo cảm giác kỹ năng "rác"/phế phẩm. Mọi skill/hero đều phải có đất diễn vượt trội trong hoàn cảnh cụ thể nhưng mang nhược điểm rõ ràng.
+2. **Tạo sự phân vân có chủ đích (Meaningful Dilemma)**: Mọi lựa chọn giữa các nhân vật và giữa 3 thẻ nâng cấp khi lên cấp phải khiến người chơi đắn đo cân nhắc đánh đổi (sát thương vs tầm đánh vs cơ động vs sinh tồn), tuyệt đối không tạo ra lựa chọn hiển nhiên (no-brainer) hoặc lựa chọn không bao giờ đụng tới.

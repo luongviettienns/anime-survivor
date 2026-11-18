@@ -28,10 +28,11 @@ export class MineSystem {
       const base = computeWeaponStats('mine', level);
       const stats = applyWeaponModifiers(base, passives);
       this.cooldown.intervalMs = stats.cooldownMs;
-      if (canWeaponFire(this.cooldown, nowMs) && this.mines.length < 10) {
-        for (let i = 0; i < stats.count; i++) {
-          const offset = i === 0 ? -16 : 16;
-          const sprite = this.scene.add.sprite(this.player.x + (aim.x < 0 ? -16 : 16) + offset * (stats.count > 1 ? 1 : 0), this.player.y + 28, 'mine', 0)
+      if (canWeaponFire(this.cooldown, nowMs) && this.mines.length < 12) {
+        const offsets = stats.count >= 3 ? [-24, 0, 24] : stats.count === 2 ? [-16, 16] : [0];
+        for (const offset of offsets) {
+          if (this.mines.length >= 12) break;
+          const sprite = this.scene.add.sprite(this.player.x + (aim.x < 0 ? -16 : 16) + offset, this.player.y + 28, 'mine', 0)
             .setOrigin(0.5, 0.75).setScale(ART_SCALE.mine ?? 1).setDepth(this.player.y + 1).play('mine-pulse');
           this.mines.push({ sprite, detonateAtMs: nowMs + 2200, damage: base.damage, rangePx: stats.rangePx, knockbackPxSec: stats.knockbackPxSec });
         }

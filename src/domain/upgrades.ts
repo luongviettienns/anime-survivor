@@ -50,11 +50,11 @@ const WEAPON_UPGRADE_META: ReadonlyArray<{
   unlockDesc: string;
   levelDesc: string;
 }> = [
-  { upgradeId: 'weapon_orb', weaponId: 'orb', heroOnly: 'naruto', icon: 'icon-weapon_orb', title: 'Rasengan Chakra Orb', unlockDesc: 'Unlock auto-homing chakra orb.', levelDesc: '+9 Damage, faster cooldown & flight, extra orbs at Lv3/Lv5.' },
+  { upgradeId: 'weapon_orb', weaponId: 'orb', heroOnly: 'naruto', icon: 'icon-weapon_orb', title: 'Rasengan Chakra Orb', unlockDesc: 'Unlock auto-homing chakra orb.', levelDesc: '+Damage, Lv2+ drill push, extra orbs at Lv3/Lv5.' },
   { upgradeId: 'weapon_dual_slash', weaponId: 'dual_slash', heroOnly: 'kirito', icon: 'icon-weapon_slash', title: 'Dual Element Slash', unlockDesc: DUAL_SLASH_DESCS[0], levelDesc: DUAL_SLASH_DESCS[1] },
   { upgradeId: 'weapon_clone', weaponId: 'clone', heroOnly: 'naruto', icon: 'icon-weapon_slash', title: 'Kage Bunshin Strike', unlockDesc: 'Summon a shadow clone nearby to execute a sweeping kick.', levelDesc: '+1 Clone (up to 4), stronger kick damage & faster cooldown.' },
   { upgradeId: 'weapon_orbital', weaponId: 'orbital', heroOnly: 'naruto', icon: 'icon-weapon_orbital', title: 'Shadow Shuriken Ring', unlockDesc: 'Summon orbiting shadow shuriken that slice nearby foes.', levelDesc: '+7 Damage, faster spin, extra blades at Lv3/Lv5.' },
-  { upgradeId: 'weapon_mine', weaponId: 'mine', heroOnly: 'naruto', icon: 'icon-weapon_mine', title: 'Paper Bomb Tag', unlockDesc: 'Drop explosive shinobi tags behind you for blazing AOE blasts.', levelDesc: '+18 Blast Damage, wider radius, double drop at Lv4.' },
+  { upgradeId: 'weapon_mine', weaponId: 'mine', heroOnly: 'naruto', icon: 'icon-weapon_mine', title: 'Paper Bomb Tag', unlockDesc: 'Drop explosive shinobi tags behind you for blazing AOE blasts.', levelDesc: '+Blast Damage, wider radius, 2 tags at Lv3 & 3 tags at Lv5.' },
 ];
 
 const PASSIVE_META: Record<PassiveId, { title: string; icon: string; values: readonly number[]; fmt: (v: number) => string }> = {

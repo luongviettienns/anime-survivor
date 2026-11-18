@@ -13,3 +13,19 @@ Hero idle/walk now uses six separately generated ImageGen source PNGs, normalize
 
 ### Four-direction extension
 Added six individual ImageGen sources for two down steps, two up steps, rear idle and side idle (twelve hero source files total). Full prompts and SHA-256 hashes for the six new sources are recorded in art/source/naruto-ai/provenance.json. Hero is now 14 packed frames, 32x32 each, with a shared 21-color palette.
+
+## AI-only visual overhaul — November 2026
+The earlier procedural rows are historical and do not describe the current
+replacement assets. New individual ImageGen sources live in
+`art/source/ai-overhaul` and `art/source/weapons`. Their JSON ledgers record full
+prompts or explicit source reuse, SHA-256 hashes and pending human review. Model
+version is not exposed. User-supplied references are identified separately;
+receiving a reference does not establish ownership or a license to its subject.
+Monster designs are original dark-anime archetypes. All new images are retained
+as sources; normalization/export and sheet packing are deterministic. The old
+project-owned label must not be read as ownership of the Naruto character.
+
+### Original-PNG correction
+The final export policy copies original PNG bytes, including palette/color and
+alpha, directly into runtime multi-atlas pages. No new image is downscaled or
+quantized. Only offline sheet padding and runtime display transformations remain.

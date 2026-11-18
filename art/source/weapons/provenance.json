@@ -1,0 +1,28 @@
+{
+  "tool": "built-in ImageGen",
+  "date": "2026-11-18",
+  "model": "not exposed",
+  "human_review": "pending",
+  "sources": [
+    {
+      "file": "orb.png",
+      "prompt": "Create exactly ONE isolated game weapon asset matching the hard pixel-art Naruto character reference: a large readable RASENGAN chakra sphere, bright cyan/turquoise shell with bold WHITE spiral curving wind bands and compact light-blue rim, darker teal inner shadows, 3 small wisps hugging sphere. Strict low-resolution pixel clusters, black/dark-navy edge outline matching character outline, NO smooth gradients, no blur, no antialiasing, limited 8-color palette drawn as a 32x32 logical pixel sprite enlarged nearest-neighbor. Sphere fills most of a centered square silhouette with transparent margins. ONE orb only, no character/hand/text/grid/ground/shadow. Transparent background. Make spiral bold enough to read at small game size.",
+      "sha256": "fd95f8bf829e5b19ce2b6dd9d61b8ed5e62b0e338b24166eb04fcb014f88824c"
+    },
+    {
+      "file": "shuriken.png",
+      "prompt": "Create exactly ONE isolated pixel-art ninja SHURIKEN weapon matching dark metal weapons in the supplied Naruto sprite. Four broad sharp triangular steel blades, compact black center ring with a visibly transparent circular hole, graphite dark faces, strong silver-white edge highlights, tiny warm orange accent on center rim matching outfit. Top-down symmetric four-point silhouette, diagonal blades slightly curved but thick readable. Strict hard square pixel clusters, NO antialiasing/blur/gradients. Designed as 32x32 logical pixel game sprite enlarged nearest-neighbor. Centered with generous transparent margins, large silhouette, no character/hand/text/grid/shadow/aura/other items. Transparent RGBA background.",
+      "sha256": "5caee8e69a90ab5458a58a6fd09fc57065fe81a77e58f7ef969116ff5dc3e4be"
+    },
+    {
+      "file": "kunai.png",
+      "prompt": "Create exactly ONE isolated pixel-art KUNAI weapon matching the supplied Naruto character's outfit and dark metal style. Horizontal ninja kunai pointing to SCREEN RIGHT: broad triangular dark graphite steel blade with crisp silver-white bevel, short handle wrapped in BLACK cloth with one small ORANGE band matching outfit, round black pommel ring with transparent center hole. Bold readable proportions, blade clearly larger than handle, silhouette fills centered wide rectangle with generous transparent margins. Strict square pixel clusters, no smooth gradients, blur or antialiasing, designed as32x32 logical pixel game sprite enlarged nearest-neighbor. No character/hands/text/grid/shadow/aura/other items. Transparent RGBA background.",
+      "sha256": "ac4091880cfd849a8cbd52e1a5d28bbb06ad68f58c3ca6440837ce54b14c2053"
+    },
+    {
+      "file": "mine.png",
+      "prompt": "Create exactly ONE isolated pixel-art EXPLOSIVE PAPER TAG weapon for Naruto matching supplied character art. Tall rectangular cream-white paper talisman, crisp dark brown/navy outline, a bold RED central spiral seal with two short red block markings above/below (abstract symbols, not readable writing), small folded corner and one tiny orange glowing ember at top. Paper mostly white so it reads against dark game terrain. Strong simple shapes readable at24x32 logical pixels enlarged nearest-neighbor, limited flat palette, square pixel clusters, no antialiasing blur or gradients. Front view upright tag, centered with transparent margins, no character/hands/text/grid/shadow/other items. Transparent RGBA background.",
+      "sha256": "8c6e4338c11c68f27294ecded707fb4225805f69ba2518506ccfad4b11639de5"
+    }
+  ]
+}

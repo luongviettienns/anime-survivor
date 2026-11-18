@@ -65,6 +65,46 @@
       "file": "idle-side/000.png",
       "sha256": "16efa63cb29b8d96a4f230b53b6f31a644ad49e4110446649ab76ea6221c033f",
       "prompt": "Create exactly ONE full-body Naruto Shippuden pixel-art standing IDLE sprite facing SCREEN RIGHT in three-quarter side view. Match supplied Naruto reference exactly in outfit, blond hair silhouette, blue eyes, face, proportions and canvas scale. Standing upright with both sandals on common baseline, arms relaxed down by sides, no running lean or lifted knee. Black/orange jacket, orange trousers with same leg bandage. Full body centered with generous transparent margins. Crisp square pixel clusters limited palette for 32x32 RPG. Transparent background, no text/grid/shadow/other views."
+    },
+    {
+      "file": "skill-orb/000.png",
+      "sha256": "9abc766394866111b1a107884da9a0358be0bcdc7b023a31125f93016a6e647b",
+      "prompt": "Exactly ONE Naruto Shippuden pixel-art skill animation frame, full body three-quarter facing screen right, matching reference hair, face, black/orange outfit and proportions. RASENGAN skill pose 0: strong compact forward palm thrust at chest height, small cyan spinning chakra orb in open right palm, other hand bracing wrist, bent knees and planted feet. This is the release/impact pose, anime snap and readable silhouette. Fit character and small orb compactly within same canvas with generous margins, both feet on reference baseline. Crisp hard pixel clusters, limited flat palette, designed to normalize to 32x32. Transparent background, no text, no grid, no floor shadow, no duplicate figures, no large aura."
+    },
+    {
+      "file": "skill-orb/001.png",
+      "sha256": "dc29f857ab68099c31daf9612c36a71232d1b12595f42768e169d87206a12547",
+      "prompt": "Exactly ONE Naruto Shippuden pixel-art skill animation frame matching reference three-quarter screen-right appearance. RASENGAN pose 1 FOLLOW-THROUGH/RECOVERY: knees bent and planted on reference baseline, torso settles back, empty right palm returning toward chest and left arm lowering after palm thrust. Small remaining cyan chakra wisps hugging the hand, no big effect. Same face, hair, black/orange outfit, scale, canvas and head height as reference. Compact full-body silhouette, crisp hard pixel clusters limited palette for 32x32, transparent background, no text/grid/shadow/other poses."
+    },
+    {
+      "file": "skill-slash/000.png",
+      "sha256": "ea82d0c5a973a06d65d2be1aa5f58506c5d9f1c766fdb68cb1818af2b4c7b86a",
+      "prompt": "Exactly ONE Naruto Shippuden full-body pixel-art skill frame matching reference character and scale, three-quarter facing SCREEN RIGHT. KUNAI SLASH pose 0 STRIKE: compact strong diagonal downward kunai cut, torso twisted toward right, right arm thrust diagonally forward with short dark triangular kunai blade, left hand tucked by ribs, wide planted ninja stance. A tiny pale slash streak close to blade only. Preserve reference blond hair blue eyes black/orange outfit and foot baseline. Crisp pixel clusters limited flat palette for 32x32, transparent canvas generous margins, no text/grid/floor shadow/other figures."
+    },
+    {
+      "file": "skill-slash/001.png",
+      "sha256": "5c961c03c8d6da9bb84bf5a3b054370f6cd04e66588e371dec7bf2b3187d5744",
+      "prompt": "Exactly ONE Naruto Shippuden full-body pixel-art skill frame matching reference three-quarter screen-right character, hair face black/orange outfit proportions. KUNAI SLASH pose 1 FOLLOW-THROUGH: right hand holding short dark kunai has swept across lower chest toward left hip, elbow bent, torso twisted back after diagonal cut, left hand raised guarding chest. Wide planted stance on reference baseline. Compact silhouette, distinct from open-palm chakra cast. No chakra orb, no big aura. Crisp pixel clusters limited flat palette for32x32, same canvas generous transparent margins, no text/grid/shadow/other figures."
+    },
+    {
+      "file": "skill-orbital/000.png",
+      "sha256": "8bc6b98f12cc0be51a62dfa8d5b62f7fadbdaf4c17aeeb052b146b9d3feda07f",
+      "prompt": "Exactly ONE full-body Naruto Shippuden pixel-art skill frame matching reference, three-quarter facing SCREEN RIGHT. SHURIKEN pose 0 RELEASE: sharp forward flick of right wrist at shoulder height, two fingers extended, small dark four-point shuriken just leaving fingertips, left arm pulled back at waist, torso upright and compact planted stance. Distinct from open-palm Rasengan and diagonal kunai swing. Same blond hair, blue eyes, black/orange outfit, leg wrap and scale; head and feet baseline consistent with reference. Crisp square pixels limited flat palette for32x32, transparent background generous margins, no text/grid/shadow/big effects/duplicate views."
+    },
+    {
+      "file": "skill-orbital/001.png",
+      "sha256": "089db133a6b5bd29ca83d82b29219c35eb66213c4494ebb4a01c3f725930c2f3",
+      "prompt": "Exactly ONE full-body Naruto Shippuden pixel-art skill frame matching reference three-quarter SCREEN RIGHT character. SHURIKEN pose 1 RECOVERY/CONTROL: right wrist retracts from throwing position, two fingers held upright near chin in a compact ninja hand sign, left arm held across waist; planted light staggered stance, upright torso. Tiny dark four-point star close to shoulder optional, NO kunai and NO blue chakra orb. Preserve exact blond hair, blue eyes, black/orange outfit, leg wrap, scale and common feet baseline. Crisp square pixel clusters limited palette for32x32, transparent canvas generous margins, no text/grid/shadow/other figures."
+    },
+    {
+      "file": "skill-mine/000.png",
+      "sha256": "86fdf12ce7f2cdb96a56f440ee2fce0db9aab424db7ad0562243a8f54ad5df7b",
+      "prompt": "Exactly ONE full-body Naruto Shippuden pixel-art skill frame matching reference character, three-quarter SCREEN RIGHT. EXPLOSIVE PAPER TAG / MINE skill pose 0 PLACEMENT: low crouch with bent knees, torso leaning down, right hand reaching toward ground holding a small cream rectangular paper talisman with red mark, left hand bracing bent knee. Both sandals planted on same ground baseline as reference. Head lower due to crouching, same head size and hair/face, black/orange outfit and leg wrap unchanged. Compact silhouette, tiny paper tag near fingers, NO orb/kunai/shuriken. Crisp square pixel clusters limited palette for32x32, transparent same canvas generous margins, no text/grid/floor shadow/extra figures."
+    },
+    {
+      "file": "skill-mine/001.png",
+      "sha256": "7f89929069ab7e5132115b30a2f2801c2d23cb9ad0a8d4adb74c45dcd7abcd6d",
+      "prompt": "Exactly ONE full-body Naruto Shippuden pixel-art skill frame matching reference three-quarter SCREEN RIGHT character. EXPLOSIVE PAPER TAG / MINE pose 1 RECOVERY: rising from a crouch after placing a paper tag, knees still half bent, right hand lifted back from ground toward thigh with open empty fingers, left hand guarding waist, torso straightening, compact ready stance. A tiny cream paper talisman with red mark remains near feet at same ground baseline. Same head size, face, blond hair, black/orange clothes and leg wrap as reference, same canvas and planted foot positions. NO orb/kunai/shuriken/big effects. Crisp pixel clusters limited flat palette for32x32, transparent background generous margins, no text/grid/floor shadow/other views."
     }
   ]
 }

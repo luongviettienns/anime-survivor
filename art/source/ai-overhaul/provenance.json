@@ -1,0 +1,437 @@
+{
+  "tool": "ImageGen",
+  "model": "not exposed",
+  "human_review": "pending",
+  "sources": [
+    {
+      "file": "rasengan/spin/001.png",
+      "prompt": "Edit this supplied Rasengan into exactly ONE next animation frame, frame1 of a looping flight spin. Match its deep cobalt BLUE sphere, luminous WHITE CYAN swirling core, bright cyan outer aura and four broad spiral wind ribbons. Change the internal spiral phase by roughly one quarter turn and shift rim energy streaks clockwise, keep exact sphere size and center. Sharpen into cohesive pixel clusters with hard stepped edges and 3-4 shades for core and aura; reduce tiny floating dot noise, no blur/AA, but preserve bright blue/white visual identity. Transparent background, generous margin, single VFX only, no text/grid. Full resolution, do not make a spritesheet.",
+      "sha256": "416fef4806888f592cf01ff6867521439568691cda07d25d7d57793048945bcc"
+    },
+    {
+      "file": "rasengan/charge/000.png",
+      "prompt": "Exactly ONE Rasengan CHARGE animation frame based on supplied reference: a COMPACT deep cobalt blue chakra ball with white-cyan spiral forming at center, four curved white wind ribbons winding INWARD, small cyan outer ring, visual diameter about 55 percent of canvas width. Same visual design/color as reference but early gathering phase, not a static light dot. Keep centered, transparent generous margins, no hand/character/text/grid. Hard pixel clusters, blue/cyan/white coherent shades, no floating noise, no blur or soft gradients. High resolution image, one frame only, not a spritesheet.",
+      "sha256": "f60b70836db17b5e7dacc6080f1581bb2be249c88c66549cecfc13df00e2d15c"
+    },
+    {
+      "file": "rasengan/hit/000.png",
+      "prompt": "Exactly ONE pixel-art RASENGAN IMPACT VFX frame based on supplied blue spiral orb. Sphere has struck: intense WHITE CYAN central spiral compresses into four-point flash, COBALT BLUE shell splits outward into four curved crescent wind blades, expanding CYAN circular shock ring. Keep compact centered radial silhouette occupying75percent canvas with clear transparent margin. Blue/white/cyan same style as reference, crisp stepped pixel clusters, no blur, no text/grid/character/ground. Only one frame0 impact burst, not spritesheet; full resolution. No orange fire; this is swirling chakra pressure.",
+      "sha256": "7ca2598e39304c7c300c7bdee0ac8afbc67b0f7ead0b1ab73345a15092597e5d"
+    },
+    {
+      "file": "rasengan/hit/001.png",
+      "prompt": "Exactly ONE late RASENGAN IMPACT animation frame based on supplied blue white spiral sphere. Dissipation stage after hit: center now mostly TRANSPARENT, four separated curved cobalt/cyan wind crescents spiraling outward around a thin broken cyan shock ring, white highlights on crescent tips, a few connected angular energy fragments. No solid ball remaining. Keep centered with generous transparent margins, full effect inside canvas. Same vivid cobalt-blue white-cyan identity; crisp pixel clusters not soft glow/no blur. No text/grid/character/ground, single frame only not spritesheet.",
+      "sha256": "3f7a0871702a6a578fc4b4d93ab6daef05e551b46762c6bb82f0fba9d4b7af3c"
+    },
+    {
+      "file": "shuriken/spin/001.png",
+      "prompt": "Exactly ONE next animation frame of supplied metallic four-blade ninja shuriken. Same centered position and size, now blades form a PLUS instead of diagonal X as it spins. Add compact circular SILVER WHITE crescent motion streaks behind blades, hard pixel clusters to imply smooth motion without blur. Keep four broad graphite metal blades with silver edge highlights and tiny orange rim accent, transparent center hole. Only4 shades for metal, warm cream highlights cold navy shadows, bold outline. Single isolated weapon, generous transparent margins, no text/grid/character/ground. Crisp pixel art designed for24x24 export.",
+      "sha256": "48f9d935befb4966cbb0df07eb36b80c3e52fd7a424e8f3ef96615730452b228"
+    },
+    {
+      "file": "mine/pulse/001.png",
+      "prompt": "Exactly ONE next pixel-art animation frame of supplied explosive paper tag. Preserve identical rectangle silhouette, centered placement, paper cream/white, dark purple/navy outline and folded corner. Pulse frame1: bold central RED seal and surrounding red abstract blocks now glow hot coral/orange-red with warm cream highlights, small top ember flares wider by one pixel cluster. Remain a paper tag, not explosion. 3-4 shades/material, warm highlights cool violet shadows, cohesive large clusters, no lonely pixels, no blur/AA. Transparent background, generous margins, one object, no text/grid/character/ground. Designed to remain very readable at16x16.",
+      "sha256": "deb179846b5c290c181eb03cb8f5855ef66bc084b772b76903cc071fadd27ec6"
+    },
+    {
+      "file": "slash_x/cut/000.png",
+      "prompt": "Create exactly ONE pixel-art VFX animation frame: DOUBLE ASSASSIN SLASH impact, two thick crossed curved slashes forming an X, warm-white razor cores, cyan edge on one slash and pale-gold edge on other, dark indigo outer rim. At intersection a brilliant FOUR-POINT STAR flash. Small connected ember/ash streak CLUSTERS fly backward opposite each slash, no isolated single pixels. Compact dramatic anime sword energy, no character/weapon/text/grid. Transparent background with generous margins, full VFX centered, designed for56x56 pixels; only3-4 shades per energy material, hue shift warm cream lights cold violet shadows, crisp square pixel steps, no blur/gradients/antialiasing. Single frame0 impact only, not spritesheet.",
+      "sha256": "03f140562e216bfc036b1499bd2b839c7a76eefe5448b9b1690d7a9d7d8db76b"
+    },
+    {
+      "file": "rasengan/spin/000.png",
+      "origin": "art/source/weapons/rasengan-reference-v2.png",
+      "sha256": "3ae72930d53e7cea0a85aab3f4a34d6aaac46e7213fa2dec910bbdf43c2b0b9f"
+    },
+    {
+      "file": "rasengan/charge/001.png",
+      "origin": "art/source/weapons/rasengan-reference-v2.png",
+      "sha256": "3ae72930d53e7cea0a85aab3f4a34d6aaac46e7213fa2dec910bbdf43c2b0b9f"
+    },
+    {
+      "file": "shuriken/spin/000.png",
+      "origin": "art/source/weapons/shuriken.png",
+      "sha256": "5caee8e69a90ab5458a58a6fd09fc57065fe81a77e58f7ef969116ff5dc3e4be"
+    },
+    {
+      "file": "mine/pulse/000.png",
+      "origin": "art/source/weapons/mine.png",
+      "sha256": "8c6e4338c11c68f27294ecded707fb4225805f69ba2518506ccfad4b11639de5"
+    },
+    {
+      "file": "kunai/cut/000.png",
+      "origin": "art/source/weapons/kunai.png",
+      "sha256": "ac4091880cfd849a8cbd52e1a5d28bbb06ad68f58c3ca6440837ce54b14c2053"
+    },
+    {
+      "file": "kunai/cut/001.png",
+      "prompt": "Exactly ONE isolated pixel-art KUNAI slash weapon frame based on supplied horizontal kunai. Same graphite triangular blade, silver bevel, black wrapped handle with orange band and transparent pommel hole. Pose1: kunai points diagonally DOWN-RIGHT about30degrees, short pale cream crescent speed streak behind blade, single weapon. Crisp large pixel clusters, 3-4 metal shades warm highlights cold navy shadows, no blur/antialiasing. Center whole weapon inside square canvas with generous transparent margins; no hands/character/text/grid/background. This is one animation frame, not sheet.",
+      "sha256": "ddb9bcf8c09da689281817a3285137efbe80231e3db2bd09a393a0f254b25a7e"
+    },
+    {
+      "file": "grass.png",
+      "prompt": "Create exactly ONE seamless pixel-art ground TEXTURE for a top-down 2D anime survival game: quiet sunlit grassy meadow, muted moss/olive green main field, small coherent clumps of grass with warm yellow-green tips and cool teal shadow edges, very sparse tiny cream flowers in connected clusters. Flat orthographic top-down no perspective no objects no tree no paths no text. Texture must tile perfectly on all4 edges, no border, evenly distributed details, low contrast so bright blue skill VFX and dark outlined characters stand out. Strict crisp square clusters, no lonely random dot noise, no dithering, no gradients/AA. Only4 grass colors plus cream flower accent. Opaque square image, logical128x128 pixel tile enlarged nearest-neighbor.",
+      "sha256": "3b85c6629266d6d53737ca83eeda15e00e875c9d7b555a1d603f966dacab0fc3"
+    },
+    {
+      "file": "explosion/boom/000.png",
+      "prompt": "Create one abstract fantasy-game VFX sprite: a warm-white four-point magical star flash at center, thin pale-gold circular light ring, tiny orange decorative flame-shaped arcs on rim. This is a harmless standalone stylized visual effect, with no people, creatures, weapons, damage, objects or scene. Small effect occupying center45percent of transparent canvas with generous margin. Crisp low-resolution pixel-art clusters, no blur/antialiasing, only four warm-light colors with cool purple outline. Single animation frame, no text/grid/multiple frames. Designed56x56 logical pixels.",
+      "sha256": "b305f59bbd672c7b098fa1ea333007a9aebe8ff61cd3de8cb82fb500cef17514"
+    },
+    {
+      "file": "explosion/boom/001.png",
+      "prompt": "Create exactly ONE standalone abstract game VFX animation frame: a circular ORANGE magical fire bloom, broad curving flame petals form an expanding ring around a warm cream central opening, a few deep purple smoke lobes behind outer edge. Connected chunky pixel clusters only; four fire shades warm cream/yellow/orange/cold-purple shadows. Centered full effect occupies75percent canvas, transparent generous margin. No people, creatures, weapons, damage, objects or scene. Crisp pixel art designed56x56 logical pixels, no blur/AA, no text/grid/other frames. This is middle frame1 after a star-flash, before smoke dissipation.",
+      "sha256": "a885c772202eff6c6a64178930a713495f2da4b75d0dae8a7e9a172161b34680"
+    },
+    {
+      "file": "explosion/boom/002.png",
+      "prompt": "Create exactly ONE standalone abstract fantasy-game VFX animation frame: late dissipating charcoal smoke after a magical orange light bloom. Four to six separated rolling DARK NAVY/PURPLE smoke lobes arranged as expanding broken ring, warm gray highlights at top left, small connected orange ember streak clusters moving outward, center mostly transparent. Strong broad pixel clusters, no tiny single-pixel noise.3-4 smoke shades, cool shadows warm highlights. Effect fills80percent square canvas with generous transparent margins. No people/creatures/weapons/damage/objects/scene. Crisp pixel art56x56 logical pixels, no blur/AA, no text/grid/other frames. Single frame2 smoke stage.",
+      "sha256": "f2a5090be80331fa674d2bd186a50dfecfbd3401499ebb900c7289997ad53165"
+    },
+    {
+      "file": "slash_x/cut/001.png",
+      "prompt": "Exactly ONE pixel-art VFX animation frame1 FOLLOW-THROUGH of twin crossed anime energy slashes. Two THINNER broken crescent streaks still form an X, one cyan-white and one pale-gold-white, intersection now a small dim four-point star, dark-violet ash streak clusters drift backward along slash direction. Large center gaps and more transparency as energy fades. Crisp hard connected clusters, warm highlights cold indigo shadows, no tiny isolated pixels, no blur/AA, no text/grid/character/weapon/background. Centered square effect occupying85percent canvas with clean transparent margins. Designed56x56, single image not sheet.",
+      "sha256": "3413f4434dab506429335cb4f5127a291de9d42f5fa6d066ce03b4f7e33e2785"
+    },
+    {
+      "file": "hero_actions/slash/000.png",
+      "prompt": "Edit reference into exactly ONE full-body Naruto Shippuden pixel-art animation frame doing an EMPTY-HANDED martial-arts straight punch toward SCREEN RIGHT. Pose0 extension: right fist firmly closed and thrust forward at chest height, left fist tucked at ribs, torso rotated, knees flexed in a grounded athletic stance, both feet planted. ABSOLUTELY NO sword, kunai, shuriken, staff, blade, or held object. Same blond hair, blue eyes, orange/black outfit, headband, face, proportions and pixel style as reference. Full body centered with clean transparent margins; one figure only, no opponent, no text/grid/background. Crisp connected pixel clusters, warm highlights cool navy shadows, no blur.",
+      "sha256": "b336ed9d96d31d795a3d01e518a6dcb2d72cbed3e843e5c6a4306379d70496e6"
+    },
+    {
+      "file": "hero_actions/slash/001.png",
+      "prompt": "Edit reference into exactly ONE full-body Naruto Shippuden pixel-art animation frame doing EMPTY-HANDED martial-arts punch RECOVERY. Three-quarter facing SCREEN RIGHT, right fist retracting to cheek in guard, left fist raised in front of chest, torso settling after straight punch, grounded knees bent and both feet planted. ABSOLUTELY NO sword/kunai/shuriken/staff/blade/held object. Same blond hair, blue eyes, orange-black outfit, headband and proportions as supplied reference. Full body centered with transparent generous margins, no opponent/background/text/grid. Crisp cohesive pixel clusters, warm highlights cool navy shadows, no blur. Pose1 of2, one figure only.",
+      "sha256": "e8cd05aae56f81a4fcba4531af16cc5c4bac244d22edd1c630a3469c2b5f3193"
+    },
+    {
+      "file": "hero_actions/orb/000.png",
+      "origin": "art\\source\\naruto-ai\\skill-orb\\000.png",
+      "sha256": "9abc766394866111b1a107884da9a0358be0bcdc7b023a31125f93016a6e647b"
+    },
+    {
+      "file": "hero_actions/orb/001.png",
+      "origin": "art\\source\\naruto-ai\\skill-orb\\001.png",
+      "sha256": "dc29f857ab68099c31daf9612c36a71232d1b12595f42768e169d87206a12547"
+    },
+    {
+      "file": "hero_actions/orbital/000.png",
+      "origin": "art\\source\\naruto-ai\\skill-orbital\\000.png",
+      "sha256": "8bc6b98f12cc0be51a62dfa8d5b62f7fadbdaf4c17aeeb052b146b9d3feda07f"
+    },
+    {
+      "file": "hero_actions/orbital/001.png",
+      "origin": "art\\source\\naruto-ai\\skill-orbital\\001.png",
+      "sha256": "089db133a6b5bd29ca83d82b29219c35eb66213c4494ebb4a01c3f725930c2f3"
+    },
+    {
+      "file": "hero_actions/mine/000.png",
+      "origin": "art\\source\\naruto-ai\\skill-mine\\000.png",
+      "sha256": "86fdf12ce7f2cdb96a56f440ee2fce0db9aab424db7ad0562243a8f54ad5df7b"
+    },
+    {
+      "file": "hero_actions/mine/001.png",
+      "origin": "art\\source\\naruto-ai\\skill-mine\\001.png",
+      "sha256": "7f89929069ab7e5132115b30a2f2801c2d23cb9ad0a8d4adb74c45dcd7abcd6d"
+    },
+    {
+      "file": "tree/sway/000.png",
+      "prompt": "Create exactly ONE pixel-art environment sprite for top-down anime survival game: small lush MEADOW OAK TREE, round layered canopy of broad olive and sage-green leaf clusters, warm yellow-green highlights upper-left, cool deep-teal shadow underside, short dark-brown trunk with warm bark facets. Dark navy selective outer outline, no black interior stripes. Three-to-four shades per leaf/bark material, no random dot noise, no dense dithering, no orphan pixels. Compact 40x48 logical sprite silhouette, top-down three-quarter RPG view, whole tree centered with transparent generous margins, roots touch common bottom baseline. NO ground/background/shadow/text/grid/other objects, crisp hard pixel clusters not painted gradients.",
+      "sha256": "bfd8a8454bd4d93072f40b2cd768f2eea49349632dee08850ef72fe8b8c31971"
+    },
+    {
+      "file": "hud_panel.png",
+      "prompt": "Create exactly ONE blank pixel-art RPG HUD PANEL. Wide rectangular dark navy/teal interior, thick crisp stepped outer border in deep violet, layered GOLD beveled edge with warm cream upper-left highlight and cool purple lower-right shadow; four modest square corner studs, tiny orange accent not ornate. Center completely EMPTY flat dark color for game text. Symmetrical clean rectangle, front-facing, strong readable pixels,3-4 shades/material, no blur/AA/dither/noise. Whole panel centered on transparent background with a small clean margin, no words/numbers/icons/characters/grid/multiple panels. Designed64x32 logical pixels, only one reusable UI frame.",
+      "sha256": "537e34fec534faabb1d5d7671298c15211204985736675ce585dda72755623aa"
+    },
+    {
+      "file": "rasenshuriken/spin/000.png",
+      "prompt": "Create exactly ONE pixel-art RASENSHURIKEN wind-chakra game VFX flight frame. Use references only for visual design, do NOT reproduce the sheet or checkerboard. A compact DEEP COBALT BLUE Rasengan orb with WHITE CYAN spiral core, surrounded by FOUR long curved white/cyan WIND BLADES, sharp yet flowing pinwheel silhouette, two thin orbiting blue wind rings. Blue/white/cyan identity of approved orb preserved, now stronger evolved form. Full effect centered, blade tips fit generous transparent margins, no hand/character/text/grid/background, one object not sheet. Hard stepped pixel clusters, no blur or gradients, warm-white highlights cold blue shadows, readable56x56 logical sprite. Frame0 with diagonal pinwheel blades.",
+      "sha256": "c4d5a6642c68531a5c8568680cf73c1a4a669e7032ec9e27e515124e0e74c0dc"
+    },
+    {
+      "file": "rasenshuriken/spin/001.png",
+      "prompt": "EDIT this exact supplied FOUR-BLADED wind shuriken into ONE next animation frame. Preserve its FOUR VERY LONG external curved white-cyan blades and SMALL blue spiral sphere center, identical diameter/center/palette. Advance the external blades about30degrees clockwise, turn the internal spiral, shift thin orbit rings. MUST remain a four-blade pinwheel with large transparent gaps between blades, not a round orb or disk. Same crisp pixel art, transparent background and ample margins. No hand/character/text/grid. One individual frame1, not a spritesheet.",
+      "sha256": "16e6182226a9695ae2a88ea4b31c064dbb86794410153a122ed68d64ef2c9090"
+    },
+    {
+      "file": "wind_ground/burst/000.png",
+      "prompt": "Create exactly ONE standalone pixel-art GROUND WIND SHOCKWAVE frame0 for a top-down RPG. A LOW WIDE elliptical ring of WHITE/CYAN compressed wind skimming flat along the ground plane, deep-blue thin lower rim, small tan soil pebble clusters and green grass tufts kicked out at perimeter. Center transparent, NO upright sphere or character. Oval width about twice its height, centered, early compact ring occupying55percent canvas. Match reference blue wind identity but only the ground layer. Crisp hard pixel clusters, no blur/AA, warm cream highlights cold cobalt shadows, transparent generous margins, no text/grid/background or multiple frames.",
+      "sha256": "b4ae1b90bb68d7fea4752eea348f59efbc3d552d7b8655eb96ae2ad1d90c66a0"
+    },
+    {
+      "file": "wind_ground/burst/001.png",
+      "prompt": "Exactly ONE late animation frame of GROUND wind shockwave for top-down RPG, inspired by supplied reference but not reproducing sheet. Large low wide ELLIPTICAL broken ring skimming the ground, WHITE/CYAN wind bands fading into4 separated curved gust segments, deep cobalt lower rim, a few connected tan dirt and green grass clusters swept outward. Center transparent, width about twice height. Ring expanded to80percent canvas width, no vertical sphere/column/character, transparent background generous margins. Crisp pixel clusters, no blur/gradients/AA/noise. Single frame1 dissipation, no text/grid/other views.",
+      "sha256": "288f5d459c1333872c31d60e4546b74fc46a624dbe5265753c9064dd0b7fdbd7"
+    },
+    {
+      "file": "shuriken_max/spin/000.png",
+      "prompt": "Edit supplied Naruto-style metal shuriken into exactly ONE MAX-LEVEL skill animation frame. Preserve SAME four broad graphite metal blades, silver bevels, transparent center hole, overall size and centered silhouette. Add VIOLET and electric-blue chakra edge highlights, two bright white/cyan circular motion streaks close around blades, small warm GOLD glint at center rim. Evolved version should clearly be same weapon with stronger color/energy, not a new shape. Hard pixel-art clusters, no blur/gradients/AA, no character/text/grid/background. One full weapon on transparent background with clean margins, single frame for24x24 export.",
+      "sha256": "455fb284dc2bb709c486e936ad1575ef4baff66daf872293720e55cb9c3ce6fb"
+    },
+    {
+      "file": "mine_max/pulse/000.png",
+      "prompt": "Edit supplied red-seal explosive paper tag into exactly ONE MAX-LEVEL pulse frame. Preserve exact tall cream paper silhouette, folded corner, centered placement and same spiral seal line layout. Seal is now VIOLET with a hot GOLD-white inner edge, small CYAN chakra brackets around the paper close to perimeter, top ember GOLD/ORANGE. Clearly same paper tag with stronger color/energy. Only3-4 shades per material, warm highlights cold purple shadows, crisp pixel clusters no blur/AA/noise. Transparent generous margins, no text/grid/character/background, single object for16x16 logical export.",
+      "sha256": "203a2433765896da41ec9f130537dd5aecdc78b65d81609ae8d31887e0cb403f"
+    },
+    {
+      "file": "shuriken_max/spin/001.png",
+      "reuses_ai_frame": "shuriken/spin/001.png",
+      "sha256": "48f9d935befb4966cbb0df07eb36b80c3e52fd7a424e8f3ef96615730452b228"
+    },
+    {
+      "file": "mine_max/pulse/001.png",
+      "reuses_ai_frame": "mine/pulse/001.png",
+      "sha256": "deb179846b5c290c181eb03cb8f5855ef66bc084b772b76903cc071fadd27ec6"
+    },
+    {
+      "file": "rasenshuriken/hit/000.png",
+      "prompt": "Exactly ONE RASENSHURIKEN wind release VFX contact frame for a TOP-DOWN SLIGHTLY OBLIQUE 2D RPG battlefield. References guide blue wind identity, do not reproduce sheet. Small deep-blue spiral core bursts into a WHITE/CYAN radial pressure bloom seen from above at a slight angle; four broad curved wind blades peel outward along the ground plane. Short LOW elliptical wind rim below core, small tan pebble clusters displaced outward; no tall vertical column or front-facing wall. Transparent background generous margins, one isolated effect, no characters/text/grid/scene. Crisp pixel-art clusters, strong white-blue-cyan shapes, no blur. Designed56x56 logical, single impact frame0.",
+      "sha256": "6c1e99ded81cfd7546104b9f6af9924d1cf4ca775b38570ddc68850b683f48d7"
+    },
+    {
+      "file": "explosion_max/boom/001.png",
+      "prompt": "Create exactly ONE MAX-LEVEL paper-tag magical detonation VFX middle-frame for a top-down slightly oblique2D RPG. Broad low circular ring of ORANGE/GOLD flame petals expanding across ground, hotter WHITE GOLD core, thin CYAN pressure edge and dark VIOLET rolling smoke behind rim. Keep recognizable3-layer identity: white flash center, orange fire ring, purple-black smoke. No tall mushroom cloud, no side-view wall, no people/creatures/weapons/damage/scene. Cohesive hard pixel clusters, warm highlights cool shadows, no blur/gradients/AA, transparent generous margins, one centered effect designed56x56 logical pixels, no text/grid/multiple frames.",
+      "sha256": "ffc969881cb9cbb0c2164ba517d5d76722c4f1e6f70eb74dbba633a3a3ce13a3"
+    },
+    {
+      "file": "shrine_plaza/gleam/000.png",
+      "prompt": "Exactly ONE top-down pixel-art environment decal: a soft-edged irregular WORN MEADOW DIRT PATH PATCH, muted warm ochre earth and compact small beige stones embedded in center, sparse olive green grass blades encroaching at outer rim. Roughly square footprint with organically broken corners, TRANSPARENT OUTSIDE, no dark square frame or hard rectangular border, center mostly open low-contrast earth. View straight down matching top-down2D RPG grass field. 3-4 shades per dirt/grass material, warm highlights cool mauve/teal shadows, crisp connected pixel clusters no orphan noise/dither/AA/blur. Designed64x64 logical pixels, one centered decal with clean transparent margin, no buildings/text/grid/other objects.",
+      "sha256": "41f0e2fe293e2aafc8b4b078bbe9025b23c545ac082bd2d0c3156c920a773731"
+    },
+    {
+      "file": "rasenshuriken/hit/001.png",
+      "reuses_ai_frame": "wind_ground/burst/001.png",
+      "sha256": "288f5d459c1333872c31d60e4546b74fc46a624dbe5265753c9064dd0b7fdbd7"
+    },
+    {
+      "file": "explosion_max/boom/000.png",
+      "reuses_ai_frame": "explosion/boom/000.png",
+      "sha256": "b305f59bbd672c7b098fa1ea333007a9aebe8ff61cd3de8cb82fb500cef17514"
+    },
+    {
+      "file": "explosion_max/boom/002.png",
+      "reuses_ai_frame": "explosion/boom/002.png",
+      "sha256": "f2a5090be80331fa674d2bd186a50dfecfbd3401499ebb900c7289997ad53165"
+    },
+    {
+      "file": "enemy/walk/000.png",
+      "prompt": "Create exactly ONE ORIGINAL DARK ANIME VILLAIN monster pixel-art RPG sprite. Small enemy type: a vicious masked ONI RAIDER with hunched posture, jagged black/indigo armor, torn crimson scarf, bone-white demon half-mask, narrow glowing red eyes and menacing hooked fingers. No recognizable franchise character. Top-down SLIGHTLY OBLIQUE view matching a2D survival game, full body three-quarter facing down-right, walking contact pose0 with left boot ahead, right boot behind. Bold readable64x64 logical silhouette,3-4 shades per armor/cloth/bone material, warm ivory highlights and cold violet/navy shadows, selective dark outer outline. Large connected pixel clusters, no orphan noise/dither/blur/AA. Centered full body, grounded feet on common bottom baseline, transparent generous margins. NO attack/magic/VFX/background/text/grid/other figures.",
+      "sha256": "6b3fabc09c8f7480b7b6a0144a5df1f4c74d3aa8496dd5b2bf3a1fa2f08cd066"
+    },
+    {
+      "file": "enemy_shade/walk/000.png",
+      "prompt": "ONE individual pixel art game enemy frame: ORIGINAL evil shadow stalker, dark anime villain. Compact crouched lean humanoid with sinister ivory birdlike half mask, glowing magenta eyes, shredded deep purple ninja cloak, hood and short hooked claw fingers, bent legs moving down-right, full body. Camera top-down oblique three-quarter as in 2D survival game (see top of hood/shoulders), not portrait or side platformer. Menacing silhouette distinct from armored raider. Violet-black shadows, plum midtone, warm pale bone highlights, crimson accents; 3-4 shades/material, clean large stepped pixel clusters, crisp dark outline, no antialias/blur/dithering/orphan speckles. Readable when exported64x64. Feet bottom-center, transparent generous margins. No attacks, weapons, VFX, floor, text, grid, multiple figures, or sheet. Walk contact frame0.",
+      "sha256": "901a4b5a214ada2fe2dff2530db3bcc0debd5dc4fd5a7c4d36ce2c061a9286e7"
+    },
+    {
+      "file": "enemy_mage/walk/000.png",
+      "prompt": "Create ONE original dark anime villain pixel art enemy full-body WALK frame0, for top-down oblique 2D survival game, readable64x64 export. Evil occult mage: hunched broad hood shaped like a split horn, skeletal pale snarling lower face and green glowing eyes, layered black-teal robes with warm bone charms and muted crimson belt, clawed bare hands empty, ragged robe split reveals stepping boots. See top of hood and shoulders, facing down-right, feet baseline bottomcenter, full figure centered with generous transparent margins. Compact chunky silhouette, sinister not cute, three-four flat shades per material, deep navy purple outline/cold shadow, desaturated teal midtones, warm ivory highlights. Crisp staircase pixels, no AA/blur/soft gradients/noise. No staff, attack, spell, aura, floor, text, grid, or extra figure. Only one frame not sheet.",
+      "sha256": "c95c420c1a0bc3053fdf3a72b341526a0aba1646385074d18d855951439e5642"
+    },
+    {
+      "file": "enemy_elite/walk/000.png",
+      "prompt": "ONE original elite enemy full-body pixel art WALK contact frame0, dark anime villain for top-down oblique 2D survivor game. Elite ONI EXECUTIONER, massive stocky broad shoulders, bent powerful legs, two short curved ivory horns, vicious bone faceplate with amber eyes, layered obsidian indigo samurai-like plates with muted warm gold edge bands, crimson waist sash, heavy empty gauntlets with claws. No weapon. Menacing armored silhouette readable at96x96, elite distinguished by heavy gold-trimmed armor not spell aura. Facing down-right see top of helmet/shoulders, entire body/feet visible, ground baseline bottomcenter, generous transparent margin. 3-4 shades/material hue shifted creamgold highlights and cold violet shadows, hard chunky pixel clusters/dark silhouette outline. No blur/AA/dither/isolated noise, attack, VFX, floor, text, grid or sheet, only one character one frame.",
+      "sha256": "6025f00998bf3c93c05f3e25f2ba426409fabe8f82783e7a70adb7ed06b35457"
+    },
+    {
+      "file": "boss/walk/000.png",
+      "prompt": "ONE original dark anime BOSS fullbody pixel art walk contact frame, 128x128 game export, top-down oblique 3/4 view facing down-right see top of helmet and shoulders. CRIMSON ARCHON: colossal menacing armored samurai demon, wide black/crimson layered shoulder guards, gold crescent kabuto horns, narrow glowing red eyes behind iron oni mask, tattered deep red cape, huge plated boots. Two long nodachi sheathed at hips (never drawn), hands empty and lowered. Distinct regal heavy silhouette. 3-4 shades/material, warm gold ivory highlights, cold navy violet shadows, clean contiguous stepped pixel clusters, dark selective outline. Center full figure with generous transparent margin, no ground, NO aura baked in, no spell, attack or effects, no text/grid/multiple characters/sheet, no blur/AA/noise.",
+      "sha256": "a940f1e4e33602233de8af719192ce09ed92f237d0f00b7903ad3839cc3ccb6f"
+    },
+    {
+      "file": "aura_ring/pulse/000.png",
+      "prompt": "ONE individual reusable DARK AURA VFX animation frame0, separate ring layer for topdown slightly oblique 2D pixel game. A thin broken horizontal elliptical ground ring, ratio width:height 2.5:1, four broad curved segmented energy arcs around EMPTY transparent center. No runes, upward flames or particles. Ellipse centered at canvas coordinates50percent,75percent with transparent upperhalf. MONOCHROME neutral grayscale palette ONLY charcoal, slategray, silver, creamwhite (will be tinted purple for elite and red for bosses in engine); 3-4 flat shades. Crisp stepped chunky pixel clusters, no blur/AA/gradient/dither/noise. Complete effect generous transparent margin, no background/floor/text/grid/otherlayers/character. ONE frame NOT spritesheet. Keep exact coherent pixel-art style, designed native192x192 outer/accent or96x96ground.",
+      "sha256": "d2514ca26e477f6e84239b3ccdb9238c17349bb098bb80ecbad69b8a80523c98"
+    },
+    {
+      "file": "aura_outer/pulse/000.png",
+      "prompt": "ONE individual reusable DARK AURA VFX animation frame0, separate outer layer for topdown slightly oblique 2D pixel game. Rising wisps of dark energy around sides of an INVISIBLE monster: two broad jagged flame ribbons at left and right, lower horizontal ellipse suggested by short curls. Central sixtypercent of canvas mostly empty/transparent so character remains legible. Wisp tips curve inward. No monster, ring, ground shadow or dots. Foot anchor50percent,85percent. MONOCHROME neutral grayscale palette ONLY charcoal, slategray, silver, creamwhite (will be tinted purple for elite and red for bosses in engine); 3-4 flat shades. Crisp stepped chunky pixel clusters, no blur/AA/gradient/dither/noise. Complete effect generous transparent margin, no background/floor/text/grid/otherlayers/character. ONE frame NOT spritesheet. Keep exact coherent pixel-art style, designed native192x192 outer/accent or96x96ground.",
+      "sha256": "74fb3c5197647e7535a17dfaade19f9a9625d7c2242cdd7443e08b92969318ac"
+    },
+    {
+      "file": "aura_contact/pulse/000.png",
+      "prompt": "ONE individual reusable DARK AURA VFX animation frame0, separate contact layer for topdown slightly oblique 2D pixel game. A compact low horizontal elliptical contact-shadow patch with three concentric irregular pixel bands, darkest outerpurplegray and palegray core, small irregular transparent cuts. Ground-plane width:height 3:1. No ringoutline, upwardflames, particles or figure. Centered at50percent,75percent with transparent upperhalf. MONOCHROME neutral grayscale palette ONLY charcoal, slategray, silver, creamwhite (will be tinted purple for elite and red for bosses in engine); 3-4 flat shades. Crisp stepped chunky pixel clusters, no blur/AA/gradient/dither/noise. Complete effect generous transparent margin, no background/floor/text/grid/otherlayers/character. ONE frame NOT spritesheet. Keep exact coherent pixel-art style, designed native192x192 outer/accent or96x96ground.",
+      "sha256": "1aca9aa033d8dba24efc6405af8c54d6078183d3d1797acb40f13754cdd717ad"
+    },
+    {
+      "file": "aura_accent/pulse/000.png",
+      "prompt": "ONE individual reusable DARK AURA VFX animation frame0, separate accent layer for topdown slightly oblique 2D pixel game. Four short angular curved energy sparks arranged in a loose horizontal ellipse around an EMPTY transparent monster footprint. Each spark a cohesive connected 5-10pixel cluster, sparse and bold, no single orphanpixels. No ring, shadow or flamebody. Center ellipse50percent,75percent. MONOCHROME neutral grayscale palette ONLY charcoal, slategray, silver, creamwhite (will be tinted purple for elite and red for bosses in engine); 3-4 flat shades. Crisp stepped chunky pixel clusters, no blur/AA/gradient/dither/noise. Complete effect generous transparent margin, no background/floor/text/grid/otherlayers/character. ONE frame NOT spritesheet. Keep exact coherent pixel-art style, designed native192x192 outer/accent or96x96ground.",
+      "sha256": "f36e3882132e6b89cf026095d96fda57e904e18a1f25162be412237678ef1440"
+    },
+    {
+      "file": "enemy/walk/001.png",
+      "prompt": "Edit exact reference raider into ONE walk-cycle PASSING/REBOUND animation frame: legs pass near each other under body, rear heel raised, body slightly rises, hands closer to neutral, cloth follows through. Keep exact identity, clothing, colors, same camera topdown oblique facing down-right, proportions/headsize and feet baseline. Entire figure transparent generous margin. Crisp pixel clusters flat3-4shades/material, no aura/attack/VFX/ground/text/grid/sheet/blur/AA. Exactly one frame.",
+      "sha256": "f51edd4fecbf4735d039f8d016dba57d7a2b0645539b2a0999a6b48f3e28eb22"
+    },
+    {
+      "file": "enemy/walk/002.png",
+      "prompt": "Edit reference into ONE next walk-cycle frame for the exact same evil masked oni raider, original dark anime enemy for top-down slightly oblique 2D survival game. Keep identical mask, red eyes, crimson scarf, dark indigo jagged armor, body proportions and view facing down-right. Change only locomotion: opposite foot forward, opposite arm forward, scarf slightly lags. Full body with feet visible and generous transparent margins, feet baseline and head height unchanged. Crisp hard pixel clusters 3-4 shades/material, warm bone highlights cold violet shadows, no blur, no isolated speckles, no weapon/attack/VFX/text/grid. Single frame not sheet.",
+      "sha256": "ca83ac56abf1febec8b394bee38104ef57c79011d069af54ba8abc51e732d2af"
+    },
+    {
+      "file": "enemy/walk/003.png",
+      "prompt": "Edit exact reference raider into ONE walk-cycle raised OPPOSITE PASSING rebound frame: right heel lifted, left leg passing under body, right arm swinging forward, cloth following through in opposite direction to reference. Preserve exact original identity, palette, equipment, body/head proportions, camera topdown oblique facing down-right, feet groundedbaseline, wholebody. Transparent generous margins. Hard pixel clusters 3-4shades/material, no blur/AA/noise, no aura/attack/VFX/text/grid/sheet. One frame only.",
+      "sha256": "1903034fae132e6b7ea9db5af2ef788fef88c35061c09819caf088b96e6a2e30"
+    },
+    {
+      "file": "enemy_shade/walk/001.png",
+      "prompt": "Edit exact reference shadow stalker into ONE walk-cycle PASSING/REBOUND animation frame: legs pass near each other under body, rear heel raised, body slightly rises, hands closer to neutral, cloth follows through. Keep exact identity, clothing, colors, same camera topdown oblique facing down-right, proportions/headsize and feet baseline. Entire figure transparent generous margin. Crisp pixel clusters flat3-4shades/material, no aura/attack/VFX/ground/text/grid/sheet/blur/AA. Exactly one frame.",
+      "sha256": "ac8048a8829eb7954556fca5a2762f93137bd5037f029dec2e1441c659c6c144"
+    },
+    {
+      "file": "enemy_shade/walk/002.png",
+      "prompt": "Edit exact reference shadow stalker into SINGLE next WALK animation frame1: opposite leg now plants forward, other arm counter-swings and torn cloak lifts slightly. Preserve identical ivory bird mask, magenta eyes, purple hood, crimson scarf, body size, head height and camera top-down oblique down-right. Full body and feet fully visible, same grounded baseline; generous transparent margins, hard pixel clusters, no gradients/blur/text/grid/weapon/attack/VFX. One individual frame, not spritesheet.",
+      "sha256": "d6139c1ccf468d68a4f895103e8cbe3c334f1d025db16f9a23221cb72d219486"
+    },
+    {
+      "file": "enemy_shade/walk/003.png",
+      "prompt": "Edit exact reference shadow stalker into ONE walk-cycle raised OPPOSITE PASSING rebound frame: right heel lifted, left leg passing under body, right arm swinging forward, cloth following through in opposite direction to reference. Preserve exact original identity, palette, equipment, body/head proportions, camera topdown oblique facing down-right, feet groundedbaseline, wholebody. Transparent generous margins. Hard pixel clusters 3-4shades/material, no blur/AA/noise, no aura/attack/VFX/text/grid/sheet. One frame only.",
+      "sha256": "14af70cf62f0bc199c6ec8a51468dea2e4b09aec24d2ff987be2e0a6aa8d6af3"
+    },
+    {
+      "file": "enemy_mage/walk/001.png",
+      "prompt": "Edit exact reference occult mage into ONE walk-cycle PASSING/REBOUND animation frame: legs pass near each other under body, rear heel raised, body slightly rises, hands closer to neutral, cloth follows through. Keep exact identity, clothing, colors, same camera topdown oblique facing down-right, proportions/headsize and feet baseline. Entire figure transparent generous margin. Crisp pixel clusters flat3-4shades/material, no aura/attack/VFX/ground/text/grid/sheet/blur/AA. Exactly one frame.",
+      "sha256": "cb18718d9d7e9e32541e13909b4614a61451e751c2d3ae1fffc6debe45b3efcd"
+    },
+    {
+      "file": "enemy_mage/walk/002.png",
+      "prompt": "Edit this EXACT occult mage reference into ONE second walk frame. Swap forward stepping boot, counter-swing both empty claw hands, robe hems and bone charms gently lag behind. Preserve horns/hood, skeletal sneer, green eyes, teal-black robe/crimson belt, proportions, head height, same top-down oblique down-right view and feet ground baseline. Full body centered generous transparent margin. Hard clean pixel clusters flat 3-4 shades/material, no blur/AA/noise, no staff, spell, attack, VFX, text/grid. Single frame only not sheet.",
+      "sha256": "fed13893b8ebed83e52faaafa8e1d3aad5c319f92bb1dfc5fc3dcc91ffe99883"
+    },
+    {
+      "file": "enemy_mage/walk/003.png",
+      "prompt": "Edit exact reference occult mage into ONE walk-cycle raised OPPOSITE PASSING rebound frame: right heel lifted, left leg passing under body, right arm swinging forward, cloth following through in opposite direction to reference. Preserve exact original identity, palette, equipment, body/head proportions, camera topdown oblique facing down-right, feet groundedbaseline, wholebody. Transparent generous margins. Hard pixel clusters 3-4shades/material, no blur/AA/noise, no aura/attack/VFX/text/grid/sheet. One frame only.",
+      "sha256": "a3e04efd4c4f668b0b8cc44f938b1803902bdcc650ebd18d09f68c39bf6eb141"
+    },
+    {
+      "file": "enemy_elite/walk/001.png",
+      "prompt": "Edit exact reference oni executioner into ONE walk-cycle PASSING/REBOUND animation frame: legs pass near each other under body, rear heel raised, body slightly rises, hands closer to neutral, cloth follows through. Keep exact identity, clothing, colors, same camera topdown oblique facing down-right, proportions/headsize and feet baseline. Entire figure transparent generous margin. Crisp pixel clusters flat3-4shades/material, no aura/attack/VFX/ground/text/grid/sheet/blur/AA. Exactly one frame.",
+      "sha256": "9ab06275be84ebcdf87efe441b2f82e177dc4482d2d626effef4c2cce666c6da"
+    },
+    {
+      "file": "enemy_elite/walk/002.png",
+      "prompt": "Edit exact reference elite oni executioner into ONE second locomotion walk frame. Opposite boot steps forward and planted, opposite heavy gauntlet swings, weight shifts subtly, crimson sash drifts. Preserve exact horned helmet, skull mask, amber eyes, gold-trimmed purple black layered armor, chunky proportions, top-down oblique view down-right, same scale/head height/feet ground baseline. Single fullbody figure with generous transparent margins, no clipping, crisp flat pixel clusters 3-4shades/material. No weapon/attack/spell/aura/blur/noise/text/grid or sheet.",
+      "sha256": "991e6114cf211b76f0d58cea997de795c837ba79ca74429570dc9eff99dbf789"
+    },
+    {
+      "file": "enemy_elite/walk/003.png",
+      "prompt": "Edit exact reference oni executioner into ONE walk-cycle raised OPPOSITE PASSING rebound frame: right heel lifted, left leg passing under body, right arm swinging forward, cloth following through in opposite direction to reference. Preserve exact original identity, palette, equipment, body/head proportions, camera topdown oblique facing down-right, feet groundedbaseline, wholebody. Transparent generous margins. Hard pixel clusters 3-4shades/material, no blur/AA/noise, no aura/attack/VFX/text/grid/sheet. One frame only.",
+      "sha256": "163640774c2449c5518c1cce5d1d258fd33ef5692383b1115b3e85318dff0e51"
+    },
+    {
+      "file": "boss/walk/001.png",
+      "prompt": "Edit exact reference Crimson Archon into ONE walk-cycle low COMPRESSION contact frame: knees bend, heavy weight settles, hands slightly back, shoulders drop subtly. Preserve exact original identity, palette, equipment, body/head proportions, camera topdown oblique facing down-right, feet groundedbaseline, wholebody. Transparent generous margins. Hard pixel clusters 3-4shades/material, no blur/AA/noise, no aura/attack/VFX/text/grid/sheet. One frame only.",
+      "sha256": "0ce392201aa7aa452f4cca51d0e10fab3adb7b61a2c0b8d480bb9aa3cdfc541a"
+    },
+    {
+      "file": "boss/walk/002.png",
+      "prompt": "Edit exact reference Crimson Archon boss into ONE next walking frame, heavy contact opposite foot forward. Preserve same red-black samurai plates, gold crescent horns, mask/red eyes, red cape and fullbody proportions. Both hands lowered, armor shoulder guards sway slightly, cape lags, different boot plants forward, same topdown oblique camera down-right and feetbaseline. One full figure with transparent generous margins, no aura, attacks, drawn weapons, ground, text/grid/sheet, no blur/AA. Hard pixel clusters.",
+      "sha256": "c3fda6d64a35cfa3817a0cd31cd28e5109012119a6f661e10796bab672f2de88"
+    },
+    {
+      "file": "boss/walk/003.png",
+      "prompt": "Edit exact reference Crimson Archon into ONE walk-cycle raised OPPOSITE PASSING rebound frame: right heel lifted, left leg passing under body, right arm swinging forward, cloth following through in opposite direction to reference. Preserve exact original identity, palette, equipment, body/head proportions, camera topdown oblique facing down-right, feet groundedbaseline, wholebody. Transparent generous margins. Hard pixel clusters 3-4shades/material, no blur/AA/noise, no aura/attack/VFX/text/grid/sheet. One frame only.",
+      "sha256": "75205089b5cb85ad6d92cc3419a7feefe88aba6dbfc80f833d12a29ecfa88146"
+    },
+    {
+      "file": "enemy_mage/cast/000.png",
+      "prompt": "Edit exact reference occult mage into ONE SKILL animation pose. Both claw hands raised near chest in a tense inward gathering gesture, elbows bent, robe hanging, feet planted. No orb or effect. Preserve exact identity outfit proportions palette and topdown oblique down-right view, same head height and common foot baseline, fullbody transparent generous margins. 3-4 flatshades/material crisp pixelclusters, no blur/AA, no aura bakedin, no text/grid/sheet. Only one frame.",
+      "sha256": "15c91e1535409ba51ba96880912a40506c9b5c87c67ffc09463299e1482befb8"
+    },
+    {
+      "file": "enemy_mage/cast/001.png",
+      "prompt": "Edit exact reference occult mage into ONE SKILL animation pose. Right claw hand extends forward aimed down-right, left hand retreats, upperbody leans into release, robe swings. No actual projectile or effect. Preserve exact identity outfit proportions palette and topdown oblique down-right view, same head height and common foot baseline, fullbody transparent generous margins. 3-4 flatshades/material crisp pixelclusters, no blur/AA, no aura bakedin, no text/grid/sheet. Only one frame.",
+      "sha256": "fb1192f1ce72e66383b426f5e1dc8fdb88ee54deffafe5382a890f4bd399963f"
+    },
+    {
+      "file": "boss/cast/000.png",
+      "prompt": "Edit exact reference Crimson Archon into ONE SKILL animation pose. Heavy armored stance planted, both huge gauntlets pulled inward near waist, shoulders compress, mask looking forward, cape gathers. No drawn blades or effect. Preserve exact identity outfit proportions palette and topdown oblique down-right view, same head height and common foot baseline, fullbody transparent generous margins. 3-4 flatshades/material crisp pixelclusters, no blur/AA, no aura bakedin, no text/grid/sheet. Only one frame.",
+      "sha256": "f97b1034c141c17ccc6b915c3f6934a12b607448fa89fdd3b70588acf21248bd"
+    },
+    {
+      "file": "boss/cast/001.png",
+      "prompt": "Edit reference ONE Crimson Archon skill release pose, preserve character and pose/style. CRITICAL reframe full character 75 percent canvas width/height so ALL outstretched fingertips, horn tips, entire red cape with its furthest torn ends, boots remain fully visible with at least10percent transparent margin on ALL four sides. Extend any cropped cape naturally. Same topdown oblique down-right angle, crisp pixel clusters, no aura/projectiles/text/grid. One individual frame only, transparent background.",
+      "sha256": "fb7107728ec8c8b92fba06c992976dd4ec9abfa33b190fe9bb5107f2bbc26d4b"
+    },
+    {
+      "file": "aura_ring/pulse/001.png",
+      "prompt": "Edit exact reference ring aura layer into ONE next subtle looping phase. Preserve grayscale palette, same overall silhouette bounds, center and topdown-oblique ground perspective. Shift highlights clockwise along connected shapes, segments pulse subtly with redistributed brightness. Transparent center and margin unchanged. Only this isolated layer, no character/text/grid/otherlayers. Sharp chunky pixel clusters flat4grays, no AA/blur/orphan speckles. One frame only.",
+      "sha256": "cd72f690e22b2dff5763709484c78ea5f55ea13c30ebda793863b0eef06ab20f"
+    },
+    {
+      "file": "aura_outer/pulse/001.png",
+      "prompt": "Edit exact reference outer aura layer into ONE next subtle looping phase. Preserve grayscale palette, same overall silhouette bounds, center and topdown-oblique ground perspective. Shift highlights clockwise along connected shapes, flame tips bend slightly opposite direction. Transparent center and margin unchanged. Only this isolated layer, no character/text/grid/otherlayers. Sharp chunky pixel clusters flat4grays, no AA/blur/orphan speckles. One frame only.",
+      "sha256": "4a2a59978756ad7d106bcb6b7481910b45e988a4367e7b44add82bf641974c60"
+    },
+    {
+      "file": "aura_contact/pulse/001.png",
+      "prompt": "Edit exact reference contact aura layer into ONE next subtle looping phase. Preserve grayscale palette, same overall silhouette bounds, center and topdown-oblique ground perspective. Shift highlights clockwise along connected shapes, segments pulse subtly with redistributed brightness. Transparent center and margin unchanged. Only this isolated layer, no character/text/grid/otherlayers. Sharp chunky pixel clusters flat4grays, no AA/blur/orphan speckles. One frame only.",
+      "sha256": "b2440a6bf6e1238169f5b207035a57c56957101cdbd93c26ad3999de07975ed2"
+    },
+    {
+      "file": "aura_accent/pulse/001.png",
+      "prompt": "Edit exact reference accent aura layer into ONE next subtle looping phase. Preserve grayscale palette, same overall silhouette bounds, center and topdown-oblique ground perspective. Shift highlights clockwise along connected shapes, segments pulse subtly with redistributed brightness. Transparent center and margin unchanged. Only this isolated layer, no character/text/grid/otherlayers. Sharp chunky pixel clusters flat4grays, no AA/blur/orphan speckles. One frame only.",
+      "sha256": "774e88480a30ca9dacccde64d2c9f0703e00b6b4c779495f67362024d4300b03"
+    },
+    {
+      "file": "punch/hit/000.png",
+      "prompt": "Create exactly ONE pixel-art EMPTY-HAND martial arts SLAP / PALM SWEEP force VFX frame0 for a top-down slightly oblique2D anime RPG. ONE SINGLE broad curved crescent of WHITE/CREAM compressed AIR sweeping from left to screen-right on the battlefield plane, subtle pale cyan inner rim, short compact wind streaks following curve, warm white edge and cool navy shadow edge. This is a normal SINGLE SLASH-SHAPED AIR PRESSURE arc produced by a hand; NO actual hand/fist, NO weapon/sword/kunai, NO X, NO double arc, NO fire/rocket/flying fist. Full effect centered with generous transparent margins, bold connected crisp pixel clusters,3-4 shades/material, no glow blur/gradients/AA. Single frame for56x56 game export, no character/text/grid/background.",
+      "sha256": "ccbcad79d88be391b3a0d119d323536f4e48de133a34887600ff44b4a4b1417f"
+    },
+    {
+      "file": "punch/hit/001.png",
+      "prompt": "Edit reference SINGLE curved air-sweep into one next late dissipating frame. Preserve creamwhite/palecyan/navy palette and rightcurving crescent identity. Arc becomes thinner, split into three long connected curved ribbons tracing the same ONE sweep, empty innerarea, slightly expanded. No fist/hand/weapon/X/secondstrike/character. Hard pixel clusters, transparent generous margins, one frame no sheet.",
+      "sha256": "9ab02ca1c69b347b35d1bae49cb574832b377213f0b399fefd5acf7c7b8d7a23"
+    },
+    {
+      "file": "punch_max/hit/000.png",
+      "prompt": "Edit reference SINGLE curved air-sweep into MAX version, preserve identical ONE crescent silhouette, direction, scale, transparent margins. Change pale cyan inner edge to brilliant turquoise, warm cream outer edge to luminous gold, add two short connected gold speedribbons and a fourpoint small contact flash at leadingtip. Still ONE normal air slash, no fist/hand/weapon/X/secondstrike. Hard pixelclusters flat3-4shades/material, no blur/AA/noise, single frame not sheet.",
+      "sha256": "d6c112b2d7ed5baf84aa14d81eaeccb0b47178026e682e6b010f0ab6d176f1e0"
+    },
+    {
+      "file": "punch_max/hit/001.png",
+      "prompt": "Edit reference SINGLE curved air-sweep into one next late dissipating frame. Preserve creamwhite/palecyan/navy palette and rightcurving crescent identity. Arc becomes thinner, split into three long connected curved ribbons tracing the same ONE sweep, empty innerarea, slightly expanded. No fist/hand/weapon/X/secondstrike/character. Hard pixel clusters, transparent generous margins, one frame no sheet.",
+      "sha256": "9ab02ca1c69b347b35d1bae49cb574832b377213f0b399fefd5acf7c7b8d7a23"
+    },
+    {
+      "file": "enemy_bolt/pulse/000.png",
+      "prompt": "ONE evil dark-magic projectile VFX flight frame0. Compact jagged orb of deep violet-black energy with a swirling crimson core, two short hooked magenta streaks orbiting it. Round omnidirectional form, no directional trail so it can fly without rotation. Sinister readable highcontrast, 3-4flatshades perenergy material, dark purple outeroutline, red/magenta core highlights, no purewhite blue/gold. Centered generous transparentmargin, native56x56game export. Crisp hard edged pixel art, flat limited palette with cold purple shadows, no antialias blur/softglow/gradients/dither/orphan dots. Exactly one animation frame per PNG, no sheet/grid/background/floor.",
+      "sha256": "3aa47378a76ab7322730966d912f5ba8475d4d7af77747f6774b1bab012c1a2f"
+    },
+    {
+      "file": "boss_blood_slash/cut/000.png",
+      "prompt": "ONE BOSS BLOOD MOON SLASH VFX frame0. A SINGLE huge curved crescent slash sweeping horizontally across oblique ground plane, pointed upperleft tail and lowerleft tail meeting a thick crescent leadingedge on right, deep black-maroon trailing pressure bands, vibrant bloodred rim and tiny pale pink-red sharp core highlights. Evil dark anime style, resembles crimson crescent moon not a weapon, no sword/character/X/double slash. Cohesive pixel clusters, native96x96game export, wholeeffect generous transparentmargin. Crisp hard edged pixel art, flat limited palette with cold purple shadows, no antialias blur/softglow/gradients/dither/orphan dots. Exactly one animation frame per PNG, no sheet/grid/background/floor.",
+      "sha256": "174932f80c0da7ab26c42758c489f1d873b857bdfb8d6cde64763e248a29acff"
+    },
+    {
+      "file": "vfx_telegraph/charge/000.png",
+      "prompt": "ONE transient evil spell CHARGE TELEGRAPH VFX frame0. Low horizontal elliptical broken seal ring seen topdown oblique, ratio2.5:1, deep violet-black broad curved segments and crimson/magenta inner lines with four inward curved hooks. EMPTY transparent center for monster feet. No letters or runes/text, no upward flames, no character. Dark sinister colors, native96x64game export, full effect centered generous transparentmargin. Not a permanent aura. Crisp hard edged pixel art, flat limited palette with cold purple shadows, no antialias blur/softglow/gradients/dither/orphan dots. Exactly one animation frame per PNG, no sheet/grid/background/floor.",
+      "sha256": "d15bcda591468a7cf2864d6728fe27524e3c7e095d2d83f048683ec51a443ce7"
+    },
+    {
+      "file": "enemy_bolt/pulse/001.png",
+      "prompt": "Next looping dark projectile spin phase, internal crimson spiral rotates quarterturn, violet jagged shell shifts clockwise. Preserve same round shape size center and purpleblack crimson magenta palette. No directional trail or rotation of whole sprite. Exactly ONE frame, not sheet, complete centered effect with generous transparent margins. Crisp chunky pixel clusters, 3-4flatshades per material, no AA/blur/gradients/dither/orphan dots/text/grid/floor.",
+      "sha256": "5ed59519d8979f5e536066688a4986ca7215186a10f90de930768e24b503980f"
+    },
+    {
+      "file": "boss_blood_slash/cut/001.png",
+      "prompt": "One late dissipating BLOOD MOON SLASH frame: the SAME single red crescent becomes thinner, three long curved maroon-black pressure ribbons trailing its red cutting edge, pale pink highlights sparse. EMPTY transparent center. Remove ALL soft glow and fog: strictly hard pixel boundaries and flat red/maroon/plum shades. No X or second strike or weapon. Exactly ONE frame, not sheet, complete centered effect with generous transparent margins. Crisp chunky pixel clusters, 3-4flatshades per material, no AA/blur/gradients/dither/orphan dots/text/grid/floor.",
+      "sha256": "04e64a638cdfafec4a3b6d9ac0c19ea22de5ef84373e53684d0f7b3d33bec09b"
+    },
+    {
+      "file": "vfx_telegraph/charge/001.png",
+      "prompt": "Next dark spell telegraph pulse phase, same low horizontal elliptical seal ring centered, hooks and segmented marks shift subtly clockwise, crimson inneredge pulses brighter. Preserve exact2.5:1 ground-plane perspective, empty center, violetblack crimson magenta palette. No letters, vertical flames or figure. Exactly ONE frame, not sheet, complete centered effect with generous transparent margins. Crisp chunky pixel clusters, 3-4flatshades per material, no AA/blur/gradients/dither/orphan dots/text/grid/floor.",
+      "sha256": "ac5efadcb7c7e203668f5c84ceb822d09c48c67ae08b4b373f3d16e7918473c7"
+    },
+    {
+      "file": "vfx_death/poof/000.png",
+      "prompt": "ONE dark enemy DEFEAT spirit-smoke VFX animation frame0, for slightly oblique topdown pixel survival game. Compact swirling purpleblack smoke knot collapses inward around a tiny crimson diamond core, two broad jagged curls lift from a low ground ellipse. Sinister dark anime palette charcoal-violet outline, deep plum midtone, muted magenta highlights, tiny crimson accents. No white/cyan/gold/fire. Crisp hard pixel clusters, 3-4shades/material no blur/AA/softglow/gradients/dither/orphan speckles. Native56x56 export, centered complete effect generous TRANSPARENT margin, no body, blood, character, letters/text/grid/floor or spritesheet. Exactly one frame.",
+      "sha256": "218812565cffca86dbeb8bbf7a7282ae6008adadda2f7ba933de52b91f129aee"
+    },
+    {
+      "file": "vfx_death/poof/001.png",
+      "prompt": "ONE dark enemy DEFEAT spirit-smoke VFX animation frame1, for slightly oblique topdown pixel survival game. Late dissipation: center EMPTY transparent, four disconnected thick angular plum-violet smoke curls drift outward and upward; small low broken crescent ground wisp. Sinister dark anime palette charcoal-violet outline, deep plum midtone, muted magenta highlights, tiny crimson accents. No white/cyan/gold/fire. Crisp hard pixel clusters, 3-4shades/material no blur/AA/softglow/gradients/dither/orphan speckles. Native56x56 export, centered complete effect generous TRANSPARENT margin, no body, blood, character, letters/text/grid/floor or spritesheet. Exactly one frame.",
+      "sha256": "d114c4711db26ee0b34751cf560473266a288d8c9477f0e0fccb5aeb0462f686"
+    }
+  ]
+}

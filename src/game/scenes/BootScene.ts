@@ -26,6 +26,10 @@ export class BootScene extends Phaser.Scene {
   create(): void {
     this.anims.create({ key: 'hero-idle', frames: this.anims.generateFrameNumbers('hero', { start: 0, end: 3 }), frameRate: 5, repeat: -1 });
     this.anims.create({ key: 'hero-walk', frames: this.anims.generateFrameNumbers('hero', { start: 4, end: 7 }), frameRate: 10, repeat: -1 });
+    this.anims.create({ key: 'hero-walk-down', frames: this.anims.generateFrameNumbers('hero', { start: 8, end: 9 }), frameRate: 8, repeat: -1 });
+    this.anims.create({ key: 'hero-idle-up', frames: this.anims.generateFrameNumbers('hero', { start: 10, end: 10 }), frameRate: 5, repeat: -1 });
+    this.anims.create({ key: 'hero-walk-up', frames: this.anims.generateFrameNumbers('hero', { start: 11, end: 12 }), frameRate: 8, repeat: -1 });
+    this.anims.create({ key: 'hero-idle-side', frames: this.anims.generateFrameNumbers('hero', { start: 13, end: 13 }), frameRate: 5, repeat: -1 });
     this.anims.create({ key: 'enemy-walk', frames: this.anims.generateFrameNumbers('enemy', { start: 0, end: 3 }), frameRate: 6, repeat: -1 });
     this.anims.create({ key: 'enemy-shade-walk', frames: this.anims.generateFrameNumbers('enemy_shade', { start: 0, end: 3 }), frameRate: 9, repeat: -1 });
     this.anims.create({ key: 'enemy-mage-walk', frames: this.anims.generateFrameNumbers('enemy_mage', { start: 0, end: 3 }), frameRate: 5, repeat: -1 });

@@ -26,13 +26,9 @@ def pixel_canvas(size: tuple[int, int]) -> tuple[Image.Image, ImageDraw.ImageDra
     return image, ImageDraw.Draw(image)
 
 
-def draw_hero(frame: int, walking: bool) -> Image.Image:
-    return draw_ai_hero('walk' if walking else 'idle', frame)
-
-
 def draw_sprite_frame(sprite: str, animation: str, frame: int) -> Image.Image:
     if sprite == 'hero':
-        return draw_hero(frame, animation == 'walk')
+        return draw_ai_hero(animation, frame)
     if sprite == 'enemy':
         return draw_rogue_ninja_enemy(frame)
     if sprite == 'enemy_shade':

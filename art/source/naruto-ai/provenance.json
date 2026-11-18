@@ -35,6 +35,36 @@
       "file": "walk/003.png",
       "sha256": "c040140e04e3eea838959ee661de756cbb6c00896fa83f46830545508d0650fa",
       "prompt_summary": "Recovery passing running pose: same upper body, wrapped leg bent and lifted beneath body, unwrapped leg down with sandal contacting baseline; transparent pixel art."
+    },
+    {
+      "file": "walk-down/000.png",
+      "sha256": "a1eed7a40d669ef8e77c068797d0ff2021e82543123685151fa13d41f016251b",
+      "prompt": "Exactly ONE full-body Naruto Shippuden pixel-art sprite based on this reference, front view running DOWN toward the viewer in a top-down RPG. Keep reference blond hair, face, eyes, whisker marks, black/orange outfit, proportions and scale. Animation contact pose A: left foot toward viewer, right foot behind, arms swinging in opposition. Body straight front facing, both eyes visible, no side view, modest stride readable at 32x32. Same canvas, same centered head location and feet baseline. Crisp hard square pixel clusters, limited palette, transparent background, no text/grid/shadow/extra poses."
+    },
+    {
+      "file": "walk-down/001.png",
+      "sha256": "f90096b612b2880d17d1a4955c59f1e69d5cccde098e8b8e3f892823be4389a2",
+      "prompt": "Exactly ONE full-body Naruto Shippuden pixel-art sprite matching reference front-view proportions, same hair head face outfit and placement. Running DOWN toward viewer, contact pose B: opposite leg to pose A, unwrapped leg lifted with knee forward, wrapped leg straight down contacting baseline; arms swing in opposition (screen-left hand forward, screen-right arm behind). Body absolutely front facing with both eyes visible, no side angle. Same centered head location and canvas as reference. Transparent background, crisp hard pixel clusters, limited palette for 32x32 RPG sprite; no text/grid/shadow/extra poses."
+    },
+    {
+      "file": "idle-up/000.png",
+      "sha256": "0f14ff78fddde64426467b678eb64a6aaec9b85cbc134d1ed38db03f1f49a2c7",
+      "prompt": "Create exactly ONE full-body Naruto Shippuden pixel-art sprite, REAR VIEW facing UP away from viewer in top-down RPG. Match reference blond spiky hair silhouette, same proportions/canvas/scale, black and orange jacket, orange trousers, shinobi sandals. Back of head has tied black headband with two short tails, absolutely NO face or eyes. Small red Uzumaki swirl on jacket back. Standing neutral idle feet apart and arms relaxed. Centered full body, consistent foot baseline, generous margin. Crisp hard square pixel clusters, limited flat palette, transparent background. No text, no grid, no shadow, no other views."
+    },
+    {
+      "file": "walk-up/000.png",
+      "sha256": "6d35c82e4c3efdb41419334ee7bd044876241b375d23c26ab38d9375a86ff637",
+      "prompt": "Exactly ONE animation frame editing supplied REAR VIEW Naruto. Running UP away from viewer, absolutely back of head only, NO face/eyes/front zipper. Keep identical hair/back headband knot, torso black/orange jacket with red swirl, proportions and same canvas. Contact step A: screen-left leg lifted bent backward showing dark sole, screen-right leg extended down to ground baseline, arms swing opposite. Crisp pixel-art clusters limited palette, transparent background, full body, no text/grid/shadow/other views."
+    },
+    {
+      "file": "walk-up/001.png",
+      "sha256": "1e8451402ccbb8ee607131abfcbf4d83d0d1fb1f8fffe87feaafa26b97ad490c",
+      "prompt": "Exactly ONE animation frame editing supplied REAR VIEW Naruto. Running UP away from viewer, back of head only, NO face/eyes/front zipper. Keep identical hair/back headband knot, torso black/orange jacket with red swirl, proportions, centered head and canvas. Contact step B: screen-right leg lifted bent backward showing dark sole, screen-left wrapped leg extended down contacting ground baseline, screen-right arm raised forward and screen-left arm behind. Opposite running step. Crisp pixel clusters limited palette, transparent background, full body, no text/grid/shadow/other views."
+    },
+    {
+      "file": "idle-side/000.png",
+      "sha256": "16efa63cb29b8d96a4f230b53b6f31a644ad49e4110446649ab76ea6221c033f",
+      "prompt": "Create exactly ONE full-body Naruto Shippuden pixel-art standing IDLE sprite facing SCREEN RIGHT in three-quarter side view. Match supplied Naruto reference exactly in outfit, blond hair silhouette, blue eyes, face, proportions and canvas scale. Standing upright with both sandals on common baseline, arms relaxed down by sides, no running lean or lifted knee. Black/orange jacket, orange trousers with same leg bandage. Full body centered with generous transparent margins. Crisp square pixel clusters limited palette for 32x32 RPG. Transparent background, no text/grid/shadow/other views."
     }
   ]
 }

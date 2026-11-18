@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import type Phaser from 'phaser';
 
-test('Naruto idles, runs, faces left/right, and returns to idle with real keys', async ({ page }) => {
+test('Naruto animates all four directions and remembers facing with real keys', async ({ page }) => {
   const errors: string[] = [];
   page.on('pageerror', (error) => errors.push(error.message));
   page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
@@ -30,11 +30,38 @@ test('Naruto idles, runs, faces left/right, and returns to idle with real keys',
   expect(seen.size).toBeGreaterThanOrEqual(3);
   await page.screenshot({ path: 'test-results/naruto-running.png' });
   await page.keyboard.up('d');
-  await expect.poll(async () => (await state()).animation).toBe('hero-idle');
+  await expect.poll(async () => (await state()).animation).toBe('hero-idle-side');
   await page.keyboard.down('ArrowLeft');
   await expect.poll(async () => (await state()).flipX).toBe(true);
   await page.keyboard.up('ArrowLeft');
-  await expect.poll(async () => (await state()).animation).toBe('hero-idle');
+  await expect.poll(async () => (await state()).animation).toBe('hero-idle-side');
+  expect((await state()).flipX).toBe(true);
   await page.screenshot({ path: 'test-results/naruto-idle.png' });
+
+  for (const [key, direction, frames, idle] of [
+    ['w', 'up', [11, 12], 'hero-idle-up'],
+    ['ArrowDown', 'down', [8, 9], 'hero-idle'],
+  ] as const) {
+    await page.keyboard.down(key);
+    await expect.poll(async () => (await state()).animation).toBe(`hero-walk-${direction}`);
+    expect(await state()).toMatchObject({ flipX: false, frames: [...frames] });
+    const verticalFrames = new Set<number>();
+    for (let i = 0; i < 8; i++) {
+      verticalFrames.add((await state()).frame);
+      await page.waitForTimeout(50);
+    }
+    expect(verticalFrames.size).toBe(2);
+    await page.screenshot({ path: `test-results/naruto-${direction}.png` });
+    await page.keyboard.up(key);
+    await expect.poll(async () => (await state()).animation).toBe(idle);
+    expect((await state()).flipX).toBe(false);
+  }
+  await page.keyboard.down('w');
+  await page.keyboard.down('d');
+  await expect.poll(async () => (await state()).animation).toBe('hero-walk');
+  await page.keyboard.up('d');
+  await expect.poll(async () => (await state()).animation).toBe('hero-walk-up');
+  await page.keyboard.up('w');
+  await expect.poll(async () => (await state()).animation).toBe('hero-idle-up');
   expect(errors).toEqual([]);
 });

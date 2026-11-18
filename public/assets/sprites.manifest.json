@@ -1,11 +1,11 @@
 {
-  "contract_version": 1,
+  "contract_version": 5,
   "sprites": {
     "hero": {
       "file": "hero.png",
       "frame_width": 32,
       "frame_height": 32,
-      "columns": 8,
+      "columns": 14,
       "rows": 1,
       "frames": [
         {
@@ -149,6 +149,114 @@
             6,
             2,
             26,
+            30
+          ]
+        },
+        {
+          "animation": "walk-down",
+          "index": 0,
+          "sheet_index": 8,
+          "rect": [
+            256,
+            0,
+            32,
+            32
+          ],
+          "sha256": "c5be1367230beb34a5831868aab6ce72d8e7016491935ae16d666eea22e5a12f",
+          "alpha_bbox": [
+            9,
+            2,
+            21,
+            30
+          ]
+        },
+        {
+          "animation": "walk-down",
+          "index": 1,
+          "sheet_index": 9,
+          "rect": [
+            288,
+            0,
+            32,
+            32
+          ],
+          "sha256": "238c3b7bbc846512366a210980022971cf82751caf3df99f8853d8000fa4c49b",
+          "alpha_bbox": [
+            10,
+            2,
+            22,
+            30
+          ]
+        },
+        {
+          "animation": "idle-up",
+          "index": 0,
+          "sheet_index": 10,
+          "rect": [
+            320,
+            0,
+            32,
+            32
+          ],
+          "sha256": "a1367e0aa75a23ab87c421a3c074a270db43327f3fb8870d9b87b27bd7f39e5c",
+          "alpha_bbox": [
+            10,
+            2,
+            22,
+            30
+          ]
+        },
+        {
+          "animation": "walk-up",
+          "index": 0,
+          "sheet_index": 11,
+          "rect": [
+            352,
+            0,
+            32,
+            32
+          ],
+          "sha256": "a573f9f78bfdf59c5f58a6b7c0139ea39fcd1f8db365862365a154a90d78e6c4",
+          "alpha_bbox": [
+            10,
+            2,
+            22,
+            30
+          ]
+        },
+        {
+          "animation": "walk-up",
+          "index": 1,
+          "sheet_index": 12,
+          "rect": [
+            384,
+            0,
+            32,
+            32
+          ],
+          "sha256": "8e4b24bd0fa50651bc9d20a20d0f172ee427f0cf47109b67883a5797430cd541",
+          "alpha_bbox": [
+            9,
+            2,
+            21,
+            30
+          ]
+        },
+        {
+          "animation": "idle-side",
+          "index": 0,
+          "sheet_index": 13,
+          "rect": [
+            416,
+            0,
+            32,
+            32
+          ],
+          "sha256": "a2fd86f43f0ffa7ade7ee2ccfb6c45cd641eab8139432f11e0d4df23accfbf56",
+          "alpha_bbox": [
+            11,
+            2,
+            21,
             30
           ]
         }

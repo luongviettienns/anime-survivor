@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 5,
   "pixel_art": {
     "native_pixel_scale": 1,
     "upscale_filter": "nearest-neighbor",
@@ -8,7 +8,7 @@
     "palette": ["#19213b", "#2c3159", "#4b467e", "#7867a6", "#ffd2b1", "#9d4bd9", "#6de0db", "#f6d27a", "#ffffff", "#ff729e"]
   },
   "sprites": {
-    "hero": {"frame_width":32,"frame_height":32,"animations":{"idle":4,"walk":4},"order":["idle","walk"],"columns":8,"rows":1},
+    "hero": {"frame_width":32,"frame_height":32,"animations":{"idle":4,"walk":4,"walk-down":2,"idle-up":1,"walk-up":2,"idle-side":1},"order":["idle","walk","walk-down","idle-up","walk-up","idle-side"],"columns":14,"rows":1},
     "enemy": {"frame_width":24,"frame_height":24,"animations":{"walk":4},"order":["walk"],"columns":4,"rows":1},
     "enemy_shade": {"frame_width":24,"frame_height":24,"animations":{"walk":4},"order":["walk"],"columns":4,"rows":1},
     "enemy_mage": {"frame_width":24,"frame_height":24,"animations":{"walk":4},"order":["walk"],"columns":4,"rows":1},

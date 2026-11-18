@@ -68,3 +68,15 @@ Do not tick items without actual evidence. Update this log during every Antigrav
 - PASS: 3 Python asset tests; sheet pack/validation (23 sheets); npm run verify (43 Vitest tests, typecheck/lint/arch/build); npm run test:e2e (6/6 Chromium scenarios, zero console/page errors).
 - Inspected running and idle screenshots under test-results/. Locked running upper body to eliminate AI head drift.
 - Not checked: human review, other browsers, deployment. Existing Vite bundle-size warning remains. No up/down-specific poses added.
+
+## Naruto four-direction animation (2026-11-18, in progress)
+- Behavior: dedicated up/down movement sprites, mirrored left/right running, remembered facing on stop; diagonal movement uses horizontal facing when both axes are held.
+- Files: hero AI source/importer, hero contract/frames/sheet/manifest, pure facing rule + unit tests, MovementSystem, BootScene, browser animation test, provenance/docs.
+- Acceptance: correct WASD/arrows facing and stop behavior, no lateral flip on vertical sprites; 32x32 shared palette/anchor, exact sheet crops, reproducible generator; npm run verify and browser gameplay/screenshots.
+
+### Four-direction verification result
+- Completed 14-frame 448x32 hero sheet: side run + mirrored left, dedicated 2-step up/down run, down breathing idle, up/side standing idle. Last facing retained on release; diagonal input prefers horizontal.
+- PASS: 45 Vitest tests (including facing), 3 Python asset tests; all 23 sheets pixel-identical; npm run verify production build; 6/6 Chromium scenarios with real keyboard, all-direction playback, release facing, diagonal transitions and no console/page errors.
+- Inspected up/down live screenshots and 4x hero contact sheet. All 14 installed frames reproduced from generator.
+- Default contact-sheet save failed with Windows OSError 22; hero-only export succeeded at output/naruto-preview/directions-contact-sheet.png.
+- Not checked: human review, other browsers, deployment. Up/side idle are single held poses; diagonals reuse side view. Existing Vite large-bundle warning remains.

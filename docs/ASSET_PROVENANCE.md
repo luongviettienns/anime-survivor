@@ -10,3 +10,6 @@ When replacing a procedural asset with AI-produced art: record the generator/too
 
 ## Naruto AI replacement — 2026-11-18
 Hero idle/walk now uses six separately generated ImageGen source PNGs, normalized deterministically to 32x32. This supersedes the old hero ledger row above. See [Naruto sprite integration](NARUTO_SPRITES.md) and `art/source/naruto-ai/provenance.json` for source hashes, prompt summaries, review status and character rights limits.
+
+### Four-direction extension
+Added six individual ImageGen sources for two down steps, two up steps, rear idle and side idle (twelve hero source files total). Full prompts and SHA-256 hashes for the six new sources are recorded in art/source/naruto-ai/provenance.json. Hero is now 14 packed frames, 32x32 each, with a shared 21-color palette.

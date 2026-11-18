@@ -1,8 +1,10 @@
 import Phaser from 'phaser';
+import { movementFacing, type Facing } from '../../domain/facing';
 import { movementVelocity } from '../../domain/vector';
 import { PLAYER } from '../config/constants';
 
 export class MovementSystem {
+  private facing: Facing = 'down';
   private readonly arrows: Phaser.Types.Input.Keyboard.CursorKeys;
   private readonly wasd: Record<'W' | 'A' | 'S' | 'D', Phaser.Input.Keyboard.Key>;
 
@@ -18,7 +20,7 @@ export class MovementSystem {
     if (!this.player.active) return;
     if (!enabled) {
       this.player.setVelocity(0, 0);
-      this.player.play('hero-idle', true);
+      this.animate(false);
       return;
     }
     const inputX =
@@ -30,9 +32,16 @@ export class MovementSystem {
     const velocity = movementVelocity({ x: inputX, y: inputY }, PLAYER.speed * speedMultiplier);
     this.player.setVelocity(velocity.x, velocity.y);
     const moving = velocity.x !== 0 || velocity.y !== 0;
-    this.player.play(moving ? 'hero-walk' : 'hero-idle', true);
-    if (inputX !== 0) {
-      this.player.setFlipX(inputX < 0);
-    }
+    this.facing = movementFacing({ x: inputX, y: inputY }, this.facing);
+    this.animate(moving);
+  }
+
+  private animate(moving: boolean): void {
+    const side = this.facing === 'left' || this.facing === 'right';
+    const animation = moving ? 'walk' : 'idle';
+    const suffix = side ? (moving ? '' : '-side') :
+      (this.facing === 'down' && !moving ? '' : `-${this.facing}`);
+    this.player.setFlipX(this.facing === 'left');
+    this.player.play(`hero-${animation}${suffix}`, true);
   }
 }

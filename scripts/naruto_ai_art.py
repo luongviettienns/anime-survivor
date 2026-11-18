@@ -2,8 +2,10 @@
 from functools import lru_cache
 from pathlib import Path
 from PIL import Image
+from pack_frames import CONTRACT
 
 SOURCE = Path(__file__).resolve().parents[1] / 'art/source/naruto-ai'
+SOURCE_COUNTS = {'idle': 2, 'walk': 4, 'walk-down': 2, 'idle-up': 1, 'walk-up': 2, 'idle-side': 1}
 COLORS = [
     (17, 19, 29), (34, 35, 46), (51, 51, 65), (77, 74, 85),
     (255, 213, 42), (255, 232, 91), (221, 151, 10),
@@ -11,12 +13,13 @@ COLORS = [
     (255, 201, 163), (236, 166, 122), (160, 101, 73),
     (245, 247, 250), (202, 205, 217), (137, 142, 160),
     (61, 151, 208), (20, 79, 123), (114, 70, 49), (92, 56, 38),
+    (223, 65, 77),
 ]
 
 
-@lru_cache(maxsize=2)
+@lru_cache(maxsize=6)
 def _poses(animation: str) -> tuple[Image.Image, ...]:
-    count = 2 if animation == 'idle' else 4
+    count = SOURCE_COUNTS[animation]
     images = []
     boxes = []
     for index in range(count):
@@ -52,16 +55,17 @@ def _poses(animation: str) -> tuple[Image.Image, ...]:
                 pixels.append((*color, 255))
         frame.putdata(pixels)
         frames.append(frame)
-    if animation == 'walk':
-        # Lock the reference head/torso to remove AI drift; only the stride changes.
-        upper_body = frames[0].crop((0, 0, 32, 21))
+    if animation.startswith('walk'):
+        # Keep the head stable; vertical strides retain their opposing arm swings.
+        upper_body = frames[0].crop((0, 0, 32, 21 if animation == 'walk' else 14))
         for frame in frames[1:]:
             frame.paste(upper_body, (0, 0))
     return tuple(frames)
 
 
 def draw_hero(animation: str, frame: int) -> Image.Image:
-    if animation not in ('idle', 'walk') or not 0 <= frame < 4:
+    count = CONTRACT['sprites']['hero']['animations'].get(animation, 0)
+    if not 0 <= frame < count:
         raise ValueError(f'Invalid hero frame: {animation}/{frame}')
     # Two breathing poses held across four slots; running uses four distinct poses.
     index = (0, 1, 1, 0)[frame] if animation == 'idle' else frame

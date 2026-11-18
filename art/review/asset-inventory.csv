@@ -1,0 +1,53 @@
+﻿name,kind,source,frame,sheet,count,target
+hero,sprite,32×32,32×32,704×32,22,Ẩn / controller vật lý
+enemy,sprite,"1199×1312, 1254×1254",2048×2048,4096×8192,8,64×64
+enemy_shade,sprite,"1261×1247, 1265×1244",2048×2048,4096×8192,8,64×64
+enemy_mage,sprite,"1199×1312, 1312×1199",2048×2048,4096×14336,14,64×64
+boss,sprite,1254×1254,2048×2048,4096×14336,14,128×128
+orb,sprite,1254×1254,2048×2048,4096×2048,2,56×56
+kunai,sprite,"1254×1254, 1774×887",2048×2048,4096×2048,2,56×56
+slash,sprite,48×48,48×48,288×48,6,48×48
+slash_x,sprite,1254×1254,2048×2048,4096×2048,2,56×56
+shuriken,sprite,1254×1254,2048×2048,4096×2048,2,56×56
+mine,sprite,1086×1448,2048×2048,4096×2048,2,56×56
+explosion,sprite,1254×1254,2048×2048,2048×6144,3,56×56
+enemy_bolt,sprite,1254×1254,2048×2048,4096×2048,2,56×56
+gem,sprite,16×16,16×16,64×16,4,16×16
+heal_pickup,sprite,16×16,16×16,64×16,4,16×16
+tree,sprite,1145×1374,2048×2048,2048×2048,1,40×48
+torii_gate,sprite,48×48,48×48,192×48,4,48×48
+shrine_plaza,sprite,1254×1254,2048×2048,2048×2048,1,64×64
+shrine_lantern,sprite,24×32,24×32,96×32,4,24×32
+spirit_flower,sprite,16×16,16×16,64×16,4,16×16
+vfx_hit,sprite,32×32,32×32,160×32,5,32×32
+vfx_death,sprite,"1254×1254, 1275×1233",2048×2048,4096×2048,2,56×56
+vfx_levelup,sprite,56×64,56×64,336×64,6,56×64
+vfx_telegraph,sprite,1983×793,2048×2048,4096×2048,2,96×64
+rasengan,sprite,1254×1254,1536×1536,4608×3072,6,canvas 96×96 khi bay
+punch,sprite,1254×1254,2048×2048,4096×2048,2,56×56
+hero_actions,sprite,1199×1312,1536×1536,6144×3072,8,cao 56 px
+rasenshuriken,sprite,"1254×1254, 1536×1024, 1774×887",2048×2048,4096×4096,4,56×56
+wind_ground,sprite,1774×887,2048×2048,4096×2048,2,96×64
+punch_max,sprite,1254×1254,2048×2048,4096×2048,2,56×56
+shuriken_max,sprite,1254×1254,2048×2048,4096×2048,2,56×56
+mine_max,sprite,1086×1448,2048×2048,4096×2048,2,56×56
+explosion_max,sprite,"1254×1254, 1312×1199",2048×2048,2048×6144,3,56×56
+enemy_elite,sprite,"1199×1312, 1254×1254",2048×2048,4096×8192,8,96×96
+aura_ring,sprite,1254×1254,2048×2048,4096×2048,2,96×56
+aura_outer,sprite,1254×1254,2048×2048,4096×2048,2,192×192
+aura_contact,sprite,1254×1254,2048×2048,4096×2048,2,96×56
+aura_accent,sprite,916×1717,2048×2048,4096×2048,2,128×96
+boss_blood_slash,sprite,1536×1024,2048×2048,4096×2048,2,96×96
+hero_locomotion,sprite,"1199×1312, 1312×1199",1536×1536,3072×10752,14,cao 56 px
+grass,image,1254×1254,1254×1254,—,1,Theo HUD / map
+hud_panel,image,1774×887,1774×887,—,1,Theo HUD / map
+icon/weapon_orb,image,1254×1254,1254×1254,—,1,Theo HUD / map
+icon/weapon_slash,image,1254×1254,1254×1254,—,1,Theo HUD / map
+icon/weapon_orbital,image,1254×1254,1254×1254,—,1,Theo HUD / map
+icon/weapon_mine,image,1086×1448,1086×1448,—,1,Theo HUD / map
+icon/stat_max_hp,image,16×16,16×16,—,1,Theo HUD / map
+icon/stat_move_speed,image,16×16,16×16,—,1,Theo HUD / map
+icon/stat_damage,image,16×16,16×16,—,1,Theo HUD / map
+icon/stat_cooldown,image,16×16,16×16,—,1,Theo HUD / map
+icon/stat_magnet,image,16×16,16×16,—,1,Theo HUD / map
+icon/stat_crit,image,16×16,16×16,—,1,Theo HUD / map

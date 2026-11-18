@@ -170,3 +170,7 @@ Do not tick items without actual evidence. Update this log during every Antigrav
 - Final `npm run verify` PASS:47 domain tests,10 Python tests,40 exact-crop sheets, typecheck/lint/architecture and production build. HD locomotion uses72MiB decoded RGBA versus126MiB padded-sheet upload; hardware overhead is additional.
 - Visually inspected actual Chromium output `output/hero-original-applied.png`, directional mage hand charge and boss release screenshots. No low-end/mobile/non-Chromium validation; existing bundle-size/Pillow deprecation warnings remain.
 - Final stable browser regression:17/17 PASS (single Chromium worker), including real directional keys, original-image actor scale, all skill gestures, synchronized enemy casts/physical travel and120-enemy combat. No deployment.
+
+## Asset dimension inventory (2026-11-18)
+- Added scripts/asset_inventory.py and art/review/asset-inventory.png + CSV:52 catalog entries (40 sprites,2 standalone images,10 icons), measured PNG dimensions, packed canvas, sheet size, frame counts and design display guides. Runtime effects may scale differently; Rasengan flight canvas96x96 is explicit.
+- Read every preview and source PNG;52-entry assertion passed; visually inspected generated sheet. Presentation-only output, no game asset pixels or gameplay changed; full verify/browser suite not rerun.

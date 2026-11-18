@@ -16,7 +16,7 @@ describe('Kirito exclusive skills, Lv.1..5 Phantom Dash, and Naruto ninja gating
     expect(kiritoIds).toContain('skill_phantom_dash');
     expect(kiritoIds).toContain('weapon_dual_slash');
     expect(kiritoIds).not.toContain('weapon_orb');
-    expect(kiritoIds).not.toContain('weapon_slash');
+    expect(kiritoIds).not.toContain('weapon_clone');
     expect(kiritoIds).not.toContain('weapon_orbital');
     expect(kiritoIds).not.toContain('weapon_mine');
 
@@ -42,7 +42,7 @@ describe('Kirito exclusive skills, Lv.1..5 Phantom Dash, and Naruto ninja gating
 
     expect(narutoChoices.filter((c) => c.category === 'weapon').map((c) => c.id)).toEqual([
       'weapon_orb',
-      'weapon_slash',
+      'weapon_clone',
       'weapon_orbital',
       'weapon_mine',
     ]);

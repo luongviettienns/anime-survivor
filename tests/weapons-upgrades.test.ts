@@ -20,10 +20,10 @@ import {
 describe('weapons domain scaling and inventory', () => {
   it('starts with level 1 orb for naruto or dual_slash for kirito', () => {
     const inv = createWeaponInventory();
-    expect(inv).toEqual({ orb: 1, slash: 0, orbital: 0, mine: 0, dual_slash: 0 });
-    expect(createWeaponInventory('dual_slash')).toEqual({ orb: 0, slash: 0, orbital: 0, mine: 0, dual_slash: 1 });
+    expect(inv).toEqual({ orb: 1, clone: 0, orbital: 0, mine: 0, dual_slash: 0 });
+    expect(createWeaponInventory('dual_slash')).toEqual({ orb: 0, clone: 0, orbital: 0, mine: 0, dual_slash: 1 });
     expect(canUpgradeWeapon(inv, 'orb')).toBe(true);
-    expect(canUpgradeWeapon(inv, 'slash')).toBe(true);
+    expect(canUpgradeWeapon(inv, 'clone')).toBe(true);
     expect(canUpgradeWeapon(inv, 'orbital')).toBe(true);
     expect(canUpgradeWeapon(inv, 'mine')).toBe(true);
     expect(canUpgradeWeapon(inv, 'dual_slash')).toBe(true);
@@ -39,19 +39,22 @@ describe('weapons domain scaling and inventory', () => {
     expect(() => upgradeWeapon(inv, 'orb')).toThrow();
   });
 
-  it('computes rebalanced flat stats for orb, slash, orbital, and mine across levels 1..5', () => {
+  it('computes rebalanced flat stats for orb, clone, orbital, and mine across levels 1..5', () => {
     expect(computeWeaponStats('orb', 1)).toMatchObject({
-      damage: 26, cooldownMs: 760, speedPxSec: 420, rangePx: 440, knockbackPxSec: 60, count: 1,
+      damage: 32, cooldownMs: 760, speedPxSec: 420, rangePx: 440, knockbackPxSec: 80, count: 1,
     });
     expect(computeWeaponStats('orb', 5)).toMatchObject({
-      damage: 62, cooldownMs: 460, speedPxSec: 600, rangePx: 560, knockbackPxSec: 100, count: 3,
+      damage: 78, cooldownMs: 460, speedPxSec: 600, rangePx: 560, knockbackPxSec: 340, count: 3,
     });
 
-    expect(computeWeaponStats('slash', 1)).toMatchObject({
-      damage: 34, cooldownMs: 900, rangePx: 90, knockbackPxSec: 260, count: 1,
+    expect(computeWeaponStats('clone', 1)).toMatchObject({
+      damage: 35, cooldownMs: 2200, rangePx: 140, knockbackPxSec: 180, count: 1,
     });
-    expect(computeWeaponStats('slash', 4)).toMatchObject({
-      damage: 76, cooldownMs: 675, rangePx: 132, knockbackPxSec: 365, count: 2,
+    expect(computeWeaponStats('clone', 4)).toMatchObject({
+      damage: 50, cooldownMs: 1600, rangePx: 180, knockbackPxSec: 180, count: 4,
+    });
+    expect(computeWeaponStats('clone', 5)).toMatchObject({
+      damage: 60, cooldownMs: 1400, rangePx: 180, knockbackPxSec: 200, count: 4,
     });
 
     expect(computeWeaponStats('orbital', 1)).toMatchObject({
@@ -62,13 +65,15 @@ describe('weapons domain scaling and inventory', () => {
     });
 
     const mine1 = computeWeaponStats('mine', 1);
+    const mine3 = computeWeaponStats('mine', 3);
     const mine5 = computeWeaponStats('mine', 5);
-    expect(mine1).toMatchObject({ id: 'mine', damage: 48, cooldownMs: 1200, count: 1, rangePx: 68 });
-    expect(mine5).toMatchObject({ id: 'mine', damage: 120, cooldownMs: 700, count: 2, rangePx: 116 });
+    expect(mine1).toMatchObject({ id: 'mine', damage: 75, cooldownMs: 900, count: 1, rangePx: 85 });
+    expect(mine3).toMatchObject({ id: 'mine', damage: 115, cooldownMs: 700, count: 2, rangePx: 110 });
+    expect(mine5).toMatchObject({ id: 'mine', damage: 160, cooldownMs: 500, count: 3, rangePx: 135 });
 
     const boosted = applyWeaponModifiers(mine1, { damageBonus: 18, cooldownReductionMs: 250 });
-    expect(boosted.damage).toBe(66);
-    expect(boosted.cooldownMs).toBe(950);
+    expect(boosted.damage).toBe(93);
+    expect(boosted.cooldownMs).toBe(650);
 
     const floored = applyWeaponModifiers(computeWeaponStats('orbital', 5), {
       damageBonus: 0,
@@ -108,12 +113,12 @@ describe('11-card flat upgrades, Max Lv.5 cap, heavy strike, and smart weighted 
     expect(kiritoAvail.some((c) => c.id === 'weapon_orb')).toBe(false);
     expect(kiritoAvail.some((c) => c.id === 'weapon_mine')).toBe(false);
 
-    const inv = { orb: 5, slash: 2, orbital: 5, mine: 5, dual_slash: 0 };
+    const inv = { orb: 5, clone: 2, orbital: 5, mine: 5, dual_slash: 0 };
     passives.levels.stat_damage = 5;
     passives.levels.stat_magnet = 5;
     const available = getAvailableUpgrades(inv, passives);
     expect(available.map((u) => u.id)).toEqual([
-      'weapon_slash',
+      'weapon_clone',
       'stat_max_hp',
       'stat_damage_reduction',
       'stat_cooldown',
@@ -121,7 +126,7 @@ describe('11-card flat upgrades, Max Lv.5 cap, heavy strike, and smart weighted 
       'stat_recovery',
     ]);
 
-    const allMaxed = { orb: 5, slash: 5, orbital: 5, mine: 5, dual_slash: 5 };
+    const allMaxed = { orb: 5, clone: 5, orbital: 5, mine: 5, dual_slash: 5 };
     const statOnly = rollUpgradeChoices(allMaxed, passives, { playerLevel: 10, hpRatio: 1 }, 3, () => 0.2);
     expect(statOnly).toHaveLength(3);
     expect(statOnly.every((c) => c.category === 'passive')).toBe(true);

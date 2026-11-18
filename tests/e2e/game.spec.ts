@@ -85,12 +85,11 @@ test.describe('Anime Survivor Phase 1-4 Gameplay & Stress E2E', () => {
       const api = window.__ANIME_SURVIVOR__!;
       const scene = api.getScene() as unknown as {
         weapon: { inventory: { orb: number; slash: number; orbital: number; mine: number } };
-        passives: { heavyStrikeEvery: number; heavyStrikeBonus: number; cooldownReductionMs: number };
+        passives: { critChance: number; cooldownReductionMs: number };
         updateHud: () => void;
       };
       scene.weapon.inventory = { orb: 4, slash: 4, orbital: 4, mine: 3 };
-      scene.passives.heavyStrikeEvery = 3;
-      scene.passives.heavyStrikeBonus = 50;
+      scene.passives.critChance = 0.3;
       scene.passives.cooldownReductionMs = 150;
       scene.updateHud();
     });

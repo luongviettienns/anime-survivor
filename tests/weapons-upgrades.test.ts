@@ -118,7 +118,7 @@ describe('11-card flat upgrades, Max Lv.5 cap, heavy strike, and smart weighted 
       'stat_damage_reduction',
       'stat_cooldown',
       'stat_move_speed',
-      'stat_heavy_strike',
+      'stat_recovery',
     ]);
 
     const allMaxed = { orb: 5, slash: 5, orbital: 5, mine: 5, dual_slash: 5 };
@@ -127,7 +127,7 @@ describe('11-card flat upgrades, Max Lv.5 cap, heavy strike, and smart weighted 
     expect(statOnly.every((c) => c.category === 'passive')).toBe(true);
   });
 
-  it('applies escalating/diminishing flat curves across Lv.1..5 and triggers deterministic heavy strike', () => {
+  it('applies escalating/diminishing flat curves across Lv.1..5 and triggers capped crit', () => {
     const inv = createWeaponInventory();
     const player = createPlayerState(100);
     player.hp = 50;
@@ -140,22 +140,21 @@ describe('11-card flat upgrades, Max Lv.5 cap, heavy strike, and smart weighted 
       applyUpgradeChoice('stat_cooldown', inv, player, passives);
       applyUpgradeChoice('stat_move_speed', inv, player, passives);
       applyUpgradeChoice('stat_magnet', inv, player, passives);
-      applyUpgradeChoice('stat_heavy_strike', inv, player, passives);
+      applyUpgradeChoice('stat_recovery', inv, player, passives);
     }
 
     expect(player.maxHp).toBe(260);
-    expect(player.hp).toBe(210);
+    expect(player.hp).toBe(50);
     expect(passives.damageReduction).toBe(18);
     expect(passives.damageBonus).toBe(36);
     expect(passives.cooldownReductionMs).toBe(250);
     expect(passives.moveSpeedBonusPxSec).toBe(100);
     expect(passives.pickupRadiusBonusPx).toBe(250 + 5 * 12);
-    expect(passives.heavyStrikeEvery).toBe(3);
-    expect(passives.heavyStrikeBonus).toBe(145);
+    expect(passives.recoveryPer3Sec).toBe(6);
 
-    expect(rollCombatDamage(20, passives)).toEqual({ damage: 56, critical: false });
-    expect(rollCombatDamage(20, passives)).toEqual({ damage: 56, critical: false });
-    expect(rollCombatDamage(20, passives)).toEqual({ damage: 201, critical: true });
+    passives.critChance = 0.25;
+    expect(rollCombatDamage(20, passives, () => 0.25)).toEqual({ damage: 56, critical: false });
+    expect(rollCombatDamage(20, passives, () => 0.24)).toEqual({ damage: 84, critical: true });
   });
 
   it('guarantees 2 weapons + 1 passive on Lv.2..4 and 1 weapon + 1 passive + 1 flex on Lv.5+', () => {

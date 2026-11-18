@@ -63,6 +63,38 @@ export function applyContactDamage(
   return true;
 }
 
+export function applyPassiveRecovery(
+  player: PlayerState,
+  passives: { recoveryPer3Sec: number; recoveryTimerMs: number },
+  deltaMs: number
+): number {
+  if (!player.alive || !Number.isFinite(passives.recoveryPer3Sec) || passives.recoveryPer3Sec <= 0) {
+    return 0;
+  }
+  if (player.hp >= player.maxHp) {
+    passives.recoveryTimerMs = 0;
+    return 0;
+  }
+  if (!Number.isFinite(deltaMs) || deltaMs <= 0) {
+    return 0;
+  }
+  const prevTimer = Number.isFinite(passives.recoveryTimerMs) && passives.recoveryTimerMs >= 0 ? passives.recoveryTimerMs : 0;
+  const totalMs = prevTimer + deltaMs;
+  const ticks = Math.floor(totalMs / 3000);
+  if (ticks <= 0) {
+    passives.recoveryTimerMs = totalMs;
+    return 0;
+  }
+  passives.recoveryTimerMs = totalMs % 3000;
+  const nextHp = clampHealth(player.hp + ticks * passives.recoveryPer3Sec, player.maxHp);
+  const healed = nextHp - player.hp;
+  player.hp = nextHp;
+  if (player.hp >= player.maxHp) {
+    passives.recoveryTimerMs = 0;
+  }
+  return healed;
+}
+
 export type EnemyState = {
   id: number;
   hp: number;

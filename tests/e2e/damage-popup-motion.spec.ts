@@ -4,7 +4,7 @@ import type { VfxSystem } from '../../src/game/systems/VfxSystem';
 import type { WeaponInventory } from '../../src/domain/weapons';
 
 type Runtime=Phaser.Scene&{vfx:VfxSystem;spawnTimer:Phaser.Time.TimerEvent;
-  weapon:{inventory:WeaponInventory};passives:{heavyStrikeEvery:number}};
+  weapon:{inventory:WeaponInventory};passives:{critChance:number}};
 
 test.beforeEach(async({page})=>{
   await page.goto('/?play=1');await page.waitForFunction(()=>Boolean(window.__ANIME_SURVIVOR__));
@@ -58,7 +58,7 @@ test('a real projectile hit spawns damage at the struck enemy world position wit
       hit(x,y,amount,killed,critical,explosive);
       scene.data.set('qa-damage-hit',{x,y});scene.scene.pause();
     };
-    scene.weapon.inventory.orb=1;scene.passives.heavyStrikeEvery=0;
+    scene.weapon.inventory.orb=1;scene.passives.critChance=0;
     api.spawnEnemyAt(2110,-970);scene.scene.resume();
   });
   await page.waitForFunction(()=>Boolean(window.__ANIME_SURVIVOR__!.getScene().data.get('qa-damage-hit')));

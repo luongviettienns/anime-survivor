@@ -105,7 +105,7 @@ export class GameScene extends Phaser.Scene {
     });
     this.weapon.update(this.time.now, true, this.passives, dashing || this.movement.isDashVisualActive() || this.movement.isSwordBusy());
     this.pickups.update(this.player, this.heroConfig.magnetRadius + this.passives.pickupRadiusBonusPx, PLAYER.pickupMagnetSpeed);
-    this.damage.updateVisuals(this.time.now); this.vfx.update(this.time.now, delta);
+    this.damage.updateVisuals(this.time.now, this.passives, delta); this.vfx.update(this.time.now, delta);
     this.player.setDepth(this.player.y); this.openUpgradeModalIfNeeded(); this.updateHud();
   }
   getHudText(): string { return this.hud.getStatusText(); }

@@ -6,7 +6,7 @@ import type { VfxSystem } from '../../src/game/systems/VfxSystem';
 import type { DamageSystem } from '../../src/game/systems/DamageSystem';
 
 type Runtime=Phaser.Scene&{vfx:VfxSystem;damage:DamageSystem;spawnTimer:Phaser.Time.TimerEvent;
-  weapon:{inventory:WeaponInventory};passives:{heavyStrikeEvery:number;heavyStrikeBonus:number}};
+  weapon:{inventory:WeaponInventory};passives:{critChance:number}};
 
 test.beforeEach(async({page})=>{
   await page.goto('/?play=1');await page.waitForFunction(()=>Boolean(window.__ANIME_SURVIVOR__));
@@ -92,7 +92,7 @@ test('critical damage uses a small icon and larger digits, explosion damage uses
   await page.screenshot({path:'test-results/anime-damage-numbers.png'});
   await page.evaluate(()=>{
     const api=window.__ANIME_SURVIVOR__!,scene=api.getScene() as unknown as Runtime;
-    scene.scene.resume();scene.vfx.clear();scene.passives.heavyStrikeEvery=0;scene.passives.heavyStrikeBonus=0;scene.weapon.inventory.mine=1;
+    scene.scene.resume();scene.vfx.clear();scene.passives.critChance=0;scene.weapon.inventory.mine=1;
     const p=api.getPlayerPosition();api.spawnEnemyAt(p.x+25,p.y+28);
   });
   await page.waitForFunction(()=>window.__ANIME_SURVIVOR__!.getScene().children.list.some(o=>o.getData('damage-explosion')&&(o as Phaser.GameObjects.Image).visible));

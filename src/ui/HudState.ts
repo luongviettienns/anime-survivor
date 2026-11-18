@@ -1,6 +1,6 @@
 import type { PlayerState } from '../domain/combat';
 import type { RunProgression } from '../domain/progression';
-import type { PassiveStats } from '../domain/upgrades';
+import { MAX_CRIT_CHANCE, type PassiveStats } from '../domain/upgrades';
 import type { WeaponInventory } from '../domain/weapons';
 
 export type HudStateDto = {
@@ -22,6 +22,7 @@ export function formatPassives(stats?: PassiveStats): string {
   if (stats.damageBonus > 0) tags.push(`DMG+${stats.damageBonus}`);
   if (stats.cooldownReductionMs > 0) tags.push(`CD-${stats.cooldownReductionMs}ms`);
   if (stats.moveSpeedBonusPxSec > 0) tags.push(`SPD+${stats.moveSpeedBonusPxSec}`);
-  if (stats.heavyStrikeEvery > 0) tags.push(`HVY/${stats.heavyStrikeEvery}+${stats.heavyStrikeBonus}`);
+  if (stats.recoveryPer3Sec > 0) tags.push(`REC+${stats.recoveryPer3Sec}/3s`);
+  if (stats.critChance > 0) tags.push(`CRIT+${Math.round(Math.min(MAX_CRIT_CHANCE, stats.critChance) * 100)}%`);
   return tags.join(' ');
 }

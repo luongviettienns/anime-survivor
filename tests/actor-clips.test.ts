@@ -16,6 +16,17 @@ describe('directional actor animation assets', () => {
       expect(releases).toEqual(getDualSlashStage(level).waves.map(wave => wave.releaseDelayMs));
     }
   });
+  it('uses authored preparation/recovery instead of long idle holds in side skills', () => {
+    for (const direction of ['left', 'right']) for (const [action, total] of [['lv1',435], ['lv2',660], ['lv3',540]] as const) {
+      const clip = ACTOR_CLIPS[`kirito_${action}_${direction}`]!;
+      expect(clip.durations.reduce((a,b) => a+b,0)).toBe(total);
+      expect(clip.durations[0]).toBeLessThanOrEqual(50);
+      expect(clip.durations.at(-1)).toBeLessThanOrEqual(60);
+      expect(clip.frames.slice(1,-1).every(f => !f.image.endsWith('/neutral.png'))).toBe(true);
+      expect(clip.frames.some(f => f.image.includes('_windup.png'))).toBe(true);
+      expect(clip.frames.some(f => f.image.includes('_follow.png'))).toBe(true);
+    }
+  });
   it('covers the compact remaining directions and front boss defeat', () => {
     for (const direction of ['left', 'right']) for (const action of ['run', 'hit', 'death', 'basic', 'lv1', 'lv2', 'lv3']) {
       const clip = ACTOR_CLIPS[`kirito_${action}_${direction}`];

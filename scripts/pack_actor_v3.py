@@ -1,9 +1,9 @@
 """Pack compact remaining actor clips with the established exact-frame validator."""
-import sys
 from PIL import Image
 from actor_v3_art import GAME, ROOT, OLD, import_poses, read, write
 import pack_frames
 import validate_sprites
+from export_actor_clips import source_path
 
 CELL, ANCHOR = 2048, [1024, 1536]
 
@@ -22,29 +22,18 @@ def specs():
     result['boss_death_down'] = ('boss', 'down', ['neutral', 'hit', 'fallen'], [45, 100, 240], False)
     return result
 
-def build():
-    fresh = import_poses()
-    expected = [('kirito', 'right', pose) for pose in ['run_contact_l', 'run_contact_r']]
-    expected += [('kirito', direction, pose) for direction in ['left', 'right']
-                 for pose in ['hit', 'fallen', 'ice_cut', 'dark_cut', 'dual_cross']]
-    expected += [('boss', 'down', 'fallen')]
-    missing = [identity for identity in expected if identity not in fresh]
-    if missing:
-        raise ValueError(f'Missing required poses: {missing}')
-    retained = read(OLD / 'source/provenance.json')['records']
-    records = {(e['key'], e['direction'], e['pose']): e for e in retained}
-    records.update(fresh)
+def pack_clips(specifications, records, output_root=ROOT):
     config_path = GAME / 'src/game/config/actorClips.json'
     config = read(config_path)
     contract = {'version': 1, 'sprites': {}, 'single_images': {}}
-    frames_root, sheets = ROOT / 'frames', ROOT / 'sheets'
+    frames_root, sheets = output_root / 'frames', output_root / 'sheets'
     metadata = {}
-    for name, (key, direction, poses, durations, loop) in specs().items():
+    for name, (key, direction, poses, durations, loop) in specifications.items():
         scale = config[f'{key}_idle_{direction}' if key == 'kirito' else 'boss_hit_down']['scale']
         frames = []
         for index, pose in enumerate(poses):
             entry = records[key, direction, pose]
-            native = ROOT / 'source/originals' / key / direction / f'{pose}.png' if (key, direction, pose) in fresh else OLD / 'site/assets/actor-v2' / entry['original']
+            native = source_path(entry['original'])
             with Image.open(native) as source:
                 anchor = entry['source_anchor']
                 offset = [ANCHOR[i] - anchor[i] for i in range(2)]
@@ -71,10 +60,28 @@ def build():
     pack_frames.pack_all(frames_root, sheets)
     validate_sprites.CONTRACT, validate_sprites.FRAMES, validate_sprites.OUT = contract, frames_root, sheets
     validate_sprites.verify()
-    write(ROOT / 'contract.json', contract)
-    write(ROOT / 'clips.json', metadata)
+    write(output_root / 'contract.json', contract)
+    write(output_root / 'clips.json', metadata)
+    transitions = GAME / 'art/source/kirito-transitions/clips.json'
+    if output_root == ROOT and transitions.is_file():
+        config.update(read(transitions))
     write(config_path, config)
     print(f'Packed {len(metadata)} compact clips; canonical timing/origin metadata updated')
+
+
+def build():
+    fresh = import_poses()
+    expected = [('kirito', 'right', pose) for pose in ['run_contact_l', 'run_contact_r']]
+    expected += [('kirito', direction, pose) for direction in ['left', 'right']
+                 for pose in ['hit', 'fallen', 'ice_cut', 'dark_cut', 'dual_cross']]
+    expected += [('boss', 'down', 'fallen')]
+    missing = [identity for identity in expected if identity not in fresh]
+    if missing:
+        raise ValueError(f'Missing required poses: {missing}')
+    retained = read(OLD / 'source/provenance.json')['records']
+    records = {(e['key'], e['direction'], e['pose']): e for e in retained}
+    records.update(fresh)
+    pack_clips(specs(), records)
 
 if __name__ == '__main__':
     build()

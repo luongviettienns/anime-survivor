@@ -16,14 +16,14 @@ def write(path, value):
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
 
-def import_poses():
+def import_poses(root=ROOT, prefix="v3"):
     records = {}
-    for path in sorted((ROOT / 'source').glob('*.json')):
+    for path in sorted((root / 'source').glob('*.json')):
         entry = read(path)
         if 'pose' not in entry:
             continue
         key, direction, pose = entry['key'], entry['direction'], entry['pose']
-        target = ROOT / 'source/originals' / key / direction / f'{pose}.png'
+        target = root / 'source/originals' / key / direction / f'{pose}.png'
         source = Path(entry['path'])
         if not source.is_file():
             source = target
@@ -47,10 +47,10 @@ def import_poses():
             if not all(0 < anchor[i] < image.size[i] for i in range(2)):
                 raise ValueError(f'{path}: invalid ground anchor')
             entry.update({'size': list(image.size), 'source_anchor': anchor,
-                          'alpha_bbox': list(box), 'original': f'v3/{key}/{direction}/{pose}.png',
+                          'alpha_bbox': list(box), 'original': f'{prefix}/{key}/{direction}/{pose}.png',
                           'sha256': hashlib.sha256(target.read_bytes()).hexdigest()})
         records[key, direction, pose] = entry
-    write(ROOT / 'source/provenance.json', {'tool': 'built-in image_gen', 'one_pose_per_image': True,
+    write(root / 'source/provenance.json', {'tool': 'built-in image_gen', 'one_pose_per_image': True,
           'originals_unchanged': True, 'records': list(records.values())})
     return records
 

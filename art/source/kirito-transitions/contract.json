@@ -1,0 +1,198 @@
+{
+  "version": 1,
+  "sprites": {
+    "kirito_basic_left_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "kirito_basic_left_page1": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "kirito_lv1_left_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "kirito_lv1_left_page1": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 1,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 1
+      }
+    },
+    "kirito_lv2_left_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "kirito_lv2_left_page1": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "kirito_lv3_left_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "kirito_lv3_left_page1": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 1,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 1
+      }
+    },
+    "kirito_basic_right_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "kirito_basic_right_page1": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "kirito_lv1_right_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "kirito_lv1_right_page1": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 1,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 1
+      }
+    },
+    "kirito_lv2_right_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "kirito_lv2_right_page1": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "kirito_lv3_right_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "kirito_lv3_right_page1": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 1,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 1
+      }
+    }
+  },
+  "single_images": {}
+}

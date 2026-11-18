@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import {
+  PHANTOM_DASH,
   canTriggerPhantomDash,
   createPhantomDashState,
   findPhantomDashTargets,
@@ -11,6 +12,10 @@ import {
 } from '../src/domain/phantomDash';
 
 describe('Kirito Auto Phantom Dash pure domain', () => {
+  it('slows travel by20percent without shortening the dash distance', () => {
+    expect(PHANTOM_DASH.durationMs).toBe(225);
+    expect(180 / PHANTOM_DASH.durationMs).toBeCloseTo(0.8);
+  });
   it('scales cooldown, damage, range, pierce (1..4), and chain dashes (1..3) across Lv.1..5', () => {
     const lv1 = getPhantomDashStats(1);
     const lv2 = getPhantomDashStats(2);
@@ -69,8 +74,8 @@ describe('Kirito Auto Phantom Dash pure domain', () => {
     expect(state.readyAtMs).toBe(1000 + PHANTOM_DASH.minCooldownMs);
     expect(canTriggerPhantomDash(state, 2000)).toBe(false);
 
-    const mid = stepPhantomDashPosition(state, 1090);
-    const end = stepPhantomDashPosition(state, 1180);
+    const mid = stepPhantomDashPosition(state, 1000 + PHANTOM_DASH.durationMs / 2);
+    const end = stepPhantomDashPosition(state, 1000 + PHANTOM_DASH.durationMs);
     expect(mid.active).toBe(true);
     expect(mid.x).toBeGreaterThan(80);
     expect(end.active).toBe(false);

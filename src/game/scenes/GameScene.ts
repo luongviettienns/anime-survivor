@@ -96,14 +96,14 @@ export class GameScene extends Phaser.Scene {
     if (this.elapsed >= WORLD.runDurationSec) this.enemies.ensureBossSpawned();
     if (!this.spawnTimer?.paused) this.enemies.stepWaves(delta, this.elapsed, this.player.body?.velocity);
     const dashing = this.phantomDash?.update(this.time.now, this.passives, this.enemies, this.damage.state,
-      (x, y, dmg, killed, crit) => this.onCombat('hit', x, y, dmg, killed, crit), (x, y, arch, xp) => this.onEnemyKilled(x, y, arch, xp)) ?? false;
+      (x, y, dmg, killed, crit) => this.onCombat('hit', x, y, dmg, killed, crit), (x, y, arch, xp) => this.onEnemyKilled(x, y, arch, xp), !this.movement.isSwordBusy()) ?? false;
     if (dashing) this.movement.syncDashVisual(); else this.movement.update(true, this.passives.moveSpeedBonusPxSec, delta);
     this.map.update(this.player.x, this.player.y);
     this.enemies.update(false, (dmg, impact) => this.applyPlayerHit(dmg, impact), delta, (bx, by, dmg, killed, arch, xp) => {
       this.onCombat('hit', bx, by, dmg, killed);
       if (killed) this.onEnemyKilled(bx, by, arch, xp);
     });
-    this.weapon.update(this.time.now, true, this.passives);
+    this.weapon.update(this.time.now, true, this.passives, dashing || this.movement.isDashVisualActive() || this.movement.isSwordBusy());
     this.pickups.update(this.player, this.heroConfig.magnetRadius + this.passives.pickupRadiusBonusPx, PLAYER.pickupMagnetSpeed);
     this.damage.updateVisuals(this.time.now); this.vfx.update(this.time.now, delta);
     this.player.setDepth(this.player.y); this.openUpgradeModalIfNeeded(); this.updateHud();

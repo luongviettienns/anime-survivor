@@ -10,3 +10,5 @@ test-results/
 __pycache__/
 tools/_external/
 .superpowers/
+output/
+vendor/

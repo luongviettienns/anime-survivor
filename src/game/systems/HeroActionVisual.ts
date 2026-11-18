@@ -21,10 +21,14 @@ export class HeroActionVisual {
     scene.events.once('shutdown', () => { scene.events.off('postupdate', this.update, this); this.sprite.destroy(); });
   }
   private facing(): string { return (this.player.getData('visual-facing') as string | undefined) ?? 'down'; }
-  play(skill: WeaponId, aimX: number, animOverride?: string): void {
-    if (this.defeated) return;
-    const current = this.sprite.anims.currentAnim?.key ?? '';
-    if (this.sprite.anims.isPlaying && current.startsWith('kirito-dash-') && !animOverride?.startsWith('kirito-dash-')) return;
+  isDashActive(): boolean { return this.sprite.anims.isPlaying && (this.sprite.anims.currentAnim?.key.startsWith('kirito-dash-') ?? false); }
+  isSwordActive(): boolean {
+    const key = this.sprite.anims.currentAnim?.key ?? '';
+    return this.sprite.anims.isPlaying && (/^actor-kirito_lv[123]_/.test(key) || key.startsWith('kirito-wave-lv'));
+  }
+  play(skill: WeaponId, aimX: number, animOverride?: string): boolean {
+    if (this.defeated) return false;
+    if (this.isSwordActive() || (this.isDashActive() && !animOverride?.startsWith('kirito-dash-'))) return false;
     let key = this.heroId === 'kirito' ? (animOverride ?? 'kirito-wave-lv1') : `naruto-action-${skill}`;
     if (this.heroId === 'kirito' && !animOverride?.startsWith('kirito-dash-') && !key.startsWith('actor-')) {
       const action = skill === 'slash' ? 'basic' : key.replace('kirito-wave-', '');
@@ -33,7 +37,7 @@ export class HeroActionVisual {
     }
     this.sprite.setOrigin(0.5, key.startsWith('kirito-dash-') ? 0.75 : this.heroId === 'kirito' ? KIRITO_ORIGIN_Y : 1408 / 1536)
       .setFlipX(this.heroId !== 'kirito' && aimX < 0).setVisible(true).play(key);
-    this.player.setVisible(false); this.update();
+    this.player.setVisible(false); this.update(); return true;
   }
   defeat(done: () => void): boolean {
     const clip = this.heroId === 'kirito' ? actorClip('kirito', 'death', this.facing()) : undefined;
@@ -46,7 +50,7 @@ export class HeroActionVisual {
       if (this.player.getData('actor-hit') && !this.defeated) {
         this.player.setData('actor-hit', false);
         const hit = actorClip('kirito', 'hit', this.facing());
-        if (hit) this.sprite.play(actorAnimation(hit));
+        if (hit && !this.isSwordActive() && !this.isDashActive()) this.sprite.play(actorAnimation(hit));
       }
       let key = this.sprite.anims.currentAnim?.key ?? '';
       const clip = ACTOR_CLIPS[key.replace(/^actor-/, '')];

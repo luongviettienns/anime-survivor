@@ -44,7 +44,7 @@ export class WeaponSystem {
       (aimX) => this.onSkillUsed?.('orbital', aimX));
   }
 
-  update(nowMs: number, enabled = true, passives: PassiveStats = this.activePassives): void {
+  update(nowMs: number, enabled = true, passives: PassiveStats = this.activePassives, swordBlocked = false): void {
     this.activePassives = passives;
     for (const [shot, expiresAt] of this.projectileExpiresAt) {
       if (!shot.active || nowMs >= expiresAt) this.consumeProjectile(shot);
@@ -56,7 +56,7 @@ export class WeaponSystem {
     }
     const candidates = this.enemies.getCandidates();
     if (this.inventory.orb >= 1) this.updateOrb(nowMs, candidates);
-    this.lastAim = this.dualSlash.update(nowMs, this.inventory.dual_slash, this.activePassives, candidates, this.lastAim);
+    this.lastAim = this.dualSlash.update(nowMs, this.inventory.dual_slash, this.activePassives, candidates, this.lastAim, !swordBlocked);
     if (this.inventory.slash >= 1) this.updateSlash(nowMs, candidates);
     this.orbital.update(nowMs, this.inventory.orbital, this.activePassives, candidates, this.lastAim.x);
     this.mines.update(nowMs, this.inventory.mine, this.lastAim, this.activePassives, candidates);

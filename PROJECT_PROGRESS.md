@@ -73,6 +73,13 @@
 
 ## Nhật ký chi tiết (Log)
 
+### 2026-11-19
+- **Kirito Transition Frames & Sword Priority Gate**:
+  - Bổ sung bộ frame chuyển tiếp tác vụ Kirito (`art/source/kirito-transitions/`, `scripts/validate_kirito_transitions.py`), đồng bộ thời lượng chuẩn hóa.
+  - Thiết lập cơ chế khóa ưu tiên độc quyền giữa Phantom Dash và Dual Element Slash (`HeroActionVisual`, `MovementSystem`, `PhantomDashSystem`, `WeaponSystem`), ngăn triệt để lỗi chồng đè hành động.
+  - Tối ưu timing dash (`tests/dash-animation-timing.test.ts`), tăng cường test phủ animation priority (`tests/kirito-animation-priority.test.ts`, `tests/sword-start-gate.test.ts`).
+  - Kiểm thử: 84/84 Vitest unit tests PASS, lint/arch clean, asset validation 100% pixel-identical.
+
 ### 2026-11-18
 - **Nghiên cứu Cân bằng Toán học (Flat-Number Balance), Đa Nhân Vật & Đặc tả Tiến Hóa**:
   - Kiểm toán lỗ hổng cân bằng hiện tại trong mã nguồn (`enemies.ts`, `waves.ts`, `progression.ts`, `weapons.ts`, `GameScene.ts`): quái không tăng sức mạnh theo thời gian, Boss chỉ 900 HP, XP quá rẻ (`3 + level * 2`), `heal_pickup` chưa rơi thực tế trong game, `orb` tăng DPS gấp 10.2 lần thành súng máy (`240ms`), và các buff đang tính theo `%`.

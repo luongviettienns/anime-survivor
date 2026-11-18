@@ -43,7 +43,8 @@ export class PhantomDashSystem {
     enemies: EnemySystem,
     playerState: PlayerState,
     onHitFeedback?: (x: number, y: number, dmg: number, killed: boolean, critical: boolean) => void,
-    onEnemyKilled?: (x: number, y: number, archetype: EnemyArchetypeId, xpValue: number) => void
+    onEnemyKilled?: (x: number, y: number, archetype: EnemyArchetypeId, xpValue: number) => void,
+    allowStart = true
   ): boolean {
     this.level = passives.phantomDashLevel;
     this.updateGhosts(nowMs);
@@ -54,7 +55,7 @@ export class PhantomDashSystem {
 
     const candidates = enemies.getCandidates();
     if (!this.active) {
-      if (!canTriggerPhantomDash(this.state, nowMs)) return false;
+      if (!allowStart || !canTriggerPhantomDash(this.state, nowMs)) return false;
       this.chainHitIds.clear();
       const stats = getPhantomDashStats(this.level);
       if (!this.startStep(nowMs, candidates, passives, playerState, true)) return false;

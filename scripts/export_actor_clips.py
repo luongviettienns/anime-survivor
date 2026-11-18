@@ -9,6 +9,13 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / 'art/source/actor-v2/site/assets/actor-v2'
 TARGET = ROOT / 'public/assets/actor-v2'
 
+def source_path(name):
+    if name.startswith('v3/'):
+        return ROOT / 'art/source/actor-v3/source/originals' / name[3:]
+    if name.startswith('transitions/'):
+        return ROOT / 'art/source/kirito-transitions/source/originals' / name[12:]
+    return SOURCE / name
+
 def export(check=False):
     clips = json.loads((ROOT / 'src/game/config/actorClips.json').read_text(encoding='utf-8'))
     paths = {f['image'] for c in clips.values() for f in c['frames']}
@@ -18,7 +25,7 @@ def export(check=False):
         atlas = json.loads((SOURCE / name).read_text(encoding='utf-8'))
         paths.update(page['image'] for page in atlas['textures'])
     for name in sorted(paths):
-        source = ROOT / 'art/source/actor-v3/source/originals' / name[3:] if name.startswith('v3/') else SOURCE / name
+        source = source_path(name)
         target = TARGET / name
         if source.suffix == '.png':
             with Image.open(source) as image:

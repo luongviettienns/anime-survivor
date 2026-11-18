@@ -1,0 +1,506 @@
+{
+  "kirito_basic_left": {
+    "entity": "kirito",
+    "action": "basic",
+    "direction": "left",
+    "scale": 0.0986784140969163,
+    "durations": [
+      35,
+      55,
+      70,
+      40,
+      40,
+      70,
+      40,
+      60
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/kirito/left/neutral.png",
+        "origin": [
+          0.5,
+          0.9529505582137161
+        ]
+      },
+      {
+        "image": "transitions/kirito/left/ice_windup.png",
+        "origin": [
+          0.5,
+          0.9258373205741627
+        ]
+      },
+      {
+        "image": "v3/kirito/left/ice_cut.png",
+        "origin": [
+          0.5,
+          0.8572567783094099
+        ]
+      },
+      {
+        "image": "transitions/kirito/left/ice_follow.png",
+        "origin": [
+          0.5,
+          0.8676236044657097
+        ]
+      },
+      {
+        "image": "transitions/kirito/left/dark_windup.png",
+        "origin": [
+          0.5,
+          0.9409888357256778
+        ]
+      },
+      {
+        "image": "v3/kirito/left/dark_cut.png",
+        "origin": [
+          0.5,
+          0.8628389154704944
+        ]
+      },
+      {
+        "image": "transitions/kirito/left/dark_follow.png",
+        "origin": [
+          0.5,
+          0.8851674641148325
+        ]
+      },
+      {
+        "image": "originals/kirito/left/neutral.png",
+        "origin": [
+          0.5,
+          0.9529505582137161
+        ]
+      }
+    ]
+  },
+  "kirito_lv1_left": {
+    "entity": "kirito",
+    "action": "lv1",
+    "direction": "left",
+    "scale": 0.0986784140969163,
+    "durations": [
+      40,
+      140,
+      70,
+      125,
+      60
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/kirito/left/neutral.png",
+        "origin": [
+          0.5,
+          0.9529505582137161
+        ]
+      },
+      {
+        "image": "transitions/kirito/left/ice_windup.png",
+        "origin": [
+          0.5,
+          0.9258373205741627
+        ]
+      },
+      {
+        "image": "v3/kirito/left/ice_cut.png",
+        "origin": [
+          0.5,
+          0.8572567783094099
+        ]
+      },
+      {
+        "image": "transitions/kirito/left/ice_follow.png",
+        "origin": [
+          0.5,
+          0.8676236044657097
+        ]
+      },
+      {
+        "image": "originals/kirito/left/neutral.png",
+        "origin": [
+          0.5,
+          0.9529505582137161
+        ]
+      }
+    ]
+  },
+  "kirito_lv2_left": {
+    "entity": "kirito",
+    "action": "lv2",
+    "direction": "left",
+    "scale": 0.0986784140969163,
+    "durations": [
+      40,
+      140,
+      70,
+      60,
+      140,
+      70,
+      80,
+      60
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/kirito/left/neutral.png",
+        "origin": [
+          0.5,
+          0.9529505582137161
+        ]
+      },
+      {
+        "image": "transitions/kirito/left/ice_windup.png",
+        "origin": [
+          0.5,
+          0.9258373205741627
+        ]
+      },
+      {
+        "image": "v3/kirito/left/ice_cut.png",
+        "origin": [
+          0.5,
+          0.8572567783094099
+        ]
+      },
+      {
+        "image": "transitions/kirito/left/ice_follow.png",
+        "origin": [
+          0.5,
+          0.8676236044657097
+        ]
+      },
+      {
+        "image": "transitions/kirito/left/dark_windup.png",
+        "origin": [
+          0.5,
+          0.9409888357256778
+        ]
+      },
+      {
+        "image": "v3/kirito/left/dark_cut.png",
+        "origin": [
+          0.5,
+          0.8628389154704944
+        ]
+      },
+      {
+        "image": "transitions/kirito/left/dark_follow.png",
+        "origin": [
+          0.5,
+          0.8851674641148325
+        ]
+      },
+      {
+        "image": "originals/kirito/left/neutral.png",
+        "origin": [
+          0.5,
+          0.9529505582137161
+        ]
+      }
+    ]
+  },
+  "kirito_lv3_left": {
+    "entity": "kirito",
+    "action": "lv3",
+    "direction": "left",
+    "scale": 0.0986784140969163,
+    "durations": [
+      40,
+      240,
+      100,
+      100,
+      60
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/kirito/left/neutral.png",
+        "origin": [
+          0.5,
+          0.9529505582137161
+        ]
+      },
+      {
+        "image": "transitions/kirito/left/dual_windup.png",
+        "origin": [
+          0.5,
+          0.9433811802232854
+        ]
+      },
+      {
+        "image": "v3/kirito/left/dual_cross.png",
+        "origin": [
+          0.5,
+          0.9433811802232854
+        ]
+      },
+      {
+        "image": "transitions/kirito/left/dual_follow.png",
+        "origin": [
+          0.5,
+          0.9362041467304625
+        ]
+      },
+      {
+        "image": "originals/kirito/left/neutral.png",
+        "origin": [
+          0.5,
+          0.9529505582137161
+        ]
+      }
+    ]
+  },
+  "kirito_basic_right": {
+    "entity": "kirito",
+    "action": "basic",
+    "direction": "right",
+    "scale": 0.09655172413793103,
+    "durations": [
+      35,
+      55,
+      70,
+      40,
+      40,
+      70,
+      40,
+      60
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/kirito/right/neutral.png",
+        "origin": [
+          0.5,
+          0.967304625199362
+        ]
+      },
+      {
+        "image": "transitions/kirito/right/ice_windup.png",
+        "origin": [
+          0.5,
+          0.9481658692185008
+        ]
+      },
+      {
+        "image": "v3/kirito/right/ice_cut.png",
+        "origin": [
+          0.5,
+          0.7783094098883573
+        ]
+      },
+      {
+        "image": "transitions/kirito/right/ice_follow.png",
+        "origin": [
+          0.5,
+          0.8963317384370016
+        ]
+      },
+      {
+        "image": "transitions/kirito/right/dark_windup.png",
+        "origin": [
+          0.5,
+          0.9545454545454546
+        ]
+      },
+      {
+        "image": "v3/kirito/right/dark_cut.png",
+        "origin": [
+          0.5,
+          0.8803827751196173
+        ]
+      },
+      {
+        "image": "transitions/kirito/right/dark_follow.png",
+        "origin": [
+          0.5,
+          0.9330143540669856
+        ]
+      },
+      {
+        "image": "originals/kirito/right/neutral.png",
+        "origin": [
+          0.5,
+          0.967304625199362
+        ]
+      }
+    ]
+  },
+  "kirito_lv1_right": {
+    "entity": "kirito",
+    "action": "lv1",
+    "direction": "right",
+    "scale": 0.09655172413793103,
+    "durations": [
+      40,
+      140,
+      70,
+      125,
+      60
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/kirito/right/neutral.png",
+        "origin": [
+          0.5,
+          0.967304625199362
+        ]
+      },
+      {
+        "image": "transitions/kirito/right/ice_windup.png",
+        "origin": [
+          0.5,
+          0.9481658692185008
+        ]
+      },
+      {
+        "image": "v3/kirito/right/ice_cut.png",
+        "origin": [
+          0.5,
+          0.7783094098883573
+        ]
+      },
+      {
+        "image": "transitions/kirito/right/ice_follow.png",
+        "origin": [
+          0.5,
+          0.8963317384370016
+        ]
+      },
+      {
+        "image": "originals/kirito/right/neutral.png",
+        "origin": [
+          0.5,
+          0.967304625199362
+        ]
+      }
+    ]
+  },
+  "kirito_lv2_right": {
+    "entity": "kirito",
+    "action": "lv2",
+    "direction": "right",
+    "scale": 0.09655172413793103,
+    "durations": [
+      40,
+      140,
+      70,
+      60,
+      140,
+      70,
+      80,
+      60
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/kirito/right/neutral.png",
+        "origin": [
+          0.5,
+          0.967304625199362
+        ]
+      },
+      {
+        "image": "transitions/kirito/right/ice_windup.png",
+        "origin": [
+          0.5,
+          0.9481658692185008
+        ]
+      },
+      {
+        "image": "v3/kirito/right/ice_cut.png",
+        "origin": [
+          0.5,
+          0.7783094098883573
+        ]
+      },
+      {
+        "image": "transitions/kirito/right/ice_follow.png",
+        "origin": [
+          0.5,
+          0.8963317384370016
+        ]
+      },
+      {
+        "image": "transitions/kirito/right/dark_windup.png",
+        "origin": [
+          0.5,
+          0.9545454545454546
+        ]
+      },
+      {
+        "image": "v3/kirito/right/dark_cut.png",
+        "origin": [
+          0.5,
+          0.8803827751196173
+        ]
+      },
+      {
+        "image": "transitions/kirito/right/dark_follow.png",
+        "origin": [
+          0.5,
+          0.9330143540669856
+        ]
+      },
+      {
+        "image": "originals/kirito/right/neutral.png",
+        "origin": [
+          0.5,
+          0.967304625199362
+        ]
+      }
+    ]
+  },
+  "kirito_lv3_right": {
+    "entity": "kirito",
+    "action": "lv3",
+    "direction": "right",
+    "scale": 0.09655172413793103,
+    "durations": [
+      40,
+      240,
+      100,
+      100,
+      60
+    ],
+    "loop": false,
+    "frames": [
+      {
+        "image": "originals/kirito/right/neutral.png",
+        "origin": [
+          0.5,
+          0.967304625199362
+        ]
+      },
+      {
+        "image": "transitions/kirito/right/dual_windup.png",
+        "origin": [
+          0.5,
+          0.9720893141945773
+        ]
+      },
+      {
+        "image": "v3/kirito/right/dual_cross.png",
+        "origin": [
+          0.5,
+          0.8636363636363636
+        ]
+      },
+      {
+        "image": "transitions/kirito/right/dual_follow.png",
+        "origin": [
+          0.5,
+          0.9465709728867624
+        ]
+      },
+      {
+        "image": "originals/kirito/right/neutral.png",
+        "origin": [
+          0.5,
+          0.967304625199362
+        ]
+      }
+    ]
+  }
+}

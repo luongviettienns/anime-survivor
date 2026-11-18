@@ -1,0 +1,8 @@
+{
+  "key": "kirito",
+  "direction": "right",
+  "pose": "dark_windup",
+  "reference": "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/actor-v2/source/originals/kirito/right/neutral.png",
+  "prompt": "ONE SINGLE full-body pixel-art game animation frame, not a grid/sheet. Reference is strict character identity, fine crisp stepped pixel clusters, palette, outfit, head/anatomical size and elevated TOP-DOWN orthographic three-quarter camera. Same black spiky hair, long black split coat with thin silver piping, belt, gloves, boots, sword guards. Native transparent RGBA square1254x1254, full body and both blade tips inside70px clear margins. Feet stay on horizontal ground plane, same body scale. No ground, shadow, letters, detached wave, giant arc or extra objects. Facing RIGHT/east, genuine profile-three-quarter. RIGHT arm near foreground/lower-south holds VIOLET BLACK sword. LEFT arm far/upper-north holds CYAN ICE sword. Never mirror or swap hands. DARK FIRE ATTACK WINDUP: knees braced, draw RIGHT-hand VIOLET BLACK sword behind right shoulder with elbow bent and blade diagonally backward/up, coil torso opposite the ice stroke, ready to unleash violet strike. LEFT cyan sword guards low across the waist. Strong readable anticipation, not idle, no strike released yet.",
+  "path": "C:\\Users\\ASUS\\.codex\\generated_images\\01a1ee04-31d9-76f3-993d-4f3b2888c393\\exec-ddcd4319-8233-453c-b507-8e5c6da36938.png"
+}

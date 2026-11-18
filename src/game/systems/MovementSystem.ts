@@ -66,6 +66,9 @@ export class MovementSystem {
     return { x: 0, y: 1 };
   }
 
+  isSwordBusy(): boolean { return this.pendingSkills.has('dual_slash') || this.actionVisual.isSwordActive(); }
+  isDashVisualActive(): boolean { return this.actionVisual.isDashActive(); }
+
   playDefeat(done: () => void): boolean { return this.actionVisual.defeat(done); }
 
   syncDashVisual(): void {
@@ -84,19 +87,21 @@ export class MovementSystem {
       this.actionVisual.play(skill, aimX, animOverride);
       return;
     }
-    const baseAnim = skill === 'dual_slash' ? 'hero-skill-slash' : `hero-skill-${skill}`;
-    if (this.player.anims.isPlaying && this.player.anims.currentAnim?.key === baseAnim) return;
+    if (skill === 'dual_slash' && this.actionVisual.play(skill, aimX, animOverride)) {
+      this.pendingSkills.delete(skill); return;
+    }
     this.pendingSkills.set(skill, { aimX, animOverride });
   }
 
   private animate(moving: boolean): void {
+    if (this.actionVisual.isDashActive() || this.actionVisual.isSwordActive()) return;
     if (this.player.anims.isPlaying && this.player.anims.currentAnim?.key.startsWith('hero-skill-')) return;
     const next = this.pendingSkills.entries().next().value;
     if (next) {
+      if (!this.actionVisual.play(next[0], next[1].aimX, next[1].animOverride)) return;
       this.pendingSkills.delete(next[0]);
       const baseAnim = next[0] === 'dual_slash' ? 'hero-skill-slash' : `hero-skill-${next[0]}`;
       this.player.setFlipX(next[1].aimX < 0).play(baseAnim);
-      this.actionVisual.play(next[0], next[1].aimX, next[1].animOverride);
       return;
     }
     const side = this.facing === 'left' || this.facing === 'right';

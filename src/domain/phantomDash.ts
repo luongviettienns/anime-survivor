@@ -5,7 +5,7 @@ export const MAX_PHANTOM_DASH_LEVEL = 5;
 
 export const PHANTOM_DASH = {
   minCooldownMs: 2400,
-  durationMs: 180,
+  durationMs: 225,
   iframeMs: 400,
   statusBonusDamage: 15,
   hitRadiusPx: 56,

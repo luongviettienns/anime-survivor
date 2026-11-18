@@ -1,0 +1,94 @@
+{
+  "skills": [
+    {
+      "key": "actor-kirito_lv1_left",
+      "times": [
+        183
+      ],
+      "images": [
+        "actor/originals/kirito/left/neutral.png",
+        "actor/transitions/kirito/left/ice_windup.png",
+        "actor/v3/kirito/left/ice_cut.png",
+        "actor/transitions/kirito/left/ice_follow.png"
+      ],
+      "hitDidNotInterrupt": true
+    },
+    {
+      "key": "actor-kirito_lv2_left",
+      "times": [
+        183,
+        450
+      ],
+      "images": [
+        "actor/originals/kirito/left/neutral.png",
+        "actor/transitions/kirito/left/ice_windup.png",
+        "actor/v3/kirito/left/ice_cut.png",
+        "actor/transitions/kirito/left/ice_follow.png",
+        "actor/transitions/kirito/left/dark_windup.png",
+        "actor/v3/kirito/left/dark_cut.png",
+        "actor/transitions/kirito/left/dark_follow.png"
+      ],
+      "hitDidNotInterrupt": true
+    },
+    {
+      "key": "actor-kirito_lv3_left",
+      "times": [
+        300
+      ],
+      "images": [
+        "actor/originals/kirito/left/neutral.png",
+        "actor/transitions/kirito/left/dual_windup.png",
+        "actor/v3/kirito/left/dual_cross.png",
+        "actor/transitions/kirito/left/dual_follow.png"
+      ],
+      "hitDidNotInterrupt": true
+    },
+    {
+      "key": "actor-kirito_lv1_right",
+      "times": [
+        200
+      ],
+      "images": [
+        "actor/originals/kirito/right/neutral.png",
+        "actor/transitions/kirito/right/ice_windup.png",
+        "actor/v3/kirito/right/ice_cut.png",
+        "actor/transitions/kirito/right/ice_follow.png"
+      ],
+      "hitDidNotInterrupt": true
+    },
+    {
+      "key": "actor-kirito_lv2_right",
+      "times": [
+        183,
+        467
+      ],
+      "images": [
+        "actor/originals/kirito/right/neutral.png",
+        "actor/transitions/kirito/right/ice_windup.png",
+        "actor/v3/kirito/right/ice_cut.png",
+        "actor/transitions/kirito/right/ice_follow.png",
+        "actor/transitions/kirito/right/dark_windup.png",
+        "actor/v3/kirito/right/dark_cut.png",
+        "actor/transitions/kirito/right/dark_follow.png"
+      ],
+      "hitDidNotInterrupt": true
+    },
+    {
+      "key": "actor-kirito_lv3_right",
+      "times": [
+        283
+      ],
+      "images": [
+        "actor/originals/kirito/right/neutral.png",
+        "actor/transitions/kirito/right/dual_windup.png",
+        "actor/v3/kirito/right/dual_cross.png",
+        "actor/transitions/kirito/right/dual_follow.png"
+      ],
+      "hitDidNotInterrupt": true
+    }
+  ],
+  "swordDefersDash": true,
+  "pendingSurvivesDashOnce": true,
+  "newWaveDefersUntilDashEnds": true,
+  "errors": []
+}

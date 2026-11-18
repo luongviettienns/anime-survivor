@@ -2320,11 +2320,14 @@
     "direction": "left",
     "scale": 0.0986784140969163,
     "durations": [
-      90,
+      35,
+      55,
       70,
-      80,
+      40,
+      40,
       70,
-      100
+      40,
+      60
     ],
     "loop": false,
     "frames": [
@@ -2336,6 +2339,13 @@
         ]
       },
       {
+        "image": "transitions/kirito/left/ice_windup.png",
+        "origin": [
+          0.5,
+          0.9258373205741627
+        ]
+      },
+      {
         "image": "v3/kirito/left/ice_cut.png",
         "origin": [
           0.5,
@@ -2343,10 +2353,17 @@
         ]
       },
       {
-        "image": "originals/kirito/left/neutral.png",
+        "image": "transitions/kirito/left/ice_follow.png",
         "origin": [
           0.5,
-          0.9529505582137161
+          0.8676236044657097
+        ]
+      },
+      {
+        "image": "transitions/kirito/left/dark_windup.png",
+        "origin": [
+          0.5,
+          0.9409888357256778
         ]
       },
       {
@@ -2354,6 +2371,13 @@
         "origin": [
           0.5,
           0.8628389154704944
+        ]
+      },
+      {
+        "image": "transitions/kirito/left/dark_follow.png",
+        "origin": [
+          0.5,
+          0.8851674641148325
         ]
       },
       {
@@ -2371,9 +2395,11 @@
     "direction": "left",
     "scale": 0.0986784140969163,
     "durations": [
-      180,
-      90,
-      165
+      40,
+      140,
+      70,
+      125,
+      60
     ],
     "loop": false,
     "frames": [
@@ -2385,10 +2411,24 @@
         ]
       },
       {
+        "image": "transitions/kirito/left/ice_windup.png",
+        "origin": [
+          0.5,
+          0.9258373205741627
+        ]
+      },
+      {
         "image": "v3/kirito/left/ice_cut.png",
         "origin": [
           0.5,
           0.8572567783094099
+        ]
+      },
+      {
+        "image": "transitions/kirito/left/ice_follow.png",
+        "origin": [
+          0.5,
+          0.8676236044657097
         ]
       },
       {
@@ -2406,11 +2446,14 @@
     "direction": "left",
     "scale": 0.0986784140969163,
     "durations": [
-      180,
-      90,
-      180,
-      90,
-      120
+      40,
+      140,
+      70,
+      60,
+      140,
+      70,
+      80,
+      60
     ],
     "loop": false,
     "frames": [
@@ -2422,6 +2465,13 @@
         ]
       },
       {
+        "image": "transitions/kirito/left/ice_windup.png",
+        "origin": [
+          0.5,
+          0.9258373205741627
+        ]
+      },
+      {
         "image": "v3/kirito/left/ice_cut.png",
         "origin": [
           0.5,
@@ -2429,10 +2479,17 @@
         ]
       },
       {
-        "image": "originals/kirito/left/neutral.png",
+        "image": "transitions/kirito/left/ice_follow.png",
         "origin": [
           0.5,
-          0.9529505582137161
+          0.8676236044657097
+        ]
+      },
+      {
+        "image": "transitions/kirito/left/dark_windup.png",
+        "origin": [
+          0.5,
+          0.9409888357256778
         ]
       },
       {
@@ -2440,6 +2497,13 @@
         "origin": [
           0.5,
           0.8628389154704944
+        ]
+      },
+      {
+        "image": "transitions/kirito/left/dark_follow.png",
+        "origin": [
+          0.5,
+          0.8851674641148325
         ]
       },
       {
@@ -2457,9 +2521,11 @@
     "direction": "left",
     "scale": 0.0986784140969163,
     "durations": [
-      280,
-      120,
-      140
+      40,
+      240,
+      100,
+      100,
+      60
     ],
     "loop": false,
     "frames": [
@@ -2471,10 +2537,24 @@
         ]
       },
       {
+        "image": "transitions/kirito/left/dual_windup.png",
+        "origin": [
+          0.5,
+          0.9433811802232854
+        ]
+      },
+      {
         "image": "v3/kirito/left/dual_cross.png",
         "origin": [
           0.5,
           0.9433811802232854
+        ]
+      },
+      {
+        "image": "transitions/kirito/left/dual_follow.png",
+        "origin": [
+          0.5,
+          0.9362041467304625
         ]
       },
       {
@@ -2562,11 +2642,14 @@
     "direction": "right",
     "scale": 0.09655172413793103,
     "durations": [
-      90,
+      35,
+      55,
       70,
-      80,
+      40,
+      40,
       70,
-      100
+      40,
+      60
     ],
     "loop": false,
     "frames": [
@@ -2578,6 +2661,13 @@
         ]
       },
       {
+        "image": "transitions/kirito/right/ice_windup.png",
+        "origin": [
+          0.5,
+          0.9481658692185008
+        ]
+      },
+      {
         "image": "v3/kirito/right/ice_cut.png",
         "origin": [
           0.5,
@@ -2585,10 +2675,17 @@
         ]
       },
       {
-        "image": "originals/kirito/right/neutral.png",
+        "image": "transitions/kirito/right/ice_follow.png",
         "origin": [
           0.5,
-          0.967304625199362
+          0.8963317384370016
+        ]
+      },
+      {
+        "image": "transitions/kirito/right/dark_windup.png",
+        "origin": [
+          0.5,
+          0.9545454545454546
         ]
       },
       {
@@ -2596,6 +2693,13 @@
         "origin": [
           0.5,
           0.8803827751196173
+        ]
+      },
+      {
+        "image": "transitions/kirito/right/dark_follow.png",
+        "origin": [
+          0.5,
+          0.9330143540669856
         ]
       },
       {
@@ -2613,9 +2717,11 @@
     "direction": "right",
     "scale": 0.09655172413793103,
     "durations": [
-      180,
-      90,
-      165
+      40,
+      140,
+      70,
+      125,
+      60
     ],
     "loop": false,
     "frames": [
@@ -2627,10 +2733,24 @@
         ]
       },
       {
+        "image": "transitions/kirito/right/ice_windup.png",
+        "origin": [
+          0.5,
+          0.9481658692185008
+        ]
+      },
+      {
         "image": "v3/kirito/right/ice_cut.png",
         "origin": [
           0.5,
           0.7783094098883573
+        ]
+      },
+      {
+        "image": "transitions/kirito/right/ice_follow.png",
+        "origin": [
+          0.5,
+          0.8963317384370016
         ]
       },
       {
@@ -2648,11 +2768,14 @@
     "direction": "right",
     "scale": 0.09655172413793103,
     "durations": [
-      180,
-      90,
-      180,
-      90,
-      120
+      40,
+      140,
+      70,
+      60,
+      140,
+      70,
+      80,
+      60
     ],
     "loop": false,
     "frames": [
@@ -2664,6 +2787,13 @@
         ]
       },
       {
+        "image": "transitions/kirito/right/ice_windup.png",
+        "origin": [
+          0.5,
+          0.9481658692185008
+        ]
+      },
+      {
         "image": "v3/kirito/right/ice_cut.png",
         "origin": [
           0.5,
@@ -2671,10 +2801,17 @@
         ]
       },
       {
-        "image": "originals/kirito/right/neutral.png",
+        "image": "transitions/kirito/right/ice_follow.png",
         "origin": [
           0.5,
-          0.967304625199362
+          0.8963317384370016
+        ]
+      },
+      {
+        "image": "transitions/kirito/right/dark_windup.png",
+        "origin": [
+          0.5,
+          0.9545454545454546
         ]
       },
       {
@@ -2682,6 +2819,13 @@
         "origin": [
           0.5,
           0.8803827751196173
+        ]
+      },
+      {
+        "image": "transitions/kirito/right/dark_follow.png",
+        "origin": [
+          0.5,
+          0.9330143540669856
         ]
       },
       {
@@ -2699,9 +2843,11 @@
     "direction": "right",
     "scale": 0.09655172413793103,
     "durations": [
-      280,
-      120,
-      140
+      40,
+      240,
+      100,
+      100,
+      60
     ],
     "loop": false,
     "frames": [
@@ -2713,10 +2859,24 @@
         ]
       },
       {
+        "image": "transitions/kirito/right/dual_windup.png",
+        "origin": [
+          0.5,
+          0.9720893141945773
+        ]
+      },
+      {
         "image": "v3/kirito/right/dual_cross.png",
         "origin": [
           0.5,
           0.8636363636363636
+        ]
+      },
+      {
+        "image": "transitions/kirito/right/dual_follow.png",
+        "origin": [
+          0.5,
+          0.9465709728867624
         ]
       },
       {

@@ -1,0 +1,8 @@
+{
+  "key": "kirito",
+  "direction": "left",
+  "pose": "dual_follow",
+  "reference": "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/actor-v2/source/originals/kirito/left/neutral.png",
+  "prompt": "ONE SINGLE full-body pixel-art game animation frame, not a grid/sheet. Reference is strict character identity, fine crisp stepped pixel clusters, palette, outfit, head/anatomical size and elevated TOP-DOWN orthographic three-quarter camera. Same black spiky hair, long black split coat with thin silver piping, belt, gloves, boots, sword guards. Native transparent RGBA square1254x1254, full body and both blade tips inside70px clear margins. Feet stay on horizontal ground plane, same body scale. No ground, shadow, letters, detached wave, giant arc or extra objects. Facing LEFT/west, genuine profile-three-quarter. LEFT arm near foreground/lower-south holds CYAN ICE sword. RIGHT arm far/upper-north holds VIOLET BLACK sword. Never mirror or swap hands. DUAL-X ATTACK FOLLOW-THROUGH: after crossed X strike, BOTH arms finish opening apart and lowering into a wide low V along facing side, cyan LEFT and violet RIGHT swords SEPARATED after the scissor. Knees still braced, torso finishing forward twist, coat tails settling. Clear dynamic recovery, NOT crossed contact and NOT relaxed idle.",
+  "path": "C:\\Users\\ASUS\\.codex\\generated_images\\01a1ee04-31d9-76f3-993d-4f3b2888c393\\exec-88350d8c-a984-4615-902d-b2a58e93495a.png"
+}

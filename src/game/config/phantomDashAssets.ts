@@ -1,3 +1,4 @@
+import { PHANTOM_DASH } from '../../domain/phantomDash';
 import type Phaser from 'phaser';
 import type { Vec2 } from '../../domain/vector';
 
@@ -69,6 +70,7 @@ export function registerDashAnimations(scene: Phaser.Scene): void {
   for (const clip of DASH_CLIPS) scene.anims.create({
     key: clip.key, frameRate: 1000, repeat: 0,
     frames: clip.durations.map((duration, index) => ({ key: clip.key,
-      frame: `${clip.atlas}/${String(index).padStart(3, '0')}`, duration })),
+      frame: `${clip.atlas}/${String(index).padStart(3, '0')}`,
+      duration: duration * PHANTOM_DASH.durationMs / clip.durations.reduce((sum, value) => sum + value, 0) })),
   });
 }

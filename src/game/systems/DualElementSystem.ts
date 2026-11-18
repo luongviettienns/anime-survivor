@@ -52,9 +52,9 @@ export class DualElementSystem {
     private readonly onAudioCue?: (cue: 'shoot' | 'slash') => void
   ) {}
 
-  update(nowMs: number, level: number, passives: PassiveStats, candidates: Candidate[], lastAim: Vec2): Vec2 {
+  update(nowMs: number, level: number, passives: PassiveStats, candidates: Candidate[], lastAim: Vec2, allowStart = true): Vec2 {
     let aim = lastAim;
-    if (level >= 1 && canWeaponFire(this.cooldown, nowMs)) {
+    if (allowStart && level >= 1 && canWeaponFire(this.cooldown, nowMs)) {
       const stats = applyWeaponModifiers(computeWeaponStats('dual_slash', level), passives);
       this.cooldown.intervalMs = stats.cooldownMs;
       const target = selectNearestTarget(this.player, candidates, stats.rangePx);

@@ -1,0 +1,9 @@
+{
+  "index": 0,
+  "prompt": "ONE SINGLE native transparent RGBA pixel-art VFX animation frame, not a sheet, no text. Reference1 gives ONLY fine high-bit pixel clusters and cyan-white ICE / violet-black FIRE palette; do NOT copy its flat X symbol silhouette. Reference2 gives ONLY the game's slightly elevated TOP-DOWN orthographic three-quarter camera; draw NO characters, grass, ground or UI. Design a DIRECTIONAL FLYING DUAL SWORD-ENERGY WAVE moving RIGHT/east: TWO THICK CURVED luminous ribbon-like shockwaves intertwined and crossing once near the forward third, cyan-white upper stream and violet-black lower stream. Both streams continue FORWARD RIGHT into staggered curved cutting crescent crests with dimensional thickness and visible top planes. Long tapering turbulent energy TAILS trail LEFT, with a few tiny shards following the same velocity; the dominant overall silhouette is a horizontally elongated projectile/comet wave about2.5:1, NOT a stationary letter X, not four symmetrical straight spokes, not crossed swords, not a star/plus, not a laser rectangle. Crossing reads as momentary interference between flowing waves, not an icon. Crisp stepped anime pixel clusters and sharp white cores; restrained glow, richly shaded cyan crystalline and violet flame edges, clear forward momentum. Canonical right-facing side-travel suitable for rotating to aim. Square1254x1254 transparent canvas, entire effect inside80px margins; effect centered, no clipping, no ground ring or baked shadow. Frame0: crests tightly curled and tails freshly stretched.",
+  "reference": [
+    "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/public/assets/dual-element/originals/dual_element_x/000.png",
+    "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/output/merged-overview.png"
+  ],
+  "path": "C:\\Users\\ASUS\\.codex\\generated_images\\01a1ee04-31d9-76f3-993d-4f3b2888c393\\exec-18280880-036b-4ddf-935b-1b6ef2cff8eb.png"
+}

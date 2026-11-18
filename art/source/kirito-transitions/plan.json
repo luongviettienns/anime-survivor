@@ -1,0 +1,103 @@
+{
+  "scope": "Add12single-frame Kirito left/right windup/follow poses; preserve cut timing and all original pixels. Fix Sword/Dash/hit priority, no new combat stats or skills.",
+  "jobs": [
+    {
+      "key": "kirito",
+      "direction": "left",
+      "pose": "ice_windup",
+      "reference": "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/actor-v2/source/originals/kirito/left/neutral.png",
+      "prompt": "ONE SINGLE full-body pixel-art game animation frame, not a grid/sheet. Reference is strict character identity, fine crisp stepped pixel clusters, palette, outfit, head/anatomical size and elevated TOP-DOWN orthographic three-quarter camera. Same black spiky hair, long black split coat with thin silver piping, belt, gloves, boots, sword guards. Native transparent RGBA square1254x1254, full body and both blade tips inside70px clear margins. Feet stay on horizontal ground plane, same body scale. No ground, shadow, letters, detached wave, giant arc or extra objects. Facing LEFT/west, genuine profile-three-quarter. LEFT arm near foreground/lower-south holds CYAN ICE sword. RIGHT arm far/upper-north holds VIOLET BLACK sword. Never mirror or swap hands. ICE ATTACK WINDUP: knees braced and hips coil, draw the LEFT-hand CYAN sword back beside left shoulder with blade pointing diagonally backward/up, elbow bent, preparing a forceful forward slash. RIGHT-hand violet sword guards low. Tense deliberate anticipatory pose, clearly different from idle, no attack released yet."
+    },
+    {
+      "key": "kirito",
+      "direction": "left",
+      "pose": "ice_follow",
+      "reference": "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/actor-v2/source/originals/kirito/left/neutral.png",
+      "prompt": "ONE SINGLE full-body pixel-art game animation frame, not a grid/sheet. Reference is strict character identity, fine crisp stepped pixel clusters, palette, outfit, head/anatomical size and elevated TOP-DOWN orthographic three-quarter camera. Same black spiky hair, long black split coat with thin silver piping, belt, gloves, boots, sword guards. Native transparent RGBA square1254x1254, full body and both blade tips inside70px clear margins. Feet stay on horizontal ground plane, same body scale. No ground, shadow, letters, detached wave, giant arc or extra objects. Facing LEFT/west, genuine profile-three-quarter. LEFT arm near foreground/lower-south holds CYAN ICE sword. RIGHT arm far/upper-north holds VIOLET BLACK sword. Never mirror or swap hands. ICE ATTACK FOLLOW-THROUGH: after the forward cyan strike, LEFT arm finishes an outward downward sweep in facing direction, torso rotated and front knee bearing weight. Cyan blade angles down/out after crossing target, right violet blade guards beside waist. Moving coat tails settle; clearly mid-action recovery, not idle, not the straight horizontal contact pose."
+    },
+    {
+      "key": "kirito",
+      "direction": "left",
+      "pose": "dark_windup",
+      "reference": "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/actor-v2/source/originals/kirito/left/neutral.png",
+      "prompt": "ONE SINGLE full-body pixel-art game animation frame, not a grid/sheet. Reference is strict character identity, fine crisp stepped pixel clusters, palette, outfit, head/anatomical size and elevated TOP-DOWN orthographic three-quarter camera. Same black spiky hair, long black split coat with thin silver piping, belt, gloves, boots, sword guards. Native transparent RGBA square1254x1254, full body and both blade tips inside70px clear margins. Feet stay on horizontal ground plane, same body scale. No ground, shadow, letters, detached wave, giant arc or extra objects. Facing LEFT/west, genuine profile-three-quarter. LEFT arm near foreground/lower-south holds CYAN ICE sword. RIGHT arm far/upper-north holds VIOLET BLACK sword. Never mirror or swap hands. DARK FIRE ATTACK WINDUP: knees braced, draw RIGHT-hand VIOLET BLACK sword behind right shoulder with elbow bent and blade diagonally backward/up, coil torso opposite the ice stroke, ready to unleash violet strike. LEFT cyan sword guards low across the waist. Strong readable anticipation, not idle, no strike released yet."
+    },
+    {
+      "key": "kirito",
+      "direction": "left",
+      "pose": "dark_follow",
+      "reference": "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/actor-v2/source/originals/kirito/left/neutral.png",
+      "prompt": "ONE SINGLE full-body pixel-art game animation frame, not a grid/sheet. Reference is strict character identity, fine crisp stepped pixel clusters, palette, outfit, head/anatomical size and elevated TOP-DOWN orthographic three-quarter camera. Same black spiky hair, long black split coat with thin silver piping, belt, gloves, boots, sword guards. Native transparent RGBA square1254x1254, full body and both blade tips inside70px clear margins. Feet stay on horizontal ground plane, same body scale. No ground, shadow, letters, detached wave, giant arc or extra objects. Facing LEFT/west, genuine profile-three-quarter. LEFT arm near foreground/lower-south holds CYAN ICE sword. RIGHT arm far/upper-north holds VIOLET BLACK sword. Never mirror or swap hands. DARK FIRE FOLLOW-THROUGH: after forward violet strike, RIGHT arm completes a downward/outward sweep in facing direction, violet blade points diagonally down away from body, torso rotated and front leg braced. LEFT cyan sword guards by waist. Coat trails motion; clearly recovery after impact, different from idle and straight horizontal contact."
+    },
+    {
+      "key": "kirito",
+      "direction": "left",
+      "pose": "dual_windup",
+      "reference": "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/actor-v2/source/originals/kirito/left/neutral.png",
+      "prompt": "ONE SINGLE full-body pixel-art game animation frame, not a grid/sheet. Reference is strict character identity, fine crisp stepped pixel clusters, palette, outfit, head/anatomical size and elevated TOP-DOWN orthographic three-quarter camera. Same black spiky hair, long black split coat with thin silver piping, belt, gloves, boots, sword guards. Native transparent RGBA square1254x1254, full body and both blade tips inside70px clear margins. Feet stay on horizontal ground plane, same body scale. No ground, shadow, letters, detached wave, giant arc or extra objects. Facing LEFT/west, genuine profile-three-quarter. LEFT arm near foreground/lower-south holds CYAN ICE sword. RIGHT arm far/upper-north holds VIOLET BLACK sword. Never mirror or swap hands. DUAL-X ATTACK WINDUP: low braced stance, BOTH elbows bent and drawn outward back, cyan LEFT and violet RIGHT swords raised into a wide OPEN V above/alongside shoulders, blades separated and NOT crossed yet. Torso coils toward facing direction, preparing to scissor the blades forward into X. Strong charged anticipation, not idle; no detached effects."
+    },
+    {
+      "key": "kirito",
+      "direction": "left",
+      "pose": "dual_follow",
+      "reference": "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/actor-v2/source/originals/kirito/left/neutral.png",
+      "prompt": "ONE SINGLE full-body pixel-art game animation frame, not a grid/sheet. Reference is strict character identity, fine crisp stepped pixel clusters, palette, outfit, head/anatomical size and elevated TOP-DOWN orthographic three-quarter camera. Same black spiky hair, long black split coat with thin silver piping, belt, gloves, boots, sword guards. Native transparent RGBA square1254x1254, full body and both blade tips inside70px clear margins. Feet stay on horizontal ground plane, same body scale. No ground, shadow, letters, detached wave, giant arc or extra objects. Facing LEFT/west, genuine profile-three-quarter. LEFT arm near foreground/lower-south holds CYAN ICE sword. RIGHT arm far/upper-north holds VIOLET BLACK sword. Never mirror or swap hands. DUAL-X ATTACK FOLLOW-THROUGH: after crossed X strike, BOTH arms finish opening apart and lowering into a wide low V along facing side, cyan LEFT and violet RIGHT swords SEPARATED after the scissor. Knees still braced, torso finishing forward twist, coat tails settling. Clear dynamic recovery, NOT crossed contact and NOT relaxed idle."
+    },
+    {
+      "key": "kirito",
+      "direction": "right",
+      "pose": "ice_windup",
+      "reference": "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/actor-v2/source/originals/kirito/right/neutral.png",
+      "prompt": "ONE SINGLE full-body pixel-art game animation frame, not a grid/sheet. Reference is strict character identity, fine crisp stepped pixel clusters, palette, outfit, head/anatomical size and elevated TOP-DOWN orthographic three-quarter camera. Same black spiky hair, long black split coat with thin silver piping, belt, gloves, boots, sword guards. Native transparent RGBA square1254x1254, full body and both blade tips inside70px clear margins. Feet stay on horizontal ground plane, same body scale. No ground, shadow, letters, detached wave, giant arc or extra objects. Facing RIGHT/east, genuine profile-three-quarter. RIGHT arm near foreground/lower-south holds VIOLET BLACK sword. LEFT arm far/upper-north holds CYAN ICE sword. Never mirror or swap hands. ICE ATTACK WINDUP: knees braced and hips coil, draw the LEFT-hand CYAN sword back beside left shoulder with blade pointing diagonally backward/up, elbow bent, preparing a forceful forward slash. RIGHT-hand violet sword guards low. Tense deliberate anticipatory pose, clearly different from idle, no attack released yet."
+    },
+    {
+      "key": "kirito",
+      "direction": "right",
+      "pose": "ice_follow",
+      "reference": "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/actor-v2/source/originals/kirito/right/neutral.png",
+      "prompt": "ONE SINGLE full-body pixel-art game animation frame, not a grid/sheet. Reference is strict character identity, fine crisp stepped pixel clusters, palette, outfit, head/anatomical size and elevated TOP-DOWN orthographic three-quarter camera. Same black spiky hair, long black split coat with thin silver piping, belt, gloves, boots, sword guards. Native transparent RGBA square1254x1254, full body and both blade tips inside70px clear margins. Feet stay on horizontal ground plane, same body scale. No ground, shadow, letters, detached wave, giant arc or extra objects. Facing RIGHT/east, genuine profile-three-quarter. RIGHT arm near foreground/lower-south holds VIOLET BLACK sword. LEFT arm far/upper-north holds CYAN ICE sword. Never mirror or swap hands. ICE ATTACK FOLLOW-THROUGH: after the forward cyan strike, LEFT arm finishes an outward downward sweep in facing direction, torso rotated and front knee bearing weight. Cyan blade angles down/out after crossing target, right violet blade guards beside waist. Moving coat tails settle; clearly mid-action recovery, not idle, not the straight horizontal contact pose."
+    },
+    {
+      "key": "kirito",
+      "direction": "right",
+      "pose": "dark_windup",
+      "reference": "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/actor-v2/source/originals/kirito/right/neutral.png",
+      "prompt": "ONE SINGLE full-body pixel-art game animation frame, not a grid/sheet. Reference is strict character identity, fine crisp stepped pixel clusters, palette, outfit, head/anatomical size and elevated TOP-DOWN orthographic three-quarter camera. Same black spiky hair, long black split coat with thin silver piping, belt, gloves, boots, sword guards. Native transparent RGBA square1254x1254, full body and both blade tips inside70px clear margins. Feet stay on horizontal ground plane, same body scale. No ground, shadow, letters, detached wave, giant arc or extra objects. Facing RIGHT/east, genuine profile-three-quarter. RIGHT arm near foreground/lower-south holds VIOLET BLACK sword. LEFT arm far/upper-north holds CYAN ICE sword. Never mirror or swap hands. DARK FIRE ATTACK WINDUP: knees braced, draw RIGHT-hand VIOLET BLACK sword behind right shoulder with elbow bent and blade diagonally backward/up, coil torso opposite the ice stroke, ready to unleash violet strike. LEFT cyan sword guards low across the waist. Strong readable anticipation, not idle, no strike released yet."
+    },
+    {
+      "key": "kirito",
+      "direction": "right",
+      "pose": "dark_follow",
+      "reference": "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/actor-v2/source/originals/kirito/right/neutral.png",
+      "prompt": "ONE SINGLE full-body pixel-art game animation frame, not a grid/sheet. Reference is strict character identity, fine crisp stepped pixel clusters, palette, outfit, head/anatomical size and elevated TOP-DOWN orthographic three-quarter camera. Same black spiky hair, long black split coat with thin silver piping, belt, gloves, boots, sword guards. Native transparent RGBA square1254x1254, full body and both blade tips inside70px clear margins. Feet stay on horizontal ground plane, same body scale. No ground, shadow, letters, detached wave, giant arc or extra objects. Facing RIGHT/east, genuine profile-three-quarter. RIGHT arm near foreground/lower-south holds VIOLET BLACK sword. LEFT arm far/upper-north holds CYAN ICE sword. Never mirror or swap hands. DARK FIRE FOLLOW-THROUGH: after forward violet strike, RIGHT arm completes a downward/outward sweep in facing direction, violet blade points diagonally down away from body, torso rotated and front leg braced. LEFT cyan sword guards by waist. Coat trails motion; clearly recovery after impact, different from idle and straight horizontal contact."
+    },
+    {
+      "key": "kirito",
+      "direction": "right",
+      "pose": "dual_windup",
+      "reference": "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/actor-v2/source/originals/kirito/right/neutral.png",
+      "prompt": "ONE SINGLE full-body pixel-art game animation frame, not a grid/sheet. Reference is strict character identity, fine crisp stepped pixel clusters, palette, outfit, head/anatomical size and elevated TOP-DOWN orthographic three-quarter camera. Same black spiky hair, long black split coat with thin silver piping, belt, gloves, boots, sword guards. Native transparent RGBA square1254x1254, full body and both blade tips inside70px clear margins. Feet stay on horizontal ground plane, same body scale. No ground, shadow, letters, detached wave, giant arc or extra objects. Facing RIGHT/east, genuine profile-three-quarter. RIGHT arm near foreground/lower-south holds VIOLET BLACK sword. LEFT arm far/upper-north holds CYAN ICE sword. Never mirror or swap hands. DUAL-X ATTACK WINDUP: low braced stance, BOTH elbows bent and drawn outward back, cyan LEFT and violet RIGHT swords raised into a wide OPEN V above/alongside shoulders, blades separated and NOT crossed yet. Torso coils toward facing direction, preparing to scissor the blades forward into X. Strong charged anticipation, not idle; no detached effects."
+    },
+    {
+      "key": "kirito",
+      "direction": "right",
+      "pose": "dual_follow",
+      "reference": "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/actor-v2/source/originals/kirito/right/neutral.png",
+      "prompt": "ONE SINGLE full-body pixel-art game animation frame, not a grid/sheet. Reference is strict character identity, fine crisp stepped pixel clusters, palette, outfit, head/anatomical size and elevated TOP-DOWN orthographic three-quarter camera. Same black spiky hair, long black split coat with thin silver piping, belt, gloves, boots, sword guards. Native transparent RGBA square1254x1254, full body and both blade tips inside70px clear margins. Feet stay on horizontal ground plane, same body scale. No ground, shadow, letters, detached wave, giant arc or extra objects. Facing RIGHT/east, genuine profile-three-quarter. RIGHT arm near foreground/lower-south holds VIOLET BLACK sword. LEFT arm far/upper-north holds CYAN ICE sword. Never mirror or swap hands. DUAL-X ATTACK FOLLOW-THROUGH: after crossed X strike, BOTH arms finish opening apart and lowering into a wide low V along facing side, cyan LEFT and violet RIGHT swords SEPARATED after the scissor. Knees still braced, torso finishing forward twist, coat tails settling. Clear dynamic recovery, NOT crossed contact and NOT relaxed idle."
+    }
+  ],
+  "acceptance": [
+    "One native RGBA pose/file, authored asymmetrical hands",
+    "Windup at40ms, cuts at180/450/280ms; recover after cuts",
+    "No swallowed pending sword action in Dash",
+    "Hits keep tint/damage without interrupting sword or dash; death interrupts",
+    "Exact packed crops, npmverify and browser5184 actual overlap tests"
+  ],
+  "files": [
+    "HeroActionVisual:bool playback ack, sword/dash guards, consume hit without action interruption",
+    "MovementSystem:retain blocked pending requests and dispatch Wave immediately when accepted",
+    "WeaponSystem/DualElementSystem:block new starts but continue committed releases",
+    "PhantomDashSystem/GameScene:defer autoDash start until pending/active sword completes",
+    "native transition poses, packing, exporter, actorClips metadata, priority/timing unit and browser regressions"
+  ]
+}

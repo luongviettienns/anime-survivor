@@ -1,0 +1,44 @@
+{
+  "date": "2026-11-18",
+  "model": "not exposed",
+  "human_review": "pending",
+  "sources": [
+    {
+      "file": "lobby_background.png",
+      "sha256": "65cb236bc33fc27d5a89ff69bf7a36bf57daacf95480e8ec88726bc43f862524",
+      "prompt": "Original polished HI-BIT ANIME fantasy game LOBBY BACKGROUND, a complete wide16:9 environment illustration with NO UI, NO text, NO logos, NO characters. Elevated orthographic-like survivor-game camera looking into a majestic arcane sanctuary balcony floating above a distant enchanted forest and sea of clouds at blue-violet dusk. Elegant pale silver stone arches, antique gold inlays, violet and cyan crystal lanterns, subtle starfield and ethereal light. Composition for a real character-select game screen: LEFT central area x15%-52% is an EMPTY quiet display floor for a hero and separate pedestal, RIGHT x60%-95% is calm dark indigo architecture with LOW CONTRAST to hold a readable UI panel, top-left area is dark and quiet for title text; edges contain beautiful crystal/pillar detail. Warm gold rim lighting from left, cool cyan crystal accent from right. Layered atmospheric depth, crisp fine illustrated pixel clusters and smooth detailed hi-bit rendering, not blocky32px tiles, not photorealism. No embedded buttons, frames, cards, symbols or menus. Full bleed canvas1536x864 or widest16:9 available. Rich scenic beauty but no clutter where UI will go.",
+      "tool": "built-in imagegen"
+    },
+    {
+      "file": "lobby_pedestal.png",
+      "sha256": "3db8c88503968c5986ff8a137374391148f0f011f1e091796847cb28ba5ae97f",
+      "prompt": "Create ONE original isolated HI-BIT ANIME character display PEDESTAL asset for a top-down three-quarter RPG lobby. Wide shallow elliptical polished dark indigo stone dais viewed from above, thin refined silver/gold beveled rim, violet crystal insets at cardinal points, luminous restrained cyan arcane ring on the upper surface, small elegant floating crystal fragments close to base. Empty platform, NO character, NO text, NO UI. The upper standing surface is clear and level; shallow front steps, soft local contact shadow included with genuine alpha, no surrounding floor. Match polished indigo/gold/silver/crystal anime RPG art, rich fine details and crisp contours. Entire complete pedestal inside the CENTRAL70 PERCENT of square1024x1024 canvas, wide transparent padding, no clipping, no opaque background. One asset only.",
+      "tool": "built-in imagegen"
+    },
+    {
+      "file": "lobby_start_button.png",
+      "sha256": "45735404c8811341b89be92b7a74c0e0083acb85b45a036945a45b6d21639847",
+      "prompt": "Create ONE original isolated wide horizontal ANIME RPG BUTTON FRAME, blank with NO text. Premium arcane gold/silver metal bevels, a very small cyan crystal on each end, quiet dark cosmic-indigo center for readable label, restrained thin neon-cyan inner line. Width-to-height ratio about4.5:1. Elegant compact design, ornament confined to endcaps; center open and dark. NOT a banner with large wings. Crisp Hi-bit illustration, richly shaded fine details. Entire button occupies only middle horizontal band of square1024x1024 canvas with large empty transparent margins ALL sides. True transparent RGBA outside frame, no shadow backdrop, no mockup, no grid, no lettering.",
+      "tool": "built-in imagegen"
+    },
+    {
+      "file": "lobby_lock.png",
+      "sha256": "7051552c9bb62f95d03c9d241ca1473b81b02e50525af1846e1bff1d3d52b164",
+      "prompt": "Create ONE original compact LOCKED CHARACTER EMBLEM for an anime RPG lobby: a closed antique silver padlock with tiny dim violet gemstone, subtle gold edge, dark indigo inset, sitting over a simple faceted shield silhouette. Immediately readable at24px; strong clean silhouette and restrained fine hi-bit detail. Symmetrical front-facing UI icon, NOT a character portrait or card, NO lettering, no text. Match polished indigo/gold/silver/crystal anime game UI. Center complete object inside central65% of square1024x1024 canvas, generous transparent margins, no clipping, genuine transparent RGBA background.",
+      "tool": "built-in imagegen"
+    },
+    {
+      "file": "lobby_hero.png",
+      "sha256": "a0ecfa63b69feddc3a9a3948bfb49306fb8ec0f2104df4fe7104c1c3c7f7b5e7",
+      "source": "art\\source\\naruto-ai\\idle\\000.png",
+      "tool": "retained existing character artwork; no new character generated"
+    }
+  ],
+  "scope": "Assets only; not integrated into gameplay or character selection.",
+  "runtime_export": {
+    "background": "Lanczos fit/crop to1280x720, original retained",
+    "components": "RGBA256x256, alpha-preserving thumbnail with transparent padding",
+    "hero_preview": "RGBA512x512 derivative of retained current-hero artwork",
+    "content_frames": "alpha>=16 bounds plus2px margin; original PNG alpha untouched; public/assets/lobby-layout.json"
+  }
+}

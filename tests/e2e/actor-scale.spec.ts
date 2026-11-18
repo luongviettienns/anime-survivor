@@ -13,7 +13,7 @@ test('Rasengan actor keeps standing-reference scale and foot position in both or
       movement: { playSkill: (skill: 'orb', aim: number) => void; update: () => void };
     };
     scene.spawnTimer.paused = true; api.clearEnemies();
-    Object.assign(scene.weapon.inventory, { orb: 0, slash: 0, orbital: 0, mine: 0 });
+    Object.assign(scene.weapon.inventory, { orb: 0, clone: 0, orbital: 0, mine: 0 });
     scene.movement.playSkill('orb', 1); scene.movement.update(); scene.scene.pause();
     const sprite = scene.children.list.find((child) => child.getData('hero-action')) as Phaser.GameObjects.Sprite;
     return [0, 1].map((index) => {

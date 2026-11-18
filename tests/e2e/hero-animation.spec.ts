@@ -13,7 +13,7 @@ test('Naruto animates all four directions and remembers facing with real keys', 
       weapon: { inventory: Record<string, number> }; spawnTimer: Phaser.Time.TimerEvent;
     };
     scene.spawnTimer.paused = true; api.clearEnemies();
-    Object.assign(scene.weapon.inventory, { orb: 0, slash: 0, orbital: 0, mine: 0 });
+    Object.assign(scene.weapon.inventory, { orb: 0, clone: 0, orbital: 0, mine: 0 });
   });
   const state = () => page.evaluate(() => {
     const scene = window.__ANIME_SURVIVOR__!.getScene();

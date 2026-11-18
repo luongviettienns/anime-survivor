@@ -14,7 +14,7 @@ async function setupWave(page: Page, level: number, offsets: number[][], archety
     for (const shot of scene.weapon.projectiles.getChildren()) scene.weapon.consumeProjectile(shot);
     scene.weapon.dualSlash.clear(); scene.weapon.dualSlash.cooldown.nextAttackAtMs = 0;
     api.clearEnemies(); api.setWeaponLevel('dual_slash', level);
-    for (const weapon of ['orb', 'slash', 'orbital', 'mine'] as const) api.setWeaponLevel(weapon, 0);
+    for (const weapon of ['orb', 'clone', 'orbital', 'mine'] as const) api.setWeaponLevel(weapon, 0);
     const position = api.getPlayerPosition();
     for (const [x, y] of offsets) api.spawnEnemyTypeAt(archetype, position.x + x!, position.y + y!);
   }, { level, offsets, archetype });

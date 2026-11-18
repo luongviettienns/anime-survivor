@@ -11,7 +11,7 @@ test.beforeEach(async({page})=>{
   await page.evaluate(()=>{
     const api=window.__ANIME_SURVIVOR__!,scene=api.getScene() as unknown as Runtime;
     scene.spawnTimer.paused=true;api.clearEnemies();
-    Object.assign(scene.weapon.inventory,{orb:0,slash:0,orbital:0,mine:0});
+    Object.assign(scene.weapon.inventory,{orb:0,clone:0,orbital:0,mine:0});
     api.teleportPlayer(2000,-1000);scene.cameras.main.stopFollow().centerOn(2000,-1000);
     scene.scene.pause();
   });

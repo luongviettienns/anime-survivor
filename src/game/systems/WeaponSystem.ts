@@ -6,24 +6,37 @@ import { aimDirection, type Vec2 } from '../../domain/vector';
 import { applyWeaponModifiers, computeWeaponStats, createWeaponInventory, type WeaponId, type WeaponInventory } from '../../domain/weapons';
 import { PROJECTILE } from '../config/constants';
 import type { EnemySystem } from './EnemySystem';
+import { CloneSystem } from './CloneSystem';
 import { DualElementSystem } from './DualElementSystem';
 import { MineSystem } from './MineSystem';
 import { OrbitalSystem } from './OrbitalSystem';
 import type { VfxSystem } from './VfxSystem';
 
 type Candidate = TargetCandidate & { sprite: Phaser.Physics.Arcade.Sprite };
+type OrbDrill = {
+  target: Phaser.Physics.Arcade.Sprite;
+  dir: Vec2;
+  ticksLeft: number;
+  nextTickAtMs: number;
+  tickDamage: number;
+  finalDamage: number;
+  knockbackPxSec: number;
+};
 
 export class WeaponSystem {
   readonly projectiles: Phaser.Physics.Arcade.Group;
   readonly inventory: WeaponInventory;
   private readonly orbCooldown = createWeaponCooldown(760);
-  private readonly slashCooldown = createWeaponCooldown(900);
   private readonly projectileExpiresAt = new Map<Phaser.Physics.Arcade.Sprite, number>();
+  private readonly orbDirs = new Map<Phaser.Physics.Arcade.Sprite, Vec2>();
+  private readonly orbDrills = new Map<Phaser.Physics.Arcade.Sprite, OrbDrill>();
   private readonly dualSlash: DualElementSystem;
+  private readonly clones: CloneSystem;
   private readonly mines: MineSystem;
   private readonly orbital: OrbitalSystem;
   private activePassives: PassiveStats = createPassiveStats();
   private lastAim: Vec2 = { x: 1, y: 0 };
+  private lastNowMs = 0;
 
   constructor(
     scene: Phaser.Scene,
@@ -38,6 +51,8 @@ export class WeaponSystem {
     this.inventory = createWeaponInventory(startingWeapon);
     this.projectiles = scene.physics.add.group();
     this.dualSlash = new DualElementSystem(player, this.projectiles, enemies, this.projectileExpiresAt, vfx, onSkillUsed, (cue) => this.onCombatFeedback?.(cue));
+    this.clones = new CloneSystem(scene, player, (e, d, k, pos) => this.damageAndReward(e, d, k, pos),
+      (aimX) => this.onSkillUsed?.('clone', aimX), () => this.onCombatFeedback?.('slash'), vfx);
     this.mines = new MineSystem(scene, player, (e, d, k, pos) => this.damageAndReward(e, d, k, pos, true),
       () => this.onSkillUsed?.('mine', this.lastAim.x), () => this.onCombatFeedback?.('slash'), vfx);
     this.orbital = new OrbitalSystem(scene, player, (e, d, k) => this.damageAndReward(e, d, k),
@@ -45,7 +60,9 @@ export class WeaponSystem {
   }
 
   update(nowMs: number, enabled = true, passives: PassiveStats = this.activePassives, swordBlocked = false): void {
+    this.lastNowMs = nowMs;
     this.activePassives = passives;
+    this.stepOrbDrills(nowMs);
     for (const [shot, expiresAt] of this.projectileExpiresAt) {
       if (!shot.active || nowMs >= expiresAt) this.consumeProjectile(shot);
     }
@@ -57,7 +74,7 @@ export class WeaponSystem {
     const candidates = this.enemies.getCandidates();
     if (this.inventory.orb >= 1) this.updateOrb(nowMs, candidates);
     this.lastAim = this.dualSlash.update(nowMs, this.inventory.dual_slash, this.activePassives, candidates, this.lastAim, !swordBlocked);
-    if (this.inventory.slash >= 1) this.updateSlash(nowMs, candidates);
+    this.clones.update(nowMs, this.inventory.clone, this.activePassives, candidates);
     this.orbital.update(nowMs, this.inventory.orbital, this.activePassives, candidates, this.lastAim.x);
     this.mines.update(nowMs, this.inventory.mine, this.lastAim, this.activePassives, candidates);
   }
@@ -66,14 +83,38 @@ export class WeaponSystem {
     const proj = projObj as Phaser.Physics.Arcade.Sprite;
     const enemy = enemyObj as Phaser.Physics.Arcade.Sprite;
     if (this.dualSlash.handleHit(proj, enemy, (e, d, k, pos) => this.damageAndReward(e, d, k, pos), (p) => this.consumeProjectile(p))) return;
-    if (!enemy.active || !this.consumeProjectile(projObj)) return;
-    this.vfx?.playRasenganHit(enemy.x, enemy.y);
-    const stats = computeWeaponStats('orb', Math.max(1, this.inventory.orb));
-    this.damageAndReward(enemy, stats.damage, stats.knockbackPxSec);
+    if (this.orbDrills.has(proj) || !proj.active || !enemy.active || !this.projectileExpiresAt.has(proj)) return;
+    const dir = this.orbDirs.get(proj) ?? aimDirection(this.player, enemy, this.lastAim);
+    const src = { x: enemy.x - dir.x * 32, y: enemy.y - dir.y * 32 };
+    const orbLv = Math.max(1, this.inventory.orb);
+    const stats = computeWeaponStats('orb', orbLv);
+    if (orbLv === 1) {
+      this.consumeProjectile(proj);
+      this.vfx?.playRasenganHit(enemy.x, enemy.y);
+      this.damageAndReward(enemy, stats.damage, stats.knockbackPxSec, src);
+      return;
+    }
+    this.damageAndReward(enemy, Math.max(1, Math.round(stats.damage * 0.35)), stats.knockbackPxSec, src);
+    if (!enemy.active) {
+      this.vfx?.playRasenganHit(enemy.x, enemy.y);
+      this.consumeProjectile(proj);
+      return;
+    }
+    proj.setVelocity(0, 0);
+    this.orbDrills.set(proj, {
+      target: enemy, dir, ticksLeft: 2, nextTickAtMs: this.lastNowMs + 75,
+      tickDamage: Math.max(1, Math.round(stats.damage * 0.30)),
+      finalDamage: Math.max(1, Math.ceil(stats.damage * 0.45)),
+      knockbackPxSec: stats.knockbackPxSec,
+    });
+    const existing = this.projectileExpiresAt.get(proj) ?? 0;
+    this.projectileExpiresAt.set(proj, Math.max(existing, this.lastNowMs + 260));
   }
 
   consumeProjectile(projectileObject: Phaser.GameObjects.GameObject): boolean {
     const projectile = projectileObject as Phaser.Physics.Arcade.Sprite;
+    this.orbDrills.delete(projectile);
+    this.orbDirs.delete(projectile);
     if (!projectile.active || !this.projectileExpiresAt.has(projectile)) return false;
     this.projectileExpiresAt.delete(projectile);
     this.dualSlash.deleteShot(projectile);
@@ -84,9 +125,35 @@ export class WeaponSystem {
 
   clear(): void {
     this.projectileExpiresAt.clear();
+    this.orbDirs.clear();
+    this.orbDrills.clear();
     this.dualSlash.clear();
+    this.clones.clear();
     this.orbital.clear();
     this.mines.clear();
+  }
+
+  private stepOrbDrills(nowMs: number): void {
+    for (const [shot, drill] of this.orbDrills) {
+      if (!shot.active || !drill.target.active) {
+        this.vfx?.playRasenganHit(shot.x, shot.y);
+        this.consumeProjectile(shot);
+        continue;
+      }
+      shot.setPosition(drill.target.x - drill.dir.x * 10, drill.target.y - drill.dir.y * 10);
+      if (nowMs < drill.nextTickAtMs) continue;
+      const src = { x: drill.target.x - drill.dir.x * 32, y: drill.target.y - drill.dir.y * 32 };
+      if (drill.ticksLeft > 1) {
+        drill.ticksLeft -= 1;
+        drill.nextTickAtMs = nowMs + 75;
+        this.damageAndReward(drill.target, drill.tickDamage, drill.knockbackPxSec, src);
+        if (!drill.target.active) { this.vfx?.playRasenganHit(drill.target.x, drill.target.y); this.consumeProjectile(shot); }
+      } else {
+        this.vfx?.playRasenganHit(drill.target.x, drill.target.y);
+        this.damageAndReward(drill.target, drill.finalDamage, drill.knockbackPxSec, src);
+        this.consumeProjectile(shot);
+      }
+    }
   }
 
   private updateOrb(nowMs: number, candidates: Candidate[]): void {
@@ -119,27 +186,7 @@ export class WeaponSystem {
       .setBlendMode('NORMAL').setRotation(0)
       .setVelocity(dir.x * speedPxSec, dir.y * speedPxSec).play('rasengan-spin', true);
     this.projectileExpiresAt.set(shot, nowMs + PROJECTILE.lifeMs);
-  }
-
-  private updateSlash(nowMs: number, candidates: Candidate[]): void {
-    if (!canWeaponFire(this.slashCooldown, nowMs)) return;
-    const base = computeWeaponStats('slash', this.inventory.slash);
-    const stats = applyWeaponModifiers(base, this.activePassives);
-    this.slashCooldown.intervalMs = stats.cooldownMs;
-    const target = selectNearestTarget(this.player, candidates, stats.rangePx);
-    if (!target) return;
-
-    const dir = aimDirection(this.player, target, this.lastAim);
-    this.lastAim = dir;
-    this.vfx?.playPunch(this.player.x + dir.x * 30, this.player.y + dir.y * 30 - 4, dir.x < 0);
-    this.onCombatFeedback?.('slash'); this.onSkillUsed?.('slash', dir.x);
-    for (const cand of candidates) {
-      const dx = cand.x - this.player.x, dy = cand.y - this.player.y, dist = Math.hypot(dx, dy);
-      if (dist <= stats.rangePx && (stats.count >= 2 || dist <= 1e-3 || (dx * dir.x + dy * dir.y) / dist >= -0.25)) {
-        this.damageAndReward(cand.sprite, base.damage, stats.knockbackPxSec);
-      }
-    }
-    commitWeaponFire(this.slashCooldown, nowMs);
+    this.orbDirs.set(shot, dir);
   }
 
   private damageAndReward(enemy: Phaser.Physics.Arcade.Sprite, baseDamage: number, knockbackPxSec: number, sourcePos?: Vec2, explosive = false): void {

@@ -3,7 +3,7 @@ import type Phaser from 'phaser';
 import type { WeaponId, WeaponInventory } from '../../src/domain/weapons';
 
 for (const [skill, frames] of [
-  ['orb', [14, 15]], ['slash', [16, 17]], ['orbital', [18, 19]], ['mine', [20, 21]],
+  ['orb', [14, 15]], ['clone', [16, 17]], ['orbital', [18, 19]], ['mine', [20, 21]],
 ] as const) {
   test(`${skill} use plays its own two-frame gesture without stopping movement`, async ({ page }) => {
     const errors: string[] = [];
@@ -18,7 +18,7 @@ for (const [skill, frames] of [
         children: Phaser.GameObjects.DisplayList;
       };
       scene.spawnTimer.paused = true; api.clearEnemies();
-      Object.assign(scene.weapon.inventory, { orb: 0, slash: 0, orbital: 0, mine: 0 });
+      Object.assign(scene.weapon.inventory, { orb: 0, clone: 0, orbital: 0, mine: 0 });
       const hero = scene.children.list.find((child) =>
         (child as Phaser.GameObjects.Sprite).texture?.key === 'hero'
       ) as Phaser.GameObjects.Sprite;
@@ -31,7 +31,7 @@ for (const [skill, frames] of [
       hero.on('animationstart', record); hero.on('animationupdate', record);
       scene.weapon.inventory[skill] = 1;
       const position = api.getPlayerPosition();
-      if (skill === 'orb' || skill === 'slash') api.spawnEnemyAt(position.x + 60, position.y);
+      if (skill === 'orb' || skill === 'clone') api.spawnEnemyAt(position.x + 60, position.y);
     }, skill);
     const state = () => page.evaluate(() => {
       const scene = window.__ANIME_SURVIVOR__!.getScene();
@@ -45,7 +45,7 @@ for (const [skill, frames] of [
     await page.evaluate(() => {
       const api = window.__ANIME_SURVIVOR__!;
       const scene = api.getScene() as unknown as { weapon: { inventory: WeaponInventory } };
-      Object.assign(scene.weapon.inventory, { orb: 0, slash: 0, orbital: 0, mine: 0 });
+      Object.assign(scene.weapon.inventory, { orb: 0, clone: 0, orbital: 0, mine: 0 });
       api.clearEnemies();
     });
     await page.keyboard.down('w');
@@ -66,12 +66,11 @@ for (const [skill, frames] of [
       await page.waitForFunction(() => window.__ANIME_SURVIVOR__!.getAudioCounts().slash === 1);
       expect(await page.evaluate(() => {
         const scene = window.__ANIME_SURVIVOR__!.getScene() as unknown as {
-          enemies: { group: Phaser.Physics.Arcade.Group; getState: (enemy: Phaser.Physics.Arcade.Sprite) => { hp: number } };
+          enemies: { group: Phaser.Physics.Arcade.Group };
           weapon: { mines: { mines: unknown[] } };
         };
-        const enemy = scene.enemies.group.getFirstAlive() as Phaser.Physics.Arcade.Sprite;
-        return { hp: scene.enemies.getState(enemy).hp, mines: scene.weapon.mines.mines.length };
-      })).toEqual({ hp: 2, mines: 0 });
+        return { alive: scene.enemies.group.getFirstAlive(), mines: scene.weapon.mines.mines.length };
+      })).toEqual({ alive: null, mines: 0 });
       expect((await page.evaluate(() => window.__ANIME_SURVIVOR__!.getAudioCounts())).slash).toBe(1);
     }
     expect(errors).toEqual([]);
@@ -96,7 +95,7 @@ test('simultaneous skills play once each in order and pause clears pending actio
       children: Phaser.GameObjects.DisplayList;
     };
     scene.spawnTimer.paused = true; api.clearEnemies();
-    Object.assign(scene.weapon.inventory, { orb: 0, slash: 0, orbital: 0, mine: 0 });
+    Object.assign(scene.weapon.inventory, { orb: 0, clone: 0, orbital: 0, mine: 0 });
     const hero = scene.children.list.find((child) =>
       (child as Phaser.GameObjects.Sprite).texture?.key === 'hero'
     ) as Phaser.GameObjects.Sprite;
@@ -105,15 +104,15 @@ test('simultaneous skills play once each in order and pause clears pending actio
       if (animation.key.startsWith('hero-skill-')) (hero.getData('skill-events') as string[]).push(animation.key);
     });
     for (let repeat = 0; repeat < 3; repeat++) {
-      for (const skill of ['orb', 'slash', 'orbital', 'mine'] as const) scene.movement.playSkill(skill, -1);
+      for (const skill of ['orb', 'clone', 'orbital', 'mine'] as const) scene.movement.playSkill(skill, -1);
     }
   });
-  await expect.poll(events).toEqual(['hero-skill-orb', 'hero-skill-slash', 'hero-skill-orbital', 'hero-skill-mine']);
+  await expect.poll(events).toEqual(['hero-skill-orb', 'hero-skill-clone', 'hero-skill-orbital', 'hero-skill-mine']);
   await page.evaluate(() => {
     const scene = window.__ANIME_SURVIVOR__!.getScene() as unknown as {
       movement: { playSkill: (skill: WeaponId, aimX: number) => void };
     };
-    scene.movement.playSkill('orb', 1); scene.movement.playSkill('slash', 1);
+    scene.movement.playSkill('orb', 1); scene.movement.playSkill('clone', 1);
     window.__ANIME_SURVIVOR__!.togglePause();
   });
   await page.waitForFunction(() => window.__ANIME_SURVIVOR__!.isPaused());

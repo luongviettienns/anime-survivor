@@ -52,7 +52,7 @@ test.describe('Anime Survivor Phase 1-4 Gameplay & Stress E2E', () => {
     expect(hudText).toContain('HP 100/100'); expect(hudText).toContain('KILLS 1'); expect(hudText).toContain('ORB Lv1');
   });
 
-  test('F: opens UpgradeScene with icons on level-up, applies weapon upgrades, and executes slash + orbital + mine', async ({ page }) => {
+  test('F: opens UpgradeScene with icons on level-up, applies weapon upgrades, and executes clone + orbital + mine', async ({ page }) => {
     await page.goto('/?play=1');
     await page.waitForFunction(() => Boolean(window.__ANIME_SURVIVOR__));
     await page.evaluate(() => { window.__ANIME_SURVIVOR__!.clearEnemies(); window.__ANIME_SURVIVOR__!.grantXp(9); });
@@ -65,14 +65,14 @@ test.describe('Anime Survivor Phase 1-4 Gameplay & Stress E2E', () => {
 
     await page.evaluate(() => {
       const api = window.__ANIME_SURVIVOR__!;
-      const scene = api.getScene() as unknown as { weapon: { inventory: { orb: number; slash: number; orbital: number; mine: number } }; updateHud: () => void };
-      scene.weapon.inventory.orb = 0; scene.weapon.inventory.slash = 1; scene.weapon.inventory.orbital = 1; scene.weapon.inventory.mine = 1;
+      const scene = api.getScene() as unknown as { weapon: { inventory: { orb: number; clone: number; orbital: number; mine: number } }; updateHud: () => void };
+      scene.weapon.inventory.orb = 0; scene.weapon.inventory.clone = 1; scene.weapon.inventory.orbital = 1; scene.weapon.inventory.mine = 1;
       scene.updateHud(); api.clearEnemies(); api.spawnEnemyAt(api.getPlayerPosition().x + 56, api.getPlayerPosition().y);
     });
     await page.waitForFunction(() => window.__ANIME_SURVIVOR__!.getProgression().defeated >= 1, undefined, { timeout: 3000 });
-    expect(await page.evaluate(() => window.__ANIME_SURVIVOR__!.getWeaponInventory())).toMatchObject({ slash: 1, orbital: 1, mine: 1 });
+    expect(await page.evaluate(() => window.__ANIME_SURVIVOR__!.getWeaponInventory())).toMatchObject({ clone: 1, orbital: 1, mine: 1 });
     const hudText = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getScene().getHudText());
-    expect(hudText).toContain('PUNCH Lv1'); expect(hudText).toContain('ORBIT Lv1'); expect(hudText).toContain('MINE Lv1');
+    expect(hudText).toContain('CLONE Lv1'); expect(hudText).toContain('ORBIT Lv1'); expect(hudText).toContain('MINE Lv1');
   });
 
   test('H: 120-enemy stress benchmark maintains stability, pooling, and zero console errors under heavy combat', async ({ page }) => {
@@ -84,11 +84,11 @@ test.describe('Anime Survivor Phase 1-4 Gameplay & Stress E2E', () => {
     await page.evaluate(() => {
       const api = window.__ANIME_SURVIVOR__!;
       const scene = api.getScene() as unknown as {
-        weapon: { inventory: { orb: number; slash: number; orbital: number; mine: number } };
+        weapon: { inventory: { orb: number; clone: number; orbital: number; mine: number } };
         passives: { critChance: number; cooldownReductionMs: number };
         updateHud: () => void;
       };
-      scene.weapon.inventory = { orb: 4, slash: 4, orbital: 4, mine: 3 };
+      scene.weapon.inventory = { orb: 4, clone: 4, orbital: 4, mine: 3 };
       scene.passives.critChance = 0.3;
       scene.passives.cooldownReductionMs = 150;
       scene.updateHud();

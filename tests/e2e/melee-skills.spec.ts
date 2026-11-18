@@ -15,7 +15,7 @@ test.beforeEach(async ({ page }) => {
     api.clearEnemies();
     const scene = api.getScene() as unknown as Runtime;
     scene.spawnTimer.paused = true;
-    Object.assign(scene.weapon.inventory, { orb: 0, slash: 0, orbital: 0, mine: 0 });
+    Object.assign(scene.weapon.inventory, { orb: 0, clone: 0, orbital: 0, mine: 0 });
   });
 });
 

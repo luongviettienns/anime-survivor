@@ -47,7 +47,7 @@ describe('Kirito animation priority', () => {
   it('keeps a sword combo intact but lets death override it', () => {
     const { visual, sprite } = rig();
     visual.play('dual_slash', 1, 'actor-kirito_lv2_down');
-    expect(visual.play('slash', 1)).toBe(false);
+    expect(visual.play('clone', 1)).toBe(false);
     expect(visual.defeat(vi.fn())).toBe(true);
     expect(sprite.anims.currentAnim.key).toBe('actor-kirito_death_down');
   });

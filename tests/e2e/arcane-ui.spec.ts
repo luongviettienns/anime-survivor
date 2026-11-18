@@ -13,7 +13,7 @@ test.beforeEach(async({page})=>{
   await page.evaluate(()=>{
     const api=window.__ANIME_SURVIVOR__!,scene=api.getScene() as unknown as Runtime;
     api.clearEnemies();scene.spawnTimer.paused=true;scene.damage.state.invulnerableUntilMs=Infinity;
-    Object.assign(scene.weapon.inventory,{orb:0,slash:0,orbital:0,mine:0});
+    Object.assign(scene.weapon.inventory,{orb:0,clone:0,orbital:0,mine:0});
   });
 });
 

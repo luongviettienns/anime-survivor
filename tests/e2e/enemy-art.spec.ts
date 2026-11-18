@@ -15,7 +15,7 @@ test('new enemy sizes, shared red aura and cast poses follow real AI states', as
       enemies: EnemySystem; weapon: { inventory: WeaponInventory }; spawnTimer: Phaser.Time.TimerEvent;
     };
     scene.spawnTimer.paused = true; api.clearEnemies();
-    Object.assign(scene.weapon.inventory, { orb: 0, slash: 0, orbital: 0, mine: 0 });
+    Object.assign(scene.weapon.inventory, { orb: 0, clone: 0, orbital: 0, mine: 0 });
     const p = api.getPlayerPosition();
     const regular = scene.enemies.spawnAt(p.x - 200, p.y, 'slime');
     const mage = scene.enemies.spawnAt(p.x + 220, p.y, 'mage');

@@ -10,7 +10,7 @@ import { hudLayout } from './layout';
 
 const SLOTS: ReadonlyArray<{id:WeaponId;label:string;icon:string}> = [
   {id:'orb',label:'ORB',icon:'icon-weapon_orb'}, {id:'dual_slash',label:'DUAL',icon:'icon-weapon_slash'},
-  {id:'slash',label:'PUNCH',icon:'icon-weapon_slash'}, {id:'orbital',label:'ORBIT',icon:'icon-weapon_orbital'},
+  {id:'clone',label:'CLONE',icon:'icon-weapon_slash'}, {id:'orbital',label:'ORBIT',icon:'icon-weapon_orbital'},
   {id:'mine',label:'MINE',icon:'icon-weapon_mine'},
 ];
 const Z = 1_000_000_000;
@@ -63,7 +63,7 @@ export class HudOverlay {
 
   update(dto: HudStateDto): void {
     const w=dto.weapons,p=dto.passives,b=dto.bossHp,dashTenths=dto.dashCooldownMs===undefined?-1:Math.ceil(dto.dashCooldownMs/100);
-    const key=`${dto.player.hp}/${dto.player.maxHp}|${dto.progression.level}:${dto.progression.xp}|${Math.floor(dto.elapsedSec)}|${dto.defeated}|${dto.dashLevel??0}:${dashTenths}|${w?`${w.orb},${w.dual_slash},${w.slash},${w.orbital},${w.mine}`:''}|${p?`${p.damageReduction},${p.damageBonus},${p.cooldownReductionMs},${p.moveSpeedBonusPxSec},${p.recoveryPer3Sec},${p.critChance}`:''}|${b?`${b.name}:${b.hp}/${b.maxHp}`:''}`;
+    const key=`${dto.player.hp}/${dto.player.maxHp}|${dto.progression.level}:${dto.progression.xp}|${Math.floor(dto.elapsedSec)}|${dto.defeated}|${dto.dashLevel??0}:${dashTenths}|${w?`${w.orb},${w.dual_slash},${w.clone},${w.orbital},${w.mine}`:''}|${p?`${p.damageReduction},${p.damageBonus},${p.cooldownReductionMs},${p.moveSpeedBonusPxSec},${p.recoveryPer3Sec},${p.critChance}`:''}|${b?`${b.name}:${b.hp}/${b.maxHp}`:''}`;
     if (key===this.lastKey) return;
     this.lastKey=key;
     const reqXp=Math.max(1,xpThreshold(dto.progression.level)),l=this.layout;

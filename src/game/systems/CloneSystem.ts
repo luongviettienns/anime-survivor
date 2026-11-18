@@ -121,8 +121,9 @@ export class CloneSystem {
     }
     hits.sort((a, b) => a.distSq - b.distSq || a.cand.id - b.cand.id);
     const limit = Math.min(clone.maxHitsPerClone, hits.length);
+    const kbSource = { x: clone.x - clone.dir.x * 24, y: clone.y - clone.dir.y * 24 };
     for (let i = 0; i < limit; i++) {
-      this.damage(hits[i]!.cand.sprite, clone.damage, clone.knockbackPxSec, pos);
+      this.damage(hits[i]!.cand.sprite, clone.damage, clone.knockbackPxSec, kbSource);
     }
   }
 }

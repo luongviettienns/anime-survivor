@@ -15,7 +15,7 @@ test('ground shadow PNGs follow feet and clean destroyed/pooled actors', async (
   await page.evaluate(() => {
     const api = window.__ANIME_SURVIVOR__!, scene = api.getScene() as unknown as Runtime;
     scene.spawnTimer.paused = true; api.clearEnemies();
-    Object.assign(scene.weapon.inventory, { orb: 0, slash: 0, orbital: 0, mine: 0 });
+    Object.assign(scene.weapon.inventory, { orb: 0, clone: 0, orbital: 0, mine: 0 });
     const p = api.getPlayerPosition();
     scene.enemies.spawnAt(p.x-150, p.y, 'slime');
     scene.enemies.spawnAt(p.x+200, p.y-120, 'boss');

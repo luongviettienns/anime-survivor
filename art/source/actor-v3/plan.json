@@ -1,0 +1,106 @@
+{
+  "scope": "User approved complete compact batch of about13 individual new poses; deferred elite/boss directions excluded.",
+  "new_poses": 13,
+  "completed_initial": 1,
+  "jobs": [
+    {
+      "key": "kirito",
+      "direction": "right",
+      "pose": "run_contact_l",
+      "reference": "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/actor-v2/source/originals/kirito/right/neutral.png",
+      "prompt": "Create ONE SINGLE full-body game sprite animation frame, never a sheet/grid. Reference is strict character identity/outfit/swords, high-detail crisp stepped pixel clusters and palette, same head/anatomical size. Camera slightly elevated orthographic TOP-DOWN three-quarter, see top head/shoulders, feet on horizontal ground plane. Black spiky hair, black split long coat silver piping, belt, gloves, boots, same sword guards. Transparent RGBA square1254x1254, entire body and both blade tips inside generous70px clear margins. No text, scenery, ground/shadow, detached effects or broad aura. Preserve fine pixel detail; not smooth painting. Facing RIGHT/east genuine profile-three-quarter. Character RIGHT hand is NEAR lower/south foreground holding VIOLET BLACK sword. LEFT hand FAR upper/north holds CYAN ICE sword. Head, torso and boots point RIGHT; never mirror or swap sword hands. RUNNING contact pose opposite the previous stride: LEFT foot reaches forward/right and grounds, RIGHT leg extends back/left. Torso modest forward lean, coat tails stream left. Hold both swords trailing low at body's sides, no attack."
+    },
+    {
+      "key": "kirito",
+      "direction": "left",
+      "pose": "hit",
+      "reference": "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/actor-v2/source/originals/kirito/left/neutral.png",
+      "prompt": "Create ONE SINGLE full-body game sprite animation frame, never a sheet/grid. Reference is strict character identity/outfit/swords, high-detail crisp stepped pixel clusters and palette, same head/anatomical size. Camera slightly elevated orthographic TOP-DOWN three-quarter, see top head/shoulders, feet on horizontal ground plane. Black spiky hair, black split long coat silver piping, belt, gloves, boots, same sword guards. Transparent RGBA square1254x1254, entire body and both blade tips inside generous70px clear margins. No text, scenery, ground/shadow, detached effects or broad aura. Preserve fine pixel detail; not smooth painting. Facing LEFT/west genuine profile-three-quarter. Character LEFT hand is NEAR lower/south foreground holding CYAN ICE sword. RIGHT hand FAR upper/north holds VIOLET BLACK sword. Head, torso and boots point LEFT; never mirror or swap sword hands. HIT REACTION, a single nonlethal recoil: shoulders jerk slightly backward opposite facing, knees flex, tense face but still alert; arms keep both swords safe beside body. Still standing and same anatomical size; no impact effect or blood."
+    },
+    {
+      "key": "kirito",
+      "direction": "left",
+      "pose": "fallen",
+      "reference": "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/actor-v2/source/originals/kirito/left/neutral.png",
+      "prompt": "Create ONE SINGLE full-body game sprite animation frame, never a sheet/grid. Reference is strict character identity/outfit/swords, high-detail crisp stepped pixel clusters and palette, same head/anatomical size. Camera slightly elevated orthographic TOP-DOWN three-quarter, see top head/shoulders, feet on horizontal ground plane. Black spiky hair, black split long coat silver piping, belt, gloves, boots, same sword guards. Transparent RGBA square1254x1254, entire body and both blade tips inside generous70px clear margins. No text, scenery, ground/shadow, detached effects or broad aura. Preserve fine pixel detail; not smooth painting. Facing LEFT/west genuine profile-three-quarter. Character LEFT hand is NEAR lower/south foreground holding CYAN ICE sword. RIGHT hand FAR upper/north holds VIOLET BLACK sword. Head, torso and boots point LEFT; never mirror or swap sword hands. DEFEATED FINAL POSE: body lies inert on its side along horizontal ground plane, head remains toward facing direction, eyes closed, knees relaxed, split coat pooled behind; swords rest beside corresponding hands. Keep head/limb sizes same as standing reference; DO NOT enlarge this horizontal pose to fill square or fit it to standing height. No gore."
+    },
+    {
+      "key": "kirito",
+      "direction": "left",
+      "pose": "ice_cut",
+      "reference": "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/actor-v2/source/originals/kirito/left/neutral.png",
+      "prompt": "Create ONE SINGLE full-body game sprite animation frame, never a sheet/grid. Reference is strict character identity/outfit/swords, high-detail crisp stepped pixel clusters and palette, same head/anatomical size. Camera slightly elevated orthographic TOP-DOWN three-quarter, see top head/shoulders, feet on horizontal ground plane. Black spiky hair, black split long coat silver piping, belt, gloves, boots, same sword guards. Transparent RGBA square1254x1254, entire body and both blade tips inside generous70px clear margins. No text, scenery, ground/shadow, detached effects or broad aura. Preserve fine pixel detail; not smooth painting. Facing LEFT/west genuine profile-three-quarter. Character LEFT hand is NEAR lower/south foreground holding CYAN ICE sword. RIGHT hand FAR upper/north holds VIOLET BLACK sword. Head, torso and boots point LEFT; never mirror or swap sword hands. ICE SWORD CUT contact/release pose: character's LEFT arm executes a decisive cyan blade sweep forward toward facing direction at chest height; torso twists and front knee bends. RIGHT hand violet blade trails low behind as balance. Cyan sword is active, sharp thin blade light only, no detached wave or large arc. Keep perspective/hand mapping and full blades visible."
+    },
+    {
+      "key": "kirito",
+      "direction": "left",
+      "pose": "dark_cut",
+      "reference": "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/actor-v2/source/originals/kirito/left/neutral.png",
+      "prompt": "Create ONE SINGLE full-body game sprite animation frame, never a sheet/grid. Reference is strict character identity/outfit/swords, high-detail crisp stepped pixel clusters and palette, same head/anatomical size. Camera slightly elevated orthographic TOP-DOWN three-quarter, see top head/shoulders, feet on horizontal ground plane. Black spiky hair, black split long coat silver piping, belt, gloves, boots, same sword guards. Transparent RGBA square1254x1254, entire body and both blade tips inside generous70px clear margins. No text, scenery, ground/shadow, detached effects or broad aura. Preserve fine pixel detail; not smooth painting. Facing LEFT/west genuine profile-three-quarter. Character LEFT hand is NEAR lower/south foreground holding CYAN ICE sword. RIGHT hand FAR upper/north holds VIOLET BLACK sword. Head, torso and boots point LEFT; never mirror or swap sword hands. DARK FIRE SWORD CUT contact/release pose: character's RIGHT arm executes a decisive violet-black blade sweep forward toward facing direction at chest height; torso twists opposite ice stroke and front knee bends. LEFT hand cyan blade rests low beside body as balance. Violet sword is active, thin edge light only, no detached wave or large arc. Keep perspective/hand mapping and full blades visible."
+    },
+    {
+      "key": "kirito",
+      "direction": "left",
+      "pose": "dual_cross",
+      "reference": "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/actor-v2/source/originals/kirito/left/neutral.png",
+      "prompt": "Create ONE SINGLE full-body game sprite animation frame, never a sheet/grid. Reference is strict character identity/outfit/swords, high-detail crisp stepped pixel clusters and palette, same head/anatomical size. Camera slightly elevated orthographic TOP-DOWN three-quarter, see top head/shoulders, feet on horizontal ground plane. Black spiky hair, black split long coat silver piping, belt, gloves, boots, same sword guards. Transparent RGBA square1254x1254, entire body and both blade tips inside generous70px clear margins. No text, scenery, ground/shadow, detached effects or broad aura. Preserve fine pixel detail; not smooth painting. Facing LEFT/west genuine profile-three-quarter. Character LEFT hand is NEAR lower/south foreground holding CYAN ICE sword. RIGHT hand FAR upper/north holds VIOLET BLACK sword. Head, torso and boots point LEFT; never mirror or swap sword hands. DUAL X CUT contact/release pose: grounded wide combat stance, torso twists toward facing direction, both arms drive their blades into a clearly readable X in front of the torso on the facing side. Cyan blade remains in character LEFT hand, violet blade RIGHT hand. Distinguish both guards and hands; no merged weapons or extra arms. Thin luminous blade edges, no detached X wave or broad flash. Whole swords uncropped."
+    },
+    {
+      "key": "kirito",
+      "direction": "right",
+      "pose": "hit",
+      "reference": "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/actor-v2/source/originals/kirito/right/neutral.png",
+      "prompt": "Create ONE SINGLE full-body game sprite animation frame, never a sheet/grid. Reference is strict character identity/outfit/swords, high-detail crisp stepped pixel clusters and palette, same head/anatomical size. Camera slightly elevated orthographic TOP-DOWN three-quarter, see top head/shoulders, feet on horizontal ground plane. Black spiky hair, black split long coat silver piping, belt, gloves, boots, same sword guards. Transparent RGBA square1254x1254, entire body and both blade tips inside generous70px clear margins. No text, scenery, ground/shadow, detached effects or broad aura. Preserve fine pixel detail; not smooth painting. Facing RIGHT/east genuine profile-three-quarter. Character RIGHT hand is NEAR lower/south foreground holding VIOLET BLACK sword. LEFT hand FAR upper/north holds CYAN ICE sword. Head, torso and boots point RIGHT; never mirror or swap sword hands. HIT REACTION, a single nonlethal recoil: shoulders jerk slightly backward opposite facing, knees flex, tense face but still alert; arms keep both swords safe beside body. Still standing and same anatomical size; no impact effect or blood."
+    },
+    {
+      "key": "kirito",
+      "direction": "right",
+      "pose": "fallen",
+      "reference": "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/actor-v2/source/originals/kirito/right/neutral.png",
+      "prompt": "Create ONE SINGLE full-body game sprite animation frame, never a sheet/grid. Reference is strict character identity/outfit/swords, high-detail crisp stepped pixel clusters and palette, same head/anatomical size. Camera slightly elevated orthographic TOP-DOWN three-quarter, see top head/shoulders, feet on horizontal ground plane. Black spiky hair, black split long coat silver piping, belt, gloves, boots, same sword guards. Transparent RGBA square1254x1254, entire body and both blade tips inside generous70px clear margins. No text, scenery, ground/shadow, detached effects or broad aura. Preserve fine pixel detail; not smooth painting. Facing RIGHT/east genuine profile-three-quarter. Character RIGHT hand is NEAR lower/south foreground holding VIOLET BLACK sword. LEFT hand FAR upper/north holds CYAN ICE sword. Head, torso and boots point RIGHT; never mirror or swap sword hands. DEFEATED FINAL POSE: body lies inert on its side along horizontal ground plane, head remains toward facing direction, eyes closed, knees relaxed, split coat pooled behind; swords rest beside corresponding hands. Keep head/limb sizes same as standing reference; DO NOT enlarge this horizontal pose to fill square or fit it to standing height. No gore."
+    },
+    {
+      "key": "kirito",
+      "direction": "right",
+      "pose": "ice_cut",
+      "reference": "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/actor-v2/source/originals/kirito/right/neutral.png",
+      "prompt": "Create ONE SINGLE full-body game sprite animation frame, never a sheet/grid. Reference is strict character identity/outfit/swords, high-detail crisp stepped pixel clusters and palette, same head/anatomical size. Camera slightly elevated orthographic TOP-DOWN three-quarter, see top head/shoulders, feet on horizontal ground plane. Black spiky hair, black split long coat silver piping, belt, gloves, boots, same sword guards. Transparent RGBA square1254x1254, entire body and both blade tips inside generous70px clear margins. No text, scenery, ground/shadow, detached effects or broad aura. Preserve fine pixel detail; not smooth painting. Facing RIGHT/east genuine profile-three-quarter. Character RIGHT hand is NEAR lower/south foreground holding VIOLET BLACK sword. LEFT hand FAR upper/north holds CYAN ICE sword. Head, torso and boots point RIGHT; never mirror or swap sword hands. ICE SWORD CUT contact/release pose: character's LEFT arm executes a decisive cyan blade sweep forward toward facing direction at chest height; torso twists and front knee bends. RIGHT hand violet blade trails low behind as balance. Cyan sword is active, sharp thin blade light only, no detached wave or large arc. Keep perspective/hand mapping and full blades visible."
+    },
+    {
+      "key": "kirito",
+      "direction": "right",
+      "pose": "dark_cut",
+      "reference": "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/actor-v2/source/originals/kirito/right/neutral.png",
+      "prompt": "Create ONE SINGLE full-body game sprite animation frame, never a sheet/grid. Reference is strict character identity/outfit/swords, high-detail crisp stepped pixel clusters and palette, same head/anatomical size. Camera slightly elevated orthographic TOP-DOWN three-quarter, see top head/shoulders, feet on horizontal ground plane. Black spiky hair, black split long coat silver piping, belt, gloves, boots, same sword guards. Transparent RGBA square1254x1254, entire body and both blade tips inside generous70px clear margins. No text, scenery, ground/shadow, detached effects or broad aura. Preserve fine pixel detail; not smooth painting. Facing RIGHT/east genuine profile-three-quarter. Character RIGHT hand is NEAR lower/south foreground holding VIOLET BLACK sword. LEFT hand FAR upper/north holds CYAN ICE sword. Head, torso and boots point RIGHT; never mirror or swap sword hands. DARK FIRE SWORD CUT contact/release pose: character's RIGHT arm executes a decisive violet-black blade sweep forward toward facing direction at chest height; torso twists opposite ice stroke and front knee bends. LEFT hand cyan blade rests low beside body as balance. Violet sword is active, thin edge light only, no detached wave or large arc. Keep perspective/hand mapping and full blades visible."
+    },
+    {
+      "key": "kirito",
+      "direction": "right",
+      "pose": "dual_cross",
+      "reference": "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/actor-v2/source/originals/kirito/right/neutral.png",
+      "prompt": "Create ONE SINGLE full-body game sprite animation frame, never a sheet/grid. Reference is strict character identity/outfit/swords, high-detail crisp stepped pixel clusters and palette, same head/anatomical size. Camera slightly elevated orthographic TOP-DOWN three-quarter, see top head/shoulders, feet on horizontal ground plane. Black spiky hair, black split long coat silver piping, belt, gloves, boots, same sword guards. Transparent RGBA square1254x1254, entire body and both blade tips inside generous70px clear margins. No text, scenery, ground/shadow, detached effects or broad aura. Preserve fine pixel detail; not smooth painting. Facing RIGHT/east genuine profile-three-quarter. Character RIGHT hand is NEAR lower/south foreground holding VIOLET BLACK sword. LEFT hand FAR upper/north holds CYAN ICE sword. Head, torso and boots point RIGHT; never mirror or swap sword hands. DUAL X CUT contact/release pose: grounded wide combat stance, torso twists toward facing direction, both arms drive their blades into a clearly readable X in front of the torso on the facing side. Cyan blade remains in character LEFT hand, violet blade RIGHT hand. Distinguish both guards and hands; no merged weapons or extra arms. Thin luminous blade edges, no detached X wave or broad flash. Whole swords uncropped."
+    },
+    {
+      "key": "boss",
+      "direction": "down",
+      "pose": "fallen",
+      "reference": "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/ai-overhaul/boss/walk/000.png",
+      "prompt": "ONE SINGLE defeated game sprite frame. Reference strict original red/gold demon samurai boss identity, horned helmet, tusked mask, segmented armor, ragged cape, same detailed stepped pixel clusters/palette and slightly elevated top-down orthographic three-quarter camera. Final defeated pose: armored figure inert collapsed on its side on horizontal ground, head toward lower/front, helmet horns intact, hands relaxed, cape pooled behind. Same helmet/head/limb scale as reference; DO NOT enlarge fallen figure to fill canvas, no kneeling or crouched still-ready pose. Entire figure/horns/cape inside square1254x1254 with70px clear margins; transparent RGBA, no ground, shadow, gore, text, effects or grid. One pose only, not a sheet."
+    }
+  ],
+  "acceptance": [
+    "Native RGBA one frame/file; no mirror or swapped hands",
+    "Fixed measured standing scale, common ground anchor",
+    "Reuse neutral and existing charge poses; preserve180/450/280ms waves",
+    "Pack and validate exact crops before use",
+    "Keep zoom1.3/body112 and upgrade-only unlock behavior",
+    "Browser QA on5184; no claim of full10minute run"
+  ],
+  "authorization": "User explicitly approved complete compact batch of approximately13newindividualimages, superseding prior five-image cap for this batch only.",
+  "runtime_profile": {
+    "camera_zoom": 1.3,
+    "hero_body_px": 112,
+    "boss_body_px": 224,
+    "existing_unlock_logic": "Unchanged; only Wave starts owned, Dash/other weapons earned from levelup."
+  }
+}

@@ -185,7 +185,8 @@ export class GameScene extends Phaser.Scene {
     if (!this.running) return;
     this.running = false; this.movement.update(false); this.enemies.update(true);
     const finish = () => this.scene.start('GameOverScene', { victory, score: this.defeated, survivalSec: Math.floor(this.elapsed), heroId: this.heroConfig.id });
-    if (victory || !this.movement.playDefeat(finish)) finish();
+    if (victory) this.time.delayedCall(500, finish);
+    else if (!this.movement.playDefeat(finish)) finish();
   }
   tryPhantomDash(): boolean {
     if (!this.phantomDash || !this.running || !this.damage.state.alive || this.isPaused() || this.scene.isActive('UpgradeScene')) return false;

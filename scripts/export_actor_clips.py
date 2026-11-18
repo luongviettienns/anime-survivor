@@ -18,7 +18,8 @@ def export(check=False):
         atlas = json.loads((SOURCE / name).read_text(encoding='utf-8'))
         paths.update(page['image'] for page in atlas['textures'])
     for name in sorted(paths):
-        source, target = SOURCE / name, TARGET / name
+        source = ROOT / 'art/source/actor-v3/source/originals' / name[3:] if name.startswith('v3/') else SOURCE / name
+        target = TARGET / name
         if source.suffix == '.png':
             with Image.open(source) as image:
                 if image.mode != 'RGBA':

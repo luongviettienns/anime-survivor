@@ -1,0 +1,8 @@
+{
+  "key": "boss",
+  "direction": "down",
+  "pose": "fallen",
+  "reference": "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/ai-overhaul/boss/walk/000.png",
+  "prompt": "ONE SINGLE defeated game sprite frame. Reference strict original red/gold demon samurai boss identity, horned helmet, tusked mask, segmented armor, ragged cape, same detailed stepped pixel clusters/palette and slightly elevated top-down orthographic three-quarter camera. Final defeated pose: armored figure inert collapsed on its side on horizontal ground, head toward lower/front, helmet horns intact, hands relaxed, cape pooled behind. Same helmet/head/limb scale as reference; DO NOT enlarge fallen figure to fill canvas, no kneeling or crouched still-ready pose. Entire figure/horns/cape inside square1254x1254 with70px clear margins; transparent RGBA, no ground, shadow, gore, text, effects or grid. One pose only, not a sheet.",
+  "path": "C:\\Users\\ASUS\\.codex\\generated_images\\01a1ee04-31d9-76f3-993d-4f3b2888c393\\exec-49f4e139-a654-47a5-afe3-27862cbeec86.png"
+}

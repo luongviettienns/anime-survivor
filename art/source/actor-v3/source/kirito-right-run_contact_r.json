@@ -1,0 +1,8 @@
+{
+  "key": "kirito",
+  "direction": "right",
+  "pose": "run_contact_r",
+  "path": "C:\\Users\\ASUS\\.codex\\generated_images\\01a1ee04-31d9-76f3-993d-4f3b2888c393\\exec-3a030665-342f-4b34-b037-0b7b0f7290af.png",
+  "reference": "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/actor-v2/source/originals/kirito/right/neutral.png",
+  "prompt": "Create ONE SINGLE full-body game animation frame, transparent RGBA background, not a spritesheet or grid. Reference image is strict character identity, pixel style, palette, anatomical/head size and camera reference. Draw this same dual swordsman RUNNING RIGHT / east in slightly elevated orthographic top-down 3/4 view. Right foot forward and grounded, left leg back, torso modest forward lean, split coat follows stride. Keep black hair, coat silver piping, gloves, boots, sword guards. Character-local RIGHT hand is NEAR foreground lower/south holding VIOLET BLACK sword; LEFT hand FAR upper/north holds CYAN ICE sword. No swapping hands, no mirrored asset. Both swords held safely trailing beside body, not attacking. Crisp detailed stepped pixel clusters, same detail as reference, no painterly smoothing. Transparent RGBA square1254x1254; whole body and both blade tips within generous70px clear margins. No ground, shadow, lettering, VFX or grid. Stable body proportions and foot baseline matching reference; one authored contact pose."
+}

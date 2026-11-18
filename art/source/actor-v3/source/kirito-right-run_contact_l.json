@@ -1,0 +1,8 @@
+{
+  "key": "kirito",
+  "direction": "right",
+  "pose": "run_contact_l",
+  "reference": "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/actor-v2/source/originals/kirito/right/neutral.png",
+  "prompt": "Create ONE SINGLE full-body game sprite animation frame, never a sheet/grid. Reference is strict character identity/outfit/swords, high-detail crisp stepped pixel clusters and palette, same head/anatomical size. Camera slightly elevated orthographic TOP-DOWN three-quarter, see top head/shoulders, feet on horizontal ground plane. Black spiky hair, black split long coat silver piping, belt, gloves, boots, same sword guards. Transparent RGBA square1254x1254, entire body and both blade tips inside generous70px clear margins. No text, scenery, ground/shadow, detached effects or broad aura. Preserve fine pixel detail; not smooth painting. Facing RIGHT/east genuine profile-three-quarter. Character RIGHT hand is NEAR lower/south foreground holding VIOLET BLACK sword. LEFT hand FAR upper/north holds CYAN ICE sword. Head, torso and boots point RIGHT; never mirror or swap sword hands. RUNNING contact pose opposite the previous stride: LEFT foot reaches forward/right and grounds, RIGHT leg extends back/left. Torso modest forward lean, coat tails stream left. Hold both swords trailing low at body's sides, no attack.",
+  "path": "C:\\Users\\ASUS\\.codex\\generated_images\\01a1ee04-31d9-76f3-993d-4f3b2888c393\\exec-3d925927-00ce-4439-aa4a-7dfdbe4ec342.png"
+}

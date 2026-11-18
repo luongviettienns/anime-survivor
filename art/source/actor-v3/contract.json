@@ -1,0 +1,222 @@
+{
+  "version": 1,
+  "sprites": {
+    "kirito_run_right_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 2
+      }
+    },
+    "kirito_hit_left_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "kirito_death_left_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "kirito_basic_left_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "kirito_basic_left_page1": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 1,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 1
+      }
+    },
+    "kirito_lv1_left_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "kirito_lv2_left_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "kirito_lv2_left_page1": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 1,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 1
+      }
+    },
+    "kirito_lv3_left_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "kirito_hit_right_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "kirito_death_right_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "kirito_basic_right_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "kirito_basic_right_page1": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 1,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 1
+      }
+    },
+    "kirito_lv1_right_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "kirito_lv2_right_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 2,
+      "rows": 2,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    },
+    "kirito_lv2_right_page1": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 1,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 1
+      }
+    },
+    "kirito_lv3_right_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    },
+    "boss_death_down_page0": {
+      "frame_width": 2048,
+      "frame_height": 2048,
+      "columns": 3,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 3
+      }
+    }
+  },
+  "single_images": {}
+}

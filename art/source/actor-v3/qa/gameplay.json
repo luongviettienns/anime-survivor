@@ -1,0 +1,89 @@
+{
+  "run": {
+    "poses": [
+      "actor/v3/kirito/right/run_contact_r.png",
+      "actor/v3/kirito/right/run_contact_l.png"
+    ]
+  },
+  "skills": [
+    {
+      "clip": "actor-kirito_lv1_left",
+      "poses": [
+        "actor/originals/kirito/left/neutral.png",
+        "actor/v3/kirito/left/ice_cut.png"
+      ]
+    },
+    {
+      "clip": "actor-kirito_lv2_left",
+      "poses": [
+        "actor/originals/kirito/left/neutral.png",
+        "actor/v3/kirito/left/ice_cut.png",
+        "actor/v3/kirito/left/dark_cut.png"
+      ]
+    },
+    {
+      "clip": "actor-kirito_lv3_left",
+      "poses": [
+        "actor/originals/kirito/left/neutral.png",
+        "actor/v3/kirito/left/dual_cross.png"
+      ]
+    },
+    {
+      "clip": "actor-kirito_lv1_right",
+      "poses": [
+        "actor/originals/kirito/right/neutral.png",
+        "actor/v3/kirito/right/ice_cut.png"
+      ]
+    },
+    {
+      "clip": "actor-kirito_lv2_right",
+      "poses": [
+        "actor/originals/kirito/right/neutral.png",
+        "actor/v3/kirito/right/ice_cut.png",
+        "actor/v3/kirito/right/dark_cut.png"
+      ]
+    },
+    {
+      "clip": "actor-kirito_lv3_right",
+      "poses": [
+        "actor/originals/kirito/right/neutral.png",
+        "actor/v3/kirito/right/dual_cross.png"
+      ]
+    }
+  ],
+  "reactions": [
+    {
+      "direction": "left",
+      "hit": true,
+      "basic": true
+    },
+    {
+      "direction": "right",
+      "hit": true,
+      "basic": true
+    }
+  ],
+  "deaths": [
+    {
+      "clip": "actor-kirito_death_left",
+      "image": "actor/v3/kirito/left/fallen.png",
+      "flipX": false
+    },
+    {
+      "clip": "actor-kirito_death_right",
+      "image": "actor/v3/kirito/right/fallen.png",
+      "flipX": false
+    }
+  ],
+  "boss": {
+    "killed": true,
+    "bodyEnabled": false,
+    "corpses": 1,
+    "gameOver": false,
+    "images": [
+      "actor/v3/boss/down/fallen.png"
+    ],
+    "gameOverAfterAnimation": true
+  },
+  "errors": []
+}

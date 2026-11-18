@@ -1,0 +1,8 @@
+{
+  "key": "kirito",
+  "direction": "right",
+  "pose": "fallen",
+  "reference": "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/actor-v2/source/originals/kirito/right/neutral.png",
+  "prompt": "Create ONE SINGLE full-body game sprite animation frame, never a sheet/grid. Reference is strict character identity/outfit/swords, high-detail crisp stepped pixel clusters and palette, same head/anatomical size. Camera slightly elevated orthographic TOP-DOWN three-quarter, see top head/shoulders, feet on horizontal ground plane. Black spiky hair, black split long coat silver piping, belt, gloves, boots, same sword guards. Transparent RGBA square1254x1254, entire body and both blade tips inside generous70px clear margins. No text, scenery, ground/shadow, detached effects or broad aura. Preserve fine pixel detail; not smooth painting. Facing RIGHT/east genuine profile-three-quarter. Character RIGHT hand is NEAR lower/south foreground holding VIOLET BLACK sword. LEFT hand FAR upper/north holds CYAN ICE sword. Head, torso and boots point RIGHT; never mirror or swap sword hands. DEFEATED FINAL POSE: body lies inert on its side along horizontal ground plane, head remains toward facing direction, eyes closed, knees relaxed, split coat pooled behind; swords rest beside corresponding hands. Keep head/limb sizes same as standing reference; DO NOT enlarge this horizontal pose to fill square or fit it to standing height. No gore.",
+  "path": "C:\\Users\\ASUS\\.codex\\generated_images\\01a1ee04-31d9-76f3-993d-4f3b2888c393\\exec-fed5cf69-1e5f-476f-8d7b-bc1c6a3bdadc.png"
+}

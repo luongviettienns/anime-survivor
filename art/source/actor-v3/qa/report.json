@@ -1,0 +1,70 @@
+{
+  "date": "2026-11-19",
+  "approved_new_poses": 13,
+  "successful_generated_poses": 13,
+  "compact_clips": 14,
+  "frame_entries": 49,
+  "archive_sheet_pages": 18,
+  "native_source_public_build_hashes": "13/13 matched",
+  "source_policy": "Native RGBA retained byte-for-byte; padding-only sheets; no mirror or swapped element hands",
+  "preview_profile": {
+    "camera": 1.3,
+    "hero_normal_elite_body_px": 112,
+    "boss_body_px": 224
+  },
+  "verify": "PASS:18files/76unit tests, typecheck/lint, architecture, asset validations, native147file export check and build",
+  "browser_scope": {
+    "right_run": {
+      "poses": [
+        "actor/v3/kirito/right/run_contact_r.png",
+        "actor/v3/kirito/right/run_contact_l.png"
+      ]
+    },
+    "side_sword_wave_clips": 6,
+    "hit_and_owned_basic": [
+      {
+        "direction": "left",
+        "hit": true,
+        "basic": true
+      },
+      {
+        "direction": "right",
+        "hit": true,
+        "basic": true
+      }
+    ],
+    "side_death": [
+      {
+        "clip": "actor-kirito_death_left",
+        "image": "actor/v3/kirito/left/fallen.png",
+        "flipX": false
+      },
+      {
+        "clip": "actor-kirito_death_right",
+        "image": "actor/v3/kirito/right/fallen.png",
+        "flipX": false
+      }
+    ],
+    "boss_defeated": {
+      "killed": true,
+      "bodyEnabled": false,
+      "corpses": 1,
+      "gameOver": false,
+      "images": [
+        "actor/v3/boss/down/fallen.png"
+      ],
+      "gameOverAfterAnimation": true
+    },
+    "errors": []
+  },
+  "deferred": [
+    "Elite/boss back/left/right hit and defeated directions, by user decision",
+    "Dedicated new Phantom Dash VFX textures"
+  ],
+  "not_claimed": [
+    "Full10minute run",
+    "Crowded-combat GPU profile",
+    "User visual acceptance"
+  ],
+  "concurrent_edits": "Weapon/Dash progression changes from another ongoing task were preserved and not staged with this art batch."
+}

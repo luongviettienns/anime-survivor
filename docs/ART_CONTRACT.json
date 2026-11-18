@@ -856,6 +856,18 @@
     "dash_metadata": "src/game/config/phantomDashAssets.ts",
     "export": "python scripts/export_actor_clips.py",
     "check": "python scripts/export_actor_clips.py --check",
-    "policy": "Native RGBA, byte-identical PNG copy; measured per-frame origin, fixed standing-reference display scale112px/player-normal-elite and224px/boss; missing headings remain explicit temporary fallback."
+    "policy": "Native RGBA, byte-identical PNG copy; measured per-frame origin, fixed standing-reference display scale112px/player-normal-elite and224px/boss; missing headings remain explicit temporary fallback.",
+    "compact_extension": {
+      "source": "art/source/actor-v3/source/originals",
+      "metadata": "art/source/actor-v3/clips.json",
+      "frames": "art/source/actor-v3/frames",
+      "sheets": "art/source/actor-v3/sheets",
+      "contract": "art/source/actor-v3/contract.json",
+      "generated_poses": 13,
+      "packing": "python scripts/pack_actor_v3.py",
+      "validation": "python scripts/validate_actor_v3.py",
+      "runtime_prefix": "v3/",
+      "source_policy": "Unchanged native RGBA PNG; measured foot anchors, padding-only exact sheets."
+    }
   }
 }

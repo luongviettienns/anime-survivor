@@ -3,7 +3,7 @@
     {
       "key": "actor-kirito_lv1_left",
       "times": [
-        183
+        200
       ],
       "images": [
         "actor/originals/kirito/left/neutral.png",
@@ -17,7 +17,7 @@
       "key": "actor-kirito_lv2_left",
       "times": [
         183,
-        450
+        467
       ],
       "images": [
         "actor/originals/kirito/left/neutral.png",

@@ -868,6 +868,18 @@
       "validation": "python scripts/validate_actor_v3.py",
       "runtime_prefix": "v3/",
       "source_policy": "Unchanged native RGBA PNG; measured foot anchors, padding-only exact sheets."
+    },
+    "transition_extension": {
+      "source": "art/source/kirito-transitions/source/originals",
+      "metadata": "art/source/kirito-transitions/clips.json",
+      "frames": "art/source/kirito-transitions/frames",
+      "sheets": "art/source/kirito-transitions/sheets",
+      "contract": "art/source/kirito-transitions/contract.json",
+      "generated_poses": 12,
+      "packing": "python scripts/pack_kirito_transitions.py",
+      "validation": "python scripts/validate_kirito_transitions.py",
+      "runtime_prefix": "transitions/",
+      "policy": "Native RGBA; authored left/right Ice/Dark/X windup/follow, fixed foot anchors; original cut release offsets retained."
     }
   },
   "dual_x_wave_extension": {

@@ -11,8 +11,13 @@ import { ENEMY, PLAYER } from '../config/constants';
 export class DamageSystem {
   readonly state: PlayerState;
 
-  constructor(private readonly player: Phaser.Physics.Arcade.Sprite) {
-    this.state = createPlayerState(PLAYER.maxHealth);
+  constructor(
+    private readonly player: Phaser.Physics.Arcade.Sprite,
+    maxHealth: number = PLAYER.maxHealth,
+    private readonly baseArmor: number = 0,
+    private readonly invulnerabilityMs: number = PLAYER.invulnerabilityMs
+  ) {
+    this.state = createPlayerState(maxHealth);
   }
 
   tryContactDamage(
@@ -24,8 +29,8 @@ export class DamageSystem {
       this.state,
       amount,
       nowMs,
-      PLAYER.invulnerabilityMs,
-      flatDamageReduction
+      this.invulnerabilityMs,
+      this.baseArmor + flatDamageReduction
     );
     if (!damaged) {
       return { damaged: false, died: false };

@@ -1,4 +1,5 @@
 import type { PlayerState } from './combat';
+import type { HeroId } from './heroes';
 import { canUpgradeWeapon, upgradeWeapon, type WeaponId, type WeaponInventory } from './weapons';
 
 export type PassiveId =
@@ -10,7 +11,7 @@ export type PassiveId =
   | 'stat_magnet'
   | 'stat_heavy_strike';
 
-export type UpgradeId = 'weapon_orb' | 'weapon_slash' | 'weapon_orbital' | 'weapon_mine' | PassiveId;
+export type UpgradeId = 'weapon_orb' | 'weapon_slash' | 'weapon_orbital' | 'weapon_mine' | 'weapon_dual_slash' | PassiveId;
 export const MAX_PASSIVE_LEVEL = 5;
 
 export type PassiveStats = {
@@ -34,19 +35,22 @@ export type UpgradeChoice = {
   nextLevel?: number;
 };
 
-export type UpgradeRollContext = { playerLevel?: number; hpRatio?: number };
+export type UpgradeRollContext = { playerLevel?: number; hpRatio?: number; heroId?: HeroId };
 
 const WEAPON_UPGRADE_META: ReadonlyArray<{
-  upgradeId: 'weapon_orb' | 'weapon_slash' | 'weapon_orbital' | 'weapon_mine';
+  upgradeId: 'weapon_orb' | 'weapon_slash' | 'weapon_orbital' | 'weapon_mine' | 'weapon_dual_slash';
   weaponId: WeaponId;
+  heroOnly?: HeroId;
+  icon: string;
   title: string;
   unlockDesc: string;
   levelDesc: string;
 }> = [
-  { upgradeId: 'weapon_orb', weaponId: 'orb', title: 'Rasengan Chakra Orb', unlockDesc: 'Unlock auto-homing chakra orb.', levelDesc: '+9 Damage, faster cooldown & flight, extra orbs at Lv3/Lv5.' },
-  { upgradeId: 'weapon_slash', weaponId: 'slash', title: 'Taijutsu Fist Combo', unlockDesc: 'Strike nearby foes with an empty-handed chakra punch.', levelDesc: '+14 Damage, wider reach, two-sided punches at Lv4.' },
-  { upgradeId: 'weapon_orbital', weaponId: 'orbital', title: 'Shadow Shuriken Ring', unlockDesc: 'Summon orbiting shadow shuriken that slice nearby foes.', levelDesc: '+7 Damage, faster spin, extra blades at Lv3/Lv5.' },
-  { upgradeId: 'weapon_mine', weaponId: 'mine', title: 'Paper Bomb Tag', unlockDesc: 'Drop explosive shinobi tags behind you for blazing AOE blasts.', levelDesc: '+18 Blast Damage, wider radius, double drop at Lv4.' },
+  { upgradeId: 'weapon_orb', weaponId: 'orb', heroOnly: 'naruto', icon: 'icon-weapon_orb', title: 'Rasengan Chakra Orb', unlockDesc: 'Unlock auto-homing chakra orb.', levelDesc: '+9 Damage, faster cooldown & flight, extra orbs at Lv3/Lv5.' },
+  { upgradeId: 'weapon_dual_slash', weaponId: 'dual_slash', heroOnly: 'kirito', icon: 'icon-weapon_slash', title: 'Dual Element Slash', unlockDesc: 'Unleash Ice & Dark Fire energy waves.', levelDesc: 'Lv3 unlocks Dark Fire Burn combo; Lv5 unleashes Dual X Wave.' },
+  { upgradeId: 'weapon_slash', weaponId: 'slash', icon: 'icon-weapon_slash', title: 'Taijutsu Fist Combo', unlockDesc: 'Strike nearby foes with an empty-handed chakra punch.', levelDesc: '+14 Damage, wider reach, two-sided punches at Lv4.' },
+  { upgradeId: 'weapon_orbital', weaponId: 'orbital', icon: 'icon-weapon_orbital', title: 'Shadow Shuriken Ring', unlockDesc: 'Summon orbiting shadow shuriken that slice nearby foes.', levelDesc: '+7 Damage, faster spin, extra blades at Lv3/Lv5.' },
+  { upgradeId: 'weapon_mine', weaponId: 'mine', icon: 'icon-weapon_mine', title: 'Paper Bomb Tag', unlockDesc: 'Drop explosive shinobi tags behind you for blazing AOE blasts.', levelDesc: '+18 Blast Damage, wider radius, double drop at Lv4.' },
 ];
 
 const HEAVY_EVERY = [6, 5, 5, 4, 3] as const;
@@ -69,12 +73,17 @@ export function createPassiveStats(): PassiveStats {
   };
 }
 
-export function getAvailableUpgrades(inventory: WeaponInventory, passives: PassiveStats = createPassiveStats()): UpgradeChoice[] {
+export function getAvailableUpgrades(
+  inventory: WeaponInventory,
+  passives: PassiveStats = createPassiveStats(),
+  heroId: HeroId = 'naruto'
+): UpgradeChoice[] {
   const choices: UpgradeChoice[] = [];
   for (const meta of WEAPON_UPGRADE_META) {
+    if (meta.heroOnly && meta.heroOnly !== heroId && inventory[meta.weaponId] === 0) continue;
     if (!canUpgradeWeapon(inventory, meta.weaponId)) continue;
     const nextLevel = inventory[meta.weaponId] + 1;
-    choices.push({ id: meta.upgradeId, title: `${meta.title} Lv.${nextLevel}`, description: nextLevel === 1 ? meta.unlockDesc : meta.levelDesc, icon: `icon-${meta.upgradeId}`, category: 'weapon', nextLevel });
+    choices.push({ id: meta.upgradeId, title: `${meta.title} Lv.${nextLevel}`, description: nextLevel === 1 ? meta.unlockDesc : meta.levelDesc, icon: meta.icon, category: 'weapon', nextLevel });
   }
   for (const id of PASSIVE_IDS) {
     const lv = passives.levels[id];
@@ -116,7 +125,7 @@ export function rollUpgradeChoices(
   maxChoices = 3,
   rng: () => number = Math.random
 ): UpgradeChoice[] {
-  const pool = getAvailableUpgrades(inventory, passives);
+  const pool = getAvailableUpgrades(inventory, passives, ctx.heroId ?? 'naruto');
   const owned = Object.values(inventory).filter((lv) => lv > 0).length;
   const hpRatio = ctx.hpRatio ?? 1;
   const weapons: UpgradeChoice[] = [], weaponW: number[] = [];
@@ -148,6 +157,7 @@ export function rollUpgradeChoices(
 
 export function applyUpgradeChoice(choiceId: UpgradeId, inventory: WeaponInventory, player: PlayerState, passives: PassiveStats): void {
   if (choiceId === 'weapon_orb') { upgradeWeapon(inventory, 'orb'); return; }
+  if (choiceId === 'weapon_dual_slash') { upgradeWeapon(inventory, 'dual_slash'); return; }
   if (choiceId === 'weapon_slash') { upgradeWeapon(inventory, 'slash'); return; }
   if (choiceId === 'weapon_orbital') { upgradeWeapon(inventory, 'orbital'); return; }
   if (choiceId === 'weapon_mine') { upgradeWeapon(inventory, 'mine'); return; }

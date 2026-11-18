@@ -1,4 +1,6 @@
-export type WeaponId = 'orb' | 'slash' | 'orbital' | 'mine';
+import type { DualWaveKind } from './statusEffects';
+
+export type WeaponId = 'orb' | 'slash' | 'orbital' | 'mine' | 'dual_slash';
 
 export const MAX_WEAPON_LEVEL = 5;
 
@@ -20,14 +22,53 @@ export type WeaponModifiers = {
 
 export type WeaponInventory = Record<WeaponId, number>;
 
-const ORBITAL_KNOCKBACK = [115, 125, 135, 145, 160] as const;
+export type DualSlashStage = {
+  animKey: 'kirito-wave-lv1' | 'kirito-wave-lv2' | 'kirito-wave-lv3';
+  waves: ReadonlyArray<{ kind: DualWaveKind; releaseDelayMs: number }>;
+  pierceCount: number;
+};
 
-export function createWeaponInventory(): WeaponInventory {
+const ORBITAL_KNOCKBACK = [115, 125, 135, 145, 160] as const;
+const DUAL_SLASH_TABLE: ReadonlyArray<Omit<WeaponStats, 'id' | 'level'>> = [
+  { damage: 32, cooldownMs: 880, count: 1, rangePx: 460, speedPxSec: 460, knockbackPxSec: 70 },
+  { damage: 42, cooldownMs: 820, count: 1, rangePx: 490, speedPxSec: 490, knockbackPxSec: 80 },
+  { damage: 36, cooldownMs: 960, count: 2, rangePx: 520, speedPxSec: 520, knockbackPxSec: 85 },
+  { damage: 46, cooldownMs: 880, count: 2, rangePx: 550, speedPxSec: 550, knockbackPxSec: 95 },
+  { damage: 110, cooldownMs: 820, count: 1, rangePx: 600, speedPxSec: 580, knockbackPxSec: 120 },
+];
+
+export function createWeaponInventory(startingWeapon: WeaponId = 'orb'): WeaponInventory {
   return {
-    orb: 1,
-    slash: 0,
-    orbital: 0,
-    mine: 0,
+    orb: startingWeapon === 'orb' ? 1 : 0,
+    slash: startingWeapon === 'slash' ? 1 : 0,
+    orbital: startingWeapon === 'orbital' ? 1 : 0,
+    mine: startingWeapon === 'mine' ? 1 : 0,
+    dual_slash: startingWeapon === 'dual_slash' ? 1 : 0,
+  };
+}
+
+export function getDualSlashStage(level: number): DualSlashStage {
+  if (level >= 5) {
+    return {
+      animKey: 'kirito-wave-lv3',
+      waves: [{ kind: 'dual_x', releaseDelayMs: 280 }],
+      pierceCount: 8,
+    };
+  }
+  if (level >= 3) {
+    return {
+      animKey: 'kirito-wave-lv2',
+      waves: [
+        { kind: 'ice', releaseDelayMs: 180 },
+        { kind: 'dark_fire', releaseDelayMs: 450 },
+      ],
+      pierceCount: 1,
+    };
+  }
+  return {
+    animKey: 'kirito-wave-lv1',
+    waves: [{ kind: 'ice', releaseDelayMs: 180 }],
+    pierceCount: 1,
   };
 }
 
@@ -88,6 +129,10 @@ export function computeWeaponStats(id: WeaponId, level: number): WeaponStats {
       speedPxSec: 0,
       knockbackPxSec: 260 + step * 25,
     };
+  }
+
+  if (id === 'dual_slash') {
+    return { id, level, ...DUAL_SLASH_TABLE[step]! };
   }
 
   return {

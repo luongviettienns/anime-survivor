@@ -12,18 +12,21 @@ import {
   canUpgradeWeapon,
   computeWeaponStats,
   createWeaponInventory,
+  getDualSlashStage,
   MAX_WEAPON_LEVEL,
   upgradeWeapon,
 } from '../src/domain/weapons';
 
 describe('weapons domain scaling and inventory', () => {
-  it('starts with level 1 orb and locked slash/orbital/mine', () => {
+  it('starts with level 1 orb for naruto or dual_slash for kirito', () => {
     const inv = createWeaponInventory();
-    expect(inv).toEqual({ orb: 1, slash: 0, orbital: 0, mine: 0 });
+    expect(inv).toEqual({ orb: 1, slash: 0, orbital: 0, mine: 0, dual_slash: 0 });
+    expect(createWeaponInventory('dual_slash')).toEqual({ orb: 0, slash: 0, orbital: 0, mine: 0, dual_slash: 1 });
     expect(canUpgradeWeapon(inv, 'orb')).toBe(true);
     expect(canUpgradeWeapon(inv, 'slash')).toBe(true);
     expect(canUpgradeWeapon(inv, 'orbital')).toBe(true);
     expect(canUpgradeWeapon(inv, 'mine')).toBe(true);
+    expect(canUpgradeWeapon(inv, 'dual_slash')).toBe(true);
   });
 
   it('upgrades weapons up to MAX_WEAPON_LEVEL and rejects further upgrades', () => {
@@ -75,6 +78,14 @@ describe('weapons domain scaling and inventory', () => {
 
     expect(() => computeWeaponStats('orb', 0)).toThrow();
     expect(() => computeWeaponStats('mine', 6)).toThrow();
+
+    expect(computeWeaponStats('dual_slash', 1)).toMatchObject({ id: 'dual_slash', damage: 32, cooldownMs: 880, count: 1 });
+    expect(computeWeaponStats('dual_slash', 3)).toMatchObject({ id: 'dual_slash', damage: 36, cooldownMs: 960, count: 2 });
+    expect(computeWeaponStats('dual_slash', 5)).toMatchObject({ id: 'dual_slash', damage: 110, cooldownMs: 820, count: 1 });
+
+    expect(getDualSlashStage(1)).toEqual({ animKey: 'kirito-wave-lv1', waves: [{ kind: 'ice', releaseDelayMs: 180 }], pierceCount: 1 });
+    expect(getDualSlashStage(3)).toEqual({ animKey: 'kirito-wave-lv2', waves: [{ kind: 'ice', releaseDelayMs: 180 }, { kind: 'dark_fire', releaseDelayMs: 450 }], pierceCount: 1 });
+    expect(getDualSlashStage(5)).toEqual({ animKey: 'kirito-wave-lv3', waves: [{ kind: 'dual_x', releaseDelayMs: 280 }], pierceCount: 8 });
   });
 });
 
@@ -87,7 +98,11 @@ describe('11-card flat upgrades, Max Lv.5 cap, heavy strike, and smart weighted 
       expect(c.icon.startsWith('icon-')).toBe(true);
     }
 
-    const inv = { orb: 5, slash: 2, orbital: 5, mine: 5 };
+    const kiritoAvail = getAvailableUpgrades(createWeaponInventory('dual_slash'), passives, 'kirito');
+    expect(kiritoAvail.some((c) => c.id === 'weapon_dual_slash')).toBe(true);
+    expect(kiritoAvail.some((c) => c.id === 'weapon_orb')).toBe(false);
+
+    const inv = { orb: 5, slash: 2, orbital: 5, mine: 5, dual_slash: 0 };
     passives.levels.stat_damage = 5;
     passives.levels.stat_magnet = 5;
     const available = getAvailableUpgrades(inv, passives);
@@ -100,7 +115,7 @@ describe('11-card flat upgrades, Max Lv.5 cap, heavy strike, and smart weighted 
       'stat_heavy_strike',
     ]);
 
-    const allMaxed = { orb: 5, slash: 5, orbital: 5, mine: 5 };
+    const allMaxed = { orb: 5, slash: 5, orbital: 5, mine: 5, dual_slash: 5 };
     const statOnly = rollUpgradeChoices(allMaxed, passives, { playerLevel: 10, hpRatio: 1 }, 3, () => 0.2);
     expect(statOnly).toHaveLength(3);
     expect(statOnly.every((c) => c.category === 'passive')).toBe(true);

@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test';
 
 type LobbyApi = { getSelectedHeroId: () => string; isActive: () => boolean };
 
-test('opens Lobby & Character Select by default at /, shows Naruto & locked Kirito, and starts GameScene', async ({ page }) => {
+test('opens Lobby & Character Select by default at /, previews Naruto & unlocked Kirito, and starts GameScene', async ({ page }) => {
   const errors: string[] = [];
   page.on('pageerror', (e) => errors.push(e.message));
   page.on('console', (m) => { if (m.type() === 'error') errors.push(m.text()); });
@@ -15,14 +15,11 @@ test('opens Lobby & Character Select by default at /, shows Naruto & locked Kiri
   expect(await page.evaluate(() => (window as unknown as { __ANIME_SURVIVOR_LOBBY__: LobbyApi }).__ANIME_SURVIVOR_LOBBY__.getSelectedHeroId())).toBe('naruto');
   await page.screenshot({ path: 'test-results/lobby-screen.png' });
 
-  // Switch to Kirito (locked) with key '2'; Enter must NOT start GameScene
+  // Switch to Kirito (now unlocked!) with key '2' and capture unlocked showcase
   await page.keyboard.press('2');
   await page.waitForTimeout(180);
   expect(await page.evaluate(() => (window as unknown as { __ANIME_SURVIVOR_LOBBY__: LobbyApi }).__ANIME_SURVIVOR_LOBBY__.getSelectedHeroId())).toBe('kirito');
-  await page.screenshot({ path: 'test-results/lobby-kirito-locked.png' });
-  await page.keyboard.press('Enter');
-  await page.waitForTimeout(200);
-  expect(await page.evaluate(() => Boolean(window.__ANIME_SURVIVOR__))).toBe(false);
+  await page.screenshot({ path: 'test-results/lobby-kirito-unlocked.png' });
 
   // Switch back to Naruto ('1'), toggle Mute ('M'), and start GameScene ('Enter')
   await page.keyboard.press('1');

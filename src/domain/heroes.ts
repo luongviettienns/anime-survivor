@@ -1,3 +1,5 @@
+import type { WeaponId } from './weapons';
+
 export type HeroId = 'naruto' | 'kirito';
 
 export type HeroConfig = {
@@ -10,6 +12,7 @@ export type HeroConfig = {
   moveSpeed: number;
   magnetRadius: number;
   invulnerabilityMs: number;
+  startingWeaponId: WeaponId;
   startingWeapon: string;
   strengths: string;
   weakness: string;
@@ -27,6 +30,7 @@ export const HERO_ROSTER: readonly HeroConfig[] = [
     moveSpeed: 250,
     magnetRadius: 96,
     invulnerabilityMs: 800,
+    startingWeaponId: 'orb',
     startingWeapon: 'Rasengan Chakra Orb',
     strengths: 'Balanced speed, homing orb, dual evolution paths',
     weakness: 'Zero starting armor; needs crowd-control weapons',
@@ -35,19 +39,24 @@ export const HERO_ROSTER: readonly HeroConfig[] = [
   {
     id: 'kirito',
     name: 'KIRITO',
-    title: 'Dual-Blade Vanguard (In Progress)',
-    unlocked: false,
+    title: 'Dual-Blade Vanguard',
+    unlocked: true,
     maxHp: 140,
     armor: 5,
     moveSpeed: 230,
     magnetRadius: 84,
     invulnerabilityMs: 950,
+    startingWeaponId: 'dual_slash',
     startingWeapon: 'Dual Element Energy Slash',
     strengths: 'High armor (-5 Dmg), 140 HP, Ice Slow + Dark Fire Burn',
     weakness: 'Slower base speed (230 px/s) & tighter pickup radius',
-    portraitKey: 'lobby_lock',
+    portraitKey: 'kirito_wave_lv1_ice',
   },
 ];
+
+export function getHeroConfig(heroId?: string): HeroConfig {
+  return HERO_ROSTER.find((hero) => hero.id === heroId) ?? HERO_ROSTER[0]!;
+}
 
 export function canStartHero(hero: HeroConfig): boolean {
   return hero.unlocked;

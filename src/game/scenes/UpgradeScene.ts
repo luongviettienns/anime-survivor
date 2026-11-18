@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import type { PlayerState } from '../../domain/combat';
+import type { HeroId } from '../../domain/heroes';
 import type { RunProgression } from '../../domain/progression';
 import {
   applyUpgradeChoice,
@@ -13,6 +14,7 @@ import { createUpgradeCard } from '../../ui/UpgradeCard';
 import { upgradeLayout } from '../../ui/layout';
 
 export type UpgradeSceneData = {
+  heroId?: HeroId;
   inventory: WeaponInventory;
   playerState: PlayerState;
   passives: PassiveStats;
@@ -86,6 +88,7 @@ export class UpgradeScene extends Phaser.Scene {
     this.choices = rollUpgradeChoices(this.payload.inventory, this.payload.passives, {
       playerLevel: this.payload.progression.level,
       hpRatio: this.payload.playerState.hp / Math.max(1, this.payload.playerState.maxHp),
+      heroId: this.payload.heroId ?? 'naruto',
     }, 3);
 
     const layout = upgradeLayout(this.scale.width,this.scale.height);

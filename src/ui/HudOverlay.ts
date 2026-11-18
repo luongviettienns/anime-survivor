@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import type { HeroId } from '../domain/heroes';
 import { xpThreshold } from '../domain/progression';
 import type { WeaponId } from '../domain/weapons';
 import { formatPassives, type HudStateDto } from './HudState';
@@ -7,8 +8,9 @@ import { HudGauges } from './HudGauges';
 import { hudLayout } from './layout';
 
 const SLOTS: ReadonlyArray<{id:WeaponId;label:string;icon:string}> = [
-  {id:'orb',label:'ORB',icon:'icon-weapon_orb'}, {id:'slash',label:'PUNCH',icon:'icon-weapon_slash'},
-  {id:'orbital',label:'ORBIT',icon:'icon-weapon_orbital'}, {id:'mine',label:'MINE',icon:'icon-weapon_mine'},
+  {id:'orb',label:'ORB',icon:'icon-weapon_orb'}, {id:'dual_slash',label:'DUAL',icon:'icon-weapon_slash'},
+  {id:'slash',label:'PUNCH',icon:'icon-weapon_slash'}, {id:'orbital',label:'ORBIT',icon:'icon-weapon_orbital'},
+  {id:'mine',label:'MINE',icon:'icon-weapon_mine'},
 ];
 const Z = 1_000_000_000;
 
@@ -30,14 +32,16 @@ export class HudOverlay {
   private status = '';
   private lastKey = '';
 
-  constructor(scene: Phaser.Scene) {
+  constructor(scene: Phaser.Scene, heroId: HeroId = 'naruto') {
     const l = this.layout = hudLayout(scene.scale.width,scene.scale.height);
     this.chrome = new HudChrome(scene,Z-1);
     this.gauges = new HudGauges(scene,this.chrome,Z);
     const text = (x:number,y:number,size:number,color:string) => scene.add.text(x,y,'',{
       fontFamily:'monospace',fontSize:`${size}px`,color,stroke:'#070a14',strokeThickness:3,
     }).setScrollFactor(0).setDepth(Z+3);
-    this.portrait = scene.add.sprite(40,66,'hero',0).setScrollFactor(0).setDepth(Z+2).play('hero-idle');
+    this.portrait = heroId === 'kirito'
+      ? scene.add.sprite(40,68,'kirito_wave_lv1_ice','kirito_wave_lv1_ice/000').setScale(0.032).setScrollFactor(0).setDepth(Z+2)
+      : scene.add.sprite(40,66,'hero',0).setScrollFactor(0).setDepth(Z+2).play('hero-idle');
     this.heart = scene.add.image(90,55,'icon-stat_max_hp').setDisplaySize(16,16).setScrollFactor(0).setDepth(Z+3);
     this.hpLabel = text(106,47,13,'#ffffff');
     this.lvlLabel = text(l.levelX,12,13,'#ffe5a0').setOrigin(0.5);
@@ -54,7 +58,7 @@ export class HudOverlay {
 
   update(dto: HudStateDto): void {
     const w=dto.weapons,p=dto.passives,b=dto.bossHp;
-    const key=`${dto.player.hp}/${dto.player.maxHp}|${dto.progression.level}:${dto.progression.xp}|${Math.floor(dto.elapsedSec)}|${dto.defeated}|${w?`${w.orb},${w.slash},${w.orbital},${w.mine}`:''}|${p?`${p.damageReduction},${p.damageBonus},${p.cooldownReductionMs},${p.moveSpeedBonusPxSec},${p.heavyStrikeEvery},${p.heavyStrikeBonus}`:''}|${b?`${b.name}:${b.hp}/${b.maxHp}`:''}`;
+    const key=`${dto.player.hp}/${dto.player.maxHp}|${dto.progression.level}:${dto.progression.xp}|${Math.floor(dto.elapsedSec)}|${dto.defeated}|${w?`${w.orb},${w.dual_slash},${w.slash},${w.orbital},${w.mine}`:''}|${p?`${p.damageReduction},${p.damageBonus},${p.cooldownReductionMs},${p.moveSpeedBonusPxSec},${p.heavyStrikeEvery},${p.heavyStrikeBonus}`:''}|${b?`${b.name}:${b.hp}/${b.maxHp}`:''}`;
     if (key===this.lastKey) return;
     this.lastKey=key;
     const reqXp=Math.max(1,xpThreshold(dto.progression.level)),l=this.layout;
@@ -68,7 +72,7 @@ export class HudOverlay {
     this.hpLabel.setText(`HP ${dto.player.hp}/${dto.player.maxHp}`);this.kills.setText(`KILLS ${dto.defeated}`);
     const summary:string[]=[];let index=0;
     for (const slot of SLOTS) {
-      const level=dto.weapons?.[slot.id]??(slot.id==='orb'?1:0);
+      const level=dto.weapons?.[slot.id]??(slot.id==='orb'&&!dto.weapons?1:0);
       this.icons[slot.id].setVisible(level>0);this.badges[slot.id].setVisible(level>0);
       if (level<=0) continue;
       const x=92+index++*42;

@@ -6,6 +6,7 @@ import { aimDirection, type Vec2 } from '../../domain/vector';
 import { applyWeaponModifiers, computeWeaponStats, createWeaponInventory, type WeaponId, type WeaponInventory } from '../../domain/weapons';
 import { PROJECTILE } from '../config/constants';
 import type { EnemySystem } from './EnemySystem';
+import { DualElementSystem } from './DualElementSystem';
 import { MineSystem } from './MineSystem';
 import { OrbitalSystem } from './OrbitalSystem';
 import type { VfxSystem } from './VfxSystem';
@@ -14,10 +15,11 @@ type Candidate = TargetCandidate & { sprite: Phaser.Physics.Arcade.Sprite };
 
 export class WeaponSystem {
   readonly projectiles: Phaser.Physics.Arcade.Group;
-  readonly inventory: WeaponInventory = createWeaponInventory();
+  readonly inventory: WeaponInventory;
   private readonly orbCooldown = createWeaponCooldown(760);
   private readonly slashCooldown = createWeaponCooldown(900);
   private readonly projectileExpiresAt = new Map<Phaser.Physics.Arcade.Sprite, number>();
+  private readonly dualSlash: DualElementSystem;
   private readonly mines: MineSystem;
   private readonly orbital: OrbitalSystem;
   private activePassives: PassiveStats = createPassiveStats();
@@ -30,11 +32,14 @@ export class WeaponSystem {
     private readonly onEnemyKilled?: (x: number, y: number, archetype: EnemyArchetypeId, xpValue: number) => void,
     private readonly onCombatFeedback?: (cue: 'shoot' | 'slash' | 'hit', x?: number, y?: number, dmg?: number, killed?: boolean, critical?: boolean, explosive?: boolean) => void,
     private readonly vfx?: VfxSystem,
-    private readonly onSkillUsed?: (skill: WeaponId, aimX: number) => void
+    private readonly onSkillUsed?: (skill: WeaponId, aimX: number, animOverride?: string) => void,
+    startingWeapon: WeaponId = 'orb'
   ) {
+    this.inventory = createWeaponInventory(startingWeapon);
+    this.projectiles = scene.physics.add.group();
+    this.dualSlash = new DualElementSystem(player, this.projectiles, enemies, this.projectileExpiresAt, vfx, onSkillUsed, (cue) => this.onCombatFeedback?.(cue));
     this.mines = new MineSystem(scene, player, (e, d, k, pos) => this.damageAndReward(e, d, k, pos, true),
       () => this.onSkillUsed?.('mine', this.lastAim.x), () => this.onCombatFeedback?.('slash'), vfx);
-    this.projectiles = scene.physics.add.group();
     this.orbital = new OrbitalSystem(scene, player, (e, d, k) => this.damageAndReward(e, d, k),
       (aimX) => this.onSkillUsed?.('orbital', aimX));
   }
@@ -51,13 +56,16 @@ export class WeaponSystem {
     }
     const candidates = this.enemies.getCandidates();
     if (this.inventory.orb >= 1) this.updateOrb(nowMs, candidates);
+    this.lastAim = this.dualSlash.update(nowMs, this.inventory.dual_slash, this.activePassives, candidates, this.lastAim);
     if (this.inventory.slash >= 1) this.updateSlash(nowMs, candidates);
     this.orbital.update(nowMs, this.inventory.orbital, this.activePassives, candidates, this.lastAim.x);
     this.mines.update(nowMs, this.inventory.mine, this.lastAim, this.activePassives, candidates);
   }
 
   handleProjectileHit(projObj: Phaser.GameObjects.GameObject, enemyObj: Phaser.GameObjects.GameObject): void {
+    const proj = projObj as Phaser.Physics.Arcade.Sprite;
     const enemy = enemyObj as Phaser.Physics.Arcade.Sprite;
+    if (this.dualSlash.handleHit(proj, enemy, (e, d, k, pos) => this.damageAndReward(e, d, k, pos), (p) => this.consumeProjectile(p))) return;
     if (!enemy.active || !this.consumeProjectile(projObj)) return;
     this.vfx?.playRasenganHit(enemy.x, enemy.y);
     const stats = computeWeaponStats('orb', Math.max(1, this.inventory.orb));
@@ -68,6 +76,7 @@ export class WeaponSystem {
     const projectile = projectileObject as Phaser.Physics.Arcade.Sprite;
     if (!projectile.active || !this.projectileExpiresAt.has(projectile)) return false;
     this.projectileExpiresAt.delete(projectile);
+    this.dualSlash.deleteShot(projectile);
     projectile.anims?.stop();
     projectile.disableBody(true, true);
     return true;
@@ -75,6 +84,7 @@ export class WeaponSystem {
 
   clear(): void {
     this.projectileExpiresAt.clear();
+    this.dualSlash.clear();
     this.orbital.clear();
     this.mines.clear();
   }

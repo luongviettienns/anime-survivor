@@ -115,6 +115,10 @@ export class VfxSystem {
     });
   }
 
+  playDualEffect(texture: string, animKey: string, x: number, y: number, scale = 0.05, depth = 500_000_230, rotation = 0): void {
+    this.vfxPool.playOneShot(texture, animKey, x, y, { scale, rotation, depth, alpha: 0.95 });
+  }
+
   onPlayerHurt(): void {
     const reduceShake = loadSaveData().settings.reduceScreenShake;
     if (!reduceShake) {

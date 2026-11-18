@@ -231,3 +231,11 @@ Asset-only validation passed:5 retained source hashes unchanged;5 runtime PNG si
 - Replaced fixed 1050ms spawn timer with 6-stage delta-driven wave schedule (1000->580ms, 1800ms during boss), offscreen ellipse spawning for 1280x720, golden-angle stream sectors, forward pack clusters, and 60s 360-degree encirclement rings (14..22 enemies) with 10 reserved maxAlive slots.
 - Activated enemy_elite every 90s (1:30..9:00) with purple EnemyAura (0xb84dff), 50% knockback resistance, minute scaling, and deterministic heal/magnet drops.
 - Activated boss_blood_slash (150-degree cone strike, 135px range, 600/480ms windup, 42/52 dmg, 280 px/s knockback) mutually exclusive with boss radial barrage, plus +3 dmg/min scaling on slime/shade melee skills. Left kunai and slash_x unattached as requested.
+
+## Kirito & Dual Element Energy Slash integration (feat/kirito-dual-element) — 2026-11-18
+- Merged feat/flat-balance-scaling-drops to main (commit 48e32bd) and unlocked Kirito in Sanctuary Lobby (src/domain/heroes.ts, TitleScene.ts, LobbyPanel.ts).
+- Applied selected hero stats (140 HP, 5 armor, 230 px/s, 84px magnet, 950ms i-frame, starting weapon dual_slash) across GameScene, DamageSystem, MovementSystem, WeaponSystem, HudOverlay, UpgradeScene, and GameOverScene.
+- Added pure src/domain/statusEffects.ts (Slow >= 35 px/s floor, Burn 500ms DoT ticks, independent coexistence) and dual_slash Lv.1-5 progression (src/domain/weapons.ts, src/domain/upgrades.ts).
+- Integrated all 13 public/assets/dual-element/*.atlas.json animations and status VFX loops/endings (src/game/config/dualElementAssets.ts, HeroActionVisual.ts, DualElementSystem.ts, EnemyStatusVisuals.ts, EnemySystem.ts).
+- Verified via 
+pm run verify (67/67 Vitest unit tests, TypeScript, ESLint, architecture guard, sprite validation, Vite build) and 20 Playwright E2E tests across kirito.spec.ts, lobby.spec.ts, game.spec.ts, alance-drops.spec.ts, rcane-ui.spec.ts, damage-popup-motion.spec.ts, hero-animation.spec.ts, skill-animation.spec.ts + visual inspection of Lobby & Lv.1/Lv.3/Lv.5 screenshots.

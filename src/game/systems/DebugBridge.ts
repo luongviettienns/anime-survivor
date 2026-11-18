@@ -2,7 +2,7 @@ import type { EnemyArchetypeId } from '../../domain/enemies';
 import type { RunProgression } from '../../domain/progression';
 import type { SaveData } from '../../domain/storageSchema';
 import type { UpgradeChoice } from '../../domain/upgrades';
-import type { WeaponInventory } from '../../domain/weapons';
+import type { WeaponId, WeaponInventory } from '../../domain/weapons';
 import type { GameScene } from '../scenes/GameScene';
 import type { AudioSystem, SoundCue } from './AudioSystem';
 import type { DamageSystem } from './DamageSystem';
@@ -45,6 +45,8 @@ export type GameDebugApi = {
   spawnSwarm: (count: number) => number;
   spawnBossAt: (x: number, y: number) => void;
   spawnHealAt: (x: number, y: number, amount?: number) => void;
+  setWeaponLevel: (id: WeaponId, level: number) => void;
+  getEnemyStatuses: () => Array<{ id: number; hp: number; slowActive: boolean; burnActive: boolean }>;
   clearEnemies: () => void;
 };
 
@@ -118,6 +120,23 @@ export function registerGameDebugApi(
     },
     spawnBossAt: (x: number, y: number) => enemies.spawnAt(x, y, 'boss'),
     spawnHealAt: (x: number, y: number, amount?: number) => pickups.spawnHealPickup(x, y, amount),
+    setWeaponLevel: (id: WeaponId, level: number) => {
+      weapon.inventory[id] = Math.max(0, Math.min(5, level));
+    },
+    getEnemyStatuses: () => {
+      const now = scene.time.now;
+      return enemies.getCandidates()
+        .filter((c) => c.active && !c.dead)
+        .map((c) => {
+          const st = enemies.getStatus(c.sprite);
+          return {
+            id: c.id,
+            hp: c.hp,
+            slowActive: Boolean(st && now < st.slowUntilMs),
+            burnActive: Boolean(st && now < st.burnUntilMs),
+          };
+        });
+    },
     clearEnemies: () => {
       enemies.group.clear(true, true);
       enemies.enemyProjectiles.clear(true, true);

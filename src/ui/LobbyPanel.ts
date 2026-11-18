@@ -31,10 +31,12 @@ export class LobbyPanel {
       const box = scene.add.rectangle(sx, 154, 194, 68, 0x101734, 0.92).setStrokeStyle(2, 0x51699f)
         .setInteractive({ useHandCursor: true }).setData(`lobby-slot-${hero.id}`, true);
       scene.add.image(sx - 64, 154, 'ui_emblem_socket', 'content').setDisplaySize(50, 50);
-      if (hero.unlocked) {
-        scene.add.image(sx - 64, 154, 'icon-weapon_orb').setDisplaySize(28, 28);
-      } else {
+      if (!hero.unlocked) {
         scene.add.image(sx - 64, 154, 'lobby_lock', 'content').setDisplaySize(26, 30);
+      } else if (hero.id === 'kirito') {
+        scene.add.image(sx - 64, 154, 'vfx_dual_element_x', 'vfx_dual_element_x/000').setScale(0.028);
+      } else {
+        scene.add.image(sx - 64, 154, 'icon-weapon_orb').setDisplaySize(28, 28);
       }
       txt(sx - 30, 142, 15, hero.unlocked ? '#ffe6a3' : '#b7b3d8').setOrigin(0, 0.5).setText(hero.id.toUpperCase());
       txt(sx - 30, 165, 11, hero.unlocked ? '#5ce1e6' : '#f39c6b').setOrigin(0, 0.5).setText(hero.unlocked ? 'READY' : 'LOCKED');

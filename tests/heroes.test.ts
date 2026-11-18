@@ -1,8 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { canStartHero, cycleHeroIndex, HERO_ROSTER } from '../src/domain/heroes';
+import { canStartHero, cycleHeroIndex, getHeroConfig, HERO_ROSTER } from '../src/domain/heroes';
 
 describe('hero roster and lobby selection rules', () => {
-  it('defines Naruto as unlocked default and Kirito as locked high-defense preview', () => {
+  it('defines Naruto and Kirito both unlocked with distinct balanced stats', () => {
     expect(HERO_ROSTER).toHaveLength(2);
     const naruto = HERO_ROSTER[0]!;
     const kirito = HERO_ROSTER[1]!;
@@ -15,18 +15,22 @@ describe('hero roster and lobby selection rules', () => {
       moveSpeed: 250,
       magnetRadius: 96,
       invulnerabilityMs: 800,
+      startingWeaponId: 'orb',
     });
     expect(kirito).toMatchObject({
       id: 'kirito',
-      unlocked: false,
+      unlocked: true,
       maxHp: 140,
       armor: 5,
       moveSpeed: 230,
       magnetRadius: 84,
       invulnerabilityMs: 950,
+      startingWeaponId: 'dual_slash',
     });
     expect(canStartHero(naruto)).toBe(true);
-    expect(canStartHero(kirito)).toBe(false);
+    expect(canStartHero(kirito)).toBe(true);
+    expect(getHeroConfig('kirito').id).toBe('kirito');
+    expect(getHeroConfig('unknown').id).toBe('naruto');
   });
 
   it('cycles hero selection index cleanly with wrap-around', () => {

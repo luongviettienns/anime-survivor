@@ -71,11 +71,14 @@ export class TitleScene extends Phaser.Scene {
     this.selectedIndex = Math.max(0, Math.min(HERO_ROSTER.length - 1, index));
     const hero = HERO_ROSTER[this.selectedIndex]!;
     this.floatTween?.stop();
-    if (hero.unlocked) {
+    if (!hero.unlocked) {
+      this.stageSprite.setTexture('lobby_lock', 'content').setDisplaySize(142, 164).setPosition(385, 405).setTint(0xd0c6ff);
+    } else if (hero.id === 'kirito') {
+      this.stageSprite.setTexture('kirito_wave_lv1_ice', 'kirito_wave_lv1_ice/000').setScale(0.26).setPosition(385, 354).clearTint();
+      this.floatTween = this.tweens.add({ targets: this.stageSprite, y: 346, duration: 1300, yoyo: true, repeat: -1, ease: 'Sine.easeInOut' });
+    } else {
       this.stageSprite.setTexture('lobby_hero', 'content').setDisplaySize(148, 326).setPosition(385, 368).clearTint();
       this.floatTween = this.tweens.add({ targets: this.stageSprite, y: 360, duration: 1300, yoyo: true, repeat: -1, ease: 'Sine.easeInOut' });
-    } else {
-      this.stageSprite.setTexture('lobby_lock', 'content').setDisplaySize(142, 164).setPosition(385, 405).setTint(0xd0c6ff);
     }
     this.lockBadge.setVisible(!hero.unlocked);
     this.panel.update(hero, this.selectedIndex, loadSaveData());
@@ -90,6 +93,6 @@ export class TitleScene extends Phaser.Scene {
   private tryStart(): void {
     const hero = HERO_ROSTER[this.selectedIndex]!;
     if (!canStartHero(hero)) return;
-    this.scene.start('GameScene');
+    this.scene.start('GameScene', { heroId: hero.id });
   }
 }

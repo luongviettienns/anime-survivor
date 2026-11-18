@@ -5,6 +5,7 @@ import {
   computeArchetypeVelocity, createRangedAttackState, ENEMY_ARCHETYPES,
   isBossEnraged, scaleEnemyConfig, stepRangedAttackState, type EnemyArchetypeId, type RangedAttackState,
 } from '../../domain/enemies';
+import type { DualWaveKind } from '../../domain/statusEffects';
 import type { TargetCandidate } from '../../domain/targeting';
 import {
   computeClusterAngles, computeEllipseSpawnOffset, computeRingOffsets,
@@ -12,8 +13,10 @@ import {
 } from '../../domain/waves';
 import { ENEMY } from '../config/constants';
 import { EnemyMeleeSkill, type EnemyImpact } from './EnemyMeleeSkill';
+import { EnemyStatusVisuals } from './EnemyStatusVisuals';
 import { EnemyVisuals } from './EnemyVisuals';
 import { HostileProjectilePool } from './HostileProjectilePool';
+import type { VfxSystem } from './VfxSystem';
 
 export type EnemyRuntimeState = EnemyState & {
   archetype: EnemyArchetypeId;
@@ -28,6 +31,7 @@ export class EnemySystem {
   readonly group: Phaser.Physics.Arcade.Group;
   readonly projectiles: HostileProjectilePool;
   private readonly melee: EnemyMeleeSkill;
+  private readonly statusFx: EnemyStatusVisuals;
   private readonly states = new Map<Phaser.Physics.Arcade.Sprite, EnemyRuntimeState>();
   private readonly visuals: EnemyVisuals;
   private readonly candidateBuffer: Array<TargetCandidate & { sprite: Phaser.Physics.Arcade.Sprite }> = [];
@@ -37,10 +41,9 @@ export class EnemySystem {
   private nextId = 1;
   private bossSpawned = false;
 
-  constructor(private readonly scene: Phaser.Scene, private readonly target: Phaser.Physics.Arcade.Sprite) {
-    this.group = scene.physics.add.group();
-    this.visuals = new EnemyVisuals(scene);
-    this.melee = new EnemyMeleeSkill(scene);
+  constructor(private readonly scene: Phaser.Scene, private readonly target: Phaser.Physics.Arcade.Sprite, private readonly vfx?: VfxSystem) {
+    this.group = scene.physics.add.group(); this.visuals = new EnemyVisuals(scene);
+    this.melee = new EnemyMeleeSkill(scene); this.statusFx = new EnemyStatusVisuals(scene);
     this.projectiles = new HostileProjectilePool(scene);
   }
 
@@ -58,7 +61,7 @@ export class EnemySystem {
     const enemy = reuse
       ? (reuse.enableBody(true, x, y, true, true), reuse)
       : (this.group.create(x, y, cfg.texture) as Phaser.Physics.Arcade.Sprite);
-    this.melee.release(enemy);
+    this.melee.release(enemy); this.statusFx.init(enemy);
     this.states.set(enemy, {
       ...createEnemyState(this.nextId++, cfg.maxHp, cfg.speed),
       archetype, touchDamage: cfg.touchDamage, projectileDamage: cfg.projectileDamage ?? 12,
@@ -91,14 +94,6 @@ export class EnemySystem {
       ? computeClusterAngles(Math.atan2(playerVel.y, playerVel.x), n)
       : plan.archetypesToSpawn.map((_, i) => this.schedule.sectorIndex * 2.399963 + (i * Math.PI * 2) / n);
     plan.archetypesToSpawn.forEach((arch, i) => this.spawn(arch, elapsedSec, angles[i]));
-  }
-
-  spawnWaveTick(elapsedSec: number): number {
-    this.runElapsedSec = elapsedSec;
-    const plan = computeWaveSpawnPlan(elapsedSec, this.group.countActive(true), ENEMY.maxAlive, this.bossSpawned);
-    if (plan.shouldSpawnBoss) this.spawn('boss', elapsedSec);
-    for (const arch of plan.archetypesToSpawn) this.spawn(arch, elapsedSec);
-    return plan.spawnDelayMs;
   }
 
   ensureBossSpawned(): void { if (!this.bossSpawned) this.spawn('boss', this.runElapsedSec); }
@@ -136,7 +131,7 @@ export class EnemySystem {
     if (!enemy.active || !state || state.dead) return { damaged: false, killed: false, x, y, archetype: state?.archetype ?? 'slime', xpValue: 0 };
     const result = applyProjectileHit(state, damage);
     if (result.killed) {
-      this.melee.release(enemy); this.visuals.release(enemy);
+      this.melee.release(enemy); this.statusFx.release(enemy); this.visuals.release(enemy);
       this.states.delete(enemy); enemy.disableBody(true, true);
     } else if (result.damaged) {
       state.hitTintUntilMs = this.scene.time.now + 85;
@@ -150,13 +145,32 @@ export class EnemySystem {
     return { damaged: result.damaged, killed: result.killed, x, y, archetype: state.archetype, xpValue: state.xpValue };
   }
 
-  update(playerDead = false, onHitPlayer?: (damage: number, impact?: EnemyImpact) => void, deltaMs = this.scene.game.loop.delta): void {
+  applyStatus(enemy: Phaser.Physics.Arcade.Sprite, kind: DualWaveKind, level: number): void {
+    if (enemy.active && this.states.has(enemy)) this.statusFx.applyWaveStatus(enemy, kind, level, this.scene.time.now);
+  }
+
+  getStatus(enemy: Phaser.Physics.Arcade.Sprite) { return this.statusFx.getState(enemy); }
+
+  update(
+    playerDead = false,
+    onHitPlayer?: (damage: number, impact?: EnemyImpact) => void,
+    deltaMs = this.scene.game.loop.delta,
+    onBurnDamage?: (x: number, y: number, dmg: number, killed: boolean, arch: EnemyArchetypeId, xp: number) => void
+  ): void {
     const nowMs = this.scene.time.now;
     this.melee.advance(deltaMs);
     for (const object of this.group.getChildren()) {
       const enemy = object as Phaser.Physics.Arcade.Sprite;
       const state = this.states.get(enemy);
       if (!enemy.active || !state || state.dead) continue;
+      if (!playerDead) {
+        const burnDmg = this.statusFx.step(enemy, nowMs, this.vfx);
+        if (burnDmg > 0) {
+          const burnRes = this.damageEnemy(enemy, burnDmg, 0);
+          if (burnRes.damaged) onBurnDamage?.(burnRes.x, burnRes.y, burnDmg, burnRes.killed, burnRes.archetype, burnRes.xpValue);
+          if (burnRes.killed) continue;
+        }
+      }
       if (state.archetype !== 'boss' && Math.hypot(enemy.x - this.target.x, enemy.y - this.target.y) > 960) {
         const off = computeEllipseSpawnOffset(Math.random() * Math.PI * 2, 0.2);
         enemy.setPosition(this.target.x + off.x, this.target.y + off.y);
@@ -178,7 +192,9 @@ export class EnemySystem {
         continue;
       }
       const vel = meleeVel ?? computeArchetypeVelocity(state.archetype, enemy, this.target, playerDead, step.telegraphing, hpRatio);
-      enemy.setVelocity(vel.x, vel.y).setDepth(enemy.y);
+      const spd = Math.hypot(vel.x, vel.y);
+      const scaleSpd = spd > 0 ? this.statusFx.effectiveSpeed(enemy, spd, nowMs) / spd : 1;
+      enemy.setVelocity(vel.x * scaleSpd, vel.y * scaleSpd).setDepth(enemy.y);
     }
     this.projectiles.update(nowMs, this.target, playerDead ? undefined : onHitPlayer);
   }
@@ -186,6 +202,6 @@ export class EnemySystem {
   clear(): void {
     this.bossSpawned = false; this.waveCooldownMs = 0; this.runElapsedSec = 0;
     this.schedule = createWaveScheduleState();
-    this.melee.clear(); this.states.clear(); this.visuals.clear(); this.projectiles.clear();
+    this.melee.clear(); this.statusFx.clear(); this.states.clear(); this.visuals.clear(); this.projectiles.clear();
   }
 }

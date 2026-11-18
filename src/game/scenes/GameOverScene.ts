@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import type { HeroId } from '../../domain/heroes';
 import { saveRunResult } from '../systems/StorageSystem';
 
 export class GameOverScene extends Phaser.Scene {
@@ -6,7 +7,7 @@ export class GameOverScene extends Phaser.Scene {
     super('GameOverScene');
   }
 
-  create(data: { victory?: boolean; score?: number; survivalSec?: number }): void {
+  create(data: { victory?: boolean; score?: number; survivalSec?: number; heroId?: HeroId }): void {
     this.cameras.main.setZoom(this.scale.width / 960).centerOn(480, 270);
     const saved = saveRunResult({
       kills: data.score ?? 0,
@@ -52,7 +53,7 @@ export class GameOverScene extends Phaser.Scene {
       })
       .setOrigin(0.5);
 
-    const onEnter = () => this.scene.start('GameScene');
+    const onEnter = () => this.scene.start('GameScene', { heroId: data.heroId ?? 'naruto' });
     const onTitle = () => this.scene.start('TitleScene');
     this.input.keyboard?.on('keydown-ENTER', onEnter);
     this.input.keyboard?.on('keydown-T', onTitle);

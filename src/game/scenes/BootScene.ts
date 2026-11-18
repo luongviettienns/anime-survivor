@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import { AI_ART_KEYS, ART_FRAMES } from '../config/artDisplay';
+import { preloadDualElementAssets, registerDualElementAnimations } from '../config/dualElementAssets';
 
 const SHEETS: ReadonlyArray<[string, number, number]> = [
   ['hero', 32, 32],
@@ -112,9 +113,11 @@ export class BootScene extends Phaser.Scene {
     for (const cue of ['shoot', 'slash', 'hit', 'pickup', 'levelup', 'hurt']) {
       this.load.audio(`sfx-${cue}`, `assets/audio/${cue}.wav`);
     }
+    preloadDualElementAssets(this);
   }
 
   create(): void {
+    registerDualElementAnimations(this);
     for (const layoutKey of ['ui-layout', 'lobby-layout']) {
       const frames = this.cache.json.get(layoutKey) as Record<string, { x: number; y: number; w: number; h: number }> | undefined;
       if (frames) for (const [key, box] of Object.entries(frames)) this.textures.get(key)?.add('content', 0, box.x, box.y, box.w, box.h);
@@ -138,8 +141,10 @@ export class BootScene extends Phaser.Scene {
       if (frames) this.anims.create({ key: `${key}-${direction}`,
         frames: frames.map((frame) => ({ key: texture, frame })), frameRate, repeat: -1 });
     }
-    const skipLobby =
-      typeof window !== 'undefined' && window.location.search.includes('play=1');
-    this.scene.start(skipLobby ? 'GameScene' : 'TitleScene');
+    const search = typeof window !== 'undefined' ? window.location.search : '';
+    const skipLobby = search.includes('play=1');
+    const heroMatch = /[?&]hero=([a-z0-9_-]+)/i.exec(search);
+    const heroId = heroMatch?.[1] === 'kirito' ? 'kirito' : 'naruto';
+    this.scene.start(skipLobby ? 'GameScene' : 'TitleScene', skipLobby ? { heroId } : undefined);
   }
 }

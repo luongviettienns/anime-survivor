@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import type { EnemyArchetypeId } from '../../domain/enemies';
+import { getHeroConfig, type HeroConfig, type HeroId } from '../../domain/heroes';
 import { SPAWN_ORIGIN_X, SPAWN_ORIGIN_Y } from '../../domain/infiniteMap';
 import { computeEliteDrops, computeKillDrops } from '../../domain/pickups';
 import { applyXpGain, createProgression, type RunProgression } from '../../domain/progression';
@@ -35,6 +36,7 @@ export class GameScene extends Phaser.Scene {
   private shadows!: GroundShadows;
   private hud!: HudOverlay;
   private spawnTimer?: Phaser.Time.TimerEvent;
+  private heroConfig: HeroConfig = getHeroConfig('naruto');
   private progression: RunProgression = createProgression();
   private passives: PassiveStats = createPassiveStats();
   private defeated = 0;
@@ -46,7 +48,8 @@ export class GameScene extends Phaser.Scene {
 
   constructor() { super('GameScene'); }
 
-  create(): void {
+  create(data?: { heroId?: HeroId }): void {
+    this.heroConfig = getHeroConfig(data?.heroId);
     this.progression = createProgression(); this.passives = createPassiveStats();
     this.defeated = 0; this.normalKills = 0; this.eliteKills = 0; this.elapsed = 0; this.running = true;
     this.map = new InfiniteMapSystem(this);
@@ -54,19 +57,20 @@ export class GameScene extends Phaser.Scene {
     this.player.setScale(2).setCollideWorldBounds(false).setDepth(5000).setCircle(10, 6, 13).play('hero-idle');
     this.cameras.main.startFollow(this.player, true, 0.14, 0.14);
     this.map.update(this.player.x, this.player.y);
-    this.movement = new MovementSystem(this, this.player);
-    this.enemies = new EnemySystem(this, this.player);
+    this.movement = new MovementSystem(this, this.player, this.heroConfig.id, this.heroConfig.moveSpeed);
     this.vfx = new VfxSystem(this, this.player);
+    this.enemies = new EnemySystem(this, this.player, this.vfx);
     this.audio = new AudioSystem(this);
     this.weapon = new WeaponSystem(
       this, this.player, this.enemies,
       (x, y, arch, xp) => this.onEnemyKilled(x, y, arch, xp),
       (c, x, y, d, k, crit, boom) => this.onCombat(c, x, y, d, k, crit, boom),
-      this.vfx, (skill, aimX) => this.movement.playSkill(skill, aimX)
+      this.vfx, (skill, aimX, anim) => this.movement.playSkill(skill, aimX, anim),
+      this.heroConfig.startingWeaponId
     );
-    this.damage = new DamageSystem(this.player);
+    this.damage = new DamageSystem(this.player, this.heroConfig.maxHp, this.heroConfig.armor, this.heroConfig.invulnerabilityMs);
     this.pickups = new PickupSystem(this);
-    this.hud = new HudOverlay(this); this.shadows = new GroundShadows(this, this.player, this.enemies.group, this.pickups.group);
+    this.hud = new HudOverlay(this, this.heroConfig.id); this.shadows = new GroundShadows(this, this.player, this.enemies.group, this.pickups.group);
     this.physics.add.overlap(this.weapon.projectiles, this.enemies.group, (a, b) => this.weapon.handleProjectileHit(a as Phaser.GameObjects.GameObject, b as Phaser.GameObjects.GameObject));
     this.physics.add.overlap(this.player, this.enemies.group, (_p, e) => this.onPlayerEnemyContact(e));
     this.physics.add.overlap(this.player, this.pickups.group, (_p, item) => this.onPlayerPickup(item));
@@ -84,9 +88,12 @@ export class GameScene extends Phaser.Scene {
     if (!this.spawnTimer?.paused) this.enemies.stepWaves(delta, this.elapsed, this.player.body?.velocity);
     this.movement.update(true, this.passives.moveSpeedBonusPxSec, delta);
     this.map.update(this.player.x, this.player.y);
-    this.enemies.update(false, (dmg, impact) => this.applyPlayerHit(dmg, impact), delta);
+    this.enemies.update(false, (dmg, impact) => this.applyPlayerHit(dmg, impact), delta, (bx, by, dmg, killed, arch, xp) => {
+      this.onCombat('hit', bx, by, dmg, killed);
+      if (killed) this.onEnemyKilled(bx, by, arch, xp);
+    });
     this.weapon.update(this.time.now, true, this.passives);
-    this.pickups.update(this.player, PLAYER.pickupMagnetRadius + this.passives.pickupRadiusBonusPx, PLAYER.pickupMagnetSpeed);
+    this.pickups.update(this.player, this.heroConfig.magnetRadius + this.passives.pickupRadiusBonusPx, PLAYER.pickupMagnetSpeed);
     this.damage.updateVisuals(this.time.now); this.vfx.update(this.time.now, delta);
     this.player.setDepth(this.player.y); this.openUpgradeModalIfNeeded(); this.updateHud();
   }
@@ -160,12 +167,12 @@ export class GameScene extends Phaser.Scene {
   private openUpgradeModalIfNeeded(): void {
     if (!this.running || this.progression.pendingUpgrades <= 0 || this.scene.isActive('UpgradeScene')) return;
     this.movement.update(false); this.updateHud(); this.scene.pause();
-    this.scene.launch('UpgradeScene', { inventory: this.weapon.inventory, playerState: this.damage.state, passives: this.passives, progression: this.progression, onApplied: () => this.updateHud() });
+    this.scene.launch('UpgradeScene', { heroId: this.heroConfig.id, inventory: this.weapon.inventory, playerState: this.damage.state, passives: this.passives, progression: this.progression, onApplied: () => this.updateHud() });
   }
   private endRun(victory: boolean): void {
     if (!this.running) return;
     this.running = false; this.movement.update(false); this.enemies.update(true);
-    this.scene.start('GameOverScene', { victory, score: this.defeated, survivalSec: Math.floor(this.elapsed) });
+    this.scene.start('GameOverScene', { victory, score: this.defeated, survivalSec: Math.floor(this.elapsed), heroId: this.heroConfig.id });
   }
   private cleanup(): void {
     this.running = false; this.spawnTimer?.remove(false);

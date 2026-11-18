@@ -32,11 +32,11 @@ const DUAL_SLASH_DESCS = [
 ] as const;
 
 const PHANTOM_DASH_DESCS = [
-  'Auto-dash through 1 nearest foe (45 dmg, 7.0s CD).',
-  '60 dmg, 2 pierce, longer dash reach, 6.0s CD.',
-  'Dash 2x consecutively! 75 dmg, 3 pierce, 5.2s CD.',
-  '95 dmg, 4 pierce, wider reach, 4.4s CD.',
-  'Dash 3x consecutively! 115 dmg, 4 pierce, 3.6s CD.',
+  'Auto-dash through 1 nearest foe (65 dmg, 4.5s CD).',
+  '90 dmg, 2 pierce, longer dash reach, 3.8s CD.',
+  'Dash 2x consecutively! 110 dmg, 3 pierce, 3.2s CD.',
+  '140 dmg, 4 pierce, wider reach, 2.8s CD.',
+  'Dash 3x consecutively! 175 dmg, 4 pierce, 2.4s CD.',
 ] as const;
 
 const WEAPON_UPGRADE_META: ReadonlyArray<{

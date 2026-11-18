@@ -139,7 +139,7 @@ test('Kirito unlocked lobby launch, high-defense stats, and Lv1/Lv3/Lv5 Dual Ele
   });
   await page.waitForFunction(() => {
     const d = window.__ANIME_SURVIVOR__!.getDashState();
-    return !d.dashing && d.cooldownRemainingMs > 5000;
+    return !d.dashing && d.cooldownRemainingMs > 3000;
   }, undefined, { timeout: 5000 });
   await page.screenshot({ path: 'test-results/kirito-phantom-dash.png' });
   const dashAfter = await page.evaluate(() => ({
@@ -149,8 +149,8 @@ test('Kirito unlocked lobby launch, high-defense stats, and Lv1/Lv3/Lv5 Dual Ele
   }));
   expect(dashAfter.pos.x - dashBefore.x).toBeGreaterThanOrEqual(130);
   expect(dashAfter.pos.x - dashBefore.x).toBeLessThan(190);
-  expect(dashAfter.statuses.map((s) => s.hp)).toEqual([5, 50]);
-  expect(dashAfter.dash.cooldownRemainingMs).toBeGreaterThan(5000);
+  expect(dashAfter.statuses.map((s) => s.hp)).toEqual([50]);
+  expect(dashAfter.dash.cooldownRemainingMs).toBeGreaterThan(3000);
 
   expect(errors).toEqual([]);
 });

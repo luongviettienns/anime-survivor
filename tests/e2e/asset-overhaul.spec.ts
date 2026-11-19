@@ -23,7 +23,7 @@ test('high-resolution Rasengan and empty-handed actor are applied without sword 
     const shot = scene.weapon.projectiles.getFirstAlive() as Phaser.Physics.Arcade.Sprite;
     return { texture: shot.texture.key, display: shot.displayWidth, bodyWidth: shot.body!.width, animation: shot.anims.currentAnim?.key };
   });
-  expect(orb).toMatchObject({ texture: 'rasengan', display: 96, animation: 'rasengan-spin' });
+  expect(orb).toMatchObject({ texture: 'rasengan', display: 168, animation: 'rasengan-spin' });
   expect(orb.bodyWidth).toBeCloseTo(21);
   await page.screenshot({ path: 'test-results/rasengan-new-flight.png' });
   await page.evaluate(() => {

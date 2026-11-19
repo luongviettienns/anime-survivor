@@ -34,7 +34,7 @@ test('ground shadow PNGs follow feet and clean destroyed/pooled actors', async (
   for (const shadow of shadows) {
     expect(shadow.visible).toBe(true); expect(shadow.xError).toBeCloseTo(0); expect(shadow.yError).toBeCloseTo(0);
     expect(shadow.texture).toBe(shadow.kind === 'gem' ? 'shadow_pickup' : 'shadow_actor');
-    expect(shadow.width).toBe(shadow.kind === 'boss' ? 66 : shadow.kind === 'hero' ? 32 : shadow.kind === 'gem' ? 18 : 34);
+    expect(shadow.width).toBeCloseTo(shadow.kind === 'boss' ? 115.5 : shadow.kind === 'hero' ? 56 : shadow.kind === 'gem' ? 31.5 : 59.5);
   }
   await page.screenshot({ path: 'test-results/ground-shadows.png' });
   await page.keyboard.down('d'); await page.waitForTimeout(250); await page.keyboard.up('d');

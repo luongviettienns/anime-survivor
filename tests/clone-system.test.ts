@@ -5,7 +5,9 @@ import { CloneSystem } from '../src/game/systems/CloneSystem';
 import type { VfxSystem } from '../src/game/systems/VfxSystem';
 
 type MockSprite = {
-  x: number; y: number; visible: boolean; destroyed: boolean; flipX: boolean; animKey: string;
+  x: number; y: number; scale: number; depth: number; visible: boolean; destroyed: boolean; flipX: boolean; animKey: string;
+  texture: { get: () => { customData: { opaqueHeight: number } } };
+  setOrigin: ReturnType<typeof vi.fn>;
   setScale: ReturnType<typeof vi.fn>; setAlpha: ReturnType<typeof vi.fn>; setTint: ReturnType<typeof vi.fn>;
   setPosition: ReturnType<typeof vi.fn>; setFlipX: ReturnType<typeof vi.fn>; setDepth: ReturnType<typeof vi.fn>;
   setVisible: ReturnType<typeof vi.fn>; play: ReturnType<typeof vi.fn>; destroy: ReturnType<typeof vi.fn>;
@@ -17,11 +19,13 @@ function rig() {
     add: {
       sprite: vi.fn((x: number, y: number) => {
         const s: MockSprite = {
-          x, y, visible: true, destroyed: false, flipX: false, animKey: '',
-          setScale: vi.fn(() => s), setAlpha: vi.fn(() => s), setTint: vi.fn(() => s),
+          x, y, scale: 1, depth: 0, visible: true, destroyed: false, flipX: false, animKey: '',
+          texture: { get: () => ({ customData: { opaqueHeight: 896 } }) },
+          setOrigin: vi.fn(() => s),
+          setScale: vi.fn((v: number) => { s.scale = v; return s; }), setAlpha: vi.fn(() => s), setTint: vi.fn(() => s),
           setPosition: vi.fn((nx: number, ny: number) => { s.x = nx; s.y = ny; return s; }),
           setFlipX: vi.fn((f: boolean) => { s.flipX = f; return s; }),
-          setDepth: vi.fn(() => s),
+          setDepth: vi.fn((d: number) => { s.depth = d; return s; }),
           setVisible: vi.fn((v: boolean) => { s.visible = v; return s; }),
           play: vi.fn((key: string) => { s.animKey = key; return s; }),
           destroy: vi.fn(() => { s.destroyed = true; }),
@@ -44,7 +48,7 @@ function rig() {
     onStrike,
     vfx as unknown as VfxSystem
   );
-  return { system, sprites, damage, onCast, onStrike, vfx };
+  return { system, scene, sprites, damage, onCast, onStrike, vfx };
 }
 
 function cand(id: number, x: number, y: number) {
@@ -70,22 +74,31 @@ describe('CloneSystem', () => {
   });
 
   it('spawns, dashes, caps hits at maxHitsPerClone, deals exact damage/knockback, and plays smoke poofs', () => {
-    const { system, sprites, damage, onCast, onStrike, vfx } = rig();
+    const { system, scene, sprites, damage, onCast, onStrike, vfx } = rig();
     const passives = createPassiveStats();
     const enemies = [cand(1, 100, 0), cand(2, 102, 2), cand(3, 105, -3), cand(4, 108, 4)];
 
     system.update(1000, 1, passives, enemies);
     expect(onCast).toHaveBeenCalledWith(100);
+    expect(scene.add.sprite).toHaveBeenCalledWith(0, 0, 'hero_actions', 2);
+    expect(sprites[0]!.setOrigin).toHaveBeenCalledWith(0.5, 1408 / 1536);
+    expect(sprites[0]!.scale).toBeCloseTo(112 / 896, 6);
+    expect(sprites[0]!.x).toBeCloseTo(42, 4);
+    expect(sprites[0]!.y).toBeCloseTo(28, 4);
+    expect(sprites[0]!.depth).toBeCloseTo(2, 4);
     expect(vfx.playSmokePoof).toHaveBeenCalledTimes(1);
     expect(vfx.playSmokePoof.mock.calls[0]![0]).toBeCloseTo(42, 4);
     expect(vfx.playSmokePoof.mock.calls[0]![1]).toBeCloseTo(0, 4);
-    expect(sprites[0]!.animKey).toBe('hero-skill-clone');
+    expect(sprites[0]!.animKey).toBe('naruto-action-clone');
 
     for (const t of [1045, 1090]) system.update(t, 1, passives, enemies);
     expect(damage).not.toHaveBeenCalled();
     expect(onStrike).not.toHaveBeenCalled();
 
-    for (const t of [1135, 1180, 1220]) system.update(t, 1, passives, enemies);
+    system.update(1135, 1, passives, enemies);
+    expect(sprites[0]!.y).toBeCloseTo(28, 4);
+    expect(sprites[0]!.depth).toBeCloseTo(2, 4);
+    for (const t of [1180, 1220]) system.update(t, 1, passives, enemies);
     expect(damage).toHaveBeenCalledTimes(2);
     expect(damage.mock.calls[0]![0]).toBe(enemies[0]!.sprite);
     expect(damage.mock.calls[0]![1]).toBe(35);

@@ -54,7 +54,7 @@ export class CloneSystem {
     if (!target) return;
 
     for (const plan of planCloneFormation(this.player, target, level)) {
-      const sprite = this.pool.pop() ?? this.scene.add.sprite(0, 0, 'hero', 0).setScale(2).setAlpha(0.86).setTint(0xc7f0ff);
+      const sprite = this.pool.pop() ?? this.acquireSprite();
       const clone: ActiveClone = {
         sprite, phase: 'delay', timerMs: plan.launchDelayMs,
         x: plan.spawn.x, y: plan.spawn.y, dir: plan.dir,
@@ -77,10 +77,16 @@ export class CloneSystem {
     this.lastNowMs = 0;
   }
 
+  private acquireSprite(): Phaser.GameObjects.Sprite {
+    const sprite = this.scene.add.sprite(0, 0, 'hero_actions', 2).setOrigin(0.5, 1408 / 1536).setAlpha(0.86).setTint(0xc7f0ff);
+    const neutral = sprite.texture?.get?.(0)?.customData as { opaqueHeight?: number } | undefined;
+    return sprite.setScale(112 / (neutral?.opaqueHeight ?? 896));
+  }
+
   private enterSpawn(clone: ActiveClone): void {
     clone.phase = 'spawn';
     clone.timerMs = SPAWN_MS;
-    clone.sprite.setPosition(clone.x, clone.y).setFlipX(clone.dir.x < 0).setDepth(clone.y).setVisible(true).play('hero-skill-clone');
+    clone.sprite.setPosition(clone.x, clone.y + 28).setFlipX(clone.dir.x < 0).setDepth(clone.y + 2).setVisible(true).play('naruto-action-clone');
     this.vfx?.playSmokePoof(clone.x, clone.y);
   }
 
@@ -96,7 +102,7 @@ export class CloneSystem {
       } else {
         c.x += c.dir.x * DASH_SPEED_PX_SEC * dtSec;
         c.y += c.dir.y * DASH_SPEED_PX_SEC * dtSec;
-        c.sprite.setPosition(c.x, c.y).setDepth(c.y);
+        c.sprite.setPosition(c.x, c.y + 28).setDepth(c.y + 2);
         if (c.timerMs <= 0) {
           this.strike(c, candidates);
           this.onStrike();

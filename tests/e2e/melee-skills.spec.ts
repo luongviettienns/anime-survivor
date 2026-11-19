@@ -15,7 +15,7 @@ test.beforeEach(async ({ page }) => {
     api.clearEnemies();
     const scene = api.getScene() as unknown as Runtime;
     scene.spawnTimer.paused = true;
-    Object.assign(scene.weapon.inventory, { orb: 0, slash: 0, orbital: 0, mine: 0 });
+    Object.assign(scene.weapon.inventory, { orb: 0, clone: 0, orbital: 0, mine: 0 });
   });
 });
 
@@ -45,7 +45,7 @@ for (const type of ['slime', 'shade'] as const) {
       });
       expect(pose.frame).toBe(direction === 'up' ? 9 : direction === 'down' ? 1 : 5);
       expect(pose.flip).toBe(direction === 'left'); expect(pose.visible).toBe(true);
-      expect(pose.scale).toBe(0.5);
+      expect(pose.scale).toBe(0.875);
       await page.evaluate(() => window.__ANIME_SURVIVOR__!.getScene().scene.pause());
       await page.screenshot({ path: `test-results/${type}-windup-${direction}.png` });
       await page.evaluate(() => window.__ANIME_SURVIVOR__!.getScene().scene.resume());

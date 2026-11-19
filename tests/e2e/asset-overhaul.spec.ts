@@ -12,7 +12,7 @@ test('high-resolution Rasengan and empty-handed actor are applied without sword 
     const api = window.__ANIME_SURVIVOR__!;
     const scene = api.getScene() as unknown as { weapon: { inventory: WeaponInventory }; spawnTimer: Phaser.Time.TimerEvent };
     scene.spawnTimer.paused = true; api.clearEnemies();
-    Object.assign(scene.weapon.inventory, { orb: 1, slash: 0, orbital: 0, mine: 0 });
+    Object.assign(scene.weapon.inventory, { orb: 1, clone: 0, orbital: 0, mine: 0 });
     const position = api.getPlayerPosition(); api.spawnEnemyAt(position.x + 260, position.y);
   });
   await page.waitForFunction(() => window.__ANIME_SURVIVOR__!.getCounts().projectiles > 0);
@@ -23,18 +23,18 @@ test('high-resolution Rasengan and empty-handed actor are applied without sword 
     const shot = scene.weapon.projectiles.getFirstAlive() as Phaser.Physics.Arcade.Sprite;
     return { texture: shot.texture.key, display: shot.displayWidth, bodyWidth: shot.body!.width, animation: shot.anims.currentAnim?.key };
   });
-  expect(orb).toMatchObject({ texture: 'rasengan', display: 96, animation: 'rasengan-spin' });
+  expect(orb).toMatchObject({ texture: 'rasengan', display: 168, animation: 'rasengan-spin' });
   expect(orb.bodyWidth).toBeCloseTo(21);
   await page.screenshot({ path: 'test-results/rasengan-new-flight.png' });
   await page.evaluate(() => {
     const api = window.__ANIME_SURVIVOR__!;
     const scene = api.getScene() as unknown as { weapon: { inventory: WeaponInventory } };
-    Object.assign(scene.weapon.inventory, { orb: 0, slash: 5, orbital: 0, mine: 0 });
+    Object.assign(scene.weapon.inventory, { orb: 0, clone: 5, orbital: 0, mine: 0 });
     api.clearEnemies(); const p = api.getPlayerPosition(); api.spawnEnemyAt(p.x + 60, p.y);
   });
   await page.waitForFunction(() => window.__ANIME_SURVIVOR__!.getScene().children.list.some((child) => {
     const sprite = child as Phaser.GameObjects.Sprite;
-    return sprite.visible && sprite.texture?.key === 'hero_actions' && sprite.anims.currentAnim?.key === 'naruto-action-slash';
+    return sprite.visible && sprite.texture?.key === 'hero_actions' && sprite.anims.currentAnim?.key === 'naruto-action-clone';
   }), undefined, { polling: 'raf' });
   const forbidden = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getScene().children.list.some((child) => {
     const sprite = child as Phaser.GameObjects.Sprite;

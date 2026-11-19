@@ -1,0 +1,68 @@
+{
+  "contract_version": 1,
+  "sprites": {
+    "x_wave_dual": {
+      "file": "x_wave_dual.png",
+      "frame_width": 1792,
+      "frame_height": 1792,
+      "columns": 3,
+      "rows": 1,
+      "frames": [
+        {
+          "animation": "play",
+          "index": 0,
+          "sheet_index": 0,
+          "rect": [
+            0,
+            0,
+            1792,
+            1792
+          ],
+          "sha256": "4231532b233c55e51b6b398df8776de864566dd93e7fc430ca2fb29b083287f8",
+          "alpha_bbox": [
+            269,
+            269,
+            1523,
+            1523
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 1,
+          "sheet_index": 1,
+          "rect": [
+            1792,
+            0,
+            1792,
+            1792
+          ],
+          "sha256": "bf2c1a8090654402269a98dd675b09c73415837bb9cea07c40a1140ff30fa8df",
+          "alpha_bbox": [
+            269,
+            290,
+            1509,
+            1523
+          ]
+        },
+        {
+          "animation": "play",
+          "index": 2,
+          "sheet_index": 2,
+          "rect": [
+            3584,
+            0,
+            1792,
+            1792
+          ],
+          "sha256": "ef75a21b1a13426723239c8d22119b5722f39bc3d031c5bf4ca1c94b1c2e3845",
+          "alpha_bbox": [
+            269,
+            278,
+            1509,
+            1523
+          ]
+        }
+      ]
+    }
+  }
+}

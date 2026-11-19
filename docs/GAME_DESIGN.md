@@ -26,6 +26,10 @@ No pasted-in third-party art. Anime-inspired rather than branded: violet-haired 
 ## Non-goals until v1.0
 Multiplayer, accounts, backend, gacha, cash shop, online leaderboards, large open world, advanced ECS, mobile-first controls, dozens of heroes, voiced scenes, commercial anime character IP.
 
+## Core Design Law: Asymmetric Identity & Dilemma (Quy luật Thiết kế Bắt buộc)
+1. **Mạnh/Yếu phân minh - Không kỹ năng phế**: Mỗi nhân vật và mỗi kỹ năng đều sở hữu thế mạnh vượt trội trong tình huống nhất định nhưng đi kèm điểm yếu rõ rệt. Không kỹ năng nào bị biến thành "rác" hoặc quá yếu gây cảm giác lãng phí slot.
+2. **Tạo sự phân vân chiến thuật (Meaningful Dilemma)**: Lựa chọn giữa các tướng và giữa các thẻ nâng cấp khi lên cấp phải tạo ra sự đắn đo đánh đổi rõ rệt (sát thương dồn vs quét rộng vs cơ động giải vây vs sinh tồn), tránh triệt để tình trạng có lựa chọn quá áp đảo hoặc vô dụng.
+
 ## Normal monster signature attacks (2026-11-18)
 - Armored masked warrior (`slime` internal ID): Blood Seal Groundbreak / Huyet An Chan Dia. 400ms braced double-claw windup, 72px radial impact for 16 damage, illustrated crimson seal/fissures/flame/smoke (480ms cosmetic afterglow), 140ms impact and 360ms recovery. Starts within68px, cooldown1800ms. Escape the circle or interrupt with knockback.
 - Hooded Shade: Shadowstep Triple Claw / Anh Bo Tam Trao. 450ms crouched telegraph, commits to the initial target direction, dashes460px/s for220ms with purple afterimages and three illustrated ivory-purple plasma claw blades with smoke/shards and480ms cosmetic afterglow. One14-damage hit within38px of its path,330ms recovery,2200ms cooldown. Starts within130px. Dodge sideways; the dash never homes after windup.

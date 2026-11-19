@@ -1,0 +1,20 @@
+{
+  "scope": "User corrected design: recognizable X formed by combining existing Ice and Dark Fire crescent waves; stronger/thicker, not a horizontal stream. Three individually generated loop phases.",
+  "frames": 3,
+  "canonical_direction": "right; travelling effect rotates with aim",
+  "native_policy": "Byte-identical RGBA originals, padding-only1792square archival frames",
+  "dash_adjustment": "180->225ms per step;20percent lower speed, same path/damage/cooldown, animation weights stretched to225ms",
+  "files": [
+    "dualElementAssets preload+3frame loop",
+    "x_wave_art.py native import/pack/validation",
+    "PhantomDash duration and animation registration",
+    "priority and transition work from current task preserved"
+  ],
+  "acceptance": [
+    "Exactsource/sheet/public/build pixel or hash checks",
+    "X loop all3frames,4aim headings and pierce/status unchanged",
+    "Dash path endpoints unchanged,225ms animation and gameplay",
+    "Sword/Dash mutually gated, pending wave retained, hit tint without action interruption",
+    "npmverify and actual browser5184"
+  ]
+}

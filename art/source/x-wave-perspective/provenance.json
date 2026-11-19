@@ -1,0 +1,102 @@
+{
+  "tool": "built-in image_gen",
+  "native_pixels_preserved": true,
+  "direction": "Cross: right canonical. Perspective: 000-001 right, 002-003 up; rotate relative to chosen axis. No ground rings.",
+  "records": [
+    {
+      "index": 0,
+      "prompt": "Create ONE transparent RGBA game VFX animation frame, native high-detail crisp anime pixel art matching reference1 cyan ICE crescent and reference2 violet DARK FIRE crescent. Reference3 is the ACTUAL TOP-DOWN GAME CAMERA context ONLY, not an edit target: angled view looking down at a grass ground plane, full-body standing actors. Need an upgraded projectile DUAL X WAVE made of TWO intersecting BROAD CURVED CRESCENT WAVEFRONTS travelling RIGHT/east just above ground, rendered from this same elevated camera. CRITICAL CORRECTION: previous attempts looked like a flat symmetrical typographic X facing viewer. Do NOT make a front-facing X emblem, straight crossed rods, four-point star, crossing swords or flat icon. Build two curved crescent-shaped energy SHELLS leaning across one another in 3D: one crystalline cyan ice shell and one dark violet flame shell, intersecting at an oblique angle; both convex sharp cutting fronts sweep FORWARD/RIGHT like the existing individual wave crescents. Camera sees TOP SURFACES and visible thickness of these curved blades. Four curved trailing horns must suggest X in foreshortened perspective, with the far horns smaller/shorter and near horns broader; projected ground-depth compressed, asymmetrical 3/4 view, not square frontal symmetry. Effect occupies a wide low diagonal footprint around width850 height520 centered on1254 square, the X leaning into the ground plane at about35 degrees camera elevation. White-cyan outer ice cutting edge and white-violet flame cutting edge, thick colored bodies, compact crossing seam not a giant starburst, several ice chips and dark fire wisps trail LEFT, convey real travelling force. Stronger than single waves but original palette/pixel cluster sizes, no smooth vector style, no airbrush. No ground drawn, no shadow/ring, no characters, text, grid or background, no sheet. Leave at least120px transparent margins. Exactly one coherent projectile, one pose.",
+      "reference": [
+        "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/public/assets/dual-element/originals/ice_wave/000.png",
+        "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/public/assets/dual-element/originals/dark_fire_wave/000.png",
+        "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/x-wave-cross/qa/x-wave-right-gameplay.png"
+      ],
+      "path": "C:/Users/ASUS/.codex/generated_images/01a1ee04-31d9-76f3-993d-4f3b2888c393/exec-0ad5b4a5-363b-4f9f-8931-0cd0f5909774.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "alpha_bbox": [
+        191,
+        120,
+        1367,
+        908
+      ],
+      "offset": [
+        128,
+        384
+      ],
+      "sha256": "1f0dd5bd7c7d538b2f5fc0c434b671008b7991c111ecb59c2c577396d45ff6f8"
+    },
+    {
+      "index": 1,
+      "prompt": "ONE SINGLE transparent PNG animation frame, reference1 is exact edit target. Keep native1536x1024canvas and the EXACT existing energy blades' positions, sizes, curved silhouette, top-down oblique camera angle and cyan-over-violet overlap. Change only a FEW small sparks and ice fragments in the inner center region, shift those10px LEFT and make violet flame wisps flicker slightly, subtle energy pulse. Do not grow, extend or thicken entire shape. IMPORTANT alpha requirement: preserve reference1 transparency; ALL outer100pixels on all4canvas edges must be fully TRANSPARENT alpha0, absolutely NO glow/background/haze of any opacity touching an image edge. Keep ALL visible glow and all fragments within x160..1380 y100..924; dim glow may softly disappear well before that border. The original frame already fits: do not zoom in or expand energy haze. Exactly same two perspective curved cyan Ice and violet Dark Fire crescent waves intersecting as a foreshortened travelling X, moving RIGHT; preserve fine pixel detail, white cutting edges and dark colored sidewalls. No characters, ground, shadow, text, objects, sheet, panel or opaque background. One pose only, phase1 of two-frame loop.",
+      "reference": [
+        "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/x-wave-perspective/preview.png"
+      ],
+      "path": "C:/Users/ASUS/.codex/generated_images/01a1ee04-31d9-76f3-993d-4f3b2888c393/exec-5228d5e2-571a-443c-a72d-116eda934f41.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "alpha_bbox": [
+        178,
+        117,
+        1375,
+        910
+      ],
+      "offset": [
+        128,
+        384
+      ],
+      "sha256": "0059f74f94850f5ad69d430a4e16afe742fb53d432c9d8944a450f8c070acbc2"
+    },
+    {
+      "index": 2,
+      "prompt": "ONE SINGLE high-detail crisp anime PIXEL ART VFX frame on1536x1024 TRANSPARENT RGBA canvas. Ref1 is the approved MATERIAL/IDENTITY of two curved cyan ICE and violet DARK FIRE crescent energy shells crossing. Ref2 is actual GAME CAMERA context ONLY. Need a DIFFERENT CAMERA ANGLE for the same DUAL X projectile TRAVELLING NORTH / STRAIGHT UP the screen across the ground. Do NOT simply rotate ref1! The cutting wavefront faces up/north, camera looks downward from south at around45degrees. The two curved crescent wave blades form an unmistakable broad X but its depth is FORESHORTENED in screen Y: total blade silhouette roughly width1050 height500, horizontal far-left/far-right horns longer than short near/far depth. Upper two horns are farther/smaller, lower two near horns broader, visible TOP facets/sidewall thickness. It must look like a pair of thick CURVED SWORD WAVEFRONTS in space, Ice crossing OVER dark flame near the center, not straight X-bars/logo/star/letter, not standing tall vertical X, not a ground sigil/ring. White-cyan ice cutting edge with crystalline chips and deep teal sidewalls; white-violet dark fire cutting edge with dark-purple body and purple flame wisps; short energy wakes/particles trail DOWN/south behind moving wave. Asymmetrical broad low perspective silhouette, same density/pixel clusters and same force as ref1. No giant center starburst. Keep whole effect and glow inside x150..1386,y200..824. Outer150px on all4edges MUST be fullytransparent alpha0: no background/glow haze touching edges. No characters, ground, scenery, weapons, text, grid or sheet. Exactly ONE effect pose/frame.",
+      "reference": [
+        "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/x-wave-perspective/originals/000.png",
+        "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/x-wave-perspective/qa/x-wave-right-gameplay.png"
+      ],
+      "path": "C:/Users/ASUS/.codex/generated_images/01a1ee04-31d9-76f3-993d-4f3b2888c393/exec-c6845d4a-bf24-43d2-8dd6-b2b17e3a0ccc.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "alpha_bbox": [
+        134,
+        237,
+        1391,
+        826
+      ],
+      "offset": [
+        128,
+        384
+      ],
+      "sha256": "a33e5912a002461ce2dce233a2f2373c8a06858d7b600b8a62f3f30c5f44b11e"
+    },
+    {
+      "index": 3,
+      "prompt": "ONE SINGLE next animation frame of reference1, preserve its exact1536x1024transparent RGBA canvas, exact fixed center/scale, same low wide foreshortened X silhouette, same oblique TOP-DOWN view, strong curved thick cyan Ice shell in FRONT of dark violet flame shell, fixed sidewalls and four horns, no image rotation/shift/zoom. The effect travels NORTH/up across the ground. This is phase1 of a compact two-frame loop: only a subtle pulse in the white cutting edge, a few ice shards/sparks shift10px DOWN toward the trailing side, violet wisps curl a little; no new large forms, no shape growth. Keep native crisp pixel clusters and colors. CRITICAL: preserve source transparency exactly around the border. All effect/glow pixels stay inside x100..1436,y150..874; all outer100pixels at all4edges MUST be fullytransparent alpha0. No glow haze touching imageedges, opaque background, ground, ring, text, characters, sheet or grid. Do not turn into a tall upright X; it stays BROAD AND LOW with visible upper surfaces and thick lower sidewalls, upper far horns shorter and lower near horns broad. Exactly one VFX pose.",
+      "reference": [
+        "C:/Users/ASUS/.codex/generated_images/01a1ee04-31d9-76f3-993d-4f3b2888c393/exec-c6845d4a-bf24-43d2-8dd6-b2b17e3a0ccc.png"
+      ],
+      "path": "C:/Users/ASUS/.codex/generated_images/01a1ee04-31d9-76f3-993d-4f3b2888c393/exec-7bb8fa5f-0674-4dea-8244-4951fa9d789c.png",
+      "size": [
+        1536,
+        1024
+      ],
+      "alpha_bbox": [
+        135,
+        242,
+        1390,
+        827
+      ],
+      "offset": [
+        128,
+        384
+      ],
+      "sha256": "17d76e23332d51d37d6fef6dbeedc884fd2e5f6ec1351a123b5948d812b22a58"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "sprites": {
+    "x_wave_dual": {
+      "frame_width": 1792,
+      "frame_height": 1792,
+      "columns": 4,
+      "rows": 1,
+      "order": [
+        "play"
+      ],
+      "animations": {
+        "play": 4
+      }
+    }
+  },
+  "single_images": {}
+}

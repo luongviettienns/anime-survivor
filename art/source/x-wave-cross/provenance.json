@@ -1,0 +1,74 @@
+{
+  "tool": "built-in image_gen",
+  "native_pixels_preserved": true,
+  "direction": "right-facing travelling VFX; rotate with aim, no ground rings",
+  "records": [
+    {
+      "index": 0,
+      "prompt": "ONE SINGLE high-detail pixel-art game VFX frame, transparent RGBA1254x1254, not a sheet. Design the UPGRADED DUAL-X SWORD WAVE as an unmistakable LARGE X FORMED FROM TWO CURVED CRESCENT ENERGY WAVES. Reference1 is the existing CYAN ICE crescent: preserve its broad curved blade, sharp white cutting edge, crystalline thickness and icy fragments. Reference2 is the existing VIOLET DARK FIRE crescent: preserve its broad curved flame blade, white-violet cutting edge and dark purple body. Combine these SAME TWO SINGLE WAVES, enlarged/thicker/more forceful, one slanted / and the other slanted backslash, crossing at their midsections into a READABLE X silhouette with FOUR SWEPT CURVED TIPS. Reference3 provides ONLY X arrangement, NOT its straight-bar geometry. Both crescents must remain individually recognizable as crescent sword waves, not straight stripes/swords, NOT horizontal intertwined ribbons or snake heads. White-hot intersection compressed at center, brighter denser cores, larger ice shards and violet flame wisps trailing slightly LEFT to show forward travel RIGHT/east; keep the X silhouette dominant, strong and compact. Slightly elevated orthographic top-down three-quarter game camera, dimensional blade thickness visible, no ground/ring/shadow. Fine crisp stepped anime pixel clusters exactly matching single-wave refs; no smooth airbrush. Entire effect fits inside100px transparent margins on all four edges, no clipping. No characters, objects, letters, UI, creatures or scenery. One animation pose only. Frame0: full-power crossing, crests taut and sparks held near center.",
+      "reference": [
+        "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/public/assets/dual-element/originals/ice_wave/000.png",
+        "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/public/assets/dual-element/originals/dark_fire_wave/000.png",
+        "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/public/assets/dual-element/originals/dual_element_x/000.png"
+      ],
+      "path": "C:\\Users\\ASUS\\.codex\\generated_images\\01a1ee04-31d9-76f3-993d-4f3b2888c393\\exec-f05f2dc4-f86a-4420-837b-6f41810133fb.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_bbox": [
+        88,
+        119,
+        1123,
+        1142
+      ],
+      "offset": [
+        269,
+        269
+      ],
+      "sha256": "7b533a6739fb7c6448373cb69fd9059e8d32a0cf34ac0bebc6d1dd9594754bec"
+    },
+    {
+      "index": 1,
+      "prompt": "ONE SINGLE native transparent RGBA1254x1254 next VFX frame of reference1, the powerful DUAL-X CRESCENT SWORD WAVE. Reference1 locks the clear X composition, fixed center, scale and cyan/violet positions; reference2/3 lock the original curved Ice/Dark Fire crescent-wave material. Preserve X silhouette made from TWO BROAD CURVED ENERGY BLADES, NOT crossed straight swords/letter bars; each diagonal blade must have a gently bowed crescent cutting edge, dimensional thickness and swept tapering tips. Strong white cores, cyan icy shards, dark-violet flame body and brilliant compressed intersection. Same elevated top-down three-quarter game view, entire X inside at least80px margins, no characters/ground/text. Animate phase1: the two crescent edges bow and surge outward a little, crossing stays centered; white core pulse brightens and particles sweep slightly left behind travel direction RIGHT. Keep all4curved tips within original bounds. Use identical fine stepped pixel-art clusters/palette, no broad blur, no sheet/grid, no extra spokes or rings.",
+      "reference": "C:\\Users\\ASUS\\.codex\\generated_images\\01a1ee04-31d9-76f3-993d-4f3b2888c393\\exec-f05f2dc4-f86a-4420-837b-6f41810133fb.png",
+      "path": "C:\\Users\\ASUS\\.codex\\generated_images\\01a1ee04-31d9-76f3-993d-4f3b2888c393\\exec-f2f6494d-ed77-41ab-b39a-2e62f70e1c07.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_bbox": [
+        82,
+        100,
+        1158,
+        1160
+      ],
+      "offset": [
+        269,
+        269
+      ],
+      "sha256": "9aee8d26a095740f3e27ae0544ba96194523131606b5385f499ec2a1449dd64a"
+    },
+    {
+      "index": 2,
+      "prompt": "ONE SINGLE native transparent RGBA1254x1254 next VFX frame of reference1, the powerful DUAL-X CRESCENT SWORD WAVE. Reference1 locks the clear X composition, fixed center, scale and cyan/violet positions; reference2/3 lock the original curved Ice/Dark Fire crescent-wave material. Preserve X silhouette made from TWO BROAD CURVED ENERGY BLADES, NOT crossed straight swords/letter bars; each diagonal blade must have a gently bowed crescent cutting edge, dimensional thickness and swept tapering tips. Strong white cores, cyan icy shards, dark-violet flame body and brilliant compressed intersection. Same elevated top-down three-quarter game view, entire X inside at least80px margins, no characters/ground/text. Animate phase2: crescent blades flex back inward slightly, violet flames curl along the inner edge and ice shards shed leftward, core settles slightly from bright phase; prepare a clean loop to first frame. Use identical fine stepped pixel-art clusters/palette, no broad blur, no sheet/grid, no extra spokes or rings.",
+      "reference": "C:\\Users\\ASUS\\.codex\\generated_images\\01a1ee04-31d9-76f3-993d-4f3b2888c393\\exec-f05f2dc4-f86a-4420-837b-6f41810133fb.png",
+      "path": "C:\\Users\\ASUS\\.codex\\generated_images\\01a1ee04-31d9-76f3-993d-4f3b2888c393\\exec-91771879-453f-475d-ab3a-14e615a7cdf1.png",
+      "size": [
+        1254,
+        1254
+      ],
+      "alpha_bbox": [
+        127,
+        140,
+        1077,
+        1104
+      ],
+      "offset": [
+        269,
+        269
+      ],
+      "sha256": "e87675e4fdd734e926bc9cda05dfa0f10d237dc4b227b0f3ac9c6d6f99c80cd7"
+    }
+  ]
+}

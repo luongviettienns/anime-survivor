@@ -1,10 +1,12 @@
 import Phaser from 'phaser';
 import {
   applyContactDamage,
+  applyPassiveRecovery,
   createPlayerState,
   isPlayerInvulnerable,
   type PlayerState,
 } from '../../domain/combat';
+import type { PassiveStats } from '../../domain/upgrades';
 import { loadSaveData } from './StorageSystem';
 import { ENEMY, PLAYER } from '../config/constants';
 
@@ -41,7 +43,10 @@ export class DamageSystem {
     return { damaged: true, died: !this.state.alive };
   }
 
-  updateVisuals(nowMs: number): void {
+  updateVisuals(nowMs: number, passives?: PassiveStats, deltaMs = 0): void {
+    if (passives && deltaMs > 0) {
+      applyPassiveRecovery(this.state, passives, deltaMs);
+    }
     if (!this.player.active) return;
     if (isPlayerInvulnerable(this.state, nowMs)) {
       const blinkOn = loadSaveData().settings.reduceFlashing || Math.floor(nowMs / 100) % 2 === 0;

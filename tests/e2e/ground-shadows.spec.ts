@@ -15,7 +15,7 @@ test('ground shadow PNGs follow feet and clean destroyed/pooled actors', async (
   await page.evaluate(() => {
     const api = window.__ANIME_SURVIVOR__!, scene = api.getScene() as unknown as Runtime;
     scene.spawnTimer.paused = true; api.clearEnemies();
-    Object.assign(scene.weapon.inventory, { orb: 0, slash: 0, orbital: 0, mine: 0 });
+    Object.assign(scene.weapon.inventory, { orb: 0, clone: 0, orbital: 0, mine: 0 });
     const p = api.getPlayerPosition();
     scene.enemies.spawnAt(p.x-150, p.y, 'slime');
     scene.enemies.spawnAt(p.x+200, p.y-120, 'boss');
@@ -27,14 +27,14 @@ test('ground shadow PNGs follow feet and clean destroyed/pooled actors', async (
       const shadow = o as Phaser.GameObjects.Image;
       const owner = shadow.getData('shadow-owner') as Phaser.Physics.Arcade.Sprite;
       return { texture: shadow.texture.key, kind: owner.texture.key, visible: shadow.visible,
-        xError: shadow.x-owner.x, yError: shadow.y-owner.y-(owner.texture.key === 'gem' ? 11 :
+        xError: shadow.x-owner.x, yError: shadow.y-owner.y-(owner.texture.key === 'gem' ? 19.25 :
           (owner.getData('footOffset') as number | undefined) ?? 28), width: shadow.displayWidth };
     }));
   expect(shadows).toHaveLength(4);
   for (const shadow of shadows) {
     expect(shadow.visible).toBe(true); expect(shadow.xError).toBeCloseTo(0); expect(shadow.yError).toBeCloseTo(0);
     expect(shadow.texture).toBe(shadow.kind === 'gem' ? 'shadow_pickup' : 'shadow_actor');
-    expect(shadow.width).toBe(shadow.kind === 'boss' ? 66 : shadow.kind === 'hero' ? 32 : shadow.kind === 'gem' ? 18 : 34);
+    expect(shadow.width).toBeCloseTo(shadow.kind === 'boss' ? 115.5 : shadow.kind === 'hero' ? 56 : shadow.kind === 'gem' ? 31.5 : 59.5);
   }
   await page.screenshot({ path: 'test-results/ground-shadows.png' });
   await page.keyboard.down('d'); await page.waitForTimeout(250); await page.keyboard.up('d');

@@ -14,7 +14,7 @@ async function setupWave(page: Page, level: number, offsets: number[][], archety
     for (const shot of scene.weapon.projectiles.getChildren()) scene.weapon.consumeProjectile(shot);
     scene.weapon.dualSlash.clear(); scene.weapon.dualSlash.cooldown.nextAttackAtMs = 0;
     api.clearEnemies(); api.setWeaponLevel('dual_slash', level);
-    for (const weapon of ['orb', 'slash', 'orbital', 'mine'] as const) api.setWeaponLevel(weapon, 0);
+    for (const weapon of ['orb', 'clone', 'orbital', 'mine'] as const) api.setWeaponLevel(weapon, 0);
     const position = api.getPlayerPosition();
     for (const [x, y] of offsets) api.spawnEnemyTypeAt(archetype, position.x + x!, position.y + y!);
   }, { level, offsets, archetype });
@@ -139,7 +139,7 @@ test('Kirito unlocked lobby launch, high-defense stats, and Lv1/Lv3/Lv5 Dual Ele
   });
   await page.waitForFunction(() => {
     const d = window.__ANIME_SURVIVOR__!.getDashState();
-    return !d.dashing && d.cooldownRemainingMs > 5000;
+    return !d.dashing && d.cooldownRemainingMs > 3000;
   }, undefined, { timeout: 5000 });
   await page.screenshot({ path: 'test-results/kirito-phantom-dash.png' });
   const dashAfter = await page.evaluate(() => ({
@@ -149,8 +149,8 @@ test('Kirito unlocked lobby launch, high-defense stats, and Lv1/Lv3/Lv5 Dual Ele
   }));
   expect(dashAfter.pos.x - dashBefore.x).toBeGreaterThanOrEqual(130);
   expect(dashAfter.pos.x - dashBefore.x).toBeLessThan(190);
-  expect(dashAfter.statuses.map((s) => s.hp)).toEqual([5, 50]);
-  expect(dashAfter.dash.cooldownRemainingMs).toBeGreaterThan(5000);
+  expect(dashAfter.statuses.map((s) => s.hp)).toEqual([50]);
+  expect(dashAfter.dash.cooldownRemainingMs).toBeGreaterThan(3000);
 
   expect(errors).toEqual([]);
 });

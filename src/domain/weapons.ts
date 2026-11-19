@@ -1,6 +1,7 @@
+import { getCloneLevelSpec } from './clones';
 import type { DualWaveKind } from './statusEffects';
 
-export type WeaponId = 'orb' | 'slash' | 'orbital' | 'mine' | 'dual_slash';
+export type WeaponId = 'orb' | 'clone' | 'orbital' | 'mine' | 'dual_slash';
 
 export const MAX_WEAPON_LEVEL = 5;
 
@@ -29,6 +30,11 @@ export type DualSlashStage = {
   sizeScale: number;
 };
 
+const ORB_DAMAGE = [32, 42, 52, 64, 78] as const;
+const ORB_KNOCKBACK = [80, 220, 260, 300, 340] as const;
+const MINE_DAMAGE = [75, 95, 115, 135, 160] as const;
+const MINE_COOLDOWN = [900, 800, 700, 600, 500] as const;
+const MINE_RANGE = [85, 98, 110, 122, 135] as const;
 const ORBITAL_KNOCKBACK = [115, 125, 135, 145, 160] as const;
 const DUAL_PIERCE = [1, 2, 3, 4, 8] as const;
 const DUAL_SIZE = [1, 1.12, 1.24, 1.36, 1.15] as const;
@@ -43,7 +49,7 @@ const DUAL_SLASH_TABLE: ReadonlyArray<Omit<WeaponStats, 'id' | 'level'>> = [
 export function createWeaponInventory(startingWeapon: WeaponId = 'orb'): WeaponInventory {
   return {
     orb: startingWeapon === 'orb' ? 1 : 0,
-    slash: startingWeapon === 'slash' ? 1 : 0,
+    clone: startingWeapon === 'clone' ? 1 : 0,
     orbital: startingWeapon === 'orbital' ? 1 : 0,
     mine: startingWeapon === 'mine' ? 1 : 0,
     dual_slash: startingWeapon === 'dual_slash' ? 1 : 0,
@@ -103,25 +109,26 @@ export function computeWeaponStats(id: WeaponId, level: number): WeaponStats {
     return {
       id,
       level,
-      damage: 26 + step * 9,
+      damage: ORB_DAMAGE[step]!,
       cooldownMs: 760 - step * 75,
       count: level >= 5 ? 3 : level >= 3 ? 2 : 1,
       rangePx: 440 + step * 30,
       speedPxSec: 420 + step * 45,
-      knockbackPxSec: 60 + step * 10,
+      knockbackPxSec: ORB_KNOCKBACK[step]!,
     };
   }
 
-  if (id === 'slash') {
+  if (id === 'clone') {
+    const spec = getCloneLevelSpec(level);
     return {
       id,
       level,
-      damage: 34 + step * 14,
-      cooldownMs: 900 - step * 75,
-      count: level >= 4 ? 2 : 1,
-      rangePx: 90 + step * 14,
-      speedPxSec: 0,
-      knockbackPxSec: 260 + step * 35,
+      damage: spec.damage,
+      cooldownMs: spec.cooldownMs,
+      count: spec.count,
+      rangePx: spec.triggerRangePx,
+      speedPxSec: 450,
+      knockbackPxSec: spec.knockbackPxSec,
     };
   }
 
@@ -129,10 +136,10 @@ export function computeWeaponStats(id: WeaponId, level: number): WeaponStats {
     return {
       id,
       level,
-      damage: 48 + step * 18,
-      cooldownMs: 1200 - step * 125,
-      count: level >= 4 ? 2 : 1,
-      rangePx: 68 + step * 12,
+      damage: MINE_DAMAGE[step]!,
+      cooldownMs: MINE_COOLDOWN[step]!,
+      count: level >= 5 ? 3 : level >= 3 ? 2 : 1,
+      rangePx: MINE_RANGE[step]!,
       speedPxSec: 0,
       knockbackPxSec: 260 + step * 25,
     };

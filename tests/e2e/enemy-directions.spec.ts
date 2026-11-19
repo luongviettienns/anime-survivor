@@ -16,7 +16,7 @@ test('all live monster types use authored north/south/side frames and mirror wes
   await page.evaluate(() => {
     const scene = window.__ANIME_SURVIVOR__!.getScene() as unknown as Runtime;
     scene.spawnTimer.paused = true;
-    Object.assign(scene.weapon.inventory, { orb: 0, slash: 0, orbital: 0, mine: 0 });
+    Object.assign(scene.weapon.inventory, { orb: 0, clone: 0, orbital: 0, mine: 0 });
   });
   for (const type of ['slime', 'shade', 'mage', 'boss'] as EnemyArchetypeId[]) {
     for (const [direction, dx, dy] of [['right', -300, 0], ['left', 300, 0], ['up', 0, 300], ['down', 0, -300]] as const) {
@@ -30,14 +30,15 @@ test('all live monster types use authored north/south/side frames and mirror wes
         const scene = window.__ANIME_SURVIVOR__!.getScene() as unknown as Runtime;
         const enemy = scene.enemies.group.getFirstAlive() as Phaser.Physics.Arcade.Sprite;
         const data = enemy.frame.customData as { animation: string; opaqueHeight: number };
+        const standing = enemy.texture.get(0).customData as { opaqueHeight: number };
         return { facing: enemy.getData('enemy-facing') as string, animation: data.animation, flip: enemy.flipX,
-          height: data.opaqueHeight * enemy.scaleY, body: enemy.body!.width,
+          height: standing.opaqueHeight * enemy.scaleY, body: enemy.body!.width,
           feet: (192 - enemy.displayOriginY) * enemy.scaleY, anchor: enemy.getData('footOffset') as number };
       });
       expect(pose.facing).toBe(direction);
       expect(pose.animation).toBe(direction === 'up' ? 'walk-up' : direction === 'down' ? 'walk' : 'walk-side');
       expect(pose.flip).toBe(direction === 'left');
-      expect(pose.height).toBeCloseTo(type === 'boss' ? 128 : 64);
+      expect(pose.height).toBeCloseTo(type === 'boss' ? 224 : 112);
       expect(pose.body).toBeCloseTo(type === 'boss' ? 64 : 32);
       expect(pose.feet).toBeCloseTo(pose.anchor);
       if (type === 'boss') await page.screenshot({ path: `test-results/boss-walk-${direction}.png` });
@@ -58,7 +59,7 @@ test('mage and boss casting follows directional palms and projectiles never over
       const api = window.__ANIME_SURVIVOR__!;
       const scene = api.getScene() as unknown as Runtime;
       scene.scene.resume(); scene.spawnTimer.paused = true; api.clearEnemies();
-      Object.assign(scene.weapon.inventory, { orb: 0, slash: 0, orbital: 0, mine: 0 });
+      Object.assign(scene.weapon.inventory, { orb: 0, clone: 0, orbital: 0, mine: 0 });
       const p = api.getPlayerPosition(); const enemy = scene.enemies.spawnAt(p.x + dx, p.y + dy, type);
       scene.cameras.main.stopFollow().centerOn(p.x + dx / 2, p.y + dy / 2);
       const state = scene.enemies.getState(enemy)!;
@@ -78,7 +79,7 @@ test('mage and boss casting follows directional palms and projectiles never over
     expect(charge.animation).toBe(direction === 'up' ? 'cast-up' : direction === 'down' ? 'cast' : 'cast-side');
     expect(charge.pose).toBe(0);
     expect(charge.glows).toHaveLength(type === 'boss' ? 2 : 1);
-    expect(charge.glows.every((glow) => glow.height <= 12.01 && glow.offset > 3)).toBe(true);
+    expect(charge.glows.every((glow) => glow.height <= 21.01 && glow.offset > 3)).toBe(true);
     await page.screenshot({ path: `test-results/${type}-charge-${direction}.png` });
     await page.evaluate(() => {
       const scene = window.__ANIME_SURVIVOR__!.getScene() as unknown as Runtime;

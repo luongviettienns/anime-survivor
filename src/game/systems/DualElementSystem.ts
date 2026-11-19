@@ -1,4 +1,5 @@
 import { actorAnimation, actorClip, actorHeading } from '../config/actorClips';
+import { dualXVisual } from '../config/dualElementAssets';
 import type Phaser from 'phaser';
 import type { DualWaveKind } from '../../domain/statusEffects';
 import { canWeaponFire, commitWeaponFire, createWeaponCooldown, selectNearestTarget, type TargetCandidate } from '../../domain/targeting';
@@ -119,14 +120,15 @@ export class DualElementSystem {
     const handX = this.player.x + dir.x * 10;
     const handY = this.player.y + dir.y * 10;
     const art = WAVE_ART[item.kind];
+    const visual = item.kind === 'dual_x' ? dualXVisual(dir) : { anim: art.anim, rotation: Math.atan2(dir.y, dir.x) };
     const reuse = this.projectiles.getFirstDead(false) as Phaser.Physics.Arcade.Sprite | null;
     const shot = reuse
       ? (reuse.enableBody(true, handX, handY, true, true), reuse)
       : (this.projectiles.create(handX, handY, art.tex, `${art.tex}/000`) as Phaser.Physics.Arcade.Sprite);
     shot.setTexture(art.tex, `${art.tex}/000`).setOrigin(0.5, 0.5).setScale(art.scale * 1.75 * item.sizeScale).setDepth(500_000_060);
     const circleOffset = Math.round(shot.width / 2 - art.radius / 1.75);
-    shot.setCircle(art.radius / 1.75, circleOffset, circleOffset).setBlendMode('NORMAL').setRotation(Math.atan2(dir.y, dir.x))
-      .setVelocity(dir.x * item.speedPxSec, dir.y * item.speedPxSec).play(art.anim, true);
+    shot.setCircle(art.radius / 1.75, circleOffset, circleOffset).setBlendMode('NORMAL').setRotation(visual.rotation)
+      .setVelocity(dir.x * item.speedPxSec, dir.y * item.speedPxSec).play(visual.anim, true);
     this.expiresAt.set(shot, nowMs + PROJECTILE.lifeMs);
     this.shotMeta.set(shot, {
       kind: item.kind, level: item.level, damage: item.damage,

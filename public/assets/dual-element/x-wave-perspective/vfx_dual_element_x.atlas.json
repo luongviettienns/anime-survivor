@@ -1,0 +1,112 @@
+{
+  "textures": [
+    {
+      "image": "originals/000.png",
+      "frames": [
+        {
+          "filename": "vfx_dual_element_x/000",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1536,
+            "h": 1024
+          },
+          "rotated": false,
+          "trimmed": true,
+          "spriteSourceSize": {
+            "x": 128,
+            "y": 384,
+            "w": 1536,
+            "h": 1024
+          },
+          "sourceSize": {
+            "w": 1792,
+            "h": 1792
+          }
+        }
+      ]
+    },
+    {
+      "image": "originals/001.png",
+      "frames": [
+        {
+          "filename": "vfx_dual_element_x/001",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1536,
+            "h": 1024
+          },
+          "rotated": false,
+          "trimmed": true,
+          "spriteSourceSize": {
+            "x": 128,
+            "y": 384,
+            "w": 1536,
+            "h": 1024
+          },
+          "sourceSize": {
+            "w": 1792,
+            "h": 1792
+          }
+        }
+      ]
+    },
+    {
+      "image": "originals/002.png",
+      "frames": [
+        {
+          "filename": "vfx_dual_element_x/002",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1536,
+            "h": 1024
+          },
+          "rotated": false,
+          "trimmed": true,
+          "spriteSourceSize": {
+            "x": 128,
+            "y": 384,
+            "w": 1536,
+            "h": 1024
+          },
+          "sourceSize": {
+            "w": 1792,
+            "h": 1792
+          }
+        }
+      ]
+    },
+    {
+      "image": "originals/003.png",
+      "frames": [
+        {
+          "filename": "vfx_dual_element_x/003",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "w": 1536,
+            "h": 1024
+          },
+          "rotated": false,
+          "trimmed": true,
+          "spriteSourceSize": {
+            "x": 128,
+            "y": 384,
+            "w": 1536,
+            "h": 1024
+          },
+          "sourceSize": {
+            "w": 1792,
+            "h": 1792
+          }
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "format": "RGBA8888",
+    "scale": "1"
+  }
+}

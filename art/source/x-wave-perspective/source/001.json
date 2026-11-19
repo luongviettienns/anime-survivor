@@ -1,0 +1,8 @@
+{
+  "index": 1,
+  "prompt": "ONE SINGLE transparent PNG animation frame, reference1 is exact edit target. Keep native1536x1024canvas and the EXACT existing energy blades' positions, sizes, curved silhouette, top-down oblique camera angle and cyan-over-violet overlap. Change only a FEW small sparks and ice fragments in the inner center region, shift those10px LEFT and make violet flame wisps flicker slightly, subtle energy pulse. Do not grow, extend or thicken entire shape. IMPORTANT alpha requirement: preserve reference1 transparency; ALL outer100pixels on all4canvas edges must be fully TRANSPARENT alpha0, absolutely NO glow/background/haze of any opacity touching an image edge. Keep ALL visible glow and all fragments within x160..1380 y100..924; dim glow may softly disappear well before that border. The original frame already fits: do not zoom in or expand energy haze. Exactly same two perspective curved cyan Ice and violet Dark Fire crescent waves intersecting as a foreshortened travelling X, moving RIGHT; preserve fine pixel detail, white cutting edges and dark colored sidewalls. No characters, ground, shadow, text, objects, sheet, panel or opaque background. One pose only, phase1 of two-frame loop.",
+  "reference": [
+    "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/x-wave-perspective/preview.png"
+  ],
+  "path": "C:/Users/ASUS/.codex/generated_images/01a1ee04-31d9-76f3-993d-4f3b2888c393/exec-5228d5e2-571a-443c-a72d-116eda934f41.png"
+}

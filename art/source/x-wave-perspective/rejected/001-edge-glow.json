@@ -1,0 +1,10 @@
+{
+  "index": 1,
+  "prompt": "Create ONE next animation frame of the EXACT SAME projectile as reference1. Reference1 is the edit target and MUST KEEP its1536x1024canvas, centered composition, oblique3/4 camera view, wide low silhouette, cyan crescent passing IN FRONT of dark violet crescent, exact energy shell thickness and scale, curved four tips, cyan Ice and violet Dark Fire palette, fine stepped pixel detail, transparent RGBA. Reference2/3 are material references ONLY. The projectile travels to the RIGHT: animate a SMALL energy pulse, flame wisps curl slightly farther LEFT, a few ice chips drift10-20px left, white cutting edge pulses, curved blade fronts flex subtly by at most12px. Preserve pose center and no whole-image shift/zoom/rotation. This is phase1 of a compact two-frame loop; no huge shape change, no ground plane added. Keep the new actual game's elevated top-down perspective with visible crescent TOP SURFACES, asymmetrical near/far horns. Absolutely do not turn into a symmetrical flat typographic X or horizontal stream. Full effect inside transparent margins, no clipping, no characters, text, grid, sheet, background or ground ring. Preserve original transparency including soft colored energy glow.",
+  "reference": [
+    "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/art/source/x-wave-perspective/preview.png",
+    "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/public/assets/dual-element/originals/ice_wave/000.png",
+    "C:/Users/ASUS/Desktop/AnimeSurvivor-Antigravity-Starter/public/assets/dual-element/originals/dark_fire_wave/000.png"
+  ],
+  "path": "C:/Users/ASUS/.codex/generated_images/01a1ee04-31d9-76f3-993d-4f3b2888c393/exec-5ea5fbc3-ae4c-448b-a024-f4201b0fd88e.png"
+}

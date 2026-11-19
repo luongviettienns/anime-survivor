@@ -30,7 +30,7 @@ export class EnemyAura {
         bodyHeight * HEIGHT_RATIO[index]! / Math.max(1, box[3] - box[1]));
       layer.setScale(scale);
       this.layers[index]!.setPosition(Math.round(actor.x), foot)
-        .setDepth(actor.depth - 4 + index * 0.1).setVisible(actor.visible && actor.active);
+        .setDepth(actor.depth - 4 + index * 0.1).setVisible(actor.active);
     }
   }
 

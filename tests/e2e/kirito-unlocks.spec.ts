@@ -18,7 +18,7 @@ test('Kirito upgrades auto Phantom Dash Lv1->2 without ninja weapons; restart re
   });
 
   expect(await page.evaluate(() => window.__ANIME_SURVIVOR__!.getWeapons())).toEqual({
-    dual_slash: 1, orb: 0, slash: 0, orbital: 0, mine: 0,
+    dual_slash: 1, orb: 0, clone: 0, orbital: 0, mine: 0,
   });
 
   // Space/Shift no longer triggers manual dash
@@ -39,7 +39,7 @@ test('Kirito upgrades auto Phantom Dash Lv1->2 without ninja weapons; restart re
     await page.waitForFunction(() => window.__ANIME_SURVIVOR__!.getUpgradeChoices().length === 3);
     const choices = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getUpgradeChoices());
     for (const c of choices) {
-      expect(['weapon_orb', 'weapon_slash', 'weapon_orbital', 'weapon_mine']).not.toContain(c.id);
+      expect(['weapon_orb', 'weapon_clone', 'weapon_orbital', 'weapon_mine']).not.toContain(c.id);
     }
     const dashIndex = choices.findIndex((c) => c.id === 'skill_phantom_dash');
     const index = dashIndex >= 0 ? dashIndex : 0;
@@ -60,13 +60,13 @@ test('Kirito upgrades auto Phantom Dash Lv1->2 without ninja weapons; restart re
     const p = api.getPlayerPosition();
     api.spawnEnemyAt(p.x + 120, p.y);
   });
-  await page.waitForFunction(() => window.__ANIME_SURVIVOR__!.getDashState().cooldownRemainingMs > 4000, undefined, { timeout: 3000 });
+  await page.waitForFunction(() => window.__ANIME_SURVIVOR__!.getDashState().cooldownRemainingMs > 2500, undefined, { timeout: 3000 });
 
   // Restart resets Kirito back to Lv.1 dual_slash only & locked Dash
   await page.evaluate(() => window.__ANIME_SURVIVOR__!.getScene().scene.restart({ heroId: 'kirito' }));
   await page.waitForFunction(() => window.__ANIME_SURVIVOR__!.getProgression().level === 1 && !window.__ANIME_SURVIVOR__!.getDashState().enabled);
   expect(await page.evaluate(() => window.__ANIME_SURVIVOR__!.getDashState().level)).toBe(0);
-  expect(await page.evaluate(() => window.__ANIME_SURVIVOR__!.getWeapons())).toMatchObject({ dual_slash: 1, slash: 0, orbital: 0, mine: 0 });
+  expect(await page.evaluate(() => window.__ANIME_SURVIVOR__!.getWeapons())).toMatchObject({ dual_slash: 1, clone: 0, orbital: 0, mine: 0 });
   const camera = await page.evaluate(() => window.__ANIME_SURVIVOR__!.getScene().cameras.cameras.map((c) => ({ zoom: c.zoom, name: c.name })));
   expect(camera[0]?.zoom).toBe(1.3);
   expect(camera[1]?.zoom).toBe(1);

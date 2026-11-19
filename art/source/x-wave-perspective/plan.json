@@ -1,0 +1,17 @@
+{
+  "behavior": "Replace front-facing X with curved oblique energy shells; separately author horizontal and vertical camera views, two-phase loop per axis. No source resampling. Preserve combat rules and Dash timing.",
+  "files": [
+    "scripts/x_wave_art.py",
+    "src/game/config/dualElementAssets.ts",
+    "tests/x-wave-animation.test.ts",
+    "docs/ART_CONTRACT.json",
+    "src/game/systems/DualElementSystem.ts"
+  ],
+  "acceptance": [
+    "Native hashes and exact sheet crops",
+    "Actual four-direction gameplay at5184",
+    "Inspect screenshot at logical game size",
+    "No state/timing regression",
+    "npm run verify"
+  ]
+}

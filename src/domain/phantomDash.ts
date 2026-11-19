@@ -4,10 +4,10 @@ import { normalized, type Vec2 } from './vector';
 export const MAX_PHANTOM_DASH_LEVEL = 5;
 
 export const PHANTOM_DASH = {
-  minCooldownMs: 2400,
+  minCooldownMs: 2000,
   durationMs: 225,
   iframeMs: 400,
-  statusBonusDamage: 15,
+  statusBonusDamage: 35,
   hitRadiusPx: 56,
   knockbackPxSec: 160,
   overshootPx: 42,
@@ -25,11 +25,11 @@ export type PhantomDashStats = {
 };
 
 const DASH_LEVELS: ReadonlyArray<Omit<PhantomDashStats, 'level'>> = [
-  { cooldownMs: 7000, damage: 45, searchRangePx: 300, maxDashPx: 220, pierceCount: 1, dashCount: 1 },
-  { cooldownMs: 6000, damage: 60, searchRangePx: 340, maxDashPx: 280, pierceCount: 2, dashCount: 1 },
-  { cooldownMs: 5200, damage: 75, searchRangePx: 380, maxDashPx: 340, pierceCount: 3, dashCount: 2 },
-  { cooldownMs: 4400, damage: 95, searchRangePx: 420, maxDashPx: 400, pierceCount: 4, dashCount: 2 },
-  { cooldownMs: 3600, damage: 115, searchRangePx: 460, maxDashPx: 460, pierceCount: 4, dashCount: 3 },
+  { cooldownMs: 4500, damage: 65, searchRangePx: 300, maxDashPx: 220, pierceCount: 1, dashCount: 1 },
+  { cooldownMs: 3800, damage: 90, searchRangePx: 340, maxDashPx: 280, pierceCount: 2, dashCount: 1 },
+  { cooldownMs: 3200, damage: 110, searchRangePx: 380, maxDashPx: 340, pierceCount: 3, dashCount: 2 },
+  { cooldownMs: 2800, damage: 140, searchRangePx: 420, maxDashPx: 400, pierceCount: 4, dashCount: 2 },
+  { cooldownMs: 2400, damage: 175, searchRangePx: 460, maxDashPx: 460, pierceCount: 4, dashCount: 3 },
 ];
 
 export type PhantomDashState = {

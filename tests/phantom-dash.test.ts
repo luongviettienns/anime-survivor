@@ -5,7 +5,6 @@ import {
   createPhantomDashState,
   findPhantomDashTargets,
   getPhantomDashStats,
-  PHANTOM_DASH,
   planAutoPhantomDash,
   stepPhantomDashPosition,
   triggerAutoPhantomDash,
@@ -23,13 +22,14 @@ describe('Kirito Auto Phantom Dash pure domain', () => {
     const lv4 = getPhantomDashStats(4);
     const lv5 = getPhantomDashStats(5);
 
-    expect(lv1).toMatchObject({ level: 1, cooldownMs: 7000, damage: 45, pierceCount: 1, dashCount: 1 });
-    expect(lv2).toMatchObject({ level: 2, cooldownMs: 6000, damage: 60, pierceCount: 2, dashCount: 1 });
-    expect(lv3).toMatchObject({ level: 3, cooldownMs: 5200, damage: 75, pierceCount: 3, dashCount: 2 });
-    expect(lv4).toMatchObject({ level: 4, cooldownMs: 4400, damage: 95, pierceCount: 4, dashCount: 2 });
-    expect(lv5).toMatchObject({ level: 5, cooldownMs: 3600, damage: 115, pierceCount: 4, dashCount: 3 });
+    expect(lv1).toMatchObject({ level: 1, cooldownMs: 4500, damage: 65, pierceCount: 1, dashCount: 1 });
+    expect(lv2).toMatchObject({ level: 2, cooldownMs: 3800, damage: 90, pierceCount: 2, dashCount: 1 });
+    expect(lv3).toMatchObject({ level: 3, cooldownMs: 3200, damage: 110, pierceCount: 3, dashCount: 2 });
+    expect(lv4).toMatchObject({ level: 4, cooldownMs: 2800, damage: 140, pierceCount: 4, dashCount: 2 });
+    expect(lv5).toMatchObject({ level: 5, cooldownMs: 2400, damage: 175, pierceCount: 4, dashCount: 3 });
     expect(lv5.maxDashPx).toBeGreaterThan(lv1.maxDashPx);
     expect(lv5.searchRangePx).toBeGreaterThan(lv1.searchRangePx);
+    expect(PHANTOM_DASH.statusBonusDamage).toBe(35);
   });
 
   it('auto-targets nearest alive enemy and tunes Lv.1 dash length to cross just past 1 enemy', () => {
@@ -70,7 +70,8 @@ describe('Kirito Auto Phantom Dash pure domain', () => {
     expect(canTriggerPhantomDash(state, 1000)).toBe(true);
     const dash = triggerAutoPhantomDash(state, { x: 0, y: 0 }, candidates, 5, 1000, 2000);
     expect(dash).not.toBeNull();
-    // 3600 - 2000 = 1600 -> floored at minCooldownMs (2400)
+    // 2400 - 2000 = 400 -> floored at minCooldownMs (2000)
+    expect(PHANTOM_DASH.minCooldownMs).toBe(2000);
     expect(state.readyAtMs).toBe(1000 + PHANTOM_DASH.minCooldownMs);
     expect(canTriggerPhantomDash(state, 2000)).toBe(false);
 

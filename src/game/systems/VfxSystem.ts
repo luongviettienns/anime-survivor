@@ -43,17 +43,21 @@ export class VfxSystem {
       additive: critical,
     });
     if (killed) {
-      this.vfxPool.playOneShot('vfx_death', 'vfx-death-poof', x, y, {
-        scale: ART_SCALE.vfx_death ?? 1,
-        depth: 500_000_150,
-        alpha: 0.84,
-      });
+      this.playSmokePoof(x, y);
     }
     if (critical || killed) {
       const reduceShake = loadSaveData().settings.reduceScreenShake;
       this.vfxPool.addTrauma(critical ? 0.22 : 0.1, reduceShake);
       if (critical && killed) this.vfxPool.triggerHitStop(32, reduceShake);
     }
+  }
+
+  playSmokePoof(x: number, y: number, scale = ART_SCALE.vfx_death ?? 1): void {
+    this.vfxPool.playOneShot('vfx_death', 'vfx-death-poof', x, y, {
+      scale,
+      depth: 500_000_150,
+      alpha: 0.84,
+    });
   }
 
   playPickupBurst(x: number, y: number, isHeal = false): void {

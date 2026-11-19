@@ -3,9 +3,11 @@ import type { HeroId } from './heroes';
 import { MAX_PHANTOM_DASH_LEVEL } from './phantomDash';
 import { canUpgradeWeapon, upgradeWeapon, type WeaponId, type WeaponInventory } from './weapons';
 
-export type PassiveId = 'stat_max_hp' | 'stat_damage_reduction' | 'stat_damage' | 'stat_cooldown' | 'stat_move_speed' | 'stat_magnet' | 'stat_heavy_strike';
-export type UpgradeId = 'skill_phantom_dash' | 'weapon_orb' | 'weapon_slash' | 'weapon_orbital' | 'weapon_mine' | 'weapon_dual_slash' | PassiveId;
+export type PassiveId = 'stat_max_hp' | 'stat_damage_reduction' | 'stat_damage' | 'stat_cooldown' | 'stat_move_speed' | 'stat_magnet' | 'stat_recovery';
+export type UpgradeId = 'skill_phantom_dash' | 'weapon_orb' | 'weapon_clone' | 'weapon_orbital' | 'weapon_mine' | 'weapon_dual_slash' | PassiveId;
 export const MAX_PASSIVE_LEVEL = 5;
+export const MAX_CRIT_CHANCE = 0.3;
+export const CRIT_DAMAGE_MULTIPLIER = 1.5;
 
 export type PassiveStats = {
   levels: Record<PassiveId, number>;
@@ -14,9 +16,9 @@ export type PassiveStats = {
   cooldownReductionMs: number;
   moveSpeedBonusPxSec: number;
   pickupRadiusBonusPx: number;
-  heavyStrikeEvery: number;
-  heavyStrikeBonus: number;
-  attackCounter: number;
+  recoveryPer3Sec: number;
+  recoveryTimerMs: number;
+  critChance: number;
   phantomDashLevel: number;
 };
 
@@ -32,15 +34,15 @@ const DUAL_SLASH_DESCS = [
 ] as const;
 
 const PHANTOM_DASH_DESCS = [
-  'Auto-dash through 1 nearest foe (45 dmg, 7.0s CD).',
-  '60 dmg, 2 pierce, longer dash reach, 6.0s CD.',
-  'Dash 2x consecutively! 75 dmg, 3 pierce, 5.2s CD.',
-  '95 dmg, 4 pierce, wider reach, 4.4s CD.',
-  'Dash 3x consecutively! 115 dmg, 4 pierce, 3.6s CD.',
+  'Auto-dash through 1 nearest foe (65 dmg, 4.5s CD).',
+  '90 dmg, 2 pierce, longer dash reach, 3.8s CD.',
+  'Dash 2x consecutively! 110 dmg, 3 pierce, 3.2s CD.',
+  '140 dmg, 4 pierce, wider reach, 2.8s CD.',
+  'Dash 3x consecutively! 175 dmg, 4 pierce, 2.4s CD.',
 ] as const;
 
 const WEAPON_UPGRADE_META: ReadonlyArray<{
-  upgradeId: 'weapon_orb' | 'weapon_slash' | 'weapon_orbital' | 'weapon_mine' | 'weapon_dual_slash';
+  upgradeId: 'weapon_orb' | 'weapon_clone' | 'weapon_orbital' | 'weapon_mine' | 'weapon_dual_slash';
   weaponId: WeaponId;
   heroOnly: HeroId;
   icon: string;
@@ -48,30 +50,29 @@ const WEAPON_UPGRADE_META: ReadonlyArray<{
   unlockDesc: string;
   levelDesc: string;
 }> = [
-  { upgradeId: 'weapon_orb', weaponId: 'orb', heroOnly: 'naruto', icon: 'icon-weapon_orb', title: 'Rasengan Chakra Orb', unlockDesc: 'Unlock auto-homing chakra orb.', levelDesc: '+9 Damage, faster cooldown & flight, extra orbs at Lv3/Lv5.' },
+  { upgradeId: 'weapon_orb', weaponId: 'orb', heroOnly: 'naruto', icon: 'icon-weapon_orb', title: 'Rasengan Chakra Orb', unlockDesc: 'Unlock auto-homing chakra orb.', levelDesc: '+Damage, Lv2+ drill push, extra orbs at Lv3/Lv5.' },
   { upgradeId: 'weapon_dual_slash', weaponId: 'dual_slash', heroOnly: 'kirito', icon: 'icon-weapon_slash', title: 'Dual Element Slash', unlockDesc: DUAL_SLASH_DESCS[0], levelDesc: DUAL_SLASH_DESCS[1] },
-  { upgradeId: 'weapon_slash', weaponId: 'slash', heroOnly: 'naruto', icon: 'icon-weapon_slash', title: 'Taijutsu Fist Combo', unlockDesc: 'Strike nearby foes with an empty-handed chakra punch.', levelDesc: '+14 Damage, wider reach, two-sided punches at Lv4.' },
+  { upgradeId: 'weapon_clone', weaponId: 'clone', heroOnly: 'naruto', icon: 'icon-weapon_slash', title: 'Kage Bunshin Strike', unlockDesc: 'Summon a shadow clone nearby to execute a sweeping kick.', levelDesc: '+1 Clone (up to 4), stronger kick damage & faster cooldown.' },
   { upgradeId: 'weapon_orbital', weaponId: 'orbital', heroOnly: 'naruto', icon: 'icon-weapon_orbital', title: 'Shadow Shuriken Ring', unlockDesc: 'Summon orbiting shadow shuriken that slice nearby foes.', levelDesc: '+7 Damage, faster spin, extra blades at Lv3/Lv5.' },
-  { upgradeId: 'weapon_mine', weaponId: 'mine', heroOnly: 'naruto', icon: 'icon-weapon_mine', title: 'Paper Bomb Tag', unlockDesc: 'Drop explosive shinobi tags behind you for blazing AOE blasts.', levelDesc: '+18 Blast Damage, wider radius, double drop at Lv4.' },
+  { upgradeId: 'weapon_mine', weaponId: 'mine', heroOnly: 'naruto', icon: 'icon-weapon_mine', title: 'Paper Bomb Tag', unlockDesc: 'Drop explosive shinobi tags behind you for blazing AOE blasts.', levelDesc: '+Blast Damage, wider radius, 2 tags at Lv3 & 3 tags at Lv5.' },
 ];
 
-const HEAVY_EVERY = [6, 5, 5, 4, 3] as const;
-const PASSIVE_META: Record<PassiveId, { title: string; icon: string; values: readonly number[]; fmt: (v: number, lv: number) => string }> = {
-  stat_max_hp: { title: 'Increase Max HP', icon: 'icon-stat_max_hp', values: [25, 25, 30, 35, 45], fmt: (v) => `+${v} Max HP & heal ${v} HP immediately.` },
+const PASSIVE_META: Record<PassiveId, { title: string; icon: string; values: readonly number[]; fmt: (v: number) => string }> = {
+  stat_max_hp: { title: 'Increase Max HP', icon: 'icon-stat_max_hp', values: [25, 25, 30, 35, 45], fmt: (v) => `+${v} Max HP (does not restore current HP).` },
   stat_damage_reduction: { title: 'Reduce Damage Taken', icon: 'icon-stat_max_hp', values: [2, 3, 3, 4, 6], fmt: (v) => `-${v} incoming damage (min 2 Dmg).` },
   stat_damage: { title: 'Increase Damage', icon: 'icon-stat_damage', values: [5, 6, 7, 8, 10], fmt: (v) => `+${v} flat damage to all equipped weapons.` },
   stat_cooldown: { title: 'Reduce Cooldown', icon: 'icon-stat_cooldown', values: [35, 40, 45, 55, 75], fmt: (v) => `-${v}ms weapon cooldown (min 180ms floor).` },
   stat_move_speed: { title: 'Increase Move Speed', icon: 'icon-stat_move_speed', values: [24, 22, 20, 18, 16], fmt: (v) => `+${v} px/s move speed and +12px magnet radius.` },
   stat_magnet: { title: 'Increase Magnet Range', icon: 'icon-stat_magnet', values: [35, 40, 45, 55, 75], fmt: (v) => `+${v}px pickup magnet radius.` },
-  stat_heavy_strike: { title: 'Increase Heavy Strike', icon: 'icon-stat_crit', values: [30, 50, 75, 105, 145], fmt: (v, lv) => `Every ${HEAVY_EVERY[lv - 1]}th hit deals +${v} heavy damage.` },
+  stat_recovery: { title: 'Increase HP Recovery', icon: 'icon-stat_max_hp', values: [1, 2, 3, 4, 6], fmt: (v) => `+${v} HP recovered every 3 seconds.` },
 };
 const PASSIVE_IDS = Object.keys(PASSIVE_META) as PassiveId[];
 
 export function createPassiveStats(): PassiveStats {
   return {
-    levels: { stat_max_hp: 0, stat_damage_reduction: 0, stat_damage: 0, stat_cooldown: 0, stat_move_speed: 0, stat_magnet: 0, stat_heavy_strike: 0 },
+    levels: { stat_max_hp: 0, stat_damage_reduction: 0, stat_damage: 0, stat_cooldown: 0, stat_move_speed: 0, stat_magnet: 0, stat_recovery: 0 },
     damageReduction: 0, damageBonus: 0, cooldownReductionMs: 0, moveSpeedBonusPxSec: 0,
-    pickupRadiusBonusPx: 0, heavyStrikeEvery: 0, heavyStrikeBonus: 0, attackCounter: 0, phantomDashLevel: 0,
+    pickupRadiusBonusPx: 0, recoveryPer3Sec: 0, recoveryTimerMs: 0, critChance: 0, phantomDashLevel: 0,
   };
 }
 
@@ -96,7 +97,7 @@ export function getAvailableUpgrades(
     const lv = passives.levels[id];
     if (lv >= MAX_PASSIVE_LEVEL) continue;
     const nextLevel = lv + 1, meta = PASSIVE_META[id];
-    choices.push({ id, title: `${meta.title} Lv.${nextLevel}`, description: meta.fmt(meta.values[lv]!, nextLevel), icon: meta.icon, category: 'passive', nextLevel });
+    choices.push({ id, title: `${meta.title} Lv.${nextLevel}`, description: meta.fmt(meta.values[lv]!), icon: meta.icon, category: 'passive', nextLevel });
   }
   return choices;
 }
@@ -107,7 +108,7 @@ function choiceWeight(choice: UpgradeChoice, ownedWeapons: number, hpRatio: numb
     if (current === 4) return 4;
     return current > 0 || ownedWeapons < 2 ? 3 : 1;
   }
-  return hpRatio <= 0.4 && (choice.id === 'stat_max_hp' || choice.id === 'stat_damage_reduction') ? 4 : 2;
+  return hpRatio <= 0.4 && (choice.id === 'stat_recovery' || choice.id === 'stat_damage_reduction') ? 4 : 2;
 }
 
 function drawWeighted(pool: UpgradeChoice[], weights: number[], rng: () => number): UpgradeChoice | null {
@@ -176,19 +177,23 @@ export function applyUpgradeChoice(choiceId: UpgradeId, inventory: WeaponInvento
   if (lv >= MAX_PASSIVE_LEVEL) throw new Error(`Cannot upgrade passive ${choiceId} from level ${lv}`);
   const val = PASSIVE_META[choiceId].values[lv]!;
   passives.levels[choiceId] = lv + 1;
-  if (choiceId === 'stat_max_hp') { player.maxHp += val; player.hp = Math.min(player.maxHp, player.hp + val); return; }
+  if (choiceId === 'stat_max_hp') { player.maxHp += val; return; }
   if (choiceId === 'stat_damage_reduction') { passives.damageReduction += val; return; }
   if (choiceId === 'stat_damage') { passives.damageBonus += val; return; }
   if (choiceId === 'stat_cooldown') { passives.cooldownReductionMs += val; return; }
   if (choiceId === 'stat_move_speed') { passives.moveSpeedBonusPxSec += val; passives.pickupRadiusBonusPx += 12; return; }
   if (choiceId === 'stat_magnet') { passives.pickupRadiusBonusPx += val; return; }
-  passives.heavyStrikeEvery = HEAVY_EVERY[lv]!;
-  passives.heavyStrikeBonus = val;
+  passives.recoveryPer3Sec = val;
 }
 
-export function rollCombatDamage(baseDamage: number, passives: PassiveStats): { damage: number; critical: boolean } {
-  passives.attackCounter += 1;
-  const heavy = passives.heavyStrikeEvery > 0 && passives.attackCounter % passives.heavyStrikeEvery === 0;
-  const damage = Math.max(1, baseDamage + passives.damageBonus + (heavy ? passives.heavyStrikeBonus : 0));
-  return { damage, critical: heavy };
+export function rollCombatDamage(
+  baseDamage: number,
+  passives: PassiveStats,
+  rng: () => number = Math.random
+): { damage: number; critical: boolean } {
+  const flatBase = Math.max(1, baseDamage + passives.damageBonus);
+  const rawCrit = Number.isFinite(passives.critChance) ? passives.critChance : 0;
+  const chance = Math.max(0, Math.min(MAX_CRIT_CHANCE, rawCrit));
+  const critical = chance > 0 && rng() < chance;
+  return { damage: critical ? Math.ceil(flatBase * CRIT_DAMAGE_MULTIPLIER) : flatBase, critical };
 }

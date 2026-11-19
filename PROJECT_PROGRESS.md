@@ -58,7 +58,14 @@
   - [x] Thiết kế lại UpgradeScene và HudOverlay theo pixel art cao cấp.
   - [x] Kiểm thử toàn diện: npm run verify (43/43 tests, 0 lint/arch/typecheck errs) và npm run test:e2e (5/5 E2E scenarios PASS).
 
-- [ ] **Phase 6: Balance Overhaul (Flat Stats), Multi-Hero & Evolution Metamorphosis** 🔄 *(Đang triển khai — Nhánh `feat/flat-balance-scaling-drops`: đã hoàn tất Mục 1 & Mục 2)*
+- [x] **Phase 6.5: Gameplay & Balance Update (`feat/update-gameplay`)** ✅ *(Hoàn thành)*
+  - [x] Khắc ghi quy chuẩn **Core Design Law: Asymmetric Identity & Dilemma** vào `AGENTS.md` và `docs/GAME_DESIGN.md`.
+  - [x] Rebalance **Kirito Phantom Dash**: giảm cooldown (`7.0s→4.5s` Lv.1, `6.0s→3.8s` Lv.2, tới `2.4s` Lv.5), tăng damage (`45→65` tới `175`), tăng bonus Slow/Burn (`+15→+35`), bảo lưu `400ms` i-frame.
+  - [x] Bỏ hồi máu khi lên cấp / chọn `stat_max_hp`; thay thế slot `stat_heavy_strike` bằng **`stat_recovery`** (`[1, 2, 3, 4, 6] HP / 3s` pause-safe); chuyển sang nền tảng **Crit xác suất đơn** (`MAX_CRIT_CHANCE = 30%`, `x1.5` damage).
+  - [x] Rebalance **Naruto Rasengan (`orb`)** (tăng nhẹ dmg `32→78`, không xuyên, Lv.2+ xoáy đẩy lùi liên tục 0ms/75ms/150ms trước khi nổ) và **Bùa Nổ (`mine`)** (`75→160` Dmg, `900→500ms` CD, `85→135px` AOE, `1→2→3` bùa).
+  - [x] Xóa bỏ `weapon_slash` khỏi Naruto, thay bằng **Kage Bunshin (`clone`)**: FSM 3 pha (`delay/spawn/dash` + tái sử dụng `vfx_death-poof`, `hero_actions` `112px` khớp Naruto thật), đội hình 1–4 phân thân (tăng đều `35→60` dmg/con, `2.2s→1.4s` CD, tầm kích hoạt `140–180px`, hitbox đá quét `48–60px` góc `120°`, tối đa 2 quái/con).
+  - [x] Khắc phục bug ẩn `EnemyAura` khi Boss/Elite dùng cast/hit overlay (`EnemyAura.ts`) và đồng bộ 5 spec E2E về chuẩn scale `1.75×`/`0.875` (`41/41` Playwright E2E PASS trên `vite preview` port `5179`).
+- [ ] **Phase 6: Balance Overhaul (Flat Stats), Multi-Hero & Evolution Metamorphosis** 🔄 *(Nhánh `feat/update-gameplay` — Chờ Evolution Trials)*
   - [x] Đặc tả phân tách 2 mục độc lập tại [docs/EVOLUTION_SPEC.md](docs/EVOLUTION_SPEC.md) (7 chỉ số bị động số cụ thể không dùng % + 2 nhánh tiến hóa Cửu Vĩ / Tiên Nhân Cóc + KCM cuối game).
   - [x] Nghiên cứu & lập Bảng thông số cân bằng số cụ thể (Flat-Number Balance, Enemy Scaling theo phút, Đường cong XP, Item rơi bắt buộc nhặt & Đa nhân vật Mạnh/Yếu riêng): xem tại [docs/GAME_BALANCE_SHEET.md](docs/GAME_BALANCE_SHEET.md).
   - [x] Tổng hợp kế hoạch các mục nâng cấp & quy chuẩn từ bộ skills (`physics-arcade`, `game-ui-ux`, `game-performance`, `audio-design`, `procedural-gen`, `game-feel`, `roguelike`, `phaser-gameplay`) tại [docs/UPGRADE_AND_SYSTEM_PLAN.md](docs/UPGRADE_AND_SYSTEM_PLAN.md) (bao gồm: Đa màn chơi, Không shop tăng chỉ số ngoài trận, Thuật Clone thoát hiểm).
@@ -72,6 +79,13 @@
   - [x] Kiểm thử toàn diện phần Mục 1, Mục 2, Sảnh Game, Mục 6 & Kirito (`npm run verify` & `playwright test`).
 
 ## Nhật ký chi tiết (Log)
+
+### 2026-11-19 (Nhánh `feat/update-gameplay`)
+- **Hoàn thành Cập Nhật Gameplay & Cân Bằng (Orchestrator Hydrogen XHigh + Flash Coder + Ponytail ULTRA)**:
+  - **Phantom Dash Rebalance**: Hạ cooldown Lv.1–5 (`7.0s→4.5s`, `6.0s→3.8s`, `5.2s→3.2s`, `4.4s→2.8s`, `3.6s→2.4s`, sàn `2.0s`), tăng sát thương (`45→65` tới `175`) và `statusBonusDamage` (`15→35`).
+  - **Max-HP, Hồi Phục & Crit**: `stat_max_hp` không còn hồi máu hiện tại; bổ sung `stat_recovery` (`[1, 2, 3, 4, 6] HP / 3s`, tích lũy `deltaMs` an toàn khi Pause); chuyển sang Crit xác suất đơn độc lập (`MAX_CRIT_CHANCE = 0.30`, `1.5×` `Math.ceil`).
+  - **Naruto Weapons & Kage Bunshin (`clone`)**: Xóa `slash`, triển khai `src/domain/clones.ts` + `src/game/systems/CloneSystem.ts` (1–4 phân thân đá quét góc `120°` bán kính `48–60px`, tầm kích hoạt `140–180px`, sát thương tăng đều `35→60`/con, tái sử dụng khói `vfx-death-poof` và sprite `hero`). Nâng cấp `orb` Lv.2+ thêm đẩy lùi xoáy liên tục không xuyên; nâng cấp `mine` lên `75→160` Dmg, `85→135px` và rải tối đa 3 bùa ở Lv.5.
+  - **Kiểm thử**: `npm run verify` + Playwright E2E trên port cách ly `5179`.
 
 ### 2026-11-19
 - **Kirito Transition Frames & Sword Priority Gate**:

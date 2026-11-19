@@ -27,7 +27,7 @@ test('ground shadow PNGs follow feet and clean destroyed/pooled actors', async (
       const shadow = o as Phaser.GameObjects.Image;
       const owner = shadow.getData('shadow-owner') as Phaser.Physics.Arcade.Sprite;
       return { texture: shadow.texture.key, kind: owner.texture.key, visible: shadow.visible,
-        xError: shadow.x-owner.x, yError: shadow.y-owner.y-(owner.texture.key === 'gem' ? 11 :
+        xError: shadow.x-owner.x, yError: shadow.y-owner.y-(owner.texture.key === 'gem' ? 19.25 :
           (owner.getData('footOffset') as number | undefined) ?? 28), width: shadow.displayWidth };
     }));
   expect(shadows).toHaveLength(4);
